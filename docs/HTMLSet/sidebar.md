@@ -1,12 +1,17 @@
+- **计算器版本**
+- [桌面版](https://wwn.lanzout.com/s/dcalc)
+- [网页版](https://dcalc.dnftools.com/)
+- [微信小程序版](wx.md)
 - **指南**
-- [使用说明](USERMANUAL.md)
-- [更新日志](CHANGELOG.md)
+- [使用说明](usermanual.md)
+- [更新日志](changelog.md)
 - **维护**
-- [Git Code](README.md)
-- [Contributors](CONTRIBUTERS.md)
+- [Git Code](readme.md)
+- [Contributors](contributers.md)
 - **其他**
-- [反馈](COMMENT.md)
+- [反馈](comment.md)
 - **友情链接**
-- [下载链接](https://wwx.lanzoui.com/b01bfj76f)
-- [源码](https://gitee.com/i_melon/DNFCalculating)
-
+- [下载链接](https://wwn.lanzout.com/s/dcalc)
+- [源码](https://gitee.com/dcalc/dnfcalculating_110)
+- [Colg](https://bbs.colg.cn/)
+- [无名空岛](https://www.skycity.top?from=calc)

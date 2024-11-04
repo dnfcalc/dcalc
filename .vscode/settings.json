@@ -1,0 +1,8 @@
+{
+  "unocss.root": [
+    "packages/renderer"
+  ],
+  "python.analysis.extraPaths": [
+    "./api"
+  ]
+}

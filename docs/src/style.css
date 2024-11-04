@@ -1,0 +1,94 @@
+/* Container for the Button links, within cover page*/
+.cover-main .cover-link-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1000px;
+  margin: auto;
+}
+
+@media (max-width: 820px) {
+  .cover-main .cover-link-container {
+      flex-direction: column;
+  }
+
+  .cover-link{
+    min-width: 90%;
+  }
+}
+
+.cover-link {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  border: 2px solid #42b983;
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 3px;
+  width:0;
+  /* min-width: 20%; */
+}
+
+a.cover-link:link,
+a.cover-link:visited {
+  /* text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2); */
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+
+}
+a.cover-link:link:after,
+a.cover-link:visited:after {
+  content: "";
+  position: absolute;
+  height: 0%;
+  left: 50%;
+  top: 50%;
+  width: 150%;
+  -webkit-transition: all 0.75s ease 0s;
+  -moz-transition: all 0.75s ease 0s;
+  -o-transition: all 0.75s ease 0s;
+  transition: all 0.75s ease 0s;
+
+}
+a.cover-link:link:hover:after,
+a.cover-link:visited:hover:after {
+  height: 450%;
+}
+a.cover-link:link,
+a.cover-link:visited {
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+  color:white !important;
+}
+a.cover-link:after {
+  background: rgba(255, 255, 255, 0.2);
+  color:white !important;
+  -moz-transform: translateX(-50%) translateY(-50%) rotate(135deg);
+  -ms-transform: translateX(-50%) translateY(-50%) rotate(135deg);
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(135deg);
+  transform: translateX(-50%) translateY(-50%) rotate(135deg);
+}
+
+/* Main text within Button on cover page*/
+.cover-main .cover-link-container .cover-link .link-title {
+  font-family: 'Cutive Mono', monospace;
+  color: #42b983;
+  font-size: 1.8rem;
+  z-index: 1;
+}
+
+/* Description of button, on cover page */
+.cover-main .cover-link-container .cover-link .link-description {
+  font-family: 'Cutive Mono', monospace;
+  color: #42b983;
+  font-size: 1.1rem;
+  border-top: 1px solid #42b983;
+  padding-top: 2px;
+  z-index: 1;
+}

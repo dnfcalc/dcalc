@@ -1,0 +1,285 @@
+.approved-form {
+  line-height: 16px;
+  text-align: left;
+  display: inline-block;
+  // background-color: #000;
+  padding: 10px 13px 10px 10px;
+  color: #b1a785;
+  position: relative;
+  z-index: 5;
+  width: 270px;
+  // font-size: 12px;
+
+  &.with-colums {
+    -webkit-columns: 260px auto;
+    -moz-columns: 260px auto;
+    columns: 260px auto;
+    max-height: 600px;
+
+    column-gap: 5px;
+
+    > * {
+      max-width: 260px;
+      padding: 0 15px;
+      background-color: rgba($color: #000000, $alpha: 0.92);
+      // width: 315px;
+      border-left: 1px solid #252525;
+      border-right: 1px solid #252525;
+      box-shadow: 2px 2px 5px #000;
+
+      &:last-child {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #252525;
+      }
+    }
+
+    .hr {
+      margin: 0;
+
+      padding-top: 5px;
+
+      + * {
+        padding-top: 5px;
+      }
+    }
+
+    .fame {
+      height: 30px;
+    }
+
+    .title {
+      padding-top: 14px;
+      height: 50px;
+      border-top: 1px solid #252525;
+
+      .eq-name {
+        > p {
+          margin-top: 0 !important;
+        }
+      }
+    }
+  }
+}
+
+.title {
+  height: 30px;
+
+  .eq-icon {
+    float: left;
+    position: relative;
+    top: -2px;
+  }
+
+  > p {
+    position: relative;
+    top: -3px;
+  }
+}
+
+.kong-blue {
+  color: #549aec;
+}
+.kong-red {
+  color: #ff6666;
+}
+.kong-green {
+  color: #79c59d;
+}
+.kong-yellow {
+  color: #c1a237;
+}
+.kong-baijin {
+  color: #add9df;
+}
+
+.red {
+  color: #bc3232;
+}
+.green {
+  color: #4aa256;
+}
+.enchanting {
+  color: #68eda1;
+}
+.yellow {
+  color: #b59834;
+}
+.gey {
+  color: #5b5b5b;
+}
+.strong {
+  // color: #8B7036;
+  color: #b1a785;
+}
+.paddleft {
+  padding-left: 15px;
+}
+.white {
+  color: #f0f0f0;
+}
+.fame {
+  height: 20px;
+  line-height: 20px;
+
+  > img {
+    float: left;
+    margin-right: 5px;
+  }
+}
+
+.suiji-props {
+  position: relative;
+  padding-left: 22px;
+  margin-top: 2px;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 3px;
+    top: 2px;
+    width: 12px;
+    height: 12px;
+    background-image: url(@/assets/img/icon/switch.png);
+  }
+
+  &.can-select {
+    cursor: pointer;
+
+    &:hover {
+      color: #b59834;
+
+      &::before {
+        background-image: url(https://www.tianyongxian.com/dnfstatic/images/icons/base/checkbox_hover.png);
+      }
+    }
+
+    &::before {
+      background-image: url(https://www.tianyongxian.com/dnfstatic/images/icons/base/checkbox_uncheck.png);
+    }
+
+    &.selected {
+      &::before {
+        background-image: url(https://www.tianyongxian.com/dnfstatic/images/icons/base/checkbox_checked.png);
+      }
+    }
+  }
+}
+
+.props-bakal {
+  position: relative;
+  padding-left: 17px;
+  line-height: 17px;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    // top: 5px;
+    width: 17px;
+    height: 17px;
+    background-image: url(@/assets/img/icon/bakal.png);
+  }
+}
+
+.props-bakal-raid {
+  position: relative;
+  padding-left: 17px;
+  line-height: 17px;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: 0px;
+    // top: 5px;
+    width: 17px;
+    height: 17px;
+    background-image: url(@/assets/img/icon/bakalraid.png);
+  }
+}
+
+.hr {
+  border-bottom: 1px solid #303030;
+  margin: 3px 0;
+}
+
+.icon-star {
+  position: absolute;
+  padding-top: 17px;
+  top: 2px;
+  right: 10px;
+  color: #a1a1a1;
+  font-size: 22px;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  z-index: 1;
+
+  .is-star {
+    color: rgb(231, 163, 0);
+    top: -2px;
+    font-size: 26px;
+  }
+}
+
+.props-group {
+  &:not(:last-child) {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #303030;
+    margin-bottom: 12px;
+  }
+}
+
+.card-info {
+  position: relative;
+  z-index: 1;
+  padding-top: 20px;
+
+  .card-image {
+    position: relative;
+    text-align: center;
+
+    img {
+      width: calc(82%);
+    }
+
+    > .dictionary-info-icon-back {
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: calc(10%);
+        width: 80%;
+        height: 100%;
+        background-image: url(https://www.tianyongxian.com/dnfstatic/images/icons/library/44.png);
+        background-size: 100%;
+      }
+    }
+
+    .card-name {
+      position: absolute;
+      top: 17px;
+      left: 60px;
+      width: calc(100% - 120px);
+      text-shadow: #000 0 0 2px, #000 0 0 2px, #000 0 0 2px, #000 0 0 2px;
+      text-align: center;
+      line-height: 30px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      z-index: 2;
+    }
+  }
+
+  .card-info-inner {
+    padding: 0 10px 40px 10px;
+    margin: 10px;
+
+    > div {
+      margin-top: 5px;
+    }
+  }
+}

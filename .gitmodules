@@ -1,6 +1,10 @@
-[submodule "SkillData"]
-	path = SkillData
-	url = https://gitee.com/i_melon/SkillData.git
-[submodule "InternalFile"]
-	path = InternalFile
-	url = https://gitee.com/i_melon/InternalFile
+[submodule "internal"]
+	path = internal
+	url = https://gitee.com/dcalc/internal.git
+[submodule "api/routers"]
+	path = api/routers
+	url = https://gitee.com/dcalc/routers.git
+[submodule "skill-info"]
+	path = skill-info
+	url = https://gitee.com/dcalc/skill-info.git
+

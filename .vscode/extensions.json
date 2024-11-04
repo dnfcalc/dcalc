@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "antfu.unocss",
+    "usernamehw.errorlens",
+    "Vue.vscode-typescript-vue-plugin",
+    "Vue.volar",
+    "dbaeumer.vscode-eslint",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}

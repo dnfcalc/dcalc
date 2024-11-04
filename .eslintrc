@@ -1,0 +1,13 @@
+{
+  "extends":["@curev"],
+  "rules": {
+    "semi":"off",
+    "@typescript-eslint/semi":"off",
+    "vue/semi":"off",
+    "camelcase":"off",
+    "no-extend-native":"off",
+    "eqeqeq":"off",
+    "vue/eqeqeq":"off",
+    "no-console":"warn"
+  }
+}

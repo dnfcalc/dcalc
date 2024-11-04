@@ -1,0 +1,51 @@
+{
+  "name": "dcalc-renderer",
+  "version": "2022.6.6",
+  "license": "GNU",
+  "engines": {
+    "node": ">=14.17.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "debug": "npm run prebuild && vite ./packages/renderer",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck --pretty"
+  },
+  "dependencies": {
+    "@vueuse/core": "^10.5.0",
+    "axios": "^1.6.0",
+    "hoci": "0.0.12",
+    "html-to-image": "^1.11.11",
+    "pako": "^2.1.0",
+    "pinia": "^2.1.7",
+    "query-string": "^8.1.0",
+    "sortablejs": "1.15.0",
+    "tslx": "^0.1.1",
+    "vue": "^3.3.8",
+    "vue-router": "4.2.5"
+  },
+  "devDependencies": {
+    "@curev/vite-plugin-sprite": "^0.3.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/spritesmith": "^3.4.5",
+    "@vitejs/plugin-vue": "^4.4.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "electron": "22.3.12",
+    "fs-extra": "^11.1.1",
+    "maybe-types": "^0.2.0",
+    "minimatch": "^9.0.3",
+    "sass": "^1.69.5",
+    "spritesmith": "^3.4.1",
+    "typescript": "^5.2.2",
+    "unocss": "^0.57.2",
+    "unplugin-vue-components": "^0.25.2",
+    "vite": "^4.5.0",
+    "vite-plugin-compression": "^0.5.1",
+    "vue-tsc": "^1.8.22"
+  },
+  "env": {
+    "//": "Used in build scripts",
+    "VITE_DEV_SERVER_HOST": "127.0.0.1",
+    "VITE_DEV_SERVER_PORT": 25252
+  }
+}

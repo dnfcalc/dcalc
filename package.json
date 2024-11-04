@@ -1,0 +1,60 @@
+{
+  "name": "dcalc",
+  "version": "2024.09.06",
+  "license": "GNU",
+  "keywords": [
+    "vite",
+    "electron",
+    "vue",
+    "dnf",
+    "dcalc"
+  ],
+  "main": "./dist/app/main/index.cjs",
+  "engines": {
+    "node": ">=14.17.0"
+  },
+  "scripts": {
+    "dev": "pnpm dev:app",
+    "dev:server": "python ./api/main.py",
+    "dev:web": "vite ./packages/renderer",
+    "dev:app": "node scripts/watch.mjs",
+    "dev:webview": "python ./api/client.py --dev",
+    "build:web": "vite build ./packages/renderer --mode web",
+    "prepare": "simple-git-hooks",
+    "clean:pycache": "rimraf ./**/__pycache__",
+    "clean:deps": "rimraf ./**/node_modules & npm cache clean --force",
+    "up:deps": "taze -r major",
+    "release": "bumpp package.json packages/*/package.json --commit \"release: v\" --push --tag",
+    "git": "git fetch --all & git reset --hard origin/master & git pull & git submodule foreach git pull & git remote prune origin",
+    "lint": "eslint --ext .js,.ts,.vue packages/**",
+    "typecheck": "pnpm -C ./packages/renderer run typecheck"
+  },
+  "devDependencies": {
+    "@curev/eslint-config": "^0.2.1",
+    "bumpp": "^9.2.0",
+    "dayjs": "^1.11.10",
+    "electron": "22.3.12",
+    "eslint": "^8.53.0",
+    "eslint-formatter-mo": "^1.2.0",
+    "lint-staged": "^15.0.2",
+    "rimraf": "^5.0.5",
+    "simple-git-hooks": "^2.9.0",
+    "sortablejs": "1.15.0",
+    "taze": "^0.12.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.5.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "**.{js,tsx?,vue,css,scss,html}": [
+      "eslint --fix "
+    ]
+  },
+  "env": {
+    "//": "Used in build scripts",
+    "VITE_DEV_SERVER_HOST": "127.0.0.1",
+    "VITE_DEV_SERVER_PORT": 25252
+  }
+}

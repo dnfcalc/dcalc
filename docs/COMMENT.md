@@ -1,7 +1,5 @@
-## 留言板
+## BUG 反馈
 
-和计算器相关的 BUG、意见可在此处反馈
+和计算器相关的 BUG、意见可点击下方反馈
 
-## 其余途径
-
-- [码云](https://gitee.com/i_melon/DNFCalculating/issues)
+- [码云](https://gitee.com/dcalc/dnfcalculating_110/issues)
