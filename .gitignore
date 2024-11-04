@@ -1,0 +1,16 @@
+__pycache__
+logs
+set*
+skill*
+AutoRelease
+*.exe
+docs/web.config
+.vscode/launch.json
+debug.log
+build.bat
+详细数据
+DLL
+.DS_Store
+SkillData
+动态头像
+ResourceFiles/Config/notice_version.json
