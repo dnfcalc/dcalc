@@ -18,7 +18,7 @@ let baseURL = '/api'
 
 // 避免远程开发的时候冲突
 if (process.env.NODE_ENV == 'development') {
-  baseURL = 'http://127.0.0.1:17173/api'
+  baseURL = 'http://127.0.0.1:27173/api'
 }
 
 if (import.meta.env.MODE == 'web' || import.meta.env.MODE == 'show') {

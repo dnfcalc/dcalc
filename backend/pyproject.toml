@@ -3,7 +3,7 @@ name = "dcalc-backend"
 version = "0.1.0"
 description = "A backend project for dcalc, a calculator application."
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = [
     "fastapi[all]>=0.115.11",
     "redis>=5.2.1",
