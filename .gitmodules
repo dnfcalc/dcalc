@@ -1,0 +1,10 @@
+[submodule "internal"]
+	path = internal
+	url = https://gitee.com/dcalc/internal.git
+[submodule "api/routers"]
+	path = api/routers
+	url = https://gitee.com/dcalc/routers.git
+[submodule "skill-info"]
+	path = skill-info
+	url = https://gitee.com/dcalc/skill-info.git
+
