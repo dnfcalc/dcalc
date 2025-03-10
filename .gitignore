@@ -24,3 +24,9 @@ build
 resources/
 **/__ZFJtemp/**
 web.config
+
+__pycache__
+logs
+AutoRelease
+*.exe
+.venv

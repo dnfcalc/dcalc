@@ -1,0 +1,403 @@
+@use "./animation.scss";
+
+.text-shadow {
+  text-shadow: 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
+    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
+    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
+    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
+    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
+    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
+    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000;
+}
+
+@font-face {
+  font-family: "dcalc";
+  src: url("@/assets/fonts/dcalc.ttf");
+}
+
+:root {
+  font-size: 16px;
+  --cursor-pointer: url("@/assets/cursor/basic.cur"),
+    url("@/assets/cursor/cursor.png"), pointer !important;
+  --cursor-active: url("@/assets/cursor/basic_press.cur"),
+    url("@/assets/cursor/cursor.png"), pointer !important;
+}
+
+html,
+body,
+[data-v-app] {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  // letter-spacing: -0.05px;
+
+  // font-family: "ArkPixel", "Consola", sans-serif;
+}
+
+* {
+  // font-family: "ArkPixel", "Consola", sans-serif;
+  // font-family: "dcalc", "SimHei";
+  // font-family: "STSong";
+  font-size: 12px;
+  text-shadow: 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
+    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
+    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
+    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
+    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
+    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
+    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000;
+  // image-rendering:pixelated;
+  // text-rendering: geometricPrecision;
+  // letter-spacing: -0.5px;
+}
+
+@mixin pointer() {
+  cursor: var(--cursor-pointer);
+
+  &:active {
+    cursor: var(--cursor-active);
+  }
+}
+
+* {
+  user-select: none;
+  @include pointer();
+}
+
+.cursor-pointer {
+  @include pointer();
+}
+
+::-webkit-scrollbar {
+  background: rgb(0, 0, 0, 0.9);
+  width: 11px;
+  margin: 0px 0px 0px 0px;
+  @include pointer();
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(36, 36, 36);
+  border: 1px solid rgb(76, 61, 39);
+  border-radius: 1px;
+
+  &:hover {
+    background: rgb(52, 52, 52);
+  }
+}
+
+::-webkit-scrollbar-button:vertical:single-button:start {
+  width: 11px;
+  // 添加标题栏后调整相关位置
+  background: url("@/assets/img/icon/up.png") 0px 1px no-repeat;
+}
+
+::-webkit-scrollbar-button:vertical:single-button:end {
+  width: 11px;
+  background: url("@/assets/img/icon/down.png") 0px 1px no-repeat;
+}
+
+.divider {
+  width: calc(100% - 4px);
+  height: 1px;
+  background-color: rgba(58, 57, 58, 0.8);
+  margin: 8px 0;
+}
+
+.mask-full {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  position: relative;
+}
+
+.icon-lay:not(.active) {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.tooltip {
+  width: 210px;
+  float: left;
+  border: 1px solid rgb(128, 128, 128);
+  padding: 10px 5px 10px 5px;
+  font-size: 0.75rem;
+
+  .name {
+    padding: 0px 5px 0px 5px;
+    &::after {
+      content: "";
+      width: 210px;
+      height: 8px;
+      background: url("@/assets/img/underline.png");
+      display: block;
+      background-size: contain;
+      left: 5px;
+      margin-top: 4px;
+    }
+  }
+}
+
+.tooltip-equipment {
+  @extend .tooltip;
+}
+
+.tooltip-skill {
+  @extend .tooltip;
+  background-color: rgba(0, 0, 0, 0.3);
+  .name {
+    color: rgb(197, 172, 72);
+  }
+
+  .name-p {
+    @extend .name;
+    color: rgb(139, 254, 133);
+  }
+
+  .info {
+    color: rgb(132, 119, 78);
+    margin: 5px;
+  }
+}
+
+.subitem {
+  background-color: rgb(11, 11, 11);
+
+  .head-sec {
+    color: #b99460;
+    // font-size: 12px;
+    text-align: center;
+    height: 24px;
+    line-height: 24px;
+    background-image: linear-gradient(#2d281a, #16120c);
+    border-top: #443c2b solid 1px;
+    border-bottom: #211e10 solid 1px;
+    border-right: none;
+    border-left: none;
+  }
+
+  .body-sec {
+    padding-top: 8px;
+  }
+}
+
+.app-header {
+  // -webkit-app-region: drag;
+  background-image: url("@/assets/img/control/title.png");
+  background-size: 100% 100%;
+  color: #9d8c5b;
+  border-top: 1px solid #6c81a7;
+  border-bottom: 1px solid #232d41;
+}
+
+.min-icon {
+  -webkit-app-region: no-drag;
+  background: url("@/assets/img/icon/min.png") no-repeat;
+
+  background-size: 10px 10px;
+  background-position: center;
+}
+
+.close-icon {
+  -webkit-app-region: no-drag;
+  background: url("@/assets/img/icon/exit.png") no-repeat;
+  background-size: 10px 10px;
+  background-position: center;
+}
+
+.normal {
+  color: #ffffff;
+}
+.advanced {
+  color: #68d5ed;
+}
+.rare {
+  color: #b36bff;
+}
+.artifact {
+  color: #ff00ff;
+}
+.legend {
+  color: #e96e00;
+}
+.epic {
+  color: #ffb400;
+}
+.chronicle {
+  color: #ff6666;
+}
+.myth {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #f8c63d),
+    color-stop(1, #cc66e7)
+  );
+  color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  -webkit-background-clip: text;
+  > span {
+    text-shadow: none !important;
+  }
+}
+
+.primeval {
+  background-image: -webkit-linear-gradient(top, #28d931,#33acea);
+  color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  -webkit-background-clip: text;
+  > span {
+    text-shadow: none !important;
+  }
+}
+
+@keyframes primeval {
+  0% {
+    background-image: url("@/assets/img/effect/primeval/0.png");
+  }
+  3.45% {
+    background-image: url("@/assets/img/effect/primeval/1.png");
+  }
+  6.9% {
+    background-image: url("@/assets/img/effect/primeval/2.png");
+  }
+  10.35% {
+    background-image: url("@/assets/img/effect/primeval/3.png");
+  }
+  13.8% {
+    background-image: url("@/assets/img/effect/primeval/4.png");
+  }
+  17.25% {
+    background-image: url("@/assets/img/effect/primeval/5.png");
+  }
+  20.7% {
+    background-image: url("@/assets/img/effect/primeval/6.png");
+  }
+  24.15% {
+    background-image: url("@/assets/img/effect/primeval/7.png");
+  }
+  27.6% {
+    background-image: url("@/assets/img/effect/primeval/8.png");
+  }
+  31.05% {
+    background-image: url("@/assets/img/effect/primeval/9.png");
+  }
+  34.5% {
+    background-image: url("@/assets/img/effect/primeval/10.png");
+  }
+  37.95% {
+    background-image: url("@/assets/img/effect/primeval/11.png");
+  }
+  41.4% {
+    background-image: url("@/assets/img/effect/primeval/12.png");
+  }
+  44.85% {
+    background-image: url("@/assets/img/effect/primeval/13.png");
+  }
+  48.3% {
+    background-image: url("@/assets/img/effect/primeval/14.png");
+  }
+  51.75% {
+    background-image: url("@/assets/img/effect/primeval/15.png");
+  }
+  55.2% {
+    background-image: url("@/assets/img/effect/primeval/16.png");
+  }
+  58.65% {
+    background-image: url("@/assets/img/effect/primeval/17.png");
+  }
+  62.1% {
+    background-image: url("@/assets/img/effect/primeval/18.png");
+  }
+  65.55% {
+    background-image: url("@/assets/img/effect/primeval/19.png");
+  }
+  69% {
+    background-image: url("@/assets/img/effect/primeval/20.png");
+  }
+  72.45% {
+    background-image: url("@/assets/img/effect/primeval/21.png");
+  }
+  75.9% {
+    background-image: url("@/assets/img/effect/primeval/22.png");
+  }
+  79.35% {
+    background-image: url("@/assets/img/effect/primeval/23.png");
+  }
+  82.8% {
+    background-image: url("@/assets/img/effect/primeval/24.png");
+  }
+  86.25% {
+    background-image: url("@/assets/img/effect/primeval/25.png");
+  }
+  89.7% {
+    background-image: url("@/assets/img/effect/primeval/26.png");
+  }
+  93.15% {
+    background-image: url("@/assets/img/effect/primeval/27.png");
+  }
+  96.6% {
+    background-image: url("@/assets/img/effect/primeval/28.png");
+  }
+  100% {
+    background-image: url("@/assets/img/effect/primeval/29.png");
+  }
+}
+
+.primeval_effect {
+  // 应用动画到div上
+  width: 27px;
+  height: 27px;
+  background-size: cover;
+  animation: primeval 2s infinite;
+  //  设置动画名称，持续时间，和循环次数
+  mix-blend-mode: color-dodge;
+}
+
+.lvInfo{
+  background-image: url("@/assets/img/specificity/lv.png");
+  background-repeat: no-repeat !important;
+  background-size: auto auto !important;
+  width: 30px;
+  height: 16px;
+  z-index: 10;
+  color:#4E3D1B
+}
+
+.lvInfoActive{
+  background-image: url("@/assets/img/specificity/lv_active.png");
+  background-repeat: no-repeat !important;
+  background-size: auto auto !important;
+  width: 30px;
+  height: 16px;
+  z-index: 10;
+  color:#FEB300
+}
+
+
+.lvInfoMaster{
+  background-image: url("@/assets/img/specificity/lv_master.png");
+  background-repeat: no-repeat !important;
+  background-size: auto auto !important;
+  width: 30px;
+  height: 16px;
+  z-index: 10;
+  color:#FEB300
+}

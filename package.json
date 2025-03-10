@@ -1,0 +1,14 @@
+{
+  "name": "dcalc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:image": "node scripts/image.js",
+    "dev:frontend": "cd frontend && vite",
+    "dev:backend": "cd backend && uv run main.py"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

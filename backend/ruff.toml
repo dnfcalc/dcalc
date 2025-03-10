@@ -1,0 +1,9 @@
+# 限制每行最多20个字符
+line-length = 200
+lint.select = ["F","E","W","UP"]
+
+[format]
+# 使用单引号
+quote-style = "single"
+# 缩进使用两个空格
+indent-style = "space"
