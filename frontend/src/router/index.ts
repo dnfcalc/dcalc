@@ -7,8 +7,14 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
-    component: defineAsyncComponent(() => import('@/pages/Home/HomeView.vue')),
+    component: defineAsyncComponent(() => import('@/pages/Home/Index.vue')),
   },
+  {
+    path:'/character/:alter',
+    name:'character',
+    props: true,
+    component: defineAsyncComponent(() => import('@/pages/Character/Index.vue')),
+  }
 ]
 
 const router = createRouter({

@@ -77,7 +77,7 @@ class Skill:
         icon = icon.replace('$common', '/characters/common')
         icon = icon.replace('$name', f'{self.name}')
         icon = icon.replace('$id', f'{self.id}')
-        return icon
+        return f'{icon}.png'
 
     def _calculate_lv(self):
         return min(int((characterLv - self.learnLv) / self.rangeLv + 1), self.masterLv) if self._lv == 0 else self._lv

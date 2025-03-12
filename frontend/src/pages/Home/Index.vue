@@ -24,82 +24,22 @@ export default defineComponent(async () => {
   // 获取角色相关信息，判定是否开放
   function choose_job(child: IAlterInfo) {
     return async () => {
-      // if (child.comment == '首页') {
-      //   return openUrl('https://dnftools.com/')
-      // }
-      // if (child.comment == '设置') {
-      //   return openUrl('/set', { width: 600, height: 500, scale: zoom.value })
-      // }
-      // if (ignores.includes(child.name)) {
-      //   return
-      // }
-      // if (child.name == 'sponsor') {
-      //   return openUrl(child.url ?? '')
-      // }
-      // if (child.open || import.meta.env.DEV) {
-      //   const options = child.options ?? []
-      //   if (options.length > 0) {
-      //     const id = randomId()
-      //     return await show({
-      //       // id,
-      //       scale: zoom.value,
-      //       content: '请选择职业平衡版本',
-      //       action: () => {
-      //         return (
-      //           <>
-      //             <div class="flex items-center justify-around flex-wrap" style="width:200px">
-      //               {renderList(options, (option) =>
-      //                 !option.class ? (
-      //                   <calc-button
-      //                     class="!w-40% !mb-2"
-      //                     onClick={() => {
-      //                       openUrl('/character', {
-      //                         query: { alter: child.name },
-      //                         width: 1100,
-      //                         height: 775,
-      //                         scale: zoom.value,
-      //                       })
-      //                       close(id, 'ok')
-      //                     }}
-      //                   >
-      //                     {option.title}
-      //                   </calc-button>
-      //                 ) : (
-      //                   <calc-button
-      //                     class="!w-40% !mb-2"
-      //                     onClick={() => {
-      //                       openUrl('/character', {
-      //                         query: { alter: option.class ?? '' },
-      //                         width: 1100,
-      //                         height: 775,
-      //                         scale: zoom.value,
-      //                       })
-      //                       close(id, 'ok')
-      //                     }}
-      //                   >
-      //                     {option.title}
-      //                   </calc-button>
-      //                 ),
-      //               )}
-      //             </div>
-      //           </>
-      //         )
-      //       },
-      //     })
-      //   }
-      //   return openUrl('/character', {
-      //     query: { alter: child.name },
-      //     width: 1100,
-      //     height: 775,
-      //     title: child.title,
-      //     scale: zoom.value,
-      //   })
-      // } else {
-      //   return alert({
-      //     content: '未开放的角色!',
-      //   })
-      // }
+      if (child.comment == '首页') {
+        return window.open("https://dnftools.com","_blank")
+      }
+      if (child.name == 'sponsor') {
+        return window.open((child.url ?? ''),"_blank")
+      }
+      if (child.open) {
+        const options = child.options ?? []
+        if (options.length > 0) {
+          return
+        }
+        else{
+          return window.open("/character/" + (child.class || child.name),"_self")
+        }
     }
+  }
     // router.push("/character/" + alter)
   }
 

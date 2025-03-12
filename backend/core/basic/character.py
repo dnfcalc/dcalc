@@ -569,7 +569,9 @@ class Character:
 
 def createCharacter(alter: str, equVersion: str = '0'):
     character: Character = None
-    module_name = 'core.characters.' + alter
+    module_name = 'core.character.' + alter
+    if equVersion is None or equVersion == '':
+        equVersion = '0'
     try:
         character = importlib.import_module(module_name).classChange(equVersion)
     except Exception as ex:

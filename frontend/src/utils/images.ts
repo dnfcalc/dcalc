@@ -1,4 +1,4 @@
-let baseURL = '/img'
+let baseURL = 'https://image.dnftools.com'
 
 // 避免远程开发的时候冲突
 if (process.env.NODE_ENV == 'development') {
@@ -10,5 +10,6 @@ if (import.meta.env.MODE == 'web' || import.meta.env.MODE == 'show') {
 }
 
 export const getImageURL = (image: string) => {
-  return `${baseURL}/${image}`
+  image = image.startsWith('/') ? image : `/${image}`
+  return `${baseURL}${image}`
 }

@@ -4,7 +4,8 @@ import json
 from fastapi import APIRouter,Request
 from api.core.Response import Return, response
 from api.core.Redis import get_redis_info
-from api.dp import RedisDep
+from api.dp import RedisDep,AltersDep
+from core.basic.character import createCharacter
 
 router = APIRouter()
 
@@ -20,22 +21,20 @@ async def get_adventure_info(request: Request,redis:RedisDep):
 
     return response(data=adventure_info)
 
-@router.get('/equipment/list')
-async def get_equipment_list(request: Request,redis:RedisDep):
-    def get_equipment_list():
-        with open('./dataFiles/equipment-list.json', encoding='utf-8') as fp:
-            return json.load(fp)
-    equipment_list = get_redis_info(redis, 'dcalc:equipment', get_equipment_list)
-
-    return response(data=equipment_list)
-
-@router.get("/token/get/{alter}", response_model=Return[str])
-async def getToken(
-    alter: str, request: Request, version: str = None, equVersion: str = ""
+@router.get("/token/get/{alter}")
+async def getToken(redis:RedisDep,
+    alter: str, request: Request, version: str = None, equVersion: str = "0"
 ):
-    if version is not None and version != "default" and version != "":
-        alter = version + "." + alter
-    token = createToken(
-        alter, equVersion, redis=request.app.state.redis, env=request.app.state.env
-    )
+    token = createToken(alter, equVersion, redis)
     return response(data=token)
+
+@router.get("/character")
+async def get_character_info(
+    request: Request, state: AltersDep ,redis:RedisDep
+):
+    character = createCharacter(state.alter, state.equVersion)
+    def get_character():
+        return character.getInfo()
+    info = get_redis_info(redis, f"dcalc:character:{state.alter}", get_character)
+    return response(data=info)
+

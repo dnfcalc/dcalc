@@ -1,7 +1,8 @@
 import '@/style/index.scss'
 
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { pinia } from "@/stores"
+
 import App from '@/pages/IndexView.vue'
 
 import router from './router'
@@ -13,7 +14,7 @@ document.body.appendChild(appContainer)
 
 const app = createApp(App)
 
-app.use(createPinia())
+app.use(pinia)
 app.use(router)
 
 app.mount(appContainer)

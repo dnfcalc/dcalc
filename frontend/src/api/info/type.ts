@@ -3,20 +3,6 @@ export interface IAdventureInfo {
   name: string
   children: IAlterInfo[]
 }
-
-export interface ITools {
-  name: string
-  tooltips: string
-  link: string
-  end?: Date
-  target: '_blank' | '_self'
-}
-
-export interface IMonster {
-  id: number
-  name: string
-}
-
 export interface IAlterOption {
   name: string
   title: string
@@ -31,4 +17,27 @@ export interface IAlterInfo {
   options?: IAlterOption[]
   open?: boolean
   comment?: string
+  class?:string
 }
+
+export interface ICharacterInfo {
+  alter: string
+  name: string
+  equVersion: string
+  equips: IEquipment[]
+  weapons: string[]
+  skills: ISkill[]
+  suits: ISuit[]
+}
+
+export interface IEquipment {}
+
+export interface ISkill {
+  icon: string
+  name: string
+  id: number
+  learnLv:number
+  positon:number
+}
+
+export interface ISuit {}

@@ -9,7 +9,7 @@ const ImageServer = http.createServer((req, res) => {
     // 图片存储的文件夹路径
     const directoryPath = path.join(__dirname, '../images');
     // 请求的图片文件名
-    const filePath = path.join(directoryPath, req.url);
+    const filePath = path.join(directoryPath, decodeURIComponent(req.url));
     // 确保文件存在且是文件，不是目录
     fs.access(filePath, fs.constants.F_OK | fs.constants.R_OK, (err) => {
         if (err) {

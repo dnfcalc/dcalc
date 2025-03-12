@@ -34,7 +34,7 @@ def dict2obj(dictObj):
     return d
 
 
-async def createToken(alter: str, equVersion: str, expire=86400 / 24 * 2, redis=None, env=''):
+def createToken(alter: str, equVersion: str, redis = None, expire=86400 / 24 * 2)->str:
     ts_str = str(time.time() + expire)
     ts_byte = ts_str.encode('utf-8')
     sha1_tshex_str = hmac.new(alter.encode('utf-8'), ts_byte, 'sha1').hexdigest()
@@ -42,15 +42,16 @@ async def createToken(alter: str, equVersion: str, expire=86400 / 24 * 2, redis=
     token = base64.urlsafe_b64encode(token.encode('utf-8')).decode('utf-8')
     # character = createCharacter(alter)
     character = {}
-    await redis.set(f'token:{token}', json.dumps(AlterState(alter, token, character, equVersion).to_dict()), int(expire))
+    redis.set(f'token:{token}', json.dumps(AlterState(alter, token, character, equVersion).to_dict()), int(expire))
     return token
 
 
-async def readToken(token: str, redis, env) -> AlterState:
+def readToken(token: str, redis) -> AlterState:
     info = None
     try:
-        info = dict2obj(json.loads(await redis.get(f'token:{token}')))
-    except Exception:
+        info = dict2obj(json.loads(redis.get(f'token:{token}')))
+    except Exception as ex:
+        print(ex)
         ResponseException('登录过期或无效Token，请刷新后重试')
     if info is None:
         raise ResponseException('登录过期或无效Token，请刷新后重试')
@@ -62,20 +63,7 @@ def deleteToken(token, redis, env):
     return token
 
 
-async def authorize(request: Request, access_token: Optional[str] = Header(None)):
-    if access_token is not None:
-        info = await readToken(access_token, request.app.state.redis, request.app.state.env)
-        return info
-    else:
-        raise ResponseException('登录过期或无效Token，请刷新后重试')
-
-
-def unauthorize(request: Request, access_token: Optional[str] = Header(None)):
-    if access_token is not None:
-        return deleteToken(access_token, request.app.state.redis, request.app.state.env)
-
-
-async def uid(request: Request, access_uid: Optional[str] = Header(None)):
+def uid(access_uid: Optional[str] = Header(None)):
     try:
         return int(access_uid)
     except Exception:

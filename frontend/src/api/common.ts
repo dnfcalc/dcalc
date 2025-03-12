@@ -2,6 +2,7 @@ import type { AxiosInstance, AxiosResponse } from 'axios'
 import axios from 'axios'
 import { h } from 'vue'
 import { gzip, ungzip } from 'pako'
+import { useInfoStore } from '@/stores'
 // import { useAppStore, useConfigStore } from '@/store'
 // import { useDialog } from '@/components/hooks/dialog'
 
@@ -58,17 +59,10 @@ export function defineRequest<T>(fn: (ax: AxiosInstance) => T) {
         // const token = configStore.token
         // const uid = useAppStore().uid
 
-        const token = 'test'
+        const token = useInfoStore().token
 
         if (token) {
           request.headers['Access-Token'] = token
-        }
-
-        // 在网页端，会添加token
-        const accessToken = localStorage.getItem('dcalc/access_token')
-
-        if (accessToken) {
-          request.headers.Authorization = `Bearer ${accessToken}`
         }
 
         return request
