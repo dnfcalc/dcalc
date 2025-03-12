@@ -17,7 +17,7 @@ export interface IAlterInfo {
   options?: IAlterOption[]
   open?: boolean
   comment?: string
-  class?:string
+  class?: string
 }
 
 export interface ICharacterInfo {
@@ -30,14 +30,20 @@ export interface ICharacterInfo {
   suits: ISuit[]
 }
 
-export interface IEquipment {}
+export interface IEquipment {
+  id: string
+  imageUrl: string
+  itemType: string
+  itemDetailType: string
+  name: string
+}
 
 export interface ISkill {
   icon: string
   name: string
   id: number
-  learnLv:number
-  positon:number
+  learnLv: number
+  positon: number
 }
 
 export interface ISuit {}

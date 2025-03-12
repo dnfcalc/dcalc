@@ -349,7 +349,7 @@ class Character:
         info['alter'] = self.实际名称
         info['equVersion'] = self.equVersion
         info['name'] = self.名称
-        info['weaopns'] = self.武器选项
+        info['weapons'] = self.武器选项
         skillInfo = []
         for skill in self.skills:
             skillInfo.append(
