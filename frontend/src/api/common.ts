@@ -59,10 +59,10 @@ export function defineRequest<T>(fn: (ax: AxiosInstance) => T) {
         // const token = configStore.token
         // const uid = useAppStore().uid
 
-        const token = useInfoStore().token
+        const token = useInfoStore().alter_token
 
         if (token) {
-          request.headers['Access-Token'] = token
+          request.headers['Alter-Token'] = token
         }
 
         return request

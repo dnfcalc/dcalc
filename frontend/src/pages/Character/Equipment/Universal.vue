@@ -2,8 +2,8 @@
 
 <template>
   <div class="flex flex-wrap gap-4px content-start" :style="{width: `${rowCount * 32}px`}">
-    <template v-for="(weapon,_) in weapons" :key="_">
-        <EquipmentIcon :equipment="weapon" />
+    <template v-for="(equ,_) in equs" :key="_">
+        <EquipmentIcon :equipment="equ" />
     </template>
   </div>
 </template>
@@ -21,20 +21,20 @@ const props = defineProps<{
 const rowCount = Math.max(props.rowCount ?? 0, 14)
 const infoStore = useInfoStore()
 
-const weapons = computed(() => {
+const equs = computed(() => {
   const items = infoStore.equips.filter(
-    (equip) => equip.itemType === '武器' && infoStore.infos?.weapons.includes(equip.itemDetailType),
+    (equip) => equip.categorize === '通宝装备' || equip.categorize === '稀有装备 套装',
   )
   const res: (IEquipment | undefined)[] = []
-  Array.from(new Set(items.map((item) => item.itemDetailType))).forEach((type) => {
-    const weapon = items.filter((item) => item.itemDetailType === type)
+  const raritiyList = ['稀有','神器','传说','史诗']
+  raritiyList.forEach((rarity) => {
+    const equ : (IEquipment | undefined)[]  = items.filter((a) => a.rarity === rarity)
+    equ.splice(5,0,undefined)
+    equ.splice(9,0,undefined)
     res.push(
-      ...weapon.filter((item) => item.categorize === '制式武器'),
-      undefined,
-      ...weapon.filter((item) => item.categorize === '传世武器'),
+      ...equ,
+      ...Array(Math.max(0,rowCount - equ.length)).fill(undefined),
     )
-    const remind = rowCount - res.length % rowCount
-    res.push(...Array(remind).fill(undefined))
   })
   return res
 })

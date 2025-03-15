@@ -2,7 +2,12 @@
   <div class="w-100% h-100% main" :class="props.alter.split('.').slice(-1)">
     <div class="header"></div>
     <div class="content flex">
-      <Weapon></Weapon>
+      <div class="flex flex-col gap-20px">
+        <Weapon ></Weapon>
+        <Suit></Suit>
+        <Universal></Universal>
+      </div>
+
       <div class="h-90vh w-560px overflow-y-auto overflow-x-hidden">
 
       <SkillTree></SkillTree>
@@ -18,7 +23,9 @@
 import { useInfoStore } from '@/stores/info'
 import { getImageURL } from '@/utils/images'
 import SkillTree from './Skill/SkillTree.vue';
+import Suit from './Equipment/Suit.vue';
 import Weapon from './Equipment/Weapon.vue';
+import Universal from './Equipment/Universal.vue';
 const props = defineProps<{
   alter: string
 }>()

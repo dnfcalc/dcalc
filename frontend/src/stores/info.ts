@@ -4,7 +4,7 @@ import { defineStore } from "pinia"
 
 export const useInfoStore = defineStore("infoStore", ()=>{
 
-  const token = ref<string>("")
+  const alter_token = ref<string>("")
   const infos = ref<ICharacterInfo | null>(null)
 
   const skills = computed(()=>infos.value?.skills ?? [])
@@ -14,12 +14,13 @@ export const useInfoStore = defineStore("infoStore", ()=>{
   const suits = computed(()=>infos.value?.suits ?? [])
 
   const createCharacter = async (alter: string, equVersion?: string) => {
-    token.value = await api.createToken(alter, equVersion)
+    const time = new Date().getTime()
+    alter_token.value = btoa(JSON.stringify({alter, equVersion, time}))
     infos.value = await api.characterInfo()
   }
 
   return {
-    token,
+    alter_token,
     infos,
     skills,
     equips,

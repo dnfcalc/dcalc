@@ -22,6 +22,7 @@ class SuitData(Base):
     count = Column(Integer)
     SkillAttack = Column(Float)
     Attack = Column(Float)
+    imageUrl = Column(Text)
 
 
 class EquData(Base):

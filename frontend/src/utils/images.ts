@@ -13,3 +13,7 @@ export const getImageURL = (image: string) => {
   image = image.startsWith('/') ? image : `/${image}`
   return `${baseURL}${image}`
 }
+
+export const getLocalImageURL = (url:string)=>{
+  return new URL(url, import.meta.url).href
+}

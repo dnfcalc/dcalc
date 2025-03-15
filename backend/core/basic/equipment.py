@@ -56,6 +56,7 @@ class Suit:
     point: int
     level: int
     count: int
+    imageUrl: str
     SkillAttack: float
     Attack: float
 

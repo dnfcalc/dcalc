@@ -28,6 +28,7 @@ export interface ICharacterInfo {
   weapons: string[]
   skills: ISkill[]
   suits: ISuit[]
+
 }
 
 export interface IEquipment {
@@ -36,6 +37,9 @@ export interface IEquipment {
   itemType: string
   itemDetailType: string
   name: string
+  categorize:string
+  suit:  number[]
+  rarity:string
 }
 
 export interface ISkill {
@@ -46,4 +50,9 @@ export interface ISkill {
   positon: number
 }
 
-export interface ISuit {}
+export interface ISuit {
+  id: number
+  name: string
+  imageUrl: string
+  suitId: number
+}

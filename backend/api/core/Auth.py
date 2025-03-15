@@ -9,12 +9,13 @@ from api.core.exception import ResponseException
 
 
 class AlterState:
-    def __init__(self, alter: str, token: str, charcater: Character, equVersion: str):
+    def __init__(self, alter: str, token: str, charcater: Character, equVersion: str,time: int):
         self.alter = alter
         self.token = token
         self.origin = alter.split('.')[-1]
         self.character = charcater
         self.equVersion = equVersion
+        self.time = time
 
     def to_dict(self):
         return self.__dict__
