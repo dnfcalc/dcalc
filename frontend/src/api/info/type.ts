@@ -50,6 +50,7 @@ export interface ISkill {
   position: number
   type: string
   maxLearnLv: number
+  maxLv: number
 }
 
 export interface ISuit {

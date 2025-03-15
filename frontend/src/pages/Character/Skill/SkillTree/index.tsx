@@ -1,6 +1,6 @@
 import { getImageURL } from '@/utils/images'
 import type { ISkill } from '@/api/info/type'
-import {useVModel} from '@vueuse/core'
+import { useVModel } from '@vueuse/core'
 import './style.scss'
 
 export default defineComponent({
@@ -37,22 +37,79 @@ export default defineComponent({
 
     const columns = [...new Array(9).keys()]
 
+    const activeSkill = ref<number>(-1)
+
+    const chooseSkill = (skill: ISkill) => {
+      if (activeSkill.value == skill.id) activeSkill.value = -1
+      else activeSkill.value = skill.id
+    }
+
+    const actionSkillLv = (skill: ISkill, operation:string) => {
+      if(operation == 'add'){
+        lvInfo.value[skill.id.toString()] = { lv: Math.min(lvInfo.value[skill.id.toString()]?.lv + 1,skill.maxLv) }
+        return;
+      }
+      if(operation == 'addMax'){
+        lvInfo.value[skill.id.toString()] = { lv: skill.maxLearnLv }
+        return;
+      }
+      if(operation == 'sub'){
+        lvInfo.value[skill.id.toString()] = { lv: Math.max(lvInfo.value[skill.id.toString()]?.lv - 1,0) }
+        return;
+      }
+      if(operation == 'subMax'){
+        lvInfo.value[skill.id.toString()] = { lv: 0 }
+        return;
+      }
+    }
+
+    const renderSkill = (skill: ISkill, index: number) => (
+      <>
+        <div class="relative w-35px h-55px">
+          {activeSkill.value == skill.id && renderSkillAction(skill)}
+          <div
+            class="w-34px absolute h-auto flex flex-col gap-2px py-2px items-center bg-#2c2d2c rounded-2px z-2 top-1px left-1px"
+            onClick={() => chooseSkill(skill)}
+            key={index}
+          >
+            <img
+              class={['h-30px w-30px', skill.type === 'passive' ? 'passive' : '']}
+              src={getImageURL(skill.icon)}
+            ></img>
+            <div class="w-30px mx-2px bg-black text-white flex items-center justify-center rounded-2px">
+              {lvInfo.value?.[skill.id.toString()]?.lv ?? 0}
+            </div>
+          </div>
+        </div>
+      </>
+    )
+
+    const renderSkillAction = (skill: ISkill) => (
+      <>
+        <>
+          <div class="absolute">
+            <div class="w-36px h-55px bg-gradient-linear bg-gradient-[180deg,#f8e26c_0%,#f87c43_94.34%] z-1"></div>
+            <div class="flex bottom--5px relative z-2 transform -translate-x-1/4">
+              <button onClick={() => actionSkillLv(skill, 'subMax')}>&lt;</button>
+              <button onClick={() => actionSkillLv(skill, 'sub')}>-</button>
+              <button onClick={() => actionSkillLv(skill, 'add')}>+</button>
+              <button onClick={() => actionSkillLv(skill, 'addMax')}>&gt;</button>
+            </div>
+          </div>
+        </>
+      </>
+    )
+
     return () => (
       <>
         <div>
           <div class="skill-tree-line flex items-center gap-10px px-10px">
-            <div class="w-34px h-34px flex items-center justify-center text-white">其<br/>余</div>
-            {((getSkill(0, 15, -1) ?? []) as ISkill[])?.map((skill, index) => (
-              <div class="w-34px h-auto flex flex-col gap-2px py-2px items-center bg-#2c2d2c rounded-2px" key={index}>
-              <img
-                class={['h-30px w-30px', skill.type === 'passive' ? 'passive' : '']}
-                src={getImageURL(skill.icon)}
-              ></img>
-              <div class="w-30px mx-2px bg-black text-white flex items-center justify-center rounded-2px">
-                {lvInfo.value?.[skill.id.toString()]?.lv ?? 0}
-              </div>
-              </div>
-            ))}
+            <div class="w-34px h-34px flex items-center justify-center text-white">
+              其<br />余
+            </div>
+            {((getSkill(0, 15, -1) ?? []) as ISkill[])?.map((skill, index) =>
+              renderSkill(skill, index),
+            )}
           </div>
           {lvList.map((lv, index) => (
             <div class="skill-tree-line flex items-center gap-10px px-10px" key={index}>
@@ -63,19 +120,7 @@ export default defineComponent({
               )}
               {columns.map((column, i) => {
                 const skill = getSkill(lv, lvList[index + 1] ?? 150, column) as ISkill
-                return skill ? (
-                  <div class="w-34px h-auto flex flex-col gap-2px py-2px items-center bg-#2c2d2c rounded-2px">
-                    <img
-                      class={['h-30px w-30px', skill.type === 'passive' ? 'passive' : '']}
-                      src={getImageURL(skill.icon)}
-                    ></img>
-                    <div class="w-30px mx-2px bg-black text-white flex items-center justify-center rounded-2px">
-                      {lvInfo.value?.[skill.id.toString()]?.lv ?? 0}
-                    </div>
-                  </div>
-                ) : (
-                  <div class="w-34px h-34px"></div>
-                )
+                return skill ? renderSkill(skill, index) : <div class="w-34px h-34px"></div>
               })}
               <div class="w-34px h-34px"></div>
             </div>

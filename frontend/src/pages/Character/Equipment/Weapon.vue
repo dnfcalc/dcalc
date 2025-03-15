@@ -44,5 +44,6 @@ const chooseWeapon = (weapon: IEquipment | undefined) => {
   if (weapon) {
     configStore.config.equips['武器'].id = weapon.id
   }
+  console.log(configStore.config)
 }
 </script>
