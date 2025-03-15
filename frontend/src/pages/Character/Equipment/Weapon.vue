@@ -1,25 +1,26 @@
 <!-- 每排总计6+4+4,共计14个排列 -->
 
 <template>
-  <div class="flex flex-wrap gap-4px content-start" :style="{width: `${rowCount * 32}px`}">
-    <template v-for="(weapon,_) in weapons" :key="_">
-        <EquipmentIcon :equipment="weapon" />
+  <div class="flex flex-wrap gap-4px content-start" :style="{ width: `${rowCount * 32}px` }">
+    <template v-for="(weapon, _) in weapons" :key="_">
+      <EquipmentIcon :equipment="weapon" :inactive="configStore.config.equips['武器']?.id != weapon?.id" @click="chooseWeapon(weapon)"/>
     </template>
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { IEquipment } from '@/api/info/type'
-import { useInfoStore } from '@/stores'
+import { useConfigStore, useInfoStore } from '@/stores'
 import { getImageURL } from '@/utils/images'
 import EquipmentIcon from '@/components/dnf/Equipment/Icon/index.vue'
 
 const props = defineProps<{
-  rowCount ?:number
+  rowCount?: number
 }>()
 
 const rowCount = Math.max(props.rowCount ?? 0, 14)
 const infoStore = useInfoStore()
+const configStore = useConfigStore()
 
 const weapons = computed(() => {
   const items = infoStore.equips.filter(
@@ -33,9 +34,15 @@ const weapons = computed(() => {
       undefined,
       ...weapon.filter((item) => item.categorize === '传世武器'),
     )
-    const remind = rowCount - res.length % rowCount
+    const remind = rowCount - (res.length % rowCount)
     res.push(...Array(remind).fill(undefined))
   })
   return res
 })
+
+const chooseWeapon = (weapon: IEquipment | undefined) => {
+  if (weapon) {
+    configStore.config.equips['武器'].id = weapon.id
+  }
+}
 </script>

@@ -2,13 +2,13 @@
 
 <template>
   <div>
-    <div class="flex gao-10px">
+    <div class="flex flex-col gap-10px pb-10px">
     <!-- 套装选择tab -->
-    <div class="flex flex-wrap w-300px">
+    <div class="flex flex-wrap w-100%">
       <template v-for="(suit, _) in suits" :key="_">
         <div class="flex items-center justify-center">
           <img
-            class="w-40px h-40px object-contain"
+            class="w-35px h-35px object-contain"
             :src="getImageURL('equipment' + suit.imageUrl)"
             :alt="suit.name"
             :style="{ filter: curSuit === suit.value ? '' : 'grayscale(100%)' }"
@@ -22,7 +22,7 @@
 
     <div class="flex flex-wrap gap-4px content-start" :style="{width: `${rowCount * 32}px`}">
     <template v-for="(equip,_) in suitEquipments" :key="_">
-      <EquipmentIcon :equipment="equip" />
+      <EquipmentIcon :equipment="equip" :inactive="configStore.config.equips[equip?.itemDetailType ?? '']?.id != equip?.id" @click="chooseEqu(equip)"/>
     </template>
   </div>
   </div>
@@ -30,11 +30,12 @@
 
 <script lang="ts" setup>
 import type { IEquipment } from '@/api/info/type'
-import { useInfoStore } from '@/stores'
+import { useConfigStore, useInfoStore } from '@/stores'
 import { getImageURL } from '@/utils/images'
 import EquipmentIcon from '@/components/dnf/Equipment/Icon/index.vue'
 import EquipmentRaritySelect from '@/components/dnf/Equipment/RaritySelect/index.vue'
 const infoStore = useInfoStore()
+const configStore = useConfigStore()
 const curSuit = ref(16201)
 
 const curRarity = ref()
@@ -72,21 +73,14 @@ const suitEquipments = computed(() => {
   const remind = equs.filter(a=>a.rarity == '太初' || a.name.includes('黑牙')).sort((a,b)=>(a.rarity == '太初' ? 1 : 0) - (b.rarity == '太初' ? 1 : 0))
   res.push(undefined,undefined,...remind.filter(a=>a.itemDetailType == '项链'),undefined,...remind.filter(a=>a.itemDetailType == '手镯'),undefined,...remind.filter(a=>a.itemDetailType == '戒指'),...Array(Math.max(0,rowCount - remind.length -4)).fill(undefined))
   return res
-  // const raritiyList = [['神器'],['传说'],['史诗','太初']]
-  // const partList = ['上衣','下装','头肩','腰带','鞋','项链','手镯','辅助装备','魔法石','耳环']
-  // // 一个品质占3行
-  // // 第一行 防具5+空+特殊3
-  // // 第二行 首饰3+3+3
-  // // 第三行 全空行
-  // partList.forEach((part) => {
-  //   const equ = equs.filter((a) => a.itemDetailType === part)
-  //   res.push(
-  //     ...equ,
-  //     ...Array(rowCount - equ.length).fill(undefined),
-  //   )
-  // })
-  // return res
 })
 
+
+const chooseEqu = (equip: IEquipment | undefined) => {
+  console.log(equip)
+  if (equip && configStore.config.equips[equip.itemDetailType]) {
+    configStore.config.equips[equip.itemDetailType].id = equip.id
+  }
+}
 
 </script>

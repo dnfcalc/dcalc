@@ -346,25 +346,28 @@ class Character:
     def getInfo(self):
         """返回到前端信息"""
         info = {}
-        info['alter'] = self.实际名称
+        info['role'] = self.role
+        info['alter'] = self.name
         info['equVersion'] = self.equVersion
-        info['name'] = self.名称
+        info['name'] = self.nameCN
         info['weapons'] = self.武器选项
         skillInfo = []
         for skill in self.skills:
             skillInfo.append(
                 {
+                    'id': skill.id,
                     'name': skill.name,
                     'icon': skill.icon,
                     'type': skill.type,
                     # 'SPCost': skill.SPCost,
                     "learnLv": skill.learnLv,
                     "masterLv": skill.masterLv,
+                    "maxLearnLv":skill.calculate_lv(),
                     "maxLv": skill.maxLv,
                     # 'TPCost': 0 if not skill.hasTP else skill.TPCost,
                     # "masterTPLv":0 if not skill.hasTP else  skill.masterTPLv,
                     # 'maxTPLv': 0 if not skill.hasTP else skill.TPLearnMax,
-                    'positon':skill.position
+                    'position':skill.position
                 }
             )
         info['skills'] = skillInfo

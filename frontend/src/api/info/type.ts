@@ -21,6 +21,7 @@ export interface IAlterInfo {
 }
 
 export interface ICharacterInfo {
+  role:string
   alter: string
   name: string
   equVersion: string
@@ -28,7 +29,6 @@ export interface ICharacterInfo {
   weapons: string[]
   skills: ISkill[]
   suits: ISuit[]
-
 }
 
 export interface IEquipment {
@@ -47,7 +47,9 @@ export interface ISkill {
   name: string
   id: number
   learnLv: number
-  positon: number
+  position: number
+  type: string
+  maxLearnLv: number
 }
 
 export interface ISuit {

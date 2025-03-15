@@ -1,7 +1,7 @@
 <template>
   <div class="flex gap-8px">
     <template v-for="(rarity,_) in rarities" :key="_">
-      <div class="w-14px h-14px shadow-[0px_0px_3px_#ffffff_inset,0px_0px_1px_#ffffff40]" :style="{background: rarity.background}" @click="value=rarity.value">
+      <div class="w-14px h-14px shadow-[0px_0px_3px_#ffffff_inset,0px_0px_1px_#ffffff40]" :style="{background: rarity.background}" @click="choose(rarity.value)">
         <div class="w-14px h-14px" :class="{'active': value === rarity.value}"></div>
       </div>
     </template>
@@ -9,6 +9,8 @@
 </template>
 
 <script lang="ts" setup>
+
+const props = defineProps({})
 
 const value = defineModel<string>()
 
@@ -28,6 +30,15 @@ const rarities = [{
   value: '太初',
   background: 'linear-gradient(180deg, #70faa7 0%, #7bfefe 100%)',
 }]
+
+const choose = (rarity: string) => {
+  if (value.value === rarity) {
+    value.value = undefined
+  }
+  else{
+    value.value = rarity
+  }
+}
 
 </script>
 

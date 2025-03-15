@@ -74,7 +74,8 @@ const getLocalImageURL = (url:string)=>{
     bottom: 0;
     width: 28px;
     height: 28px;
-    background-color: #00000060;
+    background-color: #00000090;
+    // filter: grayscale(100%);
   }
 }
 
