@@ -39,18 +39,16 @@ export default defineComponent({
 
     const activeSkill = ref<number>(-1)
 
-    const chooseSkill = (e: Event, skill?: ISkill) => {
-      e.stopPropagation()
+    const chooseSkill = (skill?: ISkill, operation: string = 'add') => {
       if (!skill) {
         activeSkill.value = -1
         return
       }
-      if (activeSkill.value == skill.id) activeSkill.value = -1
+      if (activeSkill.value == skill.id) actionSkillLv(skill, operation)
       else activeSkill.value = skill.id
     }
 
-    const actionSkillLv = (e: Event, skill: ISkill, operation: string) => {
-      e.stopPropagation()
+    const actionSkillLv = (skill: ISkill, operation: string) => {
       if (operation == 'add') {
         lvInfo.value[skill.id.toString()] = {
           lv: Math.min(lvInfo.value[skill.id.toString()]?.lv + 1, skill.maxLv),
@@ -79,7 +77,15 @@ export default defineComponent({
           {activeSkill.value == skill.id && renderSkillAction(skill)}
           <div
             class="w-34px absolute h-auto flex flex-col gap-2px py-2px items-center bg-#2c2d2c rounded-2px z-2 top-1px left-1px"
-            onClick={(e) => chooseSkill(e, skill)}
+            onClick={(e) => {
+              e.stopPropagation()
+              chooseSkill(skill)
+            }}
+            onContextmenu={(e) => {
+              e.stopPropagation()
+              e.preventDefault()
+              chooseSkill(skill, 'sub')
+            }}
             key={index}
           >
             <img
@@ -100,10 +106,10 @@ export default defineComponent({
           <div class="absolute">
             <div class="w-36px h-55px bg-gradient-linear bg-gradient-[180deg,#f8e26c_0%,#f87c43_94.34%] z-1"></div>
             <div class="flex bottom--5px relative z-2 transform -translate-x-1/4">
-              <button onClick={(e) => actionSkillLv(e, skill, 'subMax')}>&lt;</button>
-              <button onClick={(e) => actionSkillLv(e, skill, 'sub')}>-</button>
-              <button onClick={(e) => actionSkillLv(e, skill, 'add')}>+</button>
-              <button onClick={(e) => actionSkillLv(e, skill, 'addMax')}>&gt;</button>
+              <button onClick={(e) => actionSkillLv(skill, 'subMax')}>&lt;</button>
+              <button onClick={(e) => actionSkillLv(skill, 'sub')}>-</button>
+              <button onClick={(e) => actionSkillLv(skill, 'add')}>+</button>
+              <button onClick={(e) => actionSkillLv(skill, 'addMax')}>&gt;</button>
             </div>
           </div>
         </>
