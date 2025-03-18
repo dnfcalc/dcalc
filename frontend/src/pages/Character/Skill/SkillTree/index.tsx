@@ -39,27 +39,37 @@ export default defineComponent({
 
     const activeSkill = ref<number>(-1)
 
-    const chooseSkill = (skill: ISkill) => {
+    const chooseSkill = (e: Event, skill?: ISkill) => {
+      e.stopPropagation()
+      if (!skill) {
+        activeSkill.value = -1
+        return
+      }
       if (activeSkill.value == skill.id) activeSkill.value = -1
       else activeSkill.value = skill.id
     }
 
-    const actionSkillLv = (skill: ISkill, operation:string) => {
-      if(operation == 'add'){
-        lvInfo.value[skill.id.toString()] = { lv: Math.min(lvInfo.value[skill.id.toString()]?.lv + 1,skill.maxLv) }
-        return;
+    const actionSkillLv = (e: Event, skill: ISkill, operation: string) => {
+      e.stopPropagation()
+      if (operation == 'add') {
+        lvInfo.value[skill.id.toString()] = {
+          lv: Math.min(lvInfo.value[skill.id.toString()]?.lv + 1, skill.maxLv),
+        }
+        return
       }
-      if(operation == 'addMax'){
+      if (operation == 'addMax') {
         lvInfo.value[skill.id.toString()] = { lv: skill.maxLearnLv }
-        return;
+        return
       }
-      if(operation == 'sub'){
-        lvInfo.value[skill.id.toString()] = { lv: Math.max(lvInfo.value[skill.id.toString()]?.lv - 1,0) }
-        return;
+      if (operation == 'sub') {
+        lvInfo.value[skill.id.toString()] = {
+          lv: Math.max(lvInfo.value[skill.id.toString()]?.lv - 1, 0),
+        }
+        return
       }
-      if(operation == 'subMax'){
+      if (operation == 'subMax') {
         lvInfo.value[skill.id.toString()] = { lv: 0 }
-        return;
+        return
       }
     }
 
@@ -69,7 +79,7 @@ export default defineComponent({
           {activeSkill.value == skill.id && renderSkillAction(skill)}
           <div
             class="w-34px absolute h-auto flex flex-col gap-2px py-2px items-center bg-#2c2d2c rounded-2px z-2 top-1px left-1px"
-            onClick={() => chooseSkill(skill)}
+            onClick={(e) => chooseSkill(e, skill)}
             key={index}
           >
             <img
@@ -90,10 +100,10 @@ export default defineComponent({
           <div class="absolute">
             <div class="w-36px h-55px bg-gradient-linear bg-gradient-[180deg,#f8e26c_0%,#f87c43_94.34%] z-1"></div>
             <div class="flex bottom--5px relative z-2 transform -translate-x-1/4">
-              <button onClick={() => actionSkillLv(skill, 'subMax')}>&lt;</button>
-              <button onClick={() => actionSkillLv(skill, 'sub')}>-</button>
-              <button onClick={() => actionSkillLv(skill, 'add')}>+</button>
-              <button onClick={() => actionSkillLv(skill, 'addMax')}>&gt;</button>
+              <button onClick={(e) => actionSkillLv(e, skill, 'subMax')}>&lt;</button>
+              <button onClick={(e) => actionSkillLv(e, skill, 'sub')}>-</button>
+              <button onClick={(e) => actionSkillLv(e, skill, 'add')}>+</button>
+              <button onClick={(e) => actionSkillLv(e, skill, 'addMax')}>&gt;</button>
             </div>
           </div>
         </>
@@ -102,7 +112,7 @@ export default defineComponent({
 
     return () => (
       <>
-        <div>
+        <div onClick={() => (activeSkill.value = -1)}>
           <div class="skill-tree-line flex items-center gap-10px px-10px">
             <div class="w-34px h-34px flex items-center justify-center text-white">
               其<br />余
@@ -122,7 +132,7 @@ export default defineComponent({
                 const skill = getSkill(lv, lvList[index + 1] ?? 150, column) as ISkill
                 return skill ? renderSkill(skill, index) : <div class="w-34px h-34px"></div>
               })}
-              <div class="w-34px h-34px"></div>
+              <div class="w-34px h-34px" onClick={() => (activeSkill.value = -1)}></div>
             </div>
           ))}
         </div>

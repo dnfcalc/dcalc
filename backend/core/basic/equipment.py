@@ -118,7 +118,21 @@ class Equipments:
                 result[suit.count] = suit
         return list(result.values())
 
+class EquEffect:
+    name: str = ''
+    """装备技能名称"""
+    icon: str = ''
+    """技能图标"""
+    cd: float = 0
+    """技能冷却时间"""
+    data:float = 0
+    """伤害量"""
 
+    def __init__(self, name: str, icon: str, cd: float, data: float):
+        self.name = name
+        self.icon = icon
+        self.cd = cd
+        self.data = data
 
 @cache
 def get_equipment(version: str = '0') -> Equipments:

@@ -74,7 +74,13 @@ export const useConfigStore = defineStore('configStore', () => {
     });
   }
 
-  const saveConfig = () => {}
+  const saveConfig = () => {
+    const infoStore = useInfoStore()
+    const alter = infoStore.infos?.alter
+    if (alter) {
+      localStorage.setItem(`dcalc/${alter}/config`, JSON.stringify(config.value))
+    }
+  }
 
   return {
     config,

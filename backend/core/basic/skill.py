@@ -131,8 +131,6 @@ class Skill:
         elif type.startswith('+'):
             setattr(skill, type[1:], getattr(skill, type[1:]) + data[new] / 100 - data[old] / 100)
 
-
-
 class ActiveSkill(Skill):
     type: str = 'active'
     """技能类型 active主动 passive被动"""

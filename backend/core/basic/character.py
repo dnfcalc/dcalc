@@ -5,7 +5,7 @@ from typing import Literal
 from core.basic.property import CharacterInfo
 from core.basic.skill import Skill
 
-from core.basic.equipment import get_equipment
+from core.basic.equipment import get_equipment,EquEffect
 # from core.basic.equipment import equipments
 # from core.basic.skill import Skill, ActiveSkill, PassiveSkill
 from .formula import 获取基础属性
@@ -101,6 +101,8 @@ class Character:
     """装备版本"""
     charEquipInfo: dict[str, "CharacterEquipInfo"]
     """装备打造信息"""
+    equ_effect:list["EquEffect"] = []
+    """装备效果列表"""
 
     # region 角色属性
     输出类型: str = '物理'
