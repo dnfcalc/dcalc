@@ -1,6 +1,15 @@
 from core.basic.character import Character
 from core.basic.equipment import EquEffect
 
+suit_func_list = {}
+
+for i in range(0, 300):
+    try:
+        if i not in suit_func_list.keys():
+            suit_func_list[i] = eval(f'suit_{i}')
+    except Exception:
+        pass
+
 # region 潜影暗袭
 
 
@@ -111,7 +120,7 @@ def suit_12(char: Character):
     - 强制中断角色动作（觉醒技能除外）
     - 所有速度 +5%，效果持续5秒（最多叠加3次）
     """
-    char.SetStatus(SpeedA=0.05 * 3, SpeedM=0.05 * 3, SpeedR=0.05 * 3)
+    suit_11(char)
     pass
 
 
@@ -124,7 +133,7 @@ def suit_13(char: Character):
     - 强制中断角色动作（觉醒技能除外）
     - 所有速度 +5%，效果持续5秒（最多叠加3次）
     """
-    char.SetStatus(SpeedA=0.05 * 3, SpeedM=0.05 * 3, SpeedR=0.05 * 3)
+    suit_11(char)
     pass
 
 
@@ -137,7 +146,7 @@ def suit_14(char: Character):
     - 强制中断角色动作（觉醒技能除外）
     - 所有速度 +5%，效果持续5秒（最多叠加3次）
     """
-    char.SetStatus(SpeedA=0.05 * 3, SpeedM=0.05 * 3, SpeedR=0.05 * 3)
+    suit_11(char)
     pass
 
 
@@ -150,7 +159,7 @@ def suit_15(char: Character):
     - 强制中断角色动作（觉醒技能除外）
     - 所有速度 +5%，效果持续5秒（最多叠加3次）
     """
-    char.SetStatus(SpeedA=0.05 * 3, SpeedM=0.05 * 3, SpeedR=0.05 * 3)
+    suit_11(char)
     pass
 
 
@@ -170,7 +179,7 @@ def suit_16(char: Character):
     - 追击范围:600px
     - 冷却时间：8秒
     """
-    char.SetStatus(SpeedA=0.05 * 3, SpeedM=0.05 * 3, SpeedR=0.05 * 3)
+    suit_11(char)
     pass
 
 
@@ -190,7 +199,7 @@ def suit_17(char: Character):
     - 追击范围:600px
     - 冷却时间：8秒
     """
-    char.SetStatus(SpeedA=0.05 * 3, SpeedM=0.05 * 3, SpeedR=0.05 * 3)
+    suit_11(char)
     pass
 
 
@@ -210,7 +219,7 @@ def suit_18(char: Character):
     - 追击范围:600px
     - 冷却时间：8秒
     """
-    char.SetStatus(SpeedA=0.05 * 3, SpeedM=0.05 * 3, SpeedR=0.05 * 3)
+    suit_11(char)
     pass
 
 
@@ -230,7 +239,7 @@ def suit_19(char: Character):
     - 追击范围:600px
     - 冷却时间：8秒
     """
-    char.SetStatus(SpeedA=0.05 * 3, SpeedM=0.05 * 3, SpeedR=0.05 * 3)
+    suit_11(char)
     pass
 
 
@@ -250,7 +259,7 @@ def suit_20(char: Character):
     - 追击范围:600px
     - 冷却时间：8秒
     """
-    char.SetStatus(SpeedA=0.05 * 3, SpeedM=0.05 * 3, SpeedR=0.05 * 3)
+    suit_11(char)
     pass
 
 
@@ -269,7 +278,7 @@ def suit_21(char: Character):
     - 追击范围:800px
     - 冷却时间：8秒
     """
-    char.SetStatus(SpeedA=0.05 * 3, SpeedM=0.05 * 3, SpeedR=0.05 * 3)
+    suit_11(char)
     pass
 
 
@@ -336,7 +345,7 @@ def suit_28(char: Character):
     - 攻击中止/继续攻击
     - 冷却时间1秒
     """
-    char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
+    suit_27(char)
     pass
 
 
@@ -350,7 +359,7 @@ def suit_29(char: Character):
     - 攻击中止/继续攻击
     - 冷却时间1秒
     """
-    char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
+    suit_27(char)
     pass
 
 
@@ -364,7 +373,7 @@ def suit_30(char: Character):
     - 攻击中止/继续攻击
     - 冷却时间1秒
     """
-    char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
+    suit_27(char)
     pass
 
 
@@ -378,7 +387,7 @@ def suit_31(char: Character):
     - 攻击中止/继续攻击
     - 冷却时间1秒
     """
-    char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
+    suit_27(char)
     pass
 
 
@@ -424,9 +433,7 @@ def suit_33(char: Character):
     - 被击时，精灵之魂- 5（冷却时间1秒）
     - 元素释放伤害量:80,401%
     """
-    char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
-    char.equ_effect.append(EquEffect(name='水灵阿库娅', icon='', cd=3, data=24000))
-    char.equ_effect.append(EquEffect(name='元素释放', icon='', cd=15, data=80400))
+    suit_32(char)
     pass
 
 
@@ -448,9 +455,7 @@ def suit_34(char: Character):
     - 被击时，精灵之魂- 5（冷却时间1秒）
     - 元素释放伤害量:80,402%
     """
-    char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
-    char.equ_effect.append(EquEffect(name='水灵阿库娅', icon='', cd=3, data=24000))
-    char.equ_effect.append(EquEffect(name='元素释放', icon='', cd=15, data=80400))
+    suit_32(char)
     pass
 
 
@@ -472,9 +477,7 @@ def suit_35(char: Character):
     - 被击时，精灵之魂- 5（冷却时间1秒）
     - 元素释放伤害量:80,403%
     """
-    char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
-    char.equ_effect.append(EquEffect(name='水灵阿库娅', icon='', cd=3, data=24000))
-    char.equ_effect.append(EquEffect(name='元素释放', icon='', cd=15, data=80400))
+    suit_32(char)
     pass
 
 
@@ -496,9 +499,7 @@ def suit_36(char: Character):
     - 被击时，精灵之魂- 5（冷却时间1秒）
     - 元素释放伤害量:80,404%
     """
-    char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
-    char.equ_effect.append(EquEffect(name='水灵阿库娅', icon='', cd=3, data=24000))
-    char.equ_effect.append(EquEffect(name='元素释放', icon='', cd=15, data=80400))
+    suit_32(char)
     pass
 
 
@@ -558,11 +559,7 @@ def suit_38(char: Character):
     一被击时，精灵之魂- 5（冷却时间1秒）
     - 元素释放伤害量:118,200%
     """
-    char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
-    char.equ_effect.append(EquEffect(name='水灵阿库娅', icon='', cd=3, data=24000))
-    char.equ_effect.append(EquEffect(name='风灵希尔珂', icon='', cd=2, data=19200))
-    char.SetBaseStatus(SpeedM=0.15)
-    char.equ_effect.append(EquEffect(name='元素释放', icon='', cd=15, data=118200))
+    suit_37(char)
     pass
 
 
@@ -590,11 +587,7 @@ def suit_39(char: Character):
     一被击时，精灵之魂- 5（冷却时间1秒）
     - 元素释放伤害量:118,200%
     """
-    char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
-    char.equ_effect.append(EquEffect(name='水灵阿库娅', icon='', cd=3, data=24000))
-    char.equ_effect.append(EquEffect(name='风灵希尔珂', icon='', cd=2, data=19200))
-    char.SetBaseStatus(SpeedM=0.15)
-    char.equ_effect.append(EquEffect(name='元素释放', icon='', cd=15, data=118200))
+    suit_37(char)
     pass
 
 
@@ -622,11 +615,7 @@ def suit_40(char: Character):
     一被击时，精灵之魂- 5（冷却时间1秒）
     - 元素释放伤害量:118,200%
     """
-    char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
-    char.equ_effect.append(EquEffect(name='水灵阿库娅', icon='', cd=3, data=24000))
-    char.equ_effect.append(EquEffect(name='风灵希尔珂', icon='', cd=2, data=19200))
-    char.SetBaseStatus(SpeedM=0.15)
-    char.equ_effect.append(EquEffect(name='元素释放', icon='', cd=15, data=118200))
+    suit_37(char)
     pass
 
 
@@ -654,11 +643,7 @@ def suit_41(char: Character):
     一被击时，精灵之魂- 5（冷却时间1秒）
     - 元素释放伤害量:118,200%
     """
-    char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
-    char.equ_effect.append(EquEffect(name='水灵阿库娅', icon='', cd=3, data=24000))
-    char.equ_effect.append(EquEffect(name='风灵希尔珂', icon='', cd=2, data=19200))
-    char.SetBaseStatus(SpeedM=0.15)
-    char.equ_effect.append(EquEffect(name='元素释放', icon='', cd=15, data=118200))
+    suit_37(char)
     pass
 
 
@@ -784,6 +769,7 @@ def suit_49(char: Character):
     - 首饰 : 数值每达到 +3， 技能伤害  +1% (最多叠加7次)
     - 特殊装备 : 数值每达到 +3， 所有速度  +2% (最多叠加7次)
     """
+    suit_48(char)
     pass
 
 
@@ -796,6 +782,7 @@ def suit_50(char: Character):
     - 首饰 : 数值每达到 +3， 技能伤害  +1% (最多叠加7次)
     - 特殊装备 : 数值每达到 +3， 所有速度  +2% (最多叠加7次)
     """
+    suit_48(char)
     pass
 
 
@@ -808,6 +795,7 @@ def suit_51(char: Character):
     - 首饰 : 数值每达到 +3， 技能伤害  +1% (最多叠加7次)
     - 特殊装备 : 数值每达到 +3， 所有速度  +2% (最多叠加7次)
     """
+    suit_48(char)
     pass
 
 
@@ -820,6 +808,7 @@ def suit_52(char: Character):
     - 首饰 : 数值每达到 +3， 技能伤害  +1% (最多叠加7次)
     - 特殊装备 : 数值每达到 +3， 所有速度  +2% (最多叠加7次)
     """
+    suit_48(char)
     pass
 
 
@@ -832,13 +821,42 @@ def suit_53(char: Character):
     - 首饰 : 数值每达到 +3， 技能伤害  +1% (最多叠加12次)
     - 特殊装备 : 数值每达到 +3， 所有速度  +2% (最多叠加12次)
 
-
-
     [辅助职业专属属性]
 
     装备的强化/增幅数值平均每增加1时， 适用以下效果。 (最多叠加12次)
     - 技能冷却时间 - 2%
     """
+
+    reinforce_0 = 0
+    """防具"""
+    reinforce_1 = 0
+    """首饰"""
+    reinforce_2 = 0
+    """特殊装备"""
+    reinforce_3 = 0
+    """武器"""
+    for part in char.charEquipInfo.keys():
+        if char.charEquipInfo[part].id <= 0:
+            continue
+        num = char.charEquipInfo[part].reinforce
+        if part == '武器':
+            reinforce_3 += num
+        if ['上衣', '头肩', '下装', '腰带', '鞋'].includes(part):
+            reinforce_0 += num
+        if ['手镯', '项链', '戒指'].includes(part):
+            reinforce_1 += num
+        if ['耳环', '辅助装备', '魔法石'].includes(part):
+            reinforce_2 += num
+    reinforce = reinforce_0 + reinforce_1 + reinforce_2 + reinforce_3
+    char.SetStatus(SkillRange=0.02 * min(reinforce // 11, 12))
+    # char.SetStatus(DamageReduce=0.01 * min(reinforce_0 // 5, 7))
+    char.SetStatus(SkillDamage=0.01 * min(reinforce_1 // 3, 12))
+    char.SetStatus(SpeedA=0.02 * min(reinforce_2 // 3, 12))
+    char.SetStatus(SpeedM=0.02 * min(reinforce_2 // 3, 12))
+    char.SetStatus(SpeedR=0.02 * min(reinforce_2 // 3, 12))
+
+    if char.buffer:
+        char.SetSkillCD(cd=0.02 * min(reinforce // 1, 12))
     pass
 
 
@@ -858,6 +876,8 @@ def suit_54(char: Character):
     装备的强化/增幅数值平均每增加1时， 适用以下效果。 (最多叠加12次)
     - 技能冷却时间 - 2%
     """
+
+    suit_53(char)
     pass
 
 
@@ -877,6 +897,7 @@ def suit_55(char: Character):
     装备的强化/增幅数值平均每增加1时， 适用以下效果。 (最多叠加12次)
     - 技能冷却时间 - 2%
     """
+    suit_53(char)
     pass
 
 
@@ -896,6 +917,7 @@ def suit_56(char: Character):
     装备的强化/增幅数值平均每增加1时， 适用以下效果。 (最多叠加12次)
     - 技能冷却时间 - 2%
     """
+    suit_53(char)
     pass
 
 
@@ -915,6 +937,7 @@ def suit_57(char: Character):
     装备的强化/增幅数值平均每增加1时， 适用以下效果。 (最多叠加12次)
     - 技能冷却时间 - 2%
     """
+    suit_53(char)
     pass
 
 
@@ -943,6 +966,51 @@ def suit_58(char: Character):
     - 技能冷却时间 - 2%
     - 110以上时， 数值每达到 +11， 增益量  +750 (最多叠加2次)
     """
+    reinforce_0 = 0
+    """防具"""
+    reinforce_1 = 0
+    """首饰"""
+    reinforce_2 = 0
+    """特殊装备"""
+    reinforce_3 = 0
+    """武器"""
+    for part in char.charEquipInfo.keys():
+        if char.charEquipInfo[part].id <= 0:
+            continue
+        num = char.charEquipInfo[part].reinforce
+        if part == '武器':
+            reinforce_3 += num
+        if ['上衣', '头肩', '下装', '腰带', '鞋'].includes(part):
+            reinforce_0 += num
+        if ['手镯', '项链', '戒指'].includes(part):
+            reinforce_1 += num
+        if ['耳环', '辅助装备', '魔法石'].includes(part):
+            reinforce_2 += num
+    reinforce = reinforce_0 + reinforce_1 + reinforce_2 + reinforce_3
+    char.SetStatus(SkillRange=0.02 * min(reinforce // 11, 12))
+    # char.SetStatus(DamageReduce=0.01 * min(reinforce_0 // 5, 7))
+    char.SetStatus(SkillDamage=0.01 * min(reinforce_1 // 3, 12))
+    char.SetStatus(SpeedA=0.02 * min(reinforce_2 // 3, 12))
+    char.SetStatus(SpeedM=0.02 * min(reinforce_2 // 3, 12))
+    char.SetStatus(SpeedR=0.02 * min(reinforce_2 // 3, 12))
+
+    if char.buffer:
+        char.SetSkillCD(cd=0.02 * min(reinforce // 1, 12))
+
+    if reinforce >= 110:
+        char.SetStatus(SkillDamage=0.02 * min((reinforce - 110) // 11, 2))
+
+        if char.buffer:
+            char.SetSkillCD(Buffer=750 * min((reinforce - 110) // 11, 2))
+
+    if reinforce < 88:
+        char.equ_effect.append(EquEffect(name='淘银热', icon='', cd=10, data=9600))
+    elif reinforce < 110:
+        char.equ_effect.append(EquEffect(name='淘银热', icon='', cd=10, data=10440))
+    elif reinforce < 132:
+        char.equ_effect.append(EquEffect(name='淘银热', icon='', cd=10, data=12000))
+    else:
+        char.equ_effect.append(EquEffect(name='淘银热', icon='', cd=10, data=14400))
     pass
 
 
@@ -971,6 +1039,7 @@ def suit_59(char: Character):
     - 技能冷却时间 - 2%
     - 110以上时， 数值每达到 +11， 增益量  +750 (最多叠加2次)
     """
+    suit_58(char)
     pass
 
 
@@ -999,6 +1068,7 @@ def suit_60(char: Character):
     - 技能冷却时间 - 2%
     - 110以上时， 数值每达到 +11， 增益量  +750 (最多叠加2次)
     """
+    suit_58(char)
     pass
 
 
@@ -1027,6 +1097,7 @@ def suit_61(char: Character):
     - 技能冷却时间 - 2%
     - 110以上时， 数值每达到 +11， 增益量  +750 (最多叠加2次)
     """
+    suit_58(char)
     pass
 
 
@@ -1055,6 +1126,7 @@ def suit_62(char: Character):
     - 技能冷却时间 - 2%
     - 110以上时， 数值每达到 +11， 增益量  +750 (最多叠加2次)
     """
+    suit_58(char)
     pass
 
 
@@ -1083,6 +1155,51 @@ def suit_63(char: Character):
     - 技能冷却时间 - 2%
     - 121以上时， 数值每达到 +11， 增益量  +1500 (最多叠加2次)
     """
+    reinforce_0 = 0
+    """防具"""
+    reinforce_1 = 0
+    """首饰"""
+    reinforce_2 = 0
+    """特殊装备"""
+    reinforce_3 = 0
+    """武器"""
+    for part in char.charEquipInfo.keys():
+        if char.charEquipInfo[part].id <= 0:
+            continue
+        num = char.charEquipInfo[part].reinforce
+        if part == '武器':
+            reinforce_3 += num
+        if ['上衣', '头肩', '下装', '腰带', '鞋'].includes(part):
+            reinforce_0 += num
+        if ['手镯', '项链', '戒指'].includes(part):
+            reinforce_1 += num
+        if ['耳环', '辅助装备', '魔法石'].includes(part):
+            reinforce_2 += num
+    reinforce = reinforce_0 + reinforce_1 + reinforce_2 + reinforce_3
+    char.SetStatus(SkillRange=0.02 * min(reinforce // 11, 12))
+    # char.SetStatus(DamageReduce=0.01 * min(reinforce_0 // 5, 7))
+    char.SetStatus(SkillDamage=0.01 * min(reinforce_1 // 3, 12))
+    char.SetStatus(SpeedA=0.02 * min(reinforce_2 // 3, 12))
+    char.SetStatus(SpeedM=0.02 * min(reinforce_2 // 3, 12))
+    char.SetStatus(SpeedR=0.02 * min(reinforce_2 // 3, 12))
+
+    if char.buffer:
+        char.SetSkillCD(cd=0.02 * min(reinforce // 1, 12))
+
+    if reinforce >= 110:
+        char.SetStatus(SkillDamage=0.02 * min((reinforce - 110) // 11, 2))
+
+        if char.buffer:
+            char.SetSkillCD(Buffer=1500 * min((reinforce - 110) // 11, 2))
+
+    if reinforce < 88:
+        char.equ_effect.append(EquEffect(name='淘银热', icon='', cd=10, data=9600))
+    elif reinforce < 110:
+        char.equ_effect.append(EquEffect(name='淘银热', icon='', cd=10, data=10440))
+    elif reinforce < 132:
+        char.equ_effect.append(EquEffect(name='淘银热', icon='', cd=10, data=12000))
+    else:
+        char.equ_effect.append(EquEffect(name='淘银热', icon='', cd=10, data=14400))
     pass
 
 
@@ -1131,6 +1248,7 @@ def suit_69(char: Character):
     无色小晶块消耗量减少1个。
     所有速度  +10%
     """
+    char.SetStatus(SpeedA=0.1, SpeedM=0.1, SpeedR=0.1)
     pass
 
 
@@ -1140,6 +1258,7 @@ def suit_70(char: Character):
     无色小晶块消耗量减少1个。
     所有速度  +10%
     """
+    suit_69(char)
     pass
 
 
@@ -1149,6 +1268,7 @@ def suit_71(char: Character):
     无色小晶块消耗量减少1个。
     所有速度  +10%
     """
+    suit_69(char)
     pass
 
 
@@ -1158,6 +1278,7 @@ def suit_72(char: Character):
     无色小晶块消耗量减少1个。
     所有速度  +10%
     """
+    suit_69(char)
     pass
 
 
@@ -1167,6 +1288,7 @@ def suit_73(char: Character):
     无色小晶块消耗量减少1个。
     所有速度  +10%
     """
+    suit_69(char)
     pass
 
 
@@ -1180,6 +1302,8 @@ def suit_74(char: Character):
     攻击时， 青龙升天。 (冷却时间10秒)
     * 青龙升天伤害量 : 14,400%
     """
+    char.SetStatus(SpeedA=0.1, SpeedM=0.1, SpeedR=0.1)
+    char.equ_effect.append(EquEffect(name='龙之胜战', icon='', cd=10, data=14400))
     pass
 
 
@@ -1193,6 +1317,7 @@ def suit_75(char: Character):
     攻击时， 青龙升天。 (冷却时间10秒)
     * 青龙升天伤害量 : 14,400%
     """
+    suit_74(char)
     pass
 
 
@@ -1206,6 +1331,7 @@ def suit_76(char: Character):
     攻击时， 青龙升天。 (冷却时间10秒)
     * 青龙升天伤害量 : 14,400%
     """
+    suit_74(char)
     pass
 
 
@@ -1219,6 +1345,7 @@ def suit_77(char: Character):
     攻击时， 青龙升天。 (冷却时间10秒)
     * 青龙升天伤害量 : 14,400%
     """
+    suit_74(char)
     pass
 
 
@@ -1232,6 +1359,7 @@ def suit_78(char: Character):
     攻击时， 青龙升天。 (冷却时间10秒)
     * 青龙升天伤害量 : 14,400%
     """
+    suit_74(char)
     pass
 
 
@@ -1256,6 +1384,18 @@ def suit_79(char: Character):
     * 白龙强袭伤害量:6,000%
     - 冷却时间60秒
     """
+    if char.equ_options.get('1', 0) == 0:
+        char.SetStatus(SpeedA=0.1, SpeedM=0.1, SpeedR=0.1)
+        char.equ_effect.append(EquEffect(name='烛龙腾霄', icon='', cd=10, data=14400))
+    elif char.equ_options.get('1', 0) == 1:
+        char.SetStatus(SpeedA=0.3, SpeedM=0.3, SpeedR=0.3)
+        char.SetStatus(SkillDamage=0.03)
+        char.equ_effect.append(EquEffect(name='白龙强袭', icon='', cd=3, data=6000))
+    elif char.equ_options.get('1', 0) == 2:
+        char.SetStatus(SpeedA=0.2, SpeedM=0.2, SpeedR=0.2)
+        char.SetStatus(SkillDamage=0.015)
+        char.equ_effect.append(EquEffect(name='白龙强袭', icon='', cd=3, data=6000))
+        char.equ_effect.append(EquEffect(name='烛龙腾霄', icon='', cd=10, data=14400))
     pass
 
 
@@ -1280,6 +1420,7 @@ def suit_80(char: Character):
     * 白龙强袭伤害量:6,000%
     - 冷却时间60秒
     """
+    suit_79(char)
     pass
 
 
@@ -1304,6 +1445,7 @@ def suit_81(char: Character):
     * 白龙强袭伤害量:6,000%
     - 冷却时间60秒
     """
+    suit_79(char)
     pass
 
 
@@ -1328,6 +1470,7 @@ def suit_82(char: Character):
     * 白龙强袭伤害量:6,000%
     - 冷却时间60秒
     """
+    suit_79(char)
     pass
 
 
@@ -1352,6 +1495,7 @@ def suit_83(char: Character):
     * 白龙强袭伤害量:6,000%
     - 冷却时间60秒
     """
+    suit_79(char)
     pass
 
 
@@ -1375,6 +1519,14 @@ def suit_84(char: Character):
     [应龙的如意珠]效果生效状态下攻击时，黑龙横扫敌人。（冷却时间4秒）
     *横扫伤害量:7,200%
     """
+    if char.equ_options.get('1', 0) == 0:
+        char.SetStatus(SpeedA=0.1, SpeedM=0.1, SpeedR=0.1)
+        char.equ_effect.append(EquEffect(name='烛龙腾霄', icon='', cd=10, data=14400))
+    elif char.equ_options.get('1', 0) == 1:
+        char.SetStatus(SpeedA=0.3, SpeedM=0.3, SpeedR=0.3)
+        char.SetStatus(SkillDamage=0.03)
+        char.equ_effect.append(EquEffect(name='白龙强袭', icon='', cd=3, data=6000))
+        char.equ_effect.append(EquEffect(name='应龙之怒', icon='', cd=4, data=7200))
     pass
 
 
@@ -1425,6 +1577,7 @@ def suit_90(char: Character):
     - 技能冷却时间 - 30.0%
     - 每秒恢复0.5%生命值/魔法值
     """
+    char.SetSkillCD(cd=0.3)
     pass
 
 
@@ -1436,6 +1589,7 @@ def suit_91(char: Character):
     - 技能冷却时间 - 30.0%
     - 每秒恢复0.5%生命值/魔法值
     """
+    suit_90(char)
     pass
 
 
@@ -1447,6 +1601,7 @@ def suit_92(char: Character):
     - 技能冷却时间 - 30.0%
     - 每秒恢复0.5%生命值/魔法值
     """
+    suit_90(char)
     pass
 
 
@@ -1458,6 +1613,7 @@ def suit_93(char: Character):
     - 技能冷却时间 - 30.0%
     - 每秒恢复0.5%生命值/魔法值
     """
+    suit_90(char)
     pass
 
 
@@ -1469,6 +1625,7 @@ def suit_94(char: Character):
     - 技能冷却时间 - 30.0%
     - 每秒恢复0.5%生命值/魔法值
     """
+    suit_90(char)
     pass
 
 
@@ -1485,6 +1642,11 @@ def suit_95(char: Character):
     - 技能冷却时间- 55%（觉醒技能除外）
     - 进入霸体状态
     """
+    if char.equ_options.get('2', 0) == 0:
+        char.SetStatus(SkillDamage=0.175)
+        char.SetSkillCD(cd=0.3)
+    else:
+        char.SetSkillCD(cd=0.55)
     pass
 
 
@@ -1501,6 +1663,7 @@ def suit_96(char: Character):
     - 技能冷却时间- 55%（觉醒技能除外）
     - 进入霸体状态
     """
+    suit_95(char)
     pass
 
 
@@ -1517,6 +1680,7 @@ def suit_97(char: Character):
     - 技能冷却时间- 55%（觉醒技能除外）
     - 进入霸体状态
     """
+    suit_95(char)
     pass
 
 
@@ -1533,6 +1697,7 @@ def suit_98(char: Character):
     - 技能冷却时间- 55%（觉醒技能除外）
     - 进入霸体状态
     """
+    suit_95(char)
     pass
 
 
@@ -1549,6 +1714,7 @@ def suit_99(char: Character):
     - 技能冷却时间- 55%（觉醒技能除外）
     - 进入霸体状态
     """
+    suit_95(char)
     pass
 
 
@@ -1568,6 +1734,7 @@ def suit_100(char: Character):
     - 进入霸体状态
     - 跳跃时可以再跳跃一次
     """
+    suit_95(char)
     pass
 
 
@@ -1587,6 +1754,7 @@ def suit_101(char: Character):
     - 进入霸体状态
     - 跳跃时可以再跳跃一次
     """
+    suit_95(char)
     pass
 
 
@@ -1606,6 +1774,7 @@ def suit_102(char: Character):
     - 进入霸体状态
     - 跳跃时可以再跳跃一次
     """
+    suit_95(char)
     pass
 
 
@@ -1625,6 +1794,7 @@ def suit_103(char: Character):
     - 进入霸体状态
     - 跳跃时可以再跳跃一次
     """
+    suit_95(char)
     pass
 
 
@@ -1644,6 +1814,7 @@ def suit_104(char: Character):
     - 进入霸体状态
     - 跳跃时可以再跳跃一次
     """
+    suit_95(char)
     pass
 
 
@@ -1669,6 +1840,7 @@ def suit_105(char: Character):
     [堕落]
     - 技能冷却时间 - 55.0%
     """
+    suit_95(char)
     pass
 
 
@@ -1722,6 +1894,7 @@ def suit_111(char: Character):
     攻击时， 有3%的几率发动[神的祝福]。 (发动冷却1秒)
     剩余冷却时间33秒以下的技能中， 初始化剩余时间最长的1个技能 (觉醒技能除外)
     """
+    char.SetStatus(SkillDamage=0.03)
     pass
 
 
@@ -1736,6 +1909,7 @@ def suit_112(char: Character):
     攻击时， 有3%的几率发动[神的祝福]。 (发动冷却1秒)
     剩余冷却时间33秒以下的技能中， 初始化剩余时间最长的1个技能 (觉醒技能除外)
     """
+    suit_111(char)
     pass
 
 
@@ -1750,6 +1924,7 @@ def suit_113(char: Character):
     攻击时， 有3%的几率发动[神的祝福]。 (发动冷却1秒)
     剩余冷却时间33秒以下的技能中， 初始化剩余时间最长的1个技能 (觉醒技能除外)
     """
+    suit_111(char)
     pass
 
 
@@ -1764,6 +1939,7 @@ def suit_114(char: Character):
     攻击时， 有3%的几率发动[神的祝福]。 (发动冷却1秒)
     剩余冷却时间33秒以下的技能中， 初始化剩余时间最长的1个技能 (觉醒技能除外)
     """
+    suit_111(char)
     pass
 
 
@@ -1778,6 +1954,7 @@ def suit_115(char: Character):
     攻击时， 有3%的几率发动[神的祝福]。 (发动冷却1秒)
     剩余冷却时间33秒以下的技能中， 初始化剩余时间最长的1个技能 (觉醒技能除外)
     """
+    suit_111(char)
     pass
 
 
@@ -1794,6 +1971,7 @@ def suit_116(char: Character):
     - 剩余冷却时间33秒以下的技能中，初始化剩余时间最短的1个技能（觉醒技能除外）
     - 立即发动[第二次幸运]
     """
+    suit_111(char)
     pass
 
 
@@ -1810,6 +1988,7 @@ def suit_117(char: Character):
     - 剩余冷却时间33秒以下的技能中，初始化剩余时间最短的1个技能（觉醒技能除外）
     - 立即发动[第二次幸运]
     """
+    suit_111(char)
     pass
 
 
@@ -1826,6 +2005,7 @@ def suit_118(char: Character):
     - 剩余冷却时间33秒以下的技能中，初始化剩余时间最短的1个技能（觉醒技能除外）
     - 立即发动[第二次幸运]
     """
+    suit_111(char)
     pass
 
 
@@ -1842,6 +2022,7 @@ def suit_119(char: Character):
     - 剩余冷却时间33秒以下的技能中，初始化剩余时间最短的1个技能（觉醒技能除外）
     - 立即发动[第二次幸运]
     """
+    suit_111(char)
     pass
 
 
@@ -1858,6 +2039,7 @@ def suit_120(char: Character):
     - 剩余冷却时间33秒以下的技能中，初始化剩余时间最短的1个技能（觉醒技能除外）
     - 立即发动[第二次幸运]
     """
+    suit_111(char)
     pass
 
 
@@ -1878,6 +2060,8 @@ def suit_121(char: Character):
     - 冷却时间：99秒
     - 立即发动[第二次幸运]
     """
+    char.SetStatus(SkillDamage=0.03)
+    char.Set
     pass
 
 

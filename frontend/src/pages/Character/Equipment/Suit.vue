@@ -57,7 +57,7 @@ const suits = computed(() => {
 })
 
 const suitEquipments = computed(() => {
-  const equs =  infoStore.equips.filter((a) => a.suit.includes(curSuit.value) && a.suit.length === 1)
+  const equs =  infoStore.equips.filter((a) => a.suit.includes(curSuit.value.toString()) && a.suit.length === 1)
 
   const res: (IEquipment | undefined)[] = []
   const raritiyList = ['神器','传说','史诗']
@@ -76,11 +76,11 @@ const suitEquipments = computed(() => {
 })
 
 
-const chooseEqu = (equip: IEquipment | undefined) => {
-  console.log(equip)
+const chooseEqu = async(equip: IEquipment | undefined) => {
   if (equip && configStore.config.equips[equip.itemDetailType]) {
     configStore.config.equips[equip.itemDetailType].id = equip.id
   }
+  await configStore.calc()
 }
 
 </script>

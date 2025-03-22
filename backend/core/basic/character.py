@@ -5,7 +5,8 @@ from typing import Literal
 from core.basic.property import CharacterInfo
 from core.basic.skill import Skill
 
-from core.basic.equipment import get_equipment,EquEffect
+from core.basic.equipment import get_equipment, EquEffect,Equ
+
 # from core.basic.equipment import equipments
 # from core.basic.skill import Skill, ActiveSkill, PassiveSkill
 from .formula import 获取基础属性
@@ -46,6 +47,9 @@ class Character:
 
     ElementA: dict[str, float]
     """属性攻击"""
+
+    ElementIncrease:float
+    """属性增幅"""
 
     ElementDB: dict[str, float]
     """属性强化数值"""
@@ -93,15 +97,17 @@ class Character:
 
     # endregion
 
-    skills: list["Skill"] = []
+    skills: list['Skill'] = []
     # """技能列表"""
-    skills_dict: dict[str, "Skill"] = {}
+    skills_dict: dict[str, 'Skill'] = {}
     # """技能名字对应技能"""
     equVersion: str = '0'
     """装备版本"""
-    charEquipInfo: dict[str, "CharacterEquipInfo"]
+    charEquipInfo: dict[str, 'CharacterEquipInfo']
     """装备打造信息"""
-    equ_effect:list["EquEffect"] = []
+    equs: dict[str, 'Equ']
+    """装备列表"""
+    equ_effect: list['EquEffect'] = []
     """装备效果列表"""
 
     # region 角色属性
@@ -180,6 +186,8 @@ class Character:
         self.BufferP = 1.0
         self.Attack = 0
         self.AttackP = 1.0
+        self.ElementIncrease = 0
+        self.equs = {}
         pass
 
     # region 角色属性设置
@@ -292,7 +300,7 @@ class Character:
         self.BufferP += 增益量P + kwargs.get('BufferP', 0)
         pass
 
-    def AddSkillLv(self, min, max, lv, type=-1) -> None:
+    def AddSkillLv(self, min:int, max:int, lv:int, type=-1) -> None:
         """
         增加技能等级
         type: -1 全部, 0 被动, 1 主动
@@ -302,26 +310,26 @@ class Character:
                 if type == -1 or skill.type == type:
                     skill.AddLv(lv, self)
 
-    def SetSkillCD(self, min=1, max=99, cd=0) -> None:
+    def SetSkillCD(self, min=1, max=100, cd=0, exclude=[50, 85, 100]) -> None:
         """
         设置技能CD
         type: -1 全部, 0 被动, 1 主动
         """
         for skill in self.skills:
-            if min <= skill.requiredLv <= max and skill.damage:
+            if min <= skill.requiredLv <= max and skill.damage and skill.requiredLv not in exclude:
                 skill.CDR *= 1 - cd
 
     def GetSkillByName(self, name) -> Skill:
         """通过技能名获取技能"""
-        return self.skills_dict.get(name,None)
+        return self.skills_dict.get(name, None)
 
-    def GetSkillByID(self,id:str) -> Skill:
-        skill = list(filter(lambda x:str(x.id) == id,self.skills))
+    def GetSkillByID(self, id: str) -> Skill:
+        skill = list(filter(lambda x: str(x.id) == id, self.skills))
         """通过技能ID获取技能"""
         return skill[0] if len(skill) > 0 else None
 
     @cache
-    def GetSkillNames(self, type: Literal['active', 'passive', 'all'] = 'all' , damage:Literal[True,False,'all'] = 'all') -> list[str]:
+    def GetSkillNames(self, type: Literal['active', 'passive', 'all'] = 'all', damage: Literal[True, False, 'all'] = 'all') -> list[str]:
         """获取技能名字"""
         return [skill.name for skill in self.skills if (type == 'all' or skill.type == type) and (damage == 'all' or skill.damage == damage)]
 
@@ -362,14 +370,14 @@ class Character:
                     'icon': skill.icon,
                     'type': skill.type,
                     # 'SPCost': skill.SPCost,
-                    "learnLv": skill.learnLv,
-                    "masterLv": skill.masterLv,
-                    "maxLearnLv":skill.calculate_lv(),
-                    "maxLv": skill.maxLv,
+                    'learnLv': skill.learnLv,
+                    'masterLv': skill.masterLv,
+                    'maxLearnLv': skill.calculate_lv(),
+                    'maxLv': skill.maxLv,
                     # 'TPCost': 0 if not skill.hasTP else skill.TPCost,
                     # "masterTPLv":0 if not skill.hasTP else  skill.masterTPLv,
                     # 'maxTPLv': 0 if not skill.hasTP else skill.TPLearnMax,
-                    'position':skill.position
+                    'position': skill.position,
                 }
             )
         info['skills'] = skillInfo
@@ -497,7 +505,24 @@ class Character:
         # self.SetDetail(setInfo)
         # 角色基础属性
         self.SetBaseStatus()
-        return
+        suitInfo = {}
+        equs = get_equipment(self.equVersion)
+        # 设置装备和获取对应的套装属性
+        for part in self.charEquipInfo.keys():
+            # 当前部位的打造
+            cur = self.charEquipInfo[part]
+            # 当前部位适用调试后的属性
+            partEqu =  equs.equ_dict.get(cur.id).adapt(cur.adaptation)
+            # 设置当前部位的装备
+            self.equs[part] = equs.equ_dict.get(cur.id)
+            # 套装属性设置
+            for suit in partEqu.suit:
+                suitInfo[suit] = partEqu.Point + suitInfo.get(suit, 0)
+        for suit in suitInfo:
+            print(equs.get_suit_info(suit, suitInfo[suit])[0].id)
+        skill = self.GetSkillByName('G-35L感电手雷')
+        print(skill.getSkillDate(skill.lv),skill.skillDamage,skill.skillRation)
+        return 
         # 技能影响角色的属性，如属强、抗性等
         for skill in self.skills:
             skill.effect(self)

@@ -97,7 +97,7 @@ class Skill:
     def effect(self, old: int, new: int):
         for assoc in self.associate:
             type = assoc.get('type', '*skillRation')
-            skills = assoc.get('skills', 'all')
+            skills = assoc.get('skills', '*')
             data = assoc.get('data', [0] * self.maxLv)
             if type[0] not in ['*', '+', '$']:
                 if self.precondition():

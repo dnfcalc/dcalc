@@ -5,6 +5,10 @@
 
 ## 运行
 
+### clone
+
+git clone --single-branch --branch master https://gitee.com/dnftools/dcalc.git
+
 ### frontend
 
 前置条件：node 18+

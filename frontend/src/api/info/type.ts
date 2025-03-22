@@ -38,7 +38,7 @@ export interface IEquipment {
   itemDetailType: string
   name: string
   categorize:string
-  suit:  number[]
+  suit: string[]
   rarity:string
 }
 

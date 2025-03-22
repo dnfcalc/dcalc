@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { useInfoStore } from './info'
+import api from '@/api'
 // | '上衣'
 // | '头肩'
 // | '下装'
@@ -82,9 +83,14 @@ export const useConfigStore = defineStore('configStore', () => {
     }
   }
 
+  const calc = async()=>{
+    await api.calc(config.value)
+  }
+
   return {
     config,
     loadConfig,
     saveConfig,
+    calc
   }
 })

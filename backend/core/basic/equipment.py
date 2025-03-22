@@ -13,6 +13,7 @@ class Equ:
     rarity: str
     itemType: str
     itemDetailType: str
+    suit: list[str]
     Point: list[float] | float
     categorize: str
     imageUrl: str
@@ -85,7 +86,11 @@ class Equipments:
             max_adaptation = 0
             item.id = str(item.id)
             for attr in keys:
-                value = parse_to_number_list(getattr(item, attr))
+                if attr == 'suit':
+                    value = parse_to_number_list(getattr(item, attr), [])
+                    value = [str(int(i)) for i in value]
+                else:
+                    value = parse_to_number_list(getattr(item, attr))
                 max_adaptation = max(max_adaptation, len(value) - 1)
                 setattr(item, attr, value)
             equ_dict = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
@@ -109,6 +114,8 @@ class Equipments:
         新套装只需要传入suitID和point即可，count默认为0\n
         老套装需要传入suitID和count即可，point默认为0
         """
+        if suitId not in self.suit_dict:
+            return []
         # 先筛选出点数小于等于point和数量小于等于count的套装
         suits: list[Suit] = [suit for suit in self.suit_dict[str(suitId)] if suit.point <= point and suit.count <= count]
         result: dict[int, Suit] = {}

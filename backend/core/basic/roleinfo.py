@@ -89,7 +89,7 @@ class CharacterAttributes(Enum):
     AttackP = '攻击强化%'
 
 
-mapping = {value: key for key, value in CharacterAttributes.__members__.items()}
+mapping = {value.value : key for key, value in CharacterAttributes.__members__.items()}
 
 
 def get_key_by_value(value: str) -> str:
