@@ -3,13 +3,6 @@ from core.basic.equipment import EquEffect
 
 suit_func_list = {}
 
-for i in range(0, 300):
-    try:
-        if i not in suit_func_list.keys():
-            suit_func_list[i] = eval(f'suit_{i}')
-    except Exception:
-        pass
-
 # region 潜影暗袭
 
 
@@ -530,7 +523,7 @@ def suit_37(char: Character):
     char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
     char.equ_effect.append(EquEffect(name='水灵阿库娅', icon='', cd=3, data=24000))
     char.equ_effect.append(EquEffect(name='风灵希尔珂', icon='', cd=2, data=19200))
-    char.SetBaseStatus(SpeedM=0.15)
+    char.SetStatus(SpeedM=0.15)
     char.equ_effect.append(EquEffect(name='元素释放', icon='', cd=15, data=118200))
     pass
 
@@ -615,6 +608,7 @@ def suit_40(char: Character):
     一被击时，精灵之魂- 5（冷却时间1秒）
     - 元素释放伤害量:118,200%
     """
+    print("~~~~~~")
     suit_37(char)
     pass
 
@@ -676,7 +670,7 @@ def suit_42(char: Character):
     char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
     char.equ_effect.append(EquEffect(name='水灵阿库娅', icon='', cd=3, data=24000))
     char.equ_effect.append(EquEffect(name='风灵希尔珂', icon='', cd=2, data=19200))
-    char.SetBaseStatus(SpeedM=0.15)
+    char.SetStatus(SpeedM=0.15)
     char.equ_effect.append(EquEffect(name='元素释放', icon='', cd=10, data=181920))
     char.equ_effect.append(EquEffect(name='精灵女王提泰妮娅', icon='', cd=5, data=47520))
     pass
@@ -4109,3 +4103,10 @@ def suit_252(char: Character):
 
 
 # endregion
+
+for i in range(0, 300):
+    try:
+        if str(i) not in suit_func_list.keys():
+            suit_func_list[str(i)] = eval(f'suit_{i}')
+    except Exception:
+        pass

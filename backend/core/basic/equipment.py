@@ -1,3 +1,4 @@
+import importlib
 from database.models import Session, EquData, SuitData
 from database.connect import get_db_engine as get_engine
 from functools import cache
@@ -70,6 +71,7 @@ class Equipments:
         self.version = version
         self.engine = get_engine(version)
         self.equs: list[Equ] = []
+        self.funs = self.init_func()
         self.equ_dict: dict[str, Equ] = {}
         self.suits: list[Suit] = []
         self.suit_dict: dict[str, Suit] = {}
@@ -109,6 +111,14 @@ class Equipments:
             self.suit_dict.setdefault(str(suit.suitId), []).append(suit)
         pass
 
+    def init_func(self):
+        """根据装备版本加载装备效果"""
+        try:
+            funs = importlib.import_module(f"core.equipment.version_{self.version}")
+        except Exception:
+            funs = importlib.import_module("core.equipment.version_0")
+        return funs
+
     def get_suit_info(self, suitId: str | int, point: int = 0, count: int = 0) -> list[Suit]:
         """根据套装点数返回对应适用的套装属性\n
         新套装只需要传入suitID和point即可，count默认为0\n
@@ -141,7 +151,6 @@ class EquEffect:
         self.cd = cd
         self.data = data
 
-@cache
 def get_equipment(version: str = '0') -> Equipments:
     # print('加载装备信息')
     return Equipments(version)

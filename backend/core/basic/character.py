@@ -9,7 +9,7 @@ from core.basic.equipment import get_equipment, EquEffect,Equ
 
 # from core.basic.equipment import equipments
 # from core.basic.skill import Skill, ActiveSkill, PassiveSkill
-from .formula import 获取基础属性
+from .formula import 增幅计算, 精通计算, 获取基础属性
 from .roleinfo import CharacterEquipInfo, get_key_by_value
 # from .property import 精通计算, 角色基础, CharacterInfo
 
@@ -105,8 +105,6 @@ class Character:
     """装备版本"""
     charEquipInfo: dict[str, 'CharacterEquipInfo']
     """装备打造信息"""
-    equs: dict[str, 'Equ']
-    """装备列表"""
     equ_effect: list['EquEffect'] = []
     """装备效果列表"""
 
@@ -328,7 +326,6 @@ class Character:
         """通过技能ID获取技能"""
         return skill[0] if len(skill) > 0 else None
 
-    @cache
     def GetSkillNames(self, type: Literal['active', 'passive', 'all'] = 'all', damage: Literal[True, False, 'all'] = 'all') -> list[str]:
         """获取技能名字"""
         return [skill.name for skill in self.skills if (type == 'all' or skill.type == type) and (damage == 'all' or skill.damage == damage)]
@@ -342,16 +339,6 @@ class Character:
         for key in info['equips']:
             # 导入部位打造信息、装备信息、贴膜信息
             self.charEquipInfo[key] = CharacterEquipInfo(info['equips'][key], self.equVersion, key)
-
-    # def calc(self):
-    #     """计算角色属性"""
-    #     func = []
-    #     for i in self.charEquipInfo:
-    #         # 计算装备
-    #         temp = self.equs.get_func_by_id(self.charEquipInfo[i].id)
-    #         func.append(temp)
-    #         temp(self)
-    #     pass
 
     def getInfo(self):
         """返回到前端信息"""
@@ -391,57 +378,6 @@ class Character:
         info['suits'] = suits
         enchats = []
         emblems = []
-        # 装备过滤
-        # for i in self.equs.info:
-        #     if (i.typeSon1Id == '武器' and i.typeSon2Id not in self.武器选项) or (i.name.startswith('精 · ') and self.异界 not in i.name):
-        #         pass
-        #     else:
-        #         equs.append(
-        #             {
-        #                 'id': i.id,
-        #                 'name': i.name,
-        #                 'icon': i.icon,
-        #                 'typeSon1Id': i.typeSon1Id,
-        #                 'typeSon2Id': i.typeSon2Id,
-        #                 'typeSon3Id': i.typeSon3Id,
-        #                 'rarity': i.rarity,
-        #                 'lv': i.lv,
-        #                 'suit': i.suit,
-        #             }
-        #         )
-        # 附魔、徽章
-        # for i in self.equs.prop:
-        #     if i.typeSon1Id == '附魔':
-        #         enchats.append(
-        #             {
-        #                 'id': i.id,
-        #                 'name': i.name,
-        #                 'icon': i.icon,
-        #                 'typeSon1Id': i.typeSon1Id,
-        #                 'typeSon2Id': i.typeSon2Id,
-        #                 'typeSon3Id': i.typeSon3Id,
-        #                 'rarity': i.rarity,
-        #                 'lv': i.lv,
-        #                 'desc': i.desc,
-        #             }
-        #         )
-        #     if i.typeSon1Id == '徽章':
-        #         emblems.append(
-        #             {
-        #                 'id': i.id,
-        #                 'name': i.name,
-        #                 'icon': i.icon,
-        #                 'typeSon1Id': i.typeSon1Id,
-        #                 'typeSon2Id': i.typeSon2Id,
-        #                 'typeSon3Id': i.typeSon3Id,
-        #                 'rarity': i.rarity,
-        #                 'lv': i.lv,
-        #                 'desc': i.desc,
-        #             }
-        #         )
-        # info['enchats'] = enchats
-        # info['emblems'] = emblems
-        # info['seal'] = [i.__dict__ for i in self.equs.seal]
         return info
 
     def getBasicInos(self):
@@ -498,13 +434,8 @@ class Character:
     def load_skills(self):
         pass
 
-    def calc(self, setInfo: dict[str, dict]):
-        funcs = []
-        suits = []
-        self.calc_init(setInfo)
-        # self.SetDetail(setInfo)
-        # 角色基础属性
-        self.SetBaseStatus()
+    def calc_suits(self):
+        """套装效果统计"""
         suitInfo = {}
         equs = get_equipment(self.equVersion)
         # 设置装备和获取对应的套装属性
@@ -514,14 +445,87 @@ class Character:
             # 当前部位适用调试后的属性
             partEqu =  equs.equ_dict.get(cur.id).adapt(cur.adaptation)
             # 设置当前部位的装备
-            self.equs[part] = equs.equ_dict.get(cur.id)
+            self.charEquipInfo[part].equInfo = equs.equ_dict.get(cur.id)
             # 套装属性设置
             for suit in partEqu.suit:
-                suitInfo[suit] = partEqu.Point + suitInfo.get(suit, 0)
-        for suit in suitInfo:
-            print(equs.get_suit_info(suit, suitInfo[suit])[0].id)
+                if suitInfo.get(suit, None) is None:
+                    suitInfo[suit] = {
+                        "point": 0,
+                        "count": 0,
+                    }
+                if partEqu.Point == 0:
+                    suitInfo[suit]['count'] += 1
+                else:
+                    suitInfo[suit]['point'] += partEqu.Point
+        # 取得点数最高的套装
+        max_point_suit = max(
+            (suit for suit in suitInfo if suitInfo[suit]['point'] > 0),
+            key=lambda suit: suitInfo[suit]['point'],
+            default=None
+        )
+        # 处理没有点数的老套装
+        zero_point_suits = [suit for suit in suitInfo if suitInfo[suit]['point'] == 0]
+        suits = zero_point_suits + ([max_point_suit] if max_point_suit is not None else [])
+        suits_effect = []
+        for suit in suits:
+            if suitInfo[suit]['point'] == 0:
+                suits_effect += [i.id for i in equs.get_suit_info(suit, 0, suitInfo[suit]['count'])]
+            else:
+                suits_effect += [i.id for i in equs.get_suit_info(suit, suitInfo[suit]['point'], 0)]
+        return suits_effect
+
+    def calc_basic(self):
+        """计算基础属性:防具精通、增幅、强化等"""
+        # 防具精通跟随装备品级
+        for part in ['上衣', '头肩', '下装', '腰带', '鞋']:
+            cur = self.charEquipInfo[part]
+            equ = cur.equInfo
+            reinforce = self.charEquipInfo[part].reinforce
+            value = 精通计算(115, equ.rarity,reinforce,equ.itemDetailType,self.防具类型)
+            for key in self.防具精通属性:
+                key = get_key_by_value(key)
+                setattr(self, key, getattr(self, key) + value[key])
+        # 115增幅强化品级固定史诗
+        for part in self.charEquipInfo.keys():
+            cur = self.charEquipInfo[part]
+            # 增幅
+            if cur.reinforceType == 1:
+                # 增幅四维
+                value = 增幅计算(115,'史诗',cur.reinforce)
+                self.SetStatus(STR=value,INT=value,Spirit=value,Vitality=value)
+            # 增幅计算
+            # 武器、特殊装备强化额外效果计算
+            # 传世武器强化系数取所有武器的最高的1.12
+        pass
+
+    def calc_jade(self):
+        """计算辟邪玉效果"""
+        pass
+
+    def calc(self, setInfo: dict[str, dict]):
+        funcs = []
+        suits = []
+        self.calc_init(setInfo)
+        # self.SetDetail(setInfo)
+        # 角色基础属性
+        self.SetBaseStatus()
+        # 辟邪玉计算
+        # 精通、增幅、强化计算
+        self.calc_basic()
+        # 单件效果计算
+        # 套装效果列表
+        suits_effect = self.calc_suits()
+        effects = get_equipment(self.equVersion).funs
+        for effect in suits_effect:
+            func = effects.suit_func_list.get(str(effect), None)
+            func(self)
+        # 徽章计算
+        # 附魔计算
+
+        # 技能计算
         skill = self.GetSkillByName('G-35L感电手雷')
         print(skill.getSkillDate(skill.lv),skill.skillDamage,skill.skillRation)
+        # 
         return 
         # 技能影响角色的属性，如属强、抗性等
         for skill in self.skills:
@@ -554,35 +558,6 @@ class Character:
                 fun = self.equs.get_func_by_id(f'seal_{seal}')
                 funcs.append(fun + (equ,))
             # endregion
-        # region 套装效果
-        matchSuit = []
-        for i in list(set(filter(lambda x: x != '' and x is not None, suits))):
-            # 获取当前的套装的数量
-            nums = len(list(filter(lambda x: x == i, suits)))
-            # 获取当前的套装信息
-            suisInfos = list(filter(lambda x: x.suitID == i, self.equs.suit))
-            if len(suisInfos) > 0:
-                matchSuit += [i.id for i in list(filter(lambda x: x.needNum <= nums, suisInfos))]
-                # 兼容于判断
-                if suisInfos[0].compatibility is not None and suisInfos[0].compatibility != '':
-                    for compatibility in suisInfos[0].compatibility.split(','):
-                        # 兼容于的装备数量
-                        numsComp = len(list(filter(lambda x: x == compatibility, suits)))
-                        # 大于兼容于小于兼容于加上当前套装数量
-                        if numsComp > 0:
-                            matchSuit += [
-                                i.id
-                                for i in list(
-                                    filter(
-                                        lambda x: x.suitID == compatibility and numsComp < x.needNum <= nums + numsComp,
-                                        self.equs.suit,
-                                    )
-                                )
-                            ]
-        for i in matchSuit:
-            fun = self.equs.get_func_by_id(f'suit_{i}')
-            funcs.append(fun + (None,))
-        # endregion
         funcs.sort(key=lambda x: x[2])
         for func in funcs:
             # 站街

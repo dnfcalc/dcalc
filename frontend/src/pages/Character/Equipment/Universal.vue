@@ -2,15 +2,15 @@
 
 <template>
   <div class="flex flex-wrap gap-4px content-start" :style="{width: `${rowCount * 32}px`}">
-    <template v-for="(equ,_) in equs" :key="_">
-        <EquipmentIcon :equipment="equ" />
+    <template v-for="(equip,_) in equs" :key="_">
+        <EquipmentIcon :inactive="configStore.config.equips[equip?.itemDetailType ?? '']?.id != equip?.id"  :equipment="equip" @click="chooseEqu(equip)" />
     </template>
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { IEquipment } from '@/api/info/type'
-import { useInfoStore } from '@/stores'
+import { useConfigStore, useInfoStore } from '@/stores'
 import { getImageURL } from '@/utils/images'
 import EquipmentIcon from '@/components/dnf/Equipment/Icon/index.vue'
 
@@ -20,6 +20,7 @@ const props = defineProps<{
 
 const rowCount = Math.max(props.rowCount ?? 0, 14)
 const infoStore = useInfoStore()
+const configStore = useConfigStore()
 
 const equs = computed(() => {
   const items = infoStore.equips.filter(
@@ -38,4 +39,10 @@ const equs = computed(() => {
   })
   return res
 })
+
+const chooseEqu = async(equip: IEquipment | undefined) => {
+  if (equip && configStore.config.equips[equip.itemDetailType]) {
+    configStore.config.equips[equip.itemDetailType].id = equip.id
+  }
+}
 </script>
