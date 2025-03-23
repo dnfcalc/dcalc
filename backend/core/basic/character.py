@@ -5,11 +5,11 @@ from typing import Literal
 from core.basic.property import CharacterInfo
 from core.basic.skill import Skill
 
-from core.basic.equipment import get_equipment, EquEffect,Equ
+from core.basic.equipment import get_equipment, EquEffect, Equ
 
 # from core.basic.equipment import equipments
 # from core.basic.skill import Skill, ActiveSkill, PassiveSkill
-from .formula import 增幅计算, 精通计算, 获取基础属性
+from .formula import 增幅计算, 强化技攻, 武器强化计算, 精通计算, 获取基础属性, 耳环计算, 左右计算, 锻造计算
 from .roleinfo import CharacterEquipInfo, get_key_by_value
 # from .property import 精通计算, 角色基础, CharacterInfo
 
@@ -48,7 +48,7 @@ class Character:
     ElementA: dict[str, float]
     """属性攻击"""
 
-    ElementIncrease:float
+    ElementIncrease: float
     """属性增幅"""
 
     ElementDB: dict[str, float]
@@ -268,6 +268,8 @@ class Character:
             'AttackP',
             'Buffer',
             'BufferP',
+            'Spirit',
+            'Vitality'
         }
         for key in kwargs:
             if key not in allowed_kwargs:
@@ -298,7 +300,7 @@ class Character:
         self.BufferP += 增益量P + kwargs.get('BufferP', 0)
         pass
 
-    def AddSkillLv(self, min:int, max:int, lv:int, type=-1) -> None:
+    def AddSkillLv(self, min: int, max: int, lv: int, type=-1) -> None:
         """
         增加技能等级
         type: -1 全部, 0 被动, 1 主动
@@ -443,26 +445,22 @@ class Character:
             # 当前部位的打造
             cur = self.charEquipInfo[part]
             # 当前部位适用调试后的属性
-            partEqu =  equs.equ_dict.get(cur.id).adapt(cur.adaptation)
+            partEqu = equs.equ_dict.get(cur.id).adapt(cur.adaptation)
             # 设置当前部位的装备
             self.charEquipInfo[part].equInfo = equs.equ_dict.get(cur.id)
             # 套装属性设置
             for suit in partEqu.suit:
                 if suitInfo.get(suit, None) is None:
                     suitInfo[suit] = {
-                        "point": 0,
-                        "count": 0,
+                        'point': 0,
+                        'count': 0,
                     }
                 if partEqu.Point == 0:
                     suitInfo[suit]['count'] += 1
                 else:
                     suitInfo[suit]['point'] += partEqu.Point
         # 取得点数最高的套装
-        max_point_suit = max(
-            (suit for suit in suitInfo if suitInfo[suit]['point'] > 0),
-            key=lambda suit: suitInfo[suit]['point'],
-            default=None
-        )
+        max_point_suit = max((suit for suit in suitInfo if suitInfo[suit]['point'] > 0), key=lambda suit: suitInfo[suit]['point'], default=None)
         # 处理没有点数的老套装
         zero_point_suits = [suit for suit in suitInfo if suitInfo[suit]['point'] == 0]
         suits = zero_point_suits + ([max_point_suit] if max_point_suit is not None else [])
@@ -481,21 +479,45 @@ class Character:
             cur = self.charEquipInfo[part]
             equ = cur.equInfo
             reinforce = self.charEquipInfo[part].reinforce
-            value = 精通计算(115, equ.rarity,reinforce,equ.itemDetailType,self.防具类型)
+            value = 精通计算(115, equ.rarity, reinforce, equ.itemDetailType, self.防具类型)
             for key in self.防具精通属性:
                 key = get_key_by_value(key)
-                setattr(self, key, getattr(self, key) + value[key])
+                setattr(self, key, getattr(self, key) + value)
         # 115增幅强化品级固定史诗
         for part in self.charEquipInfo.keys():
             cur = self.charEquipInfo[part]
             # 增幅
             if cur.reinforceType == 1:
                 # 增幅四维
-                value = 增幅计算(115,'史诗',cur.reinforce)
-                self.SetStatus(STR=value,INT=value,Spirit=value,Vitality=value)
-            # 增幅计算
-            # 武器、特殊装备强化额外效果计算
-            # 传世武器强化系数取所有武器的最高的1.12
+                value = 增幅计算(115, '史诗', cur.reinforce)
+                self.SetStatus(STR=value, INT=value, Spirit=value, Vitality=value)
+            # 增幅技攻计算
+            value = 强化技攻(cur.reinforce, cur.reinforceType, part)
+            self.SetStatus(SkillAttack=value)
+            # 武器强化、武器锻造、特殊装备强化额外效果计算
+            if part == '武器':
+                # 锻造独立计算
+                value = 锻造计算(115, '史诗', cur.refine)
+                self.SetStatus(AtkI = value)
+                # 传世武器强化系数取所有武器的最高的1.12
+                if cur.equInfo.categorize == '传世武器':
+                    value = 武器强化计算(115, '史诗', cur.reinforce,cur.equInfo.itemDetailType,'物理',1.12)
+                    self.SetStatus(AtkP=value, AtkM=value)
+                else:
+                    # 强化计算
+                    value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理')
+                    self.SetStatus(AtkP=value)
+                    value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '魔法')
+                    self.SetStatus(AtkM=value)
+                pass
+            if part == '耳环':
+                value = 耳环计算(115, '史诗', cur.reinforce)
+                self.SetStatus(AtkM=value, AtkP=value,AtkI=value)
+                pass
+            if part in ['辅助装备', '魔法石']:
+                value = 左右计算(115, '史诗', cur.reinforce)
+                self.SetStatus(STR=value, INT=value, Spirit=value, Vitality=value)
+                pass
         pass
 
     def calc_jade(self):
@@ -524,9 +546,9 @@ class Character:
 
         # 技能计算
         skill = self.GetSkillByName('G-35L感电手雷')
-        print(skill.getSkillDate(skill.lv),skill.skillDamage,skill.skillRation)
-        # 
-        return 
+        print(skill.getSkillDate(skill.lv), skill.skillDamage, skill.skillRation)
+        #
+        return
         # 技能影响角色的属性，如属强、抗性等
         for skill in self.skills:
             skill.effect(self)
