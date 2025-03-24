@@ -204,9 +204,15 @@ class Character:
         self,
         力量=0,
         智力=0,
+        力智=0,
+        体力=0,
+        精神=0,
+        体精=0,
+        四维=0,
         物攻=0,
         魔攻=0,
         独立=0,
+        三攻=0,
         技攻=0,
         全属强=0,
         火强=0,
@@ -274,11 +280,13 @@ class Character:
         for key in kwargs:
             if key not in allowed_kwargs:
                 raise ValueError(f'Invalid keyword argument: {key}')
-        self.STR += 力量 + kwargs.get('STR', 0)
-        self.INT += 智力 + kwargs.get('INT', 0)
-        self.AtkP += 物攻 + kwargs.get('AtkP', 0)
-        self.AtkM += 魔攻 + kwargs.get('AtkM', 0)
-        self.AtkI += 独立 + kwargs.get('AtkI', 0)
+        self.STR += 力量 + kwargs.get('STR', 0) + 四维 + 力智
+        self.INT += 智力 + kwargs.get('INT', 0) + 四维 + 力智
+        self.Spirit += 精神 + kwargs.get('Spirit', 0) + 四维 + 体精
+        self.Vitality += 体力 + kwargs.get('Vitality', 0) + 四维 + 体精
+        self.AtkP += 物攻 + kwargs.get('AtkP', 0) + 三攻
+        self.AtkM += 魔攻 + kwargs.get('AtkM', 0) + 三攻
+        self.AtkI += 独立 + kwargs.get('AtkI', 0) + 三攻
         self.PAtkP *= kwargs.get('PAtkP', 0)
         self.PAtkM *= kwargs.get('PAtkM', 0)
         self.PAtkI *= kwargs.get('PAtkI', 0)
@@ -341,6 +349,12 @@ class Character:
         for key in info['equips']:
             # 导入部位打造信息、装备信息、贴膜信息
             self.charEquipInfo[key] = CharacterEquipInfo(info['equips'][key], self.equVersion, key)
+        """辟邪玉"""
+        self.jadeInfo = {}
+        for key in info['jades']:
+            self.jadeInfo[key] = info['jades'][key]
+        """时装"""
+        """杂项"""
 
     def getInfo(self):
         """返回到前端信息"""
