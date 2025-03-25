@@ -10,5 +10,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "hoci": "^0.6.0",
+    "query-string": "^9.1.1"
+  }
 }

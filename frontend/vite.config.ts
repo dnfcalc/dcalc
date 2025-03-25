@@ -8,6 +8,7 @@ import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import RekaResolver from 'reka-ui/resolver'
 import UnoCSS from 'unocss/vite'
+import uncomponents from "unplugin-vue-components/vite"
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -16,6 +17,12 @@ export default defineConfig({
     vueJsx(),
     // vueDevTools(),
     UnoCSS(),
+    uncomponents({
+      dts: true,
+      dirs: ["src/components/"],
+      allowOverrides: true,
+      directoryAsNamespace: true
+    }),
     Components({
       dts: 'src/types/components.d.ts',
       resolvers: [RekaResolver()],
