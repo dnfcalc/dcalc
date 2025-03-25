@@ -19,6 +19,10 @@ export default defineComponent({
     },
     icon: {
       type: String
+    },
+    type: {
+      type: String,
+      default: "primary"
     }
   },
   setup(props, { slots }) {

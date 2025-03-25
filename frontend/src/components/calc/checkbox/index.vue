@@ -1,7 +1,7 @@
 <script lang="tsx">
 import type { EmitsOptions, SetupContext } from "vue";
 import { computed, defineComponent, inject, nextTick, renderSlot } from "vue"
-import { selectionItemProps, switchEmits, switchProps, useSelectionItem, useSwitch } from "hoci"
+import { selectionProps, switchEmits, switchProps, useSelectionItem, useSwitch } from "hoci"
 import { CHECKBOX_GROUP } from "../shared"
 
 export default defineComponent({
@@ -9,7 +9,7 @@ export default defineComponent({
   components: {},
   props: {
     ...switchProps,
-    ...selectionItemProps,
+    ...selectionProps,
     label: {
       type: String
     },

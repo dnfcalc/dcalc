@@ -1,13 +1,13 @@
 <script lang="tsx">
 import { defineComponent, provide } from "vue"
-import { selectionListEmits, selectionListProps, useSelectionList } from "hoci"
+import { selectionEmits, selectionProps, useSelectionList } from "hoci"
 import { CHECKBOX_GROUP } from "../shared"
 
 export default defineComponent({
   name: "ICheckboxGroup",
   components: {},
   props: {
-    ...selectionListProps,
+    ...selectionProps,
     activeClass: {
       type: String,
       default: "checked"
@@ -21,7 +21,7 @@ export default defineComponent({
       default: true
     }
   },
-  emits: [...selectionListEmits],
+  emits: [...selectionEmits],
 
   setup(props, context) {
     provide(CHECKBOX_GROUP, true)

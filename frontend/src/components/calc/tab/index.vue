@@ -1,11 +1,11 @@
 <script lang="tsx">
 import { defineComponent, renderSlot } from "vue"
-import { HiItem, selectionItemProps } from "hoci"
+import { HiItem, selectionProps } from "hoci"
 
 export default defineComponent({
   name: "CalcTab",
   props: {
-    ...selectionItemProps
+    ...selectionProps
   },
   setup(props, { slots }) {
     return () => {

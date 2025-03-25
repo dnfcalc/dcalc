@@ -1,5 +1,5 @@
 <script lang="tsx">
-import { selectionListEmits, selectionListProps, useSelectionList } from "hoci"
+import { selectionEmits, selectionProps, useSelectionList } from "hoci"
 import type { CSSProperties, PropType, RendererElement } from "vue";
 import { Teleport, Transition, computed, defineComponent, onDeactivated, ref, renderSlot, watch } from "vue"
 
@@ -8,7 +8,7 @@ import { onClickOutside } from "@vueuse/core"
 export default defineComponent({
   name: "IIconselect",
   props: {
-    ...selectionListProps,
+    ...selectionProps,
     disabled: {
       type: Boolean,
       default: false
@@ -29,7 +29,7 @@ export default defineComponent({
       default: "body"
     }
   },
-  emits: selectionListEmits,
+  emits: selectionEmits,
   setup(props, context) {
     // props.itemClass = "i-select-dropdown-item"
     // const { active } = useSelectionList({ ...props, itemClass: "i-select-dropdown-item" }, context)

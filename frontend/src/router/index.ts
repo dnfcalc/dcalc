@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 const routes: RouteRecordRaw[] = [
-  {
-    path: '/:pathMatch(.*)',
-    redirect: '/',
-  },
+  // {
+  //   path: '/:pathMatch(.*)',
+  //   redirect: '/',
+  // },
   {
     path: '/',
     name: 'home',
@@ -11,9 +11,25 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path:'/character/:alter',
-    name:'character',
+    redirect: (to) => {
+      return { path: `/character/equipment/${to.params.alter}` }
+    },
     props: true,
+    name:'character',
     component: defineAsyncComponent(() => import('@/pages/Character/Index.vue')),
+    children: [
+      {
+        path: '/character/equipment/:alter',
+        name: 'equipment',
+        props: true,
+        component: defineAsyncComponent(() => import('@/pages/Character/Equipment/Index.vue')),
+      },{
+        path: '/character/skill/:alter',
+        name: 'skill',
+        props: true,
+        component: defineAsyncComponent(() => import('@/pages/Character/Skill/index.vue')),
+      }
+    ]
   }
 ]
 

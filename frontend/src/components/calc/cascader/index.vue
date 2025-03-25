@@ -1,5 +1,5 @@
 <script lang="tsx">
-import { selectionListEmits, selectionListProps } from "hoci"
+import { selectionEmits, selectionProps } from "hoci"
 import type { CSSProperties, PropType } from "vue";
 import { Teleport, Transition, computed, defineComponent, onDeactivated, ref, watch } from "vue"
 
@@ -15,7 +15,7 @@ interface ICascaderItem {
 export default defineComponent({
   name: "ICascader",
   props: {
-    ...selectionListProps,
+    ...selectionProps,
     disabled: {
       type: Boolean,
       default: false
@@ -37,7 +37,7 @@ export default defineComponent({
       default: () => []
     }
   },
-  emits: [...selectionListEmits, "select"],
+  emits: [...selectionEmits, "select"],
   setup(props, { emit }) {
     const modelValue = useVModel(props, "modelValue")
 

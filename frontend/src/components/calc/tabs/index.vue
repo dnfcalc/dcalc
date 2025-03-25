@@ -1,5 +1,5 @@
 <script lang="tsx">
-import { HiSelection, selectionListProps } from "hoci"
+import { HiSelection, selectionProps } from "hoci"
 import type { PropType } from "vue";
 import { computed, defineComponent, renderSlot } from "vue"
 import type { LocationQuery } from "vue-router";
@@ -9,7 +9,7 @@ import type { BaseType } from "@/components/hooks/types"
 export default defineComponent({
   name: "CalcTabs",
   props: {
-    ...selectionListProps,
+    ...selectionProps,
     vertical: {
       type: Boolean
     },

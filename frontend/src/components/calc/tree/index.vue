@@ -1,5 +1,5 @@
 <script lang="tsx">
-import { HiSelection, selectionListProps } from "hoci"
+import { HiSelection, selectionProps } from "hoci"
 import { useVModel } from "@vueuse/core"
 import type { PropType } from "vue";
 import { computed, defineComponent, renderList, watch } from "vue"
@@ -10,7 +10,7 @@ import { labelPropType, valuePropType } from "@/components/hooks/types"
 const Tree = defineComponent({
   name: "CalcTree",
   props: {
-    ...selectionListProps,
+    ...selectionProps,
     modelValue: {
       type: valuePropType,
       default: () => null

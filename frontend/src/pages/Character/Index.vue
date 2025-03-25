@@ -1,27 +1,19 @@
 <template>
   <div class="w-100% h-100% main" :class="props.alter.split('.').slice(-1)">
-    <div class="header"></div>
+    <div class="header">
+      <calc-tabs route>
+      <calc-tab :value="`/character/equipment/${props.alter}`">装备设置</calc-tab>
+      <calc-tab :value="`/character/skill/${props.alter}`">技能设置</calc-tab>
+    </calc-tabs>
+    </div>
     <div class="content flex">
-      <div class="flex flex-col gap-20px mx-10px">
-        <Weapon></Weapon>
-        <Suit></Suit>
-        <Universal></Universal>
-      </div>
-
-      <div class="h-90vh w-auto overflow-y-auto overflow-x-hidden">
-        <SkillTree :skills="infoStore.skills" :lvInfo="configStore.config?.skills"></SkillTree>
-      </div>
+      <RouterView></RouterView>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup name="Index">
 import { useInfoStore } from '@/stores/info'
-import { getImageURL } from '@/utils/images'
-import SkillTree from './Skill/SkillTree/index'
-import Suit from './Equipment/Suit.vue'
-import Weapon from './Equipment/Weapon.vue'
-import Universal from './Equipment/Universal.vue'
 import { useConfigStore } from '@/stores'
 const props = defineProps<{
   alter: string

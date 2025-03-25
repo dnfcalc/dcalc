@@ -1,5 +1,5 @@
 <script lang="tsx">
-import { selectionListEmits, selectionListProps, useSelectionList } from "hoci"
+import { selectionEmits, selectionProps, useSelectionList } from "hoci"
 import type { CSSProperties, PropType, RendererElement } from "vue";
 import { Teleport, Transition, computed, defineComponent, onDeactivated, ref, renderList, renderSlot, watch } from "vue"
 
@@ -9,7 +9,7 @@ import { classPropType, labelPropType } from "@/components/hooks/types"
 export default defineComponent({
   name: "ISelect",
   props: {
-    ...selectionListProps,
+    ...selectionProps,
     disabled: {
       type: Boolean,
       default: false
@@ -41,7 +41,7 @@ export default defineComponent({
       }
     }
   },
-  emits: [...selectionListEmits],
+  emits: [...selectionEmits],
   setup(props, context) {
     const modelValue = useVModel(props, "modelValue", context.emit, { passive: true })
 
