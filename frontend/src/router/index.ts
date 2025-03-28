@@ -7,7 +7,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
-    component: defineAsyncComponent(() => import('@/pages/Home/Index.vue')),
+    component: (() => import('@/pages/Home/Index.vue')),
   },
   {
     path:'/character/:alter',
@@ -16,18 +16,23 @@ const routes: RouteRecordRaw[] = [
     },
     props: true,
     name:'character',
-    component: defineAsyncComponent(() => import('@/pages/Character/Index.vue')),
+    component: (() => import('@/pages/Character/Index.vue')),
     children: [
       {
         path: '/character/equipment/:alter',
         name: 'equipment',
         props: true,
-        component: defineAsyncComponent(() => import('@/pages/Character/Equipment/Index.vue')),
+        component: (() => import('@/pages/Character/Equipment/Index.vue')),
       },{
         path: '/character/skill/:alter',
         name: 'skill',
         props: true,
-        component: defineAsyncComponent(() => import('@/pages/Character/Skill/index.vue')),
+        component: (() => import('@/pages/Character/Skill/index.vue')),
+      },{
+        path: '/character/forge/:alter',
+        name: 'forge',
+        props: true,
+        component: (() => import('@/pages/Character/Forge/index.vue')),
       }
     ]
   }

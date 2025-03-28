@@ -123,6 +123,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+  @use 'sass:color';
   $text-color: #e9c556;
   .i-icon-select {
     width: 28px;
@@ -173,7 +174,7 @@ export default defineComponent({
     min-height: 28px;
 
     $hoverColor: #002947;
-    $activeColor: lighten($hoverColor, 5%);
+    $activeColor: color.scale($hoverColor, $lightness: 5%);
     color: $text-color;
 
     .i-option {

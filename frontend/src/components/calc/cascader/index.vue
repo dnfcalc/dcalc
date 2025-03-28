@@ -156,6 +156,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+@use 'sass:color';
 $text-color: #937639;
   .i-cascader {
     min-width: 80px;
@@ -241,7 +242,7 @@ $text-color: #937639;
     z-index: 888;
 
     $hoverColor: #002947;
-    $activeColor: lighten($hoverColor, 5%);
+    $activeColor: color.scale($hoverColor, $lightness: 5%);
     color: $text-color;
   }
 

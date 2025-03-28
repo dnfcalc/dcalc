@@ -2,6 +2,7 @@ import { getImageURL } from '@/utils/images'
 import type { ISkill } from '@/api/info/type'
 import { useVModel } from '@vueuse/core'
 import './style.scss'
+import CalcButton from '@/components/calc/button/index.vue'
 
 export default defineComponent({
   name: 'SkillTree',
@@ -106,10 +107,10 @@ export default defineComponent({
           <div class="absolute">
             <div class="w-36px h-55px bg-gradient-linear bg-gradient-[180deg,#f8e26c_0%,#f87c43_94.34%] z-1"></div>
             <div class="flex bottom--5px relative z-2 transform -translate-x-1/4">
-              <button onClick={(e) => actionSkillLv(skill, 'subMax')}>&lt;</button>
-              <button onClick={(e) => actionSkillLv(skill, 'sub')}>-</button>
-              <button onClick={(e) => actionSkillLv(skill, 'add')}>+</button>
-              <button onClick={(e) => actionSkillLv(skill, 'addMax')}>&gt;</button>
+              <CalcButton onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'subMax')}}>&lt;</CalcButton>
+              <CalcButton onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'sub')}}>-</CalcButton>
+              <CalcButton icon="plus" onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'add')}}></CalcButton>
+              <CalcButton icon="next" onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'addMax')}}></CalcButton>
             </div>
           </div>
         </>

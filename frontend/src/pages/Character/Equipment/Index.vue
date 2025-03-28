@@ -16,14 +16,5 @@ import { useConfigStore } from '@/stores'
 const props = defineProps<{
   alter: string
 }>()
-const infoStore = useInfoStore()
-const configStore = useConfigStore()
 
-onMounted(async () => {
-  await infoStore.createCharacter(props.alter, '0')
-  configStore.loadConfig()
-  window.addEventListener('beforeunload', () => {
-    configStore.saveConfig()
-  })
-})
 </script>

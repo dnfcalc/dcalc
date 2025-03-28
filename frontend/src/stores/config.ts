@@ -45,6 +45,7 @@ export const useConfigStore = defineStore('configStore', () => {
     equips: {}
   })
 
+
   const loadConfig = () => {
     const infoStore = useInfoStore()
     const alter = infoStore.infos?.alter
@@ -62,7 +63,7 @@ export const useConfigStore = defineStore('configStore', () => {
     if(!config.value?.equips) config.value.equips = {}
     if(!config.value?.skills) config.value.skills = {}
 
-    const part = ['上衣', '头肩', '下装', '腰带', '鞋', '手镯', '项链', '戒指', '耳环', '辅助装备', '魔法石', '武器'].filter(a => !config.value?.equips.hasOwnProperty(a))
+    const part = infoStore.parts.filter(a => !config.value?.equips.hasOwnProperty(a))
 
     const skillIDs = infoStore.skills.map(skill => skill.id.toString()).filter(a => !config.value?.skills.hasOwnProperty(a))
 

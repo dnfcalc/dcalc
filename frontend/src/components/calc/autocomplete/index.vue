@@ -170,7 +170,7 @@ export default defineComponent({
     z-index: 888;
 
     $hoverColor: #002947;
-    $activeColor: lighten($hoverColor, 5%);
+    $activeColor: color.scale($hoverColor, $lightness: 5%);
     color: $text-color;
 
     .i-autocomplete-dropdown-item {

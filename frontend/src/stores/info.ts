@@ -13,6 +13,12 @@ export const useInfoStore = defineStore("infoStore", ()=>{
 
   const suits = computed(()=>infos.value?.suits ?? [])
 
+  const enchantings = computed(()=>infos.value?.enchantings?? [])
+
+  const emblems = computed(()=>infos.value?.emblems?? [])
+
+  const parts = ['上衣', '头肩', '下装', '腰带', '鞋', '手镯', '项链', '戒指', '耳环', '辅助装备', '魔法石', '武器']
+
   const createCharacter = async (alter: string, equVersion?: string) => {
     const time = new Date().getTime()
     alter_token.value = btoa(JSON.stringify({alter, equVersion, time}))
@@ -26,5 +32,8 @@ export const useInfoStore = defineStore("infoStore", ()=>{
     equips,
     suits,
     createCharacter,
+    enchantings,
+    emblems,
+    parts
   }
 })

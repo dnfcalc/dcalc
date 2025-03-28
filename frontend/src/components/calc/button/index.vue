@@ -25,6 +25,7 @@ export default defineComponent({
       default: "primary"
     }
   },
+  emits: ["click"],
   setup(props, { slots }) {
     return () => {
       const proerpties = {

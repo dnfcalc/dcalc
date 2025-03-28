@@ -170,6 +170,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+  @use "sass:color";
   $text-color: #937639;
   .i-select {
     min-width: 80px;
@@ -244,7 +245,7 @@ export default defineComponent({
     z-index: 888;
 
     $hoverColor: #002947;
-    $activeColor: lighten($hoverColor, 5%);
+    $activeColor: color.scale($hoverColor, $lightness: 5%);
     color: $text-color;
 
     .i-select-dropdown-item {
