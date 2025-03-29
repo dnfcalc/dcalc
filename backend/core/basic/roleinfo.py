@@ -13,8 +13,10 @@ class CharacterEquipInfo:
     """强化类型"""
     enchant: str
     """附魔"""
-    emblems: list[str]
-    """徽章"""
+    emblem_0: str
+    """徽章1"""
+    emblem_1: str
+    """徽章2"""
     fusion: int | None
     """贴膜ID"""
     refine: int | None

@@ -1,8 +1,14 @@
 <template>
-    <div class="flex flex-col gap-20px mx-10px">
-      <Weapon></Weapon>
-      <Suit></Suit>
-      <Universal></Universal>
+    <div class="flex flex-col mx-10px">
+      <calc-collapse title="武器">
+        <Weapon></Weapon>
+      </calc-collapse>
+      <calc-collapse title="套装">
+        <Suit></Suit>
+      </calc-collapse>
+      <calc-collapse title="通宝">
+        <Universal></Universal>
+      </calc-collapse>
     </div>
 </template>
 

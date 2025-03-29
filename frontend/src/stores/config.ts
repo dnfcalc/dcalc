@@ -15,16 +15,19 @@ import api from '@/api'
 // | '武器',
 export interface IConfig {
   skills: Record<string, { lv: number }>
-  equips: Record<string,
-    { id: string,
-      reinforce: number,
-      reinforceType: number,
-      enchat: number,
-      emblems: string[],
-      upgrade: number,
-      refine: number,
-      adaptation:number
-     }
+  equips: Record<
+    string,
+    {
+      id: string
+      reinforce: number
+      reinforceType: number
+      enchat: number
+      emblem_0: string
+      emblem_1: string
+      upgrade: number
+      refine: number
+      adaptation: number
+    }
   >
 }
 
@@ -33,18 +36,18 @@ const defaultEqusConfig = {
   reinforce: 0,
   reinforceType: 0,
   enchat: 0,
-  emblems: [],
+  emblem_0: "0",
+  emblem_1: "0",
   upgrade: 0,
   refine: 0,
-  adaptation: 0
+  adaptation: 0,
 }
 
 export const useConfigStore = defineStore('configStore', () => {
   const config = ref<IConfig>({
     skills: {},
-    equips: {}
+    equips: {},
   })
-
 
   const loadConfig = () => {
     const infoStore = useInfoStore()
@@ -56,24 +59,30 @@ export const useConfigStore = defineStore('configStore', () => {
         config.value = JSON.parse(localConfig)
       }
     }
-    if(!config.value) config.value = {
-      skills: {},
-      equips: {}
-    }
-    if(!config.value?.equips) config.value.equips = {}
-    if(!config.value?.skills) config.value.skills = {}
+    if (!config.value)
+      config.value = {
+        skills: {},
+        equips: {},
+      }
+    if (!config.value?.equips) config.value.equips = {}
+    if (!config.value?.skills) config.value.skills = {}
 
-    const part = infoStore.parts.filter(a => !config.value?.equips.hasOwnProperty(a))
+    const part = infoStore.parts.filter((a) => !config.value?.equips.hasOwnProperty(a))
 
-    const skillIDs = infoStore.skills.map(skill => skill.id.toString()).filter(a => !config.value?.skills.hasOwnProperty(a))
+    const skillIDs = infoStore.skills
+      .map((skill) => skill.id.toString())
+      .filter((a) => !config.value?.skills.hasOwnProperty(a))
 
-    part.forEach(p => {
+    part.forEach((p) => {
       config.value && (config.value.equips[p] = { ...defaultEqusConfig })
-    });
+    })
 
-    skillIDs.forEach(id => {
-      config.value && (config.value.skills[id] = { lv: infoStore.skills.find(skill => skill.id.toString() === id)?.maxLearnLv ?? 0 })
-    });
+    skillIDs.forEach((id) => {
+      config.value &&
+        (config.value.skills[id] = {
+          lv: infoStore.skills.find((skill) => skill.id.toString() === id)?.maxLearnLv ?? 0,
+        })
+    })
   }
 
   const saveConfig = () => {
@@ -84,7 +93,7 @@ export const useConfigStore = defineStore('configStore', () => {
     }
   }
 
-  const calc = async()=>{
+  const calc = async () => {
     await api.calc(config.value)
   }
 
@@ -92,6 +101,6 @@ export const useConfigStore = defineStore('configStore', () => {
     config,
     loadConfig,
     saveConfig,
-    calc
+    calc,
   }
 })

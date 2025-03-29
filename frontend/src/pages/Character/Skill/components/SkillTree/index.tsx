@@ -107,10 +107,10 @@ export default defineComponent({
           <div class="absolute">
             <div class="w-36px h-55px bg-gradient-linear bg-gradient-[180deg,#f8e26c_0%,#f87c43_94.34%] z-1"></div>
             <div class="flex bottom--5px relative z-2 transform -translate-x-1/4">
-              <CalcButton onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'subMax')}}>&lt;</CalcButton>
-              <CalcButton onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'sub')}}>-</CalcButton>
-              <CalcButton icon="plus" onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'add')}}></CalcButton>
-              <CalcButton icon="next" onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'addMax')}}></CalcButton>
+              <div onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'subMax')}}>&lt;</div>
+              <div onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'sub')}}>-</div>
+              <div onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'add')}}>+</div>
+              <div onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'addMax')}}>&gt;</div>
             </div>
           </div>
         </>

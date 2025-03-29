@@ -25,7 +25,6 @@ const configStore = useConfigStore()
 onMounted(async () => {
   await infoStore.createCharacter(props.alter, '0')
   configStore.loadConfig()
-  console.log("~~~~~~~~")
   window.addEventListener('beforeunload', () => {
     configStore.saveConfig()
   })

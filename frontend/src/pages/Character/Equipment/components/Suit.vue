@@ -13,6 +13,7 @@
             :alt="suit.name"
             :style="{ filter: curSuit === suit.value ? '' : 'grayscale(100%)' }"
             @click="curSuit = suit.value"
+            @dblclick="handleDoubleClick"
           />
         </div>
       </template>
@@ -22,7 +23,13 @@
 
     <div class="flex flex-wrap gap-4px content-start" :style="{width: `${rowCount * 32}px`}">
     <template v-for="(equip,_) in suitEquipments" :key="_">
-      <EquipmentIcon :equipment="equip" :inactive="configStore.config.equips[equip?.itemDetailType ?? '']?.id != equip?.id" @click="chooseEqu(equip)"/>
+      <template v-if="equip?.rarity == curRarity || !curRarity">
+        <EquipmentIcon :equipment="equip" :inactive="configStore.config.equips[equip?.itemDetailType ?? '']?.id != equip?.id" @click="chooseEqu(equip)"/>
+      </template>
+
+      <template v-else>
+        <EquipmentIcon/>
+      </template>
     </template>
   </div>
   </div>
@@ -57,7 +64,7 @@ const suits = computed(() => {
 })
 
 const suitEquipments = computed(() => {
-  const equs =  infoStore.equips.filter((a) => a.suit.includes(curSuit.value.toString()) && a.suit.length === 1)
+  const equs =  infoStore.equips.filter((a) => a.suit.includes(curSuit.value.toString()) && a.suit.length === 1 )
 
   const res: (IEquipment | undefined)[] = []
   const raritiyList = ['神器','传说','史诗']
@@ -80,7 +87,15 @@ const chooseEqu = async(equip: IEquipment | undefined) => {
   if (equip && configStore.config.equips[equip.itemDetailType]) {
     configStore.config.equips[equip.itemDetailType].id = equip.id
   }
-  await configStore.calc()
+  // await configStore.calc()
+}
+
+const handleDoubleClick = () => {
+  if(!curRarity.value) return
+  if(curRarity.value == '太初') return
+  suitEquipments.value.filter(a=>!!a && a.rarity == curRarity.value).splice(0,11).forEach((a) => {
+    chooseEqu(a)
+  })
 }
 
 </script>
