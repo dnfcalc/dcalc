@@ -1,8 +1,7 @@
-import { getImageURL } from '@/utils/images'
+import { getImageURL, getLocalImageURL } from '@/utils/images'
 import type { ISkill } from '@/api/info/type'
 import { useVModel } from '@vueuse/core'
 import './style.scss'
-import CalcButton from '@/components/calc/button/index.vue'
 
 export default defineComponent({
   name: 'SkillTree',
@@ -106,11 +105,37 @@ export default defineComponent({
         <>
           <div class="absolute">
             <div class="w-36px h-55px bg-gradient-linear bg-gradient-[180deg,#f8e26c_0%,#f87c43_94.34%] z-1"></div>
-            <div class="flex bottom--5px relative z-2 transform -translate-x-1/4">
-              <div onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'subMax')}}>&lt;</div>
-              <div onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'sub')}}>-</div>
-              <div onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'add')}}>+</div>
-              <div onClick={(e:Event) => {e.stopPropagation();actionSkillLv(skill, 'addMax')}}>&gt;</div>
+            <div class="bottom--5px relative z-5 transform -translate-x-1/4 border-1px border-solid border-black left--2">
+              <div class="flex  gap-1  bg-gradient-linear bg-gradient-[180deg,#351d14_0%,#070507_100%] p-1 border-solid border-#9A6329 border-1px">
+                <img
+                  src={`${new URL('./img/min.svg', import.meta.url).href}`}
+                  onClick={(e: Event) => {
+                    e.stopPropagation()
+                    actionSkillLv(skill, 'subMax')
+                  }}
+                ></img>
+                <img
+                  src={`${new URL('./img/sub.svg', import.meta.url).href}`}
+                  onClick={(e: Event) => {
+                    e.stopPropagation()
+                    actionSkillLv(skill, 'sub')
+                  }}
+                ></img>
+                <img
+                  src={`${new URL('./img/add.svg', import.meta.url).href}`}
+                  onClick={(e: Event) => {
+                    e.stopPropagation()
+                    actionSkillLv(skill, 'add')
+                  }}
+                ></img>
+                <img
+                  src={`${new URL('./img/max.svg', import.meta.url).href}`}
+                  onClick={(e: Event) => {
+                    e.stopPropagation()
+                    actionSkillLv(skill, 'addMax')
+                  }}
+                ></img>
+              </div>
             </div>
           </div>
         </>

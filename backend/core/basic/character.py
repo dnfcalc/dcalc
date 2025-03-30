@@ -134,6 +134,8 @@ class Character:
         # self.equs = get_equ(self.equVersion)
         self.STR = 0
         self.INT = 0
+        self.Spirit = 0
+        self.Vitality = 0
         self.AtkP = 0
         self.AtkM = 0
         self.AtkI = 0
@@ -287,9 +289,9 @@ class Character:
         self.AtkP += 物攻 + kwargs.get('AtkP', 0) + 三攻
         self.AtkM += 魔攻 + kwargs.get('AtkM', 0) + 三攻
         self.AtkI += 独立 + kwargs.get('AtkI', 0) + 三攻
-        self.PAtkP *= kwargs.get('PAtkP', 0)
-        self.PAtkM *= kwargs.get('PAtkM', 0)
-        self.PAtkI *= kwargs.get('PAtkI', 0)
+        self.PAtkP *= kwargs.get('PAtkP', 1.0)
+        self.PAtkM *= kwargs.get('PAtkM', 1.0)
+        self.PAtkI *= kwargs.get('PAtkI', 1.0)
         for elem in ['火', '冰', '光', '暗']:
             self.ElementA[elem] = kwargs.get(f'{elem}属性攻击', False) or kwargs.get('ElementA', {}).get(elem, False) or self.ElementA[elem]
             self.ElementDB[elem] += kwargs.get(f'{elem}强', 0) + kwargs.get('ElementDB', {}).get(elem, 0) + kwargs.get('全属强', 0)
@@ -351,7 +353,7 @@ class Character:
             self.charEquipInfo[key] = CharacterEquipInfo(info['equips'][key], self.equVersion, key)
         """辟邪玉"""
         self.jadeInfo = {}
-        for key in info['jades']:
+        for key in info.get('jades', {}):
             self.jadeInfo[key] = info['jades'][key]
         """时装"""
         """杂项"""
@@ -562,48 +564,24 @@ class Character:
         skill = self.GetSkillByName('G-35L感电手雷')
         print(skill.getSkillDate(skill.lv), skill.skillDamage, skill.skillRation)
         #
+
+        self.calc_damage_ration()
         return
         # 技能影响角色的属性，如属强、抗性等
-        for skill in self.skills:
-            skill.effect(self)
-        for i in self.charEquipInfo:
-            # region 装备效果
-            fun = self.equs.get_func_by_id(f'equ_{self.charEquipInfo[i].id}')
-            equ = self.equs.get_equ_by_id(self.charEquipInfo[i].id)
-            if equ is None:
-                continue
-            self.SetStatus(**equ.__dict__)
-            funcs.append(fun + (equ,))
-            # 护甲精通计算
-            if equ.typeSon2Id == self.防具类型:
-                self.SetStatus(**精通计算(equ.lv, equ.rarity, equ.typeSon1Id, equ.typeSon2Id, self.输出类型, self.buffer))
-            # 套装效果
-            suits += (equ.suit or '').split(',')
-            # endregion
-            # region 附魔效果
-            fun = self.equs.get_func_by_id(f'prop_{self.charEquipInfo[i].enchant}')
-            funcs.append(fun + (equ,))
-            # endregion
-            # region 徽章效果
-            for emblem in self.charEquipInfo[i].emblems:
-                fun = self.equs.get_func_by_id(f'prop_{emblem}')
-                funcs.append(fun + (equ,))
-            # endregion
-            # region 魔法封印效果
-            for seal in self.charEquipInfo[i].seals:
-                fun = self.equs.get_func_by_id(f'seal_{seal}')
-                funcs.append(fun + (equ,))
-            # endregion
-        funcs.sort(key=lambda x: x[2])
-        for func in funcs:
-            # 站街
-            func[1](self, func[3], 0)
-            # 进图
-            func[1](self, func[3], 1)
-        return {
-            'basicInfo': self.getBasicInos(),
-            'skillInfo': [],
-        }
+
+    def calc_damage_ration(self):
+        """计算最终属性"""
+        # 计算最终属性
+        print(self.AtkI, self.PAtkI)
+        # 角色基础属性
+        # 角色装备属性
+        # 角色技能属性
+        # 角色增益属性
+        # 角色套装属性
+        # 角色徽章属性
+        # 角色附魔属性
+        # 角色辟邪玉属性
+        pass
 
     # endregion
 

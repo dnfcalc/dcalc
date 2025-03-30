@@ -29,6 +29,7 @@ export interface IConfig {
       adaptation: number
     }
   >
+  jades: Record<string, number>
 }
 
 const defaultEqusConfig = {
@@ -47,6 +48,7 @@ export const useConfigStore = defineStore('configStore', () => {
   const config = ref<IConfig>({
     skills: {},
     equips: {},
+    jades: {},
   })
 
   const loadConfig = () => {
@@ -63,9 +65,11 @@ export const useConfigStore = defineStore('configStore', () => {
       config.value = {
         skills: {},
         equips: {},
+        jades: {},
       }
     if (!config.value?.equips) config.value.equips = {}
     if (!config.value?.skills) config.value.skills = {}
+    if (!config.value?.jades) config.value.jades = {}
 
     const part = infoStore.parts.filter((a) => !config.value?.equips.hasOwnProperty(a))
 
@@ -94,7 +98,8 @@ export const useConfigStore = defineStore('configStore', () => {
   }
 
   const calc = async () => {
-    await api.calc(config.value)
+    if(!useInfoStore().infos?.alter) return undefined
+    return await api.calc(config.value)
   }
 
   return {

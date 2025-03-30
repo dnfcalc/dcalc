@@ -2,10 +2,10 @@
   <div class="w-100% h-100% main" :class="props.alter.split('.').slice(-1)">
     <div class="header">
       <calc-tabs route>
-      <calc-tab :value="`/character/equipment/${props.alter}`">装备设置</calc-tab>
-      <calc-tab :value="`/character/skill/${props.alter}`">技能设置</calc-tab>
-      <calc-tab :value="`/character/forge/${props.alter}`">打造设置</calc-tab>
-    </calc-tabs>
+        <calc-tab :value="`/character/equipment/${props.alter}`">装备设置</calc-tab>
+        <calc-tab :value="`/character/skill/${props.alter}`">技能设置</calc-tab>
+        <calc-tab :value="`/character/forge/${props.alter}`">打造设置</calc-tab>
+      </calc-tabs>
     </div>
     <div class="content flex">
       <RouterView></RouterView>
@@ -22,10 +22,34 @@ const props = defineProps<{
 const infoStore = useInfoStore()
 const configStore = useConfigStore()
 
+const result = useAsyncState(
+  () => {
+    return configStore.calc()
+  },
+  {},
+  { resetOnExecute: false },
+)
+
+const stopWatch = watch<any>(
+  () => {
+    return JSON.stringify(configStore.config)
+  },
+  useDebounceFn(async () => {
+    await result.execute()
+  }, 800),
+)
+
 onMounted(async () => {
   await infoStore.createCharacter(props.alter, '0')
   configStore.loadConfig()
   window.addEventListener('beforeunload', () => {
+    configStore.saveConfig()
+  })
+})
+
+onUnmounted(() => {
+  stopWatch()
+  window.removeEventListener('beforeunload', () => {
     configStore.saveConfig()
   })
 })

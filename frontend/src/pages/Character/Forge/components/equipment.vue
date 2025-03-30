@@ -2,6 +2,7 @@
 import { computed, defineComponent, ref, renderList } from 'vue'
 import type { IEnchantingInfo } from '@/api/info/type'
 import { useInfoStore, useConfigStore } from '@/stores'
+import EquList from '@/components/dnf/Equipment/List/index.vue'
 export default defineComponent({
   name: 'Equip',
   props: {
@@ -117,6 +118,9 @@ export default defineComponent({
     // 锻造数值
     const dz_number = currentInfo<string | number>('dz_number')
 
+    // 调适
+    const adaptation = currentInfo<string | number>('adaptation')
+
     /**
      * 同步徽章1到徽章2
      * @param val
@@ -129,6 +133,8 @@ export default defineComponent({
 
     return () => {
       return (
+        <>
+        <EquList/>
         <div class="flex flex-wrap equ-profile">
           <div class="equ-profile-item">
             <div class="mr-10px row-name">当前部位</div>
@@ -147,8 +153,8 @@ export default defineComponent({
             <div class="equ-profile-item">
               <div class="row-name">增幅</div>
               <calc-select v-model={reinforce_type.value} class="flex-1 !h-20px">
-                <calc-option value={1}>增幅</calc-option>
-                <calc-option value={2}>强化</calc-option>
+                <calc-option value={0}>增幅</calc-option>
+                <calc-option value={1}>强化</calc-option>
               </calc-select>
               <calc-select v-model={reinforce.value} class="flex-1 !h-20px">
                 {renderList(32, (i) => (
@@ -204,7 +210,22 @@ export default defineComponent({
           ) : (
             <div></div>
           )}
+
+          {can_upgrade.value ? (
+            <div class="equ-profile-item">
+              <div class="row-name">调适</div>
+              <calc-select v-model={adaptation.value} class="flex-1 !h-20px">
+                {renderList(4, (i) => (
+                  <calc-option value={i - 1}>{i - 1}</calc-option>
+                ))}
+              </calc-select>
+
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
+        </>
       )
     }
   },
