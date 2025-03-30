@@ -56,8 +56,9 @@ class Skill:
     *skillRation 乘算技能面板倍率
     *cdReduce 乘算技能冷却缩减
     $*PATK 乘算角色物理攻击
-    ~直接走type对应的函数名称 传参为old,new,data,skills
+    ~直接走type对应的函数名称 传参为old,new,data,skills,exceptSkills
     skills: 关联技能 默认 '*'
+    exceptSkills: 例外技能 默认[]
     """
 
     def __init__(self, char):
@@ -99,18 +100,20 @@ class Skill:
             type = assoc.get('type', '*skillRation')
             skills = assoc.get('skills', '*')
             data = assoc.get('data', [0] * self.maxLv)
+            exceptSkills = assoc.get('exceptSkills', [])
             if type[0] not in ['*', '+', '$']:
                 if self.precondition():
-                    getattr(self, type)(old, new, data, skills)
+                    getattr(self, type)(old, new, data, skills,exceptSkills)
                 continue
             if self.precondition():
-                self._apply_association(type, old, new, data, skills)
+                self._apply_association(type, old, new, data, skills,exceptSkills)
 
     def precondition(self):
         """effect的前置条件"""
         return True
 
-    def _apply_association(self, type, old, new, data, skills):
+    def _apply_association(self, type, old, new, data, skills, exceptSkills
+                           ):
         if type.startswith('$*'):
             value = (1 + data[new] / 100) / (1 + data[old] / 100)
             eval(f'self.char.SetStatus({type[2:]}={value})')
@@ -121,6 +124,8 @@ class Skill:
             if skills == '*':
                 skills = self.char.GetSkillNames('all', True)
             for name in skills:
+                if name in exceptSkills:
+                    continue
                 skill = self.char.GetSkillByName(name)
                 if skill is not None:
                     self._update_skill_attribute(skill,type, old, new, data)

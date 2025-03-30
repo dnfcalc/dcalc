@@ -404,7 +404,7 @@ def suit_32(char: Character):
     """
     char.equ_effect.append(EquEffect(name='火灵安珀', icon='', cd=2, data=19200))
     char.equ_effect.append(EquEffect(name='水灵阿库娅', icon='', cd=3, data=24000))
-    char.equ_effect.append(EquEffect(name='元素释放', icon='', cd=15, data=80400))
+    char.equ_effect.append(EquEffect(name='元素释放', icon='/equipment/skill/29.png', cd=15, data=80400))
     pass
 
 
@@ -524,7 +524,7 @@ def suit_37(char: Character):
     char.equ_effect.append(EquEffect(name='水灵阿库娅', icon='', cd=3, data=24000))
     char.equ_effect.append(EquEffect(name='风灵希尔珂', icon='', cd=2, data=19200))
     char.SetStatus(SpeedM=0.15)
-    char.equ_effect.append(EquEffect(name='元素释放', icon='', cd=15, data=118200))
+    char.equ_effect.append(EquEffect(name='元素释放', icon='/equipment/skill/29.png', cd=15, data=118200))
     pass
 
 
@@ -608,7 +608,6 @@ def suit_40(char: Character):
     一被击时，精灵之魂- 5（冷却时间1秒）
     - 元素释放伤害量:118,200%
     """
-    print("~~~~~~")
     suit_37(char)
     pass
 
@@ -671,7 +670,7 @@ def suit_42(char: Character):
     char.equ_effect.append(EquEffect(name='水灵阿库娅', icon='', cd=3, data=24000))
     char.equ_effect.append(EquEffect(name='风灵希尔珂', icon='', cd=2, data=19200))
     char.SetStatus(SpeedM=0.15)
-    char.equ_effect.append(EquEffect(name='元素释放', icon='', cd=10, data=181920))
+    char.equ_effect.append(EquEffect(name='元素释放', icon='/equipment/skill/29.png', cd=10, data=181920))
     char.equ_effect.append(EquEffect(name='精灵女王提泰妮娅', icon='', cd=5, data=47520))
     pass
 

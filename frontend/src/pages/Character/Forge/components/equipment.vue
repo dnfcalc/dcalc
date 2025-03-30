@@ -157,7 +157,7 @@ export default defineComponent({
                 <calc-option value={1}>强化</calc-option>
               </calc-select>
               <calc-select v-model={reinforce.value} class="flex-1 !h-20px">
-                {renderList(32, (i) => (
+                {renderList(31, (i) => (
                   <calc-option value={i - 1}>{i - 1}</calc-option>
                 ))}
               </calc-select>

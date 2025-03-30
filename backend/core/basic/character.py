@@ -13,6 +13,18 @@ from .formula import 增幅计算, 强化技攻, 武器强化计算, 精通计�
 from .roleinfo import CharacterEquipInfo, get_key_by_value
 # from .property import 精通计算, 角色基础, CharacterInfo
 
+class Jade:
+    ElementIncrease:float
+    '''属性增幅'''
+    AttackP:float
+    '''攻击强化%'''
+    SkillAttack:float
+    '''技能攻击力%'''
+
+    def __init__(self) -> None:
+        self.ElementIncrease = 0.0
+        self.AttackP = 0.0
+        self.SkillAttack = 0.0
 
 class Character:
     # region 角色属性
@@ -83,6 +95,9 @@ class Character:
 
     MonsterInfo: dict[str, float]
 
+    JadeInfo: 'Jade'
+    """辟邪玉加成"""
+
     Buffer: float
     """增益量"""
 
@@ -109,8 +124,6 @@ class Character:
     """装备效果列表"""
 
     # region 角色属性
-    输出类型: str = '物理'
-
     buffer: bool = False
     # endregion
 
@@ -123,9 +136,8 @@ class Character:
     武器选项: list[str] = []
     输出类型选项: list[str] = []
     防具精通属性: list[str] = []
-    类型 = ''
 
-    输出类型: str = '物理'
+    输出类型: str = '物理百分比'
 
     # endregion
 
@@ -186,8 +198,9 @@ class Character:
         self.BufferP = 1.0
         self.Attack = 0
         self.AttackP = 1.0
-        self.ElementIncrease = 0
+        self.ElementIncrease = 1.0
         self.equs = {}
+        self.JadeInfo = Jade()
         pass
 
     # region 角色属性设置
@@ -305,7 +318,7 @@ class Character:
         self.HitP += 命中率 + kwargs.get('HitP', 0)
         self.Hit += 命中 + kwargs.get('Hit', 0)
         self.Attack += 攻击强化 + kwargs.get('Attack', 0)
-        self.AttackP += 攻击强化P + kwargs.get('AttackP', 0)
+        self.AttackP += 攻击强化P + kwargs.get('AttackP', 1.0)
         self.Buffer += 增益量 + kwargs.get('Buffer', 0)
         self.BufferP += 增益量P + kwargs.get('BufferP', 0)
         pass
@@ -401,9 +414,9 @@ class Character:
     def getBasicInos(self):
         res = []
         attrs = []
-        if self.输出类型 == '物理':
+        if self.输出类型.includes('物理'):
             attrs = ['STR', 'PSTR', 'AtkP', 'PAtkP', 'CriticalPP', 'CriticalP']
-        if self.输出类型 == '魔法':
+        if self.输出类型.includes('魔法'):
             attrs = ['INT', 'PINT', 'AtkM', 'PAtkM', 'CriticalMP', 'CriticalM']
         for attr in attrs + ['PDamage', 'PDamageC', 'PDamageB', 'SpeedA', 'SpeedM', 'SpeedR']:
             temp = getattr(CharacterInfo, attr)
@@ -561,27 +574,73 @@ class Character:
         # 附魔计算
 
         # 技能计算
-        skill = self.GetSkillByName('G-35L感电手雷')
-        print(skill.getSkillDate(skill.lv), skill.skillDamage, skill.skillRation)
-        #
-
-        self.calc_damage_ration()
-        return
+        skillInfos = []
+        for i in self.skills:
+            if i.damage and i.lv > 0:
+                temp = i.skillInfo()
+                skillInfos.append({
+                    "name":i.name,
+                    "icon":i.icon,
+                    "lv":i.lv,
+                    "data":temp[0],
+                    "ratio":temp[1],
+                    "cd":temp[2],
+                })
+        ratios = self.calc_damage_ration()
+        ratio_char_skill = ratios[0] * ratios[1] * ratios[2] * ratios[3] * ratios[4] * ratios[5] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 10000
+        ratuio_equ_skill = ratios[0] * ratios[1] * ratios[3] * ratios[4] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 10000
+        for i in skillInfos:
+            i["damage"] = ratio_char_skill * i["data"] * i["ratio"]
+        for i in self.equ_effect:
+            skillInfos.append({
+                "name": i.name,
+                "icon": i.icon,
+                "lv": 0,
+                "data": i.data,
+                "ratio": 10.0,
+                "cd": i.cd,
+                "damage": ratuio_equ_skill * i.data * 10,
+            })
+        return {
+            "skills": skillInfos
+        }
         # 技能影响角色的属性，如属强、抗性等
 
     def calc_damage_ration(self):
         """计算最终属性"""
         # 计算最终属性
-        print(self.AtkI, self.PAtkI)
-        # 角色基础属性
-        # 角色装备属性
-        # 角色技能属性
-        # 角色增益属性
-        # 角色套装属性
-        # 角色徽章属性
-        # 角色附魔属性
-        # 角色辟邪玉属性
-        pass
+        # 力/智 攻击力 攻击力%(特效不吃这部分)
+        attrs = []
+        if self.输出类型 == '物理百分比':
+            attrs.extend(['STR', 'AtkP','PAtkP'])
+        if self.输出类型 == '魔法百分比':
+            attrs.extend(['INT', 'AtkM','PAtkM'])
+        if self.输出类型 == '物理固伤':
+            attrs.extend(['STR', 'AtkI', 'PAtkI'])
+        if self.输出类型 == '魔法固伤':
+            attrs.extend(['INT', 'AtkI', 'PAtkI'])
+        # 力智系数
+        ratio_0 : float = getattr(self, attrs[0]) / 250 + 1
+        # 物理/魔法/独立攻击力
+        ratio_1 : float = getattr(self, attrs[1])
+        # 技能 物理/魔法/独立攻击力%
+        ratio_2 : float = getattr(self, attrs[2])
+        # 属强系数
+        ratio_3 = max(self.ElementDB.values()) * 0.0045 + 1.05
+        # 暴击系数
+        ratio_4 = 1.5
+        # BUFF系数
+        ratio_5 = self.buff
+        # 技攻系数
+        ratio_6 = self.SkillAttack + self.JadeInfo.SkillAttack
+        # 攻击强化
+        ratio_7 = 1 + self.Attack * (self.AttackP + self.JadeInfo.AttackP)
+        # 防御系数
+        monster_defense = 506109
+        ratio_8 = (1 - monster_defense / (monster_defense + 200 * 100))
+        # 杂项 斗神、宠物技能、队友增幅等(技能的属性增幅归属到这部分，因为会加成到特效部分，修复后修改为技能攻击力计算)
+        ratio_9 = 1.0 * self.ElementIncrease
+        return (ratio_0, ratio_1, ratio_2, ratio_3, ratio_4, ratio_5, ratio_6, ratio_7, ratio_8, ratio_9)
 
     # endregion
 
