@@ -2,7 +2,7 @@
   <template v-if="props.equipment">
     <div class="relative" :class="{inactive: props.inactive}">
       <div class="w-28px h-28px " :style="{ backgroundImage: `url(${getImageURL('equipment' + props.equipment?.imageUrl)})` }">
-      <img :src="getLocalImageURL(`./rarity/${rarity}.png`)" />
+      <img :src="getLocalImageURL(rarity)" />
     </div>
     </div>
   </template>
@@ -39,11 +39,11 @@ const rarity = computed(()=>{
   }
 })
 
-const getLocalImageURL = (url:string)=>{
-  return new URL(url, import.meta.url).href
+const getLocalImageURL = (rarity:string)=>{
+  return new URL(`./rarity/${rarity}.png`, import.meta.url).href
 }
 
-</script>
+</script>``
 
 <style lang="scss" scoped>
 
