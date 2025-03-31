@@ -474,6 +474,8 @@ class Character:
         for part in self.charEquipInfo.keys():
             # 当前部位的打造
             cur = self.charEquipInfo[part]
+            if cur.equInfo is None:
+                continue
             # 当前部位适用调试后的属性
             partEqu = equs.equ_dict.get(cur.id).adapt(cur.adaptation)
             # 设置当前部位的装备
@@ -507,6 +509,8 @@ class Character:
         # 防具精通跟随装备品级
         for part in ['上衣', '头肩', '下装', '腰带', '鞋']:
             cur = self.charEquipInfo[part]
+            if cur.equInfo is None:
+                continue
             equ = cur.equInfo
             reinforce = self.charEquipInfo[part].reinforce
             if equ is None:
