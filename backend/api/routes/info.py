@@ -5,6 +5,7 @@ from fastapi import APIRouter,Request
 from api.core.Response import Return, response
 from api.core.Redis import get_redis_info
 from api.dp import RedisDep,AltersDep
+from core.character.adventure import get_adv_list
 from core.basic.character import createCharacter
 
 router = APIRouter()
@@ -14,10 +15,7 @@ register_gzip_request(router)
 
 @router.get('/adventure')
 async def get_adventure_info(request: Request,redis:RedisDep):
-    def get_adventure():
-        with open('./dataFiles/adventure-info.json', encoding='utf-8') as fp:
-            return json.load(fp)
-    adventure_info = get_redis_info(redis, 'dcalc:adventure', get_adventure)
+    adventure_info = get_redis_info(redis, 'dcalc:adventure', get_adv_list)
 
     return response(data=adventure_info)
 

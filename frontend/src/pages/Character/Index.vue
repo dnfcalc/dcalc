@@ -8,7 +8,13 @@
       </calc-tabs>
     </div>
     <div class="content flex">
-      <RouterView></RouterView>
+      <div class="flex flex-1">
+        <RouterView></RouterView>
+      </div>
+
+      <div class="w-40%">
+        <Result></Result>
+      </div>
     </div>
   </div>
 </template>
@@ -16,26 +22,19 @@
 <script lang="ts" setup name="Index">
 import { useInfoStore } from '@/stores/info'
 import { useConfigStore } from '@/stores'
+import Result from './Result/Index.vue'
 const props = defineProps<{
   alter: string
 }>()
 const infoStore = useInfoStore()
 const configStore = useConfigStore()
 
-const result = useAsyncState(
-  () => {
-    return configStore.calc()
-  },
-  {},
-  { resetOnExecute: false },
-)
-
 const stopWatch = watch<any>(
   () => {
     return JSON.stringify(configStore.config)
   },
   useDebounceFn(async () => {
-    await result.execute()
+    ;(await configStore.result).execute()
   }, 800),
 )
 

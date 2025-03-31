@@ -6,7 +6,7 @@ export interface IAdventureInfo {
 export interface IAlterOption {
   name: string
   title: string
-  class?: string
+  value?: string
 }
 
 export interface IAlterInfo {
@@ -17,7 +17,7 @@ export interface IAlterInfo {
   options?: IAlterOption[]
   open?: boolean
   comment?: string
-  class?: string
+  value?: string
 }
 
 export interface ICharacterInfo {

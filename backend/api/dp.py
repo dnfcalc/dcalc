@@ -20,7 +20,7 @@ def alterToken(alter_token: Optional[str] = Header(None)):
             decoded_bytes = base64.b64decode(alter_token)
             decoded_str = decoded_bytes.decode('utf-8')
             alter = json.loads(decoded_str)
-            # 时间判断 后面再加
+            # 6小时过期
             if (int(time.time() * 1000) - alter['time']) / (60 * 60 * 1000) > 6:
                 raise ResponseException('登录过期或无效Token，请刷新后重试')
             return AlterState(alter['alter'], alter_token, {}, alter['equVersion'], alter['time'])

@@ -3,16 +3,21 @@ import hmac
 import json
 import time
 from typing import Optional
+from core.character.adventure import get_adv_info
 from core.basic.character import Character
 from fastapi import  Header, Request
 from api.core.exception import ResponseException
 
 
 class AlterState:
-    def __init__(self, alter: str, token: str, charcater: Character, equVersion: str,time: int):
-        self.alter = alter
+    def __init__(self, value: str, token: str, charcater: Character, equVersion: str,time: int):
+        self.value = value
+        try:
+            self.alter = get_adv_info(value)["class"]
+        except Exception:
+            raise ResponseException('无效的职业')
         self.token = token
-        self.origin = alter.split('.')[-1]
+        self.origin = self.alter.split('.')[-1]
         self.character = charcater
         self.equVersion = equVersion
         self.time = time
@@ -35,15 +40,15 @@ def dict2obj(dictObj):
     return d
 
 
-def createToken(alter: str, equVersion: str, redis = None, expire=86400 / 24 * 2)->str:
+def createToken(value: str, equVersion: str, redis = None, expire=86400 / 24 * 2)->str:
     ts_str = str(time.time() + expire)
     ts_byte = ts_str.encode('utf-8')
-    sha1_tshex_str = hmac.new(alter.encode('utf-8'), ts_byte, 'sha1').hexdigest()
+    sha1_tshex_str = hmac.new(value.encode('utf-8'), ts_byte, 'sha1').hexdigest()
     token = sha1_tshex_str
     token = base64.urlsafe_b64encode(token.encode('utf-8')).decode('utf-8')
     # character = createCharacter(alter)
     character = {}
-    redis.set(f'token:{token}', json.dumps(AlterState(alter, token, character, equVersion).to_dict()), int(expire))
+    redis.set(f'token:{token}', json.dumps(AlterState(value, token, character, equVersion).to_dict()), int(expire))
     return token
 
 

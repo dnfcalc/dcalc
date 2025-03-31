@@ -36,7 +36,7 @@ export default defineComponent(async () => {
           return
         }
         else{
-          return window.open("/character/" + (child.class || child.name),"_blank")
+          return window.open("/character/" + (child.value || child.name),"_blank")
         }
     }
   }

@@ -102,10 +102,23 @@ export const useConfigStore = defineStore('configStore', () => {
     return await api.calc(config.value)
   }
 
+
+  const result = useAsyncState(
+    () => {
+      return calc()
+    },
+    {
+      skills:[]
+    },
+    { resetOnExecute: false },
+  )
+
+
   return {
     config,
     loadConfig,
     saveConfig,
     calc,
+    result
   }
 })

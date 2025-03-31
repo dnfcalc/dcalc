@@ -3,6 +3,7 @@ import axios from 'axios'
 import { h } from 'vue'
 import { gzip, ungzip } from 'pako'
 import { useInfoStore } from '@/stores'
+import { useDialog } from '@/components/hooks/dialog'
 // import { useAppStore, useConfigStore } from '@/store'
 // import { useDialog } from '@/components/hooks/dialog'
 
@@ -80,19 +81,19 @@ export function defineRequest<T>(fn: (ax: AxiosInstance) => T) {
     instance.interceptors.response.use(
       async (response: AxiosResponse<HttpResponse>) => {
         if (response.data.code === 500) {
-          // const { alert } = useDialog()
-          // await alert({
-          //   content: () => {
-          //     return h(
-          //       'div',
-          //       {
-          //         class: 'justify-center text-hex-d4d6b6 text-center',
-          //         style: 'white-space:pre-wrap;width:250px;margin:10px',
-          //       },
-          //       `出现错误，可加群反馈:183439472\n${response.data.message}`,
-          //     )
-          //   },
-          // })
+          const { alert } = useDialog()
+          await alert({
+            content: () => {
+              return h(
+                'div',
+                {
+                  class: 'justify-center text-hex-d4d6b6 text-center',
+                  style: 'white-space:pre-wrap;width:250px;margin:10px',
+                },
+                `出现错误，可加群反馈:183439472\n${response.data.message}`,
+              )
+            },
+          })
         }
         // 解密数据
         if (typeof response.data.data == 'string') {

@@ -1,9 +1,10 @@
 import type { IConfig } from '@/stores'
 import { defineRequest } from '../common'
+import type { IResult } from './type'
 export default defineRequest((request) => {
   return {
     async calc(config: IConfig) {
-      const res = await request.post('/calc', config)
+      const res = await request.post<IResult>('/calc', config)
       return res.data
     }
   }

@@ -3,7 +3,12 @@
     <Suspense>
       <RouterView></RouterView>
     </Suspense>
+    <render/>
   </div>
 </template>
 
-<script lang="ts" name="index" setup></script>
+<script lang="ts" name="index" setup>
+import { useDialog } from '@/components/hooks/dialog';
+
+const { render } = useDialog()
+</script>

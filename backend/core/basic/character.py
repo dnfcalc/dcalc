@@ -201,6 +201,7 @@ class Character:
         self.ElementIncrease = 1.0
         self.equs = {}
         self.JadeInfo = Jade()
+        self.equ_effect = []
         pass
 
     # region 角色属性设置
