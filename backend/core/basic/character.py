@@ -509,6 +509,8 @@ class Character:
             cur = self.charEquipInfo[part]
             equ = cur.equInfo
             reinforce = self.charEquipInfo[part].reinforce
+            if equ is None:
+                continue
             value = 精通计算(115, equ.rarity, reinforce, equ.itemDetailType, self.防具类型)
             for key in self.防具精通属性:
                 key = get_key_by_value(key)
@@ -516,6 +518,8 @@ class Character:
         # 115增幅强化品级固定史诗
         for part in self.charEquipInfo.keys():
             cur = self.charEquipInfo[part]
+            if cur.equInfo is None:
+                continue
             # 增幅
             if cur.reinforceType == 1:
                 # 增幅四维
