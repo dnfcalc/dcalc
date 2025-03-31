@@ -5,21 +5,19 @@ from multiprocessing import freeze_support
 from api.core import Exceptions,Middleware,Gzip
 import uvicorn
 
+
+application = FastAPI(docs_url=None, redoc_url=None)
+application.add_exception_handler(Exception, Exceptions.all_exception_handler)
+Middleware.register_cors(application)
+Gzip.register_gzip_response(application)
+application.include_router(api_router)
+
 if __name__ == '__main__':
     freeze_support()
 
     def on_startup():
         return print("Application starting...")
 
-    application = FastAPI(docs_url=None, redoc_url=None)
-
-    application.add_exception_handler(Exception, Exceptions.all_exception_handler)
-
-    Middleware.register_cors(application)
-    Gzip.register_gzip_response(application)
-
-    application.include_router(api_router)
-
-    uvicorn.run(app = application, host='127.0.0.1', port=config.PORT)
+    uvicorn.run(app = "main:application", host='127.0.0.1', port=config.PORT, workers=config.WORKERS,reload=False)
 
 

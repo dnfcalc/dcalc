@@ -27,6 +27,10 @@ if (import.meta.env.MODE == 'web' || import.meta.env.MODE == 'show') {
   baseURL = 'https://api.dnftools.com/'
 }
 
+if(import.meta.env.MODE == 'test') {
+  baseURL = 'https://testapi.dnftools.com/'
+}
+
 // 解压
 function unzip(key: string) {
   // 将二进制字符串转换为字符数组
