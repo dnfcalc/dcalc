@@ -44,7 +44,7 @@ const infoStyle = (part: string) => {
     left: `${x}px`,
     top: `${y}px`,
     zIndex: 6,
-    fontWeight: 900,
+    // fontWeight: 900,
   }
   return style
 }
