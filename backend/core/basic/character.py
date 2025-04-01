@@ -95,7 +95,7 @@ class Character:
 
     MonsterInfo: dict[str, float]
 
-    JadeInfo: 'Jade'
+    jade_effect: 'Jade'
     """辟邪玉加成"""
 
     Buffer: float
@@ -122,6 +122,8 @@ class Character:
     """装备打造信息"""
     equ_effect: list['EquEffect'] = []
     """装备效果列表"""
+    EquEffectRatio = 1
+    """装备效果倍率"""
 
     # region 角色属性
     buffer: bool = False
@@ -200,7 +202,7 @@ class Character:
         self.AttackP = 1.0
         self.ElementIncrease = 1.0
         self.equs = {}
-        self.JadeInfo = Jade()
+        self.jade_effect = Jade()
         self.equ_effect = []
         pass
 
@@ -291,11 +293,12 @@ class Character:
             'Buffer',
             'BufferP',
             'Spirit',
-            'Vitality'
+            'Vitality',
+            'EquEffectRatio'
         }
-        for key in kwargs:
-            if key not in allowed_kwargs:
-                raise ValueError(f'Invalid keyword argument: {key}')
+        # for key in kwargs:
+        #     if key not in allowed_kwargs:
+        #         raise ValueError(f'Invalid keyword argument: {key}')
         self.STR += 力量 + kwargs.get('STR', 0) + 四维 + 力智
         self.INT += 智力 + kwargs.get('INT', 0) + 四维 + 力智
         self.Spirit += 精神 + kwargs.get('Spirit', 0) + 四维 + 体精
@@ -312,16 +315,27 @@ class Character:
             self.ElementR[elem] += kwargs.get(f'{elem}抗', 0) + kwargs.get('ElementR', {}).get(elem, 0) + kwargs.get('全属抗', 0)
         self.CriticalM += kwargs.get('CriticalM', 0) + 魔暴
         self.CriticalP += kwargs.get('CriticalP', 0) + 物暴
-        self.SkillAttack += (1 + 技攻) * (1 + kwargs.get('SkillAttack', 0))
+        self.SkillAttack *= (1 + 技攻) * (1 + kwargs.get('SkillAttack', 0))
         self.SpeedA += 攻速 + kwargs.get('SpeedA', 0)
         self.SpeedM += 移速 + kwargs.get('SpeedM', 0)
         self.SpeedR += 施放 + kwargs.get('SpeedR', 0)
         self.HitP += 命中率 + kwargs.get('HitP', 0)
         self.Hit += 命中 + kwargs.get('Hit', 0)
         self.Attack += 攻击强化 + kwargs.get('Attack', 0)
-        self.AttackP += 攻击强化P + kwargs.get('AttackP', 1.0)
+        self.AttackP += 攻击强化P + kwargs.get('AttackP', 0.0)
         self.Buffer += 增益量 + kwargs.get('Buffer', 0)
         self.BufferP += 增益量P + kwargs.get('BufferP', 0)
+        self.EquEffectRatio *= 1 + kwargs.get('EquEffectRatio', 0.0)
+        pass
+
+    def AddElementDB(self, element: str, value: float,type:int=0) -> None:
+        """
+        增加属性强化
+        type: 0 站街 1 进图
+        """
+        if element not in self.ElementDB:
+            raise ValueError(f'Invalid element: {element}')
+        self.ElementDB[element] += value
         pass
 
     def AddSkillLv(self, min: int, max: int, lv: int, type=-1) -> None:
@@ -330,7 +344,7 @@ class Character:
         type: -1 全部, 0 被动, 1 主动
         """
         for skill in self.skills:
-            if min <= skill.requiredLv <= max:
+            if min <= skill.learnLv <= max:
                 if type == -1 or skill.type == type:
                     skill.AddLv(lv, self)
 
@@ -340,8 +354,8 @@ class Character:
         type: -1 全部, 0 被动, 1 主动
         """
         for skill in self.skills:
-            if min <= skill.requiredLv <= max and skill.damage and skill.requiredLv not in exclude:
-                skill.CDR *= 1 - cd
+            if min <= skill.learnLv <= max and skill.damage and skill.learnLv not in exclude:
+                skill.cdReduce *= 1 - cd
 
     def GetSkillByName(self, name) -> Skill:
         """通过技能名获取技能"""
@@ -472,15 +486,8 @@ class Character:
         suitInfo = {}
         equs = get_equipment(self.equVersion)
         # 设置装备和获取对应的套装属性
-        for part in self.charEquipInfo.keys():
-            # 当前部位的打造
-            cur = self.charEquipInfo[part]
-            if cur.equInfo is None:
-                continue
-            # 当前部位适用调试后的属性
-            partEqu = equs.equ_dict.get(cur.id).adapt(cur.adaptation)
-            # 设置当前部位的装备
-            self.charEquipInfo[part].equInfo = equs.equ_dict.get(cur.id)
+        for item in filter(lambda x: x.equInfo is not None, self.charEquipInfo.values()):
+            partEqu = item.equInfo
             # 套装属性设置
             for suit in partEqu.suit:
                 if suitInfo.get(suit, None) is None:
@@ -503,7 +510,30 @@ class Character:
                 suits_effect += [i.id for i in equs.get_suit_info(suit, 0, suitInfo[suit]['count'])]
             else:
                 suits_effect += [i.id for i in equs.get_suit_info(suit, suitInfo[suit]['point'], 0)]
-        return suits_effect
+        for i in suits_effect:
+            func = equs.funs.suit_func_list.get(str(i), None)
+            suit = next((x for x in equs.suits if str(x.id) == str(i)), None)
+            if func is not None:
+                func(self)
+            if suit is not None:
+                filtered_dict = {k: v for k, v in suit.__dict__.items() if k[0].isupper()}
+                self.SetStatus(**filtered_dict)
+
+    def calc_equs(self):
+        """计算装备基础效果和额外词条"""
+        effects = get_equipment(self.equVersion).funs
+        for equ in [item.equInfo for item in filter(lambda x: x.equInfo is not None, self.charEquipInfo.values())]:
+            if equ is None:
+                continue
+            fun = effects.equ_func_list.get(str(equ.id),None)
+            if fun is None:
+                continue
+            # 获取装备基础属性 并给角色设置（大写开头属性为角色属性）
+            filtered_dict = {k: v for k, v in equ.__dict__.items() if k[0].isupper()}
+            self.SetStatus(**filtered_dict)
+            # 获取装备额外属性
+            fun(self)
+
 
     def calc_basic(self):
         """计算基础属性:防具精通、增幅、强化等"""
@@ -564,8 +594,6 @@ class Character:
         pass
 
     def calc(self, setInfo: dict[str, dict]):
-        funcs = []
-        suits = []
         self.calc_init(setInfo)
         # self.SetDetail(setInfo)
         # 角色基础属性
@@ -573,13 +601,19 @@ class Character:
         # 辟邪玉计算
         # 精通、增幅、强化计算
         self.calc_basic()
-        # 单件效果计算
-        # 套装效果列表
-        suits_effect = self.calc_suits()
-        effects = get_equipment(self.equVersion).funs
-        for effect in suits_effect:
-            func = effects.suit_func_list.get(str(effect), None)
-            func(self)
+        # 部位效果计算
+        self.calc_equs()
+        # 计算套装基础效果
+        self.calc_suits()
+        # effects = get_equipment(self.equVersion).funs
+        # for effect in equ_effect:
+        #     func = effects.equ_func_list.get(str(effect), None)
+        #     if func is not None:
+        #         func(self)
+        # for effect in suits_effect:
+        #     func = effects.suit_func_list.get(str(effect), None)
+        #     if func is not None:
+        #         func(self)
         # 徽章计算
         # 附魔计算
 
@@ -612,12 +646,13 @@ class Character:
                 "damage": ratuio_equ_skill * i.data * 10,
             })
         return {
-            "skills": skillInfos
+            "skills": skillInfos,
+            "info":{k: v for k, v in self.__dict__.items() if k[0].isupper()}
         }
         # 技能影响角色的属性，如属强、抗性等
 
     def calc_damage_ration(self):
-        """计算最终属性"""
+        """计算属性系数"""
         # 计算最终属性
         # 力/智 攻击力 攻击力%(特效不吃这部分)
         attrs = []
@@ -642,11 +677,11 @@ class Character:
         # BUFF系数
         ratio_5 = self.buff
         # 技攻系数
-        ratio_6 = self.SkillAttack + self.JadeInfo.SkillAttack
+        ratio_6 = self.SkillAttack + self.jade_effect.SkillAttack
         # 攻击强化
-        ratio_7 = 1 + self.Attack * (self.AttackP + self.JadeInfo.AttackP)
-        # 防御系数
-        monster_defense = 506109
+        ratio_7 = 1 + self.Attack * (self.AttackP + self.jade_effect.AttackP)
+        # 防御系数,暂定145沙袋防御
+        monster_defense = 75068627484
         ratio_8 = (1 - monster_defense / (monster_defense + 200 * 100))
         # 杂项 斗神、宠物技能、队友增幅等(技能的属性增幅归属到这部分，因为会加成到特效部分，修复后修改为技能攻击力计算)
         ratio_9 = 1.0 * self.ElementIncrease
