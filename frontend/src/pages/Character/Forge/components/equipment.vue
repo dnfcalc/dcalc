@@ -30,14 +30,14 @@ export default defineComponent({
     const basicInfoStore = useInfoStore()
 
     const enchanting_list = computed<IEnchantingInfo[] | undefined>(() => {
-      return basicInfoStore.enchantings
+      return basicInfoStore.enchants
         ?.filter(
           (item) =>
             item.position.includes(props.part) &&
             !item.position.includes('武器装扮') &&
             !item.position.includes('宠物装备'),
         )
-        .sort((a, b) => b.rate - a.rate)
+        .sort((a, b) => (b.fame ?? 0) - (a.fame ?? 0))
     })
 
     const emblem_list = computed<IEnchantingInfo[] | undefined>(() => {
@@ -68,7 +68,7 @@ export default defineComponent({
 
           if (global_change.value) {
             if (name === 'enchanting') {
-              const enchant = basicInfoStore?.enchantings?.find((item) => item.id == val) as
+              const enchant = basicInfoStore?.enchants?.find((item) => item.id == val) as
                 | IEnchantingInfo
                 | undefined
               if (enchant?.position) {
@@ -177,7 +177,7 @@ export default defineComponent({
             <calc-select v-model={enchanting.value} class="flex-1 !h-20px">
               <calc-option value={0}>无</calc-option>
               {renderList(enchanting_list.value ?? [], (item) => (
-                <calc-option value={item.id}>{item.props}</calc-option>
+                <calc-option value={item.id}>{item.detail}</calc-option>
               ))}
             </calc-select>
           </div>
@@ -193,7 +193,7 @@ export default defineComponent({
                 {renderList(emblem_list.value ?? [], (item) => (
                   <calc-option
                     value={item.id}
-                  >{`${item.rarity}${item.type}徽章[${item.props}]`}</calc-option>
+                  >{`${item.rarity}${item.type}徽章[${item.detail}]`}</calc-option>
                 ))}
               </calc-select>
               {has_emblem_1.value && (
@@ -202,7 +202,7 @@ export default defineComponent({
                   {renderList(emblem_list.value ?? [], (item) => (
                     <calc-option
                       value={item.id}
-                    >{`${item.rarity}${item.type}徽章[${item.props}]`}</calc-option>
+                    >{`${item.rarity}${item.type}徽章[${item.detail}]`}</calc-option>
                   ))}
                 </calc-select>
               )}

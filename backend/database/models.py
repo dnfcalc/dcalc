@@ -55,3 +55,12 @@ class EquData(Base):
     Attack = Column(Text)
     Buffer = Column(Text)
     suit = Column(Text)
+
+class EnchantData(Base):
+    __tablename__ = 'enchant'
+
+    id = Column(Integer, primary_key=True)
+    detail = Column(Text)
+    categorize = Column(Integer)
+    itemType = Column(Text)
+    fame = Column(Integer)

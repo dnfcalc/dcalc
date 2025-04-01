@@ -400,15 +400,16 @@ class Character:
                 }
             )
         info['skills'] = skillInfo
+        equInfos = get_equipment(self.equVersion)
         equs = []
         suits = []
-        for i in get_equipment(self.equVersion).equs:
+        for i in equInfos.equs:
             equs.append(i.__dict__)
-        for i in get_equipment(self.equVersion).suits:
+        for i in equInfos.suits:
             suits.append(i.__dict__)
         info['equips'] = equs
         info['suits'] = suits
-        enchats = []
+        info['enchants'] = equInfos.enchants
         emblems = []
         return info
 

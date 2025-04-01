@@ -21,7 +21,7 @@ export interface IConfig {
       id: string
       reinforce: number
       reinforceType: number
-      enchat: number
+      enchant: number
       emblem_0: string
       emblem_1: string
       upgrade: number
@@ -36,7 +36,7 @@ const defaultEqusConfig = {
   id: '',
   reinforce: 0,
   reinforceType: 0,
-  enchat: 0,
+  enchant: 0,
   emblem_0: "0",
   emblem_1: "0",
   upgrade: 0,

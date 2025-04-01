@@ -1,12 +1,11 @@
 import importlib
-from database.models import Session, EquData, SuitData
+from database.models import Session, EquData, SuitData, EnchantData
 from database.connect import get_db_engine as get_engine
 from functools import cache
 
 
 def parse_to_number_list(info: str, default: list[float] = [0]) -> list[float]:
     return default if not info else [float(i) for i in info.split(',')]
-
 
 class Equ:
     id: str
@@ -73,10 +72,12 @@ class Equipments:
         self.equs: list[Equ] = []
         self.funs = self.init_func()
         self.equ_dict: dict[str, Equ] = {}
+        self.enchants = []
         self.suits: list[Suit] = []
         self.suit_dict: dict[str, Suit] = {}
         self.init_equs()
         self.init_suits()
+        self.init_enchants()
         self.engine.dispose()
 
     def init_equs(self):
@@ -109,6 +110,19 @@ class Equipments:
             suit = Suit(**{k: v for k, v in item.__dict__.items() if not k.startswith('_')})
             self.suits.append(suit)
             self.suit_dict.setdefault(str(suit.suitId), []).append(suit)
+        pass
+
+    def init_enchants(self):
+        """从数据库中获取所有附魔信息"""
+        with Session(self.engine) as session:
+            db_list = session.query(EnchantData).all()
+        for item in db_list:
+            enchant = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
+            enchant['position'] = [] if enchant['itemType'] is None else enchant['itemType'].split(',')
+            enchant['categorize'] = [] if enchant['categorize'] is None else enchant['categorize'].split(',')
+            del enchant['itemType']
+            self.enchants.append(enchant)
+            pass
         pass
 
     def init_func(self):

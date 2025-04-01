@@ -13,7 +13,7 @@ export const useInfoStore = defineStore("infoStore", ()=>{
 
   const suits = computed(()=>infos.value?.suits ?? [])
 
-  const enchantings = computed(()=>infos.value?.enchantings?? [])
+  const enchants = computed(()=>infos.value?.enchants ?? [])
 
   const emblems = computed(()=>infos.value?.emblems?? [])
 
@@ -32,7 +32,7 @@ export const useInfoStore = defineStore("infoStore", ()=>{
     equips,
     suits,
     createCharacter,
-    enchantings,
+    enchants,
     emblems,
     parts
   }

@@ -71,34 +71,41 @@ export default defineComponent({
       }
     }
 
-    const renderSkill = (skill: ISkill, index: number) => (
-      <>
-        <div class="relative w-35px h-55px">
-          {activeSkill.value == skill.id && renderSkillAction(skill)}
-          <div
-            class="w-34px absolute h-auto flex flex-col gap-2px py-2px items-center bg-#2c2d2c rounded-2px z-2 top-1px left-1px"
-            onClick={(e) => {
-              e.stopPropagation()
-              chooseSkill(skill)
-            }}
-            onContextmenu={(e) => {
-              e.stopPropagation()
-              e.preventDefault()
-              chooseSkill(skill, 'sub')
-            }}
-            key={index}
-          >
-            <img
-              class={['h-30px w-30px', skill.type === 'passive' ? 'passive' : '']}
-              src={getImageURL(skill.icon)}
-            ></img>
-            <div class="w-30px mx-2px bg-black text-white flex items-center justify-center rounded-2px">
-              {lvInfo.value?.[skill.id.toString()]?.lv ?? 0}
+    const renderSkill = (skill: ISkill, index: number) => {
+      const info = lvInfo.value?.[skill.id.toString()]
+      let color = 'white'
+      if (info?.lv < skill.maxLearnLv) color = '#32E432'
+      if (info?.lv > skill.maxLearnLv) color = '#58E0FC'
+      return (
+        <>
+          <div class="relative w-35px h-55px">
+            {activeSkill.value == skill.id && renderSkillAction(skill)}
+            <div
+              class="w-34px absolute h-auto flex flex-col gap-2px py-2px items-center bg-#2c2d2c rounded-2px z-2 top-1px left-1px"
+              onClick={(e) => {
+                e.stopPropagation()
+                chooseSkill(skill)
+              }}
+              onContextmenu={(e) => {
+                e.stopPropagation()
+                e.preventDefault()
+                chooseSkill(skill, 'sub')
+              }}
+              key={index}
+            >
+              <img
+                class={['h-30px w-30px', skill.type === 'passive' ? 'passive' : '']}
+                src={getImageURL(skill.icon)}
+              ></img>
+              <div class="w-30px mx-2px bg-black flex items-center justify-center rounded-2px"
+              style={{color}}>
+                {info?.lv ?? 0}
+              </div>
             </div>
           </div>
-        </div>
-      </>
-    )
+        </>
+      )
+    }
 
     const renderSkillAction = (skill: ISkill) => (
       <>
@@ -156,7 +163,8 @@ export default defineComponent({
           {lvList.map((lv, index) => (
             <div class="skill-tree-line flex items-center gap-10px px-10px" key={index}>
               {lv == 1 || lv % 10 == 0 ? (
-                <div class="w-34px h-34px flex items-center justify-center text-white">{lv}</div>
+                <div class="w-34px h-34px flex items-center justify-center text-white"
+                >{lv}</div>
               ) : (
                 <div class="w-34px h-34px"></div>
               )}

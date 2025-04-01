@@ -26,7 +26,7 @@ export interface ICharacterInfo {
   name: string
   equVersion: string
   equips: IEquipment[]
-  enchantings: IEnchantingInfo[]
+  enchants: IEnchantingInfo[]
   emblems: IEnchantingInfo[]
   weapons: string[]
   skills: ISkill[]
@@ -65,10 +65,10 @@ export interface ISuit {
 
 export interface IEnchantingInfo {
   id: string | number
-  maxFame: number | undefined
+  fame: number | undefined
   position: string[]
-  props: string
-  type: string | undefined
-  rarity: string | undefined
-  rate: number
+  detail: string
+  categorize: string[]
+  rarity?: string
+  type?: string
 }
