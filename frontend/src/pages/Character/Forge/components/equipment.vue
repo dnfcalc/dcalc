@@ -5,27 +5,22 @@ import { useInfoStore, useConfigStore } from '@/stores'
 import EquList from '@/components/dnf/Equipment/List/index.vue'
 export default defineComponent({
   name: 'Equip',
-  props: {
-    part: {
-      type: String,
-      default: '头肩',
-    },
-  },
   setup(props) {
     const configStore = useConfigStore()
+    const part = ref('头肩')
     const can_upgrade = computed(() => {
-      return !['称号', '宠物'].includes(props.part as string)
+      return !['称号', '宠物'].includes(part.value as string)
     })
 
     // const globalStore = useGlobalStore()
 
     /** 是否有徽章 */
     const has_socket = computed(
-      () => !['称号', '宠物', '耳环', '武器'].includes(props.part as string),
+      () => !['称号', '宠物', '耳环', '武器'].includes(part.value as string),
     )
     /** 是否有右侧徽章 */
     const has_emblem_1 = computed(
-      () => has_socket.value && !['辅助装备', '魔法石'].includes(props.part as string),
+      () => has_socket.value && !['辅助装备', '魔法石'].includes(part.value as string),
     )
     const basicInfoStore = useInfoStore()
 
@@ -33,7 +28,7 @@ export default defineComponent({
       return basicInfoStore.enchants
         ?.filter(
           (item) =>
-            item.position.includes(props.part) &&
+            item.position.includes(part.value) &&
             !item.position.includes('武器装扮') &&
             !item.position.includes('宠物装备'),
         )
@@ -41,7 +36,7 @@ export default defineComponent({
     })
 
     const emblem_list = computed<IEnchantingInfo[] | undefined>(() => {
-      return basicInfoStore.emblems.filter((item) => item.position.includes(props.part))
+      return basicInfoStore.emblems.filter((item) => item.position.includes(part.value))
     })
 
     const global_change = ref(false)
@@ -50,7 +45,7 @@ export default defineComponent({
       return computed<string | number>({
         get() {
           return (
-            (configStore.config.equips?.[props.part] as Record<string, any>)?.[name] ??
+            (configStore.config.equips?.[part.value] as Record<string, any>)?.[name] ??
             defaultValue ??
             0
           )
@@ -60,7 +55,7 @@ export default defineComponent({
             return
           }
           if (name == 'emblem_1' && !has_emblem_1.value) {
-            // configStore.setForge(props.part, name, 0)
+            // configStore.setForge(part.value, name, 0)
             return
           }
 
@@ -89,7 +84,7 @@ export default defineComponent({
               parts = basicInfoStore.parts.filter((e) => !['称号', '宠物'].includes(e))
             }
           } else {
-            parts = [props.part]
+            parts = [part.value]
           }
           for (const part of parts) {
             if (configStore.config.equips[part]) {
@@ -134,11 +129,11 @@ export default defineComponent({
     return () => {
       return (
         <>
-        <EquList/>
+        <EquList v-model:part={part.value}/>
         <div class="flex flex-wrap equ-profile">
           <div class="equ-profile-item">
             <div class="mr-10px row-name">当前部位</div>
-            <span> {props.part}</span>
+            <span> {part.value}</span>
             {can_upgrade.value ? (
               <calc-checkbox
                 style="margin-left:auto"
@@ -161,7 +156,7 @@ export default defineComponent({
                   <calc-option value={i - 1}>{i - 1}</calc-option>
                 ))}
               </calc-select>
-              {props.part == '武器' && (
+              {part.value == '武器' && (
                 <calc-select v-model={dz_number.value} class="flex-1 !h-20px">
                   {renderList(9, (i) => (
                     <calc-option value={i - 1}>锻造+ {i - 1}</calc-option>
