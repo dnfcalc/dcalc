@@ -2380,8 +2380,9 @@ def suit_142(char: Character):
     char.SetSkillRation(100,100,0.6)
     char.SetSkillRation(85,85,0.5)
     char.SetSkillRation(50,50,0.1)
+    cd = 0
     for item in char.skills:
-        if item.lv == 100:
+        if item.learnLv == 100:
             cd = item.getSkillCD()
     char.equ_effect.append(EquEffect(name='能量释放', icon='/equipment/suit/4.png', cd=cd, data=240000))
     pass
@@ -2507,8 +2508,9 @@ def suit_147(char: Character):
     char.SetSkillRation(100,100,0.76)
     char.SetSkillRation(85,85,0.6)
     char.SetSkillRation(50,50,0.15)
+    cd = 0
     for item in char.skills:
-        if item.lv == 100:
+        if item.learnLv == 100:
             cd = item.getSkillCD()
     char.equ_effect.append(EquEffect(name='能量释放', icon='/equipment/suit/4.png', cd=cd, data=360000))
     pass
@@ -2568,6 +2570,7 @@ def suit_154(char: Character):
     攻击时引发自然爆炸攻击敌人。 (冷却时间5秒)
     - 自然燃烧伤害8,640%
     """
+    char.equ_effect.append(EquEffect(name='自燃爆炸', icon='/equipment/suit/6.png', cd=5, data=8640))
     pass
 
 
@@ -2577,6 +2580,7 @@ def suit_155(char: Character):
     攻击时引发自然爆炸攻击敌人。 (冷却时间5秒)
     - 自然燃烧伤害8,640%
     """
+    suit_154(char)
     pass
 
 
@@ -2586,6 +2590,7 @@ def suit_156(char: Character):
     攻击时引发自然爆炸攻击敌人。 (冷却时间5秒)
     - 自然燃烧伤害8,640%
     """
+    suit_154(char)
     pass
 
 
@@ -2595,6 +2600,7 @@ def suit_157(char: Character):
     攻击时引发自然爆炸攻击敌人。 (冷却时间5秒)
     - 自然燃烧伤害8,640%
     """
+    suit_154(char)
     pass
 
 
@@ -2604,6 +2610,7 @@ def suit_158(char: Character):
     攻击时产生小型旋风， 攻击小范围的敌人， 并吸附敌人。 (冷却时间5秒)
     - 小型旋风伤害25920%
     """
+    char.equ_effect.append(EquEffect(name='小型旋风', icon='/equipment/suit/6.png', cd=5, data=25920))
     pass
 
 
@@ -2613,6 +2620,7 @@ def suit_159(char: Character):
     攻击时产生小型旋风， 攻击小范围的敌人， 并吸附敌人。 (冷却时间5秒)
     - 小型旋风伤害25920%
     """
+    suit_158(char)
     pass
 
 
@@ -2622,6 +2630,7 @@ def suit_160(char: Character):
     攻击时产生小型旋风， 攻击小范围的敌人， 并吸附敌人。 (冷却时间5秒)
     - 小型旋风伤害25920%
     """
+    suit_158(char)
     pass
 
 
@@ -2631,6 +2640,7 @@ def suit_161(char: Character):
     攻击时产生小型旋风， 攻击小范围的敌人， 并吸附敌人。 (冷却时间5秒)
     - 小型旋风伤害25920%
     """
+    suit_158(char)
     pass
 
 
@@ -2640,6 +2650,7 @@ def suit_162(char: Character):
     攻击时产生小型旋风， 攻击小范围的敌人， 并吸附敌人。 (冷却时间5秒)
     - 小型旋风伤害25920%
     """
+    suit_158(char)
     pass
 
 
@@ -2649,6 +2660,7 @@ def suit_163(char: Character):
     攻击时引发落雷， 攻击大范围敌人。 (冷却时间5秒)
     - 落雷伤害43,200%
     """
+    char.equ_effect.append(EquEffect(name='落雷', icon='/equipment/suit/6.png', cd=5, data=43200))
     pass
 
 
@@ -2658,6 +2670,7 @@ def suit_164(char: Character):
     攻击时引发落雷， 攻击大范围敌人。 (冷却时间5秒)
     - 落雷伤害43,200%
     """
+    suit_163(char)
     pass
 
 
@@ -2667,6 +2680,7 @@ def suit_165(char: Character):
     攻击时引发落雷， 攻击大范围敌人。 (冷却时间5秒)
     - 落雷伤害43,200%
     """
+    suit_163(char)
     pass
 
 
@@ -2676,6 +2690,7 @@ def suit_166(char: Character):
     攻击时引发落雷， 攻击大范围敌人。 (冷却时间5秒)
     - 落雷伤害43,200%
     """
+    suit_163(char)
     pass
 
 
@@ -2685,6 +2700,7 @@ def suit_167(char: Character):
     攻击时引发落雷， 攻击大范围敌人。 (冷却时间5秒)
     - 落雷伤害43,200%
     """
+    suit_163(char)
     pass
 
 
@@ -2696,6 +2712,8 @@ def suit_168(char: Character):
     - 狂澜怒涛伤害量104,400%
     - 冷却时间：60秒
     """
+    char.equ_effect.append(EquEffect(name='狂澜怒涛', icon='/equipment/skill/54.png', cd=60, data=104400))
+    char.equ_effect.append(EquEffect(name='暴风雪', icon='/equipment/suit/6.png', cd=5, data=60480))
     pass
 
 
@@ -2747,6 +2765,7 @@ def suit_174(char: Character):
     - 正面突破伤害 : 6,360%
     - 冷却时间8秒
     """
+    char.equ_effect.append(EquEffect(name='突破', icon='/equipment/skill/0.png', cd=8, data=6360))
     pass
 
 
@@ -2759,6 +2778,7 @@ def suit_175(char: Character):
     - 正面突破伤害 : 6,360%
     - 冷却时间9秒
     """
+    suit_174(char)
     pass
 
 
@@ -2771,6 +2791,7 @@ def suit_176(char: Character):
     - 正面突破伤害 : 6,360%
     - 冷却时间10秒
     """
+    suit_174(char)
     pass
 
 
@@ -2783,6 +2804,7 @@ def suit_177(char: Character):
     - 正面突破伤害 : 6,360%
     - 冷却时间11秒
     """
+    suit_174(char)
     pass
 
 
@@ -2795,6 +2817,7 @@ def suit_178(char: Character):
     - 正面突破伤害 : 6,360%
     - 冷却时间12秒
     """
+    suit_174(char)
     pass
 
 
@@ -2812,6 +2835,8 @@ def suit_179(char: Character):
     - 审判伤害 : 9,300%
     - 冷却时间15秒
     """
+    char.equ_effect.append(EquEffect(name='突破', icon='/equipment/skill/0.png', cd=8, data=6360))
+    char.equ_effect.append(EquEffect(name='审判', icon='/equipment/skill/1.png', cd=15, data=9300))
     pass
 
 
@@ -2829,6 +2854,7 @@ def suit_180(char: Character):
     - 审判伤害 : 9,300%
     - 冷却时间16秒
     """
+    suit_179(char)
     pass
 
 
@@ -2846,6 +2872,7 @@ def suit_181(char: Character):
     - 审判伤害 : 9,300%
     - 冷却时间17秒
     """
+    suit_179(char)
     pass
 
 
@@ -2863,6 +2890,7 @@ def suit_182(char: Character):
     - 审判伤害 : 9,300%
     - 冷却时间18秒
     """
+    suit_179(char)
     pass
 
 
@@ -2880,6 +2908,7 @@ def suit_183(char: Character):
     - 审判伤害 : 9,300%
     - 冷却时间19秒
     """
+    suit_179(char)
     pass
 
 
@@ -2904,6 +2933,9 @@ def suit_184(char: Character):
     召唤女武神， 对四周敌人施以天罚。
     - 天罚伤害 : 136800%
     """
+    char.equ_effect.append(EquEffect(name='突破', icon='/equipment/skill/0.png', cd=8, data=6360))
+    char.equ_effect.append(EquEffect(name='审判', icon='/equipment/skill/1.png', cd=15, data=9300))
+    char.equ_effect.append(EquEffect(name='天罚', icon='/equipment/suit/7.png', cd=20, data=136800))
     pass
 
 
@@ -2928,6 +2960,7 @@ def suit_185(char: Character):
     召唤女武神， 对四周敌人施以天罚。
     - 天罚伤害 : 136800%
     """
+    suit_184(char)
     pass
 
 
@@ -2952,8 +2985,8 @@ def suit_186(char: Character):
     召唤女武神， 对四周敌人施以天罚。
     - 天罚伤害 : 136800%
     """
+    suit_184(char)
     pass
-
 
 def suit_187(char: Character):
     """
@@ -2976,6 +3009,7 @@ def suit_187(char: Character):
     召唤女武神， 对四周敌人施以天罚。
     - 天罚伤害 : 136800%
     """
+    suit_184(char)
     pass
 
 
@@ -3000,6 +3034,7 @@ def suit_188(char: Character):
     召唤女武神， 对四周敌人施以天罚。
     - 天罚伤害 : 136800%
     """
+    suit_184(char)
     pass
 
 
@@ -3028,6 +3063,10 @@ def suit_189(char: Character):
     召唤女武神， 对四周敌人施以天罚。
     - 天罚伤害 : 136800%
     """
+    char.equ_effect.append(EquEffect(name='突破', icon='/equipment/skill/0.png', cd=8, data=6360))
+    char.equ_effect.append(EquEffect(name='审判', icon='/equipment/skill/1.png', cd=15, data=9300))
+    char.equ_effect.append(EquEffect(name='降临', icon='/equipment/skill/3.png', cd=140, data=329400))
+    char.equ_effect.append(EquEffect(name='天罚', icon='/equipment/suit/7.png', cd=20, data=136800))
     pass
 
 
@@ -3083,6 +3122,7 @@ def suit_195(char: Character):
     - 增益效果持续时间30秒
     - 冷却时间30秒
     """
+    char.SetStatus(SkillAttack=0.1)
     pass
 
 
@@ -3099,6 +3139,7 @@ def suit_196(char: Character):
     - 增益效果持续时间30秒
     - 冷却时间30秒
     """
+    suit_195(char)
     pass
 
 
@@ -3115,6 +3156,7 @@ def suit_197(char: Character):
     - 增益效果持续时间30秒
     - 冷却时间30秒
     """
+    suit_195(char)
     pass
 
 
@@ -3131,6 +3173,7 @@ def suit_198(char: Character):
     - 增益效果持续时间30秒
     - 冷却时间30秒
     """
+    suit_195(char)
     pass
 
 
@@ -3147,6 +3190,7 @@ def suit_199(char: Character):
     - 增益效果持续时间30秒
     - 冷却时间30秒
     """
+    suit_195(char)
     pass
 
 
@@ -3164,6 +3208,7 @@ def suit_200(char: Character):
     - 增益效果持续时间30秒
     - 冷却时间30秒
     """
+    char.SetStatus(SkillAttack=0.2)
     pass
 
 
@@ -3181,6 +3226,7 @@ def suit_201(char: Character):
     - 增益效果持续时间30秒
     - 冷却时间30秒
     """
+    suit_200(char)
     pass
 
 
@@ -3198,6 +3244,7 @@ def suit_202(char: Character):
     - 增益效果持续时间30秒
     - 冷却时间30秒
     """
+    suit_200(char)
     pass
 
 
@@ -3215,6 +3262,7 @@ def suit_203(char: Character):
     - 增益效果持续时间30秒
     - 冷却时间30秒
     """
+    suit_200(char)
     pass
 
 
@@ -3232,6 +3280,7 @@ def suit_204(char: Character):
     - 增益效果持续时间30秒
     - 冷却时间30秒
     """
+    suit_200(char)
     pass
 
 
@@ -3251,6 +3300,7 @@ def suit_205(char: Character):
     [青丘灵珠开关][装备主动技能]- 灵珠全部填满时，自动使用青丘灵珠增益效果（冷却时间1秒）
     - 再次使用时，关闭自动使用功能
     """
+    char.SetStatus(SkillAttack=0.3)
     pass
 
 
@@ -3270,6 +3320,7 @@ def suit_206(char: Character):
     [青丘灵珠开关][装备主动技能]- 灵珠全部填满时，自动使用青丘灵珠增益效果（冷却时间1秒）
     - 再次使用时，关闭自动使用功能
     """
+    suit_205(char)
     pass
 
 
@@ -3289,6 +3340,7 @@ def suit_207(char: Character):
     [青丘灵珠开关][装备主动技能]- 灵珠全部填满时，自动使用青丘灵珠增益效果（冷却时间1秒）
     - 再次使用时，关闭自动使用功能
     """
+    suit_205(char)
     pass
 
 
@@ -3308,6 +3360,7 @@ def suit_208(char: Character):
     [青丘灵珠开关][装备主动技能]- 灵珠全部填满时，自动使用青丘灵珠增益效果（冷却时间1秒）
     - 再次使用时，关闭自动使用功能
     """
+    suit_205(char)
     pass
 
 
@@ -3346,6 +3399,7 @@ def suit_210(char: Character):
     [青丘灵珠开关][装备主动技能]- 灵珠全部填满时，自动使用青丘灵珠增益效果（冷却时间1秒）
     - 再次使用时，关闭自动使用功能
     """
+    char.SetStatus(SkillAttack=0.3)
     pass
 
 
@@ -3409,6 +3463,11 @@ def suit_216(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    if char.equ_options.get('3',0) == 0:
+        char.SetStatus(SkillAttack=0.106)
+    else:
+        char.SetStatus(SkillAttack=0.08,SpeedA=0.1,SpeedM=0.1,SpeedR=0.1)
+        char.equ_effect.append(EquEffect(name='酣畅狩猎', icon='/equipment/skill/15.png', cd=30, data=3825))
     pass
 
 
@@ -3433,6 +3492,7 @@ def suit_217(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    suit_216(char)
     pass
 
 
@@ -3457,6 +3517,7 @@ def suit_218(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    suit_216(char)
     pass
 
 
@@ -3481,6 +3542,7 @@ def suit_219(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    suit_216(char)
     pass
 
 
@@ -3505,6 +3567,7 @@ def suit_220(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    suit_216(char)
     pass
 
 
@@ -3528,6 +3591,11 @@ def suit_221(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    if char.equ_options.get('3',0) == 0:
+        char.SetStatus(SkillAttack=0.178)
+    else:
+        char.SetStatus(SkillAttack=0.08,SpeedA=0.15,SpeedM=0.15,SpeedR=0.15)
+        char.equ_effect.append(EquEffect(name='酣畅狩猎', icon='/equipment/skill/15.png', cd=30, data=5738))
     pass
 
 
@@ -3551,6 +3619,7 @@ def suit_222(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    suit_221(char)
     pass
 
 
@@ -3574,6 +3643,7 @@ def suit_223(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    suit_221(char)
     pass
 
 
@@ -3597,6 +3667,7 @@ def suit_224(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    suit_221(char)
     pass
 
 
@@ -3620,6 +3691,7 @@ def suit_225(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    suit_221(char)
     pass
 
 
@@ -3645,6 +3717,11 @@ def suit_226(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    if char.equ_options.get('3',0) == 0:
+        char.SetStatus(SkillAttack=0.178)
+    else:
+        char.SetStatus(SkillAttack=0.08,SpeedA=0.2,SpeedM=0.0,SpeedR=0.0)
+        char.equ_effect.append(EquEffect(name='酣畅狩猎', icon='/equipment/skill/15.png', cd=30, data=6750))
     pass
 
 
@@ -3670,6 +3747,7 @@ def suit_227(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    suit_226(char)
     pass
 
 
@@ -3695,6 +3773,7 @@ def suit_228(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    suit_226(char)
     pass
 
 
@@ -3720,6 +3799,7 @@ def suit_229(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    suit_226(char)
     pass
 
 
@@ -3745,6 +3825,7 @@ def suit_230(char: Character):
     - 适用[群猎之力]效果
     - 不适用[酣畅狩猎]效果
     """
+    suit_226(char)
     pass
 
 
@@ -3769,6 +3850,11 @@ def suit_231(char: Character):
     - 技能伤害 +21.6%
     - 适用[群猎之力]效果
     """
+    if char.equ_options.get('3',0) == 0:
+        char.SetStatus(SkillAttack=0.216)
+    else:
+        char.SetStatus(SkillAttack=0.08,SpeedA=0.3,SpeedM=0.3,SpeedR=0.3)
+        char.equ_effect.append(EquEffect(name='酣畅狩猎', icon='/equipment/skill/15.png', cd=30, data=9563))
     pass
 
 
@@ -3828,6 +3914,10 @@ def suit_237(char: Character):
     - 魔力波动伤害量:13.714%
     - 魔力波动范围:150px
     """
+    if char.equ_options.get('4',0) == 0:
+        char.equ_effect.append(EquEffect(name='普通模式', icon='/equipment/skill/57.png', cd=1, data=19200))
+    else:
+        char.equ_effect.append(EquEffect(name='追击模式', icon='/equipment/skill/57.png', cd=1, data=13714))
     pass
 
 
@@ -3848,6 +3938,7 @@ def suit_238(char: Character):
     - 魔力波动伤害量:13.714%
     - 魔力波动范围:150px
     """
+    suit_237(char)
     pass
 
 
@@ -3868,6 +3959,7 @@ def suit_239(char: Character):
     - 魔力波动伤害量:13.714%
     - 魔力波动范围:150px
     """
+    suit_237(char)
     pass
 
 
@@ -3888,6 +3980,7 @@ def suit_240(char: Character):
     - 魔力波动伤害量:13.714%
     - 魔力波动范围:150px
     """
+    suit_237(char)
     pass
 
 
@@ -3908,6 +4001,7 @@ def suit_241(char: Character):
     - 魔力波动伤害量:13.714%
     - 魔力波动范围:150px
     """
+    suit_237(char)
     pass
 
 
@@ -3930,6 +4024,11 @@ def suit_242(char: Character):
     - 魔力波动伤害量:20,571%
     - 魔力波动范围:150px
     """
+    if char.equ_options.get('4',0) == 0:
+        char.equ_effect.append(EquEffect(name='普通模式', icon='/equipment/skill/57.png', cd=1, data=31680))
+        char.SetStatus(SpeedM=0.25)
+    else:
+        char.equ_effect.append(EquEffect(name='追击模式', icon='/equipment/skill/57.png', cd=1, data=20571))
     pass
 
 
@@ -3952,6 +4051,7 @@ def suit_243(char: Character):
     - 魔力波动伤害量:20,571%
     - 魔力波动范围:150px
     """
+    suit_242(char)
     pass
 
 
@@ -3974,6 +4074,7 @@ def suit_244(char: Character):
     - 魔力波动伤害量:20,571%
     - 魔力波动范围:150px
     """
+    suit_242(char)
     pass
 
 
@@ -3996,6 +4097,7 @@ def suit_245(char: Character):
     - 魔力波动伤害量:20,571%
     - 魔力波动范围:150px
     """
+    suit_242(char)
     pass
 
 
@@ -4018,6 +4120,7 @@ def suit_246(char: Character):
     - 魔力波动伤害量:20,571%
     - 魔力波动范围:150px
     """
+    suit_242(char)
     pass
 
 
@@ -4040,6 +4143,11 @@ def suit_247(char: Character):
     - 魔力波动伤害量:30,857%
     - 魔力波动范围:200px
     """
+    if char.equ_options.get('4',0) == 0:
+        char.equ_effect.append(EquEffect(name='普通模式', icon='/equipment/skill/57.png', cd=1, data=47520))
+        char.SetStatus(SpeedM=0.25)
+    else:
+        char.equ_effect.append(EquEffect(name='追击模式', icon='/equipment/skill/57.png', cd=1, data=30857))
     pass
 
 
@@ -4062,6 +4170,7 @@ def suit_248(char: Character):
     - 魔力波动伤害量:30,857%
     - 魔力波动范围:200px
     """
+    suit_247(char)
     pass
 
 
@@ -4084,6 +4193,7 @@ def suit_249(char: Character):
     - 魔力波动伤害量:30,857%
     - 魔力波动范围:200px
     """
+    suit_247(char)
     pass
 
 
@@ -4106,6 +4216,7 @@ def suit_250(char: Character):
     - 魔力波动伤害量:30,857%
     - 魔力波动范围:200px
     """
+    suit_247(char)
     pass
 
 
@@ -4128,6 +4239,7 @@ def suit_251(char: Character):
     - 魔力波动伤害量:30,857%
     - 魔力波动范围:200px
     """
+    suit_247(char)
     pass
 
 
@@ -4151,6 +4263,11 @@ def suit_252(char: Character):
     - 魔力波动伤害量 :39,428%
     - 魔力波动范围:200px
     """
+    if char.equ_options.get('4',0) == 0:
+        char.equ_effect.append(EquEffect(name='普通模式', icon='/equipment/skill/57.png', cd=1, data=60720))
+        char.SetStatus(SpeedM=0.25)
+    else:
+        char.equ_effect.append(EquEffect(name='追击模式', icon='/equipment/skill/57.png', cd=1, data=39428))
     pass
 
 

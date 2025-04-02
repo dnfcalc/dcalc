@@ -80,7 +80,7 @@ export default defineComponent({
                 )
               }
             }
-            if (['reinforce_type', 'reinforce'].includes(name)) {
+            if (['reinforceType', 'reinforce','adaptation'].includes(name)) {
               parts = basicInfoStore.parts.filter((e) => !['称号', '宠物'].includes(e))
             }
           } else {
@@ -105,7 +105,7 @@ export default defineComponent({
     const emblem_1 = currentInfo<string | number>('emblem_1')
 
     // 增幅
-    const reinforce_type = currentInfo<string | number>('reinforce_type', 1)
+    const reinforce_type = currentInfo<string | number>('reinforceType', 1)
 
     // 增幅数值
     const reinforce = currentInfo<string | number>('reinforce')
@@ -150,8 +150,8 @@ export default defineComponent({
             <div class="equ-profile-item">
               <div class="row-name">增幅</div>
               <calc-select v-model={reinforce_type.value} class="flex-1 !h-20px">
-                <calc-option value={0}>增幅</calc-option>
-                <calc-option value={1}>强化</calc-option>
+                <calc-option value={0}>强化</calc-option>
+                <calc-option value={1}>增幅</calc-option>
               </calc-select>
               <calc-select v-model={reinforce.value} class="flex-1 !h-20px">
                 {renderList(31, (i) => (

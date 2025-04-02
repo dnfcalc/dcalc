@@ -24,7 +24,7 @@
     <div class="flex flex-wrap gap-4px content-start" :style="{width: `${rowCount * 32}px`}">
     <template v-for="(equip,_) in suitEquipments" :key="_">
       <template v-if="equip?.rarity == curRarity || !curRarity">
-        <EquipmentIcon :equipment="equip" :inactive="configStore.config.equips[equip?.itemDetailType ?? '']?.id != equip?.id" @click="chooseEqu(equip)"/>
+        <EquipmentIcon :equipment="equip" :inactive="configStore.config.equips[equip?.itemDetailType ?? '']?.id != equip?.id" @click="configStore.chooseEqu(equip)"/>
       </template>
 
       <template v-else>
@@ -82,19 +82,11 @@ const suitEquipments = computed(() => {
   return res
 })
 
-
-const chooseEqu = async(equip: IEquipment | undefined) => {
-  if (equip && configStore.config.equips[equip.itemDetailType]) {
-    configStore.config.equips[equip.itemDetailType].id = equip.id
-  }
-  // await configStore.calc()
-}
-
 const handleDoubleClick = () => {
   if(!curRarity.value) return
   if(curRarity.value == '太初') return
   suitEquipments.value.filter(a=>!!a && a.rarity == curRarity.value).splice(0,11).forEach((a) => {
-    chooseEqu(a)
+    configStore.chooseEqu(a)
   })
 }
 

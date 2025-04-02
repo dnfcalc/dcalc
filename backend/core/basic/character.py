@@ -124,6 +124,8 @@ class Character:
     """装备打造信息"""
     equ_effect: list['EquEffect'] = []
     """装备效果列表"""
+    equ_options: dict[str, int] = {}
+    """装备选项列表"""
     EquEffectRatio = 1
     """装备效果倍率"""
 
@@ -152,9 +154,10 @@ class Character:
         self.INT = 0
         self.Spirit = 0
         self.Vitality = 0
-        self.AtkP = 0
-        self.AtkM = 0
-        self.AtkI = 0
+        # 唤醒的情况下的基础数据
+        self.AtkP = 0 + 65
+        self.AtkM = 0 + 65
+        self.AtkI = 1116 + 65
         self.PAtkP = 1.0
         self.PAtkM = 1.0
         self.PAtkI = 1.0
@@ -165,10 +168,10 @@ class Character:
             '暗': False,
         }
         self.ElementDB = {
-            '火': 0,
-            '冰': 0,
-            '光': 0,
-            '暗': 0,
+            '火': 13,
+            '冰': 13,
+            '光': 13,
+            '暗': 13,
         }
         self.ElementR = {
             '火': 0,
@@ -206,6 +209,7 @@ class Character:
         self.equs = {}
         self.jade_effect = Jade()
         self.equ_effect = []
+        self.equ_options = {}
         pass
 
     # region 角色属性设置
@@ -433,12 +437,16 @@ class Character:
         equInfos = get_equipment(self.equVersion)
         equs = []
         suits = []
+        stones = []
         for i in equInfos.equs:
             equs.append(i.__dict__)
         for i in equInfos.suits:
             suits.append(i.__dict__)
+        for i in equInfos.stones:
+            stones.append(i.__dict__)
         info['equips'] = equs
         info['suits'] = suits
+        info['stones'] = stones
         info['enchants'] = equInfos.enchants
         emblems = []
         return info
@@ -504,17 +512,31 @@ class Character:
         # 设置装备和获取对应的套装属性
         for item in filter(lambda x: x.equInfo is not None, self.charEquipInfo.values()):
             partEqu = item.equInfo
+            partFusion = item.fusionInfo
             # 套装属性设置
-            for suit in partEqu.suit:
-                if suitInfo.get(suit, None) is None:
-                    suitInfo[suit] = {
-                        'point': 0,
-                        'count': 0,
-                    }
-                if partEqu.Point == 0:
-                    suitInfo[suit]['count'] += 1
-                else:
-                    suitInfo[suit]['point'] += partEqu.Point
+            if partEqu is not None:
+                for suit in partEqu.suit:
+                    if suitInfo.get(suit, None) is None:
+                        suitInfo[suit] = {
+                            'point': 0,
+                            'count': 0,
+                        }
+                    if partEqu.Point == 0:
+                        suitInfo[suit]['count'] += 1
+                    else:
+                        suitInfo[suit]['point'] += partEqu.Point
+            if partFusion is not None:
+                for suit in partFusion.suit:
+                    if suitInfo.get(suit, None) is None:
+                        suitInfo[suit] = {
+                            'point': 0,
+                            'count': 0,
+                        }
+                    if partFusion.Point == 0:
+                        suitInfo[suit]['count'] += 1
+                    else:
+                        suitInfo[suit]['point'] += partFusion.Point
+        print(suitInfo)
         # 取得点数最高的套装
         max_point_suit = max((suit for suit in suitInfo if suitInfo[suit]['point'] > 0), key=lambda suit: suitInfo[suit]['point'], default=None)
         # 处理没有点数的老套装

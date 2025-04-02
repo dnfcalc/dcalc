@@ -1,5 +1,5 @@
 import importlib
-from database.models import Session, EquData, SuitData, EnchantData
+from database.models import Session, EquData, StoneData, SuitData, EnchantData
 from database.connect import get_db_engine as get_engine
 from functools import cache
 
@@ -70,14 +70,17 @@ class Equipments:
         self.version = version
         self.engine = get_engine(version)
         self.equs: list[Equ] = []
+        self.stones: list[Equ] = []
         self.funs = self.init_func()
         self.equ_dict: dict[str, Equ] = {}
+        self.stone_dict: dict[str, Equ] = {}
         self.enchants = []
         self.suits: list[Suit] = []
         self.suit_dict: dict[str, Suit] = {}
         self.init_equs()
         self.init_suits()
         self.init_enchants()
+        self.init_stones()
         self.engine.dispose()
 
     def init_equs(self):
@@ -101,6 +104,28 @@ class Equipments:
             equ = Equ(**equ_dict)
             self.equs.append(equ)
             self.equ_dict[equ.id] = equ
+
+    def init_stones(self):
+        """从数据库中获取所有装备信息"""
+        with Session(self.engine) as session:
+            db_list = session.query(StoneData).all()
+        keys = [key for key in StoneData.__dict__.keys() if key[0].isupper()] + ['suit']
+        for item in db_list:
+            max_adaptation = 0
+            item.id = str(item.id)
+            for attr in keys:
+                if attr == 'suit':
+                    value = parse_to_number_list(getattr(item, attr), [])
+                    value = [str(int(i)) for i in value]
+                else:
+                    value = parse_to_number_list(getattr(item, attr))
+                max_adaptation = max(max_adaptation, len(value) - 1)
+                setattr(item, attr, value)
+            stone_dict = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
+            stone_dict['max_adaptation'] = max_adaptation
+            stone = Equ(**stone_dict)
+            self.stones.append(stone)
+            self.stone_dict[stone.id] = stone
 
     def init_suits(self):
         """从数据库中获取所有套装信息"""

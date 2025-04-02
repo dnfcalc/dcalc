@@ -26,6 +26,7 @@ export interface ICharacterInfo {
   name: string
   equVersion: string
   equips: IEquipment[]
+  stones: IEquipment[]
   enchants: IEnchantingInfo[]
   emblems: IEnchantingInfo[]
   weapons: string[]

@@ -56,6 +56,36 @@ class EquData(Base):
     Buffer = Column(Text)
     suit = Column(Text)
 
+class StoneData(Base):
+    """
+    装备属性映射
+    首字母大写的属性为调适可能会影响到的属性
+    """
+
+    __tablename__ = 'stone'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(Text)
+    rarity = Column(Text)
+    itemType = Column(Text)
+    itemDetailType = Column(Text)
+    Point = Column(Text)
+    categorize = Column(Text)
+    imageUrl = Column(Text)
+    detail = Column(Text)
+    bufferDetail = Column(Text)
+    STR = Column(Text)
+    INT = Column(Text)
+    Vitality = Column(Text)
+    Spirit = Column(Text)
+    AtkP = Column(Text)
+    AtkM = Column(Text)
+    AtkI = Column(Text)
+    SkillAttack = Column(Text)
+    Attack = Column(Text)
+    Buffer = Column(Text)
+    suit = Column(Text)
+
 class EnchantData(Base):
     __tablename__ = 'enchant'
 

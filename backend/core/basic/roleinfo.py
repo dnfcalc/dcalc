@@ -29,14 +29,21 @@ class CharacterEquipInfo:
     """装备信息"""
     fusionInfo: Union['Equ', None]
     """贴膜信息"""
+    fusionInfo: Union['Equ', None]
+    """贴膜信息"""
 
     def __init__(self, info={}, equVerison=0, part='') -> None:
         self.__dict__.update(info)
         equ = get_equipment(equVerison).equ_dict.get(self.id, None)
+        fusion = get_equipment(equVerison).stone_dict.get(self.fusion, None)
         if equ is not None and (equ.itemType == part or equ.itemDetailType == part):
             self.equInfo = equ.adapt(self.adaptation)
         else:
             self.equInfo = None
+        if fusion is not None and (fusion.itemType == part or fusion.itemDetailType == part):
+            self.fusionInfo = fusion.adapt(self.adaptation)
+        else:
+            self.fusionInfo = None
 
 
 class CharacterWeaponInfo(CharacterEquipInfo):

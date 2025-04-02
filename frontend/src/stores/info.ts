@@ -16,6 +16,8 @@ export const useInfoStore = defineStore('infoStore', () => {
 
   const emblems = computed(() => infos.value?.emblems ?? [])
 
+  const stones = computed(() => infos.value?.stones ?? [])
+
   const parts = [
     '头肩',
     '上衣',
@@ -49,5 +51,6 @@ export const useInfoStore = defineStore('infoStore', () => {
     enchants,
     emblems,
     parts,
+    stones
   }
 })

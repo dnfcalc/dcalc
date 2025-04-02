@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { useInfoStore } from './info'
 import api from '@/api'
+import type { IEquipment } from '@/api/info/type'
 // | '上衣'
 // | '头肩'
 // | '下装'
@@ -27,6 +28,7 @@ export interface IConfig {
       upgrade: number
       refine: number
       adaptation: number
+      fusion: string
     }
   >
   jades: Record<string, number>
@@ -42,6 +44,7 @@ const defaultEqusConfig = {
   upgrade: 0,
   refine: 0,
   adaptation: 0,
+  fusion: '',
 }
 
 export const useConfigStore = defineStore('configStore', () => {
@@ -102,6 +105,17 @@ export const useConfigStore = defineStore('configStore', () => {
     return await api.calc(config.value)
   }
 
+  const chooseEqu = async(equip: IEquipment | undefined,isFusion:boolean = false) => {
+    if (equip && config.value.equips[equip.itemDetailType]) {
+      const key = isFusion ? 'fusion' : 'id'
+      if (config.value.equips[equip.itemDetailType][key] == equip.id) {
+        config.value.equips[equip.itemDetailType][key] = ""
+      } else {
+        config.value.equips[equip.itemDetailType][key] = equip.id
+      }
+    }
+  }
+
 
   const result = useAsyncState(
     () => {
@@ -119,6 +133,7 @@ export const useConfigStore = defineStore('configStore', () => {
     loadConfig,
     saveConfig,
     calc,
-    result
+    result,
+    chooseEqu
   }
 })
