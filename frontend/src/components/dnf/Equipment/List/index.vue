@@ -1,8 +1,8 @@
 <template>
-  <div class="h-180px pos-relative">
+  <div class="pos-relative w-300px h-full">
     <template v-for="part in infoStore.parts" :key="part">
       <div
-        class="pos-absolute text-white w-26px h-26px border-1px border-solid border-#7a7a7a/50 flex items-center justify-center"
+        class="pos-absolute text-white/50 w-26px h-26px border-1px border-solid border-#7a7a7a/50 flex items-center justify-center"
         :style="infoStyle(part)"
         @click="choosePart(part)"
       >

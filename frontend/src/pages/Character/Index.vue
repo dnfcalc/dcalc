@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100% h-100% main" :class="props.alter.split('.').slice(-1)">
+  <div class="w-100% h-100% main" :class="infoStore.infos?.alter">
     <div class="header">
       <calc-tabs route>
         <calc-tab :value="`/character/equipment/${props.alter}`">装备设置</calc-tab>

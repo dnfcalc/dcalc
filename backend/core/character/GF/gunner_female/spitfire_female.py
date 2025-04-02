@@ -63,7 +63,10 @@ class Skill3(PassiveSkill):
 
     data0 = [0, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48]  # noqa: E501
     data1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]
-    associate = [{'data': data0, 'type': '$*PAtkI'},{'data': data1, 'type': '*cdReduce', 'exceptSkills': ['EMP磁暴','决战之日','终解·制空霸权']}]
+    associate = [
+        {'data': data0, 'type': '$*PAtkI'},
+        {'data': data1, 'type': '*cdReduce', 'exceptSkills': ['EMP磁暴','决战之日','终解·制空霸权']}
+        ]
 
     # def precondition(self):
     #     weapon = self.char.charEquipInfo['武器'].equInfo
@@ -83,6 +86,10 @@ class Skill4(PassiveSkill):
 
     data0 = [0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]  # noqa: E501
     data1 = [0, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]  # noqa: E501
+    associate = [
+        {'data': data0, 'type': '*skillRation'},
+        {'data': data1, 'type': '*skillRation'}
+    ]
 
 # 手雷精通 유탄 마스터리
 # https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/0113c8b1306ca76d208f83f2d093dd62?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -96,7 +103,9 @@ class Skill5(PassiveSkill):
 
     data0 = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]  # noqa: E501
 
-    associate = [{'type': '*skillRation', 'data': data0, 'skills': ['G-14手雷','G-35L感电手雷','G-18C冰冻手雷']}]
+    associate = [
+        {'type': '*skillRation', 'data': data0, 'skills': ['G-14手雷','G-35L感电手雷','G-18C冰冻手雷']}
+        ]
 
 # M18阔剑地雷 M18 클레이모어
 # https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/2ff50c35efcf0f287c4c418c8454da48?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0

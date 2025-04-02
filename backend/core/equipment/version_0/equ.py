@@ -1284,6 +1284,7 @@ def equ_86(char: Character):
     -所有速度+10%
     -发动权威光谱效果
     """
+    char.SetStatus(SpeedA=0.1,SpeedM=0.1,SpeedR=0.1)
     pass
 
 
@@ -1298,6 +1299,7 @@ def equ_87(char: Character):
     -所有速度+15%
     -发动权威光谱效果
     """
+    char.SetStatus(SpeedA=0.15,SpeedM=0.15,SpeedR=0.15)
     pass
 
 
@@ -1313,6 +1315,7 @@ def equ_88(char: Character):
     -所有速度+20%
     -发动权威光谱效果
     """
+    char.SetStatus(SpeedA=0.2,SpeedM=0.2,SpeedR=0.2)
     pass
 
 
@@ -1401,7 +1404,7 @@ def equ_94(char: Character):
     -静止模式：中止攻击
     -冷却时间1秒
     """
-    char.equ_effects.append(EquEffect(name='冰封的火焰之躯', icon='/equipment/skill/26.png', cd=1, data=7200))
+    char.equ_effect.append(EquEffect(name='冰封的火焰之躯', icon='/equipment/skill/26.png', cd=1, data=7200))
     pass
 
 
@@ -1423,8 +1426,8 @@ def equ_95(char: Character):
     -静止模式：中止攻击
     -冷却时间1秒
     """
-    char.equ_effects.append(EquEffect(name='冰弩', icon='/equipment/skill/26.png', cd=1, data=7200))
-    char.equ_effects.append(EquEffect(name='火弩', icon='/equipment/skill/26.png', cd=1, data=7200))
+    char.equ_effect.append(EquEffect(name='冰弩', icon='/equipment/skill/26.png', cd=1, data=7200))
+    char.equ_effect.append(EquEffect(name='火弩', icon='/equipment/skill/26.png', cd=1, data=7200))
     pass
 
 
@@ -1448,9 +1451,9 @@ def equ_96(char: Character):
     -静止模式：中止攻击
     -冷却时间1秒
     """
-    char.equ_effects.append(EquEffect(name='冰弩', icon='/equipment/skill/26.png', cd=1, data=7200))
-    char.equ_effects.append(EquEffect(name='火弩', icon='/equipment/skill/26.png', cd=1, data=7200))
-    char.equ_effects.append(EquEffect(name='箭雨', icon='/equipment/skill/26.png', cd=20, data=45600))
+    char.equ_effect.append(EquEffect(name='冰弩', icon='/equipment/skill/26.png', cd=1, data=7200))
+    char.equ_effect.append(EquEffect(name='火弩', icon='/equipment/skill/26.png', cd=1, data=7200))
+    char.equ_effect.append(EquEffect(name='箭雨', icon='/equipment/skill/26.png', cd=20, data=45600))
     pass
 
 
@@ -1584,7 +1587,7 @@ def equ_104(char: Character):
             skill.skillDamage *= 1.30
         if skill.damage and skill.cube == 0:
             skill.skillDamage *= 1.25
-    char.equ_effect.append(EquEffect(name='燃烧', icon='/new_equipment/01_weapon/gunner/musket/musket.img/234.png', cd=0.2, data=480))
+    char.equ_effect.append(EquEffect(name='燃烧', icon='/equipment/new_equipment/01_weapon/gunner/musket/musket.img/234.png', cd=0.2, data=480))
     pass
 
 

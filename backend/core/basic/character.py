@@ -1,6 +1,6 @@
 from functools import cache
 import importlib
-from typing import Literal
+from typing import Any, Literal, Mapping, Union
 
 from core.basic.property import CharacterInfo
 from core.basic.skill import Skill
@@ -13,18 +13,20 @@ from .formula import 增幅计算, 强化技攻, 武器强化计算, 精通计�
 from .roleinfo import CharacterEquipInfo, get_key_by_value
 # from .property import 精通计算, 角色基础, CharacterInfo
 
+
 class Jade:
-    ElementIncrease:float
-    '''属性增幅'''
-    AttackP:float
-    '''攻击强化%'''
-    SkillAttack:float
-    '''技能攻击力%'''
+    ElementIncrease: float
+    """属性增幅"""
+    AttackP: float
+    """攻击强化%"""
+    SkillAttack: float
+    """技能攻击力%"""
 
     def __init__(self) -> None:
         self.ElementIncrease = 0.0
         self.AttackP = 0.0
         self.SkillAttack = 0.0
+
 
 class Character:
     # region 角色属性
@@ -257,48 +259,47 @@ class Character:
         攻击强化P=0,
         增益量=0,
         增益量P=0,
-        **kwargs,
+        **kwargs: Mapping[
+            Literal[
+                'STR',
+                'INT',
+                'AtkP',
+                'AtkM',
+                'AtkI',
+                'PAtkP',
+                'PAtkM',
+                'PAtkI',
+                'PATKIPDamage',
+                'PDamageC',
+                'PSTR',
+                'PINT',
+                'PDamageB',
+                'ElementA',
+                'ElementDB',
+                'ElementR',
+                'CriticalMP',
+                'CriticalM',
+                'CriticalPP',
+                'CriticalP',
+                'EquipmentSkillAttack',
+                'SkillAttack',
+                'SpeedA',
+                'SpeedM',
+                'SpeedR',
+                'HitP',
+                'Hit',
+                'Attack',
+                'AttackP',
+                'Buffer',
+                'BufferP',
+                'Spirit',
+                'Vitality',
+                'EquEffectRatio',
+            ],
+            Any,
+        ],
     ) -> None:
         """设置角色属性"""
-        allowed_kwargs = {
-            'STR',
-            'INT',
-            'AtkP',
-            'AtkM',
-            'AtkI',
-            'PAtkP',
-            'PAtkM',
-            'PAtkI',
-            'PATKIPDamage',
-            'PDamageC',
-            'PSTR',
-            'PINT',
-            'PDamageB',
-            'ElementA',
-            'ElementDB',
-            'ElementR',
-            'CriticalMP',
-            'CriticalM',
-            'CriticalPP',
-            'CriticalP',
-            'EquipmentSkillAttack',
-            'SkillAttack',
-            'SpeedA',
-            'SpeedM',
-            'SpeedR',
-            'HitP',
-            'Hit',
-            'Attack',
-            'AttackP',
-            'Buffer',
-            'BufferP',
-            'Spirit',
-            'Vitality',
-            'EquEffectRatio'
-        }
-        # for key in kwargs:
-        #     if key not in allowed_kwargs:
-        #         raise ValueError(f'Invalid keyword argument: {key}')
         self.STR += 力量 + kwargs.get('STR', 0) + 四维 + 力智
         self.INT += 智力 + kwargs.get('INT', 0) + 四维 + 力智
         self.Spirit += 精神 + kwargs.get('Spirit', 0) + 四维 + 体精
@@ -328,7 +329,7 @@ class Character:
         self.EquEffectRatio *= 1 + kwargs.get('EquEffectRatio', 0.0)
         pass
 
-    def AddElementDB(self, element: str, value: float,type:int=0) -> None:
+    def AddElementDB(self, element: str, value: float, type: int = 0) -> None:
         """
         增加属性强化
         type: 0 站街 1 进图
@@ -356,6 +357,21 @@ class Character:
         for skill in self.skills:
             if min <= skill.learnLv <= max and skill.damage and skill.learnLv not in exclude:
                 skill.cdReduce *= 1 - cd
+
+    def SetSkillCDRecover(self, min=1, max=100, cd=0, exclude=[50, 85, 100]) -> None:
+        """设置技能CD恢复"""
+        for skill in self.skills:
+            if min <= skill.learnLv <= max and skill.damage and skill.learnLv not in exclude:
+                skill.cdRecover += cd
+
+    def SetSkillRation(self, min=1, max=100, ratio=0 ,type = 0) -> None:
+        """设置技能倍率 0 修改技能面板 1 不修改技能面板"""
+        for skill in self.skills:
+            if min <= skill.learnLv <= max and skill.damage:
+                if type == 0:
+                    skill.skillRation *= (1 + ratio)
+                else:
+                    skill.skillDamage *= (1 + ratio)
 
     def GetSkillByName(self, name) -> Skill:
         """通过技能名获取技能"""
@@ -525,7 +541,7 @@ class Character:
         for equ in [item.equInfo for item in filter(lambda x: x.equInfo is not None, self.charEquipInfo.values())]:
             if equ is None:
                 continue
-            fun = effects.equ_func_list.get(str(equ.id),None)
+            fun = effects.equ_func_list.get(str(equ.id), None)
             if fun is None:
                 continue
             # 获取装备基础属性 并给角色设置（大写开头属性为角色属性）
@@ -533,7 +549,6 @@ class Character:
             self.SetStatus(**filtered_dict)
             # 获取装备额外属性
             fun(self)
-
 
     def calc_basic(self):
         """计算基础属性:防具精通、增幅、强化等"""
@@ -567,10 +582,10 @@ class Character:
             if part == '武器':
                 # 锻造独立计算
                 value = 锻造计算(115, '史诗', cur.refine)
-                self.SetStatus(AtkI = value)
+                self.SetStatus(AtkI=value)
                 # 传世武器强化系数取所有武器的最高的1.12
                 if cur.equInfo.categorize == '传世武器':
-                    value = 武器强化计算(115, '史诗', cur.reinforce,cur.equInfo.itemDetailType,'物理',1.12)
+                    value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理', 1.12)
                     self.SetStatus(AtkP=value, AtkM=value)
                 else:
                     # 强化计算
@@ -581,7 +596,7 @@ class Character:
                 pass
             if part == '耳环':
                 value = 耳环计算(115, '史诗', cur.reinforce)
-                self.SetStatus(AtkM=value, AtkP=value,AtkI=value)
+                self.SetStatus(AtkM=value, AtkP=value, AtkI=value)
                 pass
             if part in ['辅助装备', '魔法石']:
                 value = 左右计算(115, '史诗', cur.reinforce)
@@ -622,33 +637,34 @@ class Character:
         for i in self.skills:
             if i.damage and i.lv > 0:
                 temp = i.skillInfo()
-                skillInfos.append({
-                    "name":i.name,
-                    "icon":i.icon,
-                    "lv":i.lv,
-                    "data":temp[0],
-                    "ratio":temp[1],
-                    "cd":temp[2],
-                })
+                skillInfos.append(
+                    {
+                        'name': i.name,
+                        'icon': i.icon,
+                        'lv': i.lv,
+                        'data': temp[0],
+                        'ratio': temp[1],
+                        'cd': temp[2],
+                    }
+                )
         ratios = self.calc_damage_ration()
         ratio_char_skill = ratios[0] * ratios[1] * ratios[2] * ratios[3] * ratios[4] * ratios[5] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 10000
         ratuio_equ_skill = ratios[0] * ratios[1] * ratios[3] * ratios[4] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 10000
         for i in skillInfos:
-            i["damage"] = ratio_char_skill * i["data"] * i["ratio"]
+            i['damage'] = ratio_char_skill * i['data'] * i['ratio']
         for i in self.equ_effect:
-            skillInfos.append({
-                "name": i.name,
-                "icon": i.icon,
-                "lv": 0,
-                "data": i.data,
-                "ratio": 10.0,
-                "cd": i.cd,
-                "damage": ratuio_equ_skill * i.data * 10,
-            })
-        return {
-            "skills": skillInfos,
-            "info":{k: v for k, v in self.__dict__.items() if k[0].isupper()}
-        }
+            skillInfos.append(
+                {
+                    'name': i.name,
+                    'icon': i.icon,
+                    'lv': 0,
+                    'data': i.data,
+                    'ratio': 10.0,
+                    'cd': i.cd,
+                    'damage': ratuio_equ_skill * i.data * 10,
+                }
+            )
+        return {'skills': skillInfos, 'info': {k: v for k, v in self.__dict__.items() if k[0].isupper()}}
         # 技能影响角色的属性，如属强、抗性等
 
     def calc_damage_ration(self):
@@ -657,19 +673,19 @@ class Character:
         # 力/智 攻击力 攻击力%(特效不吃这部分)
         attrs = []
         if self.输出类型 == '物理百分比':
-            attrs.extend(['STR', 'AtkP','PAtkP'])
+            attrs.extend(['STR', 'AtkP', 'PAtkP'])
         if self.输出类型 == '魔法百分比':
-            attrs.extend(['INT', 'AtkM','PAtkM'])
+            attrs.extend(['INT', 'AtkM', 'PAtkM'])
         if self.输出类型 == '物理固伤':
             attrs.extend(['STR', 'AtkI', 'PAtkI'])
         if self.输出类型 == '魔法固伤':
             attrs.extend(['INT', 'AtkI', 'PAtkI'])
         # 力智系数
-        ratio_0 : float = getattr(self, attrs[0]) / 250 + 1
+        ratio_0: float = getattr(self, attrs[0]) / 250 + 1
         # 物理/魔法/独立攻击力
-        ratio_1 : float = getattr(self, attrs[1])
+        ratio_1: float = getattr(self, attrs[1])
         # 技能 物理/魔法/独立攻击力%
-        ratio_2 : float = getattr(self, attrs[2])
+        ratio_2: float = getattr(self, attrs[2])
         # 属强系数
         ratio_3 = max(self.ElementDB.values()) * 0.0045 + 1.05
         # 暴击系数
@@ -682,7 +698,7 @@ class Character:
         ratio_7 = 1 + self.Attack * (self.AttackP + self.jade_effect.AttackP)
         # 防御系数,暂定145沙袋防御
         monster_defense = 75068627484
-        ratio_8 = (1 - monster_defense / (monster_defense + 200 * 100))
+        ratio_8 = 1 - monster_defense / (monster_defense + 200 * 100)
         # 杂项 斗神、宠物技能、队友增幅等(技能的属性增幅归属到这部分，因为会加成到特效部分，修复后修改为技能攻击力计算)
         ratio_9 = 1.0 * self.ElementIncrease
         return (ratio_0, ratio_1, ratio_2, ratio_3, ratio_4, ratio_5, ratio_6, ratio_7, ratio_8, ratio_9)

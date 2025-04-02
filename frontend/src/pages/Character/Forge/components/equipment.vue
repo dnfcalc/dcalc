@@ -111,7 +111,7 @@ export default defineComponent({
     const reinforce = currentInfo<string | number>('reinforce')
 
     // 锻造数值
-    const dz_number = currentInfo<string | number>('dz_number')
+    const refine = currentInfo<string | number>('refine')
 
     // 调适
     const adaptation = currentInfo<string | number>('adaptation')
@@ -129,7 +129,9 @@ export default defineComponent({
     return () => {
       return (
         <>
-        <EquList v-model:part={part.value}/>
+        <div class="h-180px flex justify-center items-center">
+          <EquList v-model:part={part.value}/></div>
+
         <div class="flex flex-wrap equ-profile">
           <div class="equ-profile-item">
             <div class="mr-10px row-name">当前部位</div>
@@ -157,7 +159,7 @@ export default defineComponent({
                 ))}
               </calc-select>
               {part.value == '武器' && (
-                <calc-select v-model={dz_number.value} class="flex-1 !h-20px">
+                <calc-select v-model={refine.value} class="flex-1 !h-20px">
                   {renderList(9, (i) => (
                     <calc-option value={i - 1}>锻造+ {i - 1}</calc-option>
                   ))}

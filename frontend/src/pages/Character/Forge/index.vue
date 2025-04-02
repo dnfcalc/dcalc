@@ -1,5 +1,5 @@
 <template>
-  <div class="w-300px">
+  <div class="w-400px">
       <calc-collapse class="w-100%" title="装备打造(点击人物部位切换)">
         <equipment />
       </calc-collapse>
