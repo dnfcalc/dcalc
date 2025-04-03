@@ -244,17 +244,18 @@ class Character:
         光强=0,
         暗强=0,
         全属抗=0,
-        火抗=0,
-        冰抗=0,
-        光抗=0,
-        暗抗=0,
+        火属性抗性=0,
+        冰属性抗性=0,
+        光属性抗性=0,
+        暗属性抗性=0,
         火属性攻击=False,
         冰属性攻击=False,
         光属性攻击=False,
         暗属性攻击=False,
-        移速=0,
-        攻速=0,
-        施放=0,
+        移动速度=0,
+        攻击速度=0,
+        施放速度=0,
+        三速=0,
         命中=0,
         命中率=0,
         物暴=0,
@@ -321,9 +322,9 @@ class Character:
         self.CriticalM += kwargs.get('CriticalM', 0) + 魔暴
         self.CriticalP += kwargs.get('CriticalP', 0) + 物暴
         self.SkillAttack *= (1 + 技攻) * (1 + kwargs.get('SkillAttack', 0))
-        self.SpeedA += 攻速 + kwargs.get('SpeedA', 0)
-        self.SpeedM += 移速 + kwargs.get('SpeedM', 0)
-        self.SpeedR += 施放 + kwargs.get('SpeedR', 0)
+        self.SpeedA += 攻击速度 + kwargs.get('SpeedA', 0) + 三速
+        self.SpeedM += 移动速度 + kwargs.get('SpeedM', 0) + 三速
+        self.SpeedR += 施放速度 + kwargs.get('SpeedR', 0) + 三速
         self.HitP += 命中率 + kwargs.get('HitP', 0)
         self.Hit += 命中 + kwargs.get('Hit', 0)
         self.Attack += 攻击强化 + kwargs.get('Attack', 0)
@@ -415,7 +416,15 @@ class Character:
         info['name'] = self.nameCN
         info['weapons'] = self.武器选项
         skillInfo = []
+        skill_clothes = []
+        platinum = []
         for skill in self.skills:
+            # 白金
+            if 15 <= skill.learnLv <= 70 and skill.learnLv not in  [48,50]:
+                platinum.append(skill.name)
+            # 时装
+            if skill.learnLv <= 95:
+                skill_clothes.append(skill.name)
             skillInfo.append(
                 {
                     'id': skill.id,
@@ -448,7 +457,17 @@ class Character:
         info['suits'] = suits
         info['stones'] = stones
         info['enchants'] = equInfos.enchants
-        emblems = []
+        info['emblems'] = equInfos.emblems
+        info["avatar"] = equInfos.funs.get_dress_list(skill_clothes)
+        for skill in platinum:
+            info['emblems'].append({
+                'id': skill,
+                'fame':232,
+                'position':["辅助装备", "魔法石"],
+                "detail": skill + " Lv+1" + " 四维 + 8",
+                "categorize": ["技能"],
+                "rarity": "白金",
+            })
         return info
 
     def getBasicInos(self):

@@ -94,3 +94,14 @@ class EnchantData(Base):
     categorize = Column(Integer)
     itemType = Column(Text)
     fame = Column(Integer)
+    rarity = Column(Text)
+
+class EmblemData(Base):
+    __tablename__ = 'emblem'
+
+    id = Column(Integer, primary_key=True)
+    detail = Column(Text)
+    categorize = Column(Integer)
+    itemType = Column(Text)
+    fame = Column(Integer)
+    rarity = Column(Text)

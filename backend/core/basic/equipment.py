@@ -1,5 +1,5 @@
 import importlib
-from database.models import Session, EquData, StoneData, SuitData, EnchantData
+from database.models import EmblemData, Session, EquData, StoneData, SuitData, EnchantData
 from database.connect import get_db_engine as get_engine
 from functools import cache
 
@@ -75,12 +75,14 @@ class Equipments:
         self.equ_dict: dict[str, Equ] = {}
         self.stone_dict: dict[str, Equ] = {}
         self.enchants = []
+        self.emblems = []
         self.suits: list[Suit] = []
         self.suit_dict: dict[str, Suit] = {}
         self.init_equs()
         self.init_suits()
         self.init_enchants()
         self.init_stones()
+        self.init_emblem()
         self.engine.dispose()
 
     def init_equs(self):
@@ -147,6 +149,19 @@ class Equipments:
             enchant['categorize'] = [] if enchant['categorize'] is None else enchant['categorize'].split(',')
             del enchant['itemType']
             self.enchants.append(enchant)
+            pass
+        pass
+
+    def init_emblem(self):
+        """从数据库中获取所有徽章信息"""
+        with Session(self.engine) as session:
+            db_list = session.query(EmblemData).all()
+        for item in db_list:
+            emblem = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
+            emblem['position'] = [] if emblem['itemType'] is None else emblem['itemType'].split(',')
+            emblem['categorize'] = [] if emblem['categorize'] is None else emblem['categorize'].split(',')
+            del emblem['itemType']
+            self.emblems.append(emblem)
             pass
         pass
 

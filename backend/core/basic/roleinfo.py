@@ -33,6 +33,7 @@ class CharacterEquipInfo:
     """贴膜信息"""
 
     def __init__(self, info={}, equVerison=0, part='') -> None:
+        info["fusion"] = info.get("fusion", None)
         self.__dict__.update(info)
         equ = get_equipment(equVerison).equ_dict.get(self.id, None)
         fusion = get_equipment(equVerison).stone_dict.get(self.fusion, None)

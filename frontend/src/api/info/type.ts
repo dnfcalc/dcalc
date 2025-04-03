@@ -21,7 +21,7 @@ export interface IAlterInfo {
 }
 
 export interface ICharacterInfo {
-  role:string
+  role: string
   alter: string
   name: string
   equVersion: string
@@ -32,6 +32,7 @@ export interface ICharacterInfo {
   weapons: string[]
   skills: ISkill[]
   suits: ISuit[]
+  avatar: Record<string, IAvatarInfo[]>
 }
 
 export interface IEquipment {
@@ -40,9 +41,9 @@ export interface IEquipment {
   itemType: string
   itemDetailType: string
   name: string
-  categorize:string
+  categorize: string
   suit: string[]
-  rarity:string
+  rarity: string
 }
 
 export interface ISkill {
@@ -63,7 +64,6 @@ export interface ISuit {
   suitId: number
 }
 
-
 export interface IEnchantingInfo {
   id: string | number
   fame: number | undefined
@@ -72,4 +72,13 @@ export interface IEnchantingInfo {
   categorize: string[]
   rarity?: string
   type?: string
+}
+
+export interface IAvatarInfo {
+  id: number
+  options: string[]
+  part: string
+  rarity: string
+  suit?: string
+  name: string
 }

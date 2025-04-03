@@ -22,7 +22,7 @@ export interface IConfig {
       id: string
       reinforce: number
       reinforceType: number
-      enchant: number
+      enchant: string
       emblem_0: string
       emblem_1: string
       upgrade: number
@@ -32,19 +32,37 @@ export interface IConfig {
     }
   >
   jades: Record<string, number>
+  avatar: Record<
+    string,
+    {
+      id: string
+      enchant: string
+      emblem_0: string
+      emblem_1: string
+      option: string
+    }
+  >
 }
 
 const defaultEqusConfig = {
   id: '',
   reinforce: 0,
   reinforceType: 0,
-  enchant: 0,
-  emblem_0: "0",
-  emblem_1: "0",
+  enchant: '',
+  emblem_0: '',
+  emblem_1: '',
   upgrade: 0,
   refine: 0,
   adaptation: 0,
   fusion: '',
+}
+
+const defaultAvatarConfig = {
+  id: '',
+  enchant: '',
+  emblem_0: '',
+  emblem_1: '',
+  option: '0',
 }
 
 export const useConfigStore = defineStore('configStore', () => {
@@ -52,6 +70,7 @@ export const useConfigStore = defineStore('configStore', () => {
     skills: {},
     equips: {},
     jades: {},
+    avatar: {},
   })
 
   const loadConfig = () => {
@@ -69,12 +88,17 @@ export const useConfigStore = defineStore('configStore', () => {
         skills: {},
         equips: {},
         jades: {},
+        avatar: {},
       }
     if (!config.value?.equips) config.value.equips = {}
     if (!config.value?.skills) config.value.skills = {}
     if (!config.value?.jades) config.value.jades = {}
+    if (!config.value?.avatar) config.value.avatar = {}
 
-    const part = infoStore.parts.filter((a) => !config.value?.equips.hasOwnProperty(a))
+    const part = [...infoStore.parts, '宠物'].filter((a) => !config.value?.equips.hasOwnProperty(a))
+    const avatarPart = infoStore.avatarParts
+      .filter((a) => a != '宠物')
+      .filter((a) => !config.value?.avatar.hasOwnProperty(a))
 
     const skillIDs = infoStore.skills
       .map((skill) => skill.id.toString())
@@ -82,6 +106,10 @@ export const useConfigStore = defineStore('configStore', () => {
 
     part.forEach((p) => {
       config.value && (config.value.equips[p] = { ...defaultEqusConfig })
+    })
+
+    avatarPart.forEach((p) => {
+      config.value && (config.value.avatar[p] = { ...defaultAvatarConfig })
     })
 
     skillIDs.forEach((id) => {
@@ -101,32 +129,32 @@ export const useConfigStore = defineStore('configStore', () => {
   }
 
   const calc = async () => {
-    if(!useInfoStore().infos?.alter) return undefined
+    if (!useInfoStore().infos?.alter) return undefined
     return await api.calc(config.value)
   }
 
-  const chooseEqu = async(equip: IEquipment | undefined,isFusion:boolean = false) => {
-    if (equip && config.value.equips[equip.itemDetailType]) {
+  const chooseEqu = async (equip: IEquipment | undefined, isFusion: boolean = false) => {
+    if (!equip) return
+    const part = equip?.itemType == '武器' ? '武器' : equip?.itemDetailType
+    if (equip && config.value.equips[part]) {
       const key = isFusion ? 'fusion' : 'id'
-      if (config.value.equips[equip.itemDetailType][key] == equip.id) {
-        config.value.equips[equip.itemDetailType][key] = ""
+      if (config.value.equips[part][key] == equip.id) {
+        config.value.equips[part][key] = ''
       } else {
-        config.value.equips[equip.itemDetailType][key] = equip.id
+        config.value.equips[part][key] = equip.id
       }
     }
   }
-
 
   const result = useAsyncState(
     () => {
       return calc()
     },
     {
-      skills:[]
+      skills: [],
     },
     { resetOnExecute: false },
   )
-
 
   return {
     config,
@@ -134,6 +162,6 @@ export const useConfigStore = defineStore('configStore', () => {
     saveConfig,
     calc,
     result,
-    chooseEqu
+    chooseEqu,
   }
 })

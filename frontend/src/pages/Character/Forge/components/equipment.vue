@@ -129,7 +129,7 @@ export default defineComponent({
     return () => {
       return (
         <>
-        <div class="h-180px flex justify-center items-center">
+        <div class="h-150px flex justify-center items-center">
           <EquList v-model:part={part.value}/></div>
 
         <div class="flex flex-wrap equ-profile">
@@ -172,7 +172,7 @@ export default defineComponent({
           <div class="equ-profile-item">
             <div class="row-name">附魔</div>
             <calc-select v-model={enchanting.value} class="flex-1 !h-20px">
-              <calc-option value={0}>无</calc-option>
+              <calc-option value={""}>无</calc-option>
               {renderList(enchanting_list.value ?? [], (item) => (
                 <calc-option value={item.id}>{item.detail}</calc-option>
               ))}
@@ -186,20 +186,20 @@ export default defineComponent({
                 v-model={emblem_0.value}
                 class="flex-1 !h-20px"
               >
-                <calc-option value={0}>无</calc-option>
+                <calc-option value={""}>无</calc-option>
                 {renderList(emblem_list.value ?? [], (item) => (
                   <calc-option
                     value={item.id}
-                  >{`${item.rarity}${item.type}徽章[${item.detail}]`}</calc-option>
+                  >{`${item.rarity}${item.categorize}徽章[${item.detail}]`}</calc-option>
                 ))}
               </calc-select>
               {has_emblem_1.value && (
                 <calc-select v-model={emblem_1.value} class="flex-1 !h-20px">
-                  <calc-option value={0}>无</calc-option>
+                  <calc-option value={""}>无</calc-option>
                   {renderList(emblem_list.value ?? [], (item) => (
                     <calc-option
                       value={item.id}
-                    >{`${item.rarity}${item.type}徽章[${item.detail}]`}</calc-option>
+                    >{`${item.rarity}${item.categorize}徽章[${item.detail}]`}</calc-option>
                   ))}
                 </calc-select>
               )}

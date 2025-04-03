@@ -18,6 +18,8 @@ export const useInfoStore = defineStore('infoStore', () => {
 
   const stones = computed(() => infos.value?.stones ?? [])
 
+  const avatars = computed(() => infos.value?.avatar ?? {})
+
   const parts = [
     '头肩',
     '上衣',
@@ -31,8 +33,25 @@ export const useInfoStore = defineStore('infoStore', () => {
     '辅助装备',
     '戒指',
     '耳环',
-    '魔法石',
+    '魔法石'
+  ]
+
+  const avatarParts = [
+    '武器装扮',
+    '头发',
+    '帽子',
+    '脸部',
+    '光环',
+    '胸部',
+    '上衣',
+    '皮肤',
+    '腰带',
+    '下装',
+    '鞋',
     '宠物',
+    '宠物装备-红',
+    '宠物装备-绿',
+    '宠物装备-蓝'
   ]
 
   const createCharacter = async (alter: string, equVersion?: string) => {
@@ -51,6 +70,8 @@ export const useInfoStore = defineStore('infoStore', () => {
     enchants,
     emblems,
     parts,
-    stones
+    stones,
+    avatarParts,
+    avatars,
   }
 })
