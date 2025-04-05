@@ -636,12 +636,14 @@ class Character:
             # 贴膜
             if fusion is None:
                 continue
+            print(fusion)
             fun = effects.stone_func_list.get(str(fusion.id), None)
             # 获取装备基础属性 并给角色设置（大写开头属性为角色属性）
             filtered_dict = {k: v for k, v in fusion.__dict__.items() if k[0].isupper()}
             self.SetStatus(**filtered_dict)
             # 获取装备额外属性
-            fun(self)
+            if fun is not None:
+                fun(self)
 
     def calc_avatar(self, avatar: dict):
         """计算时装效果"""

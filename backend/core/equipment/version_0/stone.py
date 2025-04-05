@@ -1678,31 +1678,14 @@ def stone_1000(char: Character):
     属性3
     攻击时，恢复1000点魔法值。（冷却时间1秒）
     """
+    char.SetStatus(SkillAttack=0.115, SpeedA=0.05, SpeedM=0.075)
+    value = char.charEquipInfo['项链'].reinforce
+    if value >= 10:
+        char.SetStatus(SkillAttack=0.01 * min(value - 10, 2))
     pass
 
 
 def stone_1001(char: Character):
-    """
-    冰封的怨恨
-
-    属性1
-    技能伤害+6.5%
-    所有属性强化+35
-
-    [怨恨之寒气]
-    生成对敌人造成伤害的寒冰龙。
-    -冰龙伤害量600%
-
-    属性2
-    攻击时，使敌人进入冰冻状态5秒。（冷却时间2秒）
-
-    属性3
-    所受物理/魔法伤害-5%
-    """
-    pass
-
-
-def stone_1002(char: Character):
     """
     逆流的记忆
 
@@ -1719,10 +1702,11 @@ def stone_1002(char: Character):
     属性3
     物理/魔法防御力+2000
     """
+    char.SetStatus(SkillAttack=0.035)
     pass
 
 
-def stone_1003(char: Character):
+def stone_1002(char: Character):
     """
     爆发的噩梦
 
@@ -1737,30 +1721,16 @@ def stone_1003(char: Character):
     属性3
     魔法值最大值+300
     """
+    char.SetStatus(SkillAttack=0.055)
+    for skill in char.skills:
+        if skill.learnLv in [50, 85, 100]:
+            skill.skillRation *= 1.11
+            skill.cdRecover += 0.15
     pass
 
 
-def stone_1004(char: Character):
-    """
-    守护 : 魂
 
-    属性1
-    技能伤害+11.5%
-
-    属性2
-    [镜面护甲]
-    被击时，发动以下效果。
-    -3秒内攻击时，恢复所受伤害30%的生命值（冷却时间3秒）
-    -反击对敌人造成伤害
-    *反击伤害：15000%
-
-    属性3
-    所受物理/魔法伤害-10%
-    """
-    pass
-
-
-def stone_1005(char: Character):
+def stone_1003(char: Character):
     """
     佩鲁斯帝国的荣光
 
@@ -1773,27 +1743,11 @@ def stone_1005(char: Character):
     属性3
     物理/魔法防御力+2000
     """
+    char.SetStatus(SkillAttack=0.13)
     pass
 
 
-def stone_1006(char: Character):
-    """
-    灵魂追踪器
-
-    属性1
-    技能伤害+12.5%
-
-    属性2
-    每15秒汲取灵魂
-    -恢复15%魔法值
-
-    属性3
-    魔法值最大值+5%
-    """
-    pass
-
-
-def stone_1007(char: Character):
+def stone_1004(char: Character):
     """
     红兔
 
@@ -1811,10 +1765,16 @@ def stone_1007(char: Character):
     属性3
     魔法值最大值+7%
     """
+    char.SetStatus(SkillAttack=0.015)
+    char.SetSkillCD(1, 100, 0.07)
+    char.AddElementDB('火', 7)
+    char.AddElementDB('冰', 7)
+    char.AddElementDB('光', 7)
+    char.AddElementDB('暗', 7)
     pass
 
 
-def stone_1008(char: Character):
+def stone_1005(char: Character):
     """
     回忆的低语
 
@@ -1830,31 +1790,14 @@ def stone_1008(char: Character):
     属性3
     攻击时，恢复1000点生命值。（冷却时间1秒）
     """
+    char.SetStatus(SkillAttack=0.115, SpeedA=0.05)
+    value = char.charEquipInfo['戒指'].reinforce
+    if value >= 10:
+        char.SetStatus(SkillAttack=0.01 * min(value - 10, 2))
     pass
 
 
-def stone_1009(char: Character):
-    """
-    雪封的愤怒
-
-    属性1
-    技能伤害+6.5%
-    所有属性强化+35
-
-    [愤怒之寒气]
-    生成对敌人造成伤害的寒冰龙。
-    -冰龙伤害量600%
-
-    属性2
-    攻击时，使敌人进入冰冻状态5秒。（冷却时间2秒）
-
-    属性3
-    所受物理/魔法伤害-5%
-    """
-    pass
-
-
-def stone_1010(char: Character):
+def stone_1006(char: Character):
     """
     遗忘魔石
 
@@ -1870,10 +1813,11 @@ def stone_1010(char: Character):
     属性3
     魔法值最大值+300
     """
+    char.SetStatus(SkillAttack=0.115)
     pass
 
 
-def stone_1011(char: Character):
+def stone_1007(char: Character):
     """
     孵化的恶意之种
 
@@ -1888,10 +1832,16 @@ def stone_1011(char: Character):
     属性3
     魔法值最大值+300
     """
+    print("~~~~~~~~`")
+    char.SetStatus(SkillAttack=0.055)
+    for skill in char.skills:
+        if skill.learnLv in [50, 85, 100]:
+            skill.skillRation *= 1.11
+            skill.cdRecover += 0.15
     pass
 
 
-def stone_1012(char: Character):
+def stone_1008(char: Character):
     """
     世界偶像戒指
 
@@ -1908,10 +1858,12 @@ def stone_1012(char: Character):
     属性3
     攻击时，恢复1000点魔法值。（冷却时间1秒）
     """
+    char.SetStatus(SkillAttack=0.065)
+    char.SetSkillCD(1, 100, 0.10)
     pass
 
 
-def stone_1013(char: Character):
+def stone_1009(char: Character):
     """
     辨明异徒的食指
 
@@ -1926,61 +1878,11 @@ def stone_1013(char: Character):
     属性3
     物理/魔法防御力+2000
     """
+    char.SetStatus(SkillAttack=0.13)
     pass
 
 
-def stone_1014(char: Character):
-    """
-    束缚的灵魂
-
-    属性1
-    技能伤害+9.5%
-
-    属性2
-    [束缚的灵魂]
-    通过聊天窗口输出“束缚”时，消耗1个金色小晶块，发动“束缚的灵魂”效果。（冷却时间30秒）
-    -进入无敌状态并无法移动，效果持续2秒
-
-    属性3
-    物理/魔法防御力+2000
-    """
-    pass
-
-
-def stone_1015(char: Character):
-    """
-    无知领域通道
-
-    属性1
-    技能伤害+10.5%
-
-    属性2
-    500px范围内的队员所受物理/魔法伤害-15%
-
-    属性3
-    物理/魔法防御力+2000
-    """
-    pass
-
-
-def stone_1016(char: Character):
-    """
-    魔力溢出
-
-    属性1
-    技能伤害+10.5%
-    技能魔法值消耗量+100%
-
-    属性2
-    每秒恢复2%的魔法值
-
-    属性3
-    攻击时，恢复500点魔法值。（冷却时间1秒）
-    """
-    pass
-
-
-def stone_1017(char: Character):
+def stone_1010(char: Character):
     """
     无限可能性的探求
 
@@ -1995,10 +1897,15 @@ def stone_1017(char: Character):
     属性3
     魔法值最大值+300
     """
+    char.SetStatus(SkillAttack=0.055)
+    for skill in char.skills:
+        if skill.learnLv in [50, 85, 100]:
+            skill.skillRation *= 1.08
+            skill.cdRecover += 0.15
     pass
 
 
-def stone_1018(char: Character):
+def stone_1011(char: Character):
     """
     技能延展
 
@@ -2011,78 +1918,11 @@ def stone_1018(char: Character):
     属性3
     物理/魔法防御力+2000
     """
+    char.SetStatus(SkillAttack=0.105)
     pass
 
 
-def stone_1019(char: Character):
-    """
-    至高者的威势
-
-    属性1
-    技能伤害+10.5%
-
-    属性2
-    攻击时，有5%的几率召唤“记录之神兽”，持续30秒（冷却时间30秒）
-    -造成总攻击强化数值600%的伤害
-
-    属性3
-    技能魔法值消耗量-30%
-    """
-    pass
-
-
-def stone_1020(char: Character):
-    """
-    永不停歇的疾驰
-
-    属性1
-    技能伤害+10.5%
-
-    属性2
-    移动速度+15%
-
-    属性3
-    物理/魔法防御力+2000
-    """
-    pass
-
-
-def stone_1021(char: Character):
-    """
-    狂暴控制装置
-
-    属性1
-    技能伤害+8.5%
-    敌人生命值低于50%时，技能伤害+4%
-
-    属性2
-    移动速度+4%
-
-    属性3
-    物理/魔法防御力+2000
-    """
-    pass
-
-
-def stone_1022(char: Character):
-    """
-    地面破坏者
-
-    属性1
-    技能伤害+6.5%
-    攻击强化+1200%
-
-    属性2
-    攻击时，释放“地面洪流”。（冷却时间2秒）
-    -造成总攻击强化数值1200%的伤害
-
-    属性3
-    移动速度+4%
-    """
-    pass
-
-
-def stone_1023(char: Character):
+def stone_1012(char: Character):
     """
     无限可能性的痕迹
 
@@ -2097,94 +1937,15 @@ def stone_1023(char: Character):
     属性3
     魔法值最大值+300
     """
+    char.SetStatus(SkillAttack=0.055)
+    for skill in char.skills:
+        if skill.learnLv in [50, 85, 100]:
+            skill.skillRation *= 1.08
+            skill.cdRecover += 0.15
     pass
 
 
-def stone_1024(char: Character):
-    """
-    未知世界的均衡
-
-    属性1
-    技能伤害+10.5%
-
-    属性2
-    所有速度+5%
-
-    属性3
-    所受物理/魔法伤害-25%
-    """
-    pass
-
-
-def stone_1025(char: Character):
-    """
-    颠倒的记忆
-
-    属性1
-    技能伤害+1.5%
-    攻击强化+500%
-    技能冷却时间-15%（觉醒技能除外）
-
-    属性2
-    释放时，有8%的几率，向自身释放10级的[圣光守护]
-
-    属性3
-    物理/魔法防御力+2000
-    """
-    pass
-
-
-def stone_1026(char: Character):
-    """
-    敏捷的动作
-
-    属性1
-    技能伤害+1.5%
-    攻击强化+500%
-    技能冷却时间-15%（觉醒技能除外）
-
-    属性2
-    释放时，有8%的几率，向自身释放10级的[圣光守护]
-
-    属性3
-    物理/魔法防御力+2000
-    """
-    pass
-
-
-def stone_1027(char: Character):
-    """
-    冰霜利齿
-
-    属性1
-    技能伤害+10.5%
-
-    属性2
-    移动速度+10%
-
-    属性3
-    每分钟恢复920.4点生命值
-    """
-    pass
-
-
-def stone_1028(char: Character):
-    """
-    世界的边界
-
-    属性1
-    技能冷却时间-18%（觉醒技能除外）
-
-    属性2
-    所有属性抗性+5
-
-    属性3
-    物理/魔法防御力+2000
-    """
-    pass
-
-
-def stone_1029(char: Character):
+def stone_1013(char: Character):
     """
     无限可能性的流动
 
@@ -2199,42 +1960,16 @@ def stone_1029(char: Character):
     属性3
     魔法值最大值+300
     """
+    char.SetStatus(SkillAttack=0.055)
+    for skill in char.skills:
+        if skill.learnLv in [50, 85, 100]:
+            skill.skillRation *= 1.08
+            skill.cdRecover += 0.15
     pass
 
 
-def stone_1030(char: Character):
-    """
-    蕴含保护的怪物
 
-    属性1
-    技能伤害+10.5%
-
-    属性2
-    生命值最大值+2000
-
-    属性3
-    魔法值最大值+2000
-    """
-    pass
-
-
-def stone_1031(char: Character):
-    """
-    坚韧之铁
-
-    属性1
-    技能伤害+10.5%
-
-    属性2
-    所有属性抗性+25
-
-    属性3
-    移动速度+4%
-    """
-    pass
-
-
-def stone_1032(char: Character):
+def stone_1014(char: Character):
     """
     死神的陷阱
 
@@ -2247,45 +1982,11 @@ def stone_1032(char: Character):
     属性3
     生命值最大值+5%
     """
+    char.SetStatus(SkillAttack=0.115)
     pass
 
 
-def stone_1033(char: Character):
-    """
-    隐形石
-
-    属性1
-    技能伤害+11.5%
-
-    属性2
-    物理/魔法暴击率+5%
-
-    属性3
-    回避率+20%
-    """
-    pass
-
-
-def stone_1034(char: Character):
-    """
-    地平线上的均衡
-
-    属性1
-    技能伤害+10.5%
-
-    [千发一中]
-    释放技能时，有5%的几率使该技能攻击率+20%
-
-    属性2
-    物理/魔法防御力+2000
-
-    属性3
-    攻击时，恢复300点生命值。（冷却时间1秒）
-    """
-    pass
-
-
-def stone_1035(char: Character):
+def stone_1015(char: Character):
     """
     混沌的漩涡
 
@@ -2300,47 +2001,15 @@ def stone_1035(char: Character):
     属性3
     移动速度+4%
     """
+    char.SetStatus(SkillAttack=0.015)
+    for skill in char.skills:
+        if skill.learnLv == 85:
+            skill.skillRation *= 1.30
+            skill.cdRecover += 1.00
     pass
 
 
-def stone_1036(char: Character):
-    """
-    电焰
-
-    属性1
-    技能伤害+11.5%
-
-    [爆发契约-灼伤/感电]
-    施加灼伤/感电时，一次性结算与该异常状态相同的伤害。
-    -通过转换属性施加状态时不适用
-
-    属性2
-    物理/魔法防御力+2000
-    属性3
-    移动速度+4%
-    """
-    pass
-
-
-def stone_1037(char: Character):
-    """
-    必中一击
-
-    属性1
-    技能伤害+6.5%
-    攻击强化+1200%
-
-    属性2
-    攻击时，释放“必中一击”。（冷却时间2秒）
-    -造成总攻击强化数值1200%的伤害
-
-    属性3
-    攻击时，使敌人进入束缚状态5秒。（冷却时间2秒）
-    """
-    pass
-
-
-def stone_1038(char: Character):
+def stone_1016(char: Character):
     """
     和平的往昔
 
@@ -2354,28 +2023,12 @@ def stone_1038(char: Character):
     属性3
     攻击时，恢复300点生命值。（冷却时间1秒）
     """
+    char.SetStatus(SkillAttack=0.115)
     pass
 
 
-def stone_1039(char: Character):
-    """
-    再临的荣光
 
-    属性1
-    技能伤害+11.5%
-
-    火/冰/光/暗攻击属性
-
-    属性2
-    所受物理/魔法伤害-5%
-
-    属性3
-    移动速度+4%
-    """
-    pass
-
-
-def stone_1040(char: Character):
+def stone_1017(char: Character):
     """
     天堂的守护
 
@@ -2393,63 +2046,11 @@ def stone_1040(char: Character):
     属性3
     魔法值最大值+1000
     """
+    char.SetStatus(SkillAttack=0.105)
     pass
 
 
-def stone_1041(char: Character):
-    """
-    知识的盛宴
-
-    属性1
-    技能伤害+11.5%
-
-    属性2
-    恢复魔法值消耗值20%的魔法值
-
-    属性3
-    攻击时，恢复500点魔法值。（冷却时间1秒）
-    """
-    pass
-
-
-def stone_1042(char: Character):
-    """
-    赤毒草
-
-    属性1
-    技能伤害+11.5%
-
-    [爆发契约-出血/中毒]
-    施加出血/中毒时，一次性结算与该异常状态相同的伤害。
-    -通过转换属性施加状态时不适用
-
-    属性2
-    物理/魔法防御力+2000
-    属性3
-    移动速度+4%
-    """
-    pass
-
-
-def stone_1043(char: Character):
-    """
-    舒卷的预言
-
-    属性1
-    技能伤害+7.5%
-    攻击强化+1200%
-
-    属性2
-    攻击时，释放“元素爆炸”。（冷却时间2秒）
-    -造成总攻击强化数值600%的伤害
-
-    属性3
-    攻击时，使敌人进入眩晕状态5秒。（冷却时间2秒）
-    """
-    pass
-
-
-def stone_1044(char: Character):
+def stone_1018(char: Character):
     """
     末日的预告
 
@@ -2462,96 +2063,13 @@ def stone_1044(char: Character):
     属性3
     物理/魔法防御力+2000
     """
-    pass
-
-
-def stone_1045(char: Character):
-    """
-    毁坏的休憩所
-
-    属性1
-    技能伤害+11.5%
-
-    属性2
-    物理/魔法暴击率+5%
-
-    属性3
-    所受物理/魔法伤害-15%
-    """
-    pass
-
-
-def stone_1046(char: Character):
-    """
-    甜蜜芬芳的低语
-
-    属性1
-    技能伤害+11.5%
-
-    进入霸体状态。
-
-    属性2
-    移动速度+5%
-
-    属性3
-    攻击时，使敌人进入出血/中毒/灼伤/感电状态，效果持续5秒（冷却时间1秒）
-    """
-    pass
-
-
-def stone_1047(char: Character):
-    """
-    过往的错失
-
-    属性1
-    技能伤害+11.5%
-
-    属性2
-    技能范围+7%
-
-    属性3
-    物理/魔法防御力+10000
-    """
-    pass
-
-
-def stone_1048(char: Character):
-    """
-    预告末日的誓约
-
-    属性1
-    技能伤害+11.5%
-
-    属性2
-    所有异常状态抗性+5%
-
-    属性3
-    命中率+10%
-    """
-    pass
-
-
-def stone_1049(char: Character):
-    """
-    剑士的遗产
-
-    属性1
-    技能伤害+7.5%
-    攻击强化+1200%
-
-    属性2
-    攻击时，释放“弱点切割”。（冷却时间2秒）
-    -造成总攻击强化数值1800%的伤害
-
-    属性3
-    攻击时，使敌人进入冰冻状态5秒。（冷却时间2秒）
-    """
+    char.SetStatus(SkillAttack=0.115, SpeedA=0.20)
     pass
 
 # endregion
 
 
-for i in range(0, 1000):
+for i in range(0, 1500):
     try:
         if str(i) not in stone_func_list.keys():
             stone_func_list[str(i)] = eval(f'stone_{i}')
