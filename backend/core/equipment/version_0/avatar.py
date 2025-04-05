@@ -367,7 +367,7 @@ def calc_dress_effect(avatar,char):
     时装品级列表 = {}
     for 部位 in avatar:
         id = avatar[部位].get("id")
-        if id is None:
+        if id is None or id == '':
             continue
         时装 = 装扮集合[int(id)]
         时装.效果(角色=char, 选项=avatar[部位].get("option"))
