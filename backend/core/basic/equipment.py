@@ -1,7 +1,6 @@
 import importlib
-from database.models import EmblemData, Session, EquData, StoneData, SuitData, EnchantData
+from database.models import EmblemData, Session, EquData, StoneData, SuitData, EnchantData,JadeData
 from database.connect import get_db_engine as get_engine
-from functools import cache
 
 
 def parse_to_number_list(info: str, default: list[float] = [0]) -> list[float]:
@@ -162,6 +161,19 @@ class Equipments:
             emblem['categorize'] = [] if emblem['categorize'] is None else emblem['categorize'].split(',')
             del emblem['itemType']
             self.emblems.append(emblem)
+            pass
+        pass
+    
+    def init_jades(self):
+        """从数据库中获取所有辟邪玉信息"""
+        with Session(self.engine) as session:
+            db_list = session.query(JadeData).all()
+        for item in db_list:
+            jade = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
+            jade['position'] = [] if jade['itemType'] is None else jade['itemType'].split(',')
+            jade['categorize'] = [] if jade['categorize'] is None else jade['categorize'].split(',')
+            del jade['itemType']
+            self.jades.append(jade)
             pass
         pass
 

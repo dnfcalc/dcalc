@@ -33,32 +33,10 @@ class CharacterInfo(enum.Enum):
     AtkI = '独立攻击力', '/ui/UI_ProfileIcon_008.png', lambda x: round(x, 0)
     """独立攻击力"""
 
-    ElementA: dict[str, float]
-    # """属性攻击"""
+    ElementDB = '攻击属性', '/ui/UI_ProfileIcon_009.png', lambda x: f'火({int(x['火'])})/光({int(x['光'])})/冰({int(x['冰'])})/暗({int(x['暗'])})'
+    """攻击属性"""
 
-    ElementDB0 = '火属性强化', '/ui/UI_ProfileIcon_022.png', lambda x: round(x, 0)
-
-    ElementR0 = '火属性抗性', '/ui/UI_ProfileIcon_023.png', lambda x: round(x, 0)
-
-    ElementDB1 = '冰属性强化', '/ui/UI_ProfileIcon_024.png', lambda x: round(x, 0)
-
-    ElementR1 = '冰属性抗性', '/ui/UI_ProfileIcon_025.png', lambda x: round(x, 0)
-
-    ElementDB2 = '光属性强化', '/ui/UI_ProfileIcon_026.png', lambda x: round(x, 0)
-
-    ElementR2 = '光属性抗性', '/ui/UI_ProfileIcon_027.png', lambda x: round(x, 0)
-
-    ElementDB3 = '暗属性强化', '/ui/UI_ProfileIcon_028.png', lambda x: round(x, 0)
-
-    ElementR3 = '暗属性抗性', '/ui/UI_ProfileIcon_029.png', lambda x: round(x, 0)
-
-    CriticalP = '物理暴击', '/ui/UI_ProfileIcon_011.png', lambda x: f'{format(x * 100, ".2f")}%'
-    """物理暴击"""
-
-    CriticalM = '魔法暴击', '/ui/UI_ProfileIcon_010.png', lambda x: f'{format(x * 100, ".2f")}%'
-    """魔法暴击"""
-
-    EquipmentSkillAttack = '技能攻击力增加', '/ui/UI_ProfileIcon_047.png', lambda x: f'{format(x * 100 - 100, ".2f")}%'
+    SkillAttack = '技能攻击力增加', '/ui/UI_ProfileIcon_047.png', lambda x: f'{format(x * 100 - 100, ".2f")}%'
     """技能攻击力"""
 
     SpeedA = '攻击速度', '/ui/UI_ProfileIcon_012.png', lambda x: f'{format(x * 100, ".2f")}%'
@@ -69,6 +47,12 @@ class CharacterInfo(enum.Enum):
 
     SpeedR = '施放速度', '/ui/UI_ProfileIcon_013.png', lambda x: f'{format(x * 100, ".2f")}%'
     """施放速度"""
+
+    Attack = '攻击强化', '/ui/UI_ProfileIcon_015.png', lambda x: f'{format(x * 100, ".2f")}%'
+    """攻击强化"""
+
+    AttackP = '攻击强化%', '/ui/UI_ProfileIcon_015.png', lambda x: f'{format(x * 100 - 100, ".2f")}%'
+    """攻击强化%"""
 
     # HitP : float
     # """命中率"""

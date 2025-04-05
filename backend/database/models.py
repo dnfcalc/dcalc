@@ -105,3 +105,13 @@ class EmblemData(Base):
     itemType = Column(Text)
     fame = Column(Integer)
     rarity = Column(Text)
+
+class JadeData(Base):
+    __tablename__ = 'jade'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(Text)
+    min = Column(Integer)
+    max = Column(Integer)
+    unit = Column(Text)
+    pre = Column(Float)

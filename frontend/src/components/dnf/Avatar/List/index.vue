@@ -30,9 +30,6 @@ const infoStyle = (part: string) => {
   let x = 15
   let y = 5
   let index = infoStore.avatarParts.findIndex((p) => p == part)
-  if (index > 7) {
-    index += 1
-  }
   // if (index == 13) {
   //   index -= 7
   // } else if (index >= 5 && index <= 12) {
@@ -45,7 +42,7 @@ const infoStyle = (part: string) => {
   }
   else if (part.includes('宠物装备')) {
     x += 6 * 39
-    y += (index - infoStore.avatarParts.findIndex((p) => p == '宠物装备-红') - 1) * 40
+    y += (index - infoStore.avatarParts.findIndex((p) => p == '宠物装备-红')) * 40
   } else {
     x += (index % 4) * 39
     y += Math.floor(index / 4) * 40
@@ -66,6 +63,7 @@ const choosePart = (part: string) => {
 
 const partName = (part: string) => {
   if (part == '武器装扮') return '武器'
+  if(part == '快捷栏装备') return '快捷'
   return part.replace('宠物装备-', '')
 }
 </script>

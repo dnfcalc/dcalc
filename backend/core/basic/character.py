@@ -150,10 +150,11 @@ class Character:
     def __init__(self, equVersion) -> None:
         self.equVersion = equVersion
         # self.equs = get_equ(self.equVersion)
-        self.STR = 0
-        self.INT = 0
-        self.Spirit = 0
-        self.Vitality = 0
+        # 工会四维
+        self.STR = 0 + 120
+        self.INT = 0 + 120
+        self.Spirit = 0 + 120
+        self.Vitality = 0 + 120
         # 唤醒的情况下的基础数据
         self.AtkP = 0 + 65
         self.AtkM = 0 + 65
@@ -555,18 +556,33 @@ class Character:
                         suitInfo[suit]['count'] += 1
                     else:
                         suitInfo[suit]['point'] += partFusion.Point
-        print(suitInfo)
         # 取得点数最高的套装
         max_point_suit = max((suit for suit in suitInfo if suitInfo[suit]['point'] > 0), key=lambda suit: suitInfo[suit]['point'], default=None)
         # 处理没有点数的老套装
         zero_point_suits = [suit for suit in suitInfo if suitInfo[suit]['point'] == 0]
         suits = zero_point_suits + ([max_point_suit] if max_point_suit is not None else [])
         suits_effect = []
+        suitList = []
+        res = []
         for suit in suits:
             if suitInfo[suit]['point'] == 0:
-                suits_effect += [i.id for i in equs.get_suit_info(suit, 0, suitInfo[suit]['count'])]
+                suitList += equs.get_suit_info(suit, 0, suitInfo[suit]['count'])
+                # suits_effect += [i.id for i in equs.get_suit_info(suit, 0, suitInfo[suit]['count'])]
             else:
-                suits_effect += [i.id for i in equs.get_suit_info(suit, suitInfo[suit]['point'], 0)]
+                suitList += equs.get_suit_info(suit, suitInfo[suit]['point'], 0)
+                # suits_effect += [i.id for i in equs.get_suit_info(suit, suitInfo[suit]['point'], 0)]
+            temp = suitList[-1]
+            res.append({
+                'id': temp.id,
+                'name': temp.name,
+                'rarity': temp.rarity,
+                'point': suitInfo[suit]['point'],
+                'count': suitInfo[suit]['count'],
+                'level': temp.level,
+                'imageUrl': temp.imageUrl,
+                'value': temp.value,
+            })
+        suits_effect = [i.id for i in suitList]
         for i in suits_effect:
             func = equs.funs.suit_func_list.get(str(i), None)
             suit = next((x for x in equs.suits if str(x.id) == str(i)), None)
@@ -575,11 +591,15 @@ class Character:
             if suit is not None:
                 filtered_dict = {k: v for k, v in suit.__dict__.items() if k[0].isupper()}
                 self.SetStatus(**filtered_dict)
+        return res
 
     def calc_equs(self):
-        """计算装备基础效果和额外词条"""
+        """计算装备基础效果、附魔、贴膜"""
         effects = get_equipment(self.equVersion).funs
-        for equ in [item.equInfo for item in filter(lambda x: x.equInfo is not None, self.charEquipInfo.values())]:
+        for detail in [(item.equInfo,item.fusionInfo,item.enchant) for item in filter(lambda x: x.equInfo is not None, self.charEquipInfo.values())]:
+            equ = detail[0]
+            fusion = detail[1]
+            enchat = detail[2]
             if equ is None:
                 continue
             fun = effects.equ_func_list.get(str(equ.id), None)
@@ -587,6 +607,19 @@ class Character:
                 continue
             # 获取装备基础属性 并给角色设置（大写开头属性为角色属性）
             filtered_dict = {k: v for k, v in equ.__dict__.items() if k[0].isupper()}
+            self.SetStatus(**filtered_dict)
+            # 获取装备额外属性
+            fun(self)
+            # 附魔
+            fun = effects.enchant_func_list.get(str(enchat), None)
+            if fun is not None:
+                fun(self)
+            # 贴膜
+            if fusion is None:
+                continue
+            fun = effects.equ_func_list.get(str(fusion.id), None)
+            # 获取装备基础属性 并给角色设置（大写开头属性为角色属性）
+            filtered_dict = {k: v for k, v in fusion.__dict__.items() if k[0].isupper()}
             self.SetStatus(**filtered_dict)
             # 获取装备额外属性
             fun(self)
@@ -660,7 +693,8 @@ class Character:
         # 部位效果计算
         self.calc_equs()
         # 计算套装基础效果
-        self.calc_suits()
+        suit = self.calc_suits()
+        # print(suit)
         # effects = get_equipment(self.equVersion).funs
         # for effect in equ_effect:
         #     func = effects.equ_func_list.get(str(effect), None)
@@ -705,7 +739,34 @@ class Character:
                     'damage': ratuio_equ_skill * i.data * 10,
                 }
             )
-        return {'skills': skillInfos, 'info': {k: v for k, v in self.__dict__.items() if k[0].isupper()}}
+        attrs = []
+        if self.输出类型 == '物理百分比':
+            attrs.extend(['STR', 'AtkP'])
+        if self.输出类型 == '魔法百分比':
+            attrs.extend(['INT', 'AtkM'])
+        if self.输出类型 == '物理固伤':
+            attrs.extend(['STR', 'AtkI'])
+        if self.输出类型 == '魔法固伤':
+            attrs.extend(['INT', 'AtkI'])
+        info = []
+        attrs.extend(['Attack', 'AttackP', 'SkillAttack', 'ElementDB'])
+        for attr in attrs:
+            temp = getattr(CharacterInfo, attr)
+            if attr.startswith('Atk'):
+                info.append({
+                    'name':temp.name,
+                    'value':temp.value(getattr(self, attr)*getattr(self, f'P{attr}'))}
+                )
+                pass
+            else:
+                info.append(
+                    {
+                        'name': temp.name,
+                        'value': temp.value(getattr(self, attr)),
+                    }
+                )
+                pass
+        return {'skills': skillInfos, 'info': info,"suits": suit}
         # 技能影响角色的属性，如属强、抗性等
 
     def calc_damage_ration(self):

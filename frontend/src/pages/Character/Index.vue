@@ -8,7 +8,7 @@
       </calc-tabs>
     </div>
     <div class="content flex">
-      <div class="flex flex-1">
+      <div class="flex flex-1" v-if="!!infoStore.infos?.alter">
         <RouterView></RouterView>
       </div>
 
@@ -40,7 +40,6 @@ const stopWatch = watch<any>(
 
 onMounted(async () => {
   await infoStore.createCharacter(props.alter, '0')
-  configStore.loadConfig()
   window.addEventListener('beforeunload', () => {
     configStore.saveConfig()
   })

@@ -31,7 +31,10 @@ export interface IConfig {
       fusion: string
     }
   >
-  jades: Record<string, number>
+  jades: Record<string, {
+    id:string
+    value: number
+  }>
   avatar: Record<
     string,
     {
@@ -117,7 +120,15 @@ export const useConfigStore = defineStore('configStore', () => {
         (config.value.skills[id] = {
           lv: infoStore.skills.find((skill) => skill.id.toString() === id)?.maxLearnLv ?? 0,
         })
-    })
+    });
+
+    (["0", "1", "2", "3"].filter((key) => !Object.keys(config.value.jades).includes(key)) ?? []).forEach((key) => {
+      config.value.jades[key] = {
+        id: '',
+        value: 0,
+      }
+    }
+    )
   }
 
   const saveConfig = () => {

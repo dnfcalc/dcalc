@@ -29,8 +29,6 @@ class CharacterEquipInfo:
     """装备信息"""
     fusionInfo: Union['Equ', None]
     """贴膜信息"""
-    fusionInfo: Union['Equ', None]
-    """贴膜信息"""
 
     def __init__(self, info={}, equVerison=0, part='') -> None:
         info["fusion"] = info.get("fusion", None)

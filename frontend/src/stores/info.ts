@@ -1,6 +1,7 @@
 import api from '@/api'
 import type { ICharacterInfo } from '@/api/info/type'
 import { defineStore } from 'pinia'
+import { useConfigStore } from './config'
 
 export const useInfoStore = defineStore('infoStore', () => {
   const alter_token = ref<string>('')
@@ -19,6 +20,8 @@ export const useInfoStore = defineStore('infoStore', () => {
   const stones = computed(() => infos.value?.stones ?? [])
 
   const avatars = computed(() => infos.value?.avatar ?? {})
+
+  // const jades = computed(() => infos.value?.jades ?? [])
 
   const parts = [
     '头肩',
@@ -45,6 +48,7 @@ export const useInfoStore = defineStore('infoStore', () => {
     '胸部',
     '上衣',
     '皮肤',
+    '快捷栏装备',
     '腰带',
     '下装',
     '鞋',
@@ -58,6 +62,7 @@ export const useInfoStore = defineStore('infoStore', () => {
     const time = new Date().getTime()
     alter_token.value = btoa(JSON.stringify({ alter, equVersion, time }))
     infos.value = await api.characterInfo()
+    useConfigStore().loadConfig()
   }
 
   return {

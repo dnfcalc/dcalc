@@ -20,7 +20,7 @@ export default defineComponent({
       )
     })
 
-    const enchanting_list = computed<IEnchantingInfo[] | undefined>(() => {
+    const enchant_list = computed<IEnchantingInfo[] | undefined>(() => {
       return basicInfoStore.enchants
         ?.filter((item) => item.position.includes(part.value))
         .sort((a, b) => (b.fame ?? 0) - (a.fame ?? 0))
@@ -55,7 +55,7 @@ export default defineComponent({
     }
 
     // 附魔
-    const enchanting = currentInfo<string | number>('enchanting')
+    const enchant = currentInfo<string | number>('enchant')
 
     // 镶嵌栏1
     const emblem_0 = currentInfo<string | number>('emblem_0', 0)
@@ -92,9 +92,9 @@ export default defineComponent({
             {has_enchant.value ? (
               <div class="equ-profile-item">
                 <div class="row-name">{part.value == '宠物' ? '附魔' : '属性'}</div>
-                <calc-select v-model={enchanting.value} class="flex-1 !h-20px">
+                <calc-select v-model={enchant.value} class="flex-1 !h-20px">
                   <calc-option value={0}>无</calc-option>
-                  {renderList(enchanting_list.value ?? [], (item) => (
+                  {renderList(enchant_list.value ?? [], (item) => (
                     <calc-option value={item.id}>{item.detail}</calc-option>
                   ))}
                 </calc-select>

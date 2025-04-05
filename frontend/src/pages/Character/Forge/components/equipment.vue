@@ -24,7 +24,7 @@ export default defineComponent({
     )
     const basicInfoStore = useInfoStore()
 
-    const enchanting_list = computed<IEnchantingInfo[] | undefined>(() => {
+    const enchant_list = computed<IEnchantingInfo[] | undefined>(() => {
       return basicInfoStore.enchants
         ?.filter(
           (item) =>
@@ -62,7 +62,7 @@ export default defineComponent({
           let parts: string[] = []
 
           if (global_change.value) {
-            if (name === 'enchanting') {
+            if (name === 'enchant') {
               const enchant = basicInfoStore?.enchants?.find((item) => item.id == val) as
                 | IEnchantingInfo
                 | undefined
@@ -96,7 +96,7 @@ export default defineComponent({
     }
 
     // 附魔
-    const enchanting = currentInfo<string | number>('enchanting')
+    const enchant = currentInfo<string | number>('enchant')
 
     // 镶嵌栏1
     const emblem_0 = currentInfo<string | number>('emblem_0', 0)
@@ -171,9 +171,9 @@ export default defineComponent({
           )}
           <div class="equ-profile-item">
             <div class="row-name">附魔</div>
-            <calc-select v-model={enchanting.value} class="flex-1 !h-20px">
+            <calc-select v-model={enchant.value} class="flex-1 !h-20px">
               <calc-option value={""}>无</calc-option>
-              {renderList(enchanting_list.value ?? [], (item) => (
+              {renderList(enchant_list.value ?? [], (item) => (
                 <calc-option value={item.id}>{item.detail}</calc-option>
               ))}
             </calc-select>
