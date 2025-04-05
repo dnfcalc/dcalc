@@ -73,6 +73,7 @@ class Equipments:
         self.funs = self.init_func()
         self.equ_dict: dict[str, Equ] = {}
         self.stone_dict: dict[str, Equ] = {}
+        self.jades = []
         self.enchants = []
         self.emblems = []
         self.suits: list[Suit] = []
@@ -82,6 +83,7 @@ class Equipments:
         self.init_enchants()
         self.init_stones()
         self.init_emblem()
+        self.init_jades()
         self.engine.dispose()
 
     def init_equs(self):
@@ -170,9 +172,6 @@ class Equipments:
             db_list = session.query(JadeData).all()
         for item in db_list:
             jade = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
-            jade['position'] = [] if jade['itemType'] is None else jade['itemType'].split(',')
-            jade['categorize'] = [] if jade['categorize'] is None else jade['categorize'].split(',')
-            del jade['itemType']
             self.jades.append(jade)
             pass
         pass

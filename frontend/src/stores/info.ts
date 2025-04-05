@@ -21,7 +21,7 @@ export const useInfoStore = defineStore('infoStore', () => {
 
   const avatars = computed(() => infos.value?.avatar ?? {})
 
-  // const jades = computed(() => infos.value?.jades ?? [])
+  const jades = computed(() => infos.value?.jades ?? [])
 
   const parts = [
     '头肩',
@@ -78,5 +78,6 @@ export const useInfoStore = defineStore('infoStore', () => {
     stones,
     avatarParts,
     avatars,
+    jades
   }
 })

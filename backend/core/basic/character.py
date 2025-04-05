@@ -449,6 +449,8 @@ class Character:
         suits = []
         stones = []
         for i in equInfos.equs:
+            if i.itemType == '武器' and i.itemDetailType not in self.武器选项:
+                continue
             equs.append(i.__dict__)
         for i in equInfos.suits:
             suits.append(i.__dict__)
@@ -460,6 +462,7 @@ class Character:
         info['enchants'] = equInfos.enchants
         info['emblems'] = equInfos.emblems
         info["avatar"] = equInfos.funs.get_dress_list(skill_clothes)
+        info['jades'] = equInfos.jades
         for skill in platinum:
             info['emblems'].append({
                 'id': skill,
@@ -726,6 +729,7 @@ class Character:
         # 角色基础属性
         self.SetBaseStatus()
         # 辟邪玉计算
+        self.calc_jade(setInfo.get('jades', []))
         # 时装计算
         self.calc_avatar(setInfo.get('avatar', {}))
         # 精通、增幅、强化计算

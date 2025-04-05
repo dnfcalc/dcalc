@@ -33,6 +33,7 @@ export interface ICharacterInfo {
   skills: ISkill[]
   suits: ISuit[]
   avatar: Record<string, IAvatarInfo[]>
+  jades:IJade[]
 }
 
 export interface IEquipment {
@@ -81,4 +82,13 @@ export interface IAvatarInfo {
   rarity: string
   suit?: string
   name: string
+}
+
+export interface IJade {
+  name:string
+  id:number
+  max:number
+  min:number
+  pre:number
+  unit:string
 }

@@ -32,7 +32,7 @@ export interface IConfig {
     }
   >
   jades: Record<string, {
-    id:string
+    id:number
     value: number
   }>
   avatar: Record<
@@ -124,7 +124,7 @@ export const useConfigStore = defineStore('configStore', () => {
 
     (["0", "1", "2", "3"].filter((key) => !Object.keys(config.value.jades).includes(key)) ?? []).forEach((key) => {
       config.value.jades[key] = {
-        id: '',
+        id: -1,
         value: 0,
       }
     }
