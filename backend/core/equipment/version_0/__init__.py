@@ -1,8 +1,9 @@
 from .suit import suit_func_list
 from .jade import jade_func_list
 from .equ import equ_func_list
-from .avatar import get_dress_list
+from .avatar import get_dress_list,calc_dress_effect
 from .enchant import enchant_func_list
+from .emblem import emblem_func_list
 
 options = [
     {'id': 1, 'name': '龙战八荒,', 'options': ['BUFF OFF', 'BUFF ON', '期望']},

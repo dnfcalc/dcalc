@@ -353,7 +353,7 @@ class Character:
         for skill in self.skills:
             if min <= skill.learnLv <= max:
                 if type == -1 or skill.type == type:
-                    skill.AddLv(lv, self)
+                    skill.lv += 1
 
     def SetSkillCD(self, min=1, max=100, cd=0, exclude=[50, 85, 100]) -> None:
         """
@@ -596,7 +596,7 @@ class Character:
     def calc_equs(self):
         """计算装备基础效果、附魔、贴膜"""
         effects = get_equipment(self.equVersion).funs
-        for detail in [(item.equInfo,item.fusionInfo,item.enchant) for item in filter(lambda x: x.equInfo is not None, self.charEquipInfo.values())]:
+        for detail in [(item.equInfo,item.fusionInfo,item.enchant,item.emblem_0,item.emblem_1) for item in filter(lambda x: x.equInfo is not None, self.charEquipInfo.values())]:
             equ = detail[0]
             fusion = detail[1]
             enchat = detail[2]
@@ -614,6 +614,22 @@ class Character:
             fun = effects.enchant_func_list.get(str(enchat), None)
             if fun is not None:
                 fun(self)
+            # 徽章效果
+            emblem_0 = detail[3]
+            emblem_1 = detail[4]
+            if str(emblem_1).isdigit():
+                fun = effects.emblem_func_list.get(str(emblem_0), None)
+                if fun is not None:
+                    fun(self)
+            else:
+                # 白金徽章处理
+                skill = self.GetSkillByName(emblem_0)
+                if skill is not None:
+                    skill.lv += 1
+                    self.SetStatus(四维=8)
+            fun = effects.emblem_func_list.get(str(emblem_1), None)
+            if fun is not None:
+                fun(self)
             # 贴膜
             if fusion is None:
                 continue
@@ -623,6 +639,28 @@ class Character:
             self.SetStatus(**filtered_dict)
             # 获取装备额外属性
             fun(self)
+
+    def calc_avatar(self, avatar: dict):
+        """计算时装效果"""
+        equ = get_equipment(self.equVersion)
+        dress = {key: value for key, value in avatar.items() if key in ['头发', '帽子', '脸部','胸部','上衣','腰带','下装','鞋']}
+        equ.funs.calc_dress_effect(dress,self)
+        avatarElse = {key: value for key, value in avatar.items() if key not in ['头发', '帽子', '脸部','胸部','上衣','腰带','下装','鞋']}
+        for key in avatarElse:
+            value = avatarElse[key].get('enchant', None)
+            emblem_0 = avatarElse[key].get('emblem_0', None)
+            emblem_1 = avatarElse[key].get('emblem_1', None)
+            if value is not None:
+                fun = equ.funs.enchant_func_list.get(str(value), None)
+                if fun is not None:
+                    fun(self)
+            for i in [emblem_0, emblem_1]:
+                if i is None:
+                    continue
+                fun = equ.funs.emblem_func_list.get(str(i), None)
+                if fun is not None:
+                    fun(self)
+        pass
 
     def calc_basic(self):
         """计算基础属性:防具精通、增幅、强化等"""
@@ -688,6 +726,8 @@ class Character:
         # 角色基础属性
         self.SetBaseStatus()
         # 辟邪玉计算
+        # 时装计算
+        self.calc_avatar(setInfo.get('avatar', {}))
         # 精通、增幅、强化计算
         self.calc_basic()
         # 部位效果计算

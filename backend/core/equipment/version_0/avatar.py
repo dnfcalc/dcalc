@@ -57,7 +57,9 @@ class 装扮:
         elif str(选项) == '0':
             pass
         else:
-            角色.单技能加成(名称=选项, lv=1)
+            skill = 角色.GetSkillByName(选项)
+            if skill is not None:
+                skill.lv += 1
 
 
 class 神器装扮头发(装扮):
@@ -357,3 +359,41 @@ def get_dress_list(skills_coat:list[str] = [],skills_pants:list[str] = []) -> di
         data["name"] = f"{dress.品质}装扮{dress.部位}"
         dress_list[部位].append(data)
     return dress_list
+
+def calc_dress_effect(avatar,char):
+    """
+    计算装扮效果
+    """
+    时装品级列表 = {}
+    for 部位 in avatar:
+        id = avatar[部位].get("id")
+        if id is None:
+            continue
+        时装 = 装扮集合[int(id)]
+        时装.效果(角色=char, 选项=avatar[部位].get("option"))
+        时装品级列表[时装.套装] = 时装品级列表.get(时装.套装, 0) + 1
+
+    套装集合: list[装扮套装] = []
+
+    for 套装 in 装扮套装集合:
+        数量 = 时装品级列表.get(套装.名称, 0)
+        if 数量 > 0:
+            if 数量 >= 套装.所需数量:
+                查找 = len(
+                    [
+                        i
+                        for i in 套装集合
+                        if hasattr(i, "兼容于")
+                        and i.兼容于 == 套装.名称
+                        and i.所需数量 == 套装.所需数量
+                    ]
+                )
+                if 查找 == 0:
+                    套装集合.append(套装)
+            else:
+                if hasattr(套装, "兼容于") and 套装.兼容于  is not None:
+                    数量 += 时装品级列表.get(套装.兼容于, 0)
+                    时装品级列表[套装.兼容于] = 数量
+                    时装品级列表.pop(套装.名称)
+    for 套装 in 套装集合:
+        套装.效果(char)
