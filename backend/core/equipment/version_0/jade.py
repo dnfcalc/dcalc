@@ -14,7 +14,7 @@ def jade_0(char: Character = {}, value=0):
     pass
 
 def jade_1(char: Character = {}, value=0):
-    char.SetStatus(SkillDamage=value/100)
+    char.SetStatus(SkillAttack=value/100)
 
 def jade_2(char: Character = {}, value=0):
     char.SetStatus(AttackP=value/100)

@@ -636,7 +636,7 @@ class Character:
             # 贴膜
             if fusion is None:
                 continue
-            fun = effects.equ_func_list.get(str(fusion.id), None)
+            fun = effects.stone_func_list.get(str(fusion.id), None)
             # 获取装备基础属性 并给角色设置（大写开头属性为角色属性）
             filtered_dict = {k: v for k, v in fusion.__dict__.items() if k[0].isupper()}
             self.SetStatus(**filtered_dict)
@@ -719,7 +719,7 @@ class Character:
                 pass
         pass
 
-    def calc_jade(self):
+    def calc_jade(self,jade):
         """计算辟邪玉效果"""
         pass
 

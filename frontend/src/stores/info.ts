@@ -36,7 +36,8 @@ export const useInfoStore = defineStore('infoStore', () => {
     '辅助装备',
     '戒指',
     '耳环',
-    '魔法石'
+    '魔法石',
+    '宠物'
   ]
 
   const avatarParts = [

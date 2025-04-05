@@ -746,7 +746,7 @@ def suit_48(char: Character):
     reinforce = reinforce_0 + reinforce_1 + reinforce_2 + reinforce_3
     char.SetStatus(SkillRange=0.02 * min(reinforce // 11, 7))
     # char.SetStatus(DamageReduce=0.01 * min(reinforce_0 // 5, 7))
-    char.SetStatus(SkillDamage=0.01 * min(reinforce_1 // 3, 7))
+    char.SetStatus(SkillAttack=0.01 * min(reinforce_1 // 3, 7))
     char.SetStatus(SpeedA=0.02 * min(reinforce_2 // 3, 7))
     char.SetStatus(SpeedM=0.02 * min(reinforce_2 // 3, 7))
     char.SetStatus(SpeedR=0.02 * min(reinforce_2 // 3, 7))
@@ -843,7 +843,7 @@ def suit_53(char: Character):
     reinforce = reinforce_0 + reinforce_1 + reinforce_2 + reinforce_3
     char.SetStatus(SkillRange=0.02 * min(reinforce // 11, 12))
     # char.SetStatus(DamageReduce=0.01 * min(reinforce_0 // 5, 7))
-    char.SetStatus(SkillDamage=0.01 * min(reinforce_1 // 3, 12))
+    char.SetStatus(SkillAttack=0.01 * min(reinforce_1 // 3, 12))
     char.SetStatus(SpeedA=0.02 * min(reinforce_2 // 3, 12))
     char.SetStatus(SpeedM=0.02 * min(reinforce_2 // 3, 12))
     char.SetStatus(SpeedR=0.02 * min(reinforce_2 // 3, 12))
@@ -982,7 +982,7 @@ def suit_58(char: Character):
     reinforce = reinforce_0 + reinforce_1 + reinforce_2 + reinforce_3
     char.SetStatus(SkillRange=0.02 * min(reinforce // 11, 12))
     # char.SetStatus(DamageReduce=0.01 * min(reinforce_0 // 5, 7))
-    char.SetStatus(SkillDamage=0.01 * min(reinforce_1 // 3, 12))
+    char.SetStatus(SkillAttack=0.01 * min(reinforce_1 // 3, 12))
     char.SetStatus(SpeedA=0.02 * min(reinforce_2 // 3, 12))
     char.SetStatus(SpeedM=0.02 * min(reinforce_2 // 3, 12))
     char.SetStatus(SpeedR=0.02 * min(reinforce_2 // 3, 12))
@@ -991,7 +991,7 @@ def suit_58(char: Character):
         char.SetSkillCD(cd=0.02 * min(reinforce // 1, 12))
 
     if reinforce >= 110:
-        char.SetStatus(SkillDamage=0.02 * min((reinforce - 110) // 11, 2))
+        char.SetStatus(SkillAttack=0.02 * min((reinforce - 110) // 11, 2))
 
         if char.buffer:
             char.SetSkillCD(Buffer=750 * min((reinforce - 110) // 11, 2))
@@ -1171,7 +1171,7 @@ def suit_63(char: Character):
     reinforce = reinforce_0 + reinforce_1 + reinforce_2 + reinforce_3
     char.SetStatus(SkillRange=0.02 * min(reinforce // 11, 12))
     # char.SetStatus(DamageReduce=0.01 * min(reinforce_0 // 5, 7))
-    char.SetStatus(SkillDamage=0.01 * min(reinforce_1 // 3, 12))
+    char.SetStatus(SkillAttack=0.01 * min(reinforce_1 // 3, 12))
     char.SetStatus(SpeedA=0.02 * min(reinforce_2 // 3, 12))
     char.SetStatus(SpeedM=0.02 * min(reinforce_2 // 3, 12))
     char.SetStatus(SpeedR=0.02 * min(reinforce_2 // 3, 12))
@@ -1180,7 +1180,7 @@ def suit_63(char: Character):
         char.SetSkillCD(cd=0.02 * min(reinforce // 1, 12))
 
     if reinforce >= 110:
-        char.SetStatus(SkillDamage=0.02 * min((reinforce - 110) // 11, 2))
+        char.SetStatus(SkillAttack=0.02 * min((reinforce - 110) // 11, 2))
 
         if char.buffer:
             char.SetSkillCD(Buffer=1500 * min((reinforce - 110) // 11, 2))
@@ -1382,11 +1382,11 @@ def suit_79(char: Character):
         char.equ_effect.append(EquEffect(name='烛龙腾霄', icon='/equipment/suit/1.png', cd=10, data=14400))
     elif char.equ_options.get('1', 0) == 1:
         char.SetStatus(SpeedA=0.3, SpeedM=0.3, SpeedR=0.3)
-        char.SetStatus(SkillDamage=0.03)
+        char.SetStatus(SkillAttack=0.03)
         char.equ_effect.append(EquEffect(name='白龙强袭', icon='/equipment/suit/1.png', cd=3, data=6000))
     elif char.equ_options.get('1', 0) == 2:
         char.SetStatus(SpeedA=0.2, SpeedM=0.2, SpeedR=0.2)
-        char.SetStatus(SkillDamage=0.015)
+        char.SetStatus(SkillAttack=0.015)
         char.equ_effect.append(EquEffect(name='白龙强袭', icon='/equipment/suit/1.png', cd=3, data=6000))
         char.equ_effect.append(EquEffect(name='烛龙腾霄', icon='/equipment/suit/1.png', cd=10, data=14400))
     pass
@@ -1517,7 +1517,7 @@ def suit_84(char: Character):
         char.equ_effect.append(EquEffect(name='烛龙腾霄', icon='/equipment/suit/1.png', cd=10, data=14400))
     elif char.equ_options.get('1', 0) == 1:
         char.SetStatus(SpeedA=0.3, SpeedM=0.3, SpeedR=0.3)
-        char.SetStatus(SkillDamage=0.03)
+        char.SetStatus(SkillAttack=0.03)
         char.equ_effect.append(EquEffect(name='白龙强袭', icon='/equipment/suit/1.png', cd=3, data=6000))
         char.equ_effect.append(EquEffect(name='应龙之怒', icon='/equipment/suit/1.png', cd=4, data=7200))
     pass
@@ -1636,7 +1636,7 @@ def suit_95(char: Character):
     - 进入霸体状态
     """
     if char.equ_options.get('2', 0) == 0:
-        char.SetStatus(SkillDamage=0.175)
+        char.SetStatus(SkillAttack=0.175)
         char.SetSkillCD(cd=0.3)
     else:
         char.SetSkillCD(cd=0.55)
@@ -1887,7 +1887,7 @@ def suit_111(char: Character):
     攻击时， 有3%的几率发动[神的祝福]。 (发动冷却1秒)
     剩余冷却时间33秒以下的技能中， 初始化剩余时间最长的1个技能 (觉醒技能除外)
     """
-    char.SetStatus(SkillDamage=0.03)
+    char.SetStatus(SkillAttack=0.03)
     pass
 
 
@@ -1964,7 +1964,7 @@ def suit_116(char: Character):
     - 剩余冷却时间33秒以下的技能中，初始化剩余时间最短的1个技能（觉醒技能除外）
     - 立即发动[第二次幸运]
     """
-    char.SetStatus(SkillDamage=0.03)
+    char.SetStatus(SkillAttack=0.03)
     char.AddElementDB('火',33,1)
     char.AddElementDB('冰',33,1)
     char.AddElementDB('光',33,1)

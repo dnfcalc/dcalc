@@ -1,5 +1,7 @@
 export interface IResult {
   skills: IResultSkill[]
+  info:IResultUserInfo[]
+  suits:IResultSuit[]
 }
 
 export interface IResultSkill {
@@ -10,4 +12,20 @@ export interface IResultSkill {
   ratio: number
   cd: number
   damage: number
+}
+
+export interface IResultUserInfo {
+  name:string
+  value:string|number
+}
+
+export interface IResultSuit{
+  id:number
+  count:number
+  imageUrl:string
+  level:number
+  name:string
+  point:number
+  rarity:string
+  value:string
 }

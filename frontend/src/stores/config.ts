@@ -14,22 +14,25 @@ import type { IEquipment } from '@/api/info/type'
 // | '辅助装备'
 // | '魔法石'
 // | '武器',
+
+export interface IConfigEquip {
+  id: string
+  reinforce: number
+  reinforceType: number
+  enchant: string
+  emblem_0: string
+  emblem_1: string
+  upgrade: number
+  refine: number
+  adaptation: number
+  fusion: string
+}
+
 export interface IConfig {
   skills: Record<string, { lv: number }>
   equips: Record<
     string,
-    {
-      id: string
-      reinforce: number
-      reinforceType: number
-      enchant: string
-      emblem_0: string
-      emblem_1: string
-      upgrade: number
-      refine: number
-      adaptation: number
-      fusion: string
-    }
+    IConfigEquip
   >
   jades: Record<string, {
     id:number
@@ -163,6 +166,8 @@ export const useConfigStore = defineStore('configStore', () => {
     },
     {
       skills: [],
+      info: [],
+      suits: [],
     },
     { resetOnExecute: false },
   )

@@ -8,11 +8,10 @@
       </calc-tabs>
     </div>
     <div class="content flex">
-      <div class="flex flex-1" v-if="!!infoStore.infos?.alter">
+      <div class="flex flex-1 m-1" v-if="!!infoStore.infos?.alter">
         <RouterView></RouterView>
       </div>
-
-      <div class="w-40%">
+      <div class="flex-1 m-1">
         <Result></Result>
       </div>
     </div>

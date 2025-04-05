@@ -8,8 +8,8 @@ def 强化技攻(强化等级:int, 强化类型:int, 部位:str):
         if 部位 not in ['武器', '耳环']:
             return 0
         else:
-            return 强化技攻[强化等级]
-    return 增幅技攻[强化等级]
+            return 强化技攻[强化等级] / 100
+    return 增幅技攻[强化等级] / 100
 
 
 # endregion

@@ -130,7 +130,7 @@ export default defineComponent({
       return (
         <>
         <div class="h-150px flex justify-center items-center">
-          <EquList v-model:part={part.value}/></div>
+          <EquList v-model:part={part.value} withBg={false} /></div>
 
         <div class="flex flex-wrap equ-profile">
           <div class="equ-profile-item">
@@ -211,12 +211,20 @@ export default defineComponent({
           {can_upgrade.value ? (
             <div class="equ-profile-item">
               <div class="row-name">调适</div>
+              {/* <calc-slider
+                showValue={true}
+                showPercent={false}
+                v-model={adaptation.value}
+                min={0}
+                max={3}
+                step={1}
+                class="flex-1 !h-20px"
+              /> */}
               <calc-select v-model={adaptation.value} class="flex-1 !h-20px">
                 {renderList(4, (i) => (
                   <calc-option value={i - 1}>{i - 1}</calc-option>
                 ))}
               </calc-select>
-
             </div>
           ) : (
             <div></div>

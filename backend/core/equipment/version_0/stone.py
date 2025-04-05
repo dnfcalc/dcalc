@@ -1,7 +1,6 @@
 from core.basic.character import Character
-from core.basic.equipment import EquEffect
 
-suit_func_list = {}
+stone_func_list = {}
 
 # region 潜影暗袭 套装
 
@@ -240,7 +239,7 @@ def stone_23(char: Character):
 
     技能伤害+6%
     """
-    char.SetStatus(SkillAttack=0.06)  
+    char.SetStatus(SkillAttack=0.06)
     pass
 
 
@@ -2554,7 +2553,7 @@ def stone_1049(char: Character):
 
 for i in range(0, 1000):
     try:
-        if str(i) not in suit_func_list.keys():
-            suit_func_list[str(i)] = eval(f'stone_{i}')
+        if str(i) not in stone_func_list.keys():
+            stone_func_list[str(i)] = eval(f'stone_{i}')
     except Exception:
         pass

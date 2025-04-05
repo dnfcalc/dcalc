@@ -102,10 +102,12 @@ class Skill5(PassiveSkill):
     rangeLv = 3
 
     data0 = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]  # noqa: E501
+    data1 = [0] + [(1+1+1.2)/3] * 20
 
     associate = [
-        {'type': '*skillRation', 'data': data0, 'skills': ['G-14手雷','G-35L感电手雷','G-18C冰冻手雷']}
-        ]
+        {'type': '*skillRation', 'data': data0, 'skills': ['G-14手雷','G-35L感电手雷','G-18C冰冻手雷']},
+        {'type': '*skillRation', 'data': data1, 'skills': ['G-14手雷','G-35L感电手雷','G-18C冰冻手雷']},
+    ]
 
 # M18阔剑地雷 M18 클레이모어
 # https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/2ff50c35efcf0f287c4c418c8454da48?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0

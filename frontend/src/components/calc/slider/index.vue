@@ -28,7 +28,12 @@ export default defineComponent({
     showPercent: {
       type: Boolean,
       default: true
+    },
+    formatValue: {
+      type: Function,
+      default: undefined
     }
+
   },
   emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {
@@ -76,35 +81,33 @@ export default defineComponent({
         ]}
       >
         <div
-          class="flex-1 h-1 bg-[#122438] rounded relative"
+          class="flex-1 h-1 bg-[#4D524D] relative"
           ref={runwayRef}
         >
           <div
-            class="h-1 bg-[#c6b083] rounded absolute left-0 top-0"
+            class="h-1 bg-[#8E6D28] absolute left-0 top-0"
             style={{ width: `${percentage.value}%` }}
           ></div>
           <div
             class="h-6 w-6 absolute top-1/2 -translate-y-1/2 bg-transparent text-center select-none"
-            style={{ left: `${percentage.value}%` }}
+            style={{ left: `calc(${percentage.value}% - 0.75rem)` }}
             ref={buttonRef}
           >
             <div class={[
               'w-4 h-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
               'bg-gradient-to-b from-[#223768] to-[#122438]',
-              'border border-[#755f44] rounded-full transition-all duration-200',
+              'border border-solid border-[#937639] rounded-full transition-all duration-200',
               'shadow-[0_2px_4px_rgba(0,0,0,0.2)]',
-              'hover:(bg-gradient-to-b from-[#2d4e9f] to-[#153051] border-[#e3c18a] scale-110)',
-              'active:(bg-gradient-to-b from-[#2d4e9f] to-[#122438] border-[#e3c18a])',
               { 'bg-gradient-to-b from-[#353535] to-[#1c1c1c] border-[#414141]': props.disabled }
             ]}></div>
           </div>
         </div>
         {props.showPercent && (
           <div class={[
-            'min-w-[45px] text-right text-sm font-medium',
+            'w-auto min-w-5 text-center text-sm font-medium',
             props.disabled ? 'text-[#696969]' : 'text-[#e9c556]'
           ]}>
-            {percentage.value.toFixed(0)}%
+            {props.formatValue ? props.formatValue(modelValue.value) : `${percentage.value.toFixed(0)}%`}
           </div>
         )}
       </div>

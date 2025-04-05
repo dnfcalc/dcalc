@@ -4,6 +4,7 @@ from .equ import equ_func_list
 from .avatar import get_dress_list,calc_dress_effect
 from .enchant import enchant_func_list
 from .emblem import emblem_func_list
+from .stone import stone_func_list
 
 options = [
     {'id': 1, 'name': '龙战八荒,', 'options': ['BUFF OFF', 'BUFF ON', '期望']},

@@ -143,7 +143,6 @@ export default defineComponent({
                     >{`${item.rarity}${item.categorize}徽章[${item.detail}]`}</calc-option>
                   ))}
                 </calc-select>
-                )
               </div>
             ) : (
               <div></div>

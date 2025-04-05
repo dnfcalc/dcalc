@@ -14,9 +14,9 @@
     </div>
 </template>
 <script setup lang="ts">
-import equipment from './components/equipment.vue'
-import clothes from './components/avatar.vue';
-import jade from './components/jade.vue';
+import equipment from './components/Equipments.vue'
+import clothes from './components/Avatars.vue';
+import jade from './components/Jades.vue';
 const partTab = ref(0)
 </script>
 

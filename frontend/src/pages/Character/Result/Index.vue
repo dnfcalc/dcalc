@@ -1,6 +1,6 @@
 <template>
-  <div class="flex" v-if="configStore.result.state">
-    <Info></Info>
+  <div class="flex gap-2" v-if="configStore.result.state">
+    <Info :suits="configStore.result.state.suits" :info="configStore.result.state.info" :equs="configStore.config.equips"></Info>
     <Skill :data="configStore.result.state.skills"></Skill>
   </div>
 </template>
