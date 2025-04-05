@@ -352,7 +352,8 @@ class Character:
         """
         for skill in self.skills:
             if min <= skill.learnLv <= max:
-                if type == -1 or skill.type == type:
+                type = 'all' if type == -1 else ('active' if type == 1 else 'passive')
+                if type == 'all' or skill.type == type:
                     skill.lv += 1
 
     def SetSkillCD(self, min=1, max=100, cd=0, exclude=[50, 85, 100]) -> None:
