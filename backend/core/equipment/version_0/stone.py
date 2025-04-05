@@ -1832,7 +1832,6 @@ def stone_1007(char: Character):
     属性3
     魔法值最大值+300
     """
-    print("~~~~~~~~`")
     char.SetStatus(SkillAttack=0.055)
     for skill in char.skills:
         if skill.learnLv in [50, 85, 100]:

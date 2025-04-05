@@ -242,4 +242,3 @@ def get_adv_info(value):
         return next((o for o in child['options'] if o.get('id', 0) == option_id), None)
     else:
         return child if option_id == 0 else None
-print(get_adv_info("MDUwMzAz"))
