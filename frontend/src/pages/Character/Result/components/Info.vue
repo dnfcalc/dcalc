@@ -54,6 +54,7 @@
         </div>
       </template>
     </div>
+    <div class="h-40px w-full"></div>
   </div>
 </template>
 

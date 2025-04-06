@@ -2,26 +2,19 @@ from core.basic.character import Character
 
 jade_func_list = {}
 
-for i in range(0,20):
-    try:
-        if i not in jade_func_list.keys():
-            jade_func_list[i] = eval(f'jade_{i}')
-    except Exception:
-        pass
-
 
 def jade_0(char: Character = {}, value=0):
     pass
 
 def jade_1(char: Character = {}, value=0):
-    char.SetStatus(SkillAttack=value/100)
+    char.jade_effect.SkillAttack += value/100
 
 def jade_2(char: Character = {}, value=0):
-    char.SetStatus(AttackP=value/100)
+    char.jade_effect.AttackP += value/100
     pass
 
 def jade_3(char: Character = {}, value=0):
-    char.ElementIncrease += value/100
+    char.jade_effect.ElementIncrease += value/100
     pass
 
 def jade_4(char: Character = {}, value=0):
@@ -123,14 +116,12 @@ def jade_12(char: Character = {}, value=0):
 #     char.攻击速度增加(value/100)
 
 
-# for i in range(26201, 26210):
-#     try:
-#         if i not in jade_func_list.keys():
-#             jade_func_list[i] = eval('jade_{}'.format(i))
-#         sorted(jade_func_list, key=lambda x: eval(x(text=True))[6])
-#     except Exception:
-#         pass
-
+for i in range(0,20):
+    try:
+        if str(i) not in jade_func_list.keys():
+            jade_func_list[str(i)] = eval(f'jade_{i}')
+    except Exception:
+        pass
 
 # def get_jadefunc_by_id(id):
 #     return jade_func_list.get(int(id), jade_26000)

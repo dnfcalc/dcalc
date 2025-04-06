@@ -1,6 +1,7 @@
 from functools import cache
 import importlib
 from typing import Any, Literal, Mapping, Union
+from uuid import uuid1
 
 from core.basic.property import CharacterInfo
 from core.basic.skill import Skill
@@ -342,6 +343,10 @@ class Character:
         """
         if element not in self.ElementDB:
             raise ValueError(f'Invalid element: {element}')
+        if type == 0:
+            value = value * (1 + self.jade_effect.ElementIncrease)
+        if type == 1:
+            value = int(value * (1 + self.jade_effect.ElementIncrease))
         self.ElementDB[element] += value
         pass
 
@@ -371,14 +376,14 @@ class Character:
             if min <= skill.learnLv <= max and skill.damage and skill.learnLv not in exclude:
                 skill.cdRecover += cd
 
-    def SetSkillRation(self, min=1, max=100, ratio=0 ,type = 0) -> None:
+    def SetSkillRation(self, min=1, max=100, ratio=0, type=0) -> None:
         """设置技能倍率 0 修改技能面板 1 不修改技能面板"""
         for skill in self.skills:
             if min <= skill.learnLv <= max and skill.damage:
                 if type == 0:
-                    skill.skillRation *= (1 + ratio)
+                    skill.skillRation *= 1 + ratio
                 else:
-                    skill.skillDamage *= (1 + ratio)
+                    skill.skillDamage *= 1 + ratio
 
     def GetSkillByName(self, name) -> Skill:
         """通过技能名获取技能"""
@@ -402,12 +407,6 @@ class Character:
         for key in info['equips']:
             # 导入部位打造信息、装备信息、贴膜信息
             self.charEquipInfo[key] = CharacterEquipInfo(info['equips'][key], self.equVersion, key)
-        """辟邪玉"""
-        self.jadeInfo = {}
-        for key in info.get('jades', {}):
-            self.jadeInfo[key] = info['jades'][key]
-        """时装"""
-        """杂项"""
 
     def getInfo(self):
         """返回到前端信息"""
@@ -422,7 +421,7 @@ class Character:
         platinum = []
         for skill in self.skills:
             # 白金
-            if 15 <= skill.learnLv <= 70 and skill.learnLv not in  [48,50]:
+            if 15 <= skill.learnLv <= 70 and skill.learnLv not in [48, 50]:
                 platinum.append(skill.name)
             # 时装
             if skill.learnLv <= 95:
@@ -462,17 +461,19 @@ class Character:
         info['stones'] = stones
         info['enchants'] = equInfos.enchants
         info['emblems'] = equInfos.emblems
-        info["avatar"] = equInfos.funs.get_dress_list(skill_clothes)
+        info['avatar'] = equInfos.funs.get_dress_list(skill_clothes)
         info['jades'] = equInfos.jades
         for skill in platinum:
-            info['emblems'].append({
-                'id': skill,
-                'fame':232,
-                'position':["辅助装备", "魔法石"],
-                "detail": skill + " Lv+1" + " 四维 + 8",
-                "categorize": ["技能"],
-                "rarity": "白金",
-            })
+            info['emblems'].append(
+                {
+                    'id': skill,
+                    'fame': 232,
+                    'position': ['辅助装备', '魔法石'],
+                    'detail': skill + ' Lv+1' + ' 四维 + 8',
+                    'categorize': ['技能'],
+                    'rarity': '白金',
+                }
+            )
         return info
 
     def getBasicInos(self):
@@ -576,16 +577,18 @@ class Character:
                 suitList += equs.get_suit_info(suit, suitInfo[suit]['point'], 0)
                 # suits_effect += [i.id for i in equs.get_suit_info(suit, suitInfo[suit]['point'], 0)]
             temp = suitList[-1]
-            res.append({
-                'id': temp.id,
-                'name': temp.name,
-                'rarity': temp.rarity,
-                'point': suitInfo[suit]['point'],
-                'count': suitInfo[suit]['count'],
-                'level': temp.level,
-                'imageUrl': temp.imageUrl,
-                'value': temp.value,
-            })
+            res.append(
+                {
+                    'id': temp.id,
+                    'name': temp.name,
+                    'rarity': temp.rarity,
+                    'point': suitInfo[suit]['point'],
+                    'count': suitInfo[suit]['count'],
+                    'level': temp.level,
+                    'imageUrl': temp.imageUrl,
+                    'value': temp.value,
+                }
+            )
         suits_effect = [i.id for i in suitList]
         for i in suits_effect:
             func = equs.funs.suit_func_list.get(str(i), None)
@@ -600,7 +603,7 @@ class Character:
     def calc_equs(self):
         """计算装备基础效果、附魔、贴膜"""
         effects = get_equipment(self.equVersion).funs
-        for detail in [(item.equInfo,item.fusionInfo,item.enchant,item.emblem_0,item.emblem_1) for item in filter(lambda x: x.equInfo is not None, self.charEquipInfo.values())]:
+        for detail in [(item.equInfo, item.fusionInfo, item.enchant, item.emblem_0, item.emblem_1) for item in filter(lambda x: x.equInfo is not None, self.charEquipInfo.values())]:
             equ = detail[0]
             fusion = detail[1]
             enchat = detail[2]
@@ -648,9 +651,9 @@ class Character:
     def calc_avatar(self, avatar: dict):
         """计算时装效果"""
         equ = get_equipment(self.equVersion)
-        dress = {key: value for key, value in avatar.items() if key in ['头发', '帽子', '脸部','胸部','上衣','腰带','下装','鞋']}
-        equ.funs.calc_dress_effect(dress,self)
-        avatarElse = {key: value for key, value in avatar.items() if key not in ['头发', '帽子', '脸部','胸部','上衣','腰带','下装','鞋']}
+        dress = {key: value for key, value in avatar.items() if key in ['头发', '帽子', '脸部', '胸部', '上衣', '腰带', '下装', '鞋']}
+        equ.funs.calc_dress_effect(dress, self)
+        avatarElse = {key: value for key, value in avatar.items() if key not in ['头发', '帽子', '脸部', '胸部', '上衣', '腰带', '下装', '鞋']}
         for key in avatarElse:
             value = avatarElse[key].get('enchant', None)
             emblem_0 = avatarElse[key].get('emblem_0', None)
@@ -721,8 +724,14 @@ class Character:
                 pass
         pass
 
-    def calc_jade(self,jade):
+    def calc_jade(self, jades):
         """计算辟邪玉效果"""
+        funs = get_equipment(self.equVersion).funs
+        for key in jades:
+            jade = jades[key]
+            fun = funs.jade_func_list.get(str(jade.get('id',0)), None)
+            if fun is not None:
+                fun(self,jade.get('value', 0))
         pass
 
     def calc(self, setInfo: dict[str, dict]):
@@ -799,10 +808,7 @@ class Character:
         for attr in attrs:
             temp = getattr(CharacterInfo, attr)
             if attr.startswith('Atk'):
-                info.append({
-                    'name':temp.name,
-                    'value':temp.value(getattr(self, attr)*getattr(self, f'P{attr}'))}
-                )
+                info.append({'name': temp.name, 'value': temp.value(getattr(self, attr) * getattr(self, f'P{attr}'))})
                 pass
             else:
                 info.append(
@@ -812,7 +818,12 @@ class Character:
                     }
                 )
                 pass
-        return {'skills': skillInfos, 'info': info,"suits": suit}
+        return {
+            'uuid': uuid1().hex,
+            'skills': skillInfos,
+            'info': info,
+            'suits': suit,
+        }
         # 技能影响角色的属性，如属强、抗性等
 
     def calc_damage_ration(self):
@@ -841,7 +852,7 @@ class Character:
         # BUFF系数
         ratio_5 = self.buff
         # 技攻系数
-        ratio_6 = self.SkillAttack + self.jade_effect.SkillAttack
+        ratio_6 = self.SkillAttack *( self.jade_effect.SkillAttack + 1)
         # 攻击强化
         ratio_7 = 1 + self.Attack * (self.AttackP + self.jade_effect.AttackP)
         # 防御系数,暂定145沙袋防御

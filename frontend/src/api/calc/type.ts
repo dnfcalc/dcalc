@@ -1,4 +1,5 @@
 export interface IResult {
+  uuid: string
   skills: IResultSkill[]
   info:IResultUserInfo[]
   suits:IResultSuit[]

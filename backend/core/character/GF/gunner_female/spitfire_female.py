@@ -172,6 +172,11 @@ class Skill9(ActiveSkill):
     data0 = [0, 1034, 1200, 1364, 1528, 1693, 1857, 2021, 2187, 2352, 2516, 2682, 2846, 3010, 3175, 3339, 3505, 3671, 3835, 4000, 4164]# noqa: E501
     hit0 = 1
 
+    def getSkillCD(self):
+        if self.char.charEquipInfo['武器'].equInfo.itemDetailType == '手弩':
+            return 0.115
+        return 0.14
+
 # G-18C冰冻手雷 G-18C 빙결류탄
 # https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/202edb928046f4fa6dedf6337377efd5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill10(ActiveSkill):

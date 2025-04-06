@@ -165,6 +165,7 @@ export const useConfigStore = defineStore('configStore', () => {
       return calc()
     },
     {
+      uuid: '',
       skills: [],
       info: [],
       suits: [],

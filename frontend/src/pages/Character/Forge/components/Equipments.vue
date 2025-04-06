@@ -130,7 +130,7 @@ export default defineComponent({
       return (
         <>
         <div class="h-150px flex justify-center items-center">
-          <EquList v-model:part={part.value} withBg={false} /></div>
+          <EquList v-model:part={part.value} withBg={false} withPet={false}/></div>
 
         <div class="flex flex-wrap equ-profile">
           <div class="equ-profile-item">

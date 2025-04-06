@@ -3,6 +3,7 @@
   <template v-for="key in ['0','1','2','3']" :key="key">
     <div class="flex gap-2 mt-5px">
       <calc-select class="flex-1 !h-20px" v-model="configStore.config.jades[key].id">
+        <calc-option :value="0">无</calc-option>
         <calc-option v-for="(item, index) in infoStore.jades" :key="item.id" :value="item.id">
           {{item.name}}
         </calc-option>

@@ -7,22 +7,27 @@
         <div class="item-head w-150px">伤害</div>
         <div class="item-head w-150px">秒伤</div>
       </div>
-      <div class="overflow-y-auto max-h-580px">
+      <div class="overflow-y-auto max-h-600px">
         <div class="flex px-1px gap-1px h-8.5" v-for="skill in data" :key="skill.name">
           <div class="flex w-150px items-center gap-10px">
             <div class="w-28px h-28px relative">
               <img :src="getImageURL(skill.icon)" alt="" class="w-28px h-28px" />
-              <div v-if="skill.lv" class="skill-lv-min" :data-text="`Lv ${ skill.lv }`">Lv {{ skill.lv }}</div>
+              <div v-if="skill.lv" class="skill-lv-min" :data-text="`Lv ${skill.lv}`">
+                Lv {{ skill.lv }}
+              </div>
             </div>
             <div>{{ skill.name }}</div>
           </div>
           <div class="w-80px flex items-center justify-center">{{ skill.cd.toFixed(1) }}s</div>
-          <div class="w-150px flex items-center justify-center">
-            {{ Math.round(skill.damage).toLocaleString() }}
-          </div>
-          <div class="w-150px flex items-center justify-center">
-            {{ Math.round(skill.damage / skill.cd).toLocaleString() }}
-          </div>
+          <!-- <div class="flex">
+            <div class="w-150px flex items-center justify-center">
+              {{ Math.round(skill.damage).toLocaleString() }}
+            </div>
+            <div class="w-150px flex items-center justify-center">
+              {{ Math.round(skill.damage / skill.cd).toLocaleString() }}
+            </div>
+          </div> -->
+          <component :is="formatDamage(skill)"></component>
         </div>
       </div>
     </div>
@@ -32,13 +37,90 @@
 <script setup lang="ts" name="Skill">
 import type { IResultSkill } from '@/api/calc/type'
 import { getImageURL } from '@/utils/images'
+import { h } from 'vue'
 const props = defineProps<{
   data: IResultSkill[]
+  standard?: IResultSkill[]
 }>()
 
 const data = computed(() => {
   return props.data.sort((a, b) => b.damage - a.damage)
 })
+
+const formatDamage = (skill: IResultSkill) => {
+  const standardSkill = props.standard?.find((a) => a.name == skill.name)
+  if (standardSkill && standardSkill.damage > 0 && standardSkill.cd > 0) {
+    const damageValue = (skill.damage - standardSkill.damage) / standardSkill.damage
+    const damage = h(
+      'div',
+      {
+        style: {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '150px',
+          color: damageValue >= 0 ? '#37fa38' : '#ff0000',
+        },
+      },
+      (damageValue * 100).toFixed(2) + '%',
+    )
+    const dpsValue =
+      (skill.damage / skill.cd - standardSkill.damage / standardSkill.cd) /
+      (standardSkill.damage / standardSkill.cd)
+    const dps = h(
+      'div',
+      {
+        style: {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '150px',
+          color: damageValue >= 0 ? '#37fa38' : '#ff0000',
+        },
+      },
+      (dpsValue * 100).toFixed(2) + '%',
+    )
+    return h(
+      'div',
+      {
+        class: 'flex items-center justify-center',
+      },
+      [damage, dps],
+    )
+  } else {
+    const damage = h(
+      'div',
+      {
+        style: {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '150px',
+        },
+      },
+      Math.round(skill.damage).toLocaleString(),
+    )
+    const dps = h(
+      'div',
+      {
+        style: {
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '150px',
+        },
+      },
+      Math.round(skill.damage / skill.cd).toLocaleString(),
+    )
+    return h(
+      'div',
+      {
+        class: 'flex items-center justify-center',
+      },
+      [damage, dps],
+    )
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -50,27 +132,27 @@ const data = computed(() => {
 }
 
 .skill-lv-min {
-    position: absolute;
-    z-index: 0;
-    top: -3px;
-    right: -4px;
-    font-size: 12px;
-    transform: scale(0.7);
-    color: black;
-    text-shadow: none;
-    font-weight: bolder;
-    font-family: Arial;
-  }
+  position: absolute;
+  z-index: 0;
+  top: -3px;
+  right: -4px;
+  font-size: 12px;
+  transform: scale(0.7);
+  color: black;
+  text-shadow: none;
+  font-weight: bolder;
+  font-family: Arial;
+}
 
-  .skill-lv-min::before {
-    // text-shadow: #37fa38 2px 0 0, #37fa38 0 2px 0, #37fa38 -2px 0 0, #37fa38 0 -2px 0;
-    // -webkit-text-stroke-width: 1px;
-    // -webkit-text-stroke-color: #37fa38;
-    content: attr(data-text);
-    position: absolute;
-    -webkit-text-stroke: 2.5px #37fa38;
-    font-family: Arial;
-    text-shadow: none;
-    z-index: -1;
-  }
+.skill-lv-min::before {
+  // text-shadow: #37fa38 2px 0 0, #37fa38 0 2px 0, #37fa38 -2px 0 0, #37fa38 0 -2px 0;
+  // -webkit-text-stroke-width: 1px;
+  // -webkit-text-stroke-color: #37fa38;
+  content: attr(data-text);
+  position: absolute;
+  -webkit-text-stroke: 2.5px #37fa38;
+  font-family: Arial;
+  text-shadow: none;
+  z-index: -1;
+}
 </style>

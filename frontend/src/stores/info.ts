@@ -2,6 +2,7 @@ import api from '@/api'
 import type { ICharacterInfo } from '@/api/info/type'
 import { defineStore } from 'pinia'
 import { useConfigStore } from './config'
+import type { IResult, IResultSkill } from '@/api/calc/type'
 
 export const useInfoStore = defineStore('infoStore', () => {
   const alter_token = ref<string>('')
@@ -23,6 +24,24 @@ export const useInfoStore = defineStore('infoStore', () => {
 
   const jades = computed(() => infos.value?.jades ?? [])
 
+  const standardUUID = ref<string>()
+
+  const setStandard = (result?: IResult) => {
+    if (!result) {
+      !!standardUUID.value && sessionStorage.removeItem(standardUUID.value)
+      standardUUID.value = undefined
+    } else {
+      standardUUID.value = result.uuid
+      sessionStorage.setItem(result.uuid, JSON.stringify(result.skills))
+    }
+  }
+
+  const standard = computed(()=>{
+    const value = sessionStorage.getItem(standardUUID.value ?? '')
+    if(!value) return undefined
+    else return JSON.parse(value) as IResultSkill[]
+  })
+
   const parts = [
     '头肩',
     '上衣',
@@ -37,7 +56,7 @@ export const useInfoStore = defineStore('infoStore', () => {
     '戒指',
     '耳环',
     '魔法石',
-    '宠物'
+    '宠物',
   ]
 
   const avatarParts = [
@@ -56,7 +75,7 @@ export const useInfoStore = defineStore('infoStore', () => {
     '宠物',
     '宠物装备-红',
     '宠物装备-绿',
-    '宠物装备-蓝'
+    '宠物装备-蓝',
   ]
 
   const createCharacter = async (alter: string, equVersion?: string) => {
@@ -79,6 +98,8 @@ export const useInfoStore = defineStore('infoStore', () => {
     stones,
     avatarParts,
     avatars,
-    jades
+    jades,
+    setStandard,
+    standard
   }
 })

@@ -115,7 +115,10 @@ class Skill:
     def _apply_association(self, type, old, new, data, skills, exceptSkills
                            ):
         if type.startswith('$*'):
-            value = (1 + data[new] / 100) / (1 + data[old] / 100)
+            if 'cdReduce' in type:
+                value = (1 - data[new] / 100) / (1 - data[old] / 100)
+            else:
+                value = (1 + data[new] / 100) / (1 + data[old] / 100)
             eval(f'self.char.SetStatus({type[2:]}={value})')
         elif type.startswith('$+'):
             value = data[new] / 100 - data[old] / 100
@@ -132,7 +135,10 @@ class Skill:
 
     def _update_skill_attribute(self,skill, type, old, new, data):
         if type.startswith('*'):
-            setattr(skill, type[1:], getattr(skill, type[1:]) * (1 + data[new] / 100) / (1 + data[old] / 100))
+            if 'cdReduce' in type:
+                setattr(skill, type[1:], getattr(skill, type[1:]) * (1 - data[new] / 100) / (1 - data[old] / 100))
+            else:
+                setattr(skill, type[1:], getattr(skill, type[1:]) * (1 + data[new] / 100) / (1 + data[old] / 100))
         elif type.startswith('+'):
             setattr(skill, type[1:], getattr(skill, type[1:]) + data[new] / 100 - data[old] / 100)
 
