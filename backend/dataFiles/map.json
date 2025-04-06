@@ -1,0 +1,382 @@
+[
+  {
+    "name": "plate_belt",
+    "path": "/equipment/new_equipment/06_plate/belt/plate_belt.img",
+    "dcalc": "/equipment/icon/armor/plate/belt"
+  },
+  {
+    "name": "plate_coat",
+    "path": "/equipment/new_equipment/06_plate/coat/plate_coat.img",
+    "dcalc": "/equipment/icon/armor/plate/coat"
+  },
+  {
+    "name": "plate_pants",
+    "path": "/equipment/new_equipment/06_plate/pants/plate_pants.img",
+    "dcalc": "/equipment/icon/armor/plate/pants"
+  },
+  {
+    "name": "plate_neck",
+    "path": "/equipment/new_equipment/06_plate/neck/plate_neck.img",
+    "dcalc": "/equipment/icon/armor/plate/neck"
+  },
+  {
+    "name": "plate_shoes",
+    "path": "/equipment/new_equipment/06_plate/shoes/plate_shoes.img",
+    "dcalc": "/equipment/icon/armor/plate/shoes"
+  },
+  {
+    "name": "magicstone",
+    "path": "/equipment/new_equipment/11_magicstone/magicstone.img",
+    "dcalc": "/equipment/icon/special/magicstone"
+  },
+  {
+    "name": "amalgamationstone",
+    "path": "/equipment/new_equipment/18_amalgamationstone/amalgamationstone.img",
+    "dcalc": "/equipment/icon/amalgamationstone"
+  },
+  {
+    "name": "ring",
+    "path": "/equipment/new_equipment/07_ring/ring.img",
+    "dcalc": "/equipment/icon/jewelry/ring"
+  },
+  {
+    "name": "harmor_belt",
+    "path": "/equipment/new_equipment/05_harmor/belt/harmor_belt.img",
+    "dcalc": "/equipment/icon/armor/harmor/belt"
+  },
+  {
+    "name": "harmor_coat",
+    "path": "/equipment/new_equipment/05_harmor/coat/harmor_coat.img",
+    "dcalc": "/equipment/icon/armor/harmor/coat"
+  },
+  {
+    "name": "harmor_pants",
+    "path": "/equipment/new_equipment/05_harmor/pants/harmor_pants.img",
+    "dcalc": "/equipment/icon/armor/harmor/pants"
+  },
+  {
+    "name": "harmor_neck",
+    "path": "/equipment/new_equipment/05_harmor/neck/harmor_neck.img",
+    "dcalc": "/equipment/icon/armor/harmor/neck"
+  },
+  {
+    "name": "harmor_shoes",
+    "path": "/equipment/new_equipment/05_harmor/shoes/harmor_shoes.img",
+    "dcalc": "/equipment/icon/armor/harmor/shoes"
+  },
+  {
+    "name": "larmor_belt",
+    "path": "/equipment/new_equipment/04_larmor/belt/larmor_belt.img",
+    "dcalc": "/equipment/icon/armor/larmor/belt"
+  },
+  {
+    "name": "larmor_coat",
+    "path": "/equipment/new_equipment/04_larmor/coat/larmor_coat.img",
+    "dcalc": "/equipment/icon/armor/larmor/coat"
+  },
+  {
+    "name": "larmor_pants",
+    "path": "/equipment/new_equipment/04_larmor/pants/larmor_pants.img",
+    "dcalc": "/equipment/icon/armor/larmor/pants"
+  },
+  {
+    "name": "larmor_neck",
+    "path": "/equipment/new_equipment/04_larmor/neck/larmor_neck.img",
+    "dcalc": "/equipment/icon/armor/larmor/neck"
+  },
+  {
+    "name": "larmor_shoes",
+    "path": "/equipment/new_equipment/04_larmor/shoes/larmor_shoes.img",
+    "dcalc": "/equipment/icon/armor/larmor/shoes"
+  },
+  {
+    "name": "necklace",
+    "path": "/equipment/new_equipment/08_necklace/necklace.img",
+    "dcalc": "/equipment/icon/jewelry/necklace"
+  },
+  {
+    "name": "bracelet",
+    "path": "/equipment/new_equipment/09_bracelet/bracelet.img",
+    "dcalc": "/equipment/icon/jewelry/bracelet"
+  },
+  {
+    "name": "cloth_belt",
+    "path": "/equipment/new_equipment/02_cloth/belt/cloth_belt.img",
+    "dcalc": "/equipment/icon/armor/cloth/belt"
+  },
+  {
+    "name": "cloth_coat",
+    "path": "/equipment/new_equipment/02_cloth/coat/cloth_coat.img",
+    "dcalc": "/equipment/icon/armor/cloth/coat"
+  },
+  {
+    "name": "cloth_pants",
+    "path": "/equipment/new_equipment/02_cloth/pants/cloth_pants.img",
+    "dcalc": "/equipment/icon/armor/cloth/pants"
+  },
+  {
+    "name": "cloth_neck",
+    "path": "/equipment/new_equipment/02_cloth/neck/cloth_neck.img",
+    "dcalc": "/equipment/icon/armor/cloth/neck"
+  },
+  {
+    "name": "cloth_shoes",
+    "path": "/equipment/new_equipment/02_cloth/shoes/cloth_shoes.img",
+    "dcalc": "/equipment/icon/armor/cloth/shoes"
+  },
+  {
+    "name": "knuckle",
+    "path": "/equipment/new_equipment/01_weapon/fighter/knuckle/knuckle.img",
+    "dcalc": "/equipment/icon/weapon/fighter/knuckle"
+  },
+  {
+    "name": "bglove",
+    "path": "/equipment/new_equipment/01_weapon/fighter/bglove/bglove.img",
+    "dcalc": "/equipment/icon/weapon/fighter/bglove"
+  },
+  {
+    "name": "claw",
+    "path": "/equipment/new_equipment/01_weapon/fighter/claw/claw.img",
+    "dcalc": "/equipment/icon/weapon/fighter/claw"
+  },
+  {
+    "name": "gauntlet",
+    "path": "/equipment/new_equipment/01_weapon/fighter/gauntlet/gauntlet.img",
+    "dcalc": "/equipment/icon/weapon/fighter/gauntlet"
+  },
+  {
+    "name": "tonfa",
+    "path": "/equipment/new_equipment/01_weapon/fighter/tonfa/tonfa.img",
+    "dcalc": "/equipment/icon/weapon/fighter/tonfa"
+  },
+  {
+    "name": "ebow",
+    "path": "/equipment/new_equipment/01_weapon/archer/ebow/ebow.img",
+    "dcalc": "/equipment/icon/weapon/archer/ebow"
+  },
+  {
+    "name": "sbow",
+    "path": "/equipment/new_equipment/01_weapon/archer/sbow/sbow.img",
+    "dcalc": "/equipment/icon/weapon/archer/sbow"
+  },
+  {
+    "name": "lbow",
+    "path": "/equipment/new_equipment/01_weapon/archer/lbow/lbow.img",
+    "dcalc": "/equipment/icon/weapon/archer/lbow"
+  },
+  {
+    "name": "cbow",
+    "path": "/equipment/new_equipment/01_weapon/archer/cbow/cbow.img",
+    "dcalc": "/equipment/icon/weapon/archer/cbow"
+  },
+  {
+    "name": "club",
+    "path": "/equipment/new_equipment/01_weapon/swordman/club/club.img",
+    "dcalc": "/equipment/icon/weapon/swordman/club"
+  },
+  {
+    "name": "sswd",
+    "path": "/equipment/new_equipment/01_weapon/swordman/sswd/sswd.img",
+    "dcalc": "/equipment/icon/weapon/swordman/sswd"
+  },
+  {
+    "name": "katana",
+    "path": "/equipment/new_equipment/01_weapon/swordman/katana/katana.img",
+    "dcalc": "/equipment/icon/weapon/swordman/katana"
+  },
+  {
+    "name": "beamswd",
+    "path": "/equipment/new_equipment/01_weapon/swordman/beamswd/beamswd.img",
+    "dcalc": "/equipment/icon/weapon/swordman/beamswd"
+  },
+  {
+    "name": "lswd",
+    "path": "/equipment/new_equipment/01_weapon/swordman/lswd/lswd.img",
+    "dcalc": "/equipment/icon/weapon/swordman/lswd"
+  },
+  {
+    "name": "rod",
+    "path": "/equipment/new_equipment/01_weapon/mage/rod/rod.img",
+    "dcalc": "/equipment/icon/weapon/mage/rod"
+  },
+  {
+    "name": "spear",
+    "path": "/equipment/new_equipment/01_weapon/mage/spear/spear.img",
+    "dcalc": "/equipment/icon/weapon/mage/spear"
+  },
+  {
+    "name": "broom",
+    "path": "/equipment/new_equipment/01_weapon/mage/broom/broom.img",
+    "dcalc": "/equipment/icon/weapon/mage/broom"
+  },
+  {
+    "name": "staff",
+    "path": "/equipment/new_equipment/01_weapon/mage/staff/staff.img",
+    "dcalc": "/equipment/icon/weapon/mage/staff"
+  },
+  {
+    "name": "pole",
+    "path": "/equipment/new_equipment/01_weapon/mage/pole/pole.img",
+    "dcalc": "/equipment/icon/weapon/mage/pole"
+  },
+  {
+    "name": "revolver",
+    "path": "/equipment/new_equipment/01_weapon/gunner/revolver/revolver.img",
+    "dcalc": "/equipment/icon/weapon/gunner/revolver"
+  },
+  {
+    "name": "automatic",
+    "path": "/equipment/new_equipment/01_weapon/gunner/automatic/automatic.img",
+    "dcalc": "/equipment/icon/weapon/gunner/automatic"
+  },
+  {
+    "name": "bowgun",
+    "path": "/equipment/new_equipment/01_weapon/gunner/bowgun/bowgun.img",
+    "dcalc": "/equipment/icon/weapon/gunner/bowgun"
+  },
+  {
+    "name": "musket",
+    "path": "/equipment/new_equipment/01_weapon/gunner/musket/musket.img",
+    "dcalc": "/equipment/icon/weapon/gunner/musket"
+  },
+  {
+    "name": "hcannon",
+    "path": "/equipment/new_equipment/01_weapon/gunner/hcannon/hcannon.img",
+    "dcalc": "/equipment/icon/weapon/gunner/hcannon"
+  },
+  {
+    "name": "pike",
+    "path": "/equipment/new_equipment/01_weapon/demoniclancer/pike/pike.img",
+    "dcalc": "/equipment/icon/weapon/demoniclancer/pike"
+  },
+  {
+    "name": "javelin",
+    "path": "/equipment/new_equipment/01_weapon/demoniclancer/javelin/javelin.img",
+    "dcalc": "/equipment/icon/weapon/demoniclancer/javelin"
+  },
+  {
+    "name": "halberd",
+    "path": "/equipment/new_equipment/01_weapon/demoniclancer/halberd/halberd.img",
+    "dcalc": "/equipment/icon/weapon/demoniclancer/halberd"
+  },
+  {
+    "name": "beamspear",
+    "path": "/equipment/new_equipment/01_weapon/demoniclancer/beamspear/beamspear.img",
+    "dcalc": "/equipment/icon/weapon/demoniclancer/beamspear"
+  },
+  {
+    "name": "shield",
+    "path": "/equipment/new_equipment/01_weapon/knight/shield/shield.img",
+    "dcalc": "/equipment/icon/weapon/knight/shield"
+  },
+  {
+    "name": "twinswd",
+    "path": "/equipment/new_equipment/01_weapon/thief/twinswd/twinswd.img",
+    "dcalc": "/equipment/icon/weapon/thief/twinswd"
+  },
+  {
+    "name": "dagger",
+    "path": "/equipment/new_equipment/01_weapon/thief/dagger/dagger.img",
+    "dcalc": "/equipment/icon/weapon/thief/dagger"
+  },
+  {
+    "name": "chakraweapon",
+    "path": "/equipment/new_equipment/01_weapon/thief/chakraweapon/chakraweapon.img",
+    "dcalc": "/equipment/icon/weapon/thief/chakraweapon"
+  },
+  {
+    "name": "wand",
+    "path": "/equipment/new_equipment/01_weapon/thief/wand/wand.img",
+    "dcalc": "/equipment/icon/weapon/thief/wand"
+  },
+  {
+    "name": "scythe",
+    "path": "/equipment/new_equipment/01_weapon/priest/scythe/scythe.img",
+    "dcalc": "/equipment/icon/weapon/priest/scythe"
+  },
+  {
+    "name": "cross",
+    "path": "/equipment/new_equipment/01_weapon/priest/cross/cross.img",
+    "dcalc": "/equipment/icon/weapon/priest/cross"
+  },
+  {
+    "name": "rosary",
+    "path": "/equipment/new_equipment/01_weapon/priest/rosary/rosary.img",
+    "dcalc": "/equipment/icon/weapon/priest/rosary"
+  },
+  {
+    "name": "axe",
+    "path": "/equipment/new_equipment/01_weapon/priest/axe/axe.img",
+    "dcalc": "/equipment/icon/weapon/priest/axe"
+  },
+  {
+    "name": "totem",
+    "path": "/equipment/new_equipment/01_weapon/priest/totem/totem.img",
+    "dcalc": "/equipment/icon/weapon/priest/totem"
+  },
+  {
+    "name": "sblade",
+    "path": "/equipment/new_equipment/01_weapon/gunblader/sblade/sblade.img",
+    "dcalc": "/equipment/icon/weapon/gunblader/sblade"
+  },
+  {
+    "name": "lblade",
+    "path": "/equipment/new_equipment/01_weapon/gunblader/lblade/lblade.img",
+    "dcalc": "/equipment/icon/weapon/gunblader/lblade"
+  },
+  {
+    "name": "coreswd",
+    "path": "/equipment/new_equipment/01_weapon/gunblader/coreswd/coreswd.img",
+    "dcalc": "/equipment/icon/weapon/gunblader/coreswd"
+  },
+  {
+    "name": "mswd",
+    "path": "/equipment/new_equipment/01_weapon/gunblader/mswd/mswd.img",
+    "dcalc": "/equipment/icon/weapon/gunblader/mswd"
+  },
+  {
+    "name": "earrring",
+    "path": "/equipment/new_equipment/13_earrring/earrring.img",
+    "dcalc": "/equipment/icon/special/earrring"
+  },
+  {
+    "name": "support",
+    "path": "/equipment/new_equipment/10_support/support.img",
+    "dcalc": "/equipment/icon/special/support"
+  },
+  {
+    "name": "leather_belt",
+    "path": "/equipment/new_equipment/03_leather/belt/leather_belt.img",
+    "dcalc": "/equipment/icon/armor/leather/belt"
+  },
+  {
+    "name": "leather_coat",
+    "path": "/equipment/new_equipment/03_leather/coat/leather_coat.img",
+    "dcalc": "/equipment/icon/armor/leather/coat"
+  },
+  {
+    "name": "leather_pants",
+    "path": "/equipment/new_equipment/03_leather/pants/leather_pants.img",
+    "dcalc": "/equipment/icon/armor/leather/pants"
+  },
+  {
+    "name": "leather_neck",
+    "path": "/equipment/new_equipment/03_leather/neck/leather_neck.img",
+    "dcalc": "/equipment/icon/armor/leather/neck"
+  },
+  {
+    "name": "leather_shoes",
+    "path": "/equipment/new_equipment/03_leather/shoes/leather_shoes.img",
+    "dcalc": "/equipment/icon/armor/leather/shoes"
+  },
+  {
+    "name":"title_cn",
+    "path": "/equipment/new_equipment/title/title_cn.img",
+    "dcalc": "/equipment/icon/title"
+  },
+  {
+    "name":"creature_cn",
+    "path": "/equipment/new_equipment/creature/creature_cn.img",
+    "dcalc": "/equipment/icon/creature"
+  }
+]
