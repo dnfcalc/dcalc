@@ -39,7 +39,7 @@
       <template v-for="part in partOrder" :key="part">
         <div class="flex p-2px partItem gap-5px">
           <img
-            :src="getImageURL(`/equipment/icon/${part}.png`)"
+            :src="getImageURL(`/equipment/part/${part}.png`)"
             alt=""
             class="w-20px h-20px object-contain"
           />

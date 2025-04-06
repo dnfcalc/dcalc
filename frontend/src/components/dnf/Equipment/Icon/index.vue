@@ -1,7 +1,7 @@
 <template>
   <template v-if="props.equipment">
     <div class="relative" :class="{inactive: props.inactive}">
-      <div class="w-28px h-28px " :style="{ backgroundImage: `url(${getImageURL('equipment' + props.equipment?.imageUrl)})` }">
+      <div class="w-28px h-28px " :style="{ backgroundImage: `url(${getImageURL(props.equipment?.imageUrl)})` }">
       <img :src="getLocalImageURL(rarity)" />
     </div>
     </div>
