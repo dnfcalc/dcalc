@@ -791,7 +791,7 @@ class Character:
                     'data': i.data,
                     'ratio': 10.0,
                     'cd': i.cd,
-                    'damage': ratuio_equ_skill * i.data * 10,
+                    'damage': ratuio_equ_skill * i.data * 10 * self.EquEffectRatio,
                 }
             )
         attrs = []
@@ -804,17 +804,22 @@ class Character:
         if self.输出类型 == '魔法固伤':
             attrs.extend(['INT', 'AtkI'])
         info = []
-        attrs.extend(['Attack', 'AttackP', 'SkillAttack', 'ElementDB'])
+        attrs.extend(['Attack', 'AttackP', 'SkillAttack','EquEffectRatio', 'ElementDB'])
         for attr in attrs:
             temp = getattr(CharacterInfo, attr)
             if attr.startswith('Atk'):
                 info.append({'name': temp.name, 'value': temp.value(getattr(self, attr) * getattr(self, f'P{attr}'))})
                 pass
             else:
+                value = getattr(self, attr)
+                if attr == 'SkillAttack':
+                    value *= (self.jade_effect.SkillAttack + 1)
+                if attr == 'AttackP':
+                    value += self.jade_effect.AttackP
                 info.append(
                     {
                         'name': temp.name,
-                        'value': temp.value(getattr(self, attr)),
+                        'value': temp.value(value),
                     }
                 )
                 pass

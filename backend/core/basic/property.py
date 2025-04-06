@@ -51,8 +51,10 @@ class CharacterInfo(enum.Enum):
     Attack = '攻击强化', '/ui/UI_ProfileIcon_015.png', lambda x: f'{format(x, ".1f")}%'
     """攻击强化"""
 
-    AttackP = '攻击强化%', '/ui/UI_ProfileIcon_015.png', lambda x: f'{format(x * 100 - 100, ".2f")}%'
+    AttackP = '攻击强化%', '/ui/UI_ProfileIcon_015.png', lambda x: f'{format(x * 100 - 100, ".1f")}%'
     """攻击强化%"""
+
+    EquEffectRatio = '特效伤害', '/ui/UI_ProfileIcon_016.png', lambda x: f'{format(x * 100 - 100, ".1f")}%'
 
     # HitP : float
     # """命中率"""
