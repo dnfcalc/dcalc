@@ -2,21 +2,21 @@
   <div class="bg-hex-000000/60 p-4 border-solid border-#FFFF/15" v-if="data && data.length > 0">
     <div class="bg-hex-000000/40 text-white border-solid border-#FFFF/15 border-t-0">
       <div class="flex px-1px gap-1px">
-        <div class="item-head w-150px">技能</div>
+        <div class="item-head w-200px">技能</div>
         <div class="item-head w-80px">CD</div>
         <div class="item-head w-150px">伤害</div>
         <div class="item-head w-150px">秒伤</div>
       </div>
       <div class="overflow-y-auto max-h-600px">
-        <div class="flex px-1px gap-1px h-8.5" v-for="skill in data" :key="skill.name">
-          <div class="flex w-150px items-center gap-10px">
+        <div class="flex px-1px gap-1px h-8.5" v-for="(skill,_) in data" :key="_">
+          <div class="flex w-200px items-center gap-10px">
             <div class="w-28px h-28px relative">
               <img :src="getImageURL(skill.icon)" alt="" class="w-28px h-28px" />
               <div v-if="skill.lv" class="skill-lv-min" :data-text="`Lv ${skill.lv}`">
                 Lv {{ skill.lv }}
               </div>
             </div>
-            <div>{{ skill.name }}</div>
+            <div>{{ skill.name }} {{ !skill.mode ?  '' : `[${skill.mode}]` }}</div>
           </div>
           <div class="w-80px flex items-center justify-center">{{ skill.cd.toFixed(1) }}s</div>
           <!-- <div class="flex">

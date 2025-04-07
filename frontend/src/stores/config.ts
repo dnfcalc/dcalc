@@ -31,14 +31,14 @@ export interface IConfigEquip {
 
 export interface IConfig {
   skills: Record<string, { lv: number }>
-  equips: Record<
+  equips: Record<string, IConfigEquip>
+  jades: Record<
     string,
-    IConfigEquip
+    {
+      id: number
+      value: number
+    }
   >
-  jades: Record<string, {
-    id:number
-    value: number
-  }>
   avatar: Record<
     string,
     {
@@ -80,6 +80,8 @@ export const useConfigStore = defineStore('configStore', () => {
     jades: {},
     avatar: {},
   })
+
+  const skillCountConfig = ref<Record<string, { count: number }>>({})
 
   const loadConfig = () => {
     const infoStore = useInfoStore()
@@ -125,15 +127,16 @@ export const useConfigStore = defineStore('configStore', () => {
         (config.value.skills[id] = {
           lv: infoStore.skills.find((skill) => skill.id.toString() === id)?.maxLearnLv ?? 0,
         })
-    });
+    })
 
-    (["0", "1", "2", "3"].filter((key) => !Object.keys(config.value.jades).includes(key)) ?? []).forEach((key) => {
+    ;(
+      ['0', '1', '2', '3'].filter((key) => !Object.keys(config.value.jades).includes(key)) ?? []
+    ).forEach((key) => {
       config.value.jades[key] = {
         id: -1,
         value: 0,
       }
-    }
-    )
+    })
   }
 
   const saveConfig = () => {

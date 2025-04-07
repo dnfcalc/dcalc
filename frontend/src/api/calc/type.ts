@@ -13,6 +13,7 @@ export interface IResultSkill {
   ratio: number
   cd: number
   damage: number
+  mode: string
 }
 
 export interface IResultUserInfo {

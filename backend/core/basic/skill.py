@@ -60,6 +60,8 @@ class Skill:
     skills: 关联技能 默认 '*'
     exceptSkills: 例外技能 默认[]
     """
+    mode : list[str] = ['']
+    """技能模式"""
 
     def __init__(self, char):
         self.char = char
@@ -142,6 +144,9 @@ class Skill:
         elif type.startswith('+'):
             setattr(skill, type[1:], getattr(skill, type[1:]) + data[new] / 100 - data[old] / 100)
 
+    def skillInfo(self, mode: str | None = None):
+        pass
+
 class ActiveSkill(Skill):
     type: str = 'active'
     """技能类型 active主动 passive被动"""
@@ -152,7 +157,6 @@ class ActiveSkill(Skill):
         super().__init__(char)
 
     def skillInfo(self, mode: str | None = None):
-        basic = self
         if mode is not None:
             basic = deepcopy(self)
             basic.setMode(mode)
@@ -160,7 +164,7 @@ class ActiveSkill(Skill):
             basic = self
         date = basic.getSkillDate(self.lv)
         cd = basic.getSkillCD()
-        return date * self.skillRation , self.skillDamage ,cd
+        return date * basic.skillRation , basic.skillDamage ,cd
 
     def setMode(self, mode: str):
         pass

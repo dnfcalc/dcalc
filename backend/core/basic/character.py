@@ -333,6 +333,8 @@ class Character:
         self.HitP += 命中率 + kwargs.get('HitP', 0)
         self.Hit += 命中 + kwargs.get('Hit', 0)
         self.Attack += 攻击强化 + kwargs.get('Attack', 0)
+        if  kwargs.get('Attack', 0) > 0:
+            print(kwargs.get('Attack', 0))
         self.AttackP += 攻击强化P + kwargs.get('AttackP', 0.0)
         self.Buffer += 增益量 + kwargs.get('Buffer', 0)
         self.BufferP += 增益量P + kwargs.get('BufferP', 0)
@@ -773,22 +775,26 @@ class Character:
         skillInfos = []
         for i in self.skills:
             if i.damage and i.lv > 0:
-                temp = i.skillInfo()
-                skillInfos.append(
-                    {
-                        'name': i.name,
-                        'icon': i.icon,
-                        'lv': i.lv,
-                        'data': temp[0],
-                        'ratio': temp[1],
-                        'cd': temp[2],
-                    }
-                )
+                for mode in i.mode:
+                    temp = i.skillInfo(mode)
+                    skillInfos.append(
+                        {
+                            'name': i.name,
+                            'icon': i.icon,
+                            'lv': i.lv,
+                            'data': temp[0],
+                            'ratio': temp[1],
+                            'cd': temp[2],
+                            'mode': mode,
+                        }
+                    )
         ratios = self.calc_damage_ration()
-        ratio_char_skill = ratios[0] * ratios[1] * ratios[2] * ratios[3] * ratios[4] * ratios[5] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 10000
-        ratuio_equ_skill = ratios[0] * ratios[1] * ratios[3] * ratios[4] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 10000
+        for i in ratios:
+            print(i)
+        ratio_char_skill = ratios[0] * ratios[1] * ratios[2] * ratios[3] * ratios[4] * ratios[5] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 1000
+        ratuio_equ_skill = ratios[0] * ratios[1] * ratios[3] * ratios[4] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 1000
         for i in skillInfos:
-            i['damage'] = ratio_char_skill * i['data'] * i['ratio']
+            i['damage'] = ratio_char_skill * i['data'] * i['ratio'] / 100
         for i in self.equ_effect:
             skillInfos.append(
                 {
@@ -798,7 +804,8 @@ class Character:
                     'data': i.data,
                     'ratio': 10.0,
                     'cd': i.cd,
-                    'damage': ratuio_equ_skill * i.data * 10 * self.EquEffectRatio,
+                    'damage': ratuio_equ_skill * i.data * 10 * self.EquEffectRatio / 100,
+                    'mode':''
                 }
             )
         attrs = []
@@ -864,9 +871,9 @@ class Character:
         # BUFF系数
         ratio_5 = self.buff
         # 技攻系数
-        ratio_6 = self.SkillAttack *( self.jade_effect.SkillAttack + 1)
+        ratio_6 = self.SkillAttack * (self.jade_effect.SkillAttack + 1)
         # 攻击强化
-        ratio_7 = 1 + self.Attack * (self.AttackP + self.jade_effect.AttackP)
+        ratio_7 = 1 + self.Attack / 100 * (self.AttackP + self.jade_effect.AttackP)
         # 防御系数,暂定145沙袋防御
         monster_defense = 75068627484
         ratio_8 = 1 - monster_defense / (monster_defense + 200 * 100)
