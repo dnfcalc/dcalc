@@ -875,7 +875,7 @@ class Character:
         # 攻击强化
         ratio_7 = 1 + self.Attack / 100 * (self.AttackP + self.jade_effect.AttackP)
         # 防御系数,暂定145沙袋防御
-        monster_defense = 75068627484
+        monster_defense = 75117226590
         ratio_8 = 1 - monster_defense / (monster_defense + 200 * 100)
         # 杂项 斗神、宠物技能、队友增幅等(技能的属性增幅归属到这部分，因为会加成到特效部分，修复后修改为技能攻击力计算)
         ratio_9 = 1.0 * self.ElementIncrease
