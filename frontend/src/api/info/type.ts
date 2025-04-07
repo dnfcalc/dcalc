@@ -34,6 +34,15 @@ export interface ICharacterInfo {
   suits: ISuit[]
   avatar: Record<string, IAvatarInfo[]>
   jades:IJade[]
+  sundry:Record<string, ISundry>
+}
+
+export interface ISundry {
+  id:number,
+  options:{
+    name:string,
+    value:number
+  }[],
 }
 
 export interface IEquipment {

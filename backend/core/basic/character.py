@@ -466,6 +466,7 @@ class Character:
         info['emblems'] = equInfos.emblems
         info['avatar'] = equInfos.funs.get_dress_list(skill_clothes)
         info['jades'] = equInfos.jades
+        info['sundry'] = equInfos.funs.sundryList
         for skill in platinum:
             info['emblems'].append(
                 {
@@ -740,6 +741,34 @@ class Character:
                 fun(self,jade.get('value', 0))
         pass
 
+    def calc_sundry(self, sundry: dict):
+        """计算杂项效果"""
+        funs = get_equipment(self.equVersion).funs
+        funs.sundry_func_list.get("0")(self,
+            sundry.get("medal_rarity", 0),
+            sundry.get("medal_reinforce", 0),
+            [sundry.get("medal_0", 0), sundry.get("medal_1", 0), sundry.get("medal_2", 0), sundry.get("medal_3", 0)],
+        )
+        funs.sundry_func_list.get("6")(self,
+            sundry.get("adventure", 1)
+        )
+        funs.sundry_func_list.get("7")(self,
+            sundry.get("marriage_house", 0),
+            sundry.get("marriage_ring", 0)
+        )
+        funs.sundry_func_list.get("9")(self,
+            sundry.get("contract", 0)
+        )
+        funs.sundry_func_list.get("10")(self,
+            sundry.get("collection_type", 0),
+            sundry.get("collection_num_0", 0),
+            sundry.get("collection_num_1", 0),
+        )
+        funs.sundry_func_list.get("13")(self,
+            sundry.get("costume_card", 0)
+        )
+        pass
+
     def calc(self, setInfo: dict[str, dict]):
         self.calc_init(setInfo)
         # self.SetDetail(setInfo)
@@ -751,6 +780,8 @@ class Character:
         self.calc_avatar(setInfo.get('avatar', {}))
         # 精通、增幅、强化计算
         self.calc_basic()
+        # 杂项信息
+        self.calc_sundry(setInfo.get('sundry', {}))
         # 计算套装基础效果
         suit = self.calc_suits()
         # 部位效果计算
@@ -787,8 +818,6 @@ class Character:
                         }
                     )
         ratios = self.calc_damage_ration()
-        for i in ratios:
-            print(i)
         ratio_char_skill = ratios[0] * ratios[1] * ratios[2] * ratios[3] * ratios[4] * ratios[5] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 1000
         ratuio_equ_skill = ratios[0] * ratios[1] * ratios[3] * ratios[4] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 1000
         for i in skillInfos:

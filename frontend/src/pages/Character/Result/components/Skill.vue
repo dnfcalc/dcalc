@@ -48,7 +48,7 @@ const data = computed(() => {
 })
 
 const formatDamage = (skill: IResultSkill) => {
-  const standardSkill = props.standard?.find((a) => a.name == skill.name)
+  const standardSkill = props.standard?.find((a) => a.name == skill.name && a.mode == skill.mode)
   if (standardSkill && standardSkill.damage > 0 && standardSkill.cd > 0) {
     const damageValue = (skill.damage - standardSkill.damage) / standardSkill.damage
     const damage = h(

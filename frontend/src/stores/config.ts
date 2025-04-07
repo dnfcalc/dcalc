@@ -49,6 +49,7 @@ export interface IConfig {
       option: string
     }
   >
+  sundry: Record<string, any>
 }
 
 const defaultEqusConfig = {
@@ -79,6 +80,7 @@ export const useConfigStore = defineStore('configStore', () => {
     equips: {},
     jades: {},
     avatar: {},
+    sundry: {},
   })
 
   const skillCountConfig = ref<Record<string, { count: number }>>({})
@@ -99,11 +101,13 @@ export const useConfigStore = defineStore('configStore', () => {
         equips: {},
         jades: {},
         avatar: {},
+        sundry: {},
       }
     if (!config.value?.equips) config.value.equips = {}
     if (!config.value?.skills) config.value.skills = {}
     if (!config.value?.jades) config.value.jades = {}
     if (!config.value?.avatar) config.value.avatar = {}
+    if (!config.value?.sundry)config.value.sundry = {}
 
     const part = [...infoStore.parts, '宠物'].filter((a) => !config.value?.equips.hasOwnProperty(a))
     const avatarPart = infoStore.avatarParts
@@ -128,7 +132,6 @@ export const useConfigStore = defineStore('configStore', () => {
           lv: infoStore.skills.find((skill) => skill.id.toString() === id)?.maxLearnLv ?? 0,
         })
     })
-
     ;(
       ['0', '1', '2', '3'].filter((key) => !Object.keys(config.value.jades).includes(key)) ?? []
     ).forEach((key) => {

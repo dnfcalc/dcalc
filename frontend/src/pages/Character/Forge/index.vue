@@ -11,12 +11,16 @@
       <calc-collapse class="w-100%" title="辟邪玉">
         <jade></jade>
       </calc-collapse>
+      <calc-collapse class="w-100%" title="其它">
+        <sundry></sundry>
+      </calc-collapse>
     </div>
 </template>
 <script setup lang="ts">
 import equipment from './components/Equipments.vue'
 import clothes from './components/Avatars.vue';
 import jade from './components/Jades.vue';
+import sundry from './components/Sundry.vue';
 const partTab = ref(0)
 </script>
 

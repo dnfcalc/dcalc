@@ -5,7 +5,7 @@ from typing import Literal, TYPE_CHECKING
 if TYPE_CHECKING:
     from core.basic.character import Character
 
-characterLv = 120 + 5
+characterLv = 115 + 5
 
 
 class Skill:

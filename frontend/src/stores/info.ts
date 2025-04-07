@@ -24,6 +24,8 @@ export const useInfoStore = defineStore('infoStore', () => {
 
   const jades = computed(() => infos.value?.jades ?? [])
 
+  const sundries = computed(() => infos.value?.sundry ?? {})
+
   const standardUUID = ref<string>()
 
   const setStandard = (result?: IResult) => {
@@ -100,6 +102,7 @@ export const useInfoStore = defineStore('infoStore', () => {
     avatars,
     jades,
     setStandard,
-    standard
+    standard,
+    sundries
   }
 })
