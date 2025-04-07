@@ -333,8 +333,6 @@ class Character:
         self.HitP += 命中率 + kwargs.get('HitP', 0)
         self.Hit += 命中 + kwargs.get('Hit', 0)
         self.Attack += 攻击强化 + kwargs.get('Attack', 0)
-        if  kwargs.get('Attack', 0) > 0:
-            print(kwargs.get('Attack', 0))
         self.AttackP += 攻击强化P + kwargs.get('AttackP', 0.0)
         self.Buffer += 增益量 + kwargs.get('Buffer', 0)
         self.BufferP += 增益量P + kwargs.get('BufferP', 0)
