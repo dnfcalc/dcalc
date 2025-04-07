@@ -35,9 +35,8 @@ curPart = ''
 #   '''
 
 for i in db_list:
-  if i.id <= 414:
+  if i.id <= 1000:
     continue
-  count = 373 + (i.id - 414 - 1) % 42
   if i.itemType != '武器' and i.categorize != curPart:
     curPart = i.categorize
     res += f'''
@@ -52,7 +51,6 @@ def equ_{i.id}(char: Character):
 
 {i.detail}
   \'''
-  equ_{count}(char)
   pass
   '''
 

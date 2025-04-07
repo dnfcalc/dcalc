@@ -29,9 +29,12 @@ class CharacterEquipInfo:
     """装备信息"""
     fusionInfo: Union['Equ', None]
     """贴膜信息"""
+    precision:float
+    """秘宝精度"""
 
     def __init__(self, info={}, equVerison=0, part='') -> None:
         info["fusion"] = info.get("fusion", None)
+        info["percision"] = info.get("precision", 0)
         self.__dict__.update(info)
         equ = get_equipment(equVerison).equ_dict.get(self.id, None)
         fusion = get_equipment(equVerison).stone_dict.get(self.fusion, None)

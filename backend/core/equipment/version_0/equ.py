@@ -1587,7 +1587,7 @@ def equ_104(char: Character):
             skill.skillDamage *= 1.30
         if skill.damage and skill.cube == 0:
             skill.skillDamage *= 1.25
-    char.equ_effect.append(EquEffect(name='燃烧', icon='/equipment/new_equipment/01_weapon/gunner/musket/musket.img/234.png', cd=0.2, data=480))
+    char.equ_effect.append(EquEffect(name='燃烧', icon='/equipment/icon/weapon/gunner/musket/00234.png', cd=0.2, data=480))
     pass
 
 
@@ -11197,8 +11197,703 @@ def equ_876(char: Character):
 
 
 # endregion
+# region 秘宝装备
+def equ_2000(char: Character):
+    """
+    馥郁袭人的香氛
+    太初 辅助装备 魔法石
 
-for i in range(0, 1000):
+    <维纳斯的恩宠>
+    穿戴的最高套装积分达到2100点以上时，才能发挥能力。
+    套装积分达到2550以上时，会发动更强的效果。
+    技能伤害+48.7%
+    增益量12180
+
+    精度
+    精度100%时，技能伤害+13.1%，增益量4650
+
+    技能冷却时间15%减少（觉醒技能除外）
+    [地震波]
+    精度达到25%时，[地震波]属性生效。
+    攻击时，生成地震冲击波，攻击周围所有敌人。（冷却时间30秒）
+    -伤害量：45900%
+    -精度每提升25%，伤害量增加45900%，范围增加50%（最大75%）
+    [膜拜]
+    精度达到100%时，在城镇中使用普通聊天输入“膜拜”时，出现特效。（冷却时间600秒）
+
+    """
+    if  2100 <= char.max_point < 2550:
+        char.SetStatus(SkillAttack=0.378,Buffer=12180)
+        pass
+    if char.max_point >= 2550:
+        char.SetStatus(SkillAttack=0.487,Buffer=12180)
+        pass
+    skillAttack = [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2,2.1,2.2,2.3,2.4,2.9,3,3.1,3.2,3.3,3.4,3.5,3.6,3.7,3.8,3.9,4,4.1,4.2,4.3,4.4,4.5,4.6,4.7,4.8,4.9,5,5.1,5.2,5.3,5.9,6,6.1,6.2,6.3,6.4,6.5,6.6,6.7,6.8,6.9,7,7.1,7.2,7.3,7.4,7.5,7.6,7.7,7.8,7.9,8,8.1,8.2,8.3,8.9,9,9.1,9.2,9.3,9.4,9.5,9.6,9.7,9.8,9.9,10,10.1,10.2,10.3,10.4,10.5,10.6,10.7,10.8,10.9,11,11.1,11.2,11.3,13.1]
+    buffer = [0,30,60,90,120,150,180,210,240,270,300,330,360,390,420,450,480,510,540,570,600,630,660,690,720,1110,1140,1170,1200,1230,1260,1290,1320,1350,1380,1410,1440,1470,1500,1530,1560,1590,1620,1650,1680,1710,1740,1770,1800,1830,2250,2280,2310,2340,2370,2400,2430,2460,2490,2520,2550,2580,2610,2640,2670,2700,2730,2760,2790,2820,2850,2880,2910,2940,2970,3390,3420,3450,3480,3510,3540,3570,3600,3630,3660,3690,3720,3750,3780,3810,3840,3870,3900,3930,3960,3990,4020,4050,4080,4110,4650]
+    # fame = [0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100,105,110,115,120,220,225,230,235,240,245,250,255,260,265,270,275,280,285,290,295,300,305,310,315,320,325,330,335,340,440,445,450,455,460,465,470,475,480,485,490,495,500,505,510,515,520,525,530,535,540,545,550,555,560,660,665,670,675,680,685,690,695,700,705,710,715,720,725,730,735,740,745,750,755,760,765,770,775,780,1000]
+    equEffect = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5]
+    point = char.charEquipInfo['魔法石'].precision
+    char.SetStatus(SkillAttack=skillAttack[point],Buffer=buffer[point])
+    effect = equEffect[point]
+    if effect > 0:
+        char.equ_effect.append(EquEffect(name='地震波', icon='/equipment/icon/special/magicstone/00417.png', cd=30, data=45900*effect))
+    pass
+
+
+# endregion
+# region 春节
+
+
+def equ_3000(char: Character):
+    """
+    穿越星空的祈愿
+    传说 称号 2021
+
+    所有属性强化+22
+    攻击强化增幅+22%
+    暴击率+15%
+    所有速度+4%
+    """
+    char.AddElementDB('火',22)
+    char.AddElementDB('冰',22)
+    char.AddElementDB('光',22)
+    char.AddElementDB('暗',22)
+    char.SetStatus(AttackP=0.22,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04)
+    pass
+
+
+def equ_3001(char: Character):
+    """
+    永恒追猎
+    稀有 称号 2021
+
+    所有属性强化+15
+    攻击强化增幅+15%
+    暴击率+12%
+    所有速度+3%
+    """
+    char.AddElementDB('火',15)
+    char.AddElementDB('冰',15)
+    char.AddElementDB('光',15)
+    char.AddElementDB('暗',15)
+    char.SetStatus(AttackP=0.15,SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
+    pass
+
+
+def equ_3002(char: Character):
+    """
+    时空超越者
+    传说 称号 2022
+
+    所有属性强化+25
+    攻击强化增幅+25%
+    暴击率+15%
+    所有速度+4%
+    """
+    char.AddElementDB('火',25)
+    char.AddElementDB('冰',25)
+    char.AddElementDB('光',25)
+    char.AddElementDB('暗',25)
+    char.SetStatus(AttackP=0.25,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04)
+    pass
+
+
+def equ_3003(char: Character):
+    """
+    时空旅人
+    稀有 称号 2022
+
+    所有属性强化+20
+    攻击强化增幅+18%
+    暴击率+12%
+    所有速度+3%
+    """
+    char.AddElementDB('火',20)
+    char.AddElementDB('冰',20)
+    char.AddElementDB('光',20)
+    char.AddElementDB('暗',20)
+    char.SetStatus(AttackP=0.18,SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
+    pass
+
+
+def equ_3004(char: Character):
+    """
+    破茧·三次觉醒
+    传说 称号 2023
+
+    三觉被动Lv+1
+    所有属性强化+25
+    攻击强化增幅+28%
+    暴击率+15%
+    所有速度+4%
+    """
+    char.AddElementDB('火',25)
+    char.AddElementDB('冰',25)
+    char.AddElementDB('光',25)
+    char.AddElementDB('暗',25)
+    char.SetStatus(AttackP=0.28,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04)
+    char.AddSkillLv(95,95,1,0)
+    pass
+
+
+def equ_3005(char: Character):
+    """
+    悟·一次觉醒
+    稀有 称号 2023
+
+    三觉被动Lv+1
+    所有属性强化+20
+    攻击强化增幅+20%
+    暴击率+12%
+    所有速度+3%
+    """
+    char.AddElementDB('火',20)
+    char.AddElementDB('冰',20)
+    char.AddElementDB('光',20)
+    char.AddElementDB('暗',20)
+    char.SetStatus(AttackP=0.2,SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
+    char.AddSkillLv(95,95,1,0)
+    pass
+
+
+def equ_3006(char: Character):
+    """
+    千年之守望
+    传说 称号 2024
+
+    三觉被动Lv+1
+    所有属性强化+30
+    攻击强化增幅+30%
+    暴击率+15%
+    所有速度+4%
+    """
+    char.AddElementDB('火',30)
+    char.AddElementDB('冰',30)
+    char.AddElementDB('光',30)
+    char.AddElementDB('暗',30)
+    char.SetStatus(AttackP=0.3,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04)
+    char.AddSkillLv(95,95,1,0)
+    pass
+
+
+def equ_3007(char: Character):
+    """
+    白云监视者
+    稀有 称号 2024
+
+    三觉被动Lv+1
+    所有属性强化+20
+    攻击强化增幅+22%
+    暴击率+12%
+    所有速度+3%
+    """
+    char.AddElementDB('火',20)
+    char.AddElementDB('冰',20)
+    char.AddElementDB('光',20)
+    char.AddElementDB('暗',20)
+    char.SetStatus(AttackP=0.22,SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
+    char.AddSkillLv(95,95,1,0)
+    pass
+
+
+def equ_3008(char: Character):
+    """
+    万壑松风之凌云志
+    传说 称号 2025
+
+    三觉被动Lv+1
+    所有属性强化+30
+    攻击强化增幅+33%
+    暴击率+15%
+    所有速度+4%
+    """
+    char.AddElementDB('火',30)
+    char.AddElementDB('冰',30)
+    char.AddElementDB('光',30)
+    char.AddElementDB('暗',30)
+    char.SetStatus(AttackP=0.33,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04)
+    char.AddSkillLv(95,95,1,0)
+    pass
+
+
+def equ_3009(char: Character):
+    """
+    踏雪寻梅之冷香
+    稀有 称号 2025
+
+    三觉被动Lv+1
+    所有属性强化+20
+    攻击强化增幅+25%
+    暴击率+12%
+    所有速度+3%
+    """
+    char.AddElementDB('火',20)
+    char.AddElementDB('冰',20)
+    char.AddElementDB('光',20)
+    char.AddElementDB('暗',20)
+    char.SetStatus(AttackP=0.25,SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
+    char.AddSkillLv(95,95,1,0)
+    pass
+
+
+# endregion
+# region 耕耘
+
+
+def equ_3010(char: Character):
+    """
+    骑士之誓[光]
+    稀有 称号 2021
+
+    Lv15~35所有技能+1
+    所有速度+3%
+    """
+    char.AddSkillLv(15,35,1,0)
+    char.SetStatus(SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
+    pass
+
+
+def equ_3011(char: Character):
+    """
+    精灵的思乡夜曲
+    稀有 称号 2022
+
+    Lv15~35所有技能+1
+    所有速度+3%
+    """
+    char.AddSkillLv(15,35,1,0)
+    char.SetStatus(SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
+    pass
+
+
+def equ_3012(char: Character):
+    """
+    永恒挚爱
+    稀有 称号 2023
+
+    Lv15~35所有技能+1
+    所有属性强化+15
+    所有速度+3%
+    """
+    char.AddSkillLv(15,35,1,0)
+    char.AddElementDB('火',15)
+    char.AddElementDB('冰',15)
+    char.AddElementDB('光',15)
+    char.AddElementDB('暗',15)
+    char.SetStatus(SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
+    pass
+
+
+def equ_3013(char: Character):
+    """
+    地下城与勇士 X SNK联动：拳皇
+    稀有 称号 2024
+
+    Lv15~35所有技能+1
+    所有属性强化+15
+    所有速度+3%
+    """
+    char.AddSkillLv(15,35,1,0)
+    char.AddElementDB('火',15)
+    char.AddElementDB('冰',15)
+    char.AddElementDB('光',15)
+    char.AddElementDB('暗',15)
+    char.SetStatus(SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
+    pass
+
+
+# endregion
+# region 白嫖
+
+
+def equ_3014(char: Character):
+    """
+    海岸椰影
+    稀有 称号 2024
+
+    暴击率+3%
+    所有速度+3%
+    """
+    char.SetStatus(SpeedM=0.03, SpeedA=0.03, SpeedR=0.03)
+    pass
+
+
+# endregion
+# region 春节
+
+
+def equ_4000(char: Character):
+    """
+    火神的化身 蕾切尔
+    稀有 宠物 2021
+
+    Lv1~80所有技能+1
+    所有属性强化+25
+    攻击强化增幅+32%
+    暴击率+10%
+    所有速度+5%
+    技能冷却时间-5%
+    """
+    char.AddSkillLv(1,80,1,0)
+    char.AddElementDB('火',25)
+    char.AddElementDB('冰',25)
+    char.AddElementDB('光',25)
+    char.AddElementDB('暗',25)
+    char.SetStatus(AttackP=0.32,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
+    char.SetSkillCD(1,100,0.05,[])
+    pass
+
+
+def equ_4001(char: Character):
+    """
+    骑士 蕾切尔
+    稀有 宠物 2021
+
+    Lv1~80所有技能+1
+    所有属性强化+25
+    攻击强化增幅+22%
+    暴击率+10%
+    所有速度+5%
+    技能冷却时间-5%
+    """
+    char.AddSkillLv(1,80,1,0)
+    char.AddElementDB('火',25)
+    char.AddElementDB('冰',25)
+    char.AddElementDB('光',25)
+    char.AddElementDB('暗',25)
+    char.SetStatus(AttackP=0.22,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
+    char.SetSkillCD(1,100,0.05,[])
+    pass
+
+
+def equ_4002(char: Character):
+    """
+    超越时空 厄俄斯
+    稀有 宠物 2022
+
+    Lv1~95所有技能+1
+    所有属性强化+25
+    攻击强化增幅+35%
+    暴击率+10%
+    所有速度+5%
+    技能冷却时间-5%
+    """
+    char.AddSkillLv(1,95,1,0)
+    char.AddElementDB('火',25)
+    char.AddElementDB('冰',25)
+    char.AddElementDB('光',25)
+    char.AddElementDB('暗',25)
+    char.SetStatus(AttackP=0.35,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
+    char.SetSkillCD(1,100,0.05,[])
+    pass
+
+
+def equ_4003(char: Character):
+    """
+    次元探险家 厄俄斯
+    稀有 宠物 2022
+
+    Lv1~95所有技能+1
+    所有属性强化+25
+    攻击强化增幅+22%
+    暴击率+10%
+    所有速度+5%
+    技能冷却时间-5%
+    """
+    char.AddSkillLv(1,95,1,0)
+    char.AddElementDB('火',25)
+    char.AddElementDB('冰',25)
+    char.AddElementDB('光',25)
+    char.AddElementDB('暗',25)
+    char.SetStatus(AttackP=0.22,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
+    char.SetSkillCD(1,100,0.05,[])
+    pass
+
+
+def equ_4004(char: Character):
+    """
+    太初之赛丽亚
+    稀有 宠物 2023
+
+    Lv1~95所有技能+1
+    所有属性强化+25
+    攻击强化增幅+40%
+    暴击率+10%
+    所有速度+5%
+    技能冷却时间-5%
+    """
+    char.AddSkillLv(1,95,1,0)
+    char.AddElementDB('火',25)
+    char.AddElementDB('冰',25)
+    char.AddElementDB('光',25)
+    char.AddElementDB('暗',25)
+    char.SetStatus(AttackP=0.40,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
+    char.SetSkillCD(1,100,0.05,[])
+    pass
+
+
+def equ_4005(char: Character):
+    """
+    神剑梁月
+    稀有 宠物 2023
+
+    Lv1~95所有技能+1
+    所有属性强化+25
+    攻击强化增幅+25%
+    暴击率+10%
+    所有速度+5%
+    技能冷却时间-5%
+    """
+    char.AddSkillLv(1,95,1,0)
+    char.AddElementDB('火',25)
+    char.AddElementDB('冰',25)
+    char.AddElementDB('光',25)
+    char.AddElementDB('暗',25)
+    char.SetStatus(AttackP=0.25,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
+    char.SetSkillCD(1,100,0.05,[])
+    pass
+
+
+def equ_4006(char: Character):
+    """
+    迷你地界镇护者舒茉
+    稀有 宠物 2024
+
+    Lv1~95所有技能+1
+    所有属性强化+25
+    攻击强化增幅+45%
+    暴击率+10%
+    所有速度+5%
+    技能冷却时间-5%
+    """
+    char.AddSkillLv(1,95,1,0)
+    char.AddElementDB('火',25)
+    char.AddElementDB('冰',25)
+    char.AddElementDB('光',25)
+    char.AddElementDB('暗',25)
+    char.SetStatus(AttackP=0.45,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
+    char.SetSkillCD(1,100,0.05,[])
+    pass
+
+
+def equ_4007(char: Character):
+    """
+    迷你溪谷守望者鲁加鲁
+    稀有 宠物 2024
+
+    Lv1~95所有技能+1
+    所有属性强化+25
+    攻击强化增幅+30%
+    暴击率+10%
+    所有速度+5%
+    技能冷却时间-5%
+    """
+    char.AddSkillLv(1,95,1,0)
+    char.AddElementDB('火',25)
+    char.AddElementDB('冰',25)
+    char.AddElementDB('光',25)
+    char.AddElementDB('暗',25)
+    char.SetStatus(AttackP=0.30,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
+    char.SetSkillCD(1,100,0.05,[])
+    pass
+
+
+def equ_4008(char: Character):
+    """
+    菩提龙女
+    稀有 宠物 2025
+
+    Lv1~95所有技能+1
+    所有属性强化+25
+    攻击强化增幅+50%
+    暴击率+10%
+    所有速度+5%
+    技能冷却时间-5%
+    """
+    char.AddSkillLv(1,95,1,0)
+    char.AddElementDB('火',25)
+    char.AddElementDB('冰',25)
+    char.AddElementDB('光',25)
+    char.AddElementDB('暗',25)
+    char.SetStatus(AttackP=0.50,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
+    char.SetSkillCD(1,100,0.05,[])
+    pass
+
+
+def equ_4009(char: Character):
+    """
+    妙笔麒麟
+    稀有 宠物 2025
+
+    Lv1~95所有技能+1
+    所有属性强化+25
+    攻击强化增幅+35%
+    暴击率+10%
+    所有速度+5%
+    技能冷却时间-5%
+    """
+    char.AddSkillLv(1,95,1,0)
+    char.AddElementDB('火',25)
+    char.AddElementDB('冰',25)
+    char.AddElementDB('光',25)
+    char.AddElementDB('暗',25)
+    char.SetStatus(AttackP=0.35,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
+    char.SetSkillCD(1,100,0.05,[])
+    pass
+
+
+# endregion
+# region 耕耘
+
+
+def equ_4010(char: Character):
+    """
+    九霄守卫者雅娜
+    稀有 宠物 2021
+    Lv1~50所有技能+1
+    攻击强化增幅+14%
+    增益量增幅+3%
+    暴击率+3%
+    所有速度+5%
+    """
+    char.AddSkillLv(1,50,1,0)
+    char.SetStatus(AttackP=0.14,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05,BufferP=0.03)
+    pass
+
+
+def equ_4011(char: Character):
+    """
+    日光守卫者克利
+    稀有 宠物 2021
+
+    Lv1~50所有技能+1
+    攻击强化增幅+10%
+    增益量增幅+1.5%
+    暴击率+3%
+    所有速度+4%
+    """
+    char.AddSkillLv(1,50,1,0)
+    char.SetStatus(AttackP=0.10,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04,BufferP=0.015)
+    pass
+
+
+def equ_4012(char: Character):
+    """
+    卓越的精灵礼官
+    稀有 宠物 2022
+
+    Lv1~50所有技能+1
+    攻击强化增幅+14%
+    增益量增幅+3%
+    暴击率+3%
+    所有速度+5%
+    """
+    char.AddSkillLv(1,50,1,0)
+    char.SetStatus(AttackP=0.14,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05,BufferP=0.03)
+    pass
+
+
+def equ_4013(char: Character):
+    """
+    精灵礼官
+    稀有 宠物 2022
+
+    Lv1~50所有技能+1
+    攻击强化增幅+10%
+    增益量增幅+1.5%
+    暴击率+3%
+    所有速度+4%
+    """
+    char.AddSkillLv(1,50,1,0)
+    char.SetStatus(AttackP=0.10,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04,BufferP=0.015)
+    pass
+
+
+def equ_4014(char: Character):
+    """
+    迷你婚纱礼服赛丽亚
+    稀有 宠物 2023
+
+    Lv1~75所有技能+1
+    所有属性强化+25
+    攻击强化增幅+15%
+    增益量增幅+5%
+    暴击率+10%
+    所有速度+5%
+    """
+    char.AddSkillLv(1,75,1,0)
+    char.AddElementDB('火',25)
+    char.AddElementDB('冰',25)
+    char.AddElementDB('光',25)
+    char.AddElementDB('暗',25)
+    char.SetStatus(AttackP=0.15,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05,BufferP=0.05)
+    pass
+
+
+def equ_4015(char: Character):
+    """
+    迷你礼服赛丽亚
+    稀有 宠物 2023
+
+    Lv1~50所有技能+1
+    所有属性强化+15
+    攻击强化增幅+12%
+    增益量增幅+2%
+    暴击率+5%
+    所有速度+4%
+    """
+    char.AddSkillLv(1,50,1,0)
+    char.AddElementDB('火',15)
+    char.AddElementDB('冰',15)
+    char.AddElementDB('光',15)
+    char.AddElementDB('暗',15)
+    char.SetStatus(AttackP=0.12,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04,BufferP=0.02)
+    pass
+
+
+def equ_4016(char: Character):
+    """
+    迷你不知火舞
+    稀有 宠物 2024
+
+    Lv1~75所有技能+1
+    所有属性强化+25
+    攻击强化增幅+15%
+    增益量增幅+5%
+    暴击率+10%
+    所有速度+5%
+    """
+    char.AddSkillLv(1,75,1,0)
+    char.AddElementDB('火',25)
+    char.AddElementDB('冰',25)
+    char.AddElementDB('光',25)
+    char.AddElementDB('暗',25)
+    char.SetStatus(AttackP=0.15,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05,BufferP=0.05)
+    pass
+
+
+def equ_4017(char: Character):
+    """
+    迷你麻宫雅典娜
+    稀有 宠物 2024
+
+    Lv1~50所有技能+1
+    所有属性强化+15
+    攻击强化增幅+12%
+    增益量增幅+2%
+    暴击率+5%
+    所有速度+4%
+    """
+    char.AddSkillLv(1,50,1,0)
+    char.AddElementDB('火',15)
+    char.AddElementDB('冰',15)
+    char.AddElementDB('光',15)
+    char.AddElementDB('暗',15)
+    char.SetStatus(AttackP=0.12,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04,BufferP=0.02)
+    pass
+
+# endregion
+for i in range(0, 5000):
     try:
         if str(i) not in equ_func_list.keys():
             equ_func_list[str(i)] = eval(f'equ_{i}')

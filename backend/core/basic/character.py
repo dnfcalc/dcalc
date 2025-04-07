@@ -129,6 +129,8 @@ class Character:
     """装备选项列表"""
     EquEffectRatio = 1
     """装备效果倍率"""
+    max_point = 0
+    """套装效果点数"""
 
     # region 角色属性
     buffer: bool = False
@@ -212,6 +214,7 @@ class Character:
         self.jade_effect = Jade()
         self.equ_effect = []
         self.equ_options = {}
+        self.max_point = 0
         pass
 
     # region 角色属性设置
@@ -600,6 +603,7 @@ class Character:
             if suit is not None:
                 filtered_dict = {k: v for k, v in suit.__dict__.items() if k[0].isupper()}
                 self.SetStatus(**filtered_dict)
+        self.max_point = max([i['point'] for i in res], default=0)
         return res
 
     def calc_equs(self):
@@ -747,10 +751,11 @@ class Character:
         self.calc_avatar(setInfo.get('avatar', {}))
         # 精通、增幅、强化计算
         self.calc_basic()
-        # 部位效果计算
-        self.calc_equs()
         # 计算套装基础效果
         suit = self.calc_suits()
+        # 部位效果计算
+        self.calc_equs()
+
         # print(suit)
         # effects = get_equipment(self.equVersion).funs
         # for effect in equ_effect:

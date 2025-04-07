@@ -22,6 +22,10 @@ export default defineComponent({
     const has_emblem_1 = computed(
       () => has_socket.value && !['辅助装备', '魔法石'].includes(part.value as string),
     )
+    /** 是否可以设置秘宝精度 */
+    const can_set_secret = computed(() => {
+      return ['辅助装备', '魔法石','耳环'].includes(part.value as string)
+    })
     const basicInfoStore = useInfoStore()
 
     const enchant_list = computed<IEnchantingInfo[] | undefined>(() => {
@@ -116,6 +120,8 @@ export default defineComponent({
     // 调适
     const adaptation = currentInfo<string | number>('adaptation')
 
+    //精度
+    const precision = currentInfo<number>('precision',0)
     /**
      * 同步徽章1到徽章2
      * @param val
@@ -229,6 +235,22 @@ export default defineComponent({
           ) : (
             <div></div>
           )}
+          {
+            can_set_secret.value ? (<>
+            <div class="equ-profile-item">
+              <div class="row-name">秘宝</div>
+              <calc-slider
+                showPercent={true}
+                showValue={false}
+                v-model={precision.value}
+                min={0}
+                max={100}
+                step={1}
+                class="flex-1 !h-20px"
+              />
+            </div>
+            </>) : <div></div>
+          }
         </div>
         </>
       )

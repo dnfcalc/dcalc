@@ -1,5 +1,5 @@
 # 限制每行最多20个字符
-line-length = 200
+line-length = 500
 lint.select = ["F","E","W","UP"]
 
 [format]
