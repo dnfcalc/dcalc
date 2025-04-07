@@ -576,6 +576,8 @@ class Character:
             else:
                 suitList += equs.get_suit_info(suit, suitInfo[suit]['point'], 0)
                 # suits_effect += [i.id for i in equs.get_suit_info(suit, suitInfo[suit]['point'], 0)]
+            if len(suitList) == 0:
+                continue
             temp = suitList[-1]
             res.append(
                 {

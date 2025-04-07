@@ -173,6 +173,8 @@ class Skill9(ActiveSkill):
     hit0 = 1
 
     def getSkillCD(self):
+        if self.char.charEquipInfo['武器'].equInfo is None:
+            return 0.14
         if self.char.charEquipInfo['武器'].equInfo.itemDetailType == '手弩':
             return 0.115
         return 0.14
