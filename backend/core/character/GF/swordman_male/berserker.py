@@ -84,7 +84,7 @@ class Skill4(ActiveSkill):
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 2
+    position = 3
     rangeLv = 2
     cd = 6
     mp = [62, 266]
@@ -360,7 +360,7 @@ class Skill18(ActiveSkill):
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 2
+    position = 3
     rangeLv = 2
     cube = 3
     cd = 40
