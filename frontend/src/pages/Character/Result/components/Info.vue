@@ -1,7 +1,7 @@
 <template>
   <div class="bg-#000000bf w-264px">
     <div class="h-177px">
-      <EquList :detail="props.equs"></EquList>
+      <EquList :detail="props.equs" :with-sub-weapon="infoStore.infos?.alter.includes('vegabond')"></EquList>
     </div>
     <div class="flex flex-wrap border-y-1px my-1px border-y-solid border-#FFFF/10">
       <template v-for="info in props.info" :key="info.id">

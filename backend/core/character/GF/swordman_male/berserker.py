@@ -9,7 +9,7 @@ class Skill0(ActiveSkill):
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 4
+    position = 3
     rangeLv = 2
     cd = 4
     mp = [17, 150]
@@ -28,7 +28,7 @@ class Skill1(PassiveSkill):
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 8
+    position = 7
     rangeLv = 3
 
     data0 = [0, 28.7, 30.7, 32.7, 34.7, 36.7, 38.7, 40.7, 42.7, 44.7, 46.7, 48.7, 50.7, 52.7, 54.7, 56.7, 58.7, 60.7, 62.7, 64.7, 66.7]# noqa: E501
@@ -45,7 +45,7 @@ class Skill2(ActiveSkill):
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 4
+    position = 3
     rangeLv = 2
     cd = 6
     mp = [58, 249]
@@ -62,7 +62,7 @@ class Skill3(ActiveSkill):
     learnLv = 15
     masterLv = 20
     maxLv = 30
-    position = 5
+    position = 4
     rangeLv = 3
     cd = 10
     mp = [10, 35]
@@ -84,7 +84,7 @@ class Skill4(ActiveSkill):
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 3
+    position = 2
     rangeLv = 2
     cd = 6
     mp = [62, 266]
@@ -103,7 +103,7 @@ class Skill5(ActiveSkill):
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 6
+    position = 5
     rangeLv = 2
     cd = 6
     mp = [37, 290]
@@ -135,7 +135,7 @@ class Skill6(ActiveSkill):
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 5
+    position = 4
     rangeLv = 2
     cd = 13
     mp = [142, 607]
@@ -154,7 +154,7 @@ class Skill7(ActiveSkill):
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 7
+    position = 6
     rangeLv = 2
     cd = 10
     mp = [110, 467]
@@ -177,7 +177,7 @@ class Skill8(ActiveSkill):
     learnLv = 35
     masterLv = 10
     maxLv = 20
-    position = 4
+    position = 3
     rangeLv = 3
     cd = 5
     damage = False
@@ -192,7 +192,7 @@ class Skill9(ActiveSkill):
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 6
+    position = 5
     rangeLv = 2
     cube = 1
     cd = 25
@@ -210,7 +210,7 @@ class Skill10(ActiveSkill):
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 2
+    position = 1
     rangeLv = 2
     cube = 1
     cd = 20
@@ -233,7 +233,7 @@ class Skill11(ActiveSkill):
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 4
+    position = 3
     rangeLv = 2
     cube = 1
     cd = 20
@@ -250,7 +250,7 @@ class Skill12(ActiveSkill):
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 4
+    position = 3
     rangeLv = 2
     cube = 2
     cd = 40
@@ -273,7 +273,7 @@ class Skill13(PassiveSkill):
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 7
+    position = 6
     rangeLv = 3
 
     data0 = [0, 12.9, 14.4, 15.9, 17.4, 18.9, 20.4, 21.9, 23.4, 24.9, 26.4, 27.9, 29.4, 30.9, 32.4, 33.9, 35.4, 36.9, 38.4, 39.9, 41.4, 42.9, 44.4, 45.9, 47.4, 48.9, 50.4, 51.9, 53.4, 54.9, 56.4, 57.9, 59.4, 60.9, 62.4, 63.9, 65.4, 66.9, 68.4, 69.9, 71.4, 72.9, 74.4, 75.9, 77.4, 78.9, 80.4, 81.9, 83.4, 84.9, 86.4]# noqa: E501
@@ -288,7 +288,7 @@ class Skill14(ActiveSkill):
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 4
+    position = 3
     rangeLv = 5
     cube = 5
     cd = 145
@@ -308,7 +308,7 @@ class Skill15(ActiveSkill):
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 6
+    position = 5
     rangeLv = 2
     cube = 2
     cd = 30
@@ -328,7 +328,7 @@ class Skill16(ActiveSkill):
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 5
+    position = 4
     rangeLv = 2
     cube = 2
     cd = 50
@@ -345,7 +345,7 @@ class Skill17(PassiveSkill):
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 6
+    position = 5
     rangeLv = 3
 
     data0 = [0, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122]# noqa: E501
@@ -360,7 +360,7 @@ class Skill18(ActiveSkill):
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 3
+    position = 2
     rangeLv = 2
     cube = 3
     cd = 40
@@ -378,7 +378,7 @@ class Skill19(ActiveSkill):
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 4
+    position = 3
     rangeLv = 2
     cube = 5
     cd = 50
@@ -402,7 +402,7 @@ class Skill20(ActiveSkill):
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 5
+    position = 4
     rangeLv = 5
     cube = 10
     cd = 180
@@ -424,7 +424,7 @@ class Skill21(ActiveSkill):
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 8
+    position = 7
     rangeLv = 2
     cube = 7
     cd = 60
@@ -444,7 +444,7 @@ class Skill22(PassiveSkill):
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 6
+    position = 5
     rangeLv = 3
 
     data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
@@ -458,7 +458,7 @@ class Skill23(ActiveSkill):
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 6
+    position = 5
     rangeLv = 5
     cube = 15
     cd = 290

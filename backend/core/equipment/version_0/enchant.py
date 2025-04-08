@@ -612,13 +612,13 @@ def enchant_1101(char: Character):
 
 def enchant_1102(char: Character):
     """
-    四维(70)|所有属性强化(11)
+    四维(70)|所有属性强化(15)
     """
     char.SetStatus(四维=70)
-    char.AddElementDB('火', 11)
-    char.AddElementDB('冰', 11)
-    char.AddElementDB('光', 11)
-    char.AddElementDB('暗', 11)
+    char.AddElementDB('火', 15)
+    char.AddElementDB('冰', 15)
+    char.AddElementDB('光', 15)
+    char.AddElementDB('暗', 15)
     pass
 
 
@@ -1355,7 +1355,7 @@ def enchant_2701(char: Character):
 
 def enchant_2702(char: Character):
     """
-    四维(8%)|攻击强化(8%)
+    四维(8)|攻击强化(8%)
     """
     char.SetStatus(四维=8, 攻击强化P=0.08)
     pass

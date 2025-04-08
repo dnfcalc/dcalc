@@ -38,8 +38,10 @@ class CharacterEquipInfo:
         self.__dict__.update(info)
         equ = get_equipment(equVerison).equ_dict.get(self.id, None)
         fusion = get_equipment(equVerison).stone_dict.get(self.fusion, None)
-        if equ is not None and (equ.itemType == part or equ.itemDetailType == part):
+        if equ is not None and (equ.itemType == part or equ.itemDetailType == part or (equ.itemType == '武器' and part == '副武器')):
             self.equInfo = equ.adapt(self.adaptation)
+            if part == '副武器' and equ.itemType == '武器':
+                self.equInfo.itemType = "副武器"
         else:
             self.equInfo = None
         if fusion is not None and (fusion.itemType == part or fusion.itemDetailType == part):

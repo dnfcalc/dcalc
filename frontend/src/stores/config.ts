@@ -109,7 +109,7 @@ export const useConfigStore = defineStore('configStore', () => {
     if (!config.value?.avatar) config.value.avatar = {}
     if (!config.value?.sundry)config.value.sundry = {}
 
-    const part = [...infoStore.parts, '宠物'].filter((a) => !config.value?.equips.hasOwnProperty(a))
+    const part = [...infoStore.parts, '宠物','副武器'].filter((a) => !config.value?.equips.hasOwnProperty(a))
     const avatarPart = infoStore.avatarParts
       .filter((a) => a != '宠物')
       .filter((a) => !config.value?.avatar.hasOwnProperty(a))
@@ -155,9 +155,9 @@ export const useConfigStore = defineStore('configStore', () => {
     return await api.calc(config.value)
   }
 
-  const chooseEqu = async (equip: IEquipment | undefined, isFusion: boolean = false) => {
+  const chooseEqu = async (equip: IEquipment | undefined, isFusion: boolean = false,isSubWeapon:boolean=false) => {
     if (!equip) return
-    const part = equip?.itemType == '武器' ? '武器' : equip?.itemDetailType
+    const part = isSubWeapon ? '副武器' :(equip?.itemType == '武器' ? '武器' : equip?.itemDetailType)
     if (equip && config.value.equips[part]) {
       const key = isFusion ? 'fusion' : 'id'
       if (config.value.equips[part][key] == equip.id) {

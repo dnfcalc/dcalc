@@ -136,7 +136,7 @@ export default defineComponent({
       return (
         <>
         <div class="h-150px flex justify-center items-center">
-          <EquList v-model:part={part.value} withBg={false} withPet={false}/></div>
+          <EquList v-model:part={part.value} withBg={false} withPet={false} with-sub-weapon={useInfoStore().infos?.alter.includes('vegabond')}/></div>
 
         <div class="flex flex-wrap equ-profile">
           <div class="equ-profile-item">
@@ -152,6 +152,15 @@ export default defineComponent({
               <div></div>
             )}
           </div>
+          {part.value == '副武器' ? (<>
+          <div class="equ-profile-item">
+              <div class="row-name">强化</div>
+              <calc-select v-model={reinforce.value} class="flex-1 !h-20px">
+                {renderList(31, (i) => (
+                  <calc-option value={i - 1}>{i - 1}</calc-option>
+                ))}
+              </calc-select>
+            </div></>):(<>
           {can_upgrade.value ? (
             <div class="equ-profile-item">
               <div class="row-name">增幅</div>
@@ -251,6 +260,7 @@ export default defineComponent({
             </div>
             </>) : <div></div>
           }
+          </>)}
         </div>
         </>
       )
