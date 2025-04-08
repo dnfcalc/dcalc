@@ -190,6 +190,7 @@ class ActiveSkill(Skill):
             return 武器冷却惩罚(weapon.itemDetailType,self.char.输出类型)
 
     def getQuickCDRatio(self):
+        return 1.0
         cdr = 0
         if 15 <= self.learnLv <= 30:
             cdr =  0.01

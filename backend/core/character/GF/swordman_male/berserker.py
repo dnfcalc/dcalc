@@ -73,7 +73,7 @@ class Skill3(ActiveSkill):
 
     associate = [
         {"data": data0, "type": '*skillRation'},
-        {'data': data1, 'type': '*cdReduce', 'exceptSkills': ['魔狱血刹', '血魔·弑天', '血魔极道灭']}
+        {'data': data1, 'type': '*cdReduce', 'exceptSkills': ['魔狱血刹', '血魔·弑天', '血魔 : 极道灭世']}
     ]
 
 
