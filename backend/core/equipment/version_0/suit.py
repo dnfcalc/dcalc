@@ -3380,6 +3380,7 @@ def suit_209(char: Character):
     [青丘灵珠开关][装备主动技能]- 灵珠全部填满时，自动使用青丘灵珠增益效果（冷却时间1秒）
     - 再次使用时，关闭自动使用功能
     """
+    suit_205(char)
     pass
 
 
@@ -3399,7 +3400,7 @@ def suit_210(char: Character):
     [青丘灵珠开关][装备主动技能]- 灵珠全部填满时，自动使用青丘灵珠增益效果（冷却时间1秒）
     - 再次使用时，关闭自动使用功能
     """
-    char.SetStatus(SkillAttack=0.3)
+    char.SetStatus(SkillAttack=0.4)
     pass
 
 
