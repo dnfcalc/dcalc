@@ -482,7 +482,6 @@ class classChange(Character):
         """计算基础属性:防具精通、增幅、强化等"""
         super().calc_basic()
         cur = self.charEquipInfo['副武器']
-        print(cur)
         if cur is None or cur.equInfo is None:
             return
         ATKP = cur.equInfo.AtkP
