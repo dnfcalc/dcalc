@@ -1,4 +1,5 @@
 import base64
+from functools import cache
 
 adv = [
     {
@@ -229,6 +230,7 @@ def get_adv_list():
     return adv
 
 
+@cache
 def get_adv_info(value):
     value = base64.b64decode(value).decode()
     parent_id, child_id, option_id = map(int, (value[:2], value[2:4], value[4:6]))
