@@ -84,7 +84,7 @@ def equ_6(char: Character):
     -无影之剑总伤害量：32400%
     -冷却时间15秒
     """
-    char.equ_effects.append(EquEffect(name='无影之剑',icon='/equipment/icon/weapon/swordman/sswd/00227.png',cd=15,data=32400))
+    char.equ_effect.append(EquEffect(name='无影之剑',icon='/equipment/icon/weapon/swordman/sswd/00227.png',cd=15,data=32400))
     pass
 
 
@@ -101,7 +101,7 @@ def equ_7(char: Character):
     -无影之剑总伤害量：48600%
     -冷却时间15秒
     """
-    char.equ_effects.append(EquEffect(name='无影之剑',icon='/equipment/icon/weapon/swordman/sswd/00228.png',cd=15,data=48600))
+    char.equ_effect.append(EquEffect(name='无影之剑',icon='/equipment/icon/weapon/swordman/sswd/00228.png',cd=15,data=48600))
     pass
 
 
@@ -118,7 +118,7 @@ def equ_8(char: Character):
     -无影之剑总伤害量：64800%
     -冷却时间10秒
     """
-    char.equ_effects.append(EquEffect(name='无影之剑',icon='/equipment/icon/weapon/swordman/sswd/00229.png',cd=10,data=64800))
+    char.equ_effect.append(EquEffect(name='无影之剑',icon='/equipment/icon/weapon/swordman/sswd/00229.png',cd=10,data=64800))
     pass
 
 
@@ -212,7 +212,7 @@ def equ_14(char: Character):
     -寒光掠影伤害量：113400%
     -冷却时间40秒
     """
-    char.equ_effects.append(EquEffect(name='寒光掠影',icon='/equipment/skill/4.png',cd=40,data=113400))
+    char.equ_effect.append(EquEffect(name='寒光掠影',icon='/equipment/skill/4.png',cd=40,data=113400))
     pass
 
 
@@ -226,7 +226,7 @@ def equ_15(char: Character):
     -寒光掠影伤害量：226800%
     -冷却时间40秒
     """
-    char.equ_effects.append(EquEffect(name='寒光掠影',icon='/equipment/skill/4.png',cd=40,data=226800))
+    char.equ_effect.append(EquEffect(name='寒光掠影',icon='/equipment/skill/4.png',cd=40,data=226800))
     pass
 
 
@@ -240,7 +240,7 @@ def equ_16(char: Character):
     -寒光掠影伤害量：340200%
     -冷却时间40秒
     """
-    char.equ_effects.append(EquEffect(name='寒光掠影',icon='/equipment/skill/4.png',cd=40,data=340200))
+    char.equ_effect.append(EquEffect(name='寒光掠影',icon='/equipment/skill/4.png',cd=40,data=340200))
     pass
 
 
