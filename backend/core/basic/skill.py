@@ -1,7 +1,7 @@
 from copy import deepcopy
 import re
 from typing import Literal, TYPE_CHECKING
-
+from .formula import 武器冷却惩罚
 if TYPE_CHECKING:
     from core.basic.character import Character
 
@@ -45,6 +45,8 @@ class Skill:
     """是否是伤害技能"""
     cd: float = 0
     """技能冷却时间"""
+    cdCut: float = 0
+    """技能冷却时间直接减少"""
     cdReduce: float = 1
     """技能冷却缩减"""
     cdRecover: float = 1
@@ -114,8 +116,7 @@ class Skill:
         """effect的前置条件"""
         return True
 
-    def _apply_association(self, type, old, new, data, skills, exceptSkills
-                           ):
+    def _apply_association(self, type, old, new, data, skills, exceptSkills):
         if type.startswith('$*'):
             if 'cdReduce' in type:
                 value = (1 - data[new] / 100) / (1 - data[old] / 100)
@@ -181,8 +182,31 @@ class ActiveSkill(Skill):
                 res += hit * power * data[lv]
         return res
 
+    def getWeaponCDRatio(self):
+        weapon = self.char.charEquipInfo['武器'].equInfo
+        if weapon is None or '传世武器' in  weapon.categorize:
+            return 1
+        else:
+            return 武器冷却惩罚(weapon.itemDetailType,self.char.输出类型)
+
+    def getQuickCDRatio(self):
+        cdr = 0
+        if 15 <= self.learnLv <= 30:
+            cdr =  0.01
+        if 35<= self.learnLv <= 70:
+            cdr = 0.02
+        if 75<= self.learnLv <= 100:
+            cdr = 0.05
+        if self.learnLv > 100 in [50,85,100]:
+            cdr = 0.05
+        return 1 - cdr
+
     def getSkillCD(self):
-        return self.cd * self.cdReduce / self.cdRecover
+        return max(0,round(max(
+            self.cd * 0.3,
+            self.cd * self.cdReduce / self.cdRecover * self.getWeaponCDRatio() * self.getQuickCDRatio(),1)
+            - self.cdCut,2
+        ))
 
 class PassiveSkill(Skill):
     type: str = 'passive'
