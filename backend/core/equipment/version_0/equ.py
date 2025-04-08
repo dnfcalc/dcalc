@@ -84,6 +84,7 @@ def equ_6(char: Character):
     -无影之剑总伤害量：32400%
     -冷却时间15秒
     """
+    char.equ_effects.append(EquEffect(name='无影之剑',icon='/equipment/icon/weapon/swordman/sswd/00227.png',cd=15,data=32400))
     pass
 
 
@@ -100,6 +101,7 @@ def equ_7(char: Character):
     -无影之剑总伤害量：48600%
     -冷却时间15秒
     """
+    char.equ_effects.append(EquEffect(name='无影之剑',icon='/equipment/icon/weapon/swordman/sswd/00228.png',cd=15,data=48600))
     pass
 
 
@@ -116,6 +118,7 @@ def equ_8(char: Character):
     -无影之剑总伤害量：64800%
     -冷却时间10秒
     """
+    char.equ_effects.append(EquEffect(name='无影之剑',icon='/equipment/icon/weapon/swordman/sswd/00229.png',cd=10,data=64800))
     pass
 
 
@@ -209,6 +212,7 @@ def equ_14(char: Character):
     -寒光掠影伤害量：113400%
     -冷却时间40秒
     """
+    char.equ_effects.append(EquEffect(name='寒光掠影',icon='/equipment/skill/4.png',cd=40,data=113400))
     pass
 
 
@@ -222,6 +226,7 @@ def equ_15(char: Character):
     -寒光掠影伤害量：226800%
     -冷却时间40秒
     """
+    char.equ_effects.append(EquEffect(name='寒光掠影',icon='/equipment/skill/4.png',cd=40,data=226800))
     pass
 
 
@@ -235,6 +240,7 @@ def equ_16(char: Character):
     -寒光掠影伤害量：340200%
     -冷却时间40秒
     """
+    char.equ_effects.append(EquEffect(name='寒光掠影',icon='/equipment/skill/4.png',cd=40,data=340200))
     pass
 
 
@@ -316,6 +322,8 @@ def equ_22(char: Character):
     技能冷却时间20%减少（觉醒技能除外）
     所有速度+10%
     """
+    char.SetSkillCD(1,100,0.2,[50,85,100])
+    char.SetStatus(SpeedM = 0.1,SpeedA = 0.1,SpeedR = 0.1)
     pass
 
 
@@ -333,6 +341,9 @@ def equ_23(char: Character):
 
     分身攻击命中时，技能冷却时间恢复速度+3%，效果持续3秒。（觉醒技能除外；最多叠加1次）
     """
+    char.SetSkillCD(1,100,0.2,[50,85,100])
+    char.SetStatus(SpeedM = 0.125,SpeedA = 0.125,SpeedR = 0.125)
+    char.SetSkillCDRecover(1,100,0.03,[50,85,100])
     pass
 
 
@@ -350,6 +361,9 @@ def equ_24(char: Character):
 
     分身攻击命中时，技能冷却时间恢复速度+3%，效果持续3秒。（觉醒技能除外；最多叠加1次）
     """
+    char.SetSkillCD(1,100,0.2,[50,85,100])
+    char.SetStatus(SpeedM = 0.15,SpeedA = 0.15,SpeedR = 0.15)
+    char.SetSkillCDRecover(1,100,0.03,[50,85,100])
     pass
 
 
@@ -572,6 +586,7 @@ def equ_38(char: Character):
     技能快捷栏中存在6个及以上空栏，发动[黑龙之力]效果。
     -所有速度+10%
     """
+    char.SetStatus(SpeedM = 0.1,SpeedA = 0.1,SpeedR = 0.1)
     pass
 
 
@@ -587,6 +602,7 @@ def equ_39(char: Character):
     -所受物理/魔法伤害-5%
     -所有速度+15%
     """
+    char.SetStatus(SpeedM = 0.15,SpeedA = 0.15,SpeedR = 0.15)
     pass
 
 
@@ -603,6 +619,7 @@ def equ_40(char: Character):
     -所受物理/魔法伤害-10%
     -所有速度+20%
     """
+    char.SetStatus(SpeedM = 0.2,SpeedA = 0.2,SpeedR = 0.2)
     pass
 
 

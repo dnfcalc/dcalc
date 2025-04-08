@@ -31,9 +31,9 @@ async def get_character_info(
     request: Request, state: AltersDep ,redis:RedisDep
 ):
     character = createCharacter(state.alter, state.equVersion)
-    # def get_character():
-    #     return character.getInfo()
-    # info = get_redis_info(redis, f"dcalc:character:{state.alter}", get_character)
-    info = character.getInfo()
+    def get_character():
+        return character.getInfo()
+    info = get_redis_info(redis, f"dcalc:character:{state.alter}:{state.equVersion}", get_character)
+    # info = character.getInfo()
     return response(data=info)
 
