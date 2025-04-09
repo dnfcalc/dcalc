@@ -104,27 +104,28 @@ class Skill:
             type = assoc.get('type', '*skillRation')
             skills = assoc.get('skills', '*')
             data = assoc.get('data', [0] * self.maxLv)
+            ratio = assoc.get('ratio', 100)
             exceptSkills = assoc.get('exceptSkills', [])
             if type[0] not in ['*', '+', '$']:
                 if self.precondition():
-                    getattr(self, type)(old, new, data, skills,exceptSkills)
+                    getattr(self, type)(old, new, data, skills,exceptSkills,ratio)
                 continue
             if self.precondition():
-                self._apply_association(type, old, new, data, skills,exceptSkills)
+                self._apply_association(type, old, new, data, skills,exceptSkills,ratio)
 
     def precondition(self):
         """effect的前置条件"""
         return True
 
-    def _apply_association(self, type, old, new, data, skills, exceptSkills):
+    def _apply_association(self, type, old, new, data, skills, exceptSkills,ratio = 100):
         if type.startswith('$*'):
             if 'cdReduce' in type:
-                value = (1 - data[new] / 100) / (1 - data[old] / 100)
+                value = (1 - data[new] / ratio) / (1 - data[old] / ratio)
             else:
-                value = (1 + data[new] / 100) / (1 + data[old] / 100)
+                value = (1 + data[new] / ratio) / (1 + data[old] / ratio)
             eval(f'self.char.SetStatus({type[2:]}={value})')
         elif type.startswith('$+'):
-            value = data[new] / 100 - data[old] / 100
+            value = data[new] / ratio - data[old] / ratio
             eval(f'self.char.SetStatus({type[2:]}={value})')
         else:
             if skills == '*':
@@ -134,16 +135,16 @@ class Skill:
                     continue
                 skill = self.char.GetSkillByName(name)
                 if skill is not None:
-                    self._update_skill_attribute(skill,type, old, new, data)
+                    self._update_skill_attribute(skill,type, old, new, data,ratio)
 
-    def _update_skill_attribute(self,skill, type, old, new, data):
+    def _update_skill_attribute(self,skill, type, old, new, data,ratio = 100):
         if type.startswith('*'):
             if 'cdReduce' in type:
-                setattr(skill, type[1:], getattr(skill, type[1:]) * (1 - data[new] / 100) / (1 - data[old] / 100))
+                setattr(skill, type[1:], getattr(skill, type[1:]) * (1 - data[new] / ratio) / (1 - data[old] / ratio))
             else:
-                setattr(skill, type[1:], getattr(skill, type[1:]) * (1 + data[new] / 100) / (1 + data[old] / 100))
+                setattr(skill, type[1:], getattr(skill, type[1:]) * (1 + data[new] / ratio) / (1 + data[old] / ratio))
         elif type.startswith('+'):
-            setattr(skill, type[1:], getattr(skill, type[1:]) + data[new] / 100 - data[old] / 100)
+            setattr(skill, type[1:], getattr(skill, type[1:]) + data[new] / ratio - data[old] / ratio)
 
     def skillInfo(self, mode: str | None = None):
         pass

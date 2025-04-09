@@ -54,6 +54,7 @@ export interface IEquipment {
   categorize: string
   suit: string[]
   rarity: string
+  max_adaptation:number
 }
 
 export interface ISkill {

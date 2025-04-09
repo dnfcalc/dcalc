@@ -43,6 +43,9 @@
             alt=""
             class="w-20px h-20px object-contain"
           />
+          <div class="flex items-center justify-center" v-if="adaptation(part) > 0">
+            <img :src="getImageURL(`/equipment/adaptation/${adaptation(part)}.png`)" alt="" class="w-10px h-10px object-contain" />
+          </div>
           <div
             class="flex items-center"
             :class="props.equs[part]?.reinforceType == 1 ? 'artifact' : 'advanced'"
@@ -90,6 +93,10 @@ const infoStore = useInfoStore()
 
 const equ = (id: string) => {
   return infoStore.equips.find((e) => e.id == id)
+}
+
+const adaptation = (part: string) => {
+  return Math.min(equ(props.equs?.[part]?.id)?.max_adaptation ?? 0, props.equs[part]?.adaptation ?? 0)
 }
 
 const lvFormat = (lv: number, rarity: string) => {
