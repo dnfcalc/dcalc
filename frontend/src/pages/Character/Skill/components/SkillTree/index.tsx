@@ -35,7 +35,7 @@ export default defineComponent({
 
     const lvList = [15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100]
 
-    const columns = [...new Array(9).keys()]
+    const columns = [...new Array(10).keys()]
 
     const activeSkill = ref<number>(-1)
 
@@ -97,8 +97,10 @@ export default defineComponent({
                 class={['h-30px w-30px', skill.type === 'passive' ? 'passive' : '']}
                 src={getImageURL(skill.icon)}
               ></img>
-              <div class="w-30px mx-2px bg-black flex items-center justify-center rounded-2px"
-              style={{color}}>
+              <div
+                class="w-30px mx-2px bg-black flex items-center justify-center rounded-2px"
+                style={{ color }}
+              >
                 {info?.lv ?? 0}
               </div>
             </div>
@@ -152,19 +154,23 @@ export default defineComponent({
     return () => (
       <>
         <div onClick={() => (activeSkill.value = -1)}>
-          <div class="skill-tree-line flex items-center gap-10px px-10px">
-            <div class="w-34px h-34px flex items-center justify-center text-white">
-              其<br />余
-            </div>
-            {((getSkill(0, 15, -1) ?? []) as ISkill[])?.map((skill, index) =>
-              renderSkill(skill, index),
-            )}
-          </div>
-          {lvList.map((lv, index) => (
+          {((getSkill(0, 15, -1) ?? []) as ISkill[]).length > 0 && (
+            <>
+              <div class="skill-tree-line flex items-center gap-10px px-10px">
+                <div class="w-34px h-34px flex items-center justify-center text-white">
+                  其<br />余
+                </div>
+                {((getSkill(0, 15, -1) ?? []) as ISkill[])?.map((skill, index) =>
+                  renderSkill(skill, index),
+                )}
+              </div>
+            </>
+          )}
+
+          {lvList.map((lv, index) => ((getSkill(lv, lvList[index + 1] ?? 150, -1) as ISkill[])?.length ?? 0) > 0 ?(
             <div class="skill-tree-line flex items-center gap-10px px-10px" key={index}>
               {lv == 1 || lv % 10 == 0 ? (
-                <div class="w-34px h-34px flex items-center justify-center text-white"
-                >{lv}</div>
+                <div class="w-34px h-34px flex items-center justify-center text-white">{lv}</div>
               ) : (
                 <div class="w-34px h-34px"></div>
               )}
@@ -172,9 +178,9 @@ export default defineComponent({
                 const skill = getSkill(lv, lvList[index + 1] ?? 150, column) as ISkill
                 return skill ? renderSkill(skill, index) : <div class="w-34px h-34px"></div>
               })}
-              <div class="w-34px h-34px" onClick={() => (activeSkill.value = -1)}></div>
+              <div class="w-20px h-34px" onClick={() => (activeSkill.value = -1)}></div>
             </div>
-          ))}
+          ):(<></>))}
         </div>
       </>
     )
