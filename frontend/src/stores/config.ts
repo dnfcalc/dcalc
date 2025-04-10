@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { useInfoStore } from './info'
 import api from '@/api'
 import type { IEquipment } from '@/api/info/type'
+import type { IResultSkillCount } from '@/api/calc/type'
 // | '上衣'
 // | '头肩'
 // | '下装'
@@ -83,7 +84,7 @@ export const useConfigStore = defineStore('configStore', () => {
     sundry: {},
   })
 
-  const skillCountConfig = ref<Record<string, { count: number }>>({})
+  const skillCountConfig = ref<IResultSkillCount[]>([])
 
   const loadConfig = () => {
     const infoStore = useInfoStore()
@@ -91,8 +92,12 @@ export const useConfigStore = defineStore('configStore', () => {
 
     if (alter) {
       const localConfig = localStorage.getItem(`dcalc/${alter}/config`)
+      const localSkillConfig = localStorage.getItem(`dcalc/${alter}/config/skillCount`)
       if (localConfig) {
         config.value = JSON.parse(localConfig)
+      }
+      if (localSkillConfig) {
+        skillCountConfig.value = JSON.parse(localSkillConfig)
       }
     }
     if (!config.value)
@@ -107,9 +112,11 @@ export const useConfigStore = defineStore('configStore', () => {
     if (!config.value?.skills) config.value.skills = {}
     if (!config.value?.jades) config.value.jades = {}
     if (!config.value?.avatar) config.value.avatar = {}
-    if (!config.value?.sundry)config.value.sundry = {}
+    if (!config.value?.sundry) config.value.sundry = {}
 
-    const part = [...infoStore.parts, '宠物','副武器'].filter((a) => !config.value?.equips.hasOwnProperty(a))
+    const part = [...infoStore.parts, '宠物', '副武器'].filter(
+      (a) => !config.value?.equips.hasOwnProperty(a),
+    )
     const avatarPart = infoStore.avatarParts
       .filter((a) => a != '宠物')
       .filter((a) => !config.value?.avatar.hasOwnProperty(a))
@@ -147,6 +154,7 @@ export const useConfigStore = defineStore('configStore', () => {
     const alter = infoStore.infos?.alter
     if (alter) {
       localStorage.setItem(`dcalc/${alter}/config`, JSON.stringify(config.value))
+      localStorage.setItem(`dcalc/${alter}/config/skillCount`, JSON.stringify(skillCountConfig.value))
     }
   }
 
@@ -155,9 +163,13 @@ export const useConfigStore = defineStore('configStore', () => {
     return await api.calc(config.value)
   }
 
-  const chooseEqu = async (equip: IEquipment | undefined, isFusion: boolean = false,isSubWeapon:boolean=false) => {
+  const chooseEqu = async (
+    equip: IEquipment | undefined,
+    isFusion: boolean = false,
+    isSubWeapon: boolean = false,
+  ) => {
     if (!equip) return
-    const part = isSubWeapon ? '副武器' :(equip?.itemType == '武器' ? '武器' : equip?.itemDetailType)
+    const part = isSubWeapon ? '副武器' : equip?.itemType == '武器' ? '武器' : equip?.itemDetailType
     if (equip && config.value.equips[part]) {
       const key = isFusion ? 'fusion' : 'id'
       if (config.value.equips[part][key] == equip.id) {
@@ -188,5 +200,6 @@ export const useConfigStore = defineStore('configStore', () => {
     calc,
     result,
     chooseEqu,
+    skillCountConfig
   }
 })

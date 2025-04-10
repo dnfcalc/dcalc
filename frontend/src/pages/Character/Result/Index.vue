@@ -25,7 +25,7 @@ const infoStore = useInfoStore()
 
 const setStandard = () => {
   if(!configStore?.result?.state?.uuid) return
-  infoStore.setStandard(configStore.result.state)
+  infoStore.setStandard(configStore.result.state,configStore.skillCountConfig)
 }
 
 const clearStandard = () => {

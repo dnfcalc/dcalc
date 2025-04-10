@@ -31,3 +31,9 @@ export interface IResultSuit{
   rarity:string
   value:string
 }
+
+export interface IResultSkillCount {
+  count: number
+  mode: string
+  name: string
+}

@@ -2,7 +2,7 @@ import api from '@/api'
 import type { ICharacterInfo } from '@/api/info/type'
 import { defineStore } from 'pinia'
 import { useConfigStore } from './config'
-import type { IResult, IResultSkill } from '@/api/calc/type'
+import type { IResult, IResultSkill, IResultSkillCount } from '@/api/calc/type'
 
 export const useInfoStore = defineStore('infoStore', () => {
   const alter_token = ref<string>('')
@@ -28,20 +28,24 @@ export const useInfoStore = defineStore('infoStore', () => {
 
   const standardUUID = ref<string>()
 
-  const setStandard = (result?: IResult) => {
+  const setStandard = (result?: IResult,skillCount?:{
+    count: number;
+    mode: string;
+    name: string;
+}[]) => {
     if (!result) {
       !!standardUUID.value && sessionStorage.removeItem(standardUUID.value)
       standardUUID.value = undefined
     } else {
       standardUUID.value = result.uuid
-      sessionStorage.setItem(result.uuid, JSON.stringify(result.skills))
+      sessionStorage.setItem(result.uuid, JSON.stringify({skills:result.skills,skillCount}))
     }
   }
 
   const standard = computed(()=>{
     const value = sessionStorage.getItem(standardUUID.value ?? '')
     if(!value) return undefined
-    else return JSON.parse(value) as IResultSkill[]
+    else return JSON.parse(value) as {skills:IResultSkill[],skillCount:IResultSkillCount[]}
   })
 
   const parts = [
