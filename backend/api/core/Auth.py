@@ -15,7 +15,7 @@ class AlterState:
         try:
             self.alter = get_adv_info(value)["class"]
         except Exception:
-            raise ResponseException('无效的职业')
+            raise ResponseException(f'无效的职业{value}')
         self.token = token
         self.origin = self.alter.split('.')[-1]
         self.character = charcater
