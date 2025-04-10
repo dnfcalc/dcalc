@@ -195,11 +195,11 @@ class ActiveSkill(Skill):
         cdr = 0
         if 15 <= self.learnLv <= 30:
             cdr =  0.01
-        if 35<= self.learnLv <= 70:
+        elif 35<= self.learnLv <= 70:
             cdr = 0.02
-        if 75<= self.learnLv <= 100:
+        elif 75<= self.learnLv <= 100:
             cdr = 0.05
-        if self.learnLv > 100 in [50,85,100]:
+        if self.learnLv in [50,85,100]:
             cdr = 0.05
         return 1 - cdr
 
