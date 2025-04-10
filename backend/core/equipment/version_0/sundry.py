@@ -1,6 +1,6 @@
 # sundry_list = ['medal_rarity', 'medal_rarity', 'medal_reinforce', 'medal_gem_0', 'medal_gem_1', 'medal_gem_2', 'medal_gem_3', 'adventure', 'marriage_house', 'marriage_ring', 'contract', 'collection_type', 'collection_num_0', 'collection_num_1', 'costume_card']
 
-from core.basic.character import Character
+from core.abstract.character import CharacterProperty
 
 sundry_func_list = {}
 
@@ -22,7 +22,7 @@ sundryList = {
 }
 
 
-def sundry_0(char: Character, *args):
+def sundry_0(char: CharacterProperty, *args):
     '''勋章'''
     # 勋章基础 四维 48 三攻 30
     char.SetStatus(四维=48, 三攻=30)
@@ -42,13 +42,13 @@ def sundry_0(char: Character, *args):
         gems_quality = medal_gems_quality[i]
         char.SetStatus(攻击强化=gems_quality[0]*0.1, 增益量=gems_quality[1])
 
-def sundry_6(char: Character, *args):
+def sundry_6(char: CharacterProperty, *args):
     '''冒险团'''
     lv = args[0] - 1
     values = [100,110,125,140,150,160,170,180,190,200,210,220,220,220,220,230,230,240,240,250,250,250,250,250,260,260,260,260,260,270,270,270,270,270,280,280,280,280,280,290]
     char.SetStatus(四维=values[lv])
 
-def sundry_7(char: Character, *args):
+def sundry_7(char: CharacterProperty, *args):
     '''
     婚房婚戒
     婚戒属强不享受辟邪玉加成
@@ -68,12 +68,12 @@ def sundry_7(char: Character, *args):
     elif args[1] == 2:
         char.SetStatus(体精=10, 力智=15)
 
-def sundry_9(char: Character, *args):
+def sundry_9(char: CharacterProperty, *args):
     '''契约'''
     if args[0] == 1:
         char.SetStatus(三攻=40)
 
-def sundry_10(char: Character, *args):
+def sundry_10(char: CharacterProperty, *args):
     '''收集箱'''
     per_0 = 0
     per_1 = 0
@@ -102,7 +102,7 @@ def sundry_10(char: Character, *args):
     char.AddElementDB('光',sq*per_2)
     char.AddElementDB('暗',sq*per_2)
 
-def sundry_13(char: Character, *args):
+def sundry_13(char: CharacterProperty, *args):
     if args[0] == 1:
         char.SetStatus(三速=0.01,四维=3)
 

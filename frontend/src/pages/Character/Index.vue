@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100% h-100% main" :class="infoStore.infos?.alter">
+  <div class="w-100% h-100% main flex" :class="infoStore.infos?.alter">
     <div class="header">
       <calc-tabs route>
         <calc-tab :value="`/character/equipment/${props.alter}`">装备设置</calc-tab>
@@ -8,10 +8,10 @@
       </calc-tabs>
     </div>
     <div class="content flex">
-      <div class="flex flex-1 m-1" v-if="!!infoStore.infos?.alter">
+      <div class="flex h-auto p-1 overflow-y-auto" v-if="!!infoStore.infos?.alter">
         <RouterView></RouterView>
       </div>
-      <div class="flex-1 m-1">
+      <div class="p-1 ml-auto h-auto overflow-y-auto z-2">
         <Result></Result>
       </div>
     </div>
@@ -82,7 +82,7 @@ onUnmounted(() => {
 
   .content {
     flex: 1;
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
     z-index: 2;
     width: 100%;

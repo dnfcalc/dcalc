@@ -1,65 +1,65 @@
-from core.basic.character import Character
+from core.abstract.character import CharacterProperty
 
 jade_func_list = {}
 
 
-def jade_0(char: Character = {}, value=0):
+def jade_0(char: CharacterProperty = {}, value=0):
     pass
 
-def jade_1(char: Character = {}, value=0):
+def jade_1(char: CharacterProperty = {}, value=0):
     char.jade_effect.SkillAttack += value/100
 
-def jade_2(char: Character = {}, value=0):
+def jade_2(char: CharacterProperty = {}, value=0):
     char.jade_effect.AttackP += value/100
     pass
 
-def jade_3(char: Character = {}, value=0):
+def jade_3(char: CharacterProperty = {}, value=0):
     char.jade_effect.ElementIncrease += value/100
     pass
 
-def jade_4(char: Character = {}, value=0):
+def jade_4(char: CharacterProperty = {}, value=0):
     if value > 0:
         char.AddSkillLv(10, 15, 1)
     pass
 
 
-def jade_5(char: Character = {}, value=0):
+def jade_5(char: CharacterProperty = {}, value=0):
     if value > 0:
         char.AddSkillLv(20, 25, 1)
     pass
 
 
-def jade_6(char: Character = {}, value=0):
+def jade_6(char: CharacterProperty = {}, value=0):
     if value > 0:
         char.AddSkillLv(30, 35, 1)
     pass
 
-def jade_7(char: Character = {}, value=0):
+def jade_7(char: CharacterProperty = {}, value=0):
     if value > 0:
         char.AddSkillLv(40, 45, 1)
     pass
 
-def jade_8(char: Character = {}, value=0):
+def jade_8(char: CharacterProperty = {}, value=0):
     if value > 0:
         char.AddSkillLv(55, 60, 1)
     pass
 
-def jade_9(char: Character = {}, value=0):
+def jade_9(char: CharacterProperty = {}, value=0):
     if value > 0:
         char.AddSkillLv(65, 70, 1)
     pass
 
-def jade_10(char: Character = {}, value=0):
+def jade_10(char: CharacterProperty = {}, value=0):
     if value > 0:
         char.AddSkillLv(75, 80, 1)
     pass
 
-def jade_11(char: Character = {}, value=0):
+def jade_11(char: CharacterProperty = {}, value=0):
     if value > 0:
         char.AddSkillLv(50, 50, 1)
     pass
 
-def jade_12(char: Character = {}, value=0):
+def jade_12(char: CharacterProperty = {}, value=0):
     if value > 0:
         char.AddSkillLv(85, 85, 1)
     pass

@@ -165,7 +165,7 @@ class Equipments:
             self.emblems.append(emblem)
             pass
         pass
-    
+
     def init_jades(self):
         """从数据库中获取所有辟邪玉信息"""
         with Session(self.engine) as session:
@@ -216,6 +216,13 @@ class EquEffect:
         self.cd = cd
         self.data = data
 
+global equ0
+equ0 =  Equipments("0")
+
 def get_equipment(version: str = '0') -> Equipments:
     # print('加载装备信息')
-    return Equipments(version)
+    try:
+        temp = eval(f"equ{version}".format(version))
+    except Exception:
+        temp = equ0
+    return temp

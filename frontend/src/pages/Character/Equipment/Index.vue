@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col mx-10px">
+    <div class="mx-10px">
       <calc-collapse title="武器/称号/宠物/秘宝">
         <calc-tabs  v-model="anotherTab" class="!mb-2">
           <calc-tab :value="0">武器</calc-tab>

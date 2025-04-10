@@ -1,11 +1,11 @@
-from core.basic.character import Character
+from core.abstract.character import CharacterProperty
 
 enchant_func_list = {}
 
 # region 头肩
 
 
-def enchant_1(char: Character):
+def enchant_1(char: CharacterProperty):
     """
     三攻(10)|四维(40)|技攻(3%)|暴击率(5%)
     """
@@ -13,7 +13,7 @@ def enchant_1(char: Character):
     pass
 
 
-def enchant_2(char: Character):
+def enchant_2(char: CharacterProperty):
     """
     三攻(20)|四维(75)|Lv1~50主动+1
     """
@@ -22,7 +22,7 @@ def enchant_2(char: Character):
     pass
 
 
-def enchant_3(char: Character):
+def enchant_3(char: CharacterProperty):
     """
     三攻(20)|四维(75)|技攻(5%)
     """
@@ -30,7 +30,7 @@ def enchant_3(char: Character):
     pass
 
 
-def enchant_4(char: Character):
+def enchant_4(char: CharacterProperty):
     """
     Lv30增益技能等级 +1|lv50主动技能等级+1
     """
@@ -44,7 +44,7 @@ def enchant_4(char: Character):
 # region 上衣
 
 
-def enchant_100(char: Character):
+def enchant_100(char: CharacterProperty):
     """
     三攻(110)|力智(80)
     """
@@ -52,7 +52,7 @@ def enchant_100(char: Character):
     pass
 
 
-def enchant_101(char: Character):
+def enchant_101(char: CharacterProperty):
     """
     四维(100)|奶系Lv15被动+3
     """
@@ -62,7 +62,7 @@ def enchant_101(char: Character):
     pass
 
 
-def enchant_102(char: Character):
+def enchant_102(char: CharacterProperty):
     """
     四维(120)|奶系Lv15被动+3
     """
@@ -72,7 +72,7 @@ def enchant_102(char: Character):
     pass
 
 
-def enchant_103(char: Character):
+def enchant_103(char: CharacterProperty):
     """
     三攻(110)|力智(90)|技攻(1%)
     """
@@ -80,7 +80,7 @@ def enchant_103(char: Character):
     pass
 
 
-def enchant_104(char: Character):
+def enchant_104(char: CharacterProperty):
     """
     四维(125)|奶系Lv15被动+4
     """
@@ -90,7 +90,7 @@ def enchant_104(char: Character):
     pass
 
 
-def enchant_105(char: Character):
+def enchant_105(char: CharacterProperty):
     """
     三攻(110)|力智(90)|技攻(2%)
     """
@@ -102,7 +102,7 @@ def enchant_105(char: Character):
 # region 头肩
 
 
-def enchant_106(char: Character):
+def enchant_106(char: CharacterProperty):
     """
     四维(120)|奶系Lv15被动+3
     """
@@ -116,7 +116,7 @@ def enchant_106(char: Character):
 # region 武器
 
 
-def enchant_107(char: Character):
+def enchant_107(char: CharacterProperty):
     """
     独立(90)|力智(60)
     """
@@ -124,7 +124,7 @@ def enchant_107(char: Character):
     pass
 
 
-def enchant_108(char: Character):
+def enchant_108(char: CharacterProperty):
     """
     魔攻(90)|力智(60)
     """
@@ -132,7 +132,7 @@ def enchant_108(char: Character):
     pass
 
 
-def enchant_109(char: Character):
+def enchant_109(char: CharacterProperty):
     """
     物攻(90)|力智(60)
     """
@@ -140,7 +140,7 @@ def enchant_109(char: Character):
     pass
 
 
-def enchant_110(char: Character):
+def enchant_110(char: CharacterProperty):
     """
     智力(100)
     """
@@ -148,7 +148,7 @@ def enchant_110(char: Character):
     pass
 
 
-def enchant_111(char: Character):
+def enchant_111(char: CharacterProperty):
     """
     力量(100)
     """
@@ -156,7 +156,7 @@ def enchant_111(char: Character):
     pass
 
 
-def enchant_112(char: Character):
+def enchant_112(char: CharacterProperty):
     """
     体力(100)
     """
@@ -164,7 +164,7 @@ def enchant_112(char: Character):
     pass
 
 
-def enchant_113(char: Character):
+def enchant_113(char: CharacterProperty):
     """
     精神(100)
     """
@@ -176,7 +176,7 @@ def enchant_113(char: Character):
 # region 下装
 
 
-def enchant_200(char: Character):
+def enchant_200(char: CharacterProperty):
     """
     三攻(110)|力智(80)
     """
@@ -184,7 +184,7 @@ def enchant_200(char: Character):
     pass
 
 
-def enchant_201(char: Character):
+def enchant_201(char: CharacterProperty):
     """
     四维(125)|奶系Lv15被动+4
     """
@@ -194,7 +194,7 @@ def enchant_201(char: Character):
     pass
 
 
-def enchant_202(char: Character):
+def enchant_202(char: CharacterProperty):
     """
     三攻(110)|力智(90)|技攻(2%)
     """
@@ -206,7 +206,7 @@ def enchant_202(char: Character):
 # region 腰带
 
 
-def enchant_300(char: Character):
+def enchant_300(char: CharacterProperty):
     """
     三攻(30)|技攻(1%)
     """
@@ -214,7 +214,7 @@ def enchant_300(char: Character):
     pass
 
 
-def enchant_301(char: Character):
+def enchant_301(char: CharacterProperty):
     """
     三攻(10)|四维(40)|技攻(2%)
     """
@@ -222,7 +222,7 @@ def enchant_301(char: Character):
     pass
 
 
-def enchant_302(char: Character):
+def enchant_302(char: CharacterProperty):
     """
     四维(45)|Lv1~50主动+1
     """
@@ -232,7 +232,7 @@ def enchant_302(char: Character):
     pass
 
 
-def enchant_303(char: Character):
+def enchant_303(char: CharacterProperty):
     """
     三攻(36)|技能伤害(5%)|暴击率(3%)
     """
@@ -244,7 +244,7 @@ def enchant_303(char: Character):
 # region 武器
 
 
-def enchant_500(char: Character):
+def enchant_500(char: CharacterProperty):
     """
     火强(15)
     """
@@ -252,7 +252,7 @@ def enchant_500(char: Character):
     pass
 
 
-def enchant_501(char: Character):
+def enchant_501(char: CharacterProperty):
     """
     冰强(15)
     """
@@ -260,7 +260,7 @@ def enchant_501(char: Character):
     pass
 
 
-def enchant_502(char: Character):
+def enchant_502(char: CharacterProperty):
     """
     光强(15)
     """
@@ -268,7 +268,7 @@ def enchant_502(char: Character):
     pass
 
 
-def enchant_503(char: Character):
+def enchant_503(char: CharacterProperty):
     """
     暗强(15)
     """
@@ -276,7 +276,7 @@ def enchant_503(char: Character):
     pass
 
 
-def enchant_504(char: Character):
+def enchant_504(char: CharacterProperty):
     """
     火强(15)|光强(15)
     """
@@ -285,7 +285,7 @@ def enchant_504(char: Character):
     pass
 
 
-def enchant_505(char: Character):
+def enchant_505(char: CharacterProperty):
     """
     冰强(15)|暗强(15)
     """
@@ -294,7 +294,7 @@ def enchant_505(char: Character):
     pass
 
 
-def enchant_506(char: Character):
+def enchant_506(char: CharacterProperty):
     """
     火强(15)|冰强(15)
     """
@@ -303,7 +303,7 @@ def enchant_506(char: Character):
     pass
 
 
-def enchant_507(char: Character):
+def enchant_507(char: CharacterProperty):
     """
     所有属性强化(13)
     """
@@ -314,7 +314,7 @@ def enchant_507(char: Character):
     pass
 
 
-def enchant_508(char: Character):
+def enchant_508(char: CharacterProperty):
     """
     物攻(30)|独立(30)|全属强(15)|攻速(5%)
     """
@@ -326,7 +326,7 @@ def enchant_508(char: Character):
     pass
 
 
-def enchant_509(char: Character):
+def enchant_509(char: CharacterProperty):
     """
     魔攻(30)|独立(30)|全属强(15)|施放(6%)
     """
@@ -338,7 +338,7 @@ def enchant_509(char: Character):
     pass
 
 
-def enchant_510(char: Character):
+def enchant_510(char: CharacterProperty):
     """
     三攻(30)|全属强(15)
     """
@@ -350,7 +350,7 @@ def enchant_510(char: Character):
     pass
 
 
-def enchant_511(char: Character):
+def enchant_511(char: CharacterProperty):
     """
     四维(110)|施放(7%)
     """
@@ -358,7 +358,7 @@ def enchant_511(char: Character):
     pass
 
 
-def enchant_512(char: Character):
+def enchant_512(char: CharacterProperty):
     """
     三攻(50)|全属强(16)|属性攻击
     """
@@ -374,7 +374,7 @@ def enchant_512(char: Character):
 # region 项链
 
 
-def enchant_600(char: Character):
+def enchant_600(char: CharacterProperty):
     """
     所有属性强化(30)
     """
@@ -385,7 +385,7 @@ def enchant_600(char: Character):
     pass
 
 
-def enchant_601(char: Character):
+def enchant_601(char: CharacterProperty):
     """
     所有属性强化(28)
     """
@@ -396,7 +396,7 @@ def enchant_601(char: Character):
     pass
 
 
-def enchant_602(char: Character):
+def enchant_602(char: CharacterProperty):
     """
     四维(70)
     """
@@ -404,7 +404,7 @@ def enchant_602(char: Character):
     pass
 
 
-def enchant_603(char: Character):
+def enchant_603(char: CharacterProperty):
     """
     所有属性强化(33)
     """
@@ -415,7 +415,7 @@ def enchant_603(char: Character):
     pass
 
 
-def enchant_604(char: Character):
+def enchant_604(char: CharacterProperty):
     """
     火强(35)|光强(35)
     """
@@ -424,7 +424,7 @@ def enchant_604(char: Character):
     pass
 
 
-def enchant_605(char: Character):
+def enchant_605(char: CharacterProperty):
     """
     冰强(35)|暗强(35)
     """
@@ -433,7 +433,7 @@ def enchant_605(char: Character):
     pass
 
 
-def enchant_606(char: Character):
+def enchant_606(char: CharacterProperty):
     """
     四维(90)
     """
@@ -441,7 +441,7 @@ def enchant_606(char: Character):
     pass
 
 
-def enchant_607(char: Character):
+def enchant_607(char: CharacterProperty):
     """
     四维(100)|奶系Lv15被动+1
     """
@@ -451,7 +451,7 @@ def enchant_607(char: Character):
     pass
 
 
-def enchant_608(char: Character):
+def enchant_608(char: CharacterProperty):
     """
     全属强(35)|技攻(1%)
     """
@@ -467,7 +467,7 @@ def enchant_608(char: Character):
 # region 辅助装备
 
 
-def enchant_900(char: Character):
+def enchant_900(char: CharacterProperty):
     """
     三攻(110)
     """
@@ -475,7 +475,7 @@ def enchant_900(char: Character):
     pass
 
 
-def enchant_901(char: Character):
+def enchant_901(char: CharacterProperty):
     """
     四维(100)
     """
@@ -483,7 +483,7 @@ def enchant_901(char: Character):
     pass
 
 
-def enchant_902(char: Character):
+def enchant_902(char: CharacterProperty):
     """
     攻强(3%)|所有属性强化(11)|暴击率(3%)
     """
@@ -495,7 +495,7 @@ def enchant_902(char: Character):
     pass
 
 
-def enchant_903(char: Character):
+def enchant_903(char: CharacterProperty):
     """
     四维(100)|奶系Lv15被动+3
     """
@@ -505,7 +505,7 @@ def enchant_903(char: Character):
     pass
 
 
-def enchant_904(char: Character):
+def enchant_904(char: CharacterProperty):
     """
     技攻(5%)|所有属性强化(15)|暴击率(5%)
     """
@@ -517,7 +517,7 @@ def enchant_904(char: Character):
     pass
 
 
-def enchant_905(char: Character):
+def enchant_905(char: CharacterProperty):
     """
     技攻(7%)|所有属性强化(15)|暴击率(5%)
     """
@@ -533,7 +533,7 @@ def enchant_905(char: Character):
 # region 魔法石
 
 
-def enchant_1000(char: Character):
+def enchant_1000(char: CharacterProperty):
     """
     所有属性强化(30)
     """
@@ -544,7 +544,7 @@ def enchant_1000(char: Character):
     pass
 
 
-def enchant_1001(char: Character):
+def enchant_1001(char: CharacterProperty):
     """
     所有属性强化(35)
     """
@@ -555,7 +555,7 @@ def enchant_1001(char: Character):
     pass
 
 
-def enchant_1002(char: Character):
+def enchant_1002(char: CharacterProperty):
     """
     四维(100)|奶系Lv15被动+3
     """
@@ -565,7 +565,7 @@ def enchant_1002(char: Character):
     pass
 
 
-def enchant_1003(char: Character):
+def enchant_1003(char: CharacterProperty):
     """
     所有属性强化(40)
     """
@@ -576,7 +576,7 @@ def enchant_1003(char: Character):
     pass
 
 
-def enchant_1004(char: Character):
+def enchant_1004(char: CharacterProperty):
     """
     四维(120)|奶系Lv15被动+3
     """
@@ -590,7 +590,7 @@ def enchant_1004(char: Character):
 # region 耳环
 
 
-def enchant_1100(char: Character):
+def enchant_1100(char: CharacterProperty):
     """
     四维(50)|所有属性强化(11)
     """
@@ -602,7 +602,7 @@ def enchant_1100(char: Character):
     pass
 
 
-def enchant_1101(char: Character):
+def enchant_1101(char: CharacterProperty):
     """
     四维(175)
     """
@@ -610,7 +610,7 @@ def enchant_1101(char: Character):
     pass
 
 
-def enchant_1102(char: Character):
+def enchant_1102(char: CharacterProperty):
     """
     四维(70)|所有属性强化(15)
     """
@@ -622,7 +622,7 @@ def enchant_1102(char: Character):
     pass
 
 
-def enchant_1103(char: Character):
+def enchant_1103(char: CharacterProperty):
     """
     四维(200)
     """
@@ -634,7 +634,7 @@ def enchant_1103(char: Character):
 # region 称号
 
 
-def enchant_1200(char: Character):
+def enchant_1200(char: CharacterProperty):
     """
     三攻(40)|所有属性强化(15)|Lv1~50主动+1
     """
@@ -647,7 +647,7 @@ def enchant_1200(char: Character):
     pass
 
 
-def enchant_1201(char: Character):
+def enchant_1201(char: CharacterProperty):
     """
     三攻(40)|所有属性强化(15)|技攻(3%)
     """
@@ -659,7 +659,7 @@ def enchant_1201(char: Character):
     pass
 
 
-def enchant_1202(char: Character):
+def enchant_1202(char: CharacterProperty):
     """
     Lv40主动+2|三攻(40)|所有属性强化(15)|技攻(3%)
     """
@@ -672,7 +672,7 @@ def enchant_1202(char: Character):
     pass
 
 
-def enchant_1203(char: Character):
+def enchant_1203(char: CharacterProperty):
     """
     Lv45主动+2|三攻(40)|所有属性强化(15)|技攻(3%)
     """
@@ -685,7 +685,7 @@ def enchant_1203(char: Character):
     pass
 
 
-def enchant_1204(char: Character):
+def enchant_1204(char: CharacterProperty):
     """
     Lv60主动+2|三攻(40)|所有属性强化(15)|技攻(3%)
     """
@@ -698,7 +698,7 @@ def enchant_1204(char: Character):
     pass
 
 
-def enchant_1205(char: Character):
+def enchant_1205(char: CharacterProperty):
     """
     Lv70主动+2|三攻(40)|所有属性强化(15)|技攻(3%)
     """
@@ -711,7 +711,7 @@ def enchant_1205(char: Character):
     pass
 
 
-def enchant_1206(char: Character):
+def enchant_1206(char: CharacterProperty):
     """
     Lv75主动+2|三攻(40)|所有属性强化(15)|技攻(3%)
     """
@@ -724,7 +724,7 @@ def enchant_1206(char: Character):
     pass
 
 
-def enchant_1207(char: Character):
+def enchant_1207(char: CharacterProperty):
     """
     Lv80主动+2|三攻(40)|所有属性强化(15)|技攻(3%)
     """
@@ -737,7 +737,7 @@ def enchant_1207(char: Character):
     pass
 
 
-def enchant_1208(char: Character):
+def enchant_1208(char: CharacterProperty):
     """
     Lv30增益技能等级 +1
     """
@@ -746,7 +746,7 @@ def enchant_1208(char: Character):
     pass
 
 
-def enchant_1209(char: Character):
+def enchant_1209(char: CharacterProperty):
     """
     Lv30增益技能等级 +2
     """
@@ -755,7 +755,7 @@ def enchant_1209(char: Character):
     pass
 
 
-def enchant_1210(char: Character):
+def enchant_1210(char: CharacterProperty):
     """
     Lv50主动技能等级 +1
     """
@@ -764,7 +764,7 @@ def enchant_1210(char: Character):
     pass
 
 
-def enchant_1211(char: Character):
+def enchant_1211(char: CharacterProperty):
     """
     Lv50主动技能等级 +2
     """
@@ -777,7 +777,7 @@ def enchant_1211(char: Character):
 # region 宠物
 
 
-def enchant_1300(char: Character):
+def enchant_1300(char: CharacterProperty):
     """
     火强(25)
     """
@@ -785,7 +785,7 @@ def enchant_1300(char: Character):
     pass
 
 
-def enchant_1301(char: Character):
+def enchant_1301(char: CharacterProperty):
     """
     冰强(25)
     """
@@ -793,7 +793,7 @@ def enchant_1301(char: Character):
     pass
 
 
-def enchant_1302(char: Character):
+def enchant_1302(char: CharacterProperty):
     """
     光强(25)
     """
@@ -801,7 +801,7 @@ def enchant_1302(char: Character):
     pass
 
 
-def enchant_1303(char: Character):
+def enchant_1303(char: CharacterProperty):
     """
     暗强(25)
     """
@@ -809,7 +809,7 @@ def enchant_1303(char: Character):
     pass
 
 
-def enchant_1304(char: Character):
+def enchant_1304(char: CharacterProperty):
     """
     所有属性强化(23)
     """
@@ -820,7 +820,7 @@ def enchant_1304(char: Character):
     pass
 
 
-def enchant_1305(char: Character):
+def enchant_1305(char: CharacterProperty):
     """
     力量(50)
     """
@@ -828,7 +828,7 @@ def enchant_1305(char: Character):
     pass
 
 
-def enchant_1306(char: Character):
+def enchant_1306(char: CharacterProperty):
     """
     智力(50)
     """
@@ -836,7 +836,7 @@ def enchant_1306(char: Character):
     pass
 
 
-def enchant_1307(char: Character):
+def enchant_1307(char: CharacterProperty):
     """
     精神(50)
     """
@@ -844,7 +844,7 @@ def enchant_1307(char: Character):
     pass
 
 
-def enchant_1308(char: Character):
+def enchant_1308(char: CharacterProperty):
     """
     体力(50)
     """
@@ -852,7 +852,7 @@ def enchant_1308(char: Character):
     pass
 
 
-def enchant_1309(char: Character):
+def enchant_1309(char: CharacterProperty):
     """
     物攻(60)
     """
@@ -860,7 +860,7 @@ def enchant_1309(char: Character):
     pass
 
 
-def enchant_1310(char: Character):
+def enchant_1310(char: CharacterProperty):
     """
     魔攻(60)
     """
@@ -868,7 +868,7 @@ def enchant_1310(char: Character):
     pass
 
 
-def enchant_1311(char: Character):
+def enchant_1311(char: CharacterProperty):
     """
     独立(60)
     """
@@ -876,7 +876,7 @@ def enchant_1311(char: Character):
     pass
 
 
-def enchant_1312(char: Character):
+def enchant_1312(char: CharacterProperty):
     """
     火强(16)
     """
@@ -884,7 +884,7 @@ def enchant_1312(char: Character):
     pass
 
 
-def enchant_1313(char: Character):
+def enchant_1313(char: CharacterProperty):
     """
     冰强(16)
     """
@@ -892,7 +892,7 @@ def enchant_1313(char: Character):
     pass
 
 
-def enchant_1314(char: Character):
+def enchant_1314(char: CharacterProperty):
     """
     光强(16)
     """
@@ -900,7 +900,7 @@ def enchant_1314(char: Character):
     pass
 
 
-def enchant_1315(char: Character):
+def enchant_1315(char: CharacterProperty):
     """
     暗强(16)
     """
@@ -908,7 +908,7 @@ def enchant_1315(char: Character):
     pass
 
 
-def enchant_1316(char: Character):
+def enchant_1316(char: CharacterProperty):
     """
     所有属性强化(14)
     """
@@ -923,7 +923,7 @@ def enchant_1316(char: Character):
 # region 光环
 
 
-def enchant_2000(char: Character):
+def enchant_2000(char: CharacterProperty):
     """
     Lv1~95+1|攻击强化(12%)|增益量(7%)
     """
@@ -932,7 +932,7 @@ def enchant_2000(char: Character):
     pass
 
 
-def enchant_2001(char: Character):
+def enchant_2001(char: CharacterProperty):
     """
     Lv1~95+1|攻击强化(7%)|增益量(5%)
     """
@@ -941,7 +941,7 @@ def enchant_2001(char: Character):
     pass
 
 
-def enchant_2002(char: Character):
+def enchant_2002(char: CharacterProperty):
     """
     Lv1~35+1|攻击强化(5%)|增益量(3%)
     """
@@ -954,7 +954,7 @@ def enchant_2002(char: Character):
 # region 武器装扮
 
 
-def enchant_2100(char: Character):
+def enchant_2100(char: CharacterProperty):
     """
     Lv40主动+1|四维(55)
     """
@@ -963,7 +963,7 @@ def enchant_2100(char: Character):
     pass
 
 
-def enchant_2101(char: Character):
+def enchant_2101(char: CharacterProperty):
     """
     Lv45主动+1|四维(55)
     """
@@ -972,7 +972,7 @@ def enchant_2101(char: Character):
     pass
 
 
-def enchant_2102(char: Character):
+def enchant_2102(char: CharacterProperty):
     """
     Lv60主动+1|四维(55)
     """
@@ -981,7 +981,7 @@ def enchant_2102(char: Character):
     pass
 
 
-def enchant_2103(char: Character):
+def enchant_2103(char: CharacterProperty):
     """
     Lv70主动+1|四维(55)
     """
@@ -990,7 +990,7 @@ def enchant_2103(char: Character):
     pass
 
 
-def enchant_2104(char: Character):
+def enchant_2104(char: CharacterProperty):
     """
     Lv75主动+1|四维(55)
     """
@@ -999,7 +999,7 @@ def enchant_2104(char: Character):
     pass
 
 
-def enchant_2105(char: Character):
+def enchant_2105(char: CharacterProperty):
     """
     Lv80主动+1|四维(55)
     """
@@ -1012,7 +1012,7 @@ def enchant_2105(char: Character):
 # region 皮肤
 
 
-def enchant_2200(char: Character):
+def enchant_2200(char: CharacterProperty):
     """
     Lv40主动+1|所有属性强化(12)|四维(55)
     """
@@ -1025,7 +1025,7 @@ def enchant_2200(char: Character):
     pass
 
 
-def enchant_2201(char: Character):
+def enchant_2201(char: CharacterProperty):
     """
     Lv45主动+1|所有属性强化(12)|四维(55)
     """
@@ -1038,7 +1038,7 @@ def enchant_2201(char: Character):
     pass
 
 
-def enchant_2202(char: Character):
+def enchant_2202(char: CharacterProperty):
     """
     Lv60主动+1|所有属性强化(12)|四维(55)
     """
@@ -1051,7 +1051,7 @@ def enchant_2202(char: Character):
     pass
 
 
-def enchant_2203(char: Character):
+def enchant_2203(char: CharacterProperty):
     """
     Lv70主动+1|所有属性强化(12)|四维(55)
     """
@@ -1064,7 +1064,7 @@ def enchant_2203(char: Character):
     pass
 
 
-def enchant_2204(char: Character):
+def enchant_2204(char: CharacterProperty):
     """
     Lv75主动+1|所有属性强化(12)|四维(55)
     """
@@ -1077,7 +1077,7 @@ def enchant_2204(char: Character):
     pass
 
 
-def enchant_2205(char: Character):
+def enchant_2205(char: CharacterProperty):
     """
     Lv80主动+1|所有属性强化(12)|四维(55)
     """
@@ -1090,7 +1090,7 @@ def enchant_2205(char: Character):
     pass
 
 
-def enchant_2206(char: Character):
+def enchant_2206(char: CharacterProperty):
     """
     所有属性强化(6)
     """
@@ -1105,7 +1105,7 @@ def enchant_2206(char: Character):
 # region 宠物装备-红
 
 
-def enchant_2500(char: Character):
+def enchant_2500(char: CharacterProperty):
     """
     攻击强化(10%)
     """
@@ -1113,7 +1113,7 @@ def enchant_2500(char: Character):
     pass
 
 
-def enchant_2501(char: Character):
+def enchant_2501(char: CharacterProperty):
     """
     攻击强化(8%)
     """
@@ -1121,7 +1121,7 @@ def enchant_2501(char: Character):
     pass
 
 
-def enchant_2502(char: Character):
+def enchant_2502(char: CharacterProperty):
     """
     攻击强化(4%)|所有属性强化(6)
     """
@@ -1133,7 +1133,7 @@ def enchant_2502(char: Character):
     pass
 
 
-def enchant_2503(char: Character):
+def enchant_2503(char: CharacterProperty):
     """
     攻击强化(4%)|所有属性强化(4)|光强(4)
     """
@@ -1145,7 +1145,7 @@ def enchant_2503(char: Character):
     pass
 
 
-def enchant_2504(char: Character):
+def enchant_2504(char: CharacterProperty):
     """
     攻击强化(4%)|所有属性强化(4)|火强(4)
     """
@@ -1157,7 +1157,7 @@ def enchant_2504(char: Character):
     pass
 
 
-def enchant_2505(char: Character):
+def enchant_2505(char: CharacterProperty):
     """
     攻击强化(4%)|所有属性强化(4)|冰强(4)
     """
@@ -1169,7 +1169,7 @@ def enchant_2505(char: Character):
     pass
 
 
-def enchant_2506(char: Character):
+def enchant_2506(char: CharacterProperty):
     """
     攻击强化(4%)|所有属性强化(4)|暗强(4)
     """
@@ -1181,7 +1181,7 @@ def enchant_2506(char: Character):
     pass
 
 
-def enchant_2507(char: Character):
+def enchant_2507(char: CharacterProperty):
     """
     四维(33)
     """
@@ -1189,7 +1189,7 @@ def enchant_2507(char: Character):
     pass
 
 
-def enchant_2508(char: Character):
+def enchant_2508(char: CharacterProperty):
     """
     四维(25)
     """
@@ -1197,7 +1197,7 @@ def enchant_2508(char: Character):
     pass
 
 
-def enchant_2509(char: Character):
+def enchant_2509(char: CharacterProperty):
     """
     四维(50)
     """
@@ -1209,7 +1209,7 @@ def enchant_2509(char: Character):
 # region 宠物装备-绿
 
 
-def enchant_2600(char: Character):
+def enchant_2600(char: CharacterProperty):
     """
     三攻(40)|所有属性强化(30)
     """
@@ -1221,7 +1221,7 @@ def enchant_2600(char: Character):
     pass
 
 
-def enchant_2601(char: Character):
+def enchant_2601(char: CharacterProperty):
     """
     三攻(40)|所有属性强化(20)
     """
@@ -1233,7 +1233,7 @@ def enchant_2601(char: Character):
     pass
 
 
-def enchant_2602(char: Character):
+def enchant_2602(char: CharacterProperty):
     """
     四维(50)|所有属性强化(20)
     """
@@ -1245,7 +1245,7 @@ def enchant_2602(char: Character):
     pass
 
 
-def enchant_2603(char: Character):
+def enchant_2603(char: CharacterProperty):
     """
     四维(30)|所有属性强化(20)
     """
@@ -1257,7 +1257,7 @@ def enchant_2603(char: Character):
     pass
 
 
-def enchant_2604(char: Character):
+def enchant_2604(char: CharacterProperty):
     """
     四维(30)
     """
@@ -1265,7 +1265,7 @@ def enchant_2604(char: Character):
     pass
 
 
-def enchant_2605(char: Character):
+def enchant_2605(char: CharacterProperty):
     """
     四维(16)
     """
@@ -1277,7 +1277,7 @@ def enchant_2605(char: Character):
 # region 宠物装备-蓝
 
 
-def enchant_2606(char: Character):
+def enchant_2606(char: CharacterProperty):
     """
     技攻(2%)|三速(5%)
     """
@@ -1285,7 +1285,7 @@ def enchant_2606(char: Character):
     pass
 
 
-def enchant_2607(char: Character):
+def enchant_2607(char: CharacterProperty):
     """
     三攻(30)|三速(4%)
     """
@@ -1293,7 +1293,7 @@ def enchant_2607(char: Character):
     pass
 
 
-def enchant_2608(char: Character):
+def enchant_2608(char: CharacterProperty):
     """
     三攻(30)
     """
@@ -1301,7 +1301,7 @@ def enchant_2608(char: Character):
     pass
 
 
-def enchant_2609(char: Character):
+def enchant_2609(char: CharacterProperty):
     """
     三攻(25)|三速(2%)|属性攻击|暴击(5%)
     """
@@ -1309,7 +1309,7 @@ def enchant_2609(char: Character):
     pass
 
 
-def enchant_2610(char: Character):
+def enchant_2610(char: CharacterProperty):
     """
     四维(50)|三速(4%)
     """
@@ -1317,7 +1317,7 @@ def enchant_2610(char: Character):
     pass
 
 
-def enchant_2611(char: Character):
+def enchant_2611(char: CharacterProperty):
     """
     四维(25)|三速(2%)
     """
@@ -1325,7 +1325,7 @@ def enchant_2611(char: Character):
     pass
 
 
-def enchant_2612(char: Character):
+def enchant_2612(char: CharacterProperty):
     """
     四维(20)|三速(2%)
     """
@@ -1337,7 +1337,7 @@ def enchant_2612(char: Character):
 # region 快捷栏装备
 
 
-def enchant_2700(char: Character):
+def enchant_2700(char: CharacterProperty):
     """
     三攻(30)|攻击强化(10%)
     """
@@ -1345,7 +1345,7 @@ def enchant_2700(char: Character):
     pass
 
 
-def enchant_2701(char: Character):
+def enchant_2701(char: CharacterProperty):
     """
     三攻(30)|攻击强化(8%)
     """
@@ -1353,7 +1353,7 @@ def enchant_2701(char: Character):
     pass
 
 
-def enchant_2702(char: Character):
+def enchant_2702(char: CharacterProperty):
     """
     四维(8)|攻击强化(8%)
     """
@@ -1361,7 +1361,7 @@ def enchant_2702(char: Character):
     pass
 
 
-def enchant_2703(char: Character):
+def enchant_2703(char: CharacterProperty):
     """
     四维(5)|攻击强化(8%)|攻速(8%)
     """
@@ -1369,7 +1369,7 @@ def enchant_2703(char: Character):
     pass
 
 
-def enchant_2704(char: Character):
+def enchant_2704(char: CharacterProperty):
     """
     三攻(30)|三速(5%)
     """
@@ -1377,7 +1377,7 @@ def enchant_2704(char: Character):
     pass
 
 
-def enchant_2705(char: Character):
+def enchant_2705(char: CharacterProperty):
     """
     三攻(30)|三速(5%)|增益量(1%)
     """
@@ -1385,7 +1385,7 @@ def enchant_2705(char: Character):
     pass
 
 
-def enchant_2706(char: Character):
+def enchant_2706(char: CharacterProperty):
     """
     四维(50)
     """
@@ -1393,7 +1393,7 @@ def enchant_2706(char: Character):
     pass
 
 
-def enchant_2707(char: Character):
+def enchant_2707(char: CharacterProperty):
     """
     四维(50)|三速(5%)
     """
@@ -1401,7 +1401,7 @@ def enchant_2707(char: Character):
     pass
 
 
-def enchant_2708(char: Character):
+def enchant_2708(char: CharacterProperty):
     """
     四维(50)|三速(5%)|增益量(1%)
     """
@@ -1409,7 +1409,7 @@ def enchant_2708(char: Character):
     pass
 
 
-def enchant_2709(char: Character):
+def enchant_2709(char: CharacterProperty):
     """
     三攻(50)|三速(5%)|增益量(3%)
     """
@@ -1417,7 +1417,7 @@ def enchant_2709(char: Character):
     pass
 
 
-def enchant_2710(char: Character):
+def enchant_2710(char: CharacterProperty):
     """
     四维(100)|三速(5%)|增益量(3%)
     """

@@ -1,11 +1,11 @@
-from core.basic.character import Character
+from core.abstract.character import CharacterProperty
 
 stone_func_list = {}
 
 # region 潜影暗袭 套装
 
 
-def stone_1(char: Character):
+def stone_1(char: CharacterProperty):
     """
     暗影：潜藏之肃灭
 
@@ -15,7 +15,7 @@ def stone_1(char: Character):
     pass
 
 
-def stone_2(char: Character):
+def stone_2(char: CharacterProperty):
     """
     暗影：潜藏之气息
 
@@ -25,7 +25,7 @@ def stone_2(char: Character):
     pass
 
 
-def stone_3(char: Character):
+def stone_3(char: CharacterProperty):
     """
     暗影：潜藏之窥伺
 
@@ -35,7 +35,7 @@ def stone_3(char: Character):
     pass
 
 
-def stone_4(char: Character):
+def stone_4(char: CharacterProperty):
     """
     暗影：潜藏之时机
 
@@ -45,7 +45,7 @@ def stone_4(char: Character):
     pass
 
 
-def stone_5(char: Character):
+def stone_5(char: CharacterProperty):
     """
     暗影：潜藏之步伐
 
@@ -55,7 +55,7 @@ def stone_5(char: Character):
     pass
 
 
-def stone_6(char: Character):
+def stone_6(char: CharacterProperty):
     """
     暗影：凋谢的枯萎灵魂
 
@@ -65,7 +65,7 @@ def stone_6(char: Character):
     pass
 
 
-def stone_7(char: Character):
+def stone_7(char: CharacterProperty):
     """
     暗影：潜形匿影之气息
 
@@ -75,7 +75,7 @@ def stone_7(char: Character):
     pass
 
 
-def stone_8(char: Character):
+def stone_8(char: CharacterProperty):
     """
     暗影：潜形匿影之窥伺
 
@@ -85,7 +85,7 @@ def stone_8(char: Character):
     pass
 
 
-def stone_9(char: Character):
+def stone_9(char: CharacterProperty):
     """
     暗影：潜形匿影之时间
 
@@ -95,7 +95,7 @@ def stone_9(char: Character):
     pass
 
 
-def stone_10(char: Character):
+def stone_10(char: CharacterProperty):
     """
     暗影：潜形匿影之步伐
 
@@ -109,7 +109,7 @@ def stone_10(char: Character):
 # region 精灵国度 套装
 
 
-def stone_11(char: Character):
+def stone_11(char: CharacterProperty):
     """
     灵魂：正直精灵的纯粹
 
@@ -119,7 +119,7 @@ def stone_11(char: Character):
     pass
 
 
-def stone_12(char: Character):
+def stone_12(char: CharacterProperty):
     """
     灵魂：奋进精灵的勇气
 
@@ -129,7 +129,7 @@ def stone_12(char: Character):
     pass
 
 
-def stone_13(char: Character):
+def stone_13(char: CharacterProperty):
     """
     灵魂：果决精灵的智慧
 
@@ -139,7 +139,7 @@ def stone_13(char: Character):
     pass
 
 
-def stone_14(char: Character):
+def stone_14(char: CharacterProperty):
     """
     灵魂：温和精灵的威仪
 
@@ -149,7 +149,7 @@ def stone_14(char: Character):
     pass
 
 
-def stone_15(char: Character):
+def stone_15(char: CharacterProperty):
     """
     灵魂：巡旅精灵的步履
 
@@ -159,7 +159,7 @@ def stone_15(char: Character):
     pass
 
 
-def stone_16(char: Character):
+def stone_16(char: CharacterProperty):
     """
     灵魂：高洁精灵王的纯粹
 
@@ -169,7 +169,7 @@ def stone_16(char: Character):
     pass
 
 
-def stone_17(char: Character):
+def stone_17(char: CharacterProperty):
     """
     灵魂：常胜精灵王的勇气
 
@@ -179,7 +179,7 @@ def stone_17(char: Character):
     pass
 
 
-def stone_18(char: Character):
+def stone_18(char: CharacterProperty):
     """
     灵魂：沉稳精灵王的智慧
 
@@ -189,7 +189,7 @@ def stone_18(char: Character):
     pass
 
 
-def stone_19(char: Character):
+def stone_19(char: CharacterProperty):
     """
     灵魂：慈爱精灵王的威仪
 
@@ -199,7 +199,7 @@ def stone_19(char: Character):
     pass
 
 
-def stone_20(char: Character):
+def stone_20(char: CharacterProperty):
     """
     灵魂：自由精灵王的步履
 
@@ -213,7 +213,7 @@ def stone_20(char: Character):
 # region 理想之黄金乡 套装
 
 
-def stone_21(char: Character):
+def stone_21(char: CharacterProperty):
     """
     黄金：无法触及之美梦
 
@@ -223,7 +223,7 @@ def stone_21(char: Character):
     pass
 
 
-def stone_22(char: Character):
+def stone_22(char: CharacterProperty):
     """
     黄金：无法忘却之理想
 
@@ -233,7 +233,7 @@ def stone_22(char: Character):
     pass
 
 
-def stone_23(char: Character):
+def stone_23(char: CharacterProperty):
     """
     黄金：无法接受之现实
 
@@ -243,7 +243,7 @@ def stone_23(char: Character):
     pass
 
 
-def stone_24(char: Character):
+def stone_24(char: CharacterProperty):
     """
     黄金：无法遏制之贪欲
 
@@ -253,7 +253,7 @@ def stone_24(char: Character):
     pass
 
 
-def stone_25(char: Character):
+def stone_25(char: CharacterProperty):
     """
     黄金：无法避免之止境
 
@@ -263,7 +263,7 @@ def stone_25(char: Character):
     pass
 
 
-def stone_26(char: Character):
+def stone_26(char: CharacterProperty):
     """
     黄金：永恒循环之美梦
 
@@ -273,7 +273,7 @@ def stone_26(char: Character):
     pass
 
 
-def stone_27(char: Character):
+def stone_27(char: CharacterProperty):
     """
     黄金：永恒铭刻之理想
 
@@ -283,7 +283,7 @@ def stone_27(char: Character):
     pass
 
 
-def stone_28(char: Character):
+def stone_28(char: CharacterProperty):
     """
     黄金：永恒既定之现实
 
@@ -293,7 +293,7 @@ def stone_28(char: Character):
     pass
 
 
-def stone_29(char: Character):
+def stone_29(char: CharacterProperty):
     """
     黄金：永恒无尽之贪欲
 
@@ -303,7 +303,7 @@ def stone_29(char: Character):
     pass
 
 
-def stone_30(char: Character):
+def stone_30(char: CharacterProperty):
     """
     黄金：永恒残酷之止境
 
@@ -317,7 +317,7 @@ def stone_30(char: Character):
 # region 龙战八荒 套装
 
 
-def stone_31(char: Character):
+def stone_31(char: CharacterProperty):
     """
     龙战：乱世之蛟
 
@@ -327,7 +327,7 @@ def stone_31(char: Character):
     pass
 
 
-def stone_32(char: Character):
+def stone_32(char: CharacterProperty):
     """
     龙战：四海求战
 
@@ -337,7 +337,7 @@ def stone_32(char: Character):
     pass
 
 
-def stone_33(char: Character):
+def stone_33(char: CharacterProperty):
     """
     龙战：连城怒火
 
@@ -347,7 +347,7 @@ def stone_33(char: Character):
     pass
 
 
-def stone_34(char: Character):
+def stone_34(char: CharacterProperty):
     """
     龙战：摧裂之地
 
@@ -357,7 +357,7 @@ def stone_34(char: Character):
     pass
 
 
-def stone_35(char: Character):
+def stone_35(char: CharacterProperty):
     """
     龙战：破空利爪
 
@@ -367,7 +367,7 @@ def stone_35(char: Character):
     pass
 
 
-def stone_36(char: Character):
+def stone_36(char: CharacterProperty):
     """
     龙战：乱世显威之龙
 
@@ -377,7 +377,7 @@ def stone_36(char: Character):
     pass
 
 
-def stone_37(char: Character):
+def stone_37(char: CharacterProperty):
     """
     龙战：逐鹿天下之战
 
@@ -387,7 +387,7 @@ def stone_37(char: Character):
     pass
 
 
-def stone_38(char: Character):
+def stone_38(char: CharacterProperty):
     """
     龙战：炽焰燎原之火
 
@@ -397,7 +397,7 @@ def stone_38(char: Character):
     pass
 
 
-def stone_39(char: Character):
+def stone_39(char: CharacterProperty):
     """
     龙战：分崩离析之地
 
@@ -407,7 +407,7 @@ def stone_39(char: Character):
     pass
 
 
-def stone_40(char: Character):
+def stone_40(char: CharacterProperty):
     """
     龙战：踏破凌霄之爪
 
@@ -421,7 +421,7 @@ def stone_40(char: Character):
 # region 混沌净化 套装
 
 
-def stone_41(char: Character):
+def stone_41(char: CharacterProperty):
     """
     净化：灿烂光辉
 
@@ -431,7 +431,7 @@ def stone_41(char: Character):
     pass
 
 
-def stone_42(char: Character):
+def stone_42(char: CharacterProperty):
     """
     净化：柔和光辉
 
@@ -441,7 +441,7 @@ def stone_42(char: Character):
     pass
 
 
-def stone_43(char: Character):
+def stone_43(char: CharacterProperty):
     """
     净化：温暖光辉
 
@@ -451,7 +451,7 @@ def stone_43(char: Character):
     pass
 
 
-def stone_44(char: Character):
+def stone_44(char: CharacterProperty):
     """
     净化：慈爱光辉
 
@@ -461,7 +461,7 @@ def stone_44(char: Character):
     pass
 
 
-def stone_45(char: Character):
+def stone_45(char: CharacterProperty):
     """
     净化：美丽光辉
 
@@ -471,7 +471,7 @@ def stone_45(char: Character):
     pass
 
 
-def stone_46(char: Character):
+def stone_46(char: CharacterProperty):
     """
     净化：照亮黑暗的灿烂光辉
 
@@ -481,7 +481,7 @@ def stone_46(char: Character):
     pass
 
 
-def stone_47(char: Character):
+def stone_47(char: CharacterProperty):
     """
     净化：治愈创伤的柔和光辉
 
@@ -491,7 +491,7 @@ def stone_47(char: Character):
     pass
 
 
-def stone_48(char: Character):
+def stone_48(char: CharacterProperty):
     """
     净化：驱散严寒的温暖光辉
 
@@ -501,7 +501,7 @@ def stone_48(char: Character):
     pass
 
 
-def stone_49(char: Character):
+def stone_49(char: CharacterProperty):
     """
     净化：唤醒众生的慈爱光辉
 
@@ -511,7 +511,7 @@ def stone_49(char: Character):
     pass
 
 
-def stone_50(char: Character):
+def stone_50(char: CharacterProperty):
     """
     净化：泽耀万物的美丽光辉
 
@@ -525,7 +525,7 @@ def stone_50(char: Character):
 # region 天命者的气运 套装
 
 
-def stone_51(char: Character):
+def stone_51(char: CharacterProperty):
     """
     幸运：蝴蝶轻语
 
@@ -535,7 +535,7 @@ def stone_51(char: Character):
     pass
 
 
-def stone_52(char: Character):
+def stone_52(char: CharacterProperty):
     """
     幸运：蝴蝶赠礼
 
@@ -545,7 +545,7 @@ def stone_52(char: Character):
     pass
 
 
-def stone_53(char: Character):
+def stone_53(char: CharacterProperty):
     """
     幸运：蝴蝶扑翼
 
@@ -555,7 +555,7 @@ def stone_53(char: Character):
     pass
 
 
-def stone_54(char: Character):
+def stone_54(char: CharacterProperty):
     """
     幸运：蝴蝶垂泪
 
@@ -565,7 +565,7 @@ def stone_54(char: Character):
     pass
 
 
-def stone_55(char: Character):
+def stone_55(char: CharacterProperty):
     """
     幸运：蝴蝶拂风
 
@@ -575,7 +575,7 @@ def stone_55(char: Character):
     pass
 
 
-def stone_56(char: Character):
+def stone_56(char: CharacterProperty):
     """
     幸运：蝴蝶知天命
 
@@ -585,7 +585,7 @@ def stone_56(char: Character):
     pass
 
 
-def stone_57(char: Character):
+def stone_57(char: CharacterProperty):
     """
     幸运：蝴蝶增有余
 
@@ -595,7 +595,7 @@ def stone_57(char: Character):
     pass
 
 
-def stone_58(char: Character):
+def stone_58(char: CharacterProperty):
     """
     幸运：蝴蝶翩然舞
 
@@ -605,7 +605,7 @@ def stone_58(char: Character):
     pass
 
 
-def stone_59(char: Character):
+def stone_59(char: CharacterProperty):
     """
     幸运：蝴蝶喜极泣
 
@@ -615,7 +615,7 @@ def stone_59(char: Character):
     pass
 
 
-def stone_60(char: Character):
+def stone_60(char: CharacterProperty):
     """
     幸运：蝴蝶涟漪风
 
@@ -629,7 +629,7 @@ def stone_60(char: Character):
 # region 究极能量 套装
 
 
-def stone_61(char: Character):
+def stone_61(char: CharacterProperty):
     """
     突破：岌岌可危的极限
 
@@ -639,7 +639,7 @@ def stone_61(char: Character):
     pass
 
 
-def stone_62(char: Character):
+def stone_62(char: CharacterProperty):
     """
     突破：摇摇欲坠的极限
 
@@ -649,7 +649,7 @@ def stone_62(char: Character):
     pass
 
 
-def stone_63(char: Character):
+def stone_63(char: CharacterProperty):
     """
     突破：四分五裂的极限
 
@@ -659,7 +659,7 @@ def stone_63(char: Character):
     pass
 
 
-def stone_64(char: Character):
+def stone_64(char: CharacterProperty):
     """
     突破：支离破碎的极限
 
@@ -669,7 +669,7 @@ def stone_64(char: Character):
     pass
 
 
-def stone_65(char: Character):
+def stone_65(char: CharacterProperty):
     """
     突破：千疮百孔的极限
 
@@ -679,7 +679,7 @@ def stone_65(char: Character):
     pass
 
 
-def stone_66(char: Character):
+def stone_66(char: CharacterProperty):
     """
     突破：撕裂极限的爆发
 
@@ -689,7 +689,7 @@ def stone_66(char: Character):
     pass
 
 
-def stone_67(char: Character):
+def stone_67(char: CharacterProperty):
     """
     突破：超越极限的爆发
 
@@ -699,7 +699,7 @@ def stone_67(char: Character):
     pass
 
 
-def stone_68(char: Character):
+def stone_68(char: CharacterProperty):
     """
     突破：无视极限的爆发
 
@@ -709,7 +709,7 @@ def stone_68(char: Character):
     pass
 
 
-def stone_69(char: Character):
+def stone_69(char: CharacterProperty):
     """
     突破：粉碎极限的爆发
 
@@ -719,7 +719,7 @@ def stone_69(char: Character):
     pass
 
 
-def stone_70(char: Character):
+def stone_70(char: CharacterProperty):
     """
     突破：摧毁极限的爆发
 
@@ -733,7 +733,7 @@ def stone_70(char: Character):
 # region 造化自然 套装
 
 
-def stone_71(char: Character):
+def stone_71(char: CharacterProperty):
     """
     自然：绿荫绝景
 
@@ -743,7 +743,7 @@ def stone_71(char: Character):
     pass
 
 
-def stone_72(char: Character):
+def stone_72(char: CharacterProperty):
     """
     自然：花草芬芳
 
@@ -753,7 +753,7 @@ def stone_72(char: Character):
     pass
 
 
-def stone_73(char: Character):
+def stone_73(char: CharacterProperty):
     """
     自然：煦暖阳光
 
@@ -763,7 +763,7 @@ def stone_73(char: Character):
     pass
 
 
-def stone_74(char: Character):
+def stone_74(char: CharacterProperty):
     """
     自然：丰饶大地
 
@@ -773,7 +773,7 @@ def stone_74(char: Character):
     pass
 
 
-def stone_75(char: Character):
+def stone_75(char: CharacterProperty):
     """
     自然：勃勃生机
 
@@ -783,7 +783,7 @@ def stone_75(char: Character):
     pass
 
 
-def stone_76(char: Character):
+def stone_76(char: CharacterProperty):
     """
     自然：亘古苍茫之绿荫
 
@@ -793,7 +793,7 @@ def stone_76(char: Character):
     pass
 
 
-def stone_77(char: Character):
+def stone_77(char: CharacterProperty):
     """
     自然：肆意流淌之芬芳
 
@@ -803,7 +803,7 @@ def stone_77(char: Character):
     pass
 
 
-def stone_78(char: Character):
+def stone_78(char: CharacterProperty):
     """
     自然：万物生长之阳光
 
@@ -813,7 +813,7 @@ def stone_78(char: Character):
     pass
 
 
-def stone_79(char: Character):
+def stone_79(char: CharacterProperty):
     """
     自然：物华天宝之丰盈
 
@@ -823,7 +823,7 @@ def stone_79(char: Character):
     pass
 
 
-def stone_80(char: Character):
+def stone_80(char: CharacterProperty):
     """
     自然：生如夏花之绚烂
 
@@ -837,7 +837,7 @@ def stone_80(char: Character):
 # region 诸神黄昏之女武神 套装
 
 
-def stone_81(char: Character):
+def stone_81(char: CharacterProperty):
     """
     战场：闪耀的女武神金装
 
@@ -847,7 +847,7 @@ def stone_81(char: Character):
     pass
 
 
-def stone_82(char: Character):
+def stone_82(char: CharacterProperty):
     """
     战场：闪耀的女武神金链
 
@@ -857,7 +857,7 @@ def stone_82(char: Character):
     pass
 
 
-def stone_83(char: Character):
+def stone_83(char: CharacterProperty):
     """
     战场：闪耀的女武神金饰
 
@@ -867,7 +867,7 @@ def stone_83(char: Character):
     pass
 
 
-def stone_84(char: Character):
+def stone_84(char: CharacterProperty):
     """
     战场：闪耀的女武神水晶
 
@@ -877,7 +877,7 @@ def stone_84(char: Character):
     pass
 
 
-def stone_85(char: Character):
+def stone_85(char: CharacterProperty):
     """
     战场：闪耀的女武神足迹
 
@@ -887,7 +887,7 @@ def stone_85(char: Character):
     pass
 
 
-def stone_86(char: Character):
+def stone_86(char: CharacterProperty):
     """
     战场：灿烂的女武神金装
 
@@ -898,7 +898,7 @@ def stone_86(char: Character):
   
 
 
-def stone_87(char: Character):
+def stone_87(char: CharacterProperty):
     """
     战场：灿烂的女武神金链
 
@@ -908,7 +908,7 @@ def stone_87(char: Character):
     pass
 
 
-def stone_88(char: Character):
+def stone_88(char: CharacterProperty):
     """
     战场：灿烂的女武神金饰
 
@@ -918,7 +918,7 @@ def stone_88(char: Character):
     pass
 
 
-def stone_89(char: Character):
+def stone_89(char: CharacterProperty):
     """
     战场：灿烂的女武神水晶
 
@@ -928,7 +928,7 @@ def stone_89(char: Character):
     pass
 
 
-def stone_90(char: Character):
+def stone_90(char: CharacterProperty):
     """
     战场：灿烂的女武神足迹
 
@@ -942,7 +942,7 @@ def stone_90(char: Character):
 # region 青丘灵珠 套装
 
 
-def stone_91(char: Character):
+def stone_91(char: CharacterProperty):
     """
     永恒：清丽的狐仙刺绣
 
@@ -952,7 +952,7 @@ def stone_91(char: Character):
     pass
 
 
-def stone_92(char: Character):
+def stone_92(char: CharacterProperty):
     """
     永恒：清丽的狐仙饰品
 
@@ -962,7 +962,7 @@ def stone_92(char: Character):
     pass
 
 
-def stone_93(char: Character):
+def stone_93(char: CharacterProperty):
     """
     永恒：清丽的狐仙珠玉
 
@@ -972,7 +972,7 @@ def stone_93(char: Character):
     pass
 
 
-def stone_94(char: Character):
+def stone_94(char: CharacterProperty):
     """
     永恒：清丽的狐仙鬃毛
 
@@ -982,7 +982,7 @@ def stone_94(char: Character):
     pass
 
 
-def stone_95(char: Character):
+def stone_95(char: CharacterProperty):
     """
     永恒：清丽的狐仙足印
 
@@ -992,7 +992,7 @@ def stone_95(char: Character):
     pass
 
 
-def stone_96(char: Character):
+def stone_96(char: CharacterProperty):
     """
     永恒：和谐的狐仙刺绣
 
@@ -1002,7 +1002,7 @@ def stone_96(char: Character):
     pass
 
 
-def stone_97(char: Character):
+def stone_97(char: CharacterProperty):
     """
     永恒：和谐的狐仙饰品
 
@@ -1012,7 +1012,7 @@ def stone_97(char: Character):
     pass
 
 
-def stone_98(char: Character):
+def stone_98(char: CharacterProperty):
     """
     永恒：和谐的狐仙珠玉
 
@@ -1022,7 +1022,7 @@ def stone_98(char: Character):
     pass
 
 
-def stone_99(char: Character):
+def stone_99(char: CharacterProperty):
     """
     永恒：和谐的狐仙鬃毛
 
@@ -1032,7 +1032,7 @@ def stone_99(char: Character):
     pass
 
 
-def stone_100(char: Character):
+def stone_100(char: CharacterProperty):
     """
     永恒：和谐的狐仙足印
 
@@ -1046,7 +1046,7 @@ def stone_100(char: Character):
 # region 群猎美学 套装
 
 
-def stone_101(char: Character):
+def stone_101(char: CharacterProperty):
     """
     狩猎：引路人甲衣
 
@@ -1056,7 +1056,7 @@ def stone_101(char: Character):
     pass
 
 
-def stone_102(char: Character):
+def stone_102(char: CharacterProperty):
     """
     狩猎：引路人甲裤
 
@@ -1066,7 +1066,7 @@ def stone_102(char: Character):
     pass
 
 
-def stone_103(char: Character):
+def stone_103(char: CharacterProperty):
     """
     狩猎：引路人刻印
 
@@ -1076,7 +1076,7 @@ def stone_103(char: Character):
     pass
 
 
-def stone_104(char: Character):
+def stone_104(char: CharacterProperty):
     """
     狩猎：引路人腰带
 
@@ -1086,7 +1086,7 @@ def stone_104(char: Character):
     pass
 
 
-def stone_105(char: Character):
+def stone_105(char: CharacterProperty):
     """
     狩猎：引路人长靴
 
@@ -1096,7 +1096,7 @@ def stone_105(char: Character):
     pass
 
 
-def stone_106(char: Character):
+def stone_106(char: CharacterProperty):
     """
     狩猎：先知引路人甲衣
 
@@ -1106,7 +1106,7 @@ def stone_106(char: Character):
     pass
 
 
-def stone_107(char: Character):
+def stone_107(char: CharacterProperty):
     """
     狩猎：先知引路人甲裤
 
@@ -1116,7 +1116,7 @@ def stone_107(char: Character):
     pass
 
 
-def stone_108(char: Character):
+def stone_108(char: CharacterProperty):
     """
     狩猎：先知引路人刻印
 
@@ -1126,7 +1126,7 @@ def stone_108(char: Character):
     pass
 
 
-def stone_109(char: Character):
+def stone_109(char: CharacterProperty):
     """
     狩猎：先知引路人腰带
 
@@ -1136,7 +1136,7 @@ def stone_109(char: Character):
     pass
 
 
-def stone_110(char: Character):
+def stone_110(char: CharacterProperty):
     """
     狩猎：先知引路人长靴
 
@@ -1150,7 +1150,7 @@ def stone_110(char: Character):
 # region 冥思者的魔力领域 套装
 
 
-def stone_111(char: Character):
+def stone_111(char: CharacterProperty):
     """
     领域：魔力炽燃的界限
 
@@ -1160,7 +1160,7 @@ def stone_111(char: Character):
     pass
 
 
-def stone_112(char: Character):
+def stone_112(char: CharacterProperty):
     """
     领域：魔力炽然的信念
 
@@ -1170,7 +1170,7 @@ def stone_112(char: Character):
     pass
 
 
-def stone_113(char: Character):
+def stone_113(char: CharacterProperty):
     """
     领域：魔力炽然的记忆
 
@@ -1180,7 +1180,7 @@ def stone_113(char: Character):
     pass
 
 
-def stone_114(char: Character):
+def stone_114(char: CharacterProperty):
     """
     领域：魔力炽然的命运
 
@@ -1190,7 +1190,7 @@ def stone_114(char: Character):
     pass
 
 
-def stone_115(char: Character):
+def stone_115(char: CharacterProperty):
     """
     领域：魔力炽然的痕迹
 
@@ -1200,7 +1200,7 @@ def stone_115(char: Character):
     pass
 
 
-def stone_116(char: Character):
+def stone_116(char: CharacterProperty):
     """
     领域：暴走魔力的界限
 
@@ -1210,7 +1210,7 @@ def stone_116(char: Character):
     pass
 
 
-def stone_117(char: Character):
+def stone_117(char: CharacterProperty):
     """
     领域：暴走魔力的信念
 
@@ -1220,7 +1220,7 @@ def stone_117(char: Character):
     pass
 
 
-def stone_118(char: Character):
+def stone_118(char: CharacterProperty):
     """
     领域：暴走魔力的记忆
 
@@ -1230,7 +1230,7 @@ def stone_118(char: Character):
     pass
 
 
-def stone_119(char: Character):
+def stone_119(char: CharacterProperty):
     """
     领域：暴走魔力的命运
 
@@ -1240,7 +1240,7 @@ def stone_119(char: Character):
     pass
 
 
-def stone_120(char: Character):
+def stone_120(char: CharacterProperty):
     """
     领域：暴走魔力的足迹
 
@@ -1254,7 +1254,7 @@ def stone_120(char: Character):
 # region 维纳斯通宝-欲望
 
 
-def stone_121(char: Character):
+def stone_121(char: CharacterProperty):
     """
     欲望：灵魂映照之花
 
@@ -1267,7 +1267,7 @@ def stone_121(char: Character):
     pass
 
 
-def stone_122(char: Character):
+def stone_122(char: CharacterProperty):
     """
     欲望：灵魂高洁之姿
 
@@ -1280,7 +1280,7 @@ def stone_122(char: Character):
     pass
 
 
-def stone_123(char: Character):
+def stone_123(char: CharacterProperty):
     """
     欲望：灵魂相伴之顾
 
@@ -1293,7 +1293,7 @@ def stone_123(char: Character):
     pass
 
 
-def stone_124(char: Character):
+def stone_124(char: CharacterProperty):
     """
     欲望：灵魂流连之盼
 
@@ -1306,7 +1306,7 @@ def stone_124(char: Character):
     pass
 
 
-def stone_125(char: Character):
+def stone_125(char: CharacterProperty):
     """
     欲望：灵魂浸润之雅
 
@@ -1319,7 +1319,7 @@ def stone_125(char: Character):
     pass
 
 
-def stone_126(char: Character):
+def stone_126(char: CharacterProperty):
     """
     欲望：枯萎凋零之魂
 
@@ -1332,7 +1332,7 @@ def stone_126(char: Character):
     pass
 
 
-def stone_127(char: Character):
+def stone_127(char: CharacterProperty):
     """
     欲望：颓然堕尘之魄
 
@@ -1345,7 +1345,7 @@ def stone_127(char: Character):
     pass
 
 
-def stone_128(char: Character):
+def stone_128(char: CharacterProperty):
     """
     欲望：无法挽留之离
 
@@ -1358,7 +1358,7 @@ def stone_128(char: Character):
     pass
 
 
-def stone_129(char: Character):
+def stone_129(char: CharacterProperty):
     """
     欲望：失神迷离之散
 
@@ -1371,7 +1371,7 @@ def stone_129(char: Character):
     pass
 
 
-def stone_130(char: Character):
+def stone_130(char: CharacterProperty):
     """
     欲望：神恩永断之绝
 
@@ -1388,7 +1388,7 @@ def stone_130(char: Character):
 # region 维纳斯通宝-背叛
 
 
-def stone_131(char: Character):
+def stone_131(char: CharacterProperty):
     """
     背叛：隐情揭露
 
@@ -1401,7 +1401,7 @@ def stone_131(char: Character):
     pass
 
 
-def stone_132(char: Character):
+def stone_132(char: CharacterProperty):
     """
     背叛：欲望蔓延
 
@@ -1414,7 +1414,7 @@ def stone_132(char: Character):
     pass
 
 
-def stone_133(char: Character):
+def stone_133(char: CharacterProperty):
     """
     背叛：信任崩坏
 
@@ -1427,7 +1427,7 @@ def stone_133(char: Character):
     pass
 
 
-def stone_134(char: Character):
+def stone_134(char: CharacterProperty):
     """
     背叛：噩梦难逃
 
@@ -1440,7 +1440,7 @@ def stone_134(char: Character):
     pass
 
 
-def stone_135(char: Character):
+def stone_135(char: CharacterProperty):
     """
     背叛：迷途彷徨
 
@@ -1453,7 +1453,7 @@ def stone_135(char: Character):
     pass
 
 
-def stone_136(char: Character):
+def stone_136(char: CharacterProperty):
     """
     背叛：指向凡人的愤怒
 
@@ -1466,7 +1466,7 @@ def stone_136(char: Character):
     pass
 
 
-def stone_137(char: Character):
+def stone_137(char: CharacterProperty):
     """
     背叛：堕落邪神的欲望
 
@@ -1479,7 +1479,7 @@ def stone_137(char: Character):
     pass
 
 
-def stone_138(char: Character):
+def stone_138(char: CharacterProperty):
     """
     背叛：毁信导致的悲剧
 
@@ -1492,7 +1492,7 @@ def stone_138(char: Character):
     pass
 
 
-def stone_139(char: Character):
+def stone_139(char: CharacterProperty):
     """
     背叛：永世沉沦的噩梦
 
@@ -1505,7 +1505,7 @@ def stone_139(char: Character):
     pass
 
 
-def stone_140(char: Character):
+def stone_140(char: CharacterProperty):
     """
     背叛：最后一舞的缠绵
 
@@ -1522,7 +1522,7 @@ def stone_140(char: Character):
 # region 维纳斯通宝-容辉
 
 
-def stone_141(char: Character):
+def stone_141(char: CharacterProperty):
     """
     容辉：丰饶的过往
 
@@ -1535,7 +1535,7 @@ def stone_141(char: Character):
     pass
 
 
-def stone_142(char: Character):
+def stone_142(char: CharacterProperty):
     """
     容辉：从容的过往
 
@@ -1548,7 +1548,7 @@ def stone_142(char: Character):
     pass
 
 
-def stone_143(char: Character):
+def stone_143(char: CharacterProperty):
     """
     容辉：光明的过往
 
@@ -1561,7 +1561,7 @@ def stone_143(char: Character):
     pass
 
 
-def stone_144(char: Character):
+def stone_144(char: CharacterProperty):
     """
     容辉：慈爱的过往
 
@@ -1574,7 +1574,7 @@ def stone_144(char: Character):
     pass
 
 
-def stone_145(char: Character):
+def stone_145(char: CharacterProperty):
     """
     容辉：美丽的过往
 
@@ -1587,7 +1587,7 @@ def stone_145(char: Character):
     pass
 
 
-def stone_146(char: Character):
+def stone_146(char: CharacterProperty):
     """
     容辉：支离破碎的丰饶
 
@@ -1601,7 +1601,7 @@ def stone_146(char: Character):
     pass
 
 
-def stone_147(char: Character):
+def stone_147(char: CharacterProperty):
     """
     容辉：患得患失的偏执
 
@@ -1615,7 +1615,7 @@ def stone_147(char: Character):
     pass
 
 
-def stone_148(char: Character):
+def stone_148(char: CharacterProperty):
     """
     容辉：愤怒引来的黑暗
 
@@ -1629,7 +1629,7 @@ def stone_148(char: Character):
     pass
 
 
-def stone_149(char: Character):
+def stone_149(char: CharacterProperty):
     """
     容辉：心怀憎恶的诅咒
 
@@ -1643,7 +1643,7 @@ def stone_149(char: Character):
     pass
 
 
-def stone_150(char: Character):
+def stone_150(char: CharacterProperty):
     """
     容辉：金玉其外的优雅
 
@@ -1661,7 +1661,7 @@ def stone_150(char: Character):
 # region 神界
 
 
-def stone_1000(char: Character):
+def stone_1000(char: CharacterProperty):
     """
     馥郁的欢愉
 
@@ -1685,7 +1685,7 @@ def stone_1000(char: Character):
     pass
 
 
-def stone_1001(char: Character):
+def stone_1001(char: CharacterProperty):
     """
     逆流的记忆
 
@@ -1706,7 +1706,7 @@ def stone_1001(char: Character):
     pass
 
 
-def stone_1002(char: Character):
+def stone_1002(char: CharacterProperty):
     """
     爆发的噩梦
 
@@ -1730,7 +1730,7 @@ def stone_1002(char: Character):
 
 
 
-def stone_1003(char: Character):
+def stone_1003(char: CharacterProperty):
     """
     佩鲁斯帝国的荣光
 
@@ -1747,7 +1747,7 @@ def stone_1003(char: Character):
     pass
 
 
-def stone_1004(char: Character):
+def stone_1004(char: CharacterProperty):
     """
     红兔
 
@@ -1774,7 +1774,7 @@ def stone_1004(char: Character):
     pass
 
 
-def stone_1005(char: Character):
+def stone_1005(char: CharacterProperty):
     """
     回忆的低语
 
@@ -1797,7 +1797,7 @@ def stone_1005(char: Character):
     pass
 
 
-def stone_1006(char: Character):
+def stone_1006(char: CharacterProperty):
     """
     遗忘魔石
 
@@ -1817,7 +1817,7 @@ def stone_1006(char: Character):
     pass
 
 
-def stone_1007(char: Character):
+def stone_1007(char: CharacterProperty):
     """
     孵化的恶意之种
 
@@ -1840,7 +1840,7 @@ def stone_1007(char: Character):
     pass
 
 
-def stone_1008(char: Character):
+def stone_1008(char: CharacterProperty):
     """
     世界偶像戒指
 
@@ -1862,7 +1862,7 @@ def stone_1008(char: Character):
     pass
 
 
-def stone_1009(char: Character):
+def stone_1009(char: CharacterProperty):
     """
     辨明异徒的食指
 
@@ -1881,7 +1881,7 @@ def stone_1009(char: Character):
     pass
 
 
-def stone_1010(char: Character):
+def stone_1010(char: CharacterProperty):
     """
     无限可能性的探求
 
@@ -1904,7 +1904,7 @@ def stone_1010(char: Character):
     pass
 
 
-def stone_1011(char: Character):
+def stone_1011(char: CharacterProperty):
     """
     技能延展
 
@@ -1921,7 +1921,7 @@ def stone_1011(char: Character):
     pass
 
 
-def stone_1012(char: Character):
+def stone_1012(char: CharacterProperty):
     """
     无限可能性的痕迹
 
@@ -1944,7 +1944,7 @@ def stone_1012(char: Character):
     pass
 
 
-def stone_1013(char: Character):
+def stone_1013(char: CharacterProperty):
     """
     无限可能性的流动
 
@@ -1968,7 +1968,7 @@ def stone_1013(char: Character):
 
 
 
-def stone_1014(char: Character):
+def stone_1014(char: CharacterProperty):
     """
     死神的陷阱
 
@@ -1985,7 +1985,7 @@ def stone_1014(char: Character):
     pass
 
 
-def stone_1015(char: Character):
+def stone_1015(char: CharacterProperty):
     """
     混沌的漩涡
 
@@ -2008,7 +2008,7 @@ def stone_1015(char: Character):
     pass
 
 
-def stone_1016(char: Character):
+def stone_1016(char: CharacterProperty):
     """
     和平的往昔
 
@@ -2027,7 +2027,7 @@ def stone_1016(char: Character):
 
 
 
-def stone_1017(char: Character):
+def stone_1017(char: CharacterProperty):
     """
     天堂的守护
 
@@ -2049,7 +2049,7 @@ def stone_1017(char: Character):
     pass
 
 
-def stone_1018(char: Character):
+def stone_1018(char: CharacterProperty):
     """
     末日的预告
 

@@ -44,7 +44,14 @@
           <component :is="formatDamage(skill)"></component>
         </div>
       </div>
-      <div>{{showTotal}}</div>
+      <div v-if="!totalStandard" class="h-40px flex items-center justify-center text-18px border-t-1px border-t-solid border-t-#FFFF/15">{{showTotal.toFixed(0)}}</div>
+      <div
+        v-else
+        class="h-40px flex items-center justify-center text-18px border-t-1px border-t-solid border-t-#FFFF/15"
+        :style="{color:showTotal >= 0 ? '#37fa38' : '#ff0000'}"
+        >
+        {{showTotal.toFixed(2)}}%
+      </div>
     </div>
   </div>
 </template>

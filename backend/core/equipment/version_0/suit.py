@@ -1,4 +1,4 @@
-from core.basic.character import Character
+from core.abstract.character import CharacterProperty
 from core.basic.equipment import EquEffect
 
 suit_func_list = {}
@@ -6,42 +6,42 @@ suit_func_list = {}
 # region 潜影暗袭
 
 
-def suit_1(char: Character):
+def suit_1(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_2(char: Character):
+def suit_2(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_3(char: Character):
+def suit_3(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_4(char: Character):
+def suit_4(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_5(char: Character):
+def suit_5(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_6(char: Character):
+def suit_6(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     [潜影藏锋][装备主动技能]
@@ -51,7 +51,7 @@ def suit_6(char: Character):
     pass
 
 
-def suit_7(char: Character):
+def suit_7(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     [潜影藏锋][装备主动技能]
@@ -61,7 +61,7 @@ def suit_7(char: Character):
     pass
 
 
-def suit_8(char: Character):
+def suit_8(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     [潜影藏锋][装备主动技能]
@@ -71,7 +71,7 @@ def suit_8(char: Character):
     pass
 
 
-def suit_9(char: Character):
+def suit_9(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     [潜影藏锋][装备主动技能]
@@ -81,7 +81,7 @@ def suit_9(char: Character):
     pass
 
 
-def suit_10(char: Character):
+def suit_10(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     [潜影藏锋][装备主动技能]
@@ -91,7 +91,7 @@ def suit_10(char: Character):
     pass
 
 
-def suit_11(char: Character):
+def suit_11(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     施放技能时，获得[影子]层数。（最多叠加10次）
@@ -104,7 +104,7 @@ def suit_11(char: Character):
     pass
 
 
-def suit_12(char: Character):
+def suit_12(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     施放技能时，获得[影子]层数。（最多叠加10次）
@@ -117,7 +117,7 @@ def suit_12(char: Character):
     pass
 
 
-def suit_13(char: Character):
+def suit_13(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     施放技能时，获得[影子]层数。（最多叠加10次）
@@ -130,7 +130,7 @@ def suit_13(char: Character):
     pass
 
 
-def suit_14(char: Character):
+def suit_14(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     施放技能时，获得[影子]层数。（最多叠加10次）
@@ -143,7 +143,7 @@ def suit_14(char: Character):
     pass
 
 
-def suit_15(char: Character):
+def suit_15(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     施放技能时，获得[影子]层数。（最多叠加10次）
@@ -156,7 +156,7 @@ def suit_15(char: Character):
     pass
 
 
-def suit_16(char: Character):
+def suit_16(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     施放技能时，获得[影子]层数。（最多叠加10次）
@@ -176,7 +176,7 @@ def suit_16(char: Character):
     pass
 
 
-def suit_17(char: Character):
+def suit_17(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     施放技能时，获得[影子]层数。（最多叠加10次）
@@ -196,7 +196,7 @@ def suit_17(char: Character):
     pass
 
 
-def suit_18(char: Character):
+def suit_18(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     施放技能时，获得[影子]层数。（最多叠加10次）
@@ -216,7 +216,7 @@ def suit_18(char: Character):
     pass
 
 
-def suit_19(char: Character):
+def suit_19(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     施放技能时，获得[影子]层数。（最多叠加10次）
@@ -236,7 +236,7 @@ def suit_19(char: Character):
     pass
 
 
-def suit_20(char: Character):
+def suit_20(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     施放技能时，获得[影子]层数。（最多叠加10次）
@@ -256,7 +256,7 @@ def suit_20(char: Character):
     pass
 
 
-def suit_21(char: Character):
+def suit_21(char: CharacterProperty):
     """
       逆转与影子的因果关系，实现超乎寻常的动作。
     施放技能时，获得[影子]层数。（最多叠加10次）
@@ -279,42 +279,42 @@ def suit_21(char: Character):
 # region 精灵国度
 
 
-def suit_22(char: Character):
+def suit_22(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_23(char: Character):
+def suit_23(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_24(char: Character):
+def suit_24(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_25(char: Character):
+def suit_25(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_26(char: Character):
+def suit_26(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_27(char: Character):
+def suit_27(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -328,7 +328,7 @@ def suit_27(char: Character):
     pass
 
 
-def suit_28(char: Character):
+def suit_28(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -342,7 +342,7 @@ def suit_28(char: Character):
     pass
 
 
-def suit_29(char: Character):
+def suit_29(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -356,7 +356,7 @@ def suit_29(char: Character):
     pass
 
 
-def suit_30(char: Character):
+def suit_30(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -370,7 +370,7 @@ def suit_30(char: Character):
     pass
 
 
-def suit_31(char: Character):
+def suit_31(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -384,7 +384,7 @@ def suit_31(char: Character):
     pass
 
 
-def suit_32(char: Character):
+def suit_32(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -408,7 +408,7 @@ def suit_32(char: Character):
     pass
 
 
-def suit_33(char: Character):
+def suit_33(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -430,7 +430,7 @@ def suit_33(char: Character):
     pass
 
 
-def suit_34(char: Character):
+def suit_34(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -452,7 +452,7 @@ def suit_34(char: Character):
     pass
 
 
-def suit_35(char: Character):
+def suit_35(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -474,7 +474,7 @@ def suit_35(char: Character):
     pass
 
 
-def suit_36(char: Character):
+def suit_36(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -496,7 +496,7 @@ def suit_36(char: Character):
     pass
 
 
-def suit_37(char: Character):
+def suit_37(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -528,7 +528,7 @@ def suit_37(char: Character):
     pass
 
 
-def suit_38(char: Character):
+def suit_38(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -556,7 +556,7 @@ def suit_38(char: Character):
     pass
 
 
-def suit_39(char: Character):
+def suit_39(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -584,7 +584,7 @@ def suit_39(char: Character):
     pass
 
 
-def suit_40(char: Character):
+def suit_40(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -612,7 +612,7 @@ def suit_40(char: Character):
     pass
 
 
-def suit_41(char: Character):
+def suit_41(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -640,7 +640,7 @@ def suit_41(char: Character):
     pass
 
 
-def suit_42(char: Character):
+def suit_42(char: CharacterProperty):
     """
       召唤精灵一起战斗。
     [火灵安珀]
@@ -679,42 +679,42 @@ def suit_42(char: Character):
 # region 理想之黄金乡
 
 
-def suit_43(char: Character):
+def suit_43(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_44(char: Character):
+def suit_44(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_45(char: Character):
+def suit_45(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_46(char: Character):
+def suit_46(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_47(char: Character):
+def suit_47(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_48(char: Character):
+def suit_48(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
 
@@ -753,7 +753,7 @@ def suit_48(char: Character):
     pass
 
 
-def suit_49(char: Character):
+def suit_49(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
 
@@ -766,7 +766,7 @@ def suit_49(char: Character):
     pass
 
 
-def suit_50(char: Character):
+def suit_50(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
 
@@ -779,7 +779,7 @@ def suit_50(char: Character):
     pass
 
 
-def suit_51(char: Character):
+def suit_51(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
 
@@ -792,7 +792,7 @@ def suit_51(char: Character):
     pass
 
 
-def suit_52(char: Character):
+def suit_52(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
 
@@ -805,7 +805,7 @@ def suit_52(char: Character):
     pass
 
 
-def suit_53(char: Character):
+def suit_53(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
 
@@ -853,7 +853,7 @@ def suit_53(char: Character):
     pass
 
 
-def suit_54(char: Character):
+def suit_54(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
 
@@ -874,7 +874,7 @@ def suit_54(char: Character):
     pass
 
 
-def suit_55(char: Character):
+def suit_55(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
 
@@ -894,7 +894,7 @@ def suit_55(char: Character):
     pass
 
 
-def suit_56(char: Character):
+def suit_56(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
 
@@ -914,7 +914,7 @@ def suit_56(char: Character):
     pass
 
 
-def suit_57(char: Character):
+def suit_57(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
 
@@ -934,7 +934,7 @@ def suit_57(char: Character):
     pass
 
 
-def suit_58(char: Character):
+def suit_58(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
     - 超过110时，每11点，增加2%技能伤害（最多叠加2次）
@@ -1007,7 +1007,7 @@ def suit_58(char: Character):
     pass
 
 
-def suit_59(char: Character):
+def suit_59(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
     - 超过110时，每11点，增加2%技能伤害（最多叠加2次）
@@ -1036,7 +1036,7 @@ def suit_59(char: Character):
     pass
 
 
-def suit_60(char: Character):
+def suit_60(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
     - 超过110时，每11点，增加2%技能伤害（最多叠加2次）
@@ -1065,7 +1065,7 @@ def suit_60(char: Character):
     pass
 
 
-def suit_61(char: Character):
+def suit_61(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
     - 超过110时，每11点，增加2%技能伤害（最多叠加2次）
@@ -1094,7 +1094,7 @@ def suit_61(char: Character):
     pass
 
 
-def suit_62(char: Character):
+def suit_62(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
     - 超过110时，每11点，增加2%技能伤害（最多叠加2次）
@@ -1123,7 +1123,7 @@ def suit_62(char: Character):
     pass
 
 
-def suit_63(char: Character):
+def suit_63(char: CharacterProperty):
     """
       根据防具/首饰/特殊装备的强化/增幅数值总和， 适用以下效果。
     - 超过110时，每11点，增加2%技能伤害（最多叠加2次）
@@ -1200,42 +1200,42 @@ def suit_63(char: Character):
 # region 龙战八荒
 
 
-def suit_64(char: Character):
+def suit_64(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_65(char: Character):
+def suit_65(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_66(char: Character):
+def suit_66(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_67(char: Character):
+def suit_67(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_68(char: Character):
+def suit_68(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_69(char: Character):
+def suit_69(char: CharacterProperty):
     """
       [虬龙之火]
     无色小晶块消耗量减少1个。
@@ -1245,7 +1245,7 @@ def suit_69(char: Character):
     pass
 
 
-def suit_70(char: Character):
+def suit_70(char: CharacterProperty):
     """
       [虬龙之火]
     无色小晶块消耗量减少1个。
@@ -1255,7 +1255,7 @@ def suit_70(char: Character):
     pass
 
 
-def suit_71(char: Character):
+def suit_71(char: CharacterProperty):
     """
       [虬龙之火]
     无色小晶块消耗量减少1个。
@@ -1265,7 +1265,7 @@ def suit_71(char: Character):
     pass
 
 
-def suit_72(char: Character):
+def suit_72(char: CharacterProperty):
     """
       [虬龙之火]
     无色小晶块消耗量减少1个。
@@ -1275,7 +1275,7 @@ def suit_72(char: Character):
     pass
 
 
-def suit_73(char: Character):
+def suit_73(char: CharacterProperty):
     """
       [虬龙之火]
     无色小晶块消耗量减少1个。
@@ -1285,7 +1285,7 @@ def suit_73(char: Character):
     pass
 
 
-def suit_74(char: Character):
+def suit_74(char: CharacterProperty):
     """
       [蛟龙之火]
     无色小晶块消耗量减少2个。
@@ -1300,7 +1300,7 @@ def suit_74(char: Character):
     pass
 
 
-def suit_75(char: Character):
+def suit_75(char: CharacterProperty):
     """
       [蛟龙之火]
     无色小晶块消耗量减少2个。
@@ -1314,7 +1314,7 @@ def suit_75(char: Character):
     pass
 
 
-def suit_76(char: Character):
+def suit_76(char: CharacterProperty):
     """
       [蛟龙之火]
     无色小晶块消耗量减少2个。
@@ -1328,7 +1328,7 @@ def suit_76(char: Character):
     pass
 
 
-def suit_77(char: Character):
+def suit_77(char: CharacterProperty):
     """
       [蛟龙之火]
     无色小晶块消耗量减少2个。
@@ -1342,7 +1342,7 @@ def suit_77(char: Character):
     pass
 
 
-def suit_78(char: Character):
+def suit_78(char: CharacterProperty):
     """
       [蛟龙之火]
     无色小晶块消耗量减少2个。
@@ -1356,7 +1356,7 @@ def suit_78(char: Character):
     pass
 
 
-def suit_79(char: Character):
+def suit_79(char: CharacterProperty):
     """
       通过释放龙之力来增强自己。
     [烛龙之火]
@@ -1392,7 +1392,7 @@ def suit_79(char: Character):
     pass
 
 
-def suit_80(char: Character):
+def suit_80(char: CharacterProperty):
     """
       通过释放龙之力来增强自己。
     [烛龙之火]
@@ -1417,7 +1417,7 @@ def suit_80(char: Character):
     pass
 
 
-def suit_81(char: Character):
+def suit_81(char: CharacterProperty):
     """
       通过释放龙之力来增强自己。
     [烛龙之火]
@@ -1442,7 +1442,7 @@ def suit_81(char: Character):
     pass
 
 
-def suit_82(char: Character):
+def suit_82(char: CharacterProperty):
     """
       通过释放龙之力来增强自己。
     [烛龙之火]
@@ -1467,7 +1467,7 @@ def suit_82(char: Character):
     pass
 
 
-def suit_83(char: Character):
+def suit_83(char: CharacterProperty):
     """
       通过释放龙之力来增强自己。
     [烛龙之火]
@@ -1492,7 +1492,7 @@ def suit_83(char: Character):
     pass
 
 
-def suit_84(char: Character):
+def suit_84(char: CharacterProperty):
     """
       [应龙之火]
     无色小晶块消耗量减少5个。
@@ -1527,42 +1527,42 @@ def suit_84(char: Character):
 # region 暗黑净化
 
 
-def suit_85(char: Character):
+def suit_85(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_86(char: Character):
+def suit_86(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_87(char: Character):
+def suit_87(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_88(char: Character):
+def suit_88(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_89(char: Character):
+def suit_89(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_90(char: Character):
+def suit_90(char: CharacterProperty):
     """
       进入地下城时， 净化状态自动生效
 
@@ -1574,7 +1574,7 @@ def suit_90(char: Character):
     pass
 
 
-def suit_91(char: Character):
+def suit_91(char: CharacterProperty):
     """
       进入地下城时， 净化状态自动生效
 
@@ -1586,7 +1586,7 @@ def suit_91(char: Character):
     pass
 
 
-def suit_92(char: Character):
+def suit_92(char: CharacterProperty):
     """
       进入地下城时， 净化状态自动生效
 
@@ -1598,7 +1598,7 @@ def suit_92(char: Character):
     pass
 
 
-def suit_93(char: Character):
+def suit_93(char: CharacterProperty):
     """
       进入地下城时， 净化状态自动生效
 
@@ -1610,7 +1610,7 @@ def suit_93(char: Character):
     pass
 
 
-def suit_94(char: Character):
+def suit_94(char: CharacterProperty):
     """
       进入地下城时， 净化状态自动生效
 
@@ -1622,7 +1622,7 @@ def suit_94(char: Character):
     pass
 
 
-def suit_95(char: Character):
+def suit_95(char: CharacterProperty):
     """
       [暗黑净化][装备主动技能]根据使用者的意愿调整净化与堕落状态。
     - 进入地下城时，净化状态自动生效
@@ -1643,7 +1643,7 @@ def suit_95(char: Character):
     pass
 
 
-def suit_96(char: Character):
+def suit_96(char: CharacterProperty):
     """
       [暗黑净化][装备主动技能]根据使用者的意愿调整净化与堕落状态。
     - 进入地下城时，净化状态自动生效
@@ -1660,7 +1660,7 @@ def suit_96(char: Character):
     pass
 
 
-def suit_97(char: Character):
+def suit_97(char: CharacterProperty):
     """
       [暗黑净化][装备主动技能]根据使用者的意愿调整净化与堕落状态。
     - 进入地下城时，净化状态自动生效
@@ -1677,7 +1677,7 @@ def suit_97(char: Character):
     pass
 
 
-def suit_98(char: Character):
+def suit_98(char: CharacterProperty):
     """
       [暗黑净化][装备主动技能]根据使用者的意愿调整净化与堕落状态。
     - 进入地下城时，净化状态自动生效
@@ -1694,7 +1694,7 @@ def suit_98(char: Character):
     pass
 
 
-def suit_99(char: Character):
+def suit_99(char: CharacterProperty):
     """
       [暗黑净化][装备主动技能]根据使用者的意愿调整净化与堕落状态。
     - 进入地下城时，净化状态自动生效
@@ -1711,7 +1711,7 @@ def suit_99(char: Character):
     pass
 
 
-def suit_100(char: Character):
+def suit_100(char: CharacterProperty):
     """
       [暗黑净化][装备主动技能]
     根据使用者的意愿调整净化与堕落状态。
@@ -1731,7 +1731,7 @@ def suit_100(char: Character):
     pass
 
 
-def suit_101(char: Character):
+def suit_101(char: CharacterProperty):
     """
       [暗黑净化][装备主动技能]
     根据使用者的意愿调整净化与堕落状态。
@@ -1751,7 +1751,7 @@ def suit_101(char: Character):
     pass
 
 
-def suit_102(char: Character):
+def suit_102(char: CharacterProperty):
     """
       [暗黑净化][装备主动技能]
     根据使用者的意愿调整净化与堕落状态。
@@ -1771,7 +1771,7 @@ def suit_102(char: Character):
     pass
 
 
-def suit_103(char: Character):
+def suit_103(char: CharacterProperty):
     """
       [暗黑净化][装备主动技能]
     根据使用者的意愿调整净化与堕落状态。
@@ -1791,7 +1791,7 @@ def suit_103(char: Character):
     pass
 
 
-def suit_104(char: Character):
+def suit_104(char: CharacterProperty):
     """
       [暗黑净化][装备主动技能]
     根据使用者的意愿调整净化与堕落状态。
@@ -1811,7 +1811,7 @@ def suit_104(char: Character):
     pass
 
 
-def suit_105(char: Character):
+def suit_105(char: CharacterProperty):
     """
       净化与堕落达到协调后， 进入均衡状态。
 
@@ -1841,42 +1841,42 @@ def suit_105(char: Character):
 # region 天命者的气运
 
 
-def suit_106(char: Character):
+def suit_106(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_107(char: Character):
+def suit_107(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_108(char: Character):
+def suit_108(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_109(char: Character):
+def suit_109(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_110(char: Character):
+def suit_110(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_111(char: Character):
+def suit_111(char: CharacterProperty):
     """
       神秘的蝴蝶为角色带来好运。 有一定几率初始化技能冷却时间， 提供更多施放技能的机会。
 
@@ -1891,7 +1891,7 @@ def suit_111(char: Character):
     pass
 
 
-def suit_112(char: Character):
+def suit_112(char: CharacterProperty):
     """
       神秘的蝴蝶为角色带来好运。 有一定几率初始化技能冷却时间， 提供更多施放技能的机会。
 
@@ -1906,7 +1906,7 @@ def suit_112(char: Character):
     pass
 
 
-def suit_113(char: Character):
+def suit_113(char: CharacterProperty):
     """
       神秘的蝴蝶为角色带来好运。 有一定几率初始化技能冷却时间， 提供更多施放技能的机会。
 
@@ -1921,7 +1921,7 @@ def suit_113(char: Character):
     pass
 
 
-def suit_114(char: Character):
+def suit_114(char: CharacterProperty):
     """
       神秘的蝴蝶为角色带来好运。 有一定几率初始化技能冷却时间， 提供更多施放技能的机会。
 
@@ -1936,7 +1936,7 @@ def suit_114(char: Character):
     pass
 
 
-def suit_115(char: Character):
+def suit_115(char: CharacterProperty):
     """
       神秘的蝴蝶为角色带来好运。 有一定几率初始化技能冷却时间， 提供更多施放技能的机会。
 
@@ -1951,7 +1951,7 @@ def suit_115(char: Character):
     pass
 
 
-def suit_116(char: Character):
+def suit_116(char: CharacterProperty):
     """
       [第一次幸运]
     技能伤害  +3%
@@ -1972,7 +1972,7 @@ def suit_116(char: Character):
     pass
 
 
-def suit_117(char: Character):
+def suit_117(char: CharacterProperty):
     """
       [第一次幸运]
     技能伤害  +3%
@@ -1989,7 +1989,7 @@ def suit_117(char: Character):
     pass
 
 
-def suit_118(char: Character):
+def suit_118(char: CharacterProperty):
     """
       [第一次幸运]
     技能伤害  +3%
@@ -2006,7 +2006,7 @@ def suit_118(char: Character):
     pass
 
 
-def suit_119(char: Character):
+def suit_119(char: CharacterProperty):
     """
       [第一次幸运]
     技能伤害  +3%
@@ -2023,7 +2023,7 @@ def suit_119(char: Character):
     pass
 
 
-def suit_120(char: Character):
+def suit_120(char: CharacterProperty):
     """
       [第一次幸运]
     技能伤害  +3%
@@ -2040,7 +2040,7 @@ def suit_120(char: Character):
     pass
 
 
-def suit_121(char: Character):
+def suit_121(char: CharacterProperty):
     """
       [第一次幸运]
     - 技能伤害  +3%
@@ -2061,7 +2061,7 @@ def suit_121(char: Character):
     pass
 
 
-def suit_122(char: Character):
+def suit_122(char: CharacterProperty):
     """
       [第一次幸运]
     - 技能伤害  +3%
@@ -2082,7 +2082,7 @@ def suit_122(char: Character):
     pass
 
 
-def suit_123(char: Character):
+def suit_123(char: CharacterProperty):
     """
       [第一次幸运]
     - 技能伤害  +3%
@@ -2103,7 +2103,7 @@ def suit_123(char: Character):
     pass
 
 
-def suit_124(char: Character):
+def suit_124(char: CharacterProperty):
     """
       [第一次幸运]
     - 技能伤害  +3%
@@ -2124,7 +2124,7 @@ def suit_124(char: Character):
     pass
 
 
-def suit_125(char: Character):
+def suit_125(char: CharacterProperty):
     """
       [第一次幸运]
     - 技能伤害  +3%
@@ -2145,7 +2145,7 @@ def suit_125(char: Character):
     pass
 
 
-def suit_126(char: Character):
+def suit_126(char: CharacterProperty):
     """
       [第一次幸运]
     技能伤害  +3%
@@ -2175,42 +2175,42 @@ def suit_126(char: Character):
 # region 究极能量
 
 
-def suit_127(char: Character):
+def suit_127(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_128(char: Character):
+def suit_128(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_129(char: Character):
+def suit_129(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_130(char: Character):
+def suit_130(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_131(char: Character):
+def suit_131(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_132(char: Character):
+def suit_132(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2227,7 +2227,7 @@ def suit_132(char: Character):
     pass
 
 
-def suit_133(char: Character):
+def suit_133(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2240,7 +2240,7 @@ def suit_133(char: Character):
     pass
 
 
-def suit_134(char: Character):
+def suit_134(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2253,7 +2253,7 @@ def suit_134(char: Character):
     pass
 
 
-def suit_135(char: Character):
+def suit_135(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2266,7 +2266,7 @@ def suit_135(char: Character):
     pass
 
 
-def suit_136(char: Character):
+def suit_136(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2279,7 +2279,7 @@ def suit_136(char: Character):
     pass
 
 
-def suit_137(char: Character):
+def suit_137(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2298,7 +2298,7 @@ def suit_137(char: Character):
     pass
 
 
-def suit_138(char: Character):
+def suit_138(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2312,7 +2312,7 @@ def suit_138(char: Character):
     pass
 
 
-def suit_139(char: Character):
+def suit_139(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2326,7 +2326,7 @@ def suit_139(char: Character):
     pass
 
 
-def suit_140(char: Character):
+def suit_140(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2340,7 +2340,7 @@ def suit_140(char: Character):
     pass
 
 
-def suit_141(char: Character):
+def suit_141(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2354,7 +2354,7 @@ def suit_141(char: Character):
     pass
 
 
-def suit_142(char: Character):
+def suit_142(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2388,7 +2388,7 @@ def suit_142(char: Character):
     pass
 
 
-def suit_143(char: Character):
+def suit_143(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2411,7 +2411,7 @@ def suit_143(char: Character):
     pass
 
 
-def suit_144(char: Character):
+def suit_144(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2434,7 +2434,7 @@ def suit_144(char: Character):
     pass
 
 
-def suit_145(char: Character):
+def suit_145(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2457,7 +2457,7 @@ def suit_145(char: Character):
     pass
 
 
-def suit_146(char: Character):
+def suit_146(char: CharacterProperty):
     """
       [限制器解除]
     - 解除觉醒技能链接 (辅助职业除外)
@@ -2480,7 +2480,7 @@ def suit_146(char: Character):
     pass
 
 
-def suit_147(char: Character):
+def suit_147(char: CharacterProperty):
     """
       [限制器解除]
 
@@ -2520,42 +2520,42 @@ def suit_147(char: Character):
 # region 造化自然
 
 
-def suit_148(char: Character):
+def suit_148(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_149(char: Character):
+def suit_149(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_150(char: Character):
+def suit_150(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_151(char: Character):
+def suit_151(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_152(char: Character):
+def suit_152(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_153(char: Character):
+def suit_153(char: CharacterProperty):
     """
       [无可违背的自然 - 干预]
     攻击时引发自然爆炸攻击敌人。 (冷却时间5秒)
@@ -2564,7 +2564,7 @@ def suit_153(char: Character):
     pass
 
 
-def suit_154(char: Character):
+def suit_154(char: CharacterProperty):
     """
       [无可违背的自然 - 干预]
     攻击时引发自然爆炸攻击敌人。 (冷却时间5秒)
@@ -2574,7 +2574,7 @@ def suit_154(char: Character):
     pass
 
 
-def suit_155(char: Character):
+def suit_155(char: CharacterProperty):
     """
       [无可违背的自然 - 干预]
     攻击时引发自然爆炸攻击敌人。 (冷却时间5秒)
@@ -2584,7 +2584,7 @@ def suit_155(char: Character):
     pass
 
 
-def suit_156(char: Character):
+def suit_156(char: CharacterProperty):
     """
       [无可违背的自然 - 干预]
     攻击时引发自然爆炸攻击敌人。 (冷却时间5秒)
@@ -2594,7 +2594,7 @@ def suit_156(char: Character):
     pass
 
 
-def suit_157(char: Character):
+def suit_157(char: CharacterProperty):
     """
       [无可违背的自然 - 干预]
     攻击时引发自然爆炸攻击敌人。 (冷却时间5秒)
@@ -2604,7 +2604,7 @@ def suit_157(char: Character):
     pass
 
 
-def suit_158(char: Character):
+def suit_158(char: CharacterProperty):
     """
       [无可违背的自然 - 震怒]
     攻击时产生小型旋风， 攻击小范围的敌人， 并吸附敌人。 (冷却时间5秒)
@@ -2614,7 +2614,7 @@ def suit_158(char: Character):
     pass
 
 
-def suit_159(char: Character):
+def suit_159(char: CharacterProperty):
     """
       [无可违背的自然 - 震怒]
     攻击时产生小型旋风， 攻击小范围的敌人， 并吸附敌人。 (冷却时间5秒)
@@ -2624,7 +2624,7 @@ def suit_159(char: Character):
     pass
 
 
-def suit_160(char: Character):
+def suit_160(char: CharacterProperty):
     """
       [无可违背的自然 - 震怒]
     攻击时产生小型旋风， 攻击小范围的敌人， 并吸附敌人。 (冷却时间5秒)
@@ -2634,7 +2634,7 @@ def suit_160(char: Character):
     pass
 
 
-def suit_161(char: Character):
+def suit_161(char: CharacterProperty):
     """
       [无可违背的自然 - 震怒]
     攻击时产生小型旋风， 攻击小范围的敌人， 并吸附敌人。 (冷却时间5秒)
@@ -2644,7 +2644,7 @@ def suit_161(char: Character):
     pass
 
 
-def suit_162(char: Character):
+def suit_162(char: CharacterProperty):
     """
       [无可违背的自然 - 震怒]
     攻击时产生小型旋风， 攻击小范围的敌人， 并吸附敌人。 (冷却时间5秒)
@@ -2654,7 +2654,7 @@ def suit_162(char: Character):
     pass
 
 
-def suit_163(char: Character):
+def suit_163(char: CharacterProperty):
     """
       [无可违背的自然 - 制裁]
     攻击时引发落雷， 攻击大范围敌人。 (冷却时间5秒)
@@ -2664,7 +2664,7 @@ def suit_163(char: Character):
     pass
 
 
-def suit_164(char: Character):
+def suit_164(char: CharacterProperty):
     """
       [无可违背的自然 - 制裁]
     攻击时引发落雷， 攻击大范围敌人。 (冷却时间5秒)
@@ -2674,7 +2674,7 @@ def suit_164(char: Character):
     pass
 
 
-def suit_165(char: Character):
+def suit_165(char: CharacterProperty):
     """
       [无可违背的自然 - 制裁]
     攻击时引发落雷， 攻击大范围敌人。 (冷却时间5秒)
@@ -2684,7 +2684,7 @@ def suit_165(char: Character):
     pass
 
 
-def suit_166(char: Character):
+def suit_166(char: CharacterProperty):
     """
       [无可违背的自然 - 制裁]
     攻击时引发落雷， 攻击大范围敌人。 (冷却时间5秒)
@@ -2694,7 +2694,7 @@ def suit_166(char: Character):
     pass
 
 
-def suit_167(char: Character):
+def suit_167(char: CharacterProperty):
     """
       [无可违背的自然 - 制裁]
     攻击时引发落雷， 攻击大范围敌人。 (冷却时间5秒)
@@ -2704,7 +2704,7 @@ def suit_167(char: Character):
     pass
 
 
-def suit_168(char: Character):
+def suit_168(char: CharacterProperty):
     """
       利用无可违背的自然之力，对敌人造成巨大伤害。
     [无可违背的自然- 灾变]攻击时引发暴风雪，攻击地图上的所有敌人。（冷却时间5秒）- 暴风雪伤害量 60,480%
@@ -2721,42 +2721,42 @@ def suit_168(char: Character):
 # region 诸神黄昏之女武神
 
 
-def suit_169(char: Character):
+def suit_169(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_170(char: Character):
+def suit_170(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_171(char: Character):
+def suit_171(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_172(char: Character):
+def suit_172(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_173(char: Character):
+def suit_173(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_174(char: Character):
+def suit_174(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -2769,7 +2769,7 @@ def suit_174(char: Character):
     pass
 
 
-def suit_175(char: Character):
+def suit_175(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -2782,7 +2782,7 @@ def suit_175(char: Character):
     pass
 
 
-def suit_176(char: Character):
+def suit_176(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -2795,7 +2795,7 @@ def suit_176(char: Character):
     pass
 
 
-def suit_177(char: Character):
+def suit_177(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -2808,7 +2808,7 @@ def suit_177(char: Character):
     pass
 
 
-def suit_178(char: Character):
+def suit_178(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -2821,7 +2821,7 @@ def suit_178(char: Character):
     pass
 
 
-def suit_179(char: Character):
+def suit_179(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -2840,7 +2840,7 @@ def suit_179(char: Character):
     pass
 
 
-def suit_180(char: Character):
+def suit_180(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -2858,7 +2858,7 @@ def suit_180(char: Character):
     pass
 
 
-def suit_181(char: Character):
+def suit_181(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -2876,7 +2876,7 @@ def suit_181(char: Character):
     pass
 
 
-def suit_182(char: Character):
+def suit_182(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -2894,7 +2894,7 @@ def suit_182(char: Character):
     pass
 
 
-def suit_183(char: Character):
+def suit_183(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -2912,7 +2912,7 @@ def suit_183(char: Character):
     pass
 
 
-def suit_184(char: Character):
+def suit_184(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -2939,7 +2939,7 @@ def suit_184(char: Character):
     pass
 
 
-def suit_185(char: Character):
+def suit_185(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -2964,7 +2964,7 @@ def suit_185(char: Character):
     pass
 
 
-def suit_186(char: Character):
+def suit_186(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -2988,32 +2988,7 @@ def suit_186(char: Character):
     suit_184(char)
     pass
 
-def suit_187(char: Character):
-    """
-      借用女武神的一部分神秘力量。
-
-    [突破] [装备发动属性]
-
-    与女武神融合， 向前方突进。
-    - 正面突破伤害 : 6,360%
-    - 冷却时间8秒
-
-    [审判][装备发动属性]
-    与女武神融合， 移动到敌人后方进行攻击。
-    - 审判伤害 : 9,300%
-    - 冷却时间15秒
-
-    每施放8次无色小晶块技能时， 发动[天罚] 。 (冷却时间20秒)
-
-    [天罚]
-    召唤女武神， 对四周敌人施以天罚。
-    - 天罚伤害 : 136800%
-    """
-    suit_184(char)
-    pass
-
-
-def suit_188(char: Character):
+def suit_187(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -3038,7 +3013,32 @@ def suit_188(char: Character):
     pass
 
 
-def suit_189(char: Character):
+def suit_188(char: CharacterProperty):
+    """
+      借用女武神的一部分神秘力量。
+
+    [突破] [装备发动属性]
+
+    与女武神融合， 向前方突进。
+    - 正面突破伤害 : 6,360%
+    - 冷却时间8秒
+
+    [审判][装备发动属性]
+    与女武神融合， 移动到敌人后方进行攻击。
+    - 审判伤害 : 9,300%
+    - 冷却时间15秒
+
+    每施放8次无色小晶块技能时， 发动[天罚] 。 (冷却时间20秒)
+
+    [天罚]
+    召唤女武神， 对四周敌人施以天罚。
+    - 天罚伤害 : 136800%
+    """
+    suit_184(char)
+    pass
+
+
+def suit_189(char: CharacterProperty):
     """
       借用女武神的一部分神秘力量。
 
@@ -3074,42 +3074,42 @@ def suit_189(char: Character):
 # region 青丘灵珠
 
 
-def suit_190(char: Character):
+def suit_190(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_191(char: Character):
+def suit_191(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_192(char: Character):
+def suit_192(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_193(char: Character):
+def suit_193(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_194(char: Character):
+def suit_194(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_195(char: Character):
+def suit_195(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     - 攻击时，灵珠能量 +5（冷却时间1秒）
@@ -3126,7 +3126,7 @@ def suit_195(char: Character):
     pass
 
 
-def suit_196(char: Character):
+def suit_196(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     - 攻击时，灵珠能量 +5（冷却时间1秒）
@@ -3143,7 +3143,7 @@ def suit_196(char: Character):
     pass
 
 
-def suit_197(char: Character):
+def suit_197(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     - 攻击时，灵珠能量 +5（冷却时间1秒）
@@ -3160,7 +3160,7 @@ def suit_197(char: Character):
     pass
 
 
-def suit_198(char: Character):
+def suit_198(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     - 攻击时，灵珠能量 +5（冷却时间1秒）
@@ -3177,7 +3177,7 @@ def suit_198(char: Character):
     pass
 
 
-def suit_199(char: Character):
+def suit_199(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     - 攻击时，灵珠能量 +5（冷却时间1秒）
@@ -3194,7 +3194,7 @@ def suit_199(char: Character):
     pass
 
 
-def suit_200(char: Character):
+def suit_200(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     - 攻击时，灵珠能量 +9（冷却时间1秒）
@@ -3212,7 +3212,7 @@ def suit_200(char: Character):
     pass
 
 
-def suit_201(char: Character):
+def suit_201(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     - 攻击时，灵珠能量 +9（冷却时间1秒）
@@ -3230,7 +3230,7 @@ def suit_201(char: Character):
     pass
 
 
-def suit_202(char: Character):
+def suit_202(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     - 攻击时，灵珠能量 +9（冷却时间1秒）
@@ -3248,7 +3248,7 @@ def suit_202(char: Character):
     pass
 
 
-def suit_203(char: Character):
+def suit_203(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     - 攻击时，灵珠能量 +9（冷却时间1秒）
@@ -3266,7 +3266,7 @@ def suit_203(char: Character):
     pass
 
 
-def suit_204(char: Character):
+def suit_204(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     - 攻击时，灵珠能量 +9（冷却时间1秒）
@@ -3284,7 +3284,7 @@ def suit_204(char: Character):
     pass
 
 
-def suit_205(char: Character):
+def suit_205(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     一攻击时，灵珠能量  +9（冷却时间1秒）
@@ -3304,7 +3304,7 @@ def suit_205(char: Character):
     pass
 
 
-def suit_206(char: Character):
+def suit_206(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     一攻击时，灵珠能量  +9（冷却时间1秒）
@@ -3324,7 +3324,7 @@ def suit_206(char: Character):
     pass
 
 
-def suit_207(char: Character):
+def suit_207(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     一攻击时，灵珠能量  +9（冷却时间1秒）
@@ -3344,7 +3344,7 @@ def suit_207(char: Character):
     pass
 
 
-def suit_208(char: Character):
+def suit_208(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     一攻击时，灵珠能量  +9（冷却时间1秒）
@@ -3364,7 +3364,7 @@ def suit_208(char: Character):
     pass
 
 
-def suit_209(char: Character):
+def suit_209(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     一攻击时，灵珠能量  +9（冷却时间1秒）
@@ -3384,7 +3384,7 @@ def suit_209(char: Character):
     pass
 
 
-def suit_210(char: Character):
+def suit_210(char: CharacterProperty):
     """
       借用青丘狐的灵珠之力，瞬间变强。[青丘灵珠]激活
     - 攻击时，灵珠能量 +14（冷却时间1秒）
@@ -3408,42 +3408,42 @@ def suit_210(char: Character):
 # region 群猎美学
 
 
-def suit_211(char: Character):
+def suit_211(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_212(char: Character):
+def suit_212(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_213(char: Character):
+def suit_213(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_214(char: Character):
+def suit_214(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_215(char: Character):
+def suit_215(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_216(char: Character):
+def suit_216(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
 
@@ -3472,7 +3472,7 @@ def suit_216(char: Character):
     pass
 
 
-def suit_217(char: Character):
+def suit_217(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
 
@@ -3497,7 +3497,7 @@ def suit_217(char: Character):
     pass
 
 
-def suit_218(char: Character):
+def suit_218(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
 
@@ -3522,7 +3522,7 @@ def suit_218(char: Character):
     pass
 
 
-def suit_219(char: Character):
+def suit_219(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
 
@@ -3547,7 +3547,7 @@ def suit_219(char: Character):
     pass
 
 
-def suit_220(char: Character):
+def suit_220(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
 
@@ -3572,7 +3572,7 @@ def suit_220(char: Character):
     pass
 
 
-def suit_221(char: Character):
+def suit_221(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
     [组队时生效]
@@ -3600,7 +3600,7 @@ def suit_221(char: Character):
     pass
 
 
-def suit_222(char: Character):
+def suit_222(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
     [组队时生效]
@@ -3624,7 +3624,7 @@ def suit_222(char: Character):
     pass
 
 
-def suit_223(char: Character):
+def suit_223(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
     [组队时生效]
@@ -3648,7 +3648,7 @@ def suit_223(char: Character):
     pass
 
 
-def suit_224(char: Character):
+def suit_224(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
     [组队时生效]
@@ -3672,7 +3672,7 @@ def suit_224(char: Character):
     pass
 
 
-def suit_225(char: Character):
+def suit_225(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
     [组队时生效]
@@ -3696,7 +3696,7 @@ def suit_225(char: Character):
     pass
 
 
-def suit_226(char: Character):
+def suit_226(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
 
@@ -3726,7 +3726,7 @@ def suit_226(char: Character):
     pass
 
 
-def suit_227(char: Character):
+def suit_227(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
 
@@ -3752,7 +3752,7 @@ def suit_227(char: Character):
     pass
 
 
-def suit_228(char: Character):
+def suit_228(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
 
@@ -3778,7 +3778,7 @@ def suit_228(char: Character):
     pass
 
 
-def suit_229(char: Character):
+def suit_229(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
 
@@ -3804,7 +3804,7 @@ def suit_229(char: Character):
     pass
 
 
-def suit_230(char: Character):
+def suit_230(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
 
@@ -3830,7 +3830,7 @@ def suit_230(char: Character):
     pass
 
 
-def suit_231(char: Character):
+def suit_231(char: CharacterProperty):
     """
       与同伴在一起时， 会变得更强。
 
@@ -3863,42 +3863,42 @@ def suit_231(char: Character):
 # region 冥思者的魔力领域
 
 
-def suit_232(char: Character):
+def suit_232(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_233(char: Character):
+def suit_233(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_234(char: Character):
+def suit_234(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_235(char: Character):
+def suit_235(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_236(char: Character):
+def suit_236(char: CharacterProperty):
     """
     -
     """
     pass
 
 
-def suit_237(char: Character):
+def suit_237(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -3922,7 +3922,7 @@ def suit_237(char: Character):
     pass
 
 
-def suit_238(char: Character):
+def suit_238(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -3943,7 +3943,7 @@ def suit_238(char: Character):
     pass
 
 
-def suit_239(char: Character):
+def suit_239(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -3964,7 +3964,7 @@ def suit_239(char: Character):
     pass
 
 
-def suit_240(char: Character):
+def suit_240(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -3985,7 +3985,7 @@ def suit_240(char: Character):
     pass
 
 
-def suit_241(char: Character):
+def suit_241(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -4006,7 +4006,7 @@ def suit_241(char: Character):
     pass
 
 
-def suit_242(char: Character):
+def suit_242(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -4033,7 +4033,7 @@ def suit_242(char: Character):
     pass
 
 
-def suit_243(char: Character):
+def suit_243(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -4056,7 +4056,7 @@ def suit_243(char: Character):
     pass
 
 
-def suit_244(char: Character):
+def suit_244(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -4079,7 +4079,7 @@ def suit_244(char: Character):
     pass
 
 
-def suit_245(char: Character):
+def suit_245(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -4102,7 +4102,7 @@ def suit_245(char: Character):
     pass
 
 
-def suit_246(char: Character):
+def suit_246(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -4125,7 +4125,7 @@ def suit_246(char: Character):
     pass
 
 
-def suit_247(char: Character):
+def suit_247(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -4152,7 +4152,7 @@ def suit_247(char: Character):
     pass
 
 
-def suit_248(char: Character):
+def suit_248(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -4175,7 +4175,7 @@ def suit_248(char: Character):
     pass
 
 
-def suit_249(char: Character):
+def suit_249(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -4198,7 +4198,7 @@ def suit_249(char: Character):
     pass
 
 
-def suit_250(char: Character):
+def suit_250(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -4221,7 +4221,7 @@ def suit_250(char: Character):
     pass
 
 
-def suit_251(char: Character):
+def suit_251(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
@@ -4244,7 +4244,7 @@ def suit_251(char: Character):
     pass
 
 
-def suit_252(char: Character):
+def suit_252(char: CharacterProperty):
     """
       操控魔攻核攻击敌人。
     [魔攻核]
