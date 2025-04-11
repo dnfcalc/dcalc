@@ -100,7 +100,8 @@ class Equipments:
                     value = [str(int(i)) for i in value]
                 else:
                     value = parse_to_number_list(getattr(item, attr))
-                max_adaptation = max(max_adaptation, len(value) - 1)
+                if attr != 'suit':
+                    max_adaptation = max(max_adaptation, len(value) - 1)
                 setattr(item, attr, value)
             equ_dict = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
             equ_dict['max_adaptation'] = max_adaptation
