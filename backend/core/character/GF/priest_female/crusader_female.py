@@ -12,7 +12,7 @@ class Skill0(PassiveBufferSkill):
     position = 3 #TODO
     rangeLv = 1
 
-    CarryRatio = [0, 4.5 * 3]# noqa: E501
+    CarryRatio = [0, (1.045 ** 3) * 100 - 100]# noqa: E501
 
 
 # 启示 : 惩戒 계시 : 크루세이드

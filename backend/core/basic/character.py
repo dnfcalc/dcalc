@@ -366,16 +366,15 @@ class Character(CharacterProperty):
     def SetSkillCD(self, min=1, max=100, cd=0, exclude=[50, 85, 100]) -> None:
         """
         设置技能CD
-        type: -1 全部, 0 被动, 1 主动
         """
         for skill in self.skills:
-            if min <= skill.learnLv <= max and skill.damage and skill.learnLv not in exclude:
+            if min <= skill.learnLv <= max and (skill.type == 'active' or skill.damage) and skill.learnLv not in exclude:
                 skill.cdReduce *= 1 - cd
 
     def SetSkillCDRecover(self, min=1, max=100, cd=0, exclude=[50, 85, 100]) -> None:
         """设置技能CD恢复"""
         for skill in self.skills:
-            if min <= skill.learnLv <= max and skill.damage and skill.learnLv not in exclude:
+            if min <= skill.learnLv <= max and (skill.type == 'active' or skill.damage) and skill.learnLv not in exclude:
                 skill.cdRecover += cd
 
     def SetSkillRation(self, min=1, max=100, ratio=0, type=0) -> None:
