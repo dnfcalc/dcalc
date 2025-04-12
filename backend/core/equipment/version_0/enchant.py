@@ -227,7 +227,6 @@ def enchant_302(char: CharacterProperty):
     四维(45)|Lv1~50主动+1
     """
     char.SetStatus(四维=45)
-    print("~~~~~~~~~~")
     char.AddSkillLv(1, 50, 1, 1)
     pass
 

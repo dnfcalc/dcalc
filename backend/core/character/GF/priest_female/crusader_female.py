@@ -639,8 +639,7 @@ class classChange(Character):
                 if tem.buffer and tem.buffType == 'awake':
                     self.AwakeSkill = tem
                 i += 1
-            except Exception as ex:
-                print(ex)
+            except Exception:
                 i = -1
         self.skills = skills
         self.skills_dict = skills_dict
