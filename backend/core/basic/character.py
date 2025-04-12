@@ -934,7 +934,7 @@ class Character(CharacterProperty):
                 # 奶自己的面板加成
                 value = info[0]
                 # buff技能
-                if i.buffType == 'buff':
+                if i.buffType == 'buff' or i.buffType == 'buffSub':
                     value1 = (info[1][0] + info[1][2])*info[1][1]*buff_ratio_old + info[1][0]*buff_ratio_new
                     value2 = (info[2][0] + info[2][2])*info[2][1]*buff_ratio_old + info[2][0]*buff_ratio_new
                 # 觉醒技能

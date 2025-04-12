@@ -269,6 +269,7 @@ class Skill14(ActiveBufferSkill):
     cd = 40
     mp = [150, 1260]
     buffer = True
+    buffType = "buffSub"
 
     data0 = [0, 2069, 2399, 2727, 3059, 3389, 3717, 4049, 4379, 4707, 5039, 5367, 5697, 6029, 6357, 6687, 7019, 7347, 7677, 8007, 8337, 8667, 8997, 9327, 9656, 9987, 10317, 10646, 10977, 11306, 11636, 11967, 12296, 12626, 12957, 13286, 13616, 13946, 14276, 14606, 14936, 15266, 15594, 15926, 16256, 16584, 16916, 17244, 17574, 17906, 18234, 18564, 18893, 19224, 19554, 19883, 20214, 20544, 20873, 21204, 21533, 21863, 22194, 22523, 22853, 23183, 23513, 23843, 24173, 24503, 24831]# noqa: E501
     hit0 = 1 #TODO
@@ -276,8 +277,8 @@ class Skill14(ActiveBufferSkill):
     data1 = [0, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]# noqa: E501
     hit0 = 1 #TODO
 
-    def getSkillDate(self):
-        prep = self.char.GetSkillByName("勇气祝福").getSkillDate()
+    def skillInfo(self):
+        prep = self.char.BuffSkill.skillInfo()
         ratio = self.data1[self.lv] / 100
         return prep[0] * ratio, [prep[1][0]*ratio,prep[1][1],prep[1][2]*ratio], [prep[2][0]*ratio,prep[2][1],prep[2][2]*ratio],0,self.getSkillCD()
 
@@ -634,7 +635,7 @@ class classChange(Character):
                 tem = eval('Skill' + str(i) + '(char=self)')
                 skills_dict[tem.name] = tem
                 skills.append(tem)
-                if tem.buffer and tem.buffType == 'buff':
+                if tem.buffer and tem.buffType == 'buff' and tem.learnLv == 30:
                     self.BuffSkill = tem
                 if tem.buffer and tem.buffType == 'awake':
                     self.AwakeSkill = tem
