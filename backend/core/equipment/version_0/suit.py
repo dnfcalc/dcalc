@@ -994,7 +994,7 @@ def suit_58(char: CharacterProperty):
         char.SetStatus(SkillAttack=0.02 * min((reinforce - 110) // 11, 2))
 
         if char.buffer:
-            char.SetSkillCD(Buffer=750 * min((reinforce - 110) // 11, 2))
+            char.SetStatus(Buffer=750 * min((reinforce - 110) // 11, 2))
 
     if reinforce < 88:
         char.equ_effect.append(EquEffect(name='淘银热', icon='/equipment/suit/0.png', cd=10, data=9600))
@@ -1183,7 +1183,7 @@ def suit_63(char: CharacterProperty):
         char.SetStatus(SkillAttack=0.02 * min((reinforce - 110) // 11, 2))
 
         if char.buffer:
-            char.SetSkillCD(Buffer=1500 * min((reinforce - 110) // 11, 2))
+            char.SetStatus(Buffer=1500 * min((reinforce - 110) // 11, 2))
 
     if reinforce < 88:
         char.equ_effect.append(EquEffect(name='淘银热', icon='/equipment/suit/0.png', cd=10, data=9600))
