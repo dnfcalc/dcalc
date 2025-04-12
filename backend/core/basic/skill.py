@@ -64,6 +64,8 @@ class Skill:
     """
     mode : list[str] = ['']
     """技能模式"""
+    buffer: bool = False
+    """是否是增益技能"""
 
     def __init__(self, char):
         self.char = char
@@ -154,6 +156,8 @@ class ActiveSkill(Skill):
     """技能类型 active主动 passive被动"""
     damage: bool = True
     """是否是伤害技能"""
+    buffer: bool = False
+    """是否是buff技能"""
 
     def __init__(self, char):
         super().__init__(char)
@@ -215,3 +219,98 @@ class PassiveSkill(Skill):
     """技能类型 active主动 passive被动"""
     damage: bool = False
     """是否是伤害技能"""
+    buffer: bool = False
+    """是否是buff技能"""
+
+class BuffSkill(Skill):
+    buffer: bool = True
+    """是否是增益技能"""
+    damage: bool = False
+    """是否是伤害技能"""
+    buffType = 'normal'
+    """增益类型 normal普通 buff 主BUFF awake 觉醒技能"""
+
+    INT: list[float] = []
+    """智力"""
+    STR: list[float] = []
+    """力量"""
+    Spirit: list[float] = []
+    """精神"""
+    Vitality: list[float] = []
+    """体力"""
+    """主要属性"""
+
+    ATK : list[float] = []
+    """三攻加成"""
+    ATKRatio: float = 1
+    """三攻*算倍率"""
+    ATKPLUS : float = 0
+    """三攻加算加成"""
+
+    STRINT : list[float] = []
+    """力量智力加成"""
+    STRINTRatio: float = 1
+    """力量智力*算倍率"""
+    STRINTPLUS : float = 0
+    """力量智力加算加成"""
+
+    CarryRatio: list[float] = []
+    """对C的额外增伤倍率"""
+
+    def getSkillCD(self):
+        return '-'
+
+    def skillInfo(self, mode: str | None = None):
+        """
+        Returns:
+            tuple: (奶自己的面板加成,[三攻,三攻倍率,三攻额外加成],[力智,力智倍率,力智额外加成],对C增伤倍率,cd)
+        """
+        lv = self.lv
+        value = 0
+        value1 = 0 if lv > len(self.ATK) else self.ATK[lv]
+        value2 = 0 if lv > len(self.STRINT) else self.STRINT[lv]
+        value3 = 0 if lv > len(self.CarryRatio) else self.CarryRatio[lv]
+        if  self.char.适用属性 == '智力':
+            value = 0 if lv > len(self.INT) else self.INT[lv]
+        elif self.char.适用属性 == '力量':
+            value = 0 if lv > len(self.STR) else self.STR[lv]
+        elif self.char.适用属性 == '体力':
+            value = 0 if lv > len(self.Vitality) else self.Vitality[lv]
+        elif self.char.适用属性 == '精神':
+            value = 0 if lv > len(self.Spirit) else self.Spirit[lv]
+        return value,[value1,self.ATKRatio,self.ATKPLUS],[value2,self.STRINTRatio,self.STRINTPLUS],value3,self.getSkillCD()
+
+class PassiveBufferSkill(BuffSkill):
+    type: str = 'passive'
+
+
+class ActiveBufferSkill(BuffSkill):
+    type: str = 'active'
+
+
+    def getWeaponCDRatio(self):
+        weapon = self.char.charEquipInfo['武器'].equInfo
+        if weapon is None or '传世武器' in  weapon.categorize:
+            return 1
+        else:
+            return 武器冷却惩罚(weapon.itemDetailType,self.char.输出类型)
+
+    def getQuickCDRatio(self):
+        return 1.0
+        cdr = 0
+        if 15 <= self.learnLv <= 30:
+            cdr =  0.01
+        elif 35<= self.learnLv <= 70:
+            cdr = 0.02
+        elif 75<= self.learnLv <= 100:
+            cdr = 0.05
+        if self.learnLv in [50,85,100]:
+            cdr = 0.05
+        return 1 - cdr
+
+    def getSkillCD(self):
+        return max(0,round(max(
+            self.cd * 0.3,
+            self.cd * self.cdReduce / self.cdRecover * self.getWeaponCDRatio() * self.getQuickCDRatio(),1)
+            - self.cdCut,2
+        ))

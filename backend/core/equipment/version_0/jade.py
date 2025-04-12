@@ -64,7 +64,29 @@ def jade_12(char: CharacterProperty = {}, value=0):
         char.AddSkillLv(85, 85, 1)
     pass
 
+def jade_13(char: CharacterProperty = {}, value=0):
+    char.BuffSkill.STRINTPLUS += value
+    char.SetStatus(BufferP=value/1000)
 
+def jade_14(char: CharacterProperty = {}, value=0):
+    char.BuffSkill.STRINTRatio *= 1 + value/100
+    char.SetStatus(BufferP=value/200)
+
+def jade_15(char: CharacterProperty = {}, value=0):
+    char.BuffSkill.ATKPLUS += value
+    char.SetStatus(Buffer=value/1000)
+
+def jade_16(char: CharacterProperty = {}, value=0):
+    char.BuffSkill.ATKRatio *= 1 + value/100
+    char.SetStatus(BufferP=value/200)
+
+def jade_17(char: CharacterProperty = {}, value=0):
+    char.AwakeSkill.STRINTPLUS += value
+    char.SetStatus(BufferP=value/4000)
+
+def jade_18(char: CharacterProperty = {}, value=0):
+    char.AwakeSkill.STRINTRatio *= 1 + value/100
+    char.SetStatus(BufferP=value/200)
 # # 辟邪玉效果id范围 26001~26999
 # for i in range(26001, 26206):
 #     try:

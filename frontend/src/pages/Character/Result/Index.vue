@@ -11,7 +11,8 @@
         :equs="configStore.config.equips"
       ></Info>
     </div>
-    <Skill :data="configStore.result.state.skills" :standard="infoStore.standard"></Skill>
+    <Skill v-if="!configStore.result.state.buffer" :data="configStore.result.state.skills" :standard="infoStore.standard"></Skill>
+    <BufferSkill v-else :data="configStore.result.state.skills" :stadard="infoStore.standard" :standard="infoStore.standard"></BufferSkill>
   </div>
 </template>
 
@@ -19,6 +20,8 @@
 import { useConfigStore, useInfoStore } from '@/stores'
 import Info from './components/Info.vue'
 import Skill from './components/Skill.vue'
+import BufferSkill from './components/BufferSkill.vue'
+import type { IResultSkill } from '@/api/calc/type'
 
 const configStore = useConfigStore()
 const infoStore = useInfoStore()

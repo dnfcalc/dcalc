@@ -189,6 +189,7 @@ export const useConfigStore = defineStore('configStore', () => {
       skills: [],
       info: [],
       suits: [],
+      buffer:false
     },
     { resetOnExecute: false },
   )

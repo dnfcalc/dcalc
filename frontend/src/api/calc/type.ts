@@ -3,7 +3,9 @@ export interface IResult {
   skills: IResultSkill[]
   info:IResultUserInfo[]
   suits:IResultSuit[]
+  buffer:boolean
 }
+
 
 export interface IResultSkill {
   name: string
@@ -14,6 +16,7 @@ export interface IResultSkill {
   cd: number
   damage: number
   mode: string
+  buff:number[]
 }
 
 export interface IResultUserInfo {

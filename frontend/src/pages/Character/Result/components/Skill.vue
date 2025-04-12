@@ -4,15 +4,15 @@
       <div class="flex px-1px gap-1px">
         <div
           v-for="(header, key) in [
-            { label: '技能', width: '180px', sortKey: 'name' },
-            { label: 'CD', width: '50px', sortKey: 'cd' },
-            { label: '次数', width: '50px' },
-            { label: '秒伤', width: '100px', sortKey: 'dps' },
-            { label: '总伤害', width: '110px', sortKey: 'total' },
+            { label: '技能', width: 180, sortKey: 'name' },
+            { label: 'CD', width: 50, sortKey: 'cd' },
+            { label: '次数', width: 50 },
+            { label: '秒伤', width: 100, sortKey: 'dps' },
+            { label: '总伤害', width: 110, sortKey: 'total' },
           ]"
           :key="key"
           class="item-head"
-          :style="{width: header.width}"
+          :style="{width: `${header.width}px`}"
           @click="header.sortKey && sortValue(header.sortKey)"
         >
           {{ header.label }}

@@ -11465,7 +11465,7 @@ def equ_3010(char: CharacterProperty):
     Lv15~35所有技能+1
     所有速度+3%
     """
-    char.AddSkillLv(15,35,1,0)
+    char.AddSkillLv(15,35,1)
     char.SetStatus(SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
     pass
 
@@ -11478,7 +11478,7 @@ def equ_3011(char: CharacterProperty):
     Lv15~35所有技能+1
     所有速度+3%
     """
-    char.AddSkillLv(15,35,1,0)
+    char.AddSkillLv(15,35,1)
     char.SetStatus(SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
     pass
 
@@ -11492,7 +11492,7 @@ def equ_3012(char: CharacterProperty):
     所有属性强化+15
     所有速度+3%
     """
-    char.AddSkillLv(15,35,1,0)
+    char.AddSkillLv(15,35,1)
     char.AddElementDB('火',15)
     char.AddElementDB('冰',15)
     char.AddElementDB('光',15)
@@ -11510,7 +11510,7 @@ def equ_3013(char: CharacterProperty):
     所有属性强化+15
     所有速度+3%
     """
-    char.AddSkillLv(15,35,1,0)
+    char.AddSkillLv(15,35,1)
     char.AddElementDB('火',15)
     char.AddElementDB('冰',15)
     char.AddElementDB('光',15)
@@ -11551,7 +11551,7 @@ def equ_4000(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,80,1,0)
+    char.AddSkillLv(1,80,1)
     char.AddElementDB('火',25)
     char.AddElementDB('冰',25)
     char.AddElementDB('光',25)
@@ -11573,7 +11573,7 @@ def equ_4001(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,80,1,0)
+    char.AddSkillLv(1,80,1)
     char.AddElementDB('火',25)
     char.AddElementDB('冰',25)
     char.AddElementDB('光',25)
@@ -11595,7 +11595,7 @@ def equ_4002(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1,0)
+    char.AddSkillLv(1,95,1)
     char.AddElementDB('火',25)
     char.AddElementDB('冰',25)
     char.AddElementDB('光',25)
@@ -11617,7 +11617,7 @@ def equ_4003(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1,0)
+    char.AddSkillLv(1,95,1)
     char.AddElementDB('火',25)
     char.AddElementDB('冰',25)
     char.AddElementDB('光',25)
@@ -11639,7 +11639,7 @@ def equ_4004(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1,0)
+    char.AddSkillLv(1,95,1)
     char.AddElementDB('火',25)
     char.AddElementDB('冰',25)
     char.AddElementDB('光',25)
@@ -11661,7 +11661,7 @@ def equ_4005(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1,0)
+    char.AddSkillLv(1,95,1)
     char.AddElementDB('火',25)
     char.AddElementDB('冰',25)
     char.AddElementDB('光',25)
@@ -11683,7 +11683,7 @@ def equ_4006(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1,0)
+    char.AddSkillLv(1,95,1)
     char.AddElementDB('火',25)
     char.AddElementDB('冰',25)
     char.AddElementDB('光',25)
@@ -11705,7 +11705,7 @@ def equ_4007(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1,0)
+    char.AddSkillLv(1,95,1)
     char.AddElementDB('火',25)
     char.AddElementDB('冰',25)
     char.AddElementDB('光',25)
@@ -11727,7 +11727,7 @@ def equ_4008(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1,0)
+    char.AddSkillLv(1,95,1)
     char.AddElementDB('火',25)
     char.AddElementDB('冰',25)
     char.AddElementDB('光',25)
@@ -11749,7 +11749,7 @@ def equ_4009(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1,0)
+    char.AddSkillLv(1,95,1)
     char.AddElementDB('火',25)
     char.AddElementDB('冰',25)
     char.AddElementDB('光',25)
@@ -11773,7 +11773,7 @@ def equ_4010(char: CharacterProperty):
     暴击率+3%
     所有速度+5%
     """
-    char.AddSkillLv(1,50,1,0)
+    char.AddSkillLv(1,50,1)
     char.SetStatus(AttackP=0.14,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05,BufferP=0.03)
     pass
 
@@ -11789,7 +11789,7 @@ def equ_4011(char: CharacterProperty):
     暴击率+3%
     所有速度+4%
     """
-    char.AddSkillLv(1,50,1,0)
+    char.AddSkillLv(1,50,1)
     char.SetStatus(AttackP=0.10,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04,BufferP=0.015)
     pass
 
@@ -11805,7 +11805,7 @@ def equ_4012(char: CharacterProperty):
     暴击率+3%
     所有速度+5%
     """
-    char.AddSkillLv(1,50,1,0)
+    char.AddSkillLv(1,50,1)
     char.SetStatus(AttackP=0.14,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05,BufferP=0.03)
     pass
 
@@ -11821,7 +11821,7 @@ def equ_4013(char: CharacterProperty):
     暴击率+3%
     所有速度+4%
     """
-    char.AddSkillLv(1,50,1,0)
+    char.AddSkillLv(1,50,1)
     char.SetStatus(AttackP=0.10,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04,BufferP=0.015)
     pass
 
@@ -11838,7 +11838,7 @@ def equ_4014(char: CharacterProperty):
     暴击率+10%
     所有速度+5%
     """
-    char.AddSkillLv(1,75,1,0)
+    char.AddSkillLv(1,75,1)
     char.AddElementDB('火',25)
     char.AddElementDB('冰',25)
     char.AddElementDB('光',25)
@@ -11859,7 +11859,7 @@ def equ_4015(char: CharacterProperty):
     暴击率+5%
     所有速度+4%
     """
-    char.AddSkillLv(1,50,1,0)
+    char.AddSkillLv(1,50,1)
     char.AddElementDB('火',15)
     char.AddElementDB('冰',15)
     char.AddElementDB('光',15)
@@ -11880,7 +11880,7 @@ def equ_4016(char: CharacterProperty):
     暴击率+10%
     所有速度+5%
     """
-    char.AddSkillLv(1,75,1,0)
+    char.AddSkillLv(1,75,1)
     char.AddElementDB('火',25)
     char.AddElementDB('冰',25)
     char.AddElementDB('光',25)
@@ -11901,7 +11901,7 @@ def equ_4017(char: CharacterProperty):
     暴击率+5%
     所有速度+4%
     """
-    char.AddSkillLv(1,50,1,0)
+    char.AddSkillLv(1,50,1)
     char.AddElementDB('火',15)
     char.AddElementDB('冰',15)
     char.AddElementDB('光',15)

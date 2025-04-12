@@ -21,8 +21,8 @@ adv = [
         'children': [
             {'id': 0, 'name': 'sword_master', 'title': '极诣·驭剑士', 'open': False},
             {'id': 1, 'name': 'dark_templar', 'title': '极诣·暗殿骑士', 'open': False},
-            {'id': 2, 'name': 'demon_slayer', 'title': '极诣·契魔者',  'open': True, 'class': 'GF.swordman_female.demon_slayer'},
-            {'id': 3, 'name': 'vegabond', 'title': '极诣·流浪武士',  'open': True, 'class': 'GF.swordman_female.vegabond'},
+            {'id': 2, 'name': 'demon_slayer', 'title': '极诣·契魔者', 'open': True, 'class': 'GF.swordman_female.demon_slayer'},
+            {'id': 3, 'name': 'vegabond', 'title': '极诣·流浪武士', 'open': True, 'class': 'GF.swordman_female.vegabond'},
             {'id': 4, 'name': 'spectre', 'title': '极诣·刃影', 'open': False},
         ],
     },
@@ -131,8 +131,9 @@ adv = [
                 'id': 0,
                 'name': 'crusader_female',
                 'title': '神启·圣骑士',
-                'open': False,
-                'options': [{'id': 0, 'name': 'default', 'title': '奶', 'class': 'crusader_female'}, {'id': 1, 'name': 'default', 'title': '输出', 'class': 'crusader_female_carry'}],
+                'open': True,
+                'class': 'GF.priest_female.crusader_female'
+                # 'options': [{'id': 0, 'name': 'default', 'title': '奶', 'class': 'GF.priest_female.crusader_female', "open": True}, {'id': 1, 'name': 'default', 'title': '输出', 'class': 'crusader_female_carry'}],
             },
             {'id': 1, 'name': 'inquistor', 'title': '神启·异端审判者', 'open': False},
             {'id': 2, 'name': 'sorceress', 'title': '神启·巫女', 'open': False},
@@ -230,7 +231,6 @@ def get_adv_list():
     return adv
 
 
-@cache
 def get_adv_info(value):
     value = base64.b64decode(value).decode()
     parent_id, child_id, option_id = map(int, (value[:2], value[2:4], value[4:6]))

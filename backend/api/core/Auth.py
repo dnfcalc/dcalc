@@ -10,12 +10,10 @@ from api.core.exception import ResponseException
 
 
 class AlterState:
-    def __init__(self, value: str, token: str, charcater: Character, equVersion: str,time: int):
-        self.value = value
-        try:
-            self.alter = get_adv_info(value)["class"]
-        except Exception:
-            raise ResponseException(f'无效的职业{value}')
+    def __init__(self, alter: str, token: str, charcater: Character, equVersion: str,time: int):
+        if alter is None:
+            raise ResponseException('无效的职业')
+        self.alter = alter
         self.token = token
         self.origin = self.alter.split('.')[-1]
         self.character = charcater

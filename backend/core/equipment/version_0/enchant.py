@@ -58,7 +58,7 @@ def enchant_101(char: CharacterProperty):
     """
     char.SetStatus(四维=100)
     if char.buffer:
-        char.AddSkillLv(15, 15, 3, 1)
+        char.AddSkillLv(15, 15, 3, 0)
     pass
 
 
@@ -68,7 +68,7 @@ def enchant_102(char: CharacterProperty):
     """
     char.SetStatus(四维=120)
     if char.buffer:
-        char.AddSkillLv(15, 15, 3, 1)
+        char.AddSkillLv(15, 15, 3, 0)
     pass
 
 
@@ -86,7 +86,7 @@ def enchant_104(char: CharacterProperty):
     """
     char.SetStatus(四维=125)
     if char.buffer:
-        char.AddSkillLv(15, 15, 4, 1)
+        char.AddSkillLv(15, 15, 4, 0)
     pass
 
 
@@ -108,7 +108,7 @@ def enchant_106(char: CharacterProperty):
     """
     char.SetStatus(四维=120)
     if char.buffer:
-        char.AddSkillLv(15, 15, 3, 1)
+        char.AddSkillLv(15, 15, 3, 0)
     pass
 
 
@@ -190,7 +190,7 @@ def enchant_201(char: CharacterProperty):
     """
     char.SetStatus(四维=125)
     if char.buffer:
-        char.AddSkillLv(15, 15, 4, 1)
+        char.AddSkillLv(15, 15, 4, 0)
     pass
 
 
@@ -227,8 +227,8 @@ def enchant_302(char: CharacterProperty):
     四维(45)|Lv1~50主动+1
     """
     char.SetStatus(四维=45)
-    if char.buffer:
-        char.AddSkillLv(1, 50, 1, 1)
+    print("~~~~~~~~~~")
+    char.AddSkillLv(1, 50, 1, 1)
     pass
 
 
@@ -447,7 +447,7 @@ def enchant_607(char: CharacterProperty):
     """
     char.SetStatus(四维=100)
     if char.buffer:
-        char.AddSkillLv(15, 15, 1, 1)
+        char.AddSkillLv(15, 15, 1, 0)
     pass
 
 
@@ -501,7 +501,7 @@ def enchant_903(char: CharacterProperty):
     """
     char.SetStatus(四维=100)
     if char.buffer:
-        char.AddSkillLv(15, 15, 3, 1)
+        char.AddSkillLv(15, 15, 3, 0)
     pass
 
 
@@ -561,7 +561,7 @@ def enchant_1002(char: CharacterProperty):
     """
     char.SetStatus(四维=100)
     if char.buffer:
-        char.AddSkillLv(15, 15, 3, 1)
+        char.AddSkillLv(15, 15, 3, 0)
     pass
 
 
@@ -582,7 +582,7 @@ def enchant_1004(char: CharacterProperty):
     """
     char.SetStatus(四维=120)
     if char.buffer:
-        char.AddSkillLv(15, 15, 3, 1)
+        char.AddSkillLv(15, 15, 3, 0)
     pass
 
 
@@ -1381,7 +1381,7 @@ def enchant_2705(char: CharacterProperty):
     """
     三攻(30)|三速(5%)|增益量(1%)
     """
-    char.SetStatus(三攻=30, 三速=0.05, 增益量=0.01)
+    char.SetStatus(三攻=30, 三速=0.05, 增益量P=0.01)
     pass
 
 
@@ -1405,7 +1405,7 @@ def enchant_2708(char: CharacterProperty):
     """
     四维(50)|三速(5%)|增益量(1%)
     """
-    char.SetStatus(四维=50, 三速=0.05, 增益量=0.01)
+    char.SetStatus(四维=50, 三速=0.05, 增益量P=0.01)
     pass
 
 
@@ -1413,7 +1413,7 @@ def enchant_2709(char: CharacterProperty):
     """
     三攻(50)|三速(5%)|增益量(3%)
     """
-    char.SetStatus(三攻=50, 三速=0.05, 增益量=0.03)
+    char.SetStatus(三攻=50, 三速=0.05, 增益量P=0.03)
     pass
 
 
@@ -1421,7 +1421,7 @@ def enchant_2710(char: CharacterProperty):
     """
     四维(100)|三速(5%)|增益量(3%)
     """
-    char.SetStatus(四维=100, 三速=0.05, 增益量=0.03)
+    char.SetStatus(四维=100, 三速=0.05, 增益量P=0.03)
     pass
 
 

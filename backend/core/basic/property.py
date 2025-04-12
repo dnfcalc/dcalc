@@ -54,6 +54,11 @@ class CharacterInfo(enum.Enum):
     AttackP = '攻击强化%', '/ui/UI_ProfileIcon_015.png', lambda x: f'{format(x * 100 - 100, ".1f")}%'
     """攻击强化%"""
 
+    Buffer = '增益量','', lambda x: f'{format(x, ".0f")}'
+
+    BufferP = '增益量%', '', lambda x: f'{format(x * 100 - 100, ".1f")}%'
+    """攻击强化%"""
+
     EquEffectRatio = '特效伤害', '/ui/UI_ProfileIcon_016.png', lambda x: f'{format(x * 100 - 100, ".1f")}%'
 
     # HitP : float

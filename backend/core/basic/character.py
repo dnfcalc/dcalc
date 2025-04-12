@@ -3,6 +3,7 @@ import importlib
 from typing import Any, Literal, Mapping, Union
 from uuid import uuid1
 
+from core.abstract.character import CharacterProperty
 from core.basic.property import CharacterInfo
 from core.basic.skill import Skill
 
@@ -29,7 +30,7 @@ class Jade:
         self.SkillAttack = 0.0
 
 
-class Character:
+class Character(CharacterProperty):
     # region 角色属性
 
     STR: float
@@ -132,9 +133,7 @@ class Character:
     max_point = 0
     """套装效果点数"""
 
-    # region 角色属性
     buffer: bool = False
-    # endregion
 
     # region 职业属性
     实际名称: str = ''
@@ -223,7 +222,7 @@ class Character:
         # 角色四维
         temp = 获取基础属性(self.角色, self.职业)
         for index, i in enumerate([get_key_by_value(i) for i in ['力量', '体力', '智力', '精神']]):
-            setattr(self, i, temp[index])
+            setattr(self, i, getattr(self,i) + temp[index])
         # 角色属性抗性
         pass
         # 角色异常抗性
@@ -360,9 +359,9 @@ class Character:
         """
         for skill in self.skills:
             if min <= skill.learnLv <= max:
-                type = 'all' if type == -1 else ('active' if type == 1 else 'passive')
-                if type == 'all' or skill.type == type:
-                    skill.lv += 1
+                skillType = 'all' if type == -1 else ('active' if type == 1 else 'passive')
+                if (skillType == 'all' or skill.type == skillType) and skill.lv > 0:
+                    skill.lv += lv
 
     def SetSkillCD(self, min=1, max=100, cd=0, exclude=[50, 85, 100]) -> None:
         """
@@ -462,8 +461,9 @@ class Character:
         info['equips'] = equs
         info['suits'] = suits
         info['stones'] = stones
-        info['enchants'] = equInfos.enchants
-        info['emblems'] = equInfos.emblems
+        key = '辅助' if self.buffer else '输出'
+        info['enchants'] = list(filter(lambda x: key in x["categorize"], equInfos.enchants))
+        info['emblems'] = list(filter(lambda x: key in x["categorize"], equInfos.emblems))
         info['avatar'] = equInfos.funs.get_dress_list(skill_clothes)
         info['jades'] = equInfos.jades
         info['sundry'] = equInfos.funs.sundryList
@@ -690,8 +690,9 @@ class Character:
             reinforce = self.charEquipInfo[part].reinforce
             if equ is None:
                 continue
-            value = 精通计算(115, equ.rarity, reinforce, equ.itemDetailType, self.防具类型)
+
             for key in self.防具精通属性:
+                value = 精通计算(115, equ.rarity, reinforce, equ.itemDetailType, self.防具类型,self.buffer,key)
                 key = get_key_by_value(key)
                 setattr(self, key, getattr(self, key) + value)
         # 115增幅强化品级固定史诗
@@ -788,91 +789,25 @@ class Character:
         suit = self.calc_suits()
         # 部位效果计算
         self.calc_equs()
-
-        # print(suit)
-        # effects = get_equipment(self.equVersion).funs
-        # for effect in equ_effect:
-        #     func = effects.equ_func_list.get(str(effect), None)
-        #     if func is not None:
-        #         func(self)
-        # for effect in suits_effect:
-        #     func = effects.suit_func_list.get(str(effect), None)
-        #     if func is not None:
-        #         func(self)
-        # 徽章计算
-        # 附魔计算
-
-        # 技能计算
         skillInfos = []
-        for i in self.skills:
-            if i.damage and i.lv > 0:
-                for mode in i.mode:
-                    temp = i.skillInfo(mode)
-                    skillInfos.append(
-                        {
-                            'name': i.name,
-                            'icon': i.icon,
-                            'lv': i.lv,
-                            'data': temp[0],
-                            'ratio': temp[1],
-                            'cd': temp[2],
-                            'mode': mode,
-                        }
-                    )
-        ratios = self.calc_damage_ration()
-        ratio_char_skill = ratios[0] * ratios[1] * ratios[2] * ratios[3] * ratios[4] * ratios[5] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 1000
-        ratuio_equ_skill = ratios[0] * ratios[1] * ratios[3] * ratios[4] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 1000
-        for i in skillInfos:
-            i['damage'] = ratio_char_skill * i['data'] * i['ratio'] / 100
-        for i in self.equ_effect:
-            skillInfos.append(
-                {
-                    'name': i.name,
-                    'icon': i.icon,
-                    'lv': 0,
-                    'data': i.data,
-                    'ratio': 10.0,
-                    'cd': i.cd,
-                    'damage': ratuio_equ_skill * i.data * 10 * self.EquEffectRatio / 100,
-                    'mode':''
-                }
-            )
-        attrs = []
-        if self.输出类型 == '物理百分比':
-            attrs.extend(['STR', 'AtkP'])
-        if self.输出类型 == '魔法百分比':
-            attrs.extend(['INT', 'AtkM'])
-        if self.输出类型 == '物理固伤':
-            attrs.extend(['STR', 'AtkI'])
-        if self.输出类型 == '魔法固伤':
-            attrs.extend(['INT', 'AtkI'])
-        info = []
-        attrs.extend(['Attack', 'AttackP', 'SkillAttack','EquEffectRatio', 'ElementDB'])
-        for attr in attrs:
-            temp = getattr(CharacterInfo, attr)
-            if attr.startswith('Atk'):
-                info.append({'name': temp.name, 'value': temp.value(getattr(self, attr) * getattr(self, f'P{attr}'))})
-                pass
-            else:
-                value = getattr(self, attr)
-                if attr == 'SkillAttack':
-                    value *= (self.jade_effect.SkillAttack + 1)
-                if attr == 'AttackP':
-                    value += self.jade_effect.AttackP
-                info.append(
-                    {
-                        'name': temp.name,
-                        'value': temp.value(value),
-                    }
-                )
-                pass
+        if self.buffer:
+            skillInfos = self.calc_buffer_skills()
+            info = self.get_buffer_info()
+            pass
+        else:
+            skillInfos = self.calc_carry_skills()
+            info = self.get_carry_info()
         return {
             'uuid': uuid1().hex,
             'skills': skillInfos,
             'info': info,
             'suits': suit,
+            'buffer':self.buffer
         }
         # 技能影响角色的属性，如属强、抗性等
+
+
+    # region 输出计算项
 
     def calc_damage_ration(self):
         """计算属性系数"""
@@ -909,6 +844,130 @@ class Character:
         # 杂项 斗神、宠物技能、队友增幅等(技能的属性增幅归属到这部分，因为会加成到特效部分，修复后修改为技能攻击力计算)
         ratio_9 = 1.0 * self.ElementIncrease
         return (ratio_0, ratio_1, ratio_2, ratio_3, ratio_4, ratio_5, ratio_6, ratio_7, ratio_8, ratio_9)
+
+    def calc_carry_skills(self):
+        skillInfos = []
+        for i in self.skills:
+            if i.damage and i.lv > 0:
+                for mode in i.mode:
+                    temp = i.skillInfo(mode)
+                    skillInfos.append(
+                        {
+                            'name': i.name,
+                            'icon': i.icon,
+                            'lv': i.lv,
+                            'data': temp[0],
+                            'ratio': temp[1],
+                            'cd': temp[2],
+                            'mode': mode,
+                        }
+                    )
+        ratios = self.calc_damage_ration()
+        ratio_char_skill = ratios[0] * ratios[1] * ratios[2] * ratios[3] * ratios[4] * ratios[5] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 1000
+        ratuio_equ_skill = ratios[0] * ratios[1] * ratios[3] * ratios[4] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 1000
+        for i in skillInfos:
+            i['damage'] = ratio_char_skill * i['data'] * i['ratio'] / 100
+        for i in self.equ_effect:
+            skillInfos.append(
+                {
+                    'name': i.name,
+                    'icon': i.icon,
+                    'lv': 0,
+                    'data': i.data,
+                    'ratio': 10.0,
+                    'cd': i.cd,
+                    'damage': ratuio_equ_skill * i.data * 10 * self.EquEffectRatio / 100,
+                    'mode':''
+                }
+            )
+        return skillInfos
+
+    def get_carry_info(self):
+        attrs = []
+        if self.输出类型 == '物理百分比':
+            attrs.extend(['STR', 'AtkP'])
+        if self.输出类型 == '魔法百分比':
+            attrs.extend(['INT', 'AtkM'])
+        if self.输出类型 == '物理固伤':
+            attrs.extend(['STR', 'AtkI'])
+        if self.输出类型 == '魔法固伤':
+            attrs.extend(['INT', 'AtkI'])
+        info = []
+        attrs.extend(['Attack', 'AttackP', 'SkillAttack','EquEffectRatio', 'ElementDB'])
+        for attr in attrs:
+            temp = getattr(CharacterInfo, attr)
+            if attr.startswith('Atk'):
+                info.append({'name': temp.name, 'value': temp.value(getattr(self, attr) * getattr(self, f'P{attr}'))})
+                pass
+            else:
+                value = getattr(self, attr)
+                if attr == 'SkillAttack':
+                    value *= (self.jade_effect.SkillAttack + 1)
+                if attr == 'AttackP':
+                    value += self.jade_effect.AttackP
+                info.append(
+                    {
+                        'name': temp.name,
+                        'value': temp.value(value),
+                    }
+                )
+                pass
+        return info
+    # endregion
+
+    #region 辅助计算项
+
+    def calc_buffer_skills(self):
+        skillInfos = []
+        # 适用属性
+        main = getattr(self, get_key_by_value(self.适用属性))
+        buffer_power = self.Buffer * self.BufferP
+        # buff系数
+        buff_ratio_new = (((main+ 4350) / 665 + 1) * (buffer_power + 3500)/26395) if buffer_power > 0 else 0
+        buff_ratio_old = main / 665 + 1
+        # 觉醒系数
+        awake_ratio_new = ((main + 5250) / 750 + 1) *(buffer_power + 5000) * 0.000025 if buffer_power > 0 else 0
+        awake_ratio_old = main / 750 + 1
+        for i in self.skills:
+            if i.buffer and i.lv > 0:
+                info = i.skillInfo()
+                # 奶自己的面板加成
+                value = info[0]
+                # buff技能
+                if i.buffType == 'buff':
+                    value1 = (info[1][0] + info[1][2])*info[1][1]*buff_ratio_old + info[1][0]*buff_ratio_new
+                    value2 = (info[2][0] + info[2][2])*info[2][1]*buff_ratio_old + info[2][0]*buff_ratio_new
+                # 觉醒技能
+                elif i.buffType == 'awake':
+                    value1 = (info[1][0] + info[1][2])*info[1][1]*awake_ratio_old + info[1][0]*awake_ratio_new
+                    value2 = (info[2][0] + info[2][2])*info[2][1]*awake_ratio_old + info[2][0]*awake_ratio_new
+                else:
+                    value1 = (info[1][0] + info[1][2])*info[1][1]
+                    value2 = (info[2][0] + info[2][2])*info[2][1]
+                value3 = info[3]
+                value4 = info[4]
+                skillInfos.append({
+                    "name":i.name,
+                    "cd":value4,
+                    "icon":i.icon,
+                    "lv": i.lv,
+                    # 对自己的加成 三攻 力智 伤害直接加成
+                    "buff":[value, value1, value2, value3],
+                })
+        return skillInfos
+
+    def get_buffer_info(self):
+        attrs = [get_key_by_value(self.适用属性),'Buffer','BufferP']
+        info = []
+        for attr in attrs:
+            temp = getattr(CharacterInfo, attr)
+            value = getattr(self, attr)
+            info.append({
+                'name': temp.name,
+                'value': temp.value(value),
+            })
+        return info
+    # endregion
 
     # endregion
 
