@@ -30,6 +30,7 @@ export interface ICharacterInfo {
   enchants: IEnchantingInfo[]
   emblems: IEnchantingInfo[]
   weapons: string[]
+  subweapons: string[]
   skills: ISkill[]
   suits: ISuit[]
   avatar: Record<string, IAvatarInfo[]>

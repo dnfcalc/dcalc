@@ -100,6 +100,7 @@ class CharacterProperty(ABC):
     角色类型: str
     职业: str
     武器选项: list[str]
+    副武器选项: list[str]
     输出类型选项: list[str]
     防具精通属性: list[str]
     输出类型: str

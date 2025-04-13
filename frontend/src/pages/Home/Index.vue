@@ -13,13 +13,6 @@ function job_icon(child: IAlterInfo) {
 
 export default defineComponent(async () => {
   const ignores = ['empty']
-  const zoom = computed(() =>
-    /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
-      navigator.userAgent || navigator.vendor || (window as any).opera,
-    )
-      ? 1
-      : Math.max(Math.min((window.innerHeight * 0.8) / 750, (window.innerWidth * 0.85) / 1100), 1),
-  )
 
   // 获取角色相关信息，判定是否开放
   function choose_job(child: IAlterInfo) {
@@ -51,7 +44,7 @@ export default defineComponent(async () => {
 
   return () => (
     <Fragment>
-      <div class="bg-no-repeat h-auto min-h-full pt-8 pb-12 pl-4" style={`zoom:${zoom.value};background-image: url('${getImageURL('home.jpg')}');background-size: 100% 100%;`}>
+      <div class="bg-no-repeat h-auto min-h-full pt-8 pb-12 pl-4" style={`background-image: url('${getImageURL('home.jpg')}');background-size: 100% 100%;`}>
         {renderList(adventure, (job) => (
           <div class="flex flex-row">
             <div
@@ -100,7 +93,7 @@ export default defineComponent(async () => {
 
       <div
         class="flex flex-col"
-        style={`position: absolute;top: ${30 + 82 * 0}px;left: 775px;width: 160px;height: 150px;zoom:${zoom.value}`}
+        style={`position: absolute;top: ${30 + 82 * 0}px;left: 775px;width: 160px;height: 150px;`}
       >
         <div
           class="w-70px h-50px bg-no-repeat"

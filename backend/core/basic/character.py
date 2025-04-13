@@ -142,6 +142,7 @@ class Character(CharacterProperty):
     角色类型: str = ''
     职业: str = ''
     武器选项: list[str] = []
+    副武器选项: list[str] = []
     输出类型选项: list[str] = []
     防具精通属性: list[str] = []
 
@@ -417,6 +418,7 @@ class Character(CharacterProperty):
         info['equVersion'] = self.equVersion
         info['name'] = self.nameCN
         info['weapons'] = self.武器选项
+        info['subweapons'] = self.副武器选项
         skillInfo = []
         skill_clothes = []
         platinum = []
@@ -462,7 +464,7 @@ class Character(CharacterProperty):
         info['stones'] = stones
         key = '辅助' if self.buffer else '输出'
         info['enchants'] = list(filter(lambda x: key in x["categorize"], equInfos.enchants))
-        info['emblems'] = list(filter(lambda x: key in x["categorize"], equInfos.emblems))
+        info['emblems'] = equInfos.emblems
         info['avatar'] = equInfos.funs.get_dress_list(skill_clothes)
         info['jades'] = equInfos.jades
         info['sundry'] = equInfos.funs.sundryList

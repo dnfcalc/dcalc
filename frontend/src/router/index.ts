@@ -19,6 +19,12 @@ const routes: RouteRecordRaw[] = [
     component: (() => import('@/pages/Character/Index.vue')),
     children: [
       {
+        path: '/character/EquipmentDictionary/:alter',
+        name: 'EquipmentDictionary',
+        props: true,
+        component: (() => import('@/pages/Character/EquipmentDictionary/Index.vue')),
+      },
+      {
         path: '/character/equipment/:alter',
         name: 'equipment',
         props: true,

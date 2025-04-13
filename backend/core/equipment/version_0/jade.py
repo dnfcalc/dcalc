@@ -74,7 +74,7 @@ def jade_14(char: CharacterProperty = {}, value=0):
 
 def jade_15(char: CharacterProperty = {}, value=0):
     char.BuffSkill.ATKPLUS += value
-    char.SetStatus(Buffer=value/1000)
+    char.SetStatus(BufferP=value/200)
 
 def jade_16(char: CharacterProperty = {}, value=0):
     char.BuffSkill.ATKRatio *= 1 + value/100

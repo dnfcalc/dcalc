@@ -2888,6 +2888,8 @@ def equ_182(char: CharacterProperty):
 
     所有速度+15%
     """
+    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00196.png', cd=10,data=15000))
+    char.SetStatus(SpeedM=0.15,SpeedA=0.15,SpeedR=0.15)
     if char.buffer:
         char.AddSkillLv(1,100,2)
         char.BuffSkill.lv += 3
@@ -2907,6 +2909,8 @@ def equ_183(char: CharacterProperty):
 
     所有速度+20%
     """
+    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00197.png', cd=5,data=15000))
+    char.SetStatus(SpeedM=0.15,SpeedA=0.15,SpeedR=0.15)
     if char.buffer:
         char.AddSkillLv(1,100,2)
         char.BuffSkill.lv += 3
@@ -2926,6 +2930,7 @@ def equ_184(char: CharacterProperty):
 
     所有速度+30%
     """
+    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00198.png', cd=20,data=340200))
     if char.buffer:
         char.AddSkillLv(1,100,2)
         char.BuffSkill.lv += 3
@@ -3021,6 +3026,7 @@ def equ_190(char: CharacterProperty):
     -行星破坏伤害量：113400%
     -冷却时间：40秒
     """
+    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=40,data=340200))
     if char.buffer:
         char.AddSkillLv(1,100,2)
         char.BuffSkill.lv += 3
@@ -3041,6 +3047,7 @@ def equ_191(char: CharacterProperty):
     -行星破坏伤害量：226800%
     -冷却时间：40秒
     """
+    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=40,data=340200))
     if char.buffer:
         char.AddSkillLv(1,100,2)
         char.BuffSkill.lv += 3
@@ -3061,6 +3068,7 @@ def equ_192(char: CharacterProperty):
     -行星破坏伤害量：340200%
     -冷却时间：40秒
     """
+    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=40,data=340200))
     if char.buffer:
         char.AddSkillLv(1,100,2)
         char.BuffSkill.lv += 3
@@ -3149,6 +3157,8 @@ def equ_198(char: CharacterProperty):
     攻击时，向前方施放怒击。（冷却时间1秒）
     -怒击伤害量：6000%
     """
+    char.SetSkillCD(1,100,0.2)
+    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00280.png', cd=1,data=6000))
     if char.buffer:
         char.AddSkillLv(1,100,2)
         char.BuffSkill.lv += 3
@@ -3171,6 +3181,9 @@ def equ_199(char: CharacterProperty):
     施放技能时，向前方施放猛烈的连击。（冷却时间5秒）
     -猛烈连击伤害量：32400%
     """
+    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00281.png', cd=1,data=6000))
+    char.equ_effect.append(EquEffect(name='威严猛击', icon='/equipment/icon/weapon/priest/totem/00281.png', cd=5,data=32400))
+    char.SetSkillCD(1,100,0.2)
     if char.buffer:
         char.AddSkillLv(1,100,2)
         char.BuffSkill.lv += 3
@@ -3197,6 +3210,10 @@ def equ_200(char: CharacterProperty):
     施放无色小晶块技能时，发动威严痛击。（冷却时间10秒）
     -威严痛击伤害量：90000%
     """
+    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=1,data=6000))
+    char.equ_effect.append(EquEffect(name='威严猛击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=5,data=32400))
+    char.equ_effect.append(EquEffect(name='威严痛击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=5,data=90000))
+    char.SetSkillCD(1,100,0.2)
     if char.buffer:
         char.AddSkillLv(1,100,2)
         char.BuffSkill.lv += 3
