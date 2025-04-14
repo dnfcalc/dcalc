@@ -2,7 +2,6 @@
   <div class="w-100% h-100% main flex" :class="infoStore.infos?.alter">
     <div class="header">
       <calc-tabs route>
-        <calc-tab :value="`/character/EquipmentDictionary/${props.alter}`">装备设置</calc-tab>
         <calc-tab :value="`/character/equipment/${props.alter}`">装备设置</calc-tab>
         <calc-tab :value="`/character/skill/${props.alter}`">技能设置</calc-tab>
         <calc-tab :value="`/character/forge/${props.alter}`">打造设置</calc-tab>

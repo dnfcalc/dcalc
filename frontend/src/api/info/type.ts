@@ -74,6 +74,7 @@ export interface ISuit {
   name: string
   imageUrl: string
   suitId: number
+  suitName: string
 }
 
 export interface IEnchantingInfo {
