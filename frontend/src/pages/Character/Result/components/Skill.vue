@@ -4,7 +4,7 @@
       <div class="flex px-1px gap-1px">
         <div
           v-for="(header, key) in [
-            { label: '技能', width: 180, sortKey: 'name' },
+            { label: '技能', width: 180, sortKey: 'learnLv' },
             { label: 'CD', width: 50, sortKey: 'cd' },
             { label: '次数', width: 50 },
             { label: '秒伤', width: 100, sortKey: 'dps' },
@@ -69,7 +69,7 @@ const props = defineProps<{
   }
 }>()
 
-const sort = ref<string>('total')
+const sort = ref<string>('learnLv')
 const order = ref<'asc' | 'desc'>('desc')
 
 const config = useConfigStore()
@@ -78,7 +78,7 @@ const data = computed(() => {
   return props.data.sort((a, b) => {
     let aValue = 0
     let bValue = 0
-    if (['damage', 'cd', 'name'].includes(sort.value)) {
+    if (['damage', 'cd', 'learnLv'].includes(sort.value)) {
       // @ts-ignore
       aValue = a[sort.value]
       // @ts-ignore

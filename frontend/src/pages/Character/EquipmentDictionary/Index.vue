@@ -83,6 +83,9 @@ const choose_part = ref<string[]>([])
 
 const chooseCategory = (cat: string) => {
   type.value = cat
+  if(type.value == 'stone' && curSuit.value == -1){
+    curSuit.value = 16203
+  }
 }
 
 const configStore = useConfigStore()
@@ -101,7 +104,7 @@ const suitList = computed(() => {
     }
   })
   const res = Array.from(uniqueSuits.values())
-  res.push({ name: '通宝', value: -1, imageUrl: '/suit/little/-1.png' })
+  if(type.value == 'equ') res.push({ name: '通宝', value: -1, imageUrl: '/suit/little/-1.png' })
   return res
 })
 
@@ -113,7 +116,8 @@ const equs = computed(() => {
       (choose_part.value.length === 0 ||
         choose_part.value.includes(a.itemDetailType || a.itemType)) &&
       (a.suit.length == 0 ||
-        (curSuit.value == -1 && a.suit.length > 1) ||
+        (curSuit.value == -1 && a.suit.length > 1 && type.value == 'equ') ||
+        (a.suit.length > 1 && type.value == 'stone') ||
         (a.suit.includes(curSuit.value.toString()) && a.suit.length === 1)),
   )
 

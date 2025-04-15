@@ -17,6 +17,7 @@ export interface IResultSkill {
   damage: number
   mode: string
   buff:number[]
+  learnLv: number
 }
 
 export interface IResultUserInfo {

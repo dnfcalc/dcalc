@@ -2,7 +2,6 @@ import importlib
 from database.models import EmblemData, Session, EquData, StoneData, SuitData, EnchantData,JadeData
 from database.connect import get_db_engine as get_engine
 
-
 def parse_to_number_list(info: str, default: list[float] = [0]) -> list[float]:
     return default if not info else [float(i) for i in info.split(',')]
 

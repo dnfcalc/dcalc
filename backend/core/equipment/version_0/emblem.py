@@ -1,8 +1,9 @@
 from core.abstract.character import CharacterProperty
+from .register import register
 
 emblem_func_list = {}
 
-
+@register
 def emblem_1(char: CharacterProperty):
     """
     力智+20 暴击+1.9%
@@ -11,6 +12,7 @@ def emblem_1(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_2(char: CharacterProperty):
     """
     力智+15 暴击+1.5%
@@ -19,6 +21,7 @@ def emblem_2(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_3(char: CharacterProperty):
     """
     力智+10 暴击+1.1%
@@ -27,6 +30,7 @@ def emblem_3(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_4(char: CharacterProperty):
     """
     力智+35
@@ -35,6 +39,7 @@ def emblem_4(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_5(char: CharacterProperty):
     """
     体精+35
@@ -43,6 +48,7 @@ def emblem_5(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_6(char: CharacterProperty):
     """
     体精+25
@@ -51,6 +57,7 @@ def emblem_6(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_7(char: CharacterProperty):
     """
     体精+17
@@ -59,6 +66,7 @@ def emblem_7(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_8(char: CharacterProperty):
     """
     力智+30
@@ -67,6 +75,7 @@ def emblem_8(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_9(char: CharacterProperty):
     """
     攻速+2%
@@ -75,6 +84,7 @@ def emblem_9(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_10(char: CharacterProperty):
     """
     体精+30
@@ -83,6 +93,7 @@ def emblem_10(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_11(char: CharacterProperty):
     """
     三攻+20
@@ -91,6 +102,7 @@ def emblem_11(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_12(char: CharacterProperty):
     """
     力智+30
@@ -99,6 +111,7 @@ def emblem_12(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_13(char: CharacterProperty):
     """
     体精+30
@@ -107,6 +120,7 @@ def emblem_13(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_14(char: CharacterProperty):
     """
     力智+25
@@ -115,6 +129,7 @@ def emblem_14(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_15(char: CharacterProperty):
     """
     力智+15
@@ -123,6 +138,7 @@ def emblem_15(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_16(char: CharacterProperty):
     """
     攻速+1.5%
@@ -131,6 +147,7 @@ def emblem_16(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_17(char: CharacterProperty):
     """
     体精+15
@@ -139,6 +156,7 @@ def emblem_17(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_18(char: CharacterProperty):
     """
     三攻+15
@@ -147,6 +165,7 @@ def emblem_18(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_19(char: CharacterProperty):
     """
     体精+15
@@ -155,6 +174,7 @@ def emblem_19(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_20(char: CharacterProperty):
     """
     力智+17
@@ -163,6 +183,7 @@ def emblem_20(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_21(char: CharacterProperty):
     """
     力智+10
@@ -171,6 +192,7 @@ def emblem_21(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_22(char: CharacterProperty):
     """
     攻速+1.1%
@@ -179,6 +201,7 @@ def emblem_22(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_23(char: CharacterProperty):
     """
     体精+10
@@ -187,6 +210,7 @@ def emblem_23(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_24(char: CharacterProperty):
     """
     三攻+10
@@ -195,6 +219,7 @@ def emblem_24(char: CharacterProperty):
     pass
 
 
+@register
 def emblem_25(char: CharacterProperty):
     """
     体精+10

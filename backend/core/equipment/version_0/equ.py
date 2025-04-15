@@ -1,11 +1,10 @@
 from core.basic.equipment import EquEffect
 from core.abstract.character import CharacterProperty
-
-equ_func_list = {}
-
+from .register import register
 # region 武器
 
 
+@register
 def equ_1(char: CharacterProperty):
     """
     百里挑一短剑
@@ -19,6 +18,7 @@ def equ_1(char: CharacterProperty):
     pass
 
 
+@register
 def equ_2(char: CharacterProperty):
     """
     独一无二短剑
@@ -32,6 +32,7 @@ def equ_2(char: CharacterProperty):
     pass
 
 
+@register
 def equ_3(char: CharacterProperty):
     """
     传说承继 - 短剑
@@ -45,6 +46,7 @@ def equ_3(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4(char: CharacterProperty):
     """
     英雄叙事诗 - 短剑
@@ -58,6 +60,7 @@ def equ_4(char: CharacterProperty):
     pass
 
 
+@register
 def equ_5(char: CharacterProperty):
     """
     太初之星 - 短剑
@@ -71,6 +74,7 @@ def equ_5(char: CharacterProperty):
     pass
 
 
+@register
 def equ_6(char: CharacterProperty):
     """
     无影剑 - 摘叶飞花
@@ -88,6 +92,7 @@ def equ_6(char: CharacterProperty):
     pass
 
 
+@register
 def equ_7(char: CharacterProperty):
     """
     无影剑 - 问道顶峰
@@ -105,6 +110,7 @@ def equ_7(char: CharacterProperty):
     pass
 
 
+@register
 def equ_8(char: CharacterProperty):
     """
     无影剑 - 缘生劫灭
@@ -122,6 +128,7 @@ def equ_8(char: CharacterProperty):
     pass
 
 
+@register
 def equ_9(char: CharacterProperty):
     """
     百里挑一太刀
@@ -138,6 +145,7 @@ def equ_9(char: CharacterProperty):
     pass
 
 
+@register
 def equ_10(char: CharacterProperty):
     """
     独一无二太刀
@@ -154,6 +162,7 @@ def equ_10(char: CharacterProperty):
     pass
 
 
+@register
 def equ_11(char: CharacterProperty):
     """
     传说承继 - 太刀
@@ -170,6 +179,7 @@ def equ_11(char: CharacterProperty):
     pass
 
 
+@register
 def equ_12(char: CharacterProperty):
     """
     英雄叙事诗 - 太刀
@@ -186,6 +196,7 @@ def equ_12(char: CharacterProperty):
     pass
 
 
+@register
 def equ_13(char: CharacterProperty):
     """
     太初之星 - 太刀
@@ -202,6 +213,7 @@ def equ_13(char: CharacterProperty):
     pass
 
 
+@register
 def equ_14(char: CharacterProperty):
     """
     凡作 - 金印刀
@@ -216,6 +228,7 @@ def equ_14(char: CharacterProperty):
     pass
 
 
+@register
 def equ_15(char: CharacterProperty):
     """
     名作 - 金印锐刀
@@ -230,6 +243,7 @@ def equ_15(char: CharacterProperty):
     pass
 
 
+@register
 def equ_16(char: CharacterProperty):
     """
     杰作 - 金印绝刀
@@ -244,6 +258,7 @@ def equ_16(char: CharacterProperty):
     pass
 
 
+@register
 def equ_17(char: CharacterProperty):
     """
     百里挑一钝器
@@ -258,6 +273,7 @@ def equ_17(char: CharacterProperty):
     pass
 
 
+@register
 def equ_18(char: CharacterProperty):
     """
     独一无二钝器
@@ -272,6 +288,7 @@ def equ_18(char: CharacterProperty):
     pass
 
 
+@register
 def equ_19(char: CharacterProperty):
     """
     传说承继 - 钝器
@@ -286,6 +303,7 @@ def equ_19(char: CharacterProperty):
     pass
 
 
+@register
 def equ_20(char: CharacterProperty):
     """
     英雄叙事诗 - 钝器
@@ -300,6 +318,7 @@ def equ_20(char: CharacterProperty):
     pass
 
 
+@register
 def equ_21(char: CharacterProperty):
     """
     太初之星 - 钝器
@@ -314,6 +333,7 @@ def equ_21(char: CharacterProperty):
     pass
 
 
+@register
 def equ_22(char: CharacterProperty):
     """
     梁月的钝剑 : 形
@@ -327,6 +347,7 @@ def equ_22(char: CharacterProperty):
     pass
 
 
+@register
 def equ_23(char: CharacterProperty):
     """
     梁月的钝剑 : 意
@@ -347,6 +368,7 @@ def equ_23(char: CharacterProperty):
     pass
 
 
+@register
 def equ_24(char: CharacterProperty):
     """
     梁月的钝剑 : 神
@@ -367,6 +389,7 @@ def equ_24(char: CharacterProperty):
     pass
 
 
+@register
 def equ_25(char: CharacterProperty):
     """
     百里挑一巨剑
@@ -381,6 +404,7 @@ def equ_25(char: CharacterProperty):
     pass
 
 
+@register
 def equ_26(char: CharacterProperty):
     """
     独一无二巨剑
@@ -395,6 +419,7 @@ def equ_26(char: CharacterProperty):
     pass
 
 
+@register
 def equ_27(char: CharacterProperty):
     """
     传说承继 - 巨剑
@@ -409,6 +434,7 @@ def equ_27(char: CharacterProperty):
     pass
 
 
+@register
 def equ_28(char: CharacterProperty):
     """
     英雄叙事诗 - 巨剑
@@ -423,6 +449,7 @@ def equ_28(char: CharacterProperty):
     pass
 
 
+@register
 def equ_29(char: CharacterProperty):
     """
     太初之星 - 巨剑
@@ -437,6 +464,7 @@ def equ_29(char: CharacterProperty):
     pass
 
 
+@register
 def equ_30(char: CharacterProperty):
     """
     第1型 - 攻式·行云剑
@@ -455,6 +483,7 @@ def equ_30(char: CharacterProperty):
     pass
 
 
+@register
 def equ_31(char: CharacterProperty):
     """
     第2型 - 守式·停云剑
@@ -480,6 +509,7 @@ def equ_31(char: CharacterProperty):
     pass
 
 
+@register
 def equ_32(char: CharacterProperty):
     """
     特型 - 武神凌云剑
@@ -505,6 +535,7 @@ def equ_32(char: CharacterProperty):
     pass
 
 
+@register
 def equ_33(char: CharacterProperty):
     """
     百里挑一光剑
@@ -519,6 +550,7 @@ def equ_33(char: CharacterProperty):
     pass
 
 
+@register
 def equ_34(char: CharacterProperty):
     """
     独一无二光剑
@@ -533,6 +565,7 @@ def equ_34(char: CharacterProperty):
     pass
 
 
+@register
 def equ_35(char: CharacterProperty):
     """
     传说承继 - 光剑
@@ -547,6 +580,7 @@ def equ_35(char: CharacterProperty):
     pass
 
 
+@register
 def equ_36(char: CharacterProperty):
     """
     英雄叙事诗 - 光剑
@@ -561,6 +595,7 @@ def equ_36(char: CharacterProperty):
     pass
 
 
+@register
 def equ_37(char: CharacterProperty):
     """
     太初之星 - 光剑
@@ -575,6 +610,7 @@ def equ_37(char: CharacterProperty):
     pass
 
 
+@register
 def equ_38(char: CharacterProperty):
     """
     敌龙剑巴鲁姆克
@@ -590,6 +626,7 @@ def equ_38(char: CharacterProperty):
     pass
 
 
+@register
 def equ_39(char: CharacterProperty):
     """
     降龙剑巴鲁姆克
@@ -606,6 +643,7 @@ def equ_39(char: CharacterProperty):
     pass
 
 
+@register
 def equ_40(char: CharacterProperty):
     """
     灭龙剑巴鲁姆克
@@ -623,6 +661,7 @@ def equ_40(char: CharacterProperty):
     pass
 
 
+@register
 def equ_41(char: CharacterProperty):
     """
     百里挑一手套
@@ -638,6 +677,7 @@ def equ_41(char: CharacterProperty):
     pass
 
 
+@register
 def equ_42(char: CharacterProperty):
     """
     独一无二手套
@@ -653,6 +693,7 @@ def equ_42(char: CharacterProperty):
     pass
 
 
+@register
 def equ_43(char: CharacterProperty):
     """
     传说承继 - 手套
@@ -668,6 +709,7 @@ def equ_43(char: CharacterProperty):
     pass
 
 
+@register
 def equ_44(char: CharacterProperty):
     """
     英雄叙事诗 - 手套
@@ -683,6 +725,7 @@ def equ_44(char: CharacterProperty):
     pass
 
 
+@register
 def equ_45(char: CharacterProperty):
     """
     太初之星 - 手套
@@ -698,6 +741,7 @@ def equ_45(char: CharacterProperty):
     pass
 
 
+@register
 def equ_46(char: CharacterProperty):
     """
     念气之星点
@@ -711,6 +755,7 @@ def equ_46(char: CharacterProperty):
     pass
 
 
+@register
 def equ_47(char: CharacterProperty):
     """
     念气之星群
@@ -726,6 +771,7 @@ def equ_47(char: CharacterProperty):
     pass
 
 
+@register
 def equ_48(char: CharacterProperty):
     """
     念气之星河
@@ -742,6 +788,7 @@ def equ_48(char: CharacterProperty):
     pass
 
 
+@register
 def equ_49(char: CharacterProperty):
     """
     百里挑一臂铠
@@ -757,6 +804,7 @@ def equ_49(char: CharacterProperty):
     pass
 
 
+@register
 def equ_50(char: CharacterProperty):
     """
     独一无二臂铠
@@ -772,6 +820,7 @@ def equ_50(char: CharacterProperty):
     pass
 
 
+@register
 def equ_51(char: CharacterProperty):
     """
     传说承继 - 臂铠
@@ -787,6 +836,7 @@ def equ_51(char: CharacterProperty):
     pass
 
 
+@register
 def equ_52(char: CharacterProperty):
     """
     英雄叙事诗 - 臂铠
@@ -802,6 +852,7 @@ def equ_52(char: CharacterProperty):
     pass
 
 
+@register
 def equ_53(char: CharacterProperty):
     """
     太初之星 - 臂铠
@@ -817,6 +868,7 @@ def equ_53(char: CharacterProperty):
     pass
 
 
+@register
 def equ_54(char: CharacterProperty):
     """
     未完成的行星臂铠
@@ -830,6 +882,7 @@ def equ_54(char: CharacterProperty):
     pass
 
 
+@register
 def equ_55(char: CharacterProperty):
     """
     未完成的恒星臂铠
@@ -847,6 +900,7 @@ def equ_55(char: CharacterProperty):
     pass
 
 
+@register
 def equ_56(char: CharacterProperty):
     """
     未完成的宇宙臂铠
@@ -865,6 +919,7 @@ def equ_56(char: CharacterProperty):
     pass
 
 
+@register
 def equ_57(char: CharacterProperty):
     """
     百里挑一爪
@@ -875,6 +930,7 @@ def equ_57(char: CharacterProperty):
     pass
 
 
+@register
 def equ_58(char: CharacterProperty):
     """
     独一无二爪
@@ -885,6 +941,7 @@ def equ_58(char: CharacterProperty):
     pass
 
 
+@register
 def equ_59(char: CharacterProperty):
     """
     传说承继 - 爪
@@ -895,6 +952,7 @@ def equ_59(char: CharacterProperty):
     pass
 
 
+@register
 def equ_60(char: CharacterProperty):
     """
     英雄叙事诗 - 爪
@@ -905,6 +963,7 @@ def equ_60(char: CharacterProperty):
     pass
 
 
+@register
 def equ_61(char: CharacterProperty):
     """
     太初之星 - 爪
@@ -915,6 +974,7 @@ def equ_61(char: CharacterProperty):
     pass
 
 
+@register
 def equ_62(char: CharacterProperty):
     """
     魔女的悲伤
@@ -932,6 +992,7 @@ def equ_62(char: CharacterProperty):
     pass
 
 
+@register
 def equ_63(char: CharacterProperty):
     """
     魔女的恨意
@@ -950,6 +1011,7 @@ def equ_63(char: CharacterProperty):
     pass
 
 
+@register
 def equ_64(char: CharacterProperty):
     """
     魔女的堕落
@@ -972,6 +1034,7 @@ def equ_64(char: CharacterProperty):
     pass
 
 
+@register
 def equ_65(char: CharacterProperty):
     """
     百里挑一拳套
@@ -988,6 +1051,7 @@ def equ_65(char: CharacterProperty):
     pass
 
 
+@register
 def equ_66(char: CharacterProperty):
     """
     独一无二拳套
@@ -1004,6 +1068,7 @@ def equ_66(char: CharacterProperty):
     pass
 
 
+@register
 def equ_67(char: CharacterProperty):
     """
     传说承继 - 拳套
@@ -1020,6 +1085,7 @@ def equ_67(char: CharacterProperty):
     pass
 
 
+@register
 def equ_68(char: CharacterProperty):
     """
     英雄叙事诗 - 拳套
@@ -1036,6 +1102,7 @@ def equ_68(char: CharacterProperty):
     pass
 
 
+@register
 def equ_69(char: CharacterProperty):
     """
     太初之星 - 拳套
@@ -1052,6 +1119,7 @@ def equ_69(char: CharacterProperty):
     pass
 
 
+@register
 def equ_70(char: CharacterProperty):
     """
     贝兹公爵的强力之拳
@@ -1064,6 +1132,7 @@ def equ_70(char: CharacterProperty):
     pass
 
 
+@register
 def equ_71(char: CharacterProperty):
     """
     贝兹伯爵的英勇之拳
@@ -1079,6 +1148,7 @@ def equ_71(char: CharacterProperty):
     pass
 
 
+@register
 def equ_72(char: CharacterProperty):
     """
     贝兹女王的辉煌之拳
@@ -1096,6 +1166,7 @@ def equ_72(char: CharacterProperty):
     pass
 
 
+@register
 def equ_73(char: CharacterProperty):
     """
     百里挑一东方棍
@@ -1110,6 +1181,7 @@ def equ_73(char: CharacterProperty):
     pass
 
 
+@register
 def equ_74(char: CharacterProperty):
     """
     独一无二东方棍
@@ -1124,6 +1196,7 @@ def equ_74(char: CharacterProperty):
     pass
 
 
+@register
 def equ_75(char: CharacterProperty):
     """
     传说承继 - 东方棍
@@ -1138,6 +1211,7 @@ def equ_75(char: CharacterProperty):
     pass
 
 
+@register
 def equ_76(char: CharacterProperty):
     """
     英雄叙事诗 - 东方棍
@@ -1152,6 +1226,7 @@ def equ_76(char: CharacterProperty):
     pass
 
 
+@register
 def equ_77(char: CharacterProperty):
     """
     太初之星 - 东方棍
@@ -1166,6 +1241,7 @@ def equ_77(char: CharacterProperty):
     pass
 
 
+@register
 def equ_78(char: CharacterProperty):
     """
     魔力供给器
@@ -1179,6 +1255,7 @@ def equ_78(char: CharacterProperty):
     pass
 
 
+@register
 def equ_79(char: CharacterProperty):
     """
     魔力激活器
@@ -1200,6 +1277,7 @@ def equ_79(char: CharacterProperty):
     pass
 
 
+@register
 def equ_80(char: CharacterProperty):
     """
     魔力先觉者
@@ -1221,6 +1299,7 @@ def equ_80(char: CharacterProperty):
     pass
 
 
+@register
 def equ_81(char: CharacterProperty):
     """
     百里挑一左轮枪
@@ -1235,6 +1314,7 @@ def equ_81(char: CharacterProperty):
     pass
 
 
+@register
 def equ_82(char: CharacterProperty):
     """
     独一无二左轮枪
@@ -1249,6 +1329,7 @@ def equ_82(char: CharacterProperty):
     pass
 
 
+@register
 def equ_83(char: CharacterProperty):
     """
     传说承继 - 左轮枪
@@ -1263,6 +1344,7 @@ def equ_83(char: CharacterProperty):
     pass
 
 
+@register
 def equ_84(char: CharacterProperty):
     """
     英雄叙事诗 - 左轮枪
@@ -1277,6 +1359,7 @@ def equ_84(char: CharacterProperty):
     pass
 
 
+@register
 def equ_85(char: CharacterProperty):
     """
     太初之星 - 左轮枪
@@ -1291,6 +1374,7 @@ def equ_85(char: CharacterProperty):
     pass
 
 
+@register
 def equ_86(char: CharacterProperty):
     """
     漫游枪手的道路
@@ -1305,6 +1389,7 @@ def equ_86(char: CharacterProperty):
     pass
 
 
+@register
 def equ_87(char: CharacterProperty):
     """
     漫游枪手的宿命
@@ -1320,6 +1405,7 @@ def equ_87(char: CharacterProperty):
     pass
 
 
+@register
 def equ_88(char: CharacterProperty):
     """
     漫游枪手的威权
@@ -1336,6 +1422,7 @@ def equ_88(char: CharacterProperty):
     pass
 
 
+@register
 def equ_89(char: CharacterProperty):
     """
     百里挑一手弩
@@ -1350,6 +1437,7 @@ def equ_89(char: CharacterProperty):
     pass
 
 
+@register
 def equ_90(char: CharacterProperty):
     """
     独一无二手弩
@@ -1364,6 +1452,7 @@ def equ_90(char: CharacterProperty):
     pass
 
 
+@register
 def equ_91(char: CharacterProperty):
     """
     传说承继 - 手弩
@@ -1378,6 +1467,7 @@ def equ_91(char: CharacterProperty):
     pass
 
 
+@register
 def equ_92(char: CharacterProperty):
     """
     英雄叙事诗 - 手弩
@@ -1392,6 +1482,7 @@ def equ_92(char: CharacterProperty):
     pass
 
 
+@register
 def equ_93(char: CharacterProperty):
     """
     太初之星 - 手弩
@@ -1406,6 +1497,7 @@ def equ_93(char: CharacterProperty):
     pass
 
 
+@register
 def equ_94(char: CharacterProperty):
     """
     冰封的火焰之躯
@@ -1425,6 +1517,7 @@ def equ_94(char: CharacterProperty):
     pass
 
 
+@register
 def equ_95(char: CharacterProperty):
     """
     燃烧的霜冻之躯
@@ -1448,6 +1541,7 @@ def equ_95(char: CharacterProperty):
     pass
 
 
+@register
 def equ_96(char: CharacterProperty):
     """
     冰火的淬炼之躯
@@ -1474,6 +1568,7 @@ def equ_96(char: CharacterProperty):
     pass
 
 
+@register
 def equ_97(char: CharacterProperty):
     """
     百里挑一步枪
@@ -1487,6 +1582,7 @@ def equ_97(char: CharacterProperty):
     pass
 
 
+@register
 def equ_98(char: CharacterProperty):
     """
     独一无二步枪
@@ -1500,6 +1596,7 @@ def equ_98(char: CharacterProperty):
     pass
 
 
+@register
 def equ_99(char: CharacterProperty):
     """
     传说承继 - 步枪
@@ -1513,6 +1610,7 @@ def equ_99(char: CharacterProperty):
     pass
 
 
+@register
 def equ_100(char: CharacterProperty):
     """
     英雄叙事诗 - 步枪
@@ -1526,6 +1624,7 @@ def equ_100(char: CharacterProperty):
     pass
 
 
+@register
 def equ_101(char: CharacterProperty):
     """
     太初之星 - 步枪
@@ -1539,6 +1638,7 @@ def equ_101(char: CharacterProperty):
     pass
 
 
+@register
 def equ_102(char: CharacterProperty):
     """
     归来之火花狙击者
@@ -1559,6 +1659,7 @@ def equ_102(char: CharacterProperty):
     pass
 
 
+@register
 def equ_103(char: CharacterProperty):
     """
     归来之烈焰狙击者
@@ -1582,6 +1683,7 @@ def equ_103(char: CharacterProperty):
     pass
 
 
+@register
 def equ_104(char: CharacterProperty):
     """
     归来之黑玫瑰狙击者
@@ -1608,6 +1710,7 @@ def equ_104(char: CharacterProperty):
     pass
 
 
+@register
 def equ_105(char: CharacterProperty):
     """
     百里挑一自动手枪
@@ -1621,6 +1724,7 @@ def equ_105(char: CharacterProperty):
     pass
 
 
+@register
 def equ_106(char: CharacterProperty):
     """
     独一无二自动手枪
@@ -1634,6 +1738,7 @@ def equ_106(char: CharacterProperty):
     pass
 
 
+@register
 def equ_107(char: CharacterProperty):
     """
     传说承继 - 自动手枪
@@ -1647,6 +1752,7 @@ def equ_107(char: CharacterProperty):
     pass
 
 
+@register
 def equ_108(char: CharacterProperty):
     """
     英雄叙事诗 - 自动手枪
@@ -1660,6 +1766,7 @@ def equ_108(char: CharacterProperty):
     pass
 
 
+@register
 def equ_109(char: CharacterProperty):
     """
     太初之星 - 自动手枪
@@ -1673,6 +1780,7 @@ def equ_109(char: CharacterProperty):
     pass
 
 
+@register
 def equ_110(char: CharacterProperty):
     """
     创新式自动手枪
@@ -1686,6 +1794,7 @@ def equ_110(char: CharacterProperty):
     pass
 
 
+@register
 def equ_111(char: CharacterProperty):
     """
     变革式自动手枪
@@ -1707,6 +1816,7 @@ def equ_111(char: CharacterProperty):
     pass
 
 
+@register
 def equ_112(char: CharacterProperty):
     """
     进化式自动手枪
@@ -1728,6 +1838,7 @@ def equ_112(char: CharacterProperty):
     pass
 
 
+@register
 def equ_113(char: CharacterProperty):
     """
     百里挑一手炮
@@ -1741,6 +1852,7 @@ def equ_113(char: CharacterProperty):
     pass
 
 
+@register
 def equ_114(char: CharacterProperty):
     """
     独一无二手炮
@@ -1754,6 +1866,7 @@ def equ_114(char: CharacterProperty):
     pass
 
 
+@register
 def equ_115(char: CharacterProperty):
     """
     传说承继 - 手炮
@@ -1767,6 +1880,7 @@ def equ_115(char: CharacterProperty):
     pass
 
 
+@register
 def equ_116(char: CharacterProperty):
     """
     英雄叙事诗 - 手炮
@@ -1780,6 +1894,7 @@ def equ_116(char: CharacterProperty):
     pass
 
 
+@register
 def equ_117(char: CharacterProperty):
     """
     太初之星 - 手炮
@@ -1793,6 +1908,7 @@ def equ_117(char: CharacterProperty):
     pass
 
 
+@register
 def equ_118(char: CharacterProperty):
     """
     少年乌尔班的创意
@@ -1808,6 +1924,7 @@ def equ_118(char: CharacterProperty):
     pass
 
 
+@register
 def equ_119(char: CharacterProperty):
     """
     乌尔班巨炮雏形
@@ -1824,6 +1941,7 @@ def equ_119(char: CharacterProperty):
     pass
 
 
+@register
 def equ_120(char: CharacterProperty):
     """
     乌尔班毕生杰作
@@ -1840,6 +1958,7 @@ def equ_120(char: CharacterProperty):
     pass
 
 
+@register
 def equ_121(char: CharacterProperty):
     """
     百里挑一法杖
@@ -1852,6 +1971,7 @@ def equ_121(char: CharacterProperty):
     pass
 
 
+@register
 def equ_122(char: CharacterProperty):
     """
     独一无二法杖
@@ -1864,6 +1984,7 @@ def equ_122(char: CharacterProperty):
     pass
 
 
+@register
 def equ_123(char: CharacterProperty):
     """
     传说承继 - 法杖
@@ -1876,6 +1997,7 @@ def equ_123(char: CharacterProperty):
     pass
 
 
+@register
 def equ_124(char: CharacterProperty):
     """
     英雄叙事诗 - 法杖
@@ -1888,6 +2010,7 @@ def equ_124(char: CharacterProperty):
     pass
 
 
+@register
 def equ_125(char: CharacterProperty):
     """
     太初之星 - 法杖
@@ -1900,6 +2023,7 @@ def equ_125(char: CharacterProperty):
     pass
 
 
+@register
 def equ_126(char: CharacterProperty):
     """
     尘封的知识
@@ -1916,6 +2040,7 @@ def equ_126(char: CharacterProperty):
     pass
 
 
+@register
 def equ_127(char: CharacterProperty):
     """
     禁忌的知识
@@ -1932,6 +2057,7 @@ def equ_127(char: CharacterProperty):
     pass
 
 
+@register
 def equ_128(char: CharacterProperty):
     """
     解禁的知识
@@ -1948,6 +2074,7 @@ def equ_128(char: CharacterProperty):
     pass
 
 
+@register
 def equ_129(char: CharacterProperty):
     """
     百里挑一法杖
@@ -1960,6 +2087,7 @@ def equ_129(char: CharacterProperty):
     pass
 
 
+@register
 def equ_130(char: CharacterProperty):
     """
     独一无二法杖
@@ -1972,6 +2100,7 @@ def equ_130(char: CharacterProperty):
     pass
 
 
+@register
 def equ_131(char: CharacterProperty):
     """
     传说承继 - 法杖
@@ -1984,6 +2113,7 @@ def equ_131(char: CharacterProperty):
     pass
 
 
+@register
 def equ_132(char: CharacterProperty):
     """
     英雄叙事诗 - 法杖
@@ -1996,6 +2126,7 @@ def equ_132(char: CharacterProperty):
     pass
 
 
+@register
 def equ_133(char: CharacterProperty):
     """
     太初之星 - 魔杖
@@ -2009,6 +2140,7 @@ def equ_133(char: CharacterProperty):
     pass
 
 
+@register
 def equ_134(char: CharacterProperty):
     """
     牧羊人的第一道谎言
@@ -2032,6 +2164,7 @@ def equ_134(char: CharacterProperty):
     pass
 
 
+@register
 def equ_135(char: CharacterProperty):
     """
     牧羊人的第二道谎言
@@ -2054,6 +2187,7 @@ def equ_135(char: CharacterProperty):
     pass
 
 
+@register
 def equ_136(char: CharacterProperty):
     """
     牧羊人最后的谎言
@@ -2077,6 +2211,7 @@ def equ_136(char: CharacterProperty):
     pass
 
 
+@register
 def equ_137(char: CharacterProperty):
     """
     百里挑一棍棒
@@ -2090,6 +2225,7 @@ def equ_137(char: CharacterProperty):
     pass
 
 
+@register
 def equ_138(char: CharacterProperty):
     """
     独一无二棍棒
@@ -2103,6 +2239,7 @@ def equ_138(char: CharacterProperty):
     pass
 
 
+@register
 def equ_139(char: CharacterProperty):
     """
     传说承继 - 棍棒
@@ -2116,6 +2253,7 @@ def equ_139(char: CharacterProperty):
     pass
 
 
+@register
 def equ_140(char: CharacterProperty):
     """
     英雄叙事诗 - 棍棒
@@ -2129,6 +2267,7 @@ def equ_140(char: CharacterProperty):
     pass
 
 
+@register
 def equ_141(char: CharacterProperty):
     """
     太初之星 - 棍棒
@@ -2142,6 +2281,7 @@ def equ_141(char: CharacterProperty):
     pass
 
 
+@register
 def equ_142(char: CharacterProperty):
     """
     时来运转 : 莫强求
@@ -2168,6 +2308,7 @@ def equ_142(char: CharacterProperty):
         char.SetSkillCD(1,100,0.2)
 
 
+@register
 def equ_143(char: CharacterProperty):
     """
     卡匹迪恩 : 莫追悔
@@ -2195,6 +2336,7 @@ def equ_143(char: CharacterProperty):
     pass
 
 
+@register
 def equ_144(char: CharacterProperty):
     """
     哈库纳玛塔塔 : 莫烦忧
@@ -2225,6 +2367,7 @@ def equ_144(char: CharacterProperty):
     pass
 
 
+@register
 def equ_145(char: CharacterProperty):
     """
     百里挑一矛
@@ -2241,6 +2384,7 @@ def equ_145(char: CharacterProperty):
     pass
 
 
+@register
 def equ_146(char: CharacterProperty):
     """
     独一无二矛
@@ -2257,6 +2401,7 @@ def equ_146(char: CharacterProperty):
     pass
 
 
+@register
 def equ_147(char: CharacterProperty):
     """
     传说承继 - 矛
@@ -2273,6 +2418,7 @@ def equ_147(char: CharacterProperty):
     pass
 
 
+@register
 def equ_148(char: CharacterProperty):
     """
     英雄叙事诗 - 矛
@@ -2289,6 +2435,7 @@ def equ_148(char: CharacterProperty):
     pass
 
 
+@register
 def equ_149(char: CharacterProperty):
     """
     太初之星 - 矛
@@ -2305,6 +2452,7 @@ def equ_149(char: CharacterProperty):
     pass
 
 
+@register
 def equ_150(char: CharacterProperty):
     """
     终结者
@@ -2323,6 +2471,7 @@ def equ_150(char: CharacterProperty):
     pass
 
 
+@register
 def equ_151(char: CharacterProperty):
     """
     凛冬终结者
@@ -2341,6 +2490,7 @@ def equ_151(char: CharacterProperty):
     pass
 
 
+@register
 def equ_152(char: CharacterProperty):
     """
     绝对零度终结者
@@ -2359,6 +2509,7 @@ def equ_152(char: CharacterProperty):
     pass
 
 
+@register
 def equ_153(char: CharacterProperty):
     """
     百里挑一扫把
@@ -2376,6 +2527,7 @@ def equ_153(char: CharacterProperty):
     pass
 
 
+@register
 def equ_154(char: CharacterProperty):
     """
     独一无二扫把
@@ -2394,6 +2546,7 @@ def equ_154(char: CharacterProperty):
     pass
 
 
+@register
 def equ_155(char: CharacterProperty):
     """
     传说承继 - 扫把
@@ -2412,6 +2565,7 @@ def equ_155(char: CharacterProperty):
     pass
 
 
+@register
 def equ_156(char: CharacterProperty):
     """
     英雄叙事诗 - 扫把
@@ -2430,6 +2584,7 @@ def equ_156(char: CharacterProperty):
     pass
 
 
+@register
 def equ_157(char: CharacterProperty):
     """
     太初之星 - 扫把
@@ -2448,6 +2603,7 @@ def equ_157(char: CharacterProperty):
     pass
 
 
+@register
 def equ_158(char: CharacterProperty):
     """
     暗黑祈祷
@@ -2470,6 +2626,7 @@ def equ_158(char: CharacterProperty):
     pass
 
 
+@register
 def equ_159(char: CharacterProperty):
     """
     暗黑祈愿
@@ -2492,6 +2649,7 @@ def equ_159(char: CharacterProperty):
     pass
 
 
+@register
 def equ_160(char: CharacterProperty):
     """
     暗黑诅咒
@@ -2514,6 +2672,7 @@ def equ_160(char: CharacterProperty):
     pass
 
 
+@register
 def equ_161(char: CharacterProperty):
     """
     百里挑一光杖
@@ -2530,6 +2689,7 @@ def equ_161(char: CharacterProperty):
         char.AwakeSkill.lv += 4
 
 
+@register
 def equ_162(char: CharacterProperty):
     """
     独一无二光杖
@@ -2547,6 +2707,7 @@ def equ_162(char: CharacterProperty):
     pass
 
 
+@register
 def equ_163(char: CharacterProperty):
     """
     传说承继 - 光杖
@@ -2564,6 +2725,7 @@ def equ_163(char: CharacterProperty):
     pass
 
 
+@register
 def equ_164(char: CharacterProperty):
     """
     英雄叙事诗 - 光杖
@@ -2581,6 +2743,7 @@ def equ_164(char: CharacterProperty):
     pass
 
 
+@register
 def equ_165(char: CharacterProperty):
     """
     太初之星 - 光杖
@@ -2598,6 +2761,7 @@ def equ_165(char: CharacterProperty):
     pass
 
 
+@register
 def equ_166(char: CharacterProperty):
     """
     荣耀之神木光杖
@@ -2618,6 +2782,7 @@ def equ_166(char: CharacterProperty):
     pass
 
 
+@register
 def equ_167(char: CharacterProperty):
     """
     救赎之神木光杖
@@ -2638,6 +2803,7 @@ def equ_167(char: CharacterProperty):
     pass
 
 
+@register
 def equ_168(char: CharacterProperty):
     """
     永恒之神木光杖
@@ -2658,6 +2824,7 @@ def equ_168(char: CharacterProperty):
     pass
 
 
+@register
 def equ_169(char: CharacterProperty):
     """
     百里挑一镰刀
@@ -2674,6 +2841,7 @@ def equ_169(char: CharacterProperty):
     pass
 
 
+@register
 def equ_170(char: CharacterProperty):
     """
     独一无二镰刀
@@ -2690,6 +2858,7 @@ def equ_170(char: CharacterProperty):
     pass
 
 
+@register
 def equ_171(char: CharacterProperty):
     """
     传说承继 - 镰刀
@@ -2706,6 +2875,7 @@ def equ_171(char: CharacterProperty):
     pass
 
 
+@register
 def equ_172(char: CharacterProperty):
     """
     英雄叙事诗 - 镰刀
@@ -2722,6 +2892,7 @@ def equ_172(char: CharacterProperty):
     pass
 
 
+@register
 def equ_173(char: CharacterProperty):
     """
     太初之星 - 镰刀
@@ -2738,6 +2909,7 @@ def equ_173(char: CharacterProperty):
     pass
 
 
+@register
 def equ_174(char: CharacterProperty):
     """
     灵魂追踪者
@@ -2758,6 +2930,7 @@ def equ_174(char: CharacterProperty):
     pass
 
 
+@register
 def equ_175(char: CharacterProperty):
     """
     灵魂狩猎者
@@ -2778,6 +2951,7 @@ def equ_175(char: CharacterProperty):
     pass
 
 
+@register
 def equ_176(char: CharacterProperty):
     """
     灵魂掠夺者
@@ -2797,6 +2971,7 @@ def equ_176(char: CharacterProperty):
     pass
 
 
+@register
 def equ_177(char: CharacterProperty):
     """
     百里挑一念珠
@@ -2813,6 +2988,7 @@ def equ_177(char: CharacterProperty):
     pass
 
 
+@register
 def equ_178(char: CharacterProperty):
     """
     独一无二念珠
@@ -2829,6 +3005,7 @@ def equ_178(char: CharacterProperty):
     pass
 
 
+@register
 def equ_179(char: CharacterProperty):
     """
     传说承继 - 念珠
@@ -2845,6 +3022,7 @@ def equ_179(char: CharacterProperty):
     pass
 
 
+@register
 def equ_180(char: CharacterProperty):
     """
     英雄叙事诗 - 念珠
@@ -2861,6 +3039,7 @@ def equ_180(char: CharacterProperty):
     pass
 
 
+@register
 def equ_181(char: CharacterProperty):
     """
     太初之星 - 念珠
@@ -2877,6 +3056,7 @@ def equ_181(char: CharacterProperty):
     pass
 
 
+@register
 def equ_182(char: CharacterProperty):
     """
     彗星念珠
@@ -2898,6 +3078,7 @@ def equ_182(char: CharacterProperty):
     pass
 
 
+@register
 def equ_183(char: CharacterProperty):
     """
     飞星念珠
@@ -2919,6 +3100,7 @@ def equ_183(char: CharacterProperty):
     pass
 
 
+@register
 def equ_184(char: CharacterProperty):
     """
     流星念珠
@@ -2939,6 +3121,7 @@ def equ_184(char: CharacterProperty):
     pass
 
 
+@register
 def equ_185(char: CharacterProperty):
     """
     百里挑一战斧
@@ -2954,6 +3137,7 @@ def equ_185(char: CharacterProperty):
     pass
 
 
+@register
 def equ_186(char: CharacterProperty):
     """
     独一无二战斧
@@ -2969,6 +3153,7 @@ def equ_186(char: CharacterProperty):
     pass
 
 
+@register
 def equ_187(char: CharacterProperty):
     """
     传说承继 - 战斧
@@ -2984,6 +3169,7 @@ def equ_187(char: CharacterProperty):
     pass
 
 
+@register
 def equ_188(char: CharacterProperty):
     """
     英雄叙事诗 - 战斧
@@ -2999,6 +3185,7 @@ def equ_188(char: CharacterProperty):
     pass
 
 
+@register
 def equ_189(char: CharacterProperty):
     """
     太初之星 - 战斧
@@ -3014,6 +3201,7 @@ def equ_189(char: CharacterProperty):
     pass
 
 
+@register
 def equ_190(char: CharacterProperty):
     """
     大地破坏者
@@ -3035,6 +3223,7 @@ def equ_190(char: CharacterProperty):
     pass
 
 
+@register
 def equ_191(char: CharacterProperty):
     """
     行星粉碎者
@@ -3056,6 +3245,7 @@ def equ_191(char: CharacterProperty):
     pass
 
 
+@register
 def equ_192(char: CharacterProperty):
     """
     灭亡之根源
@@ -3077,6 +3267,7 @@ def equ_192(char: CharacterProperty):
     pass
 
 
+@register
 def equ_193(char: CharacterProperty):
     """
     百里挑一图腾
@@ -3091,6 +3282,7 @@ def equ_193(char: CharacterProperty):
     pass
 
 
+@register
 def equ_194(char: CharacterProperty):
     """
     独一无二图腾
@@ -3105,6 +3297,7 @@ def equ_194(char: CharacterProperty):
     pass
 
 
+@register
 def equ_195(char: CharacterProperty):
     """
     传说承继 - 图腾
@@ -3119,6 +3312,7 @@ def equ_195(char: CharacterProperty):
     pass
 
 
+@register
 def equ_196(char: CharacterProperty):
     """
     英雄叙事诗 - 图腾
@@ -3133,6 +3327,7 @@ def equ_196(char: CharacterProperty):
     pass
 
 
+@register
 def equ_197(char: CharacterProperty):
     """
     太初之星 - 图腾
@@ -3147,6 +3342,7 @@ def equ_197(char: CharacterProperty):
     pass
 
 
+@register
 def equ_198(char: CharacterProperty):
     """
     天道之亲和
@@ -3167,6 +3363,7 @@ def equ_198(char: CharacterProperty):
     pass
 
 
+@register
 def equ_199(char: CharacterProperty):
     """
     天道之慈悲
@@ -3192,6 +3389,7 @@ def equ_199(char: CharacterProperty):
     pass
 
 
+@register
 def equ_200(char: CharacterProperty):
     """
     天道之威严
@@ -3222,6 +3420,7 @@ def equ_200(char: CharacterProperty):
     pass
 
 
+@register
 def equ_201(char: CharacterProperty):
     """
     百里挑一匕首
@@ -3237,6 +3436,7 @@ def equ_201(char: CharacterProperty):
     pass
 
 
+@register
 def equ_202(char: CharacterProperty):
     """
     独一无二匕首
@@ -3252,6 +3452,7 @@ def equ_202(char: CharacterProperty):
     pass
 
 
+@register
 def equ_203(char: CharacterProperty):
     """
     传说承继 - 匕首
@@ -3267,6 +3468,7 @@ def equ_203(char: CharacterProperty):
     pass
 
 
+@register
 def equ_204(char: CharacterProperty):
     """
     英雄叙事诗 - 匕首
@@ -3282,6 +3484,7 @@ def equ_204(char: CharacterProperty):
     pass
 
 
+@register
 def equ_205(char: CharacterProperty):
     """
     太初之星 - 匕首
@@ -3297,6 +3500,7 @@ def equ_205(char: CharacterProperty):
     pass
 
 
+@register
 def equ_206(char: CharacterProperty):
     """
     女帝的华丽银妆刀
@@ -3309,6 +3513,7 @@ def equ_206(char: CharacterProperty):
     pass
 
 
+@register
 def equ_207(char: CharacterProperty):
     """
     女帝的灿烂银妆刀
@@ -3322,6 +3527,7 @@ def equ_207(char: CharacterProperty):
     pass
 
 
+@register
 def equ_208(char: CharacterProperty):
     """
     女帝的玲珑银妆刀
@@ -3336,6 +3542,7 @@ def equ_208(char: CharacterProperty):
     pass
 
 
+@register
 def equ_209(char: CharacterProperty):
     """
     百里挑一双剑
@@ -3351,6 +3558,7 @@ def equ_209(char: CharacterProperty):
     pass
 
 
+@register
 def equ_210(char: CharacterProperty):
     """
     独一无二双剑
@@ -3366,6 +3574,7 @@ def equ_210(char: CharacterProperty):
     pass
 
 
+@register
 def equ_211(char: CharacterProperty):
     """
     传说承继 - 双剑
@@ -3381,6 +3590,7 @@ def equ_211(char: CharacterProperty):
     pass
 
 
+@register
 def equ_212(char: CharacterProperty):
     """
     英雄叙事诗 - 双剑
@@ -3396,6 +3606,7 @@ def equ_212(char: CharacterProperty):
     pass
 
 
+@register
 def equ_213(char: CharacterProperty):
     """
     太初之星 - 双剑
@@ -3411,6 +3622,7 @@ def equ_213(char: CharacterProperty):
     pass
 
 
+@register
 def equ_214(char: CharacterProperty):
     """
     摇曳之地狱火
@@ -3427,6 +3639,7 @@ def equ_214(char: CharacterProperty):
     pass
 
 
+@register
 def equ_215(char: CharacterProperty):
     """
     闪耀之地狱火
@@ -3445,6 +3658,7 @@ def equ_215(char: CharacterProperty):
     pass
 
 
+@register
 def equ_216(char: CharacterProperty):
     """
     璀璨之地狱火
@@ -3464,6 +3678,7 @@ def equ_216(char: CharacterProperty):
     pass
 
 
+@register
 def equ_217(char: CharacterProperty):
     """
     百里挑一手杖
@@ -3479,6 +3694,7 @@ def equ_217(char: CharacterProperty):
     pass
 
 
+@register
 def equ_218(char: CharacterProperty):
     """
     独一无二手杖
@@ -3494,6 +3710,7 @@ def equ_218(char: CharacterProperty):
     pass
 
 
+@register
 def equ_219(char: CharacterProperty):
     """
     传说承继 - 手杖
@@ -3509,6 +3726,7 @@ def equ_219(char: CharacterProperty):
     pass
 
 
+@register
 def equ_220(char: CharacterProperty):
     """
     英雄叙事诗 - 手杖
@@ -3524,6 +3742,7 @@ def equ_220(char: CharacterProperty):
     pass
 
 
+@register
 def equ_221(char: CharacterProperty):
     """
     太初之星 - 手杖
@@ -3539,6 +3758,7 @@ def equ_221(char: CharacterProperty):
     pass
 
 
+@register
 def equ_222(char: CharacterProperty):
     """
     畏惧之主宰
@@ -3550,6 +3770,7 @@ def equ_222(char: CharacterProperty):
     pass
 
 
+@register
 def equ_223(char: CharacterProperty):
     """
     恐惧之主宰
@@ -3566,6 +3787,7 @@ def equ_223(char: CharacterProperty):
     pass
 
 
+@register
 def equ_224(char: CharacterProperty):
     """
     恐怖之主宰
@@ -3584,6 +3806,7 @@ def equ_224(char: CharacterProperty):
     pass
 
 
+@register
 def equ_225(char: CharacterProperty):
     """
     百里挑一苦无
@@ -3599,6 +3822,7 @@ def equ_225(char: CharacterProperty):
     pass
 
 
+@register
 def equ_226(char: CharacterProperty):
     """
     独一无二苦无
@@ -3614,6 +3838,7 @@ def equ_226(char: CharacterProperty):
     pass
 
 
+@register
 def equ_227(char: CharacterProperty):
     """
     传说承继 - 苦无
@@ -3629,6 +3854,7 @@ def equ_227(char: CharacterProperty):
     pass
 
 
+@register
 def equ_228(char: CharacterProperty):
     """
     英雄叙事诗 - 苦无
@@ -3644,6 +3870,7 @@ def equ_228(char: CharacterProperty):
     pass
 
 
+@register
 def equ_229(char: CharacterProperty):
     """
     太初之星 - 苦无
@@ -3659,6 +3886,7 @@ def equ_229(char: CharacterProperty):
     pass
 
 
+@register
 def equ_230(char: CharacterProperty):
     """
     恶道之因果轮回
@@ -3674,6 +3902,7 @@ def equ_230(char: CharacterProperty):
     pass
 
 
+@register
 def equ_231(char: CharacterProperty):
     """
     善道之因果轮回
@@ -3689,6 +3918,7 @@ def equ_231(char: CharacterProperty):
     pass
 
 
+@register
 def equ_232(char: CharacterProperty):
     """
     六道之因果轮回
@@ -3705,6 +3935,7 @@ def equ_232(char: CharacterProperty):
     pass
 
 
+@register
 def equ_233(char: CharacterProperty):
     """
     百里挑一长枪
@@ -3718,6 +3949,7 @@ def equ_233(char: CharacterProperty):
     pass
 
 
+@register
 def equ_234(char: CharacterProperty):
     """
     独一无二长枪
@@ -3731,6 +3963,7 @@ def equ_234(char: CharacterProperty):
     pass
 
 
+@register
 def equ_235(char: CharacterProperty):
     """
     传说承继 - 长枪
@@ -3744,6 +3977,7 @@ def equ_235(char: CharacterProperty):
     pass
 
 
+@register
 def equ_236(char: CharacterProperty):
     """
     英雄叙事诗 - 长枪
@@ -3757,6 +3991,7 @@ def equ_236(char: CharacterProperty):
     pass
 
 
+@register
 def equ_237(char: CharacterProperty):
     """
     太初之星 - 长枪
@@ -3770,6 +4005,7 @@ def equ_237(char: CharacterProperty):
     pass
 
 
+@register
 def equ_238(char: CharacterProperty):
     """
     战场支配者
@@ -3783,6 +4019,7 @@ def equ_238(char: CharacterProperty):
     pass
 
 
+@register
 def equ_239(char: CharacterProperty):
     """
     战场至尊
@@ -3796,6 +4033,7 @@ def equ_239(char: CharacterProperty):
     pass
 
 
+@register
 def equ_240(char: CharacterProperty):
     """
     战场斗神
@@ -3809,6 +4047,7 @@ def equ_240(char: CharacterProperty):
     pass
 
 
+@register
 def equ_241(char: CharacterProperty):
     """
     百里挑一战戟
@@ -3824,6 +4063,7 @@ def equ_241(char: CharacterProperty):
     pass
 
 
+@register
 def equ_242(char: CharacterProperty):
     """
     独一无二战戟
@@ -3839,6 +4079,7 @@ def equ_242(char: CharacterProperty):
     pass
 
 
+@register
 def equ_243(char: CharacterProperty):
     """
     传说承继 - 战戟
@@ -3854,6 +4095,7 @@ def equ_243(char: CharacterProperty):
     pass
 
 
+@register
 def equ_244(char: CharacterProperty):
     """
     英雄叙事诗 - 战戟
@@ -3869,6 +4111,7 @@ def equ_244(char: CharacterProperty):
     pass
 
 
+@register
 def equ_245(char: CharacterProperty):
     """
     太初之星 - 战戟
@@ -3884,6 +4127,7 @@ def equ_245(char: CharacterProperty):
     pass
 
 
+@register
 def equ_246(char: CharacterProperty):
     """
     墨龙偃月刀
@@ -3897,6 +4141,7 @@ def equ_246(char: CharacterProperty):
     pass
 
 
+@register
 def equ_247(char: CharacterProperty):
     """
     精 · 墨龙偃月刀
@@ -3910,6 +4155,7 @@ def equ_247(char: CharacterProperty):
     pass
 
 
+@register
 def equ_248(char: CharacterProperty):
     """
     真 · 墨龙偃月刀
@@ -3923,6 +4169,7 @@ def equ_248(char: CharacterProperty):
     pass
 
 
+@register
 def equ_249(char: CharacterProperty):
     """
     百里挑一光枪
@@ -3936,6 +4183,7 @@ def equ_249(char: CharacterProperty):
     pass
 
 
+@register
 def equ_250(char: CharacterProperty):
     """
     独一无二光枪
@@ -3949,6 +4197,7 @@ def equ_250(char: CharacterProperty):
     pass
 
 
+@register
 def equ_251(char: CharacterProperty):
     """
     传说承继 - 光枪
@@ -3962,6 +4211,7 @@ def equ_251(char: CharacterProperty):
     pass
 
 
+@register
 def equ_252(char: CharacterProperty):
     """
     英雄叙事诗 - 光枪
@@ -3975,6 +4225,7 @@ def equ_252(char: CharacterProperty):
     pass
 
 
+@register
 def equ_253(char: CharacterProperty):
     """
     太初之星 - 光枪
@@ -3988,6 +4239,7 @@ def equ_253(char: CharacterProperty):
     pass
 
 
+@register
 def equ_254(char: CharacterProperty):
     """
     将星 : 流陨星光
@@ -4005,6 +4257,7 @@ def equ_254(char: CharacterProperty):
     pass
 
 
+@register
 def equ_255(char: CharacterProperty):
     """
     将星 : 流陨星雨
@@ -4023,6 +4276,7 @@ def equ_255(char: CharacterProperty):
     pass
 
 
+@register
 def equ_256(char: CharacterProperty):
     """
     将星 : 流陨星河
@@ -4041,6 +4295,7 @@ def equ_256(char: CharacterProperty):
     pass
 
 
+@register
 def equ_257(char: CharacterProperty):
     """
     百里挑一暗矛
@@ -4057,6 +4312,7 @@ def equ_257(char: CharacterProperty):
     pass
 
 
+@register
 def equ_258(char: CharacterProperty):
     """
     独一无二暗矛
@@ -4073,6 +4329,7 @@ def equ_258(char: CharacterProperty):
     pass
 
 
+@register
 def equ_259(char: CharacterProperty):
     """
     传说承继 - 暗矛
@@ -4089,6 +4346,7 @@ def equ_259(char: CharacterProperty):
     pass
 
 
+@register
 def equ_260(char: CharacterProperty):
     """
     英雄叙事诗 - 暗矛
@@ -4105,6 +4363,7 @@ def equ_260(char: CharacterProperty):
     pass
 
 
+@register
 def equ_261(char: CharacterProperty):
     """
     太初之星 - 暗矛
@@ -4121,6 +4380,7 @@ def equ_261(char: CharacterProperty):
     pass
 
 
+@register
 def equ_262(char: CharacterProperty):
     """
     无影暗寂灭
@@ -4135,6 +4395,7 @@ def equ_262(char: CharacterProperty):
     pass
 
 
+@register
 def equ_263(char: CharacterProperty):
     """
     无影暗诛灭
@@ -4154,6 +4415,7 @@ def equ_263(char: CharacterProperty):
     pass
 
 
+@register
 def equ_264(char: CharacterProperty):
     """
     无影暗断灭
@@ -4176,6 +4438,7 @@ def equ_264(char: CharacterProperty):
     pass
 
 
+@register
 def equ_265(char: CharacterProperty):
     """
     百里挑一小太刀
@@ -4189,6 +4452,7 @@ def equ_265(char: CharacterProperty):
     pass
 
 
+@register
 def equ_266(char: CharacterProperty):
     """
     独一无二小太刀
@@ -4202,6 +4466,7 @@ def equ_266(char: CharacterProperty):
     pass
 
 
+@register
 def equ_267(char: CharacterProperty):
     """
     传说承继 - 小太刀
@@ -4215,6 +4480,7 @@ def equ_267(char: CharacterProperty):
     pass
 
 
+@register
 def equ_268(char: CharacterProperty):
     """
     英雄叙事诗 - 小太刀
@@ -4228,6 +4494,7 @@ def equ_268(char: CharacterProperty):
     pass
 
 
+@register
 def equ_269(char: CharacterProperty):
     """
     太初之星 - 小太刀
@@ -4241,6 +4508,7 @@ def equ_269(char: CharacterProperty):
     pass
 
 
+@register
 def equ_270(char: CharacterProperty):
     """
     纳斯卡 : 灵魂低语
@@ -4256,6 +4524,7 @@ def equ_270(char: CharacterProperty):
     pass
 
 
+@register
 def equ_271(char: CharacterProperty):
     """
     纳斯卡 : 灵魂悲鸣
@@ -4271,6 +4540,7 @@ def equ_271(char: CharacterProperty):
     pass
 
 
+@register
 def equ_272(char: CharacterProperty):
     """
     纳斯卡 : 灵魂审判
@@ -4285,6 +4555,7 @@ def equ_272(char: CharacterProperty):
     pass
 
 
+@register
 def equ_273(char: CharacterProperty):
     """
     百里挑一长刀
@@ -4298,6 +4569,7 @@ def equ_273(char: CharacterProperty):
     pass
 
 
+@register
 def equ_274(char: CharacterProperty):
     """
     独一无二长刀
@@ -4311,6 +4583,7 @@ def equ_274(char: CharacterProperty):
     pass
 
 
+@register
 def equ_275(char: CharacterProperty):
     """
     传说承继 - 长刀
@@ -4324,6 +4597,7 @@ def equ_275(char: CharacterProperty):
     pass
 
 
+@register
 def equ_276(char: CharacterProperty):
     """
     英雄叙事诗 - 长刀
@@ -4337,6 +4611,7 @@ def equ_276(char: CharacterProperty):
     pass
 
 
+@register
 def equ_277(char: CharacterProperty):
     """
     太初之星 - 长刀
@@ -4350,6 +4625,7 @@ def equ_277(char: CharacterProperty):
     pass
 
 
+@register
 def equ_278(char: CharacterProperty):
     """
     新月夜天刀
@@ -4365,6 +4641,7 @@ def equ_278(char: CharacterProperty):
     pass
 
 
+@register
 def equ_279(char: CharacterProperty):
     """
     弦月夜天刀
@@ -4380,6 +4657,7 @@ def equ_279(char: CharacterProperty):
     pass
 
 
+@register
 def equ_280(char: CharacterProperty):
     """
     满月 : 辉光夜天刀
@@ -4397,6 +4675,7 @@ def equ_280(char: CharacterProperty):
     pass
 
 
+@register
 def equ_281(char: CharacterProperty):
     """
     百里挑一重剑
@@ -4411,6 +4690,7 @@ def equ_281(char: CharacterProperty):
     pass
 
 
+@register
 def equ_282(char: CharacterProperty):
     """
     独一无二重剑
@@ -4425,6 +4705,7 @@ def equ_282(char: CharacterProperty):
     pass
 
 
+@register
 def equ_283(char: CharacterProperty):
     """
     传说承继 - 重剑
@@ -4439,6 +4720,7 @@ def equ_283(char: CharacterProperty):
     pass
 
 
+@register
 def equ_284(char: CharacterProperty):
     """
     英雄叙事诗 - 重剑
@@ -4453,6 +4735,7 @@ def equ_284(char: CharacterProperty):
     pass
 
 
+@register
 def equ_285(char: CharacterProperty):
     """
     太初之星 - 重剑
@@ -4467,6 +4750,7 @@ def equ_285(char: CharacterProperty):
     pass
 
 
+@register
 def equ_286(char: CharacterProperty):
     """
     爆裂之锯
@@ -4486,6 +4770,7 @@ def equ_286(char: CharacterProperty):
     pass
 
 
+@register
 def equ_287(char: CharacterProperty):
     """
     凶残之锯
@@ -4506,6 +4791,7 @@ def equ_287(char: CharacterProperty):
     pass
 
 
+@register
 def equ_288(char: CharacterProperty):
     """
     惊魂之锯
@@ -4526,6 +4812,7 @@ def equ_288(char: CharacterProperty):
     pass
 
 
+@register
 def equ_289(char: CharacterProperty):
     """
     百里挑一源力剑
@@ -4538,6 +4825,7 @@ def equ_289(char: CharacterProperty):
     pass
 
 
+@register
 def equ_290(char: CharacterProperty):
     """
     独一无二源力剑
@@ -4550,6 +4838,7 @@ def equ_290(char: CharacterProperty):
     pass
 
 
+@register
 def equ_291(char: CharacterProperty):
     """
     传说承继 - 源力剑
@@ -4562,6 +4851,7 @@ def equ_291(char: CharacterProperty):
     pass
 
 
+@register
 def equ_292(char: CharacterProperty):
     """
     英雄叙事诗 - 源力剑
@@ -4574,6 +4864,7 @@ def equ_292(char: CharacterProperty):
     pass
 
 
+@register
 def equ_293(char: CharacterProperty):
     """
     太初之星 - 源力剑
@@ -4586,6 +4877,7 @@ def equ_293(char: CharacterProperty):
     pass
 
 
+@register
 def equ_294(char: CharacterProperty):
     """
     超频之心
@@ -4603,6 +4895,7 @@ def equ_294(char: CharacterProperty):
     pass
 
 
+@register
 def equ_295(char: CharacterProperty):
     """
     超频之核
@@ -4622,6 +4915,7 @@ def equ_295(char: CharacterProperty):
     pass
 
 
+@register
 def equ_296(char: CharacterProperty):
     """
     核心源力
@@ -4642,6 +4936,7 @@ def equ_296(char: CharacterProperty):
     pass
 
 
+@register
 def equ_297(char: CharacterProperty):
     """
     百里挑一玄机弓
@@ -4654,6 +4949,7 @@ def equ_297(char: CharacterProperty):
     pass
 
 
+@register
 def equ_298(char: CharacterProperty):
     """
     独一无二玄机弓
@@ -4666,6 +4962,7 @@ def equ_298(char: CharacterProperty):
     pass
 
 
+@register
 def equ_299(char: CharacterProperty):
     """
     传说承继 - 玄机弓
@@ -4678,6 +4975,7 @@ def equ_299(char: CharacterProperty):
     pass
 
 
+@register
 def equ_300(char: CharacterProperty):
     """
     英雄叙事诗 - 玄机弓
@@ -4690,6 +4988,7 @@ def equ_300(char: CharacterProperty):
     pass
 
 
+@register
 def equ_301(char: CharacterProperty):
     """
     太初之星 - 玄机弓
@@ -4702,6 +5001,7 @@ def equ_301(char: CharacterProperty):
     pass
 
 
+@register
 def equ_302(char: CharacterProperty):
     """
     迷雾旅行者
@@ -4721,6 +5021,7 @@ def equ_302(char: CharacterProperty):
     pass
 
 
+@register
 def equ_303(char: CharacterProperty):
     """
     迷雾探险者
@@ -4740,6 +5041,7 @@ def equ_303(char: CharacterProperty):
     pass
 
 
+@register
 def equ_304(char: CharacterProperty):
     """
     迷雾拓荒者
@@ -4759,6 +5061,7 @@ def equ_304(char: CharacterProperty):
     pass
 
 
+@register
 def equ_305(char: CharacterProperty):
     """
     百里挑一神弦弓
@@ -4772,6 +5075,7 @@ def equ_305(char: CharacterProperty):
     pass
 
 
+@register
 def equ_306(char: CharacterProperty):
     """
     独一无二神弦弓
@@ -4785,6 +5089,7 @@ def equ_306(char: CharacterProperty):
     pass
 
 
+@register
 def equ_307(char: CharacterProperty):
     """
     传说承继 - 神弦弓
@@ -4798,6 +5103,7 @@ def equ_307(char: CharacterProperty):
     pass
 
 
+@register
 def equ_308(char: CharacterProperty):
     """
     英雄叙事诗 - 神弦弓
@@ -4811,6 +5117,7 @@ def equ_308(char: CharacterProperty):
     pass
 
 
+@register
 def equ_309(char: CharacterProperty):
     """
     太初之星 - 神弦弓
@@ -4824,6 +5131,7 @@ def equ_309(char: CharacterProperty):
     pass
 
 
+@register
 def equ_310(char: CharacterProperty):
     """
     私语独奏
@@ -4845,6 +5153,7 @@ def equ_310(char: CharacterProperty):
     pass
 
 
+@register
 def equ_311(char: CharacterProperty):
     """
     私语双重奏
@@ -4866,6 +5175,7 @@ def equ_311(char: CharacterProperty):
     pass
 
 
+@register
 def equ_312(char: CharacterProperty):
     """
     私语音乐会
@@ -4887,6 +5197,7 @@ def equ_312(char: CharacterProperty):
     pass
 
 
+@register
 def equ_313(char: CharacterProperty):
     """
     百里挑一强攻弩
@@ -4903,6 +5214,7 @@ def equ_313(char: CharacterProperty):
     pass
 
 
+@register
 def equ_314(char: CharacterProperty):
     """
     独一无二强攻弩
@@ -4919,6 +5231,7 @@ def equ_314(char: CharacterProperty):
     pass
 
 
+@register
 def equ_315(char: CharacterProperty):
     """
     传说承继 - 强攻弩
@@ -4935,6 +5248,7 @@ def equ_315(char: CharacterProperty):
     pass
 
 
+@register
 def equ_316(char: CharacterProperty):
     """
     英雄叙事诗 - 强攻弩
@@ -4951,6 +5265,7 @@ def equ_316(char: CharacterProperty):
     pass
 
 
+@register
 def equ_317(char: CharacterProperty):
     """
     太初之星 - 强攻弩
@@ -4967,6 +5282,7 @@ def equ_317(char: CharacterProperty):
     pass
 
 
+@register
 def equ_318(char: CharacterProperty):
     """
     伙伴帕伊卡
@@ -4988,6 +5304,7 @@ def equ_318(char: CharacterProperty):
     pass
 
 
+@register
 def equ_319(char: CharacterProperty):
     """
     挚友帕伊卡
@@ -5009,6 +5326,7 @@ def equ_319(char: CharacterProperty):
     pass
 
 
+@register
 def equ_320(char: CharacterProperty):
     """
     亲眷帕伊卡
@@ -5028,6 +5346,7 @@ def equ_320(char: CharacterProperty):
     pass
 
 
+@register
 def equ_321(char: CharacterProperty):
     """
     百里挑一妖影弓
@@ -5046,6 +5365,7 @@ def equ_321(char: CharacterProperty):
     pass
 
 
+@register
 def equ_322(char: CharacterProperty):
     """
     独一无二妖影弓
@@ -5064,6 +5384,7 @@ def equ_322(char: CharacterProperty):
     pass
 
 
+@register
 def equ_323(char: CharacterProperty):
     """
     传说承继 - 妖影弓
@@ -5082,6 +5403,7 @@ def equ_323(char: CharacterProperty):
     pass
 
 
+@register
 def equ_324(char: CharacterProperty):
     """
     英雄叙事诗 - 妖影弓
@@ -5100,6 +5422,7 @@ def equ_324(char: CharacterProperty):
     pass
 
 
+@register
 def equ_325(char: CharacterProperty):
     """
     太初之星 - 妖影弓
@@ -5118,6 +5441,7 @@ def equ_325(char: CharacterProperty):
     pass
 
 
+@register
 def equ_326(char: CharacterProperty):
     """
     妖语子夜
@@ -5139,6 +5463,7 @@ def equ_326(char: CharacterProperty):
     pass
 
 
+@register
 def equ_327(char: CharacterProperty):
     """
     妖语黎明
@@ -5160,6 +5485,7 @@ def equ_327(char: CharacterProperty):
     pass
 
 
+@register
 def equ_328(char: CharacterProperty):
     """
     妖语黄昏
@@ -5183,6 +5509,7 @@ def equ_328(char: CharacterProperty):
 # region 稀有装备 套装
 
 
+@register
 def equ_329(char: CharacterProperty):
     """
     起始之忍上衣
@@ -5196,6 +5523,7 @@ def equ_329(char: CharacterProperty):
     pass
 
 
+@register
 def equ_330(char: CharacterProperty):
     """
     起始之忍下装
@@ -5209,6 +5537,7 @@ def equ_330(char: CharacterProperty):
     pass
 
 
+@register
 def equ_331(char: CharacterProperty):
     """
     起始之志长袍
@@ -5224,6 +5553,7 @@ def equ_331(char: CharacterProperty):
     pass
 
 
+@register
 def equ_332(char: CharacterProperty):
     """
     起始之典腰带
@@ -5237,6 +5567,7 @@ def equ_332(char: CharacterProperty):
     pass
 
 
+@register
 def equ_333(char: CharacterProperty):
     """
     起始之源鞋子
@@ -5251,6 +5582,7 @@ def equ_333(char: CharacterProperty):
     pass
 
 
+@register
 def equ_334(char: CharacterProperty):
     """
     起始之勉项链
@@ -5268,6 +5600,7 @@ def equ_334(char: CharacterProperty):
     pass
 
 
+@register
 def equ_335(char: CharacterProperty):
     """
     起始之鸣手镯
@@ -5285,6 +5618,7 @@ def equ_335(char: CharacterProperty):
     pass
 
 
+@register
 def equ_336(char: CharacterProperty):
     """
     起始之瞬戒指
@@ -5302,6 +5636,7 @@ def equ_336(char: CharacterProperty):
     pass
 
 
+@register
 def equ_337(char: CharacterProperty):
     """
     起始之备辅助装备
@@ -5316,6 +5651,7 @@ def equ_337(char: CharacterProperty):
     pass
 
 
+@register
 def equ_338(char: CharacterProperty):
     """
     起始之恒魔法石
@@ -5330,6 +5666,7 @@ def equ_338(char: CharacterProperty):
     pass
 
 
+@register
 def equ_339(char: CharacterProperty):
     """
     起始之声耳环
@@ -5348,6 +5685,7 @@ def equ_339(char: CharacterProperty):
 # region 通宝装备
 
 
+@register
 def equ_340(char: CharacterProperty):
     """
     通宝 - 铁面的爆笑胸甲
@@ -5361,6 +5699,7 @@ def equ_340(char: CharacterProperty):
     pass
 
 
+@register
 def equ_341(char: CharacterProperty):
     """
     通宝 - 铁面的谑笑胸甲
@@ -5374,6 +5713,7 @@ def equ_341(char: CharacterProperty):
     pass
 
 
+@register
 def equ_342(char: CharacterProperty):
     """
     通宝 - 铁面的哭泣胸甲
@@ -5387,6 +5727,7 @@ def equ_342(char: CharacterProperty):
     pass
 
 
+@register
 def equ_343(char: CharacterProperty):
     """
     通宝 - 清海的坚硬腿甲
@@ -5400,6 +5741,7 @@ def equ_343(char: CharacterProperty):
     pass
 
 
+@register
 def equ_344(char: CharacterProperty):
     """
     通宝 - 清海的坚韧腿甲
@@ -5413,6 +5755,7 @@ def equ_344(char: CharacterProperty):
     pass
 
 
+@register
 def equ_345(char: CharacterProperty):
     """
     通宝 - 清海的坚不可摧腿甲
@@ -5426,6 +5769,7 @@ def equ_345(char: CharacterProperty):
     pass
 
 
+@register
 def equ_346(char: CharacterProperty):
     """
     通宝 - 萌生的不安气息头肩
@@ -5439,6 +5783,7 @@ def equ_346(char: CharacterProperty):
     pass
 
 
+@register
 def equ_347(char: CharacterProperty):
     """
     通宝 - 滋生的不祥气息头肩
@@ -5452,6 +5797,7 @@ def equ_347(char: CharacterProperty):
     pass
 
 
+@register
 def equ_348(char: CharacterProperty):
     """
     通宝 - 蔓生之妖气头肩
@@ -5465,6 +5811,7 @@ def equ_348(char: CharacterProperty):
     pass
 
 
+@register
 def equ_349(char: CharacterProperty):
     """
     通宝 - 灭妖者的意志腰带
@@ -5479,6 +5826,7 @@ def equ_349(char: CharacterProperty):
     pass
 
 
+@register
 def equ_350(char: CharacterProperty):
     """
     通宝 - 灭妖者的迷失腰带
@@ -5493,6 +5841,7 @@ def equ_350(char: CharacterProperty):
     pass
 
 
+@register
 def equ_351(char: CharacterProperty):
     """
     通宝 - 灭妖者的愤怒腰带
@@ -5507,6 +5856,7 @@ def equ_351(char: CharacterProperty):
     pass
 
 
+@register
 def equ_352(char: CharacterProperty):
     """
     通宝 - 慈爱的猎月者鞋子
@@ -5525,6 +5875,7 @@ def equ_352(char: CharacterProperty):
     pass
 
 
+@register
 def equ_353(char: CharacterProperty):
     """
     通宝 - 决绝的猎月者鞋子
@@ -5543,6 +5894,7 @@ def equ_353(char: CharacterProperty):
     pass
 
 
+@register
 def equ_354(char: CharacterProperty):
     """
     通宝 - 悲痛的猎月者鞋子
@@ -5561,6 +5913,7 @@ def equ_354(char: CharacterProperty):
     pass
 
 
+@register
 def equ_355(char: CharacterProperty):
     """
     通宝 - 无瑕冥语的记忆项链
@@ -5581,6 +5934,7 @@ def equ_355(char: CharacterProperty):
     pass
 
 
+@register
 def equ_356(char: CharacterProperty):
     """
     通宝 - 无瑕冥语的希望项链
@@ -5601,6 +5955,7 @@ def equ_356(char: CharacterProperty):
     pass
 
 
+@register
 def equ_357(char: CharacterProperty):
     """
     通宝 - 无瑕冥语的多情项链
@@ -5621,6 +5976,7 @@ def equ_357(char: CharacterProperty):
     pass
 
 
+@register
 def equ_358(char: CharacterProperty):
     """
     通宝 - 亵渎者的取向手镯
@@ -5640,6 +5996,7 @@ def equ_358(char: CharacterProperty):
     pass
 
 
+@register
 def equ_359(char: CharacterProperty):
     """
     通宝 - 亵渎者的计划手镯
@@ -5659,6 +6016,7 @@ def equ_359(char: CharacterProperty):
     pass
 
 
+@register
 def equ_360(char: CharacterProperty):
     """
     通宝 - 亵渎者的愚弄手镯
@@ -5678,6 +6036,7 @@ def equ_360(char: CharacterProperty):
     pass
 
 
+@register
 def equ_361(char: CharacterProperty):
     """
     通宝 - 亵渎者的诱惑戒指
@@ -5696,6 +6055,7 @@ def equ_361(char: CharacterProperty):
     pass
 
 
+@register
 def equ_362(char: CharacterProperty):
     """
     通宝 - 亵渎者的魅惑戒指
@@ -5714,6 +6074,7 @@ def equ_362(char: CharacterProperty):
     pass
 
 
+@register
 def equ_363(char: CharacterProperty):
     """
     通宝 - 亵渎者的蛊惑戒指
@@ -5732,6 +6093,7 @@ def equ_363(char: CharacterProperty):
     pass
 
 
+@register
 def equ_364(char: CharacterProperty):
     """
     通宝 - 浑浊的甲板长迷雾装置
@@ -5746,6 +6108,7 @@ def equ_364(char: CharacterProperty):
     pass
 
 
+@register
 def equ_365(char: CharacterProperty):
     """
     通宝 - 侵蚀的甲板长迷雾装置
@@ -5760,6 +6123,7 @@ def equ_365(char: CharacterProperty):
     pass
 
 
+@register
 def equ_366(char: CharacterProperty):
     """
     通宝 - 蚕食的甲板长迷雾装置
@@ -5774,6 +6138,7 @@ def equ_366(char: CharacterProperty):
     pass
 
 
+@register
 def equ_367(char: CharacterProperty):
     """
     通宝 - 唤醒自我的咆哮
@@ -5788,6 +6153,7 @@ def equ_367(char: CharacterProperty):
     pass
 
 
+@register
 def equ_368(char: CharacterProperty):
     """
     通宝 - 淹没自我的咆哮
@@ -5802,6 +6168,7 @@ def equ_368(char: CharacterProperty):
     pass
 
 
+@register
 def equ_369(char: CharacterProperty):
     """
     通宝 - 混淆自我的咆哮
@@ -5816,6 +6183,7 @@ def equ_369(char: CharacterProperty):
     pass
 
 
+@register
 def equ_370(char: CharacterProperty):
     """
     通宝 - 终音弥漫之礼
@@ -5830,6 +6198,7 @@ def equ_370(char: CharacterProperty):
     pass
 
 
+@register
 def equ_371(char: CharacterProperty):
     """
     通宝 - 恸哭弥漫之礼
@@ -5844,6 +6213,7 @@ def equ_371(char: CharacterProperty):
     pass
 
 
+@register
 def equ_372(char: CharacterProperty):
     """
     通宝 - 肃寂弥漫之礼
@@ -5862,6 +6232,7 @@ def equ_372(char: CharacterProperty):
 # region 潜影暗袭 套装
 
 
+@register
 def equ_373(char: CharacterProperty):
     """
     浅淡的潜影暗袭上衣
@@ -5875,6 +6246,7 @@ def equ_373(char: CharacterProperty):
     pass
 
 
+@register
 def equ_374(char: CharacterProperty):
     """
     灰暗的潜影暗袭上衣
@@ -5889,6 +6261,7 @@ def equ_374(char: CharacterProperty):
     pass
 
 
+@register
 def equ_375(char: CharacterProperty):
     """
     浓郁的潜影暗袭上衣
@@ -5903,6 +6276,7 @@ def equ_375(char: CharacterProperty):
     pass
 
 
+@register
 def equ_376(char: CharacterProperty):
     """
     浅淡的潜影融化下装
@@ -5916,6 +6290,7 @@ def equ_376(char: CharacterProperty):
     pass
 
 
+@register
 def equ_377(char: CharacterProperty):
     """
     灰暗的潜影融化下装
@@ -5927,6 +6302,7 @@ def equ_377(char: CharacterProperty):
     pass
 
 
+@register
 def equ_378(char: CharacterProperty):
     """
     浓郁的潜影融化下装
@@ -5942,6 +6318,7 @@ def equ_378(char: CharacterProperty):
     pass
 
 
+@register
 def equ_379(char: CharacterProperty):
     """
     浅淡的潜影抹除之容貌
@@ -5957,6 +6334,7 @@ def equ_379(char: CharacterProperty):
     pass
 
 
+@register
 def equ_380(char: CharacterProperty):
     """
     灰暗的潜影抹除之容貌
@@ -5972,6 +6350,7 @@ def equ_380(char: CharacterProperty):
     pass
 
 
+@register
 def equ_381(char: CharacterProperty):
     """
     浓郁的潜影抹除之容貌
@@ -5985,6 +6364,7 @@ def equ_381(char: CharacterProperty):
     pass
 
 
+@register
 def equ_382(char: CharacterProperty):
     """
     浅淡的潜影缔造之腰带
@@ -5998,6 +6378,7 @@ def equ_382(char: CharacterProperty):
     pass
 
 
+@register
 def equ_383(char: CharacterProperty):
     """
     灰暗的潜影缔造之腰带
@@ -6012,6 +6393,7 @@ def equ_383(char: CharacterProperty):
     pass
 
 
+@register
 def equ_384(char: CharacterProperty):
     """
     浓郁的潜影缔造之腰带
@@ -6026,6 +6408,7 @@ def equ_384(char: CharacterProperty):
     pass
 
 
+@register
 def equ_385(char: CharacterProperty):
     """
     浅淡的潜影之步伐
@@ -6040,6 +6423,7 @@ def equ_385(char: CharacterProperty):
     pass
 
 
+@register
 def equ_386(char: CharacterProperty):
     """
     灰暗的潜影之步伐
@@ -6054,6 +6438,7 @@ def equ_386(char: CharacterProperty):
     pass
 
 
+@register
 def equ_387(char: CharacterProperty):
     """
     浓郁的潜影之步伐
@@ -6068,6 +6453,7 @@ def equ_387(char: CharacterProperty):
     pass
 
 
+@register
 def equ_388(char: CharacterProperty):
     """
     浅淡的潜影项链 - 绯
@@ -6085,6 +6471,7 @@ def equ_388(char: CharacterProperty):
     pass
 
 
+@register
 def equ_389(char: CharacterProperty):
     """
     灰暗的潜影项链 - 绯
@@ -6096,6 +6483,7 @@ def equ_389(char: CharacterProperty):
     pass
 
 
+@register
 def equ_390(char: CharacterProperty):
     """
     浓郁的潜影项链 - 绯
@@ -6107,6 +6495,7 @@ def equ_390(char: CharacterProperty):
     pass
 
 
+@register
 def equ_391(char: CharacterProperty):
     """
     深邃的潜影项链 - 绯
@@ -6118,6 +6507,7 @@ def equ_391(char: CharacterProperty):
     pass
 
 
+@register
 def equ_392(char: CharacterProperty):
     """
     黑牙 : 浓郁的潜影项链 - 绯
@@ -6129,6 +6519,7 @@ def equ_392(char: CharacterProperty):
     pass
 
 
+@register
 def equ_393(char: CharacterProperty):
     """
     黑牙 : 深邃的潜影项链 - 绯
@@ -6140,6 +6531,7 @@ def equ_393(char: CharacterProperty):
     pass
 
 
+@register
 def equ_394(char: CharacterProperty):
     """
     浅淡的潜影手镯 - 火
@@ -6157,6 +6549,7 @@ def equ_394(char: CharacterProperty):
     pass
 
 
+@register
 def equ_395(char: CharacterProperty):
     """
     灰暗的潜影手镯 - 火
@@ -6168,6 +6561,7 @@ def equ_395(char: CharacterProperty):
     pass
 
 
+@register
 def equ_396(char: CharacterProperty):
     """
     浓郁的潜影手镯 - 火
@@ -6179,6 +6573,7 @@ def equ_396(char: CharacterProperty):
     pass
 
 
+@register
 def equ_397(char: CharacterProperty):
     """
     黑牙 : 深邃的潜影手镯 - 火
@@ -6190,6 +6585,7 @@ def equ_397(char: CharacterProperty):
     pass
 
 
+@register
 def equ_398(char: CharacterProperty):
     """
     黑牙 : 浓郁的潜影手镯 - 火
@@ -6201,6 +6597,7 @@ def equ_398(char: CharacterProperty):
     pass
 
 
+@register
 def equ_399(char: CharacterProperty):
     """
     黑牙 : 深邃的潜影手镯 - 火
@@ -6212,6 +6609,7 @@ def equ_399(char: CharacterProperty):
     pass
 
 
+@register
 def equ_400(char: CharacterProperty):
     """
     浅淡的潜影戒指 - 毒
@@ -6229,6 +6627,7 @@ def equ_400(char: CharacterProperty):
     pass
 
 
+@register
 def equ_401(char: CharacterProperty):
     """
     灰暗的潜影戒指 - 毒
@@ -6240,6 +6639,7 @@ def equ_401(char: CharacterProperty):
     pass
 
 
+@register
 def equ_402(char: CharacterProperty):
     """
     浓郁的潜影戒指 - 毒
@@ -6251,6 +6651,7 @@ def equ_402(char: CharacterProperty):
     pass
 
 
+@register
 def equ_403(char: CharacterProperty):
     """
     深邃的潜影戒指 - 毒
@@ -6262,6 +6663,7 @@ def equ_403(char: CharacterProperty):
     pass
 
 
+@register
 def equ_404(char: CharacterProperty):
     """
     黑牙 : 浓郁的潜影戒指 - 毒
@@ -6273,6 +6675,7 @@ def equ_404(char: CharacterProperty):
     pass
 
 
+@register
 def equ_405(char: CharacterProperty):
     """
     黑牙 : 深邃的潜影戒指 - 毒
@@ -6284,6 +6687,7 @@ def equ_405(char: CharacterProperty):
     pass
 
 
+@register
 def equ_406(char: CharacterProperty):
     """
     浅淡的潜影辅助装备 - 锋
@@ -6298,6 +6702,7 @@ def equ_406(char: CharacterProperty):
     pass
 
 
+@register
 def equ_407(char: CharacterProperty):
     """
     灰暗的潜影辅助装备 - 锋
@@ -6312,6 +6717,7 @@ def equ_407(char: CharacterProperty):
     pass
 
 
+@register
 def equ_408(char: CharacterProperty):
     """
     浓郁的潜影辅助装备 - 锋
@@ -6326,6 +6732,7 @@ def equ_408(char: CharacterProperty):
     pass
 
 
+@register
 def equ_409(char: CharacterProperty):
     """
     浅淡的潜影魔法石 - 爆
@@ -6340,6 +6747,7 @@ def equ_409(char: CharacterProperty):
     pass
 
 
+@register
 def equ_410(char: CharacterProperty):
     """
     灰暗的潜影魔法石 - 爆
@@ -6354,6 +6762,7 @@ def equ_410(char: CharacterProperty):
     pass
 
 
+@register
 def equ_411(char: CharacterProperty):
     """
     浓郁的潜影魔法石 - 爆
@@ -6368,6 +6777,7 @@ def equ_411(char: CharacterProperty):
     pass
 
 
+@register
 def equ_412(char: CharacterProperty):
     """
     浅淡的潜影耳环 - 电
@@ -6382,6 +6792,7 @@ def equ_412(char: CharacterProperty):
     pass
 
 
+@register
 def equ_413(char: CharacterProperty):
     """
     灰暗的潜影耳环 - 电
@@ -6396,6 +6807,7 @@ def equ_413(char: CharacterProperty):
     pass
 
 
+@register
 def equ_414(char: CharacterProperty):
     """
     浓郁的潜影耳环 - 电
@@ -6414,6 +6826,7 @@ def equ_414(char: CharacterProperty):
 # region 精灵国度 套装
 
 
+@register
 def equ_415(char: CharacterProperty):
     """
     初阶精灵上衣
@@ -6425,6 +6838,7 @@ def equ_415(char: CharacterProperty):
     pass
 
 
+@register
 def equ_416(char: CharacterProperty):
     """
     高阶精灵上衣
@@ -6437,6 +6851,7 @@ def equ_416(char: CharacterProperty):
     pass
 
 
+@register
 def equ_417(char: CharacterProperty):
     """
     贵族精灵上衣
@@ -6449,6 +6864,7 @@ def equ_417(char: CharacterProperty):
     pass
 
 
+@register
 def equ_418(char: CharacterProperty):
     """
     低阶精灵下装
@@ -6460,6 +6876,7 @@ def equ_418(char: CharacterProperty):
     pass
 
 
+@register
 def equ_419(char: CharacterProperty):
     """
     高阶精灵下装
@@ -6471,6 +6888,7 @@ def equ_419(char: CharacterProperty):
     pass
 
 
+@register
 def equ_420(char: CharacterProperty):
     """
     贵族精灵下装
@@ -6483,6 +6901,7 @@ def equ_420(char: CharacterProperty):
     pass
 
 
+@register
 def equ_421(char: CharacterProperty):
     """
     低阶精灵头肩
@@ -6495,6 +6914,7 @@ def equ_421(char: CharacterProperty):
     pass
 
 
+@register
 def equ_422(char: CharacterProperty):
     """
     高阶精灵头肩
@@ -6507,6 +6927,7 @@ def equ_422(char: CharacterProperty):
     pass
 
 
+@register
 def equ_423(char: CharacterProperty):
     """
     贵族精灵头肩
@@ -6518,6 +6939,7 @@ def equ_423(char: CharacterProperty):
     pass
 
 
+@register
 def equ_424(char: CharacterProperty):
     """
     低阶精灵腰带
@@ -6529,6 +6951,7 @@ def equ_424(char: CharacterProperty):
     pass
 
 
+@register
 def equ_425(char: CharacterProperty):
     """
     高阶精灵腰带
@@ -6541,6 +6964,7 @@ def equ_425(char: CharacterProperty):
     pass
 
 
+@register
 def equ_426(char: CharacterProperty):
     """
     贵族精灵腰带
@@ -6553,6 +6977,7 @@ def equ_426(char: CharacterProperty):
     pass
 
 
+@register
 def equ_427(char: CharacterProperty):
     """
     低阶精灵鞋子
@@ -6564,6 +6989,7 @@ def equ_427(char: CharacterProperty):
     pass
 
 
+@register
 def equ_428(char: CharacterProperty):
     """
     高阶精灵鞋子
@@ -6575,6 +7001,7 @@ def equ_428(char: CharacterProperty):
     pass
 
 
+@register
 def equ_429(char: CharacterProperty):
     """
     贵族精灵鞋子
@@ -6586,6 +7013,7 @@ def equ_429(char: CharacterProperty):
     pass
 
 
+@register
 def equ_430(char: CharacterProperty):
     """
     低阶精灵项链
@@ -6597,6 +7025,7 @@ def equ_430(char: CharacterProperty):
     pass
 
 
+@register
 def equ_431(char: CharacterProperty):
     """
     高阶精灵项链
@@ -6608,6 +7037,7 @@ def equ_431(char: CharacterProperty):
     pass
 
 
+@register
 def equ_432(char: CharacterProperty):
     """
     贵族精灵项链
@@ -6619,6 +7049,7 @@ def equ_432(char: CharacterProperty):
     pass
 
 
+@register
 def equ_433(char: CharacterProperty):
     """
     皇室精灵项链
@@ -6630,6 +7061,7 @@ def equ_433(char: CharacterProperty):
     pass
 
 
+@register
 def equ_434(char: CharacterProperty):
     """
     黑牙 : 贵族精灵项链
@@ -6641,6 +7073,7 @@ def equ_434(char: CharacterProperty):
     pass
 
 
+@register
 def equ_435(char: CharacterProperty):
     """
     黑牙 : 皇室精灵项链
@@ -6652,6 +7085,7 @@ def equ_435(char: CharacterProperty):
     pass
 
 
+@register
 def equ_436(char: CharacterProperty):
     """
     低阶精灵手镯
@@ -6663,6 +7097,7 @@ def equ_436(char: CharacterProperty):
     pass
 
 
+@register
 def equ_437(char: CharacterProperty):
     """
     高阶精灵手镯
@@ -6674,6 +7109,7 @@ def equ_437(char: CharacterProperty):
     pass
 
 
+@register
 def equ_438(char: CharacterProperty):
     """
     贵族精灵手镯
@@ -6685,6 +7121,7 @@ def equ_438(char: CharacterProperty):
     pass
 
 
+@register
 def equ_439(char: CharacterProperty):
     """
     皇室精灵手镯
@@ -6696,6 +7133,7 @@ def equ_439(char: CharacterProperty):
     pass
 
 
+@register
 def equ_440(char: CharacterProperty):
     """
     黑牙 : 贵族精灵手镯
@@ -6707,6 +7145,7 @@ def equ_440(char: CharacterProperty):
     pass
 
 
+@register
 def equ_441(char: CharacterProperty):
     """
     黑牙 : 皇室精灵手镯
@@ -6718,6 +7157,7 @@ def equ_441(char: CharacterProperty):
     pass
 
 
+@register
 def equ_442(char: CharacterProperty):
     """
     低阶精灵戒指
@@ -6729,6 +7169,7 @@ def equ_442(char: CharacterProperty):
     pass
 
 
+@register
 def equ_443(char: CharacterProperty):
     """
     高阶精灵戒指
@@ -6740,6 +7181,7 @@ def equ_443(char: CharacterProperty):
     pass
 
 
+@register
 def equ_444(char: CharacterProperty):
     """
     贵族精灵戒指
@@ -6751,6 +7193,7 @@ def equ_444(char: CharacterProperty):
     pass
 
 
+@register
 def equ_445(char: CharacterProperty):
     """
     皇室精灵戒指
@@ -6762,6 +7205,7 @@ def equ_445(char: CharacterProperty):
     pass
 
 
+@register
 def equ_446(char: CharacterProperty):
     """
     黑牙 : 贵族精灵戒指
@@ -6773,6 +7217,7 @@ def equ_446(char: CharacterProperty):
     pass
 
 
+@register
 def equ_447(char: CharacterProperty):
     """
     黑牙 : 皇室精灵戒指
@@ -6784,6 +7229,7 @@ def equ_447(char: CharacterProperty):
     pass
 
 
+@register
 def equ_448(char: CharacterProperty):
     """
     低阶精灵辅助装备
@@ -6796,6 +7242,7 @@ def equ_448(char: CharacterProperty):
     pass
 
 
+@register
 def equ_449(char: CharacterProperty):
     """
     高阶精灵辅助装备
@@ -6808,6 +7255,7 @@ def equ_449(char: CharacterProperty):
     pass
 
 
+@register
 def equ_450(char: CharacterProperty):
     """
     贵族精灵辅助装备
@@ -6820,6 +7268,7 @@ def equ_450(char: CharacterProperty):
     pass
 
 
+@register
 def equ_451(char: CharacterProperty):
     """
     低阶精灵魔法石
@@ -6831,6 +7280,7 @@ def equ_451(char: CharacterProperty):
     pass
 
 
+@register
 def equ_452(char: CharacterProperty):
     """
     高阶精灵魔法石
@@ -6842,6 +7292,7 @@ def equ_452(char: CharacterProperty):
     pass
 
 
+@register
 def equ_453(char: CharacterProperty):
     """
     贵族精灵魔法石
@@ -6853,6 +7304,7 @@ def equ_453(char: CharacterProperty):
     pass
 
 
+@register
 def equ_454(char: CharacterProperty):
     """
     低阶精灵耳环
@@ -6864,6 +7316,7 @@ def equ_454(char: CharacterProperty):
     pass
 
 
+@register
 def equ_455(char: CharacterProperty):
     """
     高阶精灵耳环
@@ -6875,6 +7328,7 @@ def equ_455(char: CharacterProperty):
     pass
 
 
+@register
 def equ_456(char: CharacterProperty):
     """
     贵族精灵耳环
@@ -6890,6 +7344,7 @@ def equ_456(char: CharacterProperty):
 # region 理想之黄金乡 套装
 
 
+@register
 def equ_457(char: CharacterProperty):
     """
     闪耀的黄金乡胸甲
@@ -6901,6 +7356,7 @@ def equ_457(char: CharacterProperty):
     pass
 
 
+@register
 def equ_458(char: CharacterProperty):
     """
     华丽的黄金乡胸甲
@@ -6913,6 +7369,7 @@ def equ_458(char: CharacterProperty):
     pass
 
 
+@register
 def equ_459(char: CharacterProperty):
     """
     灿烂的黄金乡胸甲
@@ -6925,6 +7382,7 @@ def equ_459(char: CharacterProperty):
     pass
 
 
+@register
 def equ_460(char: CharacterProperty):
     """
     闪耀的黄金乡腿甲
@@ -6936,6 +7394,7 @@ def equ_460(char: CharacterProperty):
     pass
 
 
+@register
 def equ_461(char: CharacterProperty):
     """
     华丽的黄金乡腿甲
@@ -6947,6 +7406,7 @@ def equ_461(char: CharacterProperty):
     pass
 
 
+@register
 def equ_462(char: CharacterProperty):
     """
     灿烂的黄金乡腿甲
@@ -6959,6 +7419,7 @@ def equ_462(char: CharacterProperty):
     pass
 
 
+@register
 def equ_463(char: CharacterProperty):
     """
     闪耀的黄金乡肩甲
@@ -6971,6 +7432,7 @@ def equ_463(char: CharacterProperty):
     pass
 
 
+@register
 def equ_464(char: CharacterProperty):
     """
     华丽的黄金乡肩甲
@@ -6983,6 +7445,7 @@ def equ_464(char: CharacterProperty):
     pass
 
 
+@register
 def equ_465(char: CharacterProperty):
     """
     灿烂的黄金乡肩甲
@@ -6994,6 +7457,7 @@ def equ_465(char: CharacterProperty):
     pass
 
 
+@register
 def equ_466(char: CharacterProperty):
     """
     闪耀的黄金乡腰带
@@ -7005,6 +7469,7 @@ def equ_466(char: CharacterProperty):
     pass
 
 
+@register
 def equ_467(char: CharacterProperty):
     """
     华丽的黄金乡腰带
@@ -7017,6 +7482,7 @@ def equ_467(char: CharacterProperty):
     pass
 
 
+@register
 def equ_468(char: CharacterProperty):
     """
     灿烂的黄金乡腰带
@@ -7029,6 +7495,7 @@ def equ_468(char: CharacterProperty):
     pass
 
 
+@register
 def equ_469(char: CharacterProperty):
     """
     闪耀的黄金乡靴子
@@ -7040,6 +7507,7 @@ def equ_469(char: CharacterProperty):
     pass
 
 
+@register
 def equ_470(char: CharacterProperty):
     """
     华丽的黄金乡靴子
@@ -7051,6 +7519,7 @@ def equ_470(char: CharacterProperty):
     pass
 
 
+@register
 def equ_471(char: CharacterProperty):
     """
     灿烂的黄金乡靴子
@@ -7062,6 +7531,7 @@ def equ_471(char: CharacterProperty):
     pass
 
 
+@register
 def equ_472(char: CharacterProperty):
     """
     闪耀的黄金乡祝福 - 项链
@@ -7073,6 +7543,7 @@ def equ_472(char: CharacterProperty):
     pass
 
 
+@register
 def equ_473(char: CharacterProperty):
     """
     华丽的黄金乡祝福 - 项链
@@ -7084,6 +7555,7 @@ def equ_473(char: CharacterProperty):
     pass
 
 
+@register
 def equ_474(char: CharacterProperty):
     """
     灿烂的黄金乡祝福 - 项链
@@ -7095,6 +7567,7 @@ def equ_474(char: CharacterProperty):
     pass
 
 
+@register
 def equ_475(char: CharacterProperty):
     """
     玲珑的黄金乡祝福 - 项链
@@ -7106,6 +7579,7 @@ def equ_475(char: CharacterProperty):
     pass
 
 
+@register
 def equ_476(char: CharacterProperty):
     """
     黑牙 : 灿烂的黄金乡祝福 - 项链
@@ -7117,6 +7591,7 @@ def equ_476(char: CharacterProperty):
     pass
 
 
+@register
 def equ_477(char: CharacterProperty):
     """
     黑牙 : 玲珑的黄金乡祝福 - 项链
@@ -7128,6 +7603,7 @@ def equ_477(char: CharacterProperty):
     pass
 
 
+@register
 def equ_478(char: CharacterProperty):
     """
     闪耀的黄金乡荣耀 - 手镯
@@ -7139,6 +7615,7 @@ def equ_478(char: CharacterProperty):
     pass
 
 
+@register
 def equ_479(char: CharacterProperty):
     """
     华丽的黄金乡荣耀 - 手镯
@@ -7150,6 +7627,7 @@ def equ_479(char: CharacterProperty):
     pass
 
 
+@register
 def equ_480(char: CharacterProperty):
     """
     灿烂的黄金乡荣耀 - 手镯
@@ -7161,6 +7639,7 @@ def equ_480(char: CharacterProperty):
     pass
 
 
+@register
 def equ_481(char: CharacterProperty):
     """
     玲珑的黄金乡荣耀 - 手镯
@@ -7172,6 +7651,7 @@ def equ_481(char: CharacterProperty):
     pass
 
 
+@register
 def equ_482(char: CharacterProperty):
     """
     黑牙 : 灿烂的黄金乡荣耀 - 手镯
@@ -7183,6 +7663,7 @@ def equ_482(char: CharacterProperty):
     pass
 
 
+@register
 def equ_483(char: CharacterProperty):
     """
     黑牙 : 玲珑的黄金乡荣耀 - 手镯
@@ -7194,6 +7675,7 @@ def equ_483(char: CharacterProperty):
     pass
 
 
+@register
 def equ_484(char: CharacterProperty):
     """
     闪耀的黄金乡之梦 - 戒指
@@ -7205,6 +7687,7 @@ def equ_484(char: CharacterProperty):
     pass
 
 
+@register
 def equ_485(char: CharacterProperty):
     """
     华丽的黄金乡之梦 - 戒指
@@ -7216,6 +7699,7 @@ def equ_485(char: CharacterProperty):
     pass
 
 
+@register
 def equ_486(char: CharacterProperty):
     """
     灿烂的黄金乡之梦 - 戒指
@@ -7227,6 +7711,7 @@ def equ_486(char: CharacterProperty):
     pass
 
 
+@register
 def equ_487(char: CharacterProperty):
     """
     玲珑的黄金乡之梦 - 戒指
@@ -7238,6 +7723,7 @@ def equ_487(char: CharacterProperty):
     pass
 
 
+@register
 def equ_488(char: CharacterProperty):
     """
     黑牙 : 灿烂的黄金乡之梦 - 戒指
@@ -7249,6 +7735,7 @@ def equ_488(char: CharacterProperty):
     pass
 
 
+@register
 def equ_489(char: CharacterProperty):
     """
     黑牙 : 玲珑的黄金乡之梦 - 戒指
@@ -7260,6 +7747,7 @@ def equ_489(char: CharacterProperty):
     pass
 
 
+@register
 def equ_490(char: CharacterProperty):
     """
     闪耀的黄金乡执念 - 辅助装备
@@ -7272,6 +7760,7 @@ def equ_490(char: CharacterProperty):
     pass
 
 
+@register
 def equ_491(char: CharacterProperty):
     """
     华丽的黄金乡执念 - 辅助装备
@@ -7284,6 +7773,7 @@ def equ_491(char: CharacterProperty):
     pass
 
 
+@register
 def equ_492(char: CharacterProperty):
     """
     灿烂的黄金乡执念 - 辅助装备
@@ -7296,6 +7786,7 @@ def equ_492(char: CharacterProperty):
     pass
 
 
+@register
 def equ_493(char: CharacterProperty):
     """
     闪耀的黄金乡诅咒 - 魔法石
@@ -7307,6 +7798,7 @@ def equ_493(char: CharacterProperty):
     pass
 
 
+@register
 def equ_494(char: CharacterProperty):
     """
     华丽的黄金乡诅咒 - 魔法石
@@ -7318,6 +7810,7 @@ def equ_494(char: CharacterProperty):
     pass
 
 
+@register
 def equ_495(char: CharacterProperty):
     """
     灿烂的黄金乡诅咒 - 魔法石
@@ -7329,6 +7822,7 @@ def equ_495(char: CharacterProperty):
     pass
 
 
+@register
 def equ_496(char: CharacterProperty):
     """
     闪耀的黄金乡异面 - 耳环
@@ -7340,6 +7834,7 @@ def equ_496(char: CharacterProperty):
     pass
 
 
+@register
 def equ_497(char: CharacterProperty):
     """
     华丽的黄金乡异面 - 耳环
@@ -7351,6 +7846,7 @@ def equ_497(char: CharacterProperty):
     pass
 
 
+@register
 def equ_498(char: CharacterProperty):
     """
     灿烂的黄金乡异面 - 耳环
@@ -7366,6 +7862,7 @@ def equ_498(char: CharacterProperty):
 # region 龙战八荒 套装
 
 
+@register
 def equ_499(char: CharacterProperty):
     """
     虬龙的喷火甲胄
@@ -7377,6 +7874,7 @@ def equ_499(char: CharacterProperty):
     pass
 
 
+@register
 def equ_500(char: CharacterProperty):
     """
     蛟龙的喷火甲胄
@@ -7389,6 +7887,7 @@ def equ_500(char: CharacterProperty):
     pass
 
 
+@register
 def equ_501(char: CharacterProperty):
     """
     烛龙的喷火甲胄
@@ -7401,6 +7900,7 @@ def equ_501(char: CharacterProperty):
     pass
 
 
+@register
 def equ_502(char: CharacterProperty):
     """
     虬龙的惊雷绑腿
@@ -7412,6 +7912,7 @@ def equ_502(char: CharacterProperty):
     pass
 
 
+@register
 def equ_503(char: CharacterProperty):
     """
     蛟龙的惊雷绑腿
@@ -7423,6 +7924,7 @@ def equ_503(char: CharacterProperty):
     pass
 
 
+@register
 def equ_504(char: CharacterProperty):
     """
     烛龙的惊雷绑腿
@@ -7435,6 +7937,7 @@ def equ_504(char: CharacterProperty):
     pass
 
 
+@register
 def equ_505(char: CharacterProperty):
     """
     虬龙的逐风肩甲
@@ -7447,6 +7950,7 @@ def equ_505(char: CharacterProperty):
     pass
 
 
+@register
 def equ_506(char: CharacterProperty):
     """
     蛟龙的逐风肩甲
@@ -7459,6 +7963,7 @@ def equ_506(char: CharacterProperty):
     pass
 
 
+@register
 def equ_507(char: CharacterProperty):
     """
     烛龙的逐风肩甲
@@ -7470,6 +7975,7 @@ def equ_507(char: CharacterProperty):
     pass
 
 
+@register
 def equ_508(char: CharacterProperty):
     """
     虬龙的辟地腰带
@@ -7481,6 +7987,7 @@ def equ_508(char: CharacterProperty):
     pass
 
 
+@register
 def equ_509(char: CharacterProperty):
     """
     蛟龙的辟地腰带
@@ -7493,6 +8000,7 @@ def equ_509(char: CharacterProperty):
     pass
 
 
+@register
 def equ_510(char: CharacterProperty):
     """
     烛龙的辟地腰带
@@ -7505,6 +8013,7 @@ def equ_510(char: CharacterProperty):
     pass
 
 
+@register
 def equ_511(char: CharacterProperty):
     """
     虬龙的开天利爪
@@ -7516,6 +8025,7 @@ def equ_511(char: CharacterProperty):
     pass
 
 
+@register
 def equ_512(char: CharacterProperty):
     """
     蛟龙的开天利爪
@@ -7527,6 +8037,7 @@ def equ_512(char: CharacterProperty):
     pass
 
 
+@register
 def equ_513(char: CharacterProperty):
     """
     烛龙的开天利爪
@@ -7538,6 +8049,7 @@ def equ_513(char: CharacterProperty):
     pass
 
 
+@register
 def equ_514(char: CharacterProperty):
     """
     虬龙的威慑咆哮
@@ -7549,6 +8061,7 @@ def equ_514(char: CharacterProperty):
     pass
 
 
+@register
 def equ_515(char: CharacterProperty):
     """
     蛟龙的威慑咆哮
@@ -7560,6 +8073,7 @@ def equ_515(char: CharacterProperty):
     pass
 
 
+@register
 def equ_516(char: CharacterProperty):
     """
     烛龙的威慑咆哮
@@ -7571,6 +8085,7 @@ def equ_516(char: CharacterProperty):
     pass
 
 
+@register
 def equ_517(char: CharacterProperty):
     """
     应龙的威慑咆哮
@@ -7582,6 +8097,7 @@ def equ_517(char: CharacterProperty):
     pass
 
 
+@register
 def equ_518(char: CharacterProperty):
     """
     黑牙 : 烛龙的威慑咆哮
@@ -7593,6 +8109,7 @@ def equ_518(char: CharacterProperty):
     pass
 
 
+@register
 def equ_519(char: CharacterProperty):
     """
     黑牙 : 应龙的威慑咆哮
@@ -7604,6 +8121,7 @@ def equ_519(char: CharacterProperty):
     pass
 
 
+@register
 def equ_520(char: CharacterProperty):
     """
     虬龙的染痕凶牙
@@ -7615,6 +8133,7 @@ def equ_520(char: CharacterProperty):
     pass
 
 
+@register
 def equ_521(char: CharacterProperty):
     """
     蛟龙的染痕凶牙
@@ -7626,6 +8145,7 @@ def equ_521(char: CharacterProperty):
     pass
 
 
+@register
 def equ_522(char: CharacterProperty):
     """
     烛龙的染痕凶牙
@@ -7637,6 +8157,7 @@ def equ_522(char: CharacterProperty):
     pass
 
 
+@register
 def equ_523(char: CharacterProperty):
     """
     应龙的染痕凶牙
@@ -7648,6 +8169,7 @@ def equ_523(char: CharacterProperty):
     pass
 
 
+@register
 def equ_524(char: CharacterProperty):
     """
     黑牙 : 烛龙的染痕凶牙
@@ -7659,6 +8181,7 @@ def equ_524(char: CharacterProperty):
     pass
 
 
+@register
 def equ_525(char: CharacterProperty):
     """
     黑牙 : 应龙的染痕凶牙
@@ -7670,6 +8193,7 @@ def equ_525(char: CharacterProperty):
     pass
 
 
+@register
 def equ_526(char: CharacterProperty):
     """
     虬龙的避祸锐鳞
@@ -7681,6 +8205,7 @@ def equ_526(char: CharacterProperty):
     pass
 
 
+@register
 def equ_527(char: CharacterProperty):
     """
     蛟龙的避祸锐鳞
@@ -7692,6 +8217,7 @@ def equ_527(char: CharacterProperty):
     pass
 
 
+@register
 def equ_528(char: CharacterProperty):
     """
     烛龙的避祸锐鳞
@@ -7703,6 +8229,7 @@ def equ_528(char: CharacterProperty):
     pass
 
 
+@register
 def equ_529(char: CharacterProperty):
     """
     应龙的避祸锐鳞
@@ -7714,6 +8241,7 @@ def equ_529(char: CharacterProperty):
     pass
 
 
+@register
 def equ_530(char: CharacterProperty):
     """
     黑牙 : 烛龙的避祸锐鳞
@@ -7725,6 +8253,7 @@ def equ_530(char: CharacterProperty):
     pass
 
 
+@register
 def equ_531(char: CharacterProperty):
     """
     黑牙 : 应龙的避祸锐鳞
@@ -7736,6 +8265,7 @@ def equ_531(char: CharacterProperty):
     pass
 
 
+@register
 def equ_532(char: CharacterProperty):
     """
     虬龙的隐秘逆鳞
@@ -7748,6 +8278,7 @@ def equ_532(char: CharacterProperty):
     pass
 
 
+@register
 def equ_533(char: CharacterProperty):
     """
     蛟龙的隐秘逆鳞
@@ -7760,6 +8291,7 @@ def equ_533(char: CharacterProperty):
     pass
 
 
+@register
 def equ_534(char: CharacterProperty):
     """
     烛龙的隐秘逆鳞
@@ -7772,6 +8304,7 @@ def equ_534(char: CharacterProperty):
     pass
 
 
+@register
 def equ_535(char: CharacterProperty):
     """
     虬龙的玲珑如意珠
@@ -7783,6 +8316,7 @@ def equ_535(char: CharacterProperty):
     pass
 
 
+@register
 def equ_536(char: CharacterProperty):
     """
     蛟龙的玲珑如意珠
@@ -7794,6 +8328,7 @@ def equ_536(char: CharacterProperty):
     pass
 
 
+@register
 def equ_537(char: CharacterProperty):
     """
     烛龙的玲珑如意珠
@@ -7805,6 +8340,7 @@ def equ_537(char: CharacterProperty):
     pass
 
 
+@register
 def equ_538(char: CharacterProperty):
     """
     虬龙的耸立威角
@@ -7816,6 +8352,7 @@ def equ_538(char: CharacterProperty):
     pass
 
 
+@register
 def equ_539(char: CharacterProperty):
     """
     蛟龙的耸立威角
@@ -7827,6 +8364,7 @@ def equ_539(char: CharacterProperty):
     pass
 
 
+@register
 def equ_540(char: CharacterProperty):
     """
     烛龙的耸立威角
@@ -7842,6 +8380,7 @@ def equ_540(char: CharacterProperty):
 # region 混沌净化 套装
 
 
+@register
 def equ_541(char: CharacterProperty):
     """
     纯洁净化上衣
@@ -7853,6 +8392,7 @@ def equ_541(char: CharacterProperty):
     pass
 
 
+@register
 def equ_542(char: CharacterProperty):
     """
     无瑕净化上衣
@@ -7865,6 +8405,7 @@ def equ_542(char: CharacterProperty):
     pass
 
 
+@register
 def equ_543(char: CharacterProperty):
     """
     混沌净化上衣
@@ -7877,6 +8418,7 @@ def equ_543(char: CharacterProperty):
     pass
 
 
+@register
 def equ_544(char: CharacterProperty):
     """
     纯洁净化下装
@@ -7888,6 +8430,7 @@ def equ_544(char: CharacterProperty):
     pass
 
 
+@register
 def equ_545(char: CharacterProperty):
     """
     无瑕净化下装
@@ -7899,6 +8442,7 @@ def equ_545(char: CharacterProperty):
     pass
 
 
+@register
 def equ_546(char: CharacterProperty):
     """
     混沌净化下装
@@ -7911,6 +8455,7 @@ def equ_546(char: CharacterProperty):
     pass
 
 
+@register
 def equ_547(char: CharacterProperty):
     """
     纯洁净化头肩
@@ -7923,6 +8468,7 @@ def equ_547(char: CharacterProperty):
     pass
 
 
+@register
 def equ_548(char: CharacterProperty):
     """
     无瑕净化头肩
@@ -7935,6 +8481,7 @@ def equ_548(char: CharacterProperty):
     pass
 
 
+@register
 def equ_549(char: CharacterProperty):
     """
     混沌净化护肩
@@ -7946,6 +8493,7 @@ def equ_549(char: CharacterProperty):
     pass
 
 
+@register
 def equ_550(char: CharacterProperty):
     """
     纯洁净化腰带
@@ -7957,6 +8505,7 @@ def equ_550(char: CharacterProperty):
     pass
 
 
+@register
 def equ_551(char: CharacterProperty):
     """
     无瑕净化腰带
@@ -7969,6 +8518,7 @@ def equ_551(char: CharacterProperty):
     pass
 
 
+@register
 def equ_552(char: CharacterProperty):
     """
     混沌净化腰带
@@ -7981,6 +8531,7 @@ def equ_552(char: CharacterProperty):
     pass
 
 
+@register
 def equ_553(char: CharacterProperty):
     """
     纯洁净化鞋子
@@ -7992,6 +8543,7 @@ def equ_553(char: CharacterProperty):
     pass
 
 
+@register
 def equ_554(char: CharacterProperty):
     """
     无瑕净化鞋子
@@ -8003,6 +8555,7 @@ def equ_554(char: CharacterProperty):
     pass
 
 
+@register
 def equ_555(char: CharacterProperty):
     """
     混沌净化鞋子
@@ -8014,6 +8567,7 @@ def equ_555(char: CharacterProperty):
     pass
 
 
+@register
 def equ_556(char: CharacterProperty):
     """
     淡黑净化项链
@@ -8025,6 +8579,7 @@ def equ_556(char: CharacterProperty):
     pass
 
 
+@register
 def equ_557(char: CharacterProperty):
     """
     深黑净化项链
@@ -8036,6 +8591,7 @@ def equ_557(char: CharacterProperty):
     pass
 
 
+@register
 def equ_558(char: CharacterProperty):
     """
     混沌净化项链
@@ -8047,6 +8603,7 @@ def equ_558(char: CharacterProperty):
     pass
 
 
+@register
 def equ_559(char: CharacterProperty):
     """
     混沌净化项链
@@ -8058,6 +8615,7 @@ def equ_559(char: CharacterProperty):
     pass
 
 
+@register
 def equ_560(char: CharacterProperty):
     """
     黑牙 : 暗黑净化项链
@@ -8069,6 +8627,7 @@ def equ_560(char: CharacterProperty):
     pass
 
 
+@register
 def equ_561(char: CharacterProperty):
     """
     黑牙 : 混沌净化项链
@@ -8080,6 +8639,7 @@ def equ_561(char: CharacterProperty):
     pass
 
 
+@register
 def equ_562(char: CharacterProperty):
     """
     淡黑净化手镯
@@ -8091,6 +8651,7 @@ def equ_562(char: CharacterProperty):
     pass
 
 
+@register
 def equ_563(char: CharacterProperty):
     """
     深黑净化手镯
@@ -8102,6 +8663,7 @@ def equ_563(char: CharacterProperty):
     pass
 
 
+@register
 def equ_564(char: CharacterProperty):
     """
     混沌净化手镯
@@ -8113,6 +8675,7 @@ def equ_564(char: CharacterProperty):
     pass
 
 
+@register
 def equ_565(char: CharacterProperty):
     """
     混沌净化手镯
@@ -8124,6 +8687,7 @@ def equ_565(char: CharacterProperty):
     pass
 
 
+@register
 def equ_566(char: CharacterProperty):
     """
     黑牙 : 暗黑净化手镯
@@ -8135,6 +8699,7 @@ def equ_566(char: CharacterProperty):
     pass
 
 
+@register
 def equ_567(char: CharacterProperty):
     """
     黑牙 : 混沌净化手镯
@@ -8146,6 +8711,7 @@ def equ_567(char: CharacterProperty):
     pass
 
 
+@register
 def equ_568(char: CharacterProperty):
     """
     淡黑净化戒指
@@ -8157,6 +8723,7 @@ def equ_568(char: CharacterProperty):
     pass
 
 
+@register
 def equ_569(char: CharacterProperty):
     """
     深黑净化戒指
@@ -8168,6 +8735,7 @@ def equ_569(char: CharacterProperty):
     pass
 
 
+@register
 def equ_570(char: CharacterProperty):
     """
     混沌净化戒指
@@ -8179,6 +8747,7 @@ def equ_570(char: CharacterProperty):
     pass
 
 
+@register
 def equ_571(char: CharacterProperty):
     """
     混沌净化戒指
@@ -8190,6 +8759,7 @@ def equ_571(char: CharacterProperty):
     pass
 
 
+@register
 def equ_572(char: CharacterProperty):
     """
     黑牙 : 暗黑净化戒指
@@ -8201,6 +8771,7 @@ def equ_572(char: CharacterProperty):
     pass
 
 
+@register
 def equ_573(char: CharacterProperty):
     """
     黑牙 : 混沌净化戒指
@@ -8212,6 +8783,7 @@ def equ_573(char: CharacterProperty):
     pass
 
 
+@register
 def equ_574(char: CharacterProperty):
     """
     淡黑净化辅助装备
@@ -8224,6 +8796,7 @@ def equ_574(char: CharacterProperty):
     pass
 
 
+@register
 def equ_575(char: CharacterProperty):
     """
     深黑净化辅助装备
@@ -8236,6 +8809,7 @@ def equ_575(char: CharacterProperty):
     pass
 
 
+@register
 def equ_576(char: CharacterProperty):
     """
     混沌净化辅助装备
@@ -8248,6 +8822,7 @@ def equ_576(char: CharacterProperty):
     pass
 
 
+@register
 def equ_577(char: CharacterProperty):
     """
     淡黑净化魔法石
@@ -8259,6 +8834,7 @@ def equ_577(char: CharacterProperty):
     pass
 
 
+@register
 def equ_578(char: CharacterProperty):
     """
     深黑净化魔法石
@@ -8270,6 +8846,7 @@ def equ_578(char: CharacterProperty):
     pass
 
 
+@register
 def equ_579(char: CharacterProperty):
     """
     混沌净化魔法石
@@ -8281,6 +8858,7 @@ def equ_579(char: CharacterProperty):
     pass
 
 
+@register
 def equ_580(char: CharacterProperty):
     """
     淡黑净化耳环
@@ -8292,6 +8870,7 @@ def equ_580(char: CharacterProperty):
     pass
 
 
+@register
 def equ_581(char: CharacterProperty):
     """
     深黑净化耳环
@@ -8303,6 +8882,7 @@ def equ_581(char: CharacterProperty):
     pass
 
 
+@register
 def equ_582(char: CharacterProperty):
     """
     混沌净化耳环
@@ -8318,6 +8898,7 @@ def equ_582(char: CharacterProperty):
 # region 天命者的气运 套装
 
 
+@register
 def equ_583(char: CharacterProperty):
     """
     强固之天命气运夹克
@@ -8329,6 +8910,7 @@ def equ_583(char: CharacterProperty):
     pass
 
 
+@register
 def equ_584(char: CharacterProperty):
     """
     坚固之天命气运夹克
@@ -8341,6 +8923,7 @@ def equ_584(char: CharacterProperty):
     pass
 
 
+@register
 def equ_585(char: CharacterProperty):
     """
     坚实之天命气运夹克
@@ -8353,6 +8936,7 @@ def equ_585(char: CharacterProperty):
     pass
 
 
+@register
 def equ_586(char: CharacterProperty):
     """
     强固之天命气运裤子
@@ -8364,6 +8948,7 @@ def equ_586(char: CharacterProperty):
     pass
 
 
+@register
 def equ_587(char: CharacterProperty):
     """
     坚固之天命气运裤子
@@ -8375,6 +8960,7 @@ def equ_587(char: CharacterProperty):
     pass
 
 
+@register
 def equ_588(char: CharacterProperty):
     """
     坚实之天命气运裤子
@@ -8387,6 +8973,7 @@ def equ_588(char: CharacterProperty):
     pass
 
 
+@register
 def equ_589(char: CharacterProperty):
     """
     强固之天命气运肩章
@@ -8399,6 +8986,7 @@ def equ_589(char: CharacterProperty):
     pass
 
 
+@register
 def equ_590(char: CharacterProperty):
     """
     坚固之天命气运肩章
@@ -8411,6 +8999,7 @@ def equ_590(char: CharacterProperty):
     pass
 
 
+@register
 def equ_591(char: CharacterProperty):
     """
     坚实之天命气运肩章
@@ -8422,6 +9011,7 @@ def equ_591(char: CharacterProperty):
     pass
 
 
+@register
 def equ_592(char: CharacterProperty):
     """
     强固之天命气运腰带
@@ -8433,6 +9023,7 @@ def equ_592(char: CharacterProperty):
     pass
 
 
+@register
 def equ_593(char: CharacterProperty):
     """
     坚固之天命气运腰带
@@ -8445,6 +9036,7 @@ def equ_593(char: CharacterProperty):
     pass
 
 
+@register
 def equ_594(char: CharacterProperty):
     """
     坚实之天命气运腰带
@@ -8457,6 +9049,7 @@ def equ_594(char: CharacterProperty):
     pass
 
 
+@register
 def equ_595(char: CharacterProperty):
     """
     强固之天命气运靴子
@@ -8468,6 +9061,7 @@ def equ_595(char: CharacterProperty):
     pass
 
 
+@register
 def equ_596(char: CharacterProperty):
     """
     坚固之天命气运靴子
@@ -8479,6 +9073,7 @@ def equ_596(char: CharacterProperty):
     pass
 
 
+@register
 def equ_597(char: CharacterProperty):
     """
     坚实之天命气运靴子
@@ -8490,6 +9085,7 @@ def equ_597(char: CharacterProperty):
     pass
 
 
+@register
 def equ_598(char: CharacterProperty):
     """
     强固之鸿运当头项链
@@ -8501,6 +9097,7 @@ def equ_598(char: CharacterProperty):
     pass
 
 
+@register
 def equ_599(char: CharacterProperty):
     """
     坚固之鸿运当头项链
@@ -8512,6 +9109,7 @@ def equ_599(char: CharacterProperty):
     pass
 
 
+@register
 def equ_600(char: CharacterProperty):
     """
     坚实之鸿运当头项链
@@ -8523,6 +9121,7 @@ def equ_600(char: CharacterProperty):
     pass
 
 
+@register
 def equ_601(char: CharacterProperty):
     """
     坚韧之鸿运当头项链
@@ -8534,6 +9133,7 @@ def equ_601(char: CharacterProperty):
     pass
 
 
+@register
 def equ_602(char: CharacterProperty):
     """
     黑牙 : 坚实之鸿运当头项链
@@ -8545,6 +9145,7 @@ def equ_602(char: CharacterProperty):
     pass
 
 
+@register
 def equ_603(char: CharacterProperty):
     """
     黑牙 : 坚韧之鸿运当头项链
@@ -8556,6 +9157,7 @@ def equ_603(char: CharacterProperty):
     pass
 
 
+@register
 def equ_604(char: CharacterProperty):
     """
     强固之鸿运当头手镯
@@ -8567,6 +9169,7 @@ def equ_604(char: CharacterProperty):
     pass
 
 
+@register
 def equ_605(char: CharacterProperty):
     """
     坚固之鸿运当头手镯
@@ -8578,6 +9181,7 @@ def equ_605(char: CharacterProperty):
     pass
 
 
+@register
 def equ_606(char: CharacterProperty):
     """
     坚实之鸿运当头手镯
@@ -8589,6 +9193,7 @@ def equ_606(char: CharacterProperty):
     pass
 
 
+@register
 def equ_607(char: CharacterProperty):
     """
     坚韧之鸿运当头手镯
@@ -8600,6 +9205,7 @@ def equ_607(char: CharacterProperty):
     pass
 
 
+@register
 def equ_608(char: CharacterProperty):
     """
     黑牙 : 坚实之鸿运当头手镯
@@ -8611,6 +9217,7 @@ def equ_608(char: CharacterProperty):
     pass
 
 
+@register
 def equ_609(char: CharacterProperty):
     """
     黑牙 : 坚韧之鸿运当头手镯
@@ -8622,6 +9229,7 @@ def equ_609(char: CharacterProperty):
     pass
 
 
+@register
 def equ_610(char: CharacterProperty):
     """
     强固之鸿运当头戒指
@@ -8633,6 +9241,7 @@ def equ_610(char: CharacterProperty):
     pass
 
 
+@register
 def equ_611(char: CharacterProperty):
     """
     坚固之鸿运当头戒指
@@ -8644,6 +9253,7 @@ def equ_611(char: CharacterProperty):
     pass
 
 
+@register
 def equ_612(char: CharacterProperty):
     """
     坚实之鸿运当头戒指
@@ -8655,6 +9265,7 @@ def equ_612(char: CharacterProperty):
     pass
 
 
+@register
 def equ_613(char: CharacterProperty):
     """
     坚韧之鸿运当头戒指
@@ -8666,6 +9277,7 @@ def equ_613(char: CharacterProperty):
     pass
 
 
+@register
 def equ_614(char: CharacterProperty):
     """
     黑牙 : 坚实之鸿运当头戒指
@@ -8677,6 +9289,7 @@ def equ_614(char: CharacterProperty):
     pass
 
 
+@register
 def equ_615(char: CharacterProperty):
     """
     黑牙 : 坚韧之鸿运当头戒指
@@ -8688,6 +9301,7 @@ def equ_615(char: CharacterProperty):
     pass
 
 
+@register
 def equ_616(char: CharacterProperty):
     """
     强固之吉人天相面具
@@ -8700,6 +9314,7 @@ def equ_616(char: CharacterProperty):
     pass
 
 
+@register
 def equ_617(char: CharacterProperty):
     """
     坚固之吉人天相面具
@@ -8712,6 +9327,7 @@ def equ_617(char: CharacterProperty):
     pass
 
 
+@register
 def equ_618(char: CharacterProperty):
     """
     坚实之吉人天相面具
@@ -8724,6 +9340,7 @@ def equ_618(char: CharacterProperty):
     pass
 
 
+@register
 def equ_619(char: CharacterProperty):
     """
     强固之吉人天相宝石
@@ -8735,6 +9352,7 @@ def equ_619(char: CharacterProperty):
     pass
 
 
+@register
 def equ_620(char: CharacterProperty):
     """
     坚固之吉人天相宝石
@@ -8746,6 +9364,7 @@ def equ_620(char: CharacterProperty):
     pass
 
 
+@register
 def equ_621(char: CharacterProperty):
     """
     坚实之吉人天相宝石
@@ -8757,6 +9376,7 @@ def equ_621(char: CharacterProperty):
     pass
 
 
+@register
 def equ_622(char: CharacterProperty):
     """
     强固之吉人天相耳环
@@ -8768,6 +9388,7 @@ def equ_622(char: CharacterProperty):
     pass
 
 
+@register
 def equ_623(char: CharacterProperty):
     """
     坚固之吉人天相耳环
@@ -8779,6 +9400,7 @@ def equ_623(char: CharacterProperty):
     pass
 
 
+@register
 def equ_624(char: CharacterProperty):
     """
     坚实之吉人天相耳环
@@ -8794,6 +9416,7 @@ def equ_624(char: CharacterProperty):
 # region 究极能量 套装
 
 
+@register
 def equ_625(char: CharacterProperty):
     """
     释能 - 打破极限之力
@@ -8805,6 +9428,7 @@ def equ_625(char: CharacterProperty):
     pass
 
 
+@register
 def equ_626(char: CharacterProperty):
     """
     节能 - 打破极限之力
@@ -8817,6 +9441,7 @@ def equ_626(char: CharacterProperty):
     pass
 
 
+@register
 def equ_627(char: CharacterProperty):
     """
     充能 - 打破极限之力
@@ -8829,6 +9454,7 @@ def equ_627(char: CharacterProperty):
     pass
 
 
+@register
 def equ_628(char: CharacterProperty):
     """
     释能 - 击倒极限之腿
@@ -8840,6 +9466,7 @@ def equ_628(char: CharacterProperty):
     pass
 
 
+@register
 def equ_629(char: CharacterProperty):
     """
     节能 - 击倒极限之腿
@@ -8851,6 +9478,7 @@ def equ_629(char: CharacterProperty):
     pass
 
 
+@register
 def equ_630(char: CharacterProperty):
     """
     充能 - 击倒极限之腿
@@ -8863,6 +9491,7 @@ def equ_630(char: CharacterProperty):
     pass
 
 
+@register
 def equ_631(char: CharacterProperty):
     """
     释能 - 粉碎极限之肩
@@ -8875,6 +9504,7 @@ def equ_631(char: CharacterProperty):
     pass
 
 
+@register
 def equ_632(char: CharacterProperty):
     """
     节能 - 粉碎极限之肩
@@ -8887,6 +9517,7 @@ def equ_632(char: CharacterProperty):
     pass
 
 
+@register
 def equ_633(char: CharacterProperty):
     """
     充能 - 粉碎极限之肩
@@ -8898,6 +9529,7 @@ def equ_633(char: CharacterProperty):
     pass
 
 
+@register
 def equ_634(char: CharacterProperty):
     """
     释能 - 摧毁极限之腰
@@ -8909,6 +9541,7 @@ def equ_634(char: CharacterProperty):
     pass
 
 
+@register
 def equ_635(char: CharacterProperty):
     """
     节能 - 摧毁极限之腰
@@ -8921,6 +9554,7 @@ def equ_635(char: CharacterProperty):
     pass
 
 
+@register
 def equ_636(char: CharacterProperty):
     """
     充能 - 摧毁极限之腰
@@ -8933,6 +9567,7 @@ def equ_636(char: CharacterProperty):
     pass
 
 
+@register
 def equ_637(char: CharacterProperty):
     """
     释能 - 碾压极限之足
@@ -8944,6 +9579,7 @@ def equ_637(char: CharacterProperty):
     pass
 
 
+@register
 def equ_638(char: CharacterProperty):
     """
     节能 - 碾压极限之足
@@ -8955,6 +9591,7 @@ def equ_638(char: CharacterProperty):
     pass
 
 
+@register
 def equ_639(char: CharacterProperty):
     """
     充能 - 碾压极限之足
@@ -8966,6 +9603,7 @@ def equ_639(char: CharacterProperty):
     pass
 
 
+@register
 def equ_640(char: CharacterProperty):
     """
     释能 - 开启极限之钥项链
@@ -8977,6 +9615,7 @@ def equ_640(char: CharacterProperty):
     pass
 
 
+@register
 def equ_641(char: CharacterProperty):
     """
     节能 - 开启极限之钥项链
@@ -8988,6 +9627,7 @@ def equ_641(char: CharacterProperty):
     pass
 
 
+@register
 def equ_642(char: CharacterProperty):
     """
     充能 - 开启极限之钥项链
@@ -8999,6 +9639,7 @@ def equ_642(char: CharacterProperty):
     pass
 
 
+@register
 def equ_643(char: CharacterProperty):
     """
     过载 - 开启极限之钥项链
@@ -9010,6 +9651,7 @@ def equ_643(char: CharacterProperty):
     pass
 
 
+@register
 def equ_644(char: CharacterProperty):
     """
     黑牙 : 充能 - 开启极限之钥项链
@@ -9021,6 +9663,7 @@ def equ_644(char: CharacterProperty):
     pass
 
 
+@register
 def equ_645(char: CharacterProperty):
     """
     黑牙 : 过载 - 开启极限之钥项链
@@ -9032,6 +9675,7 @@ def equ_645(char: CharacterProperty):
     pass
 
 
+@register
 def equ_646(char: CharacterProperty):
     """
     释能 - 导引极限之航手镯
@@ -9043,6 +9687,7 @@ def equ_646(char: CharacterProperty):
     pass
 
 
+@register
 def equ_647(char: CharacterProperty):
     """
     节能 - 导引极限之航手镯
@@ -9054,6 +9699,7 @@ def equ_647(char: CharacterProperty):
     pass
 
 
+@register
 def equ_648(char: CharacterProperty):
     """
     充能 - 导引极限之航手镯
@@ -9065,6 +9711,7 @@ def equ_648(char: CharacterProperty):
     pass
 
 
+@register
 def equ_649(char: CharacterProperty):
     """
     过载 - 导引极限之航手镯
@@ -9076,6 +9723,7 @@ def equ_649(char: CharacterProperty):
     pass
 
 
+@register
 def equ_650(char: CharacterProperty):
     """
     黑牙 : 充能 - 导引极限之航手镯
@@ -9087,6 +9735,7 @@ def equ_650(char: CharacterProperty):
     pass
 
 
+@register
 def equ_651(char: CharacterProperty):
     """
     黑牙 : 过载 - 导引极限之航手镯
@@ -9098,6 +9747,7 @@ def equ_651(char: CharacterProperty):
     pass
 
 
+@register
 def equ_652(char: CharacterProperty):
     """
     释能 - 突破极限之隙戒指
@@ -9109,6 +9759,7 @@ def equ_652(char: CharacterProperty):
     pass
 
 
+@register
 def equ_653(char: CharacterProperty):
     """
     节能 - 突破极限之隙戒指
@@ -9120,6 +9771,7 @@ def equ_653(char: CharacterProperty):
     pass
 
 
+@register
 def equ_654(char: CharacterProperty):
     """
     充能 - 突破极限之隙戒指
@@ -9131,6 +9783,7 @@ def equ_654(char: CharacterProperty):
     pass
 
 
+@register
 def equ_655(char: CharacterProperty):
     """
     过载 - 突破极限之隙戒指
@@ -9142,6 +9795,7 @@ def equ_655(char: CharacterProperty):
     pass
 
 
+@register
 def equ_656(char: CharacterProperty):
     """
     黑牙 : 充能 - 突破极限之隙戒指
@@ -9153,6 +9807,7 @@ def equ_656(char: CharacterProperty):
     pass
 
 
+@register
 def equ_657(char: CharacterProperty):
     """
     黑牙 : 过载 - 突破极限之隙戒指
@@ -9164,6 +9819,7 @@ def equ_657(char: CharacterProperty):
     pass
 
 
+@register
 def equ_658(char: CharacterProperty):
     """
     释能 - 跨越极限之境辅助装备
@@ -9176,6 +9832,7 @@ def equ_658(char: CharacterProperty):
     pass
 
 
+@register
 def equ_659(char: CharacterProperty):
     """
     节能 - 跨越极限之境辅助装备
@@ -9188,6 +9845,7 @@ def equ_659(char: CharacterProperty):
     pass
 
 
+@register
 def equ_660(char: CharacterProperty):
     """
     充能 - 跨越极限之境辅助装备
@@ -9200,6 +9858,7 @@ def equ_660(char: CharacterProperty):
     pass
 
 
+@register
 def equ_661(char: CharacterProperty):
     """
     释能 - 超越极限之证魔法石
@@ -9211,6 +9870,7 @@ def equ_661(char: CharacterProperty):
     pass
 
 
+@register
 def equ_662(char: CharacterProperty):
     """
     节能 - 超越极限之证魔法石
@@ -9222,6 +9882,7 @@ def equ_662(char: CharacterProperty):
     pass
 
 
+@register
 def equ_663(char: CharacterProperty):
     """
     充能 - 超越极限之证魔法石
@@ -9233,6 +9894,7 @@ def equ_663(char: CharacterProperty):
     pass
 
 
+@register
 def equ_664(char: CharacterProperty):
     """
     释能 - 动摇极限之讯耳环
@@ -9244,6 +9906,7 @@ def equ_664(char: CharacterProperty):
     pass
 
 
+@register
 def equ_665(char: CharacterProperty):
     """
     节能 - 动摇极限之讯耳环
@@ -9255,6 +9918,7 @@ def equ_665(char: CharacterProperty):
     pass
 
 
+@register
 def equ_666(char: CharacterProperty):
     """
     充能 - 动摇极限之讯耳环
@@ -9270,6 +9934,7 @@ def equ_666(char: CharacterProperty):
 # region 造化自然 套装
 
 
+@register
 def equ_667(char: CharacterProperty):
     """
     自然的干预上衣
@@ -9281,6 +9946,7 @@ def equ_667(char: CharacterProperty):
     pass
 
 
+@register
 def equ_668(char: CharacterProperty):
     """
     自然的震怒上衣
@@ -9293,6 +9959,7 @@ def equ_668(char: CharacterProperty):
     pass
 
 
+@register
 def equ_669(char: CharacterProperty):
     """
     自然的制裁上衣
@@ -9305,6 +9972,7 @@ def equ_669(char: CharacterProperty):
     pass
 
 
+@register
 def equ_670(char: CharacterProperty):
     """
     自然的干预下装
@@ -9316,6 +9984,7 @@ def equ_670(char: CharacterProperty):
     pass
 
 
+@register
 def equ_671(char: CharacterProperty):
     """
     自然的震怒下装
@@ -9327,6 +9996,7 @@ def equ_671(char: CharacterProperty):
     pass
 
 
+@register
 def equ_672(char: CharacterProperty):
     """
     自然的制裁下装
@@ -9339,6 +10009,7 @@ def equ_672(char: CharacterProperty):
     pass
 
 
+@register
 def equ_673(char: CharacterProperty):
     """
     自然的干预头肩
@@ -9351,6 +10022,7 @@ def equ_673(char: CharacterProperty):
     pass
 
 
+@register
 def equ_674(char: CharacterProperty):
     """
     自然的震怒头肩
@@ -9363,6 +10035,7 @@ def equ_674(char: CharacterProperty):
     pass
 
 
+@register
 def equ_675(char: CharacterProperty):
     """
     自然的制裁头肩
@@ -9374,6 +10047,7 @@ def equ_675(char: CharacterProperty):
     pass
 
 
+@register
 def equ_676(char: CharacterProperty):
     """
     自然的干预腰带
@@ -9385,6 +10059,7 @@ def equ_676(char: CharacterProperty):
     pass
 
 
+@register
 def equ_677(char: CharacterProperty):
     """
     自然的震怒腰带
@@ -9397,6 +10072,7 @@ def equ_677(char: CharacterProperty):
     pass
 
 
+@register
 def equ_678(char: CharacterProperty):
     """
     自然的制裁腰带
@@ -9409,6 +10085,7 @@ def equ_678(char: CharacterProperty):
     pass
 
 
+@register
 def equ_679(char: CharacterProperty):
     """
     自然的干预鞋子
@@ -9420,6 +10097,7 @@ def equ_679(char: CharacterProperty):
     pass
 
 
+@register
 def equ_680(char: CharacterProperty):
     """
     自然的震怒鞋子
@@ -9431,6 +10109,7 @@ def equ_680(char: CharacterProperty):
     pass
 
 
+@register
 def equ_681(char: CharacterProperty):
     """
     自然的制裁鞋子
@@ -9442,6 +10121,7 @@ def equ_681(char: CharacterProperty):
     pass
 
 
+@register
 def equ_682(char: CharacterProperty):
     """
     自然的干预项链
@@ -9453,6 +10133,7 @@ def equ_682(char: CharacterProperty):
     pass
 
 
+@register
 def equ_683(char: CharacterProperty):
     """
     自然的震怒项链
@@ -9464,6 +10145,7 @@ def equ_683(char: CharacterProperty):
     pass
 
 
+@register
 def equ_684(char: CharacterProperty):
     """
     自然的制裁项链
@@ -9475,6 +10157,7 @@ def equ_684(char: CharacterProperty):
     pass
 
 
+@register
 def equ_685(char: CharacterProperty):
     """
     自然的灾变项链
@@ -9486,6 +10169,7 @@ def equ_685(char: CharacterProperty):
     pass
 
 
+@register
 def equ_686(char: CharacterProperty):
     """
     黑牙 : 自然的制裁项链
@@ -9497,6 +10181,7 @@ def equ_686(char: CharacterProperty):
     pass
 
 
+@register
 def equ_687(char: CharacterProperty):
     """
     黑牙 : 自然的灾变项链
@@ -9508,6 +10193,7 @@ def equ_687(char: CharacterProperty):
     pass
 
 
+@register
 def equ_688(char: CharacterProperty):
     """
     自然的干预手镯
@@ -9519,6 +10205,7 @@ def equ_688(char: CharacterProperty):
     pass
 
 
+@register
 def equ_689(char: CharacterProperty):
     """
     自然的震怒手镯
@@ -9530,6 +10217,7 @@ def equ_689(char: CharacterProperty):
     pass
 
 
+@register
 def equ_690(char: CharacterProperty):
     """
     自然的制裁手镯
@@ -9541,6 +10229,7 @@ def equ_690(char: CharacterProperty):
     pass
 
 
+@register
 def equ_691(char: CharacterProperty):
     """
     自然的灾变手镯
@@ -9552,6 +10241,7 @@ def equ_691(char: CharacterProperty):
     pass
 
 
+@register
 def equ_692(char: CharacterProperty):
     """
     黑牙 : 自然的制裁手镯
@@ -9563,6 +10253,7 @@ def equ_692(char: CharacterProperty):
     pass
 
 
+@register
 def equ_693(char: CharacterProperty):
     """
     黑牙 : 自然的灾变手镯
@@ -9574,6 +10265,7 @@ def equ_693(char: CharacterProperty):
     pass
 
 
+@register
 def equ_694(char: CharacterProperty):
     """
     自然的干预戒指
@@ -9585,6 +10277,7 @@ def equ_694(char: CharacterProperty):
     pass
 
 
+@register
 def equ_695(char: CharacterProperty):
     """
     自然的震怒戒指
@@ -9596,6 +10289,7 @@ def equ_695(char: CharacterProperty):
     pass
 
 
+@register
 def equ_696(char: CharacterProperty):
     """
     自然的制裁戒指
@@ -9607,6 +10301,7 @@ def equ_696(char: CharacterProperty):
     pass
 
 
+@register
 def equ_697(char: CharacterProperty):
     """
     自然的灾变戒指
@@ -9618,6 +10313,7 @@ def equ_697(char: CharacterProperty):
     pass
 
 
+@register
 def equ_698(char: CharacterProperty):
     """
     黑牙 : 自然的制裁戒指
@@ -9629,6 +10325,7 @@ def equ_698(char: CharacterProperty):
     pass
 
 
+@register
 def equ_699(char: CharacterProperty):
     """
     黑牙 : 自然的灾变戒指
@@ -9640,6 +10337,7 @@ def equ_699(char: CharacterProperty):
     pass
 
 
+@register
 def equ_700(char: CharacterProperty):
     """
     自然的干预辅助装备
@@ -9652,6 +10350,7 @@ def equ_700(char: CharacterProperty):
     pass
 
 
+@register
 def equ_701(char: CharacterProperty):
     """
     自然的愤怒辅助装备
@@ -9664,6 +10363,7 @@ def equ_701(char: CharacterProperty):
     pass
 
 
+@register
 def equ_702(char: CharacterProperty):
     """
     自然的制裁辅助装备
@@ -9676,6 +10376,7 @@ def equ_702(char: CharacterProperty):
     pass
 
 
+@register
 def equ_703(char: CharacterProperty):
     """
     自然的干预魔法石
@@ -9687,6 +10388,7 @@ def equ_703(char: CharacterProperty):
     pass
 
 
+@register
 def equ_704(char: CharacterProperty):
     """
     自然的震怒魔法石
@@ -9698,6 +10400,7 @@ def equ_704(char: CharacterProperty):
     pass
 
 
+@register
 def equ_705(char: CharacterProperty):
     """
     自然的制裁魔法石
@@ -9709,6 +10412,7 @@ def equ_705(char: CharacterProperty):
     pass
 
 
+@register
 def equ_706(char: CharacterProperty):
     """
     自然的干预耳环
@@ -9720,6 +10424,7 @@ def equ_706(char: CharacterProperty):
     pass
 
 
+@register
 def equ_707(char: CharacterProperty):
     """
     自然的震怒耳环
@@ -9731,6 +10436,7 @@ def equ_707(char: CharacterProperty):
     pass
 
 
+@register
 def equ_708(char: CharacterProperty):
     """
     自然的制裁耳环
@@ -9746,6 +10452,7 @@ def equ_708(char: CharacterProperty):
 # region 诸神黄昏之女武神 套装
 
 
+@register
 def equ_709(char: CharacterProperty):
     """
     逆袭之女武神铠甲
@@ -9757,6 +10464,7 @@ def equ_709(char: CharacterProperty):
     pass
 
 
+@register
 def equ_710(char: CharacterProperty):
     """
     不灭之女武神铠甲
@@ -9769,6 +10477,7 @@ def equ_710(char: CharacterProperty):
     pass
 
 
+@register
 def equ_711(char: CharacterProperty):
     """
     先锋之女武神铠甲
@@ -9781,6 +10490,7 @@ def equ_711(char: CharacterProperty):
     pass
 
 
+@register
 def equ_712(char: CharacterProperty):
     """
     逆袭之女武神长裙
@@ -9792,6 +10502,7 @@ def equ_712(char: CharacterProperty):
     pass
 
 
+@register
 def equ_713(char: CharacterProperty):
     """
     不灭之女武神长裙
@@ -9803,6 +10514,7 @@ def equ_713(char: CharacterProperty):
     pass
 
 
+@register
 def equ_714(char: CharacterProperty):
     """
     先锋之女武神长裙
@@ -9815,6 +10527,7 @@ def equ_714(char: CharacterProperty):
     pass
 
 
+@register
 def equ_715(char: CharacterProperty):
     """
     逆袭之女武神肩甲
@@ -9827,6 +10540,7 @@ def equ_715(char: CharacterProperty):
     pass
 
 
+@register
 def equ_716(char: CharacterProperty):
     """
     不灭之女武神肩甲
@@ -9839,6 +10553,7 @@ def equ_716(char: CharacterProperty):
     pass
 
 
+@register
 def equ_717(char: CharacterProperty):
     """
     先锋之女武神肩甲
@@ -9850,6 +10565,7 @@ def equ_717(char: CharacterProperty):
     pass
 
 
+@register
 def equ_718(char: CharacterProperty):
     """
     逆袭之女武神腰甲
@@ -9861,6 +10577,7 @@ def equ_718(char: CharacterProperty):
     pass
 
 
+@register
 def equ_719(char: CharacterProperty):
     """
     不灭之女武神腰甲
@@ -9873,6 +10590,7 @@ def equ_719(char: CharacterProperty):
     pass
 
 
+@register
 def equ_720(char: CharacterProperty):
     """
     先锋之女武神腰甲
@@ -9885,6 +10603,7 @@ def equ_720(char: CharacterProperty):
     pass
 
 
+@register
 def equ_721(char: CharacterProperty):
     """
     逆袭之女武神战靴
@@ -9896,6 +10615,7 @@ def equ_721(char: CharacterProperty):
     pass
 
 
+@register
 def equ_722(char: CharacterProperty):
     """
     不灭之女武神战靴
@@ -9907,6 +10627,7 @@ def equ_722(char: CharacterProperty):
     pass
 
 
+@register
 def equ_723(char: CharacterProperty):
     """
     先锋之女武神战靴
@@ -9918,6 +10639,7 @@ def equ_723(char: CharacterProperty):
     pass
 
 
+@register
 def equ_724(char: CharacterProperty):
     """
     逆袭之女武神苍穹项链
@@ -9929,6 +10651,7 @@ def equ_724(char: CharacterProperty):
     pass
 
 
+@register
 def equ_725(char: CharacterProperty):
     """
     不灭之女武神苍穹项链
@@ -9940,6 +10663,7 @@ def equ_725(char: CharacterProperty):
     pass
 
 
+@register
 def equ_726(char: CharacterProperty):
     """
     英灵殿之女武神苍穹项链
@@ -9951,6 +10675,7 @@ def equ_726(char: CharacterProperty):
     pass
 
 
+@register
 def equ_727(char: CharacterProperty):
     """
     先锋之女武神苍穹项链
@@ -9962,6 +10687,7 @@ def equ_727(char: CharacterProperty):
     pass
 
 
+@register
 def equ_728(char: CharacterProperty):
     """
     黑牙 : 不灭之女武神苍穹项链
@@ -9973,6 +10699,7 @@ def equ_728(char: CharacterProperty):
     pass
 
 
+@register
 def equ_729(char: CharacterProperty):
     """
     黑牙 : 英灵殿之女武神苍穹项链
@@ -9984,6 +10711,7 @@ def equ_729(char: CharacterProperty):
     pass
 
 
+@register
 def equ_730(char: CharacterProperty):
     """
     逆袭之女武神守护手镯
@@ -9995,6 +10723,7 @@ def equ_730(char: CharacterProperty):
     pass
 
 
+@register
 def equ_731(char: CharacterProperty):
     """
     不灭之女武神守护手镯
@@ -10006,6 +10735,7 @@ def equ_731(char: CharacterProperty):
     pass
 
 
+@register
 def equ_732(char: CharacterProperty):
     """
     英灵殿之女武神守护手镯
@@ -10017,6 +10747,7 @@ def equ_732(char: CharacterProperty):
     pass
 
 
+@register
 def equ_733(char: CharacterProperty):
     """
     先锋之女武神守护手镯
@@ -10028,6 +10759,7 @@ def equ_733(char: CharacterProperty):
     pass
 
 
+@register
 def equ_734(char: CharacterProperty):
     """
     黑牙 : 不灭之女武神守护手镯
@@ -10039,6 +10771,7 @@ def equ_734(char: CharacterProperty):
     pass
 
 
+@register
 def equ_735(char: CharacterProperty):
     """
     黑牙 : 英灵殿之女武神守护手镯
@@ -10050,6 +10783,7 @@ def equ_735(char: CharacterProperty):
     pass
 
 
+@register
 def equ_736(char: CharacterProperty):
     """
     逆袭之女武神祝福戒指
@@ -10061,6 +10795,7 @@ def equ_736(char: CharacterProperty):
     pass
 
 
+@register
 def equ_737(char: CharacterProperty):
     """
     不灭之女武神祝福戒指
@@ -10072,6 +10807,7 @@ def equ_737(char: CharacterProperty):
     pass
 
 
+@register
 def equ_738(char: CharacterProperty):
     """
     英灵殿之女武神祝福戒指
@@ -10083,6 +10819,7 @@ def equ_738(char: CharacterProperty):
     pass
 
 
+@register
 def equ_739(char: CharacterProperty):
     """
     先锋之女武神祝福戒指
@@ -10094,6 +10831,7 @@ def equ_739(char: CharacterProperty):
     pass
 
 
+@register
 def equ_740(char: CharacterProperty):
     """
     黑牙 : 不灭之女武神祝福戒指
@@ -10105,6 +10843,7 @@ def equ_740(char: CharacterProperty):
     pass
 
 
+@register
 def equ_741(char: CharacterProperty):
     """
     黑牙 : 英灵殿之女武神祝福戒指
@@ -10116,6 +10855,7 @@ def equ_741(char: CharacterProperty):
     pass
 
 
+@register
 def equ_742(char: CharacterProperty):
     """
     逆袭之女武神战斗头盔
@@ -10128,6 +10868,7 @@ def equ_742(char: CharacterProperty):
     pass
 
 
+@register
 def equ_743(char: CharacterProperty):
     """
     不灭之女武神战斗头盔
@@ -10140,6 +10881,7 @@ def equ_743(char: CharacterProperty):
     pass
 
 
+@register
 def equ_744(char: CharacterProperty):
     """
     先锋之女武神战斗头盔
@@ -10152,6 +10894,7 @@ def equ_744(char: CharacterProperty):
     pass
 
 
+@register
 def equ_745(char: CharacterProperty):
     """
     逆袭之女武神苍穹宝玉
@@ -10163,6 +10906,7 @@ def equ_745(char: CharacterProperty):
     pass
 
 
+@register
 def equ_746(char: CharacterProperty):
     """
     不灭之女武神苍穹宝玉
@@ -10174,6 +10918,7 @@ def equ_746(char: CharacterProperty):
     pass
 
 
+@register
 def equ_747(char: CharacterProperty):
     """
     先锋之女武神苍穹宝玉
@@ -10185,6 +10930,7 @@ def equ_747(char: CharacterProperty):
     pass
 
 
+@register
 def equ_748(char: CharacterProperty):
     """
     逆袭之女武神耳环
@@ -10196,6 +10942,7 @@ def equ_748(char: CharacterProperty):
     pass
 
 
+@register
 def equ_749(char: CharacterProperty):
     """
     不灭之女武神耳环
@@ -10207,6 +10954,7 @@ def equ_749(char: CharacterProperty):
     pass
 
 
+@register
 def equ_750(char: CharacterProperty):
     """
     先锋之女武神耳环
@@ -10222,6 +10970,7 @@ def equ_750(char: CharacterProperty):
 # region 青丘灵珠 套装
 
 
+@register
 def equ_751(char: CharacterProperty):
     """
     见习狐仙的丝绸斗篷
@@ -10233,6 +10982,7 @@ def equ_751(char: CharacterProperty):
     pass
 
 
+@register
 def equ_752(char: CharacterProperty):
     """
     低阶狐仙的丝绸斗篷
@@ -10245,6 +10995,7 @@ def equ_752(char: CharacterProperty):
     pass
 
 
+@register
 def equ_753(char: CharacterProperty):
     """
     高阶狐仙的丝绸斗篷
@@ -10257,6 +11008,7 @@ def equ_753(char: CharacterProperty):
     pass
 
 
+@register
 def equ_754(char: CharacterProperty):
     """
     见习狐仙的暗影下装
@@ -10268,6 +11020,7 @@ def equ_754(char: CharacterProperty):
     pass
 
 
+@register
 def equ_755(char: CharacterProperty):
     """
     低阶狐仙的暗影下装
@@ -10279,6 +11032,7 @@ def equ_755(char: CharacterProperty):
     pass
 
 
+@register
 def equ_756(char: CharacterProperty):
     """
     高阶狐仙的暗影下装
@@ -10291,6 +11045,7 @@ def equ_756(char: CharacterProperty):
     pass
 
 
+@register
 def equ_757(char: CharacterProperty):
     """
     见习狐仙的护佑头肩
@@ -10303,6 +11058,7 @@ def equ_757(char: CharacterProperty):
     pass
 
 
+@register
 def equ_758(char: CharacterProperty):
     """
     低阶狐仙的护佑头肩
@@ -10315,6 +11071,7 @@ def equ_758(char: CharacterProperty):
     pass
 
 
+@register
 def equ_759(char: CharacterProperty):
     """
     高阶狐仙的护佑头肩
@@ -10326,6 +11083,7 @@ def equ_759(char: CharacterProperty):
     pass
 
 
+@register
 def equ_760(char: CharacterProperty):
     """
     见习狐仙的秘藏腰带
@@ -10337,6 +11095,7 @@ def equ_760(char: CharacterProperty):
     pass
 
 
+@register
 def equ_761(char: CharacterProperty):
     """
     低阶狐仙的秘藏腰带
@@ -10349,6 +11108,7 @@ def equ_761(char: CharacterProperty):
     pass
 
 
+@register
 def equ_762(char: CharacterProperty):
     """
     高阶狐仙的秘藏腰带
@@ -10361,6 +11121,7 @@ def equ_762(char: CharacterProperty):
     pass
 
 
+@register
 def equ_763(char: CharacterProperty):
     """
     见习狐仙的银色鞋子
@@ -10372,6 +11133,7 @@ def equ_763(char: CharacterProperty):
     pass
 
 
+@register
 def equ_764(char: CharacterProperty):
     """
     低阶狐仙的银色鞋子
@@ -10383,6 +11145,7 @@ def equ_764(char: CharacterProperty):
     pass
 
 
+@register
 def equ_765(char: CharacterProperty):
     """
     高阶狐仙的银色鞋子
@@ -10394,6 +11157,7 @@ def equ_765(char: CharacterProperty):
     pass
 
 
+@register
 def equ_766(char: CharacterProperty):
     """
     见习狐仙的灵魂项链
@@ -10405,6 +11169,7 @@ def equ_766(char: CharacterProperty):
     pass
 
 
+@register
 def equ_767(char: CharacterProperty):
     """
     低阶狐仙的灵魂项链
@@ -10416,6 +11181,7 @@ def equ_767(char: CharacterProperty):
     pass
 
 
+@register
 def equ_768(char: CharacterProperty):
     """
     高阶狐仙的灵魂项链
@@ -10427,6 +11193,7 @@ def equ_768(char: CharacterProperty):
     pass
 
 
+@register
 def equ_769(char: CharacterProperty):
     """
     青丘天狐的灵魂项链
@@ -10438,6 +11205,7 @@ def equ_769(char: CharacterProperty):
     pass
 
 
+@register
 def equ_770(char: CharacterProperty):
     """
     黑牙 : 高阶狐仙的灵魂项链
@@ -10449,6 +11217,7 @@ def equ_770(char: CharacterProperty):
     pass
 
 
+@register
 def equ_771(char: CharacterProperty):
     """
     黑牙 : 青丘天狐的灵魂项链
@@ -10460,6 +11229,7 @@ def equ_771(char: CharacterProperty):
     pass
 
 
+@register
 def equ_772(char: CharacterProperty):
     """
     见习狐仙的智慧手镯
@@ -10471,6 +11241,7 @@ def equ_772(char: CharacterProperty):
     pass
 
 
+@register
 def equ_773(char: CharacterProperty):
     """
     低阶狐仙的智慧手镯
@@ -10482,6 +11253,7 @@ def equ_773(char: CharacterProperty):
     pass
 
 
+@register
 def equ_774(char: CharacterProperty):
     """
     高阶狐仙的智慧手镯
@@ -10493,6 +11265,7 @@ def equ_774(char: CharacterProperty):
     pass
 
 
+@register
 def equ_775(char: CharacterProperty):
     """
     青丘天狐的智慧手镯
@@ -10504,6 +11277,7 @@ def equ_775(char: CharacterProperty):
     pass
 
 
+@register
 def equ_776(char: CharacterProperty):
     """
     黑牙 : 高阶狐仙的智慧手镯
@@ -10515,6 +11289,7 @@ def equ_776(char: CharacterProperty):
     pass
 
 
+@register
 def equ_777(char: CharacterProperty):
     """
     黑牙 : 青丘天狐的智慧手镯
@@ -10526,6 +11301,7 @@ def equ_777(char: CharacterProperty):
     pass
 
 
+@register
 def equ_778(char: CharacterProperty):
     """
     见习狐仙的魅惑戒指
@@ -10537,6 +11313,7 @@ def equ_778(char: CharacterProperty):
     pass
 
 
+@register
 def equ_779(char: CharacterProperty):
     """
     低阶狐仙的魅惑戒指
@@ -10548,6 +11325,7 @@ def equ_779(char: CharacterProperty):
     pass
 
 
+@register
 def equ_780(char: CharacterProperty):
     """
     高阶狐仙的魅惑戒指
@@ -10559,6 +11337,7 @@ def equ_780(char: CharacterProperty):
     pass
 
 
+@register
 def equ_781(char: CharacterProperty):
     """
     青丘天狐的魅惑戒指
@@ -10570,6 +11349,7 @@ def equ_781(char: CharacterProperty):
     pass
 
 
+@register
 def equ_782(char: CharacterProperty):
     """
     黑牙 : 高阶狐仙的魅惑戒指
@@ -10581,6 +11361,7 @@ def equ_782(char: CharacterProperty):
     pass
 
 
+@register
 def equ_783(char: CharacterProperty):
     """
     黑牙 : 青丘天狐的魅惑戒指
@@ -10592,6 +11373,7 @@ def equ_783(char: CharacterProperty):
     pass
 
 
+@register
 def equ_784(char: CharacterProperty):
     """
     见习狐仙的符咒辅助装备
@@ -10604,6 +11386,7 @@ def equ_784(char: CharacterProperty):
     pass
 
 
+@register
 def equ_785(char: CharacterProperty):
     """
     低阶狐仙的符咒辅助装备
@@ -10616,6 +11399,7 @@ def equ_785(char: CharacterProperty):
     pass
 
 
+@register
 def equ_786(char: CharacterProperty):
     """
     高阶狐仙的符咒辅助装备
@@ -10628,6 +11412,7 @@ def equ_786(char: CharacterProperty):
     pass
 
 
+@register
 def equ_787(char: CharacterProperty):
     """
     见习狐仙的灵韵魔法石
@@ -10639,6 +11424,7 @@ def equ_787(char: CharacterProperty):
     pass
 
 
+@register
 def equ_788(char: CharacterProperty):
     """
     低阶狐仙的灵韵魔法石
@@ -10650,6 +11436,7 @@ def equ_788(char: CharacterProperty):
     pass
 
 
+@register
 def equ_789(char: CharacterProperty):
     """
     高阶狐仙的灵韵魔法石
@@ -10661,6 +11448,7 @@ def equ_789(char: CharacterProperty):
     pass
 
 
+@register
 def equ_790(char: CharacterProperty):
     """
     见习狐仙的低语耳环
@@ -10672,6 +11460,7 @@ def equ_790(char: CharacterProperty):
     pass
 
 
+@register
 def equ_791(char: CharacterProperty):
     """
     低阶狐仙的低语耳环
@@ -10683,6 +11472,7 @@ def equ_791(char: CharacterProperty):
     pass
 
 
+@register
 def equ_792(char: CharacterProperty):
     """
     高阶狐仙的低语耳环
@@ -10698,6 +11488,7 @@ def equ_792(char: CharacterProperty):
 # region 群猎美学 套装
 
 
+@register
 def equ_793(char: CharacterProperty):
     """
     群猎之林上衣
@@ -10709,6 +11500,7 @@ def equ_793(char: CharacterProperty):
     pass
 
 
+@register
 def equ_794(char: CharacterProperty):
     """
     群猎之光上衣
@@ -10721,6 +11513,7 @@ def equ_794(char: CharacterProperty):
     pass
 
 
+@register
 def equ_795(char: CharacterProperty):
     """
     群猎之星上衣
@@ -10733,6 +11526,7 @@ def equ_795(char: CharacterProperty):
     pass
 
 
+@register
 def equ_796(char: CharacterProperty):
     """
     群猎之林下装
@@ -10744,6 +11538,7 @@ def equ_796(char: CharacterProperty):
     pass
 
 
+@register
 def equ_797(char: CharacterProperty):
     """
     群猎之光下装
@@ -10755,6 +11550,7 @@ def equ_797(char: CharacterProperty):
     pass
 
 
+@register
 def equ_798(char: CharacterProperty):
     """
     群猎之星下装
@@ -10767,6 +11563,7 @@ def equ_798(char: CharacterProperty):
     pass
 
 
+@register
 def equ_799(char: CharacterProperty):
     """
     群猎之林头盔
@@ -10779,6 +11576,7 @@ def equ_799(char: CharacterProperty):
     pass
 
 
+@register
 def equ_800(char: CharacterProperty):
     """
     群猎之光头盔
@@ -10791,6 +11589,7 @@ def equ_800(char: CharacterProperty):
     pass
 
 
+@register
 def equ_801(char: CharacterProperty):
     """
     群猎之星头盔
@@ -10802,6 +11601,7 @@ def equ_801(char: CharacterProperty):
     pass
 
 
+@register
 def equ_802(char: CharacterProperty):
     """
     群猎之林腰带
@@ -10813,6 +11613,7 @@ def equ_802(char: CharacterProperty):
     pass
 
 
+@register
 def equ_803(char: CharacterProperty):
     """
     群猎之光腰带
@@ -10825,6 +11626,7 @@ def equ_803(char: CharacterProperty):
     pass
 
 
+@register
 def equ_804(char: CharacterProperty):
     """
     群猎之星腰带
@@ -10837,6 +11639,7 @@ def equ_804(char: CharacterProperty):
     pass
 
 
+@register
 def equ_805(char: CharacterProperty):
     """
     群猎之林鞋子
@@ -10848,6 +11651,7 @@ def equ_805(char: CharacterProperty):
     pass
 
 
+@register
 def equ_806(char: CharacterProperty):
     """
     群猎之光鞋子
@@ -10859,6 +11663,7 @@ def equ_806(char: CharacterProperty):
     pass
 
 
+@register
 def equ_807(char: CharacterProperty):
     """
     群猎之星鞋子
@@ -10870,6 +11675,7 @@ def equ_807(char: CharacterProperty):
     pass
 
 
+@register
 def equ_808(char: CharacterProperty):
     """
     群猎之林项链
@@ -10881,6 +11687,7 @@ def equ_808(char: CharacterProperty):
     pass
 
 
+@register
 def equ_809(char: CharacterProperty):
     """
     群猎之光项链
@@ -10892,6 +11699,7 @@ def equ_809(char: CharacterProperty):
     pass
 
 
+@register
 def equ_810(char: CharacterProperty):
     """
     群猎之星项链
@@ -10903,6 +11711,7 @@ def equ_810(char: CharacterProperty):
     pass
 
 
+@register
 def equ_811(char: CharacterProperty):
     """
     群猎之神项链
@@ -10914,6 +11723,7 @@ def equ_811(char: CharacterProperty):
     pass
 
 
+@register
 def equ_812(char: CharacterProperty):
     """
     黑牙 : 群猎之星项链
@@ -10925,6 +11735,7 @@ def equ_812(char: CharacterProperty):
     pass
 
 
+@register
 def equ_813(char: CharacterProperty):
     """
     黑牙 : 群猎之神项链
@@ -10936,6 +11747,7 @@ def equ_813(char: CharacterProperty):
     pass
 
 
+@register
 def equ_814(char: CharacterProperty):
     """
     群猎之林护腕
@@ -10947,6 +11759,7 @@ def equ_814(char: CharacterProperty):
     pass
 
 
+@register
 def equ_815(char: CharacterProperty):
     """
     群猎之光护腕
@@ -10958,6 +11771,7 @@ def equ_815(char: CharacterProperty):
     pass
 
 
+@register
 def equ_816(char: CharacterProperty):
     """
     群猎之星护腕
@@ -10969,6 +11783,7 @@ def equ_816(char: CharacterProperty):
     pass
 
 
+@register
 def equ_817(char: CharacterProperty):
     """
     群猎之神护腕
@@ -10980,6 +11795,7 @@ def equ_817(char: CharacterProperty):
     pass
 
 
+@register
 def equ_818(char: CharacterProperty):
     """
     黑牙 : 群猎之星护腕
@@ -10991,6 +11807,7 @@ def equ_818(char: CharacterProperty):
     pass
 
 
+@register
 def equ_819(char: CharacterProperty):
     """
     黑牙 : 群猎之神护腕
@@ -11002,6 +11819,7 @@ def equ_819(char: CharacterProperty):
     pass
 
 
+@register
 def equ_820(char: CharacterProperty):
     """
     群猎之林戒指
@@ -11013,6 +11831,7 @@ def equ_820(char: CharacterProperty):
     pass
 
 
+@register
 def equ_821(char: CharacterProperty):
     """
     群猎之光戒指
@@ -11024,6 +11843,7 @@ def equ_821(char: CharacterProperty):
     pass
 
 
+@register
 def equ_822(char: CharacterProperty):
     """
     群猎之星戒指
@@ -11035,6 +11855,7 @@ def equ_822(char: CharacterProperty):
     pass
 
 
+@register
 def equ_823(char: CharacterProperty):
     """
     群猎之神戒指
@@ -11046,6 +11867,7 @@ def equ_823(char: CharacterProperty):
     pass
 
 
+@register
 def equ_824(char: CharacterProperty):
     """
     黑牙 : 群猎之星戒指
@@ -11057,6 +11879,7 @@ def equ_824(char: CharacterProperty):
     pass
 
 
+@register
 def equ_825(char: CharacterProperty):
     """
     黑牙 : 群猎之神戒指
@@ -11068,6 +11891,7 @@ def equ_825(char: CharacterProperty):
     pass
 
 
+@register
 def equ_826(char: CharacterProperty):
     """
     群猎之林手斧
@@ -11080,6 +11904,7 @@ def equ_826(char: CharacterProperty):
     pass
 
 
+@register
 def equ_827(char: CharacterProperty):
     """
     群猎之光手斧
@@ -11092,6 +11917,7 @@ def equ_827(char: CharacterProperty):
     pass
 
 
+@register
 def equ_828(char: CharacterProperty):
     """
     群猎之星手斧
@@ -11104,6 +11930,7 @@ def equ_828(char: CharacterProperty):
     pass
 
 
+@register
 def equ_829(char: CharacterProperty):
     """
     群猎之林魔法石
@@ -11115,6 +11942,7 @@ def equ_829(char: CharacterProperty):
     pass
 
 
+@register
 def equ_830(char: CharacterProperty):
     """
     群猎之光魔法石
@@ -11126,6 +11954,7 @@ def equ_830(char: CharacterProperty):
     pass
 
 
+@register
 def equ_831(char: CharacterProperty):
     """
     群猎之星魔法石
@@ -11137,6 +11966,7 @@ def equ_831(char: CharacterProperty):
     pass
 
 
+@register
 def equ_832(char: CharacterProperty):
     """
     群猎之林耳环
@@ -11148,6 +11978,7 @@ def equ_832(char: CharacterProperty):
     pass
 
 
+@register
 def equ_833(char: CharacterProperty):
     """
     群猎之光耳环
@@ -11159,6 +11990,7 @@ def equ_833(char: CharacterProperty):
     pass
 
 
+@register
 def equ_834(char: CharacterProperty):
     """
     群猎之星耳环
@@ -11174,6 +12006,7 @@ def equ_834(char: CharacterProperty):
 # region 冥思者的魔力领域 套装
 
 
+@register
 def equ_835(char: CharacterProperty):
     """
     魔力领域 - 入静上衣
@@ -11185,6 +12018,7 @@ def equ_835(char: CharacterProperty):
     pass
 
 
+@register
 def equ_836(char: CharacterProperty):
     """
     魔力领域 - 入真上衣
@@ -11197,6 +12031,7 @@ def equ_836(char: CharacterProperty):
     pass
 
 
+@register
 def equ_837(char: CharacterProperty):
     """
     魔力领域 - 入定上衣
@@ -11209,6 +12044,7 @@ def equ_837(char: CharacterProperty):
     pass
 
 
+@register
 def equ_838(char: CharacterProperty):
     """
     魔力领域 - 入静下装
@@ -11220,6 +12056,7 @@ def equ_838(char: CharacterProperty):
     pass
 
 
+@register
 def equ_839(char: CharacterProperty):
     """
     魔力领域 - 入真下装
@@ -11231,6 +12068,7 @@ def equ_839(char: CharacterProperty):
     pass
 
 
+@register
 def equ_840(char: CharacterProperty):
     """
     魔力领域 - 入定下装
@@ -11243,6 +12081,7 @@ def equ_840(char: CharacterProperty):
     pass
 
 
+@register
 def equ_841(char: CharacterProperty):
     """
     魔力领域 - 入静头肩
@@ -11255,6 +12094,7 @@ def equ_841(char: CharacterProperty):
     pass
 
 
+@register
 def equ_842(char: CharacterProperty):
     """
     魔力领域 - 入真头肩
@@ -11267,6 +12107,7 @@ def equ_842(char: CharacterProperty):
     pass
 
 
+@register
 def equ_843(char: CharacterProperty):
     """
     魔力领域 - 入定头肩
@@ -11278,6 +12119,7 @@ def equ_843(char: CharacterProperty):
     pass
 
 
+@register
 def equ_844(char: CharacterProperty):
     """
     魔力领域 - 入静腰带
@@ -11289,6 +12131,7 @@ def equ_844(char: CharacterProperty):
     pass
 
 
+@register
 def equ_845(char: CharacterProperty):
     """
     魔力领域 - 入真腰带
@@ -11301,6 +12144,7 @@ def equ_845(char: CharacterProperty):
     pass
 
 
+@register
 def equ_846(char: CharacterProperty):
     """
     魔力领域 - 入定腰带
@@ -11313,6 +12157,7 @@ def equ_846(char: CharacterProperty):
     pass
 
 
+@register
 def equ_847(char: CharacterProperty):
     """
     魔力领域 - 入静鞋子
@@ -11324,6 +12169,7 @@ def equ_847(char: CharacterProperty):
     pass
 
 
+@register
 def equ_848(char: CharacterProperty):
     """
     魔力领域 - 入真鞋子
@@ -11335,6 +12181,7 @@ def equ_848(char: CharacterProperty):
     pass
 
 
+@register
 def equ_849(char: CharacterProperty):
     """
     魔力领域 - 入定鞋子
@@ -11346,6 +12193,7 @@ def equ_849(char: CharacterProperty):
     pass
 
 
+@register
 def equ_850(char: CharacterProperty):
     """
     魔力领域 - 入静项链
@@ -11357,6 +12205,7 @@ def equ_850(char: CharacterProperty):
     pass
 
 
+@register
 def equ_851(char: CharacterProperty):
     """
     魔力领域 - 入真项链
@@ -11368,6 +12217,7 @@ def equ_851(char: CharacterProperty):
     pass
 
 
+@register
 def equ_852(char: CharacterProperty):
     """
     魔力领域 - 入定项链
@@ -11379,6 +12229,7 @@ def equ_852(char: CharacterProperty):
     pass
 
 
+@register
 def equ_853(char: CharacterProperty):
     """
     魔力领域 - 入神项链
@@ -11390,6 +12241,7 @@ def equ_853(char: CharacterProperty):
     pass
 
 
+@register
 def equ_854(char: CharacterProperty):
     """
     黑牙 : 魔力领域 - 入定项链
@@ -11401,6 +12253,7 @@ def equ_854(char: CharacterProperty):
     pass
 
 
+@register
 def equ_855(char: CharacterProperty):
     """
     黑牙 : 魔力领域 - 入神项链
@@ -11412,6 +12265,7 @@ def equ_855(char: CharacterProperty):
     pass
 
 
+@register
 def equ_856(char: CharacterProperty):
     """
     魔力领域 - 入静手镯
@@ -11423,6 +12277,7 @@ def equ_856(char: CharacterProperty):
     pass
 
 
+@register
 def equ_857(char: CharacterProperty):
     """
     魔力领域 - 入真手镯
@@ -11434,6 +12289,7 @@ def equ_857(char: CharacterProperty):
     pass
 
 
+@register
 def equ_858(char: CharacterProperty):
     """
     魔力领域 - 入定手镯
@@ -11445,6 +12301,7 @@ def equ_858(char: CharacterProperty):
     pass
 
 
+@register
 def equ_859(char: CharacterProperty):
     """
     魔力领域 - 入神手镯
@@ -11456,6 +12313,7 @@ def equ_859(char: CharacterProperty):
     pass
 
 
+@register
 def equ_860(char: CharacterProperty):
     """
     黑牙 : 魔力领域 - 入定手镯
@@ -11467,6 +12325,7 @@ def equ_860(char: CharacterProperty):
     pass
 
 
+@register
 def equ_861(char: CharacterProperty):
     """
     黑牙 : 魔力领域 - 入神手镯
@@ -11478,6 +12337,7 @@ def equ_861(char: CharacterProperty):
     pass
 
 
+@register
 def equ_862(char: CharacterProperty):
     """
     魔力领域 - 入静戒指
@@ -11489,6 +12349,7 @@ def equ_862(char: CharacterProperty):
     pass
 
 
+@register
 def equ_863(char: CharacterProperty):
     """
     魔力领域 - 入真戒指
@@ -11500,6 +12361,7 @@ def equ_863(char: CharacterProperty):
     pass
 
 
+@register
 def equ_864(char: CharacterProperty):
     """
     魔力领域 - 入定戒指
@@ -11511,6 +12373,7 @@ def equ_864(char: CharacterProperty):
     pass
 
 
+@register
 def equ_865(char: CharacterProperty):
     """
     魔力领域 - 入神戒指
@@ -11522,6 +12385,7 @@ def equ_865(char: CharacterProperty):
     pass
 
 
+@register
 def equ_866(char: CharacterProperty):
     """
     黑牙 : 魔力领域 - 入定戒指
@@ -11533,6 +12397,7 @@ def equ_866(char: CharacterProperty):
     pass
 
 
+@register
 def equ_867(char: CharacterProperty):
     """
     黑牙 : 魔力领域 - 入神戒指
@@ -11544,6 +12409,7 @@ def equ_867(char: CharacterProperty):
     pass
 
 
+@register
 def equ_868(char: CharacterProperty):
     """
     魔力领域 - 入静辅助装备
@@ -11556,6 +12422,7 @@ def equ_868(char: CharacterProperty):
     pass
 
 
+@register
 def equ_869(char: CharacterProperty):
     """
     魔力领域 - 入真辅助装备
@@ -11568,6 +12435,7 @@ def equ_869(char: CharacterProperty):
     pass
 
 
+@register
 def equ_870(char: CharacterProperty):
     """
     魔力领域 - 入定辅助装备
@@ -11580,6 +12448,7 @@ def equ_870(char: CharacterProperty):
     pass
 
 
+@register
 def equ_871(char: CharacterProperty):
     """
     魔力领域 - 入静魔法石
@@ -11591,6 +12460,7 @@ def equ_871(char: CharacterProperty):
     pass
 
 
+@register
 def equ_872(char: CharacterProperty):
     """
     魔力领域 - 入真魔法石
@@ -11602,6 +12472,7 @@ def equ_872(char: CharacterProperty):
     pass
 
 
+@register
 def equ_873(char: CharacterProperty):
     """
     魔力领域 - 入定魔法石
@@ -11613,6 +12484,7 @@ def equ_873(char: CharacterProperty):
     pass
 
 
+@register
 def equ_874(char: CharacterProperty):
     """
     魔力领域 - 入静耳环
@@ -11624,6 +12496,7 @@ def equ_874(char: CharacterProperty):
     pass
 
 
+@register
 def equ_875(char: CharacterProperty):
     """
     魔力领域 - 入真耳环
@@ -11635,6 +12508,7 @@ def equ_875(char: CharacterProperty):
     pass
 
 
+@register
 def equ_876(char: CharacterProperty):
     """
     魔力领域 - 入定耳环
@@ -11648,6 +12522,7 @@ def equ_876(char: CharacterProperty):
 
 # endregion
 # region 秘宝装备
+@register
 def equ_2000(char: CharacterProperty):
     """
     馥郁袭人的香氛
@@ -11694,6 +12569,7 @@ def equ_2000(char: CharacterProperty):
 # region 春节
 
 
+@register
 def equ_3000(char: CharacterProperty):
     """
     穿越星空的祈愿
@@ -11712,6 +12588,7 @@ def equ_3000(char: CharacterProperty):
     pass
 
 
+@register
 def equ_3001(char: CharacterProperty):
     """
     永恒追猎
@@ -11730,6 +12607,7 @@ def equ_3001(char: CharacterProperty):
     pass
 
 
+@register
 def equ_3002(char: CharacterProperty):
     """
     时空超越者
@@ -11748,6 +12626,7 @@ def equ_3002(char: CharacterProperty):
     pass
 
 
+@register
 def equ_3003(char: CharacterProperty):
     """
     时空旅人
@@ -11766,6 +12645,7 @@ def equ_3003(char: CharacterProperty):
     pass
 
 
+@register
 def equ_3004(char: CharacterProperty):
     """
     破茧·三次觉醒
@@ -11786,6 +12666,7 @@ def equ_3004(char: CharacterProperty):
     pass
 
 
+@register
 def equ_3005(char: CharacterProperty):
     """
     悟·一次觉醒
@@ -11806,6 +12687,7 @@ def equ_3005(char: CharacterProperty):
     pass
 
 
+@register
 def equ_3006(char: CharacterProperty):
     """
     千年之守望
@@ -11826,6 +12708,7 @@ def equ_3006(char: CharacterProperty):
     pass
 
 
+@register
 def equ_3007(char: CharacterProperty):
     """
     白云监视者
@@ -11846,6 +12729,7 @@ def equ_3007(char: CharacterProperty):
     pass
 
 
+@register
 def equ_3008(char: CharacterProperty):
     """
     万壑松风之凌云志
@@ -11866,6 +12750,7 @@ def equ_3008(char: CharacterProperty):
     pass
 
 
+@register
 def equ_3009(char: CharacterProperty):
     """
     踏雪寻梅之冷香
@@ -11890,6 +12775,7 @@ def equ_3009(char: CharacterProperty):
 # region 耕耘
 
 
+@register
 def equ_3010(char: CharacterProperty):
     """
     骑士之誓[光]
@@ -11903,6 +12789,7 @@ def equ_3010(char: CharacterProperty):
     pass
 
 
+@register
 def equ_3011(char: CharacterProperty):
     """
     精灵的思乡夜曲
@@ -11916,6 +12803,7 @@ def equ_3011(char: CharacterProperty):
     pass
 
 
+@register
 def equ_3012(char: CharacterProperty):
     """
     永恒挚爱
@@ -11934,6 +12822,7 @@ def equ_3012(char: CharacterProperty):
     pass
 
 
+@register
 def equ_3013(char: CharacterProperty):
     """
     地下城与勇士 X SNK联动：拳皇
@@ -11956,6 +12845,7 @@ def equ_3013(char: CharacterProperty):
 # region 白嫖
 
 
+@register
 def equ_3014(char: CharacterProperty):
     """
     海岸椰影
@@ -11972,6 +12862,7 @@ def equ_3014(char: CharacterProperty):
 # region 春节
 
 
+@register
 def equ_4000(char: CharacterProperty):
     """
     火神的化身 蕾切尔
@@ -11994,6 +12885,7 @@ def equ_4000(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4001(char: CharacterProperty):
     """
     骑士 蕾切尔
@@ -12016,6 +12908,7 @@ def equ_4001(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4002(char: CharacterProperty):
     """
     超越时空 厄俄斯
@@ -12038,6 +12931,7 @@ def equ_4002(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4003(char: CharacterProperty):
     """
     次元探险家 厄俄斯
@@ -12060,6 +12954,7 @@ def equ_4003(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4004(char: CharacterProperty):
     """
     太初之赛丽亚
@@ -12082,6 +12977,7 @@ def equ_4004(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4005(char: CharacterProperty):
     """
     神剑梁月
@@ -12104,6 +13000,7 @@ def equ_4005(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4006(char: CharacterProperty):
     """
     迷你地界镇护者舒茉
@@ -12126,6 +13023,7 @@ def equ_4006(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4007(char: CharacterProperty):
     """
     迷你溪谷守望者鲁加鲁
@@ -12148,6 +13046,7 @@ def equ_4007(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4008(char: CharacterProperty):
     """
     菩提龙女
@@ -12170,6 +13069,7 @@ def equ_4008(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4009(char: CharacterProperty):
     """
     妙笔麒麟
@@ -12196,6 +13096,7 @@ def equ_4009(char: CharacterProperty):
 # region 耕耘
 
 
+@register
 def equ_4010(char: CharacterProperty):
     """
     九霄守卫者雅娜
@@ -12211,6 +13112,7 @@ def equ_4010(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4011(char: CharacterProperty):
     """
     日光守卫者克利
@@ -12227,6 +13129,7 @@ def equ_4011(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4012(char: CharacterProperty):
     """
     卓越的精灵礼官
@@ -12243,6 +13146,7 @@ def equ_4012(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4013(char: CharacterProperty):
     """
     精灵礼官
@@ -12259,6 +13163,7 @@ def equ_4013(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4014(char: CharacterProperty):
     """
     迷你婚纱礼服赛丽亚
@@ -12280,6 +13185,7 @@ def equ_4014(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4015(char: CharacterProperty):
     """
     迷你礼服赛丽亚
@@ -12301,6 +13207,7 @@ def equ_4015(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4016(char: CharacterProperty):
     """
     迷你不知火舞
@@ -12322,6 +13229,7 @@ def equ_4016(char: CharacterProperty):
     pass
 
 
+@register
 def equ_4017(char: CharacterProperty):
     """
     迷你麻宫雅典娜
@@ -12343,9 +13251,3 @@ def equ_4017(char: CharacterProperty):
     pass
 
 # endregion
-for i in range(0, 5000):
-    try:
-        if str(i) not in equ_func_list.keys():
-            equ_func_list[str(i)] = eval(f'equ_{i}')
-    except Exception:
-        pass

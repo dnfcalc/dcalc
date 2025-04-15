@@ -598,7 +598,7 @@ class Character(CharacterProperty):
             )
         suits_effect = [i.id for i in suitList]
         for i in suits_effect:
-            func = equs.funs.suit_func_list.get(str(i), None)
+            func = equs.funs.execture(f'suit_{i}')
             suit = next((x for x in equs.suits if str(x.id) == str(i)), None)
             if func is not None:
                 func(self)
@@ -619,7 +619,7 @@ class Character(CharacterProperty):
             enchat = detail[2]
             if equ is None:
                 continue
-            fun = effects.equ_func_list.get(str(equ.id), None)
+            fun = effects.execture(f'equ_{equ.id}')
             if fun is None:
                 continue
             # 获取装备基础属性 并给角色设置（大写开头属性为角色属性）
@@ -628,14 +628,14 @@ class Character(CharacterProperty):
             # 获取装备额外属性
             fun(self)
             # 附魔
-            fun = effects.enchant_func_list.get(str(enchat), None)
+            fun = effects.execture(f'enchant_{enchat}')
             if fun is not None:
                 fun(self)
             # 徽章效果
             emblem_0 = detail[3]
             emblem_1 = detail[4]
             if str(emblem_1).isdigit():
-                fun = effects.emblem_func_list.get(str(emblem_0), None)
+                fun = effects.execture(f'emblem_{emblem_1}')
                 if fun is not None:
                     fun(self)
             else:
@@ -644,13 +644,13 @@ class Character(CharacterProperty):
                 if skill is not None:
                     skill.lv += 1
                     self.SetStatus(四维=8)
-            fun = effects.emblem_func_list.get(str(emblem_1), None)
+            fun = effects.execture(f'emblem_{emblem_0}')
             if fun is not None:
                 fun(self)
             # 贴膜
             if fusion is None:
                 continue
-            fun = effects.stone_func_list.get(str(fusion.id), None)
+            fun = effects.execture(f'stone_{fusion.id}')
             # 获取装备基础属性 并给角色设置（大写开头属性为角色属性）
             filtered_dict = {k: v for k, v in fusion.__dict__.items() if k[0].isupper()}
             self.SetStatus(**filtered_dict)
@@ -669,13 +669,13 @@ class Character(CharacterProperty):
             emblem_0 = avatarElse[key].get('emblem_0', None)
             emblem_1 = avatarElse[key].get('emblem_1', None)
             if value is not None:
-                fun = equ.funs.enchant_func_list.get(str(value), None)
+                fun = equ.funs.execture(f'enchant_{value}')
                 if fun is not None:
                     fun(self)
             for i in [emblem_0, emblem_1]:
                 if i is None:
                     continue
-                fun = equ.funs.emblem_func_list.get(str(i), None)
+                fun = equ.funs.execture(f'emblem_{i}')
                 if fun is not None:
                     fun(self)
         pass
@@ -740,7 +740,7 @@ class Character(CharacterProperty):
         funs = get_equipment(self.equVersion).funs
         for key in jades:
             jade = jades[key]
-            fun = funs.jade_func_list.get(str(jade.get('id',0)), None)
+            fun = funs.execture(f'jade_{jade.get("id",0)}')
             if fun is not None:
                 fun(self,jade.get('value', 0))
         pass
@@ -748,27 +748,27 @@ class Character(CharacterProperty):
     def calc_sundry(self, sundry: dict):
         """计算杂项效果"""
         funs = get_equipment(self.equVersion).funs
-        funs.sundry_func_list.get("0")(self,
+        funs.execture("sundry_0")(self,
             sundry.get("medal_rarity", 0),
             sundry.get("medal_reinforce", 0),
             [sundry.get("medal_0", 0), sundry.get("medal_1", 0), sundry.get("medal_2", 0), sundry.get("medal_3", 0)],
         )
-        funs.sundry_func_list.get("6")(self,
+        funs.execture("sundry_6")(self,
             sundry.get("adventure", 1)
         )
-        funs.sundry_func_list.get("7")(self,
+        funs.execture("sundry_7")(self,
             sundry.get("marriage_house", 0),
             sundry.get("marriage_ring", 0)
         )
-        funs.sundry_func_list.get("9")(self,
+        funs.execture("sundry_9")(self,
             sundry.get("contract", 0)
         )
-        funs.sundry_func_list.get("10")(self,
+        funs.execture("sundry_10")(self,
             sundry.get("collection_type", 0),
             sundry.get("collection_num_0", 0),
             sundry.get("collection_num_1", 0),
         )
-        funs.sundry_func_list.get("13")(self,
+        funs.execture("sundry_13")(self,
             sundry.get("costume_card", 0)
         )
         pass
@@ -861,6 +861,7 @@ class Character(CharacterProperty):
                             'ratio': temp[1],
                             'cd': temp[2],
                             'mode': mode,
+                            'learnLv': i.learnLv,
                         }
                     )
         ratios = self.calc_damage_ration()
