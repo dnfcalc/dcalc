@@ -1,5 +1,5 @@
 import base64
-from functools import cache
+from copy import deepcopy
 
 adv = [
     {
@@ -217,7 +217,8 @@ adv = [
 
 
 def get_adv_list():
-    for parent in adv:
+    temp = deepcopy(adv)
+    for parent in temp:
         parent_id = f'{parent["id"]:02}'
         for child in parent['children']:
             child_id = f'{child.get("id", 0):02}'
@@ -228,7 +229,7 @@ def get_adv_list():
             else:
                 child['value'] = base64.b64encode(f'{parent_id}{child_id}00'.encode()).decode()
                 child.pop('class', None)
-    return adv
+    return temp
 
 
 def get_adv_info(value):

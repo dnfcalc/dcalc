@@ -3,11 +3,11 @@
     <div class="h-177px">
       <EquList :detail="props.equs" :with-sub-weapon="infoStore.infos?.alter.includes('vegabond')"></EquList>
     </div>
-    <div class="flex flex-wrap border-y-1px my-1px border-y-solid border-#FFFF/10">
+    <div class="flex flex-wrap border-y-1px my-1px border-y-solid border-#FFFF/10 gap-1% px-1%">
       <template v-for="info in props.info" :key="info.id">
         <div
-          class="flex px-5px box-border mt-2px"
-          :style="{ width: info.value.toString().includes('/') ? '100%' : '50%' }"
+          class="flex box-border mt-2px"
+          :style="{ width: info.value.toString().includes('/') ? '100%' : '49%' }"
         >
           <div class="w-60px text-hex-836832">{{ info.name }}</div>
           <div class="ml-auto text-hex-3ea74e">{{ info.value }}</div>

@@ -221,6 +221,22 @@ def enchant_202(char: CharacterProperty):
     char.SetStatus(三攻=110, 力智=90, 技攻=0.02)
     pass
 
+@register
+def enchant_203(char: CharacterProperty):
+    """
+    三攻(90)|力智(60)
+    """
+    char.SetStatus(三攻=90, 力智=60)
+    pass
+
+@register
+def enchant_204(char: CharacterProperty):
+    """
+    四维(100)
+    """
+    char.SetStatus(四维=100)
+    pass
+
 
 # endregion
 # region 腰带
@@ -259,10 +275,44 @@ def enchant_303(char: CharacterProperty):
     """
     三攻(36)|技能伤害(5%)|暴击率(3%)
     """
-    char.SetStatus(三攻=36, 技能伤害=0.05)
+    char.SetStatus(三攻=36, 技攻=0.05)
     pass
 
+@register
+def enchant_304(char: CharacterProperty):
+    """
+    四维(50)|三攻(15)|技能伤害(3%)|暴击率(3%)
+    """
+    char.SetStatus(四维=50, 三攻=15, 技攻=0.03)
+    pass
 
+@register
+def enchant_305(char: CharacterProperty):
+    """
+    四维(120)|奶系Lv15被动+3|暴击率(7%)
+    """
+    char.SetStatus(四维=120)
+    if char.buffer:
+        char.AddSkillLv(15, 15, 3, 0)
+    pass
+
+@register
+def enchant_306(char: CharacterProperty):
+    """
+    三攻(10)|四维(40)|技攻(1%)
+    """
+    char.SetStatus(三攻=10, 四维=40, 技攻=0.01)
+    pass
+
+@register
+def enchant_307(char: CharacterProperty):
+    """
+    四维(100)|奶系Lv15被动+1
+    """
+    char.SetStatus(四维=100)
+    if char.buffer:
+        char.AddSkillLv(15, 15, 1, 0)
+    pass
 # endregion
 # region 武器
 
@@ -336,7 +386,7 @@ def enchant_506(char: CharacterProperty):
 @register
 def enchant_507(char: CharacterProperty):
     """
-    所有属性强化(13)
+    全属强(13)
     """
     char.AddElementDB('火', 15)
     char.AddElementDB('冰', 15)
@@ -413,7 +463,7 @@ def enchant_512(char: CharacterProperty):
 @register
 def enchant_600(char: CharacterProperty):
     """
-    所有属性强化(30)
+    全属强(30)
     """
     char.AddElementDB('火', 30)
     char.AddElementDB('冰', 30)
@@ -425,7 +475,7 @@ def enchant_600(char: CharacterProperty):
 @register
 def enchant_601(char: CharacterProperty):
     """
-    所有属性强化(28)
+    全属强(28)
     """
     char.AddElementDB('火', 28)
     char.AddElementDB('冰', 28)
@@ -446,7 +496,7 @@ def enchant_602(char: CharacterProperty):
 @register
 def enchant_603(char: CharacterProperty):
     """
-    所有属性强化(33)
+    全属强(33)
     """
     char.AddElementDB('火', 33)
     char.AddElementDB('冰', 33)
@@ -507,6 +557,27 @@ def enchant_608(char: CharacterProperty):
     char.SetStatus(技攻=0.01)
     pass
 
+@register
+def enchant_609(char: CharacterProperty):
+    """
+    全属强(35)|技攻(2%)
+    """
+    char.AddElementDB('火', 35)
+    char.AddElementDB('冰', 35)
+    char.AddElementDB('光', 35)
+    char.AddElementDB('暗', 35)
+    char.SetStatus(技攻=0.02)
+    pass
+
+@register
+def enchant_610(char: CharacterProperty):
+    """
+    四维(120)|奶系Lv15被动+1
+    """
+    char.SetStatus(四维=120)
+    if char.buffer:
+        char.AddSkillLv(15, 15, 1, 0)
+    pass
 
 # endregion
 # region 辅助装备
@@ -533,7 +604,7 @@ def enchant_901(char: CharacterProperty):
 @register
 def enchant_902(char: CharacterProperty):
     """
-    攻强(3%)|所有属性强化(11)|暴击率(3%)
+    攻强(3%)|全属强(11)|暴击率(3%)
     """
     char.SetStatus(攻击强化P=0.03)
     char.AddElementDB('火', 11)
@@ -557,7 +628,7 @@ def enchant_903(char: CharacterProperty):
 @register
 def enchant_904(char: CharacterProperty):
     """
-    技攻(5%)|所有属性强化(15)|暴击率(5%)
+    技攻(5%)|全属强(15)|暴击率(5%)
     """
     char.SetStatus(技攻=0.05)
     char.AddElementDB('火', 15)
@@ -570,7 +641,7 @@ def enchant_904(char: CharacterProperty):
 @register
 def enchant_905(char: CharacterProperty):
     """
-    技攻(7%)|所有属性强化(15)|暴击率(5%)
+    技攻(7%)|全属强(15)|暴击率(5%)
     """
     char.SetStatus(技攻=0.07)
     char.AddElementDB('火', 15)
@@ -579,6 +650,29 @@ def enchant_905(char: CharacterProperty):
     char.AddElementDB('暗', 15)
     pass
 
+@register
+def enchant_906(char: CharacterProperty):
+    """
+    攻击强化(1%)|全属强(8)|暴击率(3%)
+    """
+    char.SetStatus(攻击强化P=0.01)
+    char.AddElementDB('火', 8)
+    char.AddElementDB('冰', 8)
+    char.AddElementDB('光', 8)
+    char.AddElementDB('暗', 8)
+    pass
+
+@register
+def enchant_907(char: CharacterProperty):
+    """
+    攻击强化(3%)|全属强(12)|暴击率(3%)
+    """
+    char.SetStatus(攻击强化P=0.03)
+    char.AddElementDB('火', 12)
+    char.AddElementDB('冰', 12)
+    char.AddElementDB('光', 12)
+    char.AddElementDB('暗', 12)
+    pass
 
 # endregion
 # region 魔法石
@@ -587,7 +681,7 @@ def enchant_905(char: CharacterProperty):
 @register
 def enchant_1000(char: CharacterProperty):
     """
-    所有属性强化(30)
+    全属强(30)
     """
     char.AddElementDB('火', 30)
     char.AddElementDB('冰', 30)
@@ -599,7 +693,7 @@ def enchant_1000(char: CharacterProperty):
 @register
 def enchant_1001(char: CharacterProperty):
     """
-    所有属性强化(35)
+    全属强(35)
     """
     char.AddElementDB('火', 35)
     char.AddElementDB('冰', 35)
@@ -622,7 +716,7 @@ def enchant_1002(char: CharacterProperty):
 @register
 def enchant_1003(char: CharacterProperty):
     """
-    所有属性强化(40)
+    全属强(40)
     """
     char.AddElementDB('火', 40)
     char.AddElementDB('冰', 40)
@@ -649,7 +743,7 @@ def enchant_1004(char: CharacterProperty):
 @register
 def enchant_1100(char: CharacterProperty):
     """
-    四维(50)|所有属性强化(11)
+    四维(50)|全属强(11)
     """
     char.SetStatus(四维=50)
     char.AddElementDB('火', 11)
@@ -671,7 +765,7 @@ def enchant_1101(char: CharacterProperty):
 @register
 def enchant_1102(char: CharacterProperty):
     """
-    四维(70)|所有属性强化(15)
+    四维(70)|全属强(15)
     """
     char.SetStatus(四维=70)
     char.AddElementDB('火', 15)
@@ -689,6 +783,24 @@ def enchant_1103(char: CharacterProperty):
     char.SetStatus(四维=200)
     pass
 
+@register
+def enchant_1104(char: CharacterProperty):
+    """
+    全属强(40)
+    """
+    char.AddElementDB('火', 40)
+    char.AddElementDB('冰', 40)
+    char.AddElementDB('光', 40)
+    char.AddElementDB('暗', 40)
+    pass
+
+@register
+def enchant_1105(char: CharacterProperty):
+    """
+    四维(250)
+    """
+    char.SetStatus(四维=250)
+    pass
 
 # endregion
 # region 称号
@@ -697,7 +809,7 @@ def enchant_1103(char: CharacterProperty):
 @register
 def enchant_1200(char: CharacterProperty):
     """
-    三攻(40)|所有属性强化(15)|Lv1~50主动+1
+    三攻(40)|全属强(15)|Lv1~50主动+1
     """
     char.SetStatus(三攻=40)
     char.AddElementDB('火', 15)
@@ -711,7 +823,7 @@ def enchant_1200(char: CharacterProperty):
 @register
 def enchant_1201(char: CharacterProperty):
     """
-    三攻(40)|所有属性强化(15)|技攻(3%)
+    三攻(40)|全属强(15)|技攻(3%)
     """
     char.SetStatus(三攻=40, 技攻=0.03)
     char.AddElementDB('火', 15)
@@ -724,7 +836,7 @@ def enchant_1201(char: CharacterProperty):
 @register
 def enchant_1202(char: CharacterProperty):
     """
-    Lv40主动+2|三攻(40)|所有属性强化(15)|技攻(3%)
+    Lv40主动+2|三攻(40)|全属强(15)|技攻(3%)
     """
     char.SetStatus(三攻=40, 技攻=0.03)
     char.AddElementDB('火', 15)
@@ -738,7 +850,7 @@ def enchant_1202(char: CharacterProperty):
 @register
 def enchant_1203(char: CharacterProperty):
     """
-    Lv45主动+2|三攻(40)|所有属性强化(15)|技攻(3%)
+    Lv45主动+2|三攻(40)|全属强(15)|技攻(3%)
     """
     char.SetStatus(三攻=40, 技攻=0.03)
     char.AddElementDB('火', 15)
@@ -752,7 +864,7 @@ def enchant_1203(char: CharacterProperty):
 @register
 def enchant_1204(char: CharacterProperty):
     """
-    Lv60主动+2|三攻(40)|所有属性强化(15)|技攻(3%)
+    Lv60主动+2|三攻(40)|全属强(15)|技攻(3%)
     """
     char.SetStatus(三攻=40, 技攻=0.03)
     char.AddElementDB('火', 15)
@@ -766,7 +878,7 @@ def enchant_1204(char: CharacterProperty):
 @register
 def enchant_1205(char: CharacterProperty):
     """
-    Lv70主动+2|三攻(40)|所有属性强化(15)|技攻(3%)
+    Lv70主动+2|三攻(40)|全属强(15)|技攻(3%)
     """
     char.SetStatus(三攻=40, 技攻=0.03)
     char.AddElementDB('火', 15)
@@ -780,7 +892,7 @@ def enchant_1205(char: CharacterProperty):
 @register
 def enchant_1206(char: CharacterProperty):
     """
-    Lv75主动+2|三攻(40)|所有属性强化(15)|技攻(3%)
+    Lv75主动+2|三攻(40)|全属强(15)|技攻(3%)
     """
     char.SetStatus(三攻=40, 技攻=0.03)
     char.AddElementDB('火', 15)
@@ -794,7 +906,7 @@ def enchant_1206(char: CharacterProperty):
 @register
 def enchant_1207(char: CharacterProperty):
     """
-    Lv80主动+2|三攻(40)|所有属性强化(15)|技攻(3%)
+    Lv80主动+2|三攻(40)|全属强(15)|技攻(3%)
     """
     char.SetStatus(三攻=40, 技攻=0.03)
     char.AddElementDB('火', 15)
@@ -888,7 +1000,7 @@ def enchant_1303(char: CharacterProperty):
 @register
 def enchant_1304(char: CharacterProperty):
     """
-    所有属性强化(23)
+    全属强(23)
     """
     char.AddElementDB('火', 23)
     char.AddElementDB('冰', 23)
@@ -999,7 +1111,7 @@ def enchant_1315(char: CharacterProperty):
 @register
 def enchant_1316(char: CharacterProperty):
     """
-    所有属性强化(14)
+    全属强(14)
     """
     char.AddElementDB('火', 14)
     char.AddElementDB('冰', 14)
@@ -1113,7 +1225,7 @@ def enchant_2105(char: CharacterProperty):
 @register
 def enchant_2200(char: CharacterProperty):
     """
-    Lv40主动+1|所有属性强化(12)|四维(55)
+    Lv40主动+1|全属强(12)|四维(55)
     """
     char.AddSkillLv(40, 40, 1, 1)
     char.SetStatus(四维=55)
@@ -1127,7 +1239,7 @@ def enchant_2200(char: CharacterProperty):
 @register
 def enchant_2201(char: CharacterProperty):
     """
-    Lv45主动+1|所有属性强化(12)|四维(55)
+    Lv45主动+1|全属强(12)|四维(55)
     """
     char.AddSkillLv(45, 45, 1, 1)
     char.SetStatus(四维=55)
@@ -1141,7 +1253,7 @@ def enchant_2201(char: CharacterProperty):
 @register
 def enchant_2202(char: CharacterProperty):
     """
-    Lv60主动+1|所有属性强化(12)|四维(55)
+    Lv60主动+1|全属强(12)|四维(55)
     """
     char.AddSkillLv(60, 60, 1, 1)
     char.SetStatus(四维=55)
@@ -1155,7 +1267,7 @@ def enchant_2202(char: CharacterProperty):
 @register
 def enchant_2203(char: CharacterProperty):
     """
-    Lv70主动+1|所有属性强化(12)|四维(55)
+    Lv70主动+1|全属强(12)|四维(55)
     """
     char.AddSkillLv(70, 70, 1, 1)
     char.SetStatus(四维=55)
@@ -1169,7 +1281,7 @@ def enchant_2203(char: CharacterProperty):
 @register
 def enchant_2204(char: CharacterProperty):
     """
-    Lv75主动+1|所有属性强化(12)|四维(55)
+    Lv75主动+1|全属强(12)|四维(55)
     """
     char.AddSkillLv(75, 75, 1, 1)
     char.SetStatus(四维=55)
@@ -1183,7 +1295,7 @@ def enchant_2204(char: CharacterProperty):
 @register
 def enchant_2205(char: CharacterProperty):
     """
-    Lv80主动+1|所有属性强化(12)|四维(55)
+    Lv80主动+1|全属强(12)|四维(55)
     """
     char.AddSkillLv(80, 80, 1, 1)
     char.SetStatus(四维=55)
@@ -1197,7 +1309,7 @@ def enchant_2205(char: CharacterProperty):
 @register
 def enchant_2206(char: CharacterProperty):
     """
-    所有属性强化(6)
+    全属强(6)
     """
     char.AddElementDB('火', 6)
     char.AddElementDB('冰', 6)
@@ -1231,7 +1343,7 @@ def enchant_2501(char: CharacterProperty):
 @register
 def enchant_2502(char: CharacterProperty):
     """
-    攻击强化(4%)|所有属性强化(6)
+    攻击强化(4%)|全属强(6)
     """
     char.SetStatus(攻击强化P=0.04)
     char.AddElementDB('火', 6)
@@ -1244,7 +1356,7 @@ def enchant_2502(char: CharacterProperty):
 @register
 def enchant_2503(char: CharacterProperty):
     """
-    攻击强化(4%)|所有属性强化(4)|光强(4)
+    攻击强化(4%)|全属强(4)|光强(4)
     """
     char.SetStatus(攻击强化P=0.04)
     char.AddElementDB('火', 4)
@@ -1257,7 +1369,7 @@ def enchant_2503(char: CharacterProperty):
 @register
 def enchant_2504(char: CharacterProperty):
     """
-    攻击强化(4%)|所有属性强化(4)|火强(4)
+    攻击强化(4%)|全属强(4)|火强(4)
     """
     char.SetStatus(攻击强化P=0.04)
     char.AddElementDB('火', 8)
@@ -1270,7 +1382,7 @@ def enchant_2504(char: CharacterProperty):
 @register
 def enchant_2505(char: CharacterProperty):
     """
-    攻击强化(4%)|所有属性强化(4)|冰强(4)
+    攻击强化(4%)|全属强(4)|冰强(4)
     """
     char.SetStatus(攻击强化P=0.04)
     char.AddElementDB('火', 6)
@@ -1283,7 +1395,7 @@ def enchant_2505(char: CharacterProperty):
 @register
 def enchant_2506(char: CharacterProperty):
     """
-    攻击强化(4%)|所有属性强化(4)|暗强(4)
+    攻击强化(4%)|全属强(4)|暗强(4)
     """
     char.SetStatus(攻击强化P=0.04)
     char.AddElementDB('火', 4)
@@ -1327,7 +1439,7 @@ def enchant_2509(char: CharacterProperty):
 @register
 def enchant_2600(char: CharacterProperty):
     """
-    三攻(40)|所有属性强化(30)
+    三攻(40)|全属强(30)
     """
     char.SetStatus(三攻=40)
     char.AddElementDB('火', 30)
@@ -1340,7 +1452,7 @@ def enchant_2600(char: CharacterProperty):
 @register
 def enchant_2601(char: CharacterProperty):
     """
-    三攻(40)|所有属性强化(20)
+    三攻(40)|全属强(20)
     """
     char.SetStatus(三攻=40)
     char.AddElementDB('火', 20)
@@ -1353,7 +1465,7 @@ def enchant_2601(char: CharacterProperty):
 @register
 def enchant_2602(char: CharacterProperty):
     """
-    四维(50)|所有属性强化(20)
+    四维(50)|全属强(20)
     """
     char.SetStatus(四维=50)
     char.AddElementDB('火', 20)
@@ -1366,7 +1478,7 @@ def enchant_2602(char: CharacterProperty):
 @register
 def enchant_2603(char: CharacterProperty):
     """
-    四维(30)|所有属性强化(20)
+    四维(30)|全属强(20)
     """
     char.SetStatus(四维=30)
     char.AddElementDB('火', 20)
@@ -1549,19 +1661,11 @@ def enchant_2708(char: CharacterProperty):
 @register
 def enchant_2709(char: CharacterProperty):
     """
-    三攻(50)|三速(5%)|增益量(3%)
+    三攻(50)|四维(100)|三速(5%)|攻击强化(15%)|增益量(3%)
     """
-    char.SetStatus(三攻=50, 三速=0.05, 增益量P=0.03)
+    char.SetStatus(三攻=50, 四维=100, 三速=0.05, 攻击强化P=0.15, 增益量P=0.03)
     pass
 
-
-@register
-def enchant_2710(char: CharacterProperty):
-    """
-    四维(100)|三速(5%)|增益量(3%)
-    """
-    char.SetStatus(四维=100, 三速=0.05, 增益量P=0.03)
-    pass
 
 
 # endregion

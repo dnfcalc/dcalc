@@ -1,11 +1,11 @@
 from .avatar import get_dress_list,calc_dress_effect
-import core.equipment.version_0.equ as equ
-import core.equipment.version_0.stone as stone
-import core.equipment.version_0.jade as jade
-import core.equipment.version_0.emblem as emblem
-import core.equipment.version_0.enchant as enchant
-import core.equipment.version_0.sundry as sundry
-import core.equipment.version_0.suit as suit
+from . import equ
+from . import stone
+from . import jade
+from . import emblem
+from . import enchant
+from . import sundry
+from . import suit
 
 from .register import execture
 
