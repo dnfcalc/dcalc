@@ -3766,6 +3766,7 @@ def stone_319(char: CharacterProperty):
 
     技能伤害+13.5%
     """
+    char.SetStatus(SkillAttack=0.135)
     pass
 
 
@@ -3777,6 +3778,8 @@ def stone_320(char: CharacterProperty):
     技能伤害+12.5%
     35级主动技能攻击力+7%
     """
+    char.SetStatus(SkillAttack=0.125)
+    char.SetSkillRation(35,35,0.7)
     pass
 
 
@@ -3788,6 +3791,8 @@ def stone_321(char: CharacterProperty):
     技能伤害+12.5%
     40级主动技能攻击力+7%
     """
+    char.SetStatus(SkillAttack=0.125)
+    char.SetSkillRation(40,40,0.7)
     pass
 
 
@@ -3799,6 +3804,8 @@ def stone_322(char: CharacterProperty):
     技能伤害+12.5%
     45级主动技能攻击力+7%
     """
+    char.SetStatus(SkillAttack=0.125)
+    char.SetSkillRation(45,45,0.7)
     pass
 
 
@@ -3810,6 +3817,8 @@ def stone_323(char: CharacterProperty):
     技能伤害+12.5%
     60级主动技能攻击力+7%
     """
+    char.SetStatus(SkillAttack=0.125)
+    char.SetSkillRation(60,60,0.7)
     pass
 
 
@@ -3821,6 +3830,8 @@ def stone_324(char: CharacterProperty):
     技能伤害+12.5%
     70级主动技能攻击力+7%
     """
+    char.SetStatus(SkillAttack=0.125)
+    char.SetSkillRation(70,70,0.7)
     pass
 
 
@@ -3832,6 +3843,8 @@ def stone_325(char: CharacterProperty):
     技能伤害+12.5%
     75级主动技能攻击力+7%
     """
+    char.SetStatus(SkillAttack=0.125)
+    char.SetSkillRation(75,75,0.7)
     pass
 
 
@@ -3843,6 +3856,8 @@ def stone_326(char: CharacterProperty):
     技能伤害+12.5%
     80级主动技能攻击力+7%
     """
+    char.SetStatus(SkillAttack=0.125)
+    char.SetSkillRation(80,80,0.7)
     pass
 
 
@@ -3854,6 +3869,7 @@ def stone_327(char: CharacterProperty):
     技能伤害+14.5%
     技能范围+7%
     """
+    char.SetStatus(SkillAttack=0.145)
     pass
 
 
@@ -3866,6 +3882,8 @@ def stone_328(char: CharacterProperty):
     35级主动技能攻击力 +12%
     35级技能范围 +12%
     """
+    char.SetStatus(SkillAttack=0.145)
+    char.SetSkillRation(35,35,0.12)
     pass
 
 
@@ -3878,6 +3896,8 @@ def stone_329(char: CharacterProperty):
     40级主动技能攻击力 +12%
     40级技能范围 +12%
     """
+    char.SetStatus(SkillAttack=0.145)
+    char.SetSkillRation(40,40,0.12)
     pass
 
 
@@ -3890,6 +3910,8 @@ def stone_330(char: CharacterProperty):
     45级主动技能攻击力 +12%
     45级技能范围 +12%
     """
+    char.SetStatus(SkillAttack=0.145)
+    char.SetSkillRation(45,45,0.12)
     pass
 
 
@@ -3902,7 +3924,8 @@ def stone_331(char: CharacterProperty):
     60级主动技能攻击力 +12%
     60级技能范围 +12%
     """
-    pass
+    char.SetStatus(SkillAttack=0.145)
+    char.SetSkillRation(60,60,0.12)
 
 
 @register
@@ -3914,6 +3937,8 @@ def stone_332(char: CharacterProperty):
     70级主动技能攻击力 +12%
     70级技能范围 +12%
     """
+    char.SetStatus(SkillAttack=0.145)
+    char.SetSkillRation(70,70,0.12)
     pass
 
 
@@ -3926,6 +3951,8 @@ def stone_333(char: CharacterProperty):
     75级主动技能攻击力 +12%
     75级技能范围 +12%
     """
+    char.SetStatus(SkillAttack=0.145)
+    char.SetSkillRation(75,75,0.12)
     pass
 
 
@@ -3938,6 +3965,8 @@ def stone_334(char: CharacterProperty):
     80级主动技能攻击力 +12%
     80级技能范围 +12%
     """
+    char.SetStatus(SkillAttack=0.145)
+    char.SetSkillRation(80,80,0.12)
     pass
 
 
@@ -3948,6 +3977,7 @@ def stone_335(char: CharacterProperty):
 
     技能伤害+13.5%
     """
+    stone_319(char)
     pass
 
 
@@ -3959,6 +3989,7 @@ def stone_336(char: CharacterProperty):
     技能伤害+12.5%
     35级主动技能攻击力+7%
     """
+    stone_320(char)
     pass
 
 
@@ -3970,6 +4001,7 @@ def stone_337(char: CharacterProperty):
     技能伤害+12.5%
     40级主动技能攻击力+7%
     """
+    stone_321(char)
     pass
 
 
@@ -3981,6 +4013,7 @@ def stone_338(char: CharacterProperty):
     技能伤害+12.5%
     45级主动技能攻击力+7%
     """
+    stone_322(char)
     pass
 
 
@@ -3992,6 +4025,7 @@ def stone_339(char: CharacterProperty):
     技能伤害+12.5%
     60级主动技能攻击力+7%
     """
+    stone_323(char)
     pass
 
 
@@ -4003,6 +4037,7 @@ def stone_340(char: CharacterProperty):
     技能伤害+12.5%
     70级主动技能攻击力+7%
     """
+    stone_324(char)
     pass
 
 
@@ -4014,6 +4049,7 @@ def stone_341(char: CharacterProperty):
     技能伤害+12.5%
     75级主动技能攻击力+7%
     """
+    stone_325(char)
     pass
 
 
@@ -4025,6 +4061,7 @@ def stone_342(char: CharacterProperty):
     技能伤害+12.5%
     80级主动技能攻击力+7%
     """
+    stone_326(char)
     pass
 
 
@@ -4036,6 +4073,7 @@ def stone_343(char: CharacterProperty):
     技能伤害+14.5%
     技能范围+7%
     """
+    stone_327(char)
     pass
 
 
@@ -4048,6 +4086,7 @@ def stone_344(char: CharacterProperty):
     35级主动技能攻击力 +12%
     35级技能范围 +12%
     """
+    stone_328(char)
     pass
 
 
@@ -4060,6 +4099,7 @@ def stone_345(char: CharacterProperty):
     40级主动技能攻击力 +12%
     40级技能范围 +12%
     """
+    stone_329(char)
     pass
 
 
@@ -4072,6 +4112,7 @@ def stone_346(char: CharacterProperty):
     45级主动技能攻击力 +12%
     45级技能范围 +12%
     """
+    stone_330(char)
     pass
 
 
@@ -4084,6 +4125,7 @@ def stone_347(char: CharacterProperty):
     60级主动技能攻击力 +12%
     60级技能范围 +12%
     """
+    stone_331(char)
     pass
 
 
@@ -4096,6 +4138,7 @@ def stone_348(char: CharacterProperty):
     70级主动技能攻击力 +12%
     70级技能范围 +12%
     """
+    stone_332(char)
     pass
 
 
@@ -4108,6 +4151,7 @@ def stone_349(char: CharacterProperty):
     75级主动技能攻击力 +12%
     75级技能范围 +12%
     """
+    stone_333(char)
     pass
 
 
@@ -4120,6 +4164,7 @@ def stone_350(char: CharacterProperty):
     80级主动技能攻击力 +12%
     80级技能范围 +12%
     """
+    stone_334(char)
     pass
 
 
@@ -4130,6 +4175,7 @@ def stone_351(char: CharacterProperty):
 
     技能伤害+13.5%
     """
+    stone_319(char)
     pass
 
 
@@ -4141,6 +4187,7 @@ def stone_352(char: CharacterProperty):
     技能伤害+12.5%
     35级主动技能攻击力+7%
     """
+    stone_320(char)
     pass
 
 
@@ -4152,6 +4199,7 @@ def stone_353(char: CharacterProperty):
     技能伤害+12.5%
     40级主动技能攻击力+7%
     """
+    stone_321(char)
     pass
 
 
@@ -4163,6 +4211,7 @@ def stone_354(char: CharacterProperty):
     技能伤害+12.5%
     45级主动技能攻击力+7%
     """
+    stone_322(char)
     pass
 
 
@@ -4174,6 +4223,7 @@ def stone_355(char: CharacterProperty):
     技能伤害+12.5%
     60级主动技能攻击力+7%
     """
+    stone_323(char)
     pass
 
 
@@ -4185,6 +4235,7 @@ def stone_356(char: CharacterProperty):
     技能伤害+12.5%
     70级主动技能攻击力+7%
     """
+    stone_324(char)
     pass
 
 
@@ -4196,6 +4247,7 @@ def stone_357(char: CharacterProperty):
     技能伤害+12.5%
     75级主动技能攻击力+7%
     """
+    stone_325(char)
     pass
 
 
@@ -4207,6 +4259,7 @@ def stone_358(char: CharacterProperty):
     技能伤害+12.5%
     80级主动技能攻击力+7%
     """
+    stone_326(char)
     pass
 
 
@@ -4218,6 +4271,7 @@ def stone_359(char: CharacterProperty):
     技能伤害+14.5%
     技能范围+7%
     """
+    stone_327(char)
     pass
 
 
@@ -4230,6 +4284,7 @@ def stone_360(char: CharacterProperty):
     35级主动技能攻击力 +12%
     35级技能范围 +12%
     """
+    stone_328(char)
     pass
 
 
@@ -4242,6 +4297,7 @@ def stone_361(char: CharacterProperty):
     40级主动技能攻击力 +12%
     40级技能范围 +12%
     """
+    stone_329(char)
     pass
 
 
@@ -4254,6 +4310,7 @@ def stone_362(char: CharacterProperty):
     45级主动技能攻击力 +12%
     45级技能范围 +12%
     """
+    stone_330(char)
     pass
 
 
@@ -4266,6 +4323,7 @@ def stone_363(char: CharacterProperty):
     60级主动技能攻击力 +12%
     60级技能范围 +12%
     """
+    stone_331(char)
     pass
 
 
@@ -4278,6 +4336,7 @@ def stone_364(char: CharacterProperty):
     70级主动技能攻击力 +12%
     70级技能范围 +12%
     """
+    stone_332(char)
     pass
 
 
@@ -4290,6 +4349,7 @@ def stone_365(char: CharacterProperty):
     75级主动技能攻击力 +12%
     75级技能范围 +12%
     """
+    stone_333(char)
     pass
 
 
@@ -4302,6 +4362,7 @@ def stone_366(char: CharacterProperty):
     80级主动技能攻击力 +12%
     80级技能范围 +12%
     """
+    stone_334(char)
     pass
 
 
