@@ -12603,6 +12603,10 @@ def equ_2001(char: CharacterProperty):
     cd = (point // 25) * 0.04
     if cd > 0:
         char.SetSkillCD(cd=cd)
+    if char.buffer:
+        char.BuffSkill.lv += 1
+        char.AwakeSkill.lv += 1
+        char.SetStatus(STR=200,INT=200,Spirit=200,Vitality=200)
     pass
 
 
