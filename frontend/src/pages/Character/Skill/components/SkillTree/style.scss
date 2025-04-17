@@ -12,3 +12,23 @@
 .passive {
   filter: grayscale(100%) invert(3%) sepia(14%) saturate(874%) hue-rotate(65deg) brightness(105%) contrast(102%);
 }
+
+.skill{
+  background-image: url('./img/skill.png');
+  background-size: 100% 100%;
+}
+
+.skill-active{
+  background-image: url('./img/skillActive.png');
+  background-size: 100% 100%;
+}
+
+.awake_50{
+  background-image: url('./img/awake_50.png');
+  background-size: 100% 100%;
+}
+
+.awake_85{
+  background-image: url('./img/awake_85.png');
+  background-size: 100% 100%;
+}

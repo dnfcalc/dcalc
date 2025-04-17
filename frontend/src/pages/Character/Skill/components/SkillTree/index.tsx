@@ -14,10 +14,15 @@ export default defineComponent({
       type: Object as PropType<Record<string, { lv: number }>>,
       default: () => ({}),
     },
+    bindAwake: {
+      type: Number,
+      default: ()=>50,
+    },
   },
   setup(props) {
     const skills = computed(() => props.skills)
     const lvInfo = useVModel(props, 'lvInfo')
+    const bindAwake = useVModel(props, 'bindAwake')
 
     const getSkill = (lvStart: number, lvEnd: number, position: number) => {
       if (position >= 0)
@@ -48,6 +53,13 @@ export default defineComponent({
       else activeSkill.value = skill.id
     }
 
+    const awakeSkill_1 = computed(() =>
+      skills.value.find((item) => item.learnLv == 50 && item.type == 'active'),
+    )
+    const awakeSkill_2 = computed(() =>
+      skills.value.find((item) => item.learnLv == 85 && item.type == 'active'),
+    )
+
     const actionSkillLv = (skill: ISkill, operation: string) => {
       if (operation == 'add') {
         lvInfo.value[skill.id.toString()] = {
@@ -71,6 +83,11 @@ export default defineComponent({
       }
     }
 
+    const chooseBindAwake = (lv:number) => {
+        bindAwake.value = lv
+        console.log(bindAwake.value,lv)
+    }
+
     const renderSkill = (skill: ISkill, index: number) => {
       const info = lvInfo.value?.[skill.id.toString()]
       let color = 'white'
@@ -81,7 +98,7 @@ export default defineComponent({
           <div class="relative w-35px h-55px">
             {activeSkill.value == skill.id && renderSkillAction(skill)}
             <div
-              class="w-34px absolute h-auto flex flex-col gap-2px py-2px items-center bg-#2c2d2c rounded-2px z-2 top-1px left-1px"
+              class={["w-36px absolute h-48px flex flex-col box-border items-center py-3px z-2",skill.learnLv == 100 ? '' : 'skill']}
               onClick={(e) => {
                 e.stopPropagation()
                 chooseSkill(skill)
@@ -94,16 +111,33 @@ export default defineComponent({
               key={index}
             >
               <img
-                class={['h-30px w-30px', skill.type === 'passive' ? 'passive' : '']}
+                class={['h-28px w-28px', skill.type === 'passive' ? 'passive' : '']}
                 src={getImageURL(skill.icon)}
               ></img>
-              <div
-                class="w-30px mx-2px bg-black flex items-center justify-center rounded-2px"
-                style={{ color }}
-              >
+              <div class="w-100% flex items-center justify-center" style={{ color }}>
                 {info?.lv ?? 0}
               </div>
             </div>
+            {skill.learnLv == 100 && (
+              <>
+                <div class={`pos-absolute w-196px h-54px box-border translate-x--50% left-18px top--3px flex justify-between items-center py-2px px-3px awake_${bindAwake.value}`}>
+                  <div class="w-36px flex flex-col box-border items-center py-2px z-2" onClick={()=>chooseBindAwake(50)}>
+                    <img
+                      class="h-28px w-28px mt-2px"
+                      src={getImageURL(awakeSkill_1.value?.icon ?? '')}
+                    ></img>
+                    <div class="w-100% mt-1px flex items-center justify-center text-#ffc701">1次</div>
+                  </div>
+                  <div class="w-36px flex flex-col box-border items-center py-2px z-2" onClick={()=>chooseBindAwake(85)}>
+                    <img
+                      class="h-28px w-28px mt-1px"
+                      src={getImageURL(awakeSkill_2.value?.icon ?? '')}
+                    ></img>
+                    <div class="w-100% mt-1px flex items-center justify-center text-#ffc701">2次</div>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </>
       )
@@ -112,10 +146,8 @@ export default defineComponent({
     const renderSkillAction = (skill: ISkill) => (
       <>
         <>
-          <div class="absolute">
-            <div class="w-36px h-55px bg-gradient-linear bg-gradient-[180deg,#f8e26c_0%,#f87c43_94.34%] z-1"></div>
-            <div class="bottom--5px relative z-5 transform -translate-x-1/4 border-1px border-solid border-black left--2">
-              <div class="flex  gap-1  bg-gradient-linear bg-gradient-[180deg,#351d14_0%,#070507_100%] p-1 border-solid border-#9A6329 border-1px">
+          <div class="absolute skill-active w-88px h-78px translate-x--50% left-16px top--1px">
+              <div class="flex justify-between px-5px relative top-55px">
                 <img
                   src={`${new URL('./img/min.svg', import.meta.url).href}`}
                   onClick={(e: Event) => {
@@ -145,7 +177,6 @@ export default defineComponent({
                   }}
                 ></img>
               </div>
-            </div>
           </div>
         </>
       </>
@@ -167,20 +198,24 @@ export default defineComponent({
             </>
           )}
 
-          {lvList.map((lv, index) => ((getSkill(lv, lvList[index + 1] ?? 150, -1) as ISkill[])?.length ?? 0) > 0 ?(
-            <div class="skill-tree-line flex items-center gap-10px px-10px" key={index}>
-              {lv == 1 || lv % 10 == 0 ? (
-                <div class="w-34px h-34px flex items-center justify-center text-white">{lv}</div>
-              ) : (
-                <div class="w-34px h-34px"></div>
-              )}
-              {columns.map((column, i) => {
-                const skill = getSkill(lv, lvList[index + 1] ?? 150, column) as ISkill
-                return skill ? renderSkill(skill, index) : <div class="w-34px h-34px"></div>
-              })}
-              <div class="w-20px h-34px" onClick={() => (activeSkill.value = -1)}></div>
-            </div>
-          ):(<></>))}
+          {lvList.map((lv, index) =>
+            ((getSkill(lv, lvList[index + 1] ?? 150, -1) as ISkill[])?.length ?? 0) > 0 ? (
+              <div class="skill-tree-line flex items-center gap-10px px-10px" key={index}>
+                {lv == 1 || lv % 10 == 0 ? (
+                  <div class="w-34px h-34px flex items-center justify-center text-white">{lv}</div>
+                ) : (
+                  <div class="w-34px h-34px"></div>
+                )}
+                {columns.map((column, i) => {
+                  const skill = getSkill(lv, lvList[index + 1] ?? 150, column) as ISkill
+                  return skill ? renderSkill(skill, index) : <div class="w-34px h-34px"></div>
+                })}
+                <div class="w-20px h-34px" onClick={() => (activeSkill.value = -1)}></div>
+              </div>
+            ) : (
+              <></>
+            ),
+          )}
         </div>
       </>
     )

@@ -51,6 +51,7 @@ export interface IConfig {
     }
   >
   sundry: Record<string, any>
+  bindAwake: number
 }
 
 const defaultEqusConfig = {
@@ -82,6 +83,7 @@ export const useConfigStore = defineStore('configStore', () => {
     jades: {},
     avatar: {},
     sundry: {},
+    bindAwake: 50
   })
 
   const skillCountConfig = ref<IResultSkillCount[]>([])
@@ -107,12 +109,14 @@ export const useConfigStore = defineStore('configStore', () => {
         jades: {},
         avatar: {},
         sundry: {},
+        bindAwake: 50
       }
     if (!config.value?.equips) config.value.equips = {}
     if (!config.value?.skills) config.value.skills = {}
     if (!config.value?.jades) config.value.jades = {}
     if (!config.value?.avatar) config.value.avatar = {}
     if (!config.value?.sundry) config.value.sundry = {}
+    if (!config.value?.bindAwake) config.value.bindAwake = 50
 
     const part = [...infoStore.parts, '宠物', '副武器'].filter(
       (a) => !config.value?.equips.hasOwnProperty(a),

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="h-90vh w-auto overflow-y-auto overflow-x-hidden">
-      <SkillTree :skills="infoStore.skills" :lvInfo="configStore.config?.skills"></SkillTree>
+      <SkillTree :skills="infoStore.skills" v-model:lvInfo="configStore.config.skills" v-model:bindAwake="configStore.config.bindAwake"></SkillTree>
     </div>
   </div>
 </template>
