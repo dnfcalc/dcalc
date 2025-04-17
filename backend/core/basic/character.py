@@ -116,6 +116,8 @@ class Character(CharacterProperty):
 
     # endregion
 
+    BindAwake : int
+    """绑定觉醒等级"""
     skills: list['Skill'] = []
     # """技能列表"""
     skills_dict: dict[str, 'Skill'] = {}
@@ -405,6 +407,7 @@ class Character(CharacterProperty):
     # region 计算相关
     def SetDetail(self, info: dict[str, dict]) -> None:
         self.charEquipInfo = {}
+        self.bindAwake = info.get('bindAwake', 50)
         """打造信息导入"""
         for key in info['equips']:
             # 导入部位打造信息、装备信息、贴膜信息
@@ -940,7 +943,7 @@ class Character(CharacterProperty):
                     value1 = (info[1][0] + info[1][2])*info[1][1]*buff_ratio_old + info[1][0]*buff_ratio_new
                     value2 = (info[2][0] + info[2][2])*info[2][1]*buff_ratio_old + info[2][0]*buff_ratio_new
                 # 觉醒技能
-                elif i.buffType == 'awake':
+                elif i.buffType == 'awake' or i.buffType == 'awakeSub':
                     value1 = (info[1][0] + info[1][2])*info[1][1]*awake_ratio_old + info[1][0]*awake_ratio_new
                     value2 = (info[2][0] + info[2][2])*info[2][1]*awake_ratio_old + info[2][0]*awake_ratio_new
                 else:
@@ -948,14 +951,17 @@ class Character(CharacterProperty):
                     value2 = (info[2][0] + info[2][2])*info[2][1]
                 value3 = info[3]
                 value4 = info[4]
-                skillInfos.append({
-                    "name":i.name,
-                    "cd":value4,
-                    "icon":i.icon,
-                    "lv": i.lv,
-                    # 对自己的加成 三攻 力智 伤害直接加成
-                    "buff":[value, value1, value2, value3],
-                })
+                if i.buffType == 'awake' and self.bindAwake == 50:
+                    pass
+                else:
+                    skillInfos.append({
+                        "name":i.name,
+                        "cd":value4,
+                        "icon":i.icon,
+                        "lv": i.lv,
+                        # 对自己的加成 三攻 力智 伤害直接加成
+                        "buff":[value, value1, value2, value3],
+                    })
         return skillInfos
 
     def get_buffer_info(self):

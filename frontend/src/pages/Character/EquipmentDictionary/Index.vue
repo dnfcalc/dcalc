@@ -21,7 +21,7 @@
     <div
       class="w-full h-1px bg-gradient-to-r from-[rgba(52,43,27,0.05)] via-[rgba(52,43,27,1)] to-[rgba(52,43,27,0.05)]"
     ></div>
-    <div class="p-1 space-y-1">
+    <div class="p-1 space-y-1 mt-10px">
       <div class="flex w-full">
         <div class="flex flex-1 items-center">
           部位：<part-select class="!max-w-25 !w-25" v-model:partList="choose_part"></part-select>
@@ -386,7 +386,7 @@ const chooseEqu = (item?: IEquipment) => {
 .active {
   color: #ccc088;
 
-  &::after {
+  &::before {
     content: '';
     position: absolute;
     width: 60px;
@@ -394,6 +394,16 @@ const chooseEqu = (item?: IEquipment) => {
     opacity: 0.35;
     background: #bf8d20;
     filter: blur(7px);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    background: url('@/assets/img/active.png') no-repeat;
+    width: 148px;
+    height:16px;
+    top:69px;
+    transform: translate(0, 0%);
   }
 }
 
