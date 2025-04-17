@@ -387,7 +387,7 @@ class Skill20(ActiveBufferSkill):
 
 # 虔诚信念 신실한 열정
 # https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/1dad88963abdc96b091fcab185a8820d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill21(ActiveBufferSkill):
+class Skill21(PassiveBufferSkill):
     name = "虔诚信念"
     learnLv = 48
     masterLv = 40
