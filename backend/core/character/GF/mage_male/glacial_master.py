@@ -240,7 +240,6 @@ class Skill13(ActiveSkill):
     power2 = 1
 
 
-
 # 冰雪风暴 블리자드 스톰
 # https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/8f73f243041c2d27739fe7696f02bf9b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill14(ActiveSkill):
@@ -270,19 +269,19 @@ class Skill15(PassiveSkill):
     position = 5
     rangeLv = 1
 
-    data0 = [0, 195]# noqa: E501
+    data0 = [0, 195 - 100]# noqa: E501
     hit0 = 1 #TODO
 
-    data1 = [0, 235]# noqa: E501
+    data1 = [0, 235 - 100]# noqa: E501
     hit1 = 1 #TODO
 
-    data2 = [0, 100]# noqa: E501
+    data2 = [0, 100 - 100]# noqa: E501
     hit2 = 1 #TODO
 
     associate = [
         {"type":"*power0","data":data0,"skills":["极冰绽放"]},
         {"type":"+hit0","data":[0,-1],"skills":["极冰绽放"],"ratio":1},
-        {"type":"*power1","data":data0,"skills":["极冰绽放"]},
+        {"type":"*power1","data":data1,"skills":["极冰绽放"]},
         {"type":"+hit2","data":[0,-1],"skills":["极冰绽放"],"ratio":1},
     ]
 

@@ -8,7 +8,7 @@
       </calc-tabs>
     </div>
     <div class="content flex">
-      <div class="flex h-auto p-1 overflow-y-auto" v-if="!!infoStore.infos?.alter">
+      <div class="flex h-auto p-1 overflow-y-hidden" v-if="!!infoStore.infos?.alter">
         <RouterView></RouterView>
       </div>
       <div class="p-1 ml-auto h-auto overflow-y-auto z-2">
