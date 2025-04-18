@@ -3452,7 +3452,8 @@ def stone_295(char: CharacterProperty):
     技能伤害+12.5%
     技能范围+20%
     """
-    char.SetStatus(SkillAttak=0.125)
+    print("~~~~~~~~")
+    char.SetStatus(SkillAttack=0.125)
     pass
 
 
@@ -3464,7 +3465,7 @@ def stone_296(char: CharacterProperty):
     技能伤害+14.5%
     技能范围+25%
     """
-    char.SetStatus(SkillAttak=0.145)
+    char.SetStatus(SkillAttack=0.145)
     pass
 
 
@@ -3476,7 +3477,7 @@ def stone_297(char: CharacterProperty):
     技能伤害+15%
     所有速度+15%
     """
-    char.SetStatus(SkillAttak=0.15,SpeedA=0.15,SpeedM=0.15,SpeedR=0.15)
+    char.SetStatus(SkillAttack=0.15,SpeedA=0.15,SpeedM=0.15,SpeedR=0.15)
     pass
 
 
@@ -3488,7 +3489,7 @@ def stone_298(char: CharacterProperty):
     技能伤害+17%
     所有速度+25%
     """
-    char.SetStatus(SkillAttak=0.17,SpeedA=0.25,SpeedM=0.25,SpeedR=0.25)
+    char.SetStatus(SkillAttack=0.17,SpeedA=0.25,SpeedM=0.25,SpeedR=0.25)
     pass
 
 
@@ -3500,7 +3501,7 @@ def stone_299(char: CharacterProperty):
     技能伤害+15%
     500px范围内的队员所受物理/魔法伤害-10%
     """
-    char.SetStatus(SkillAttak=0.15)
+    char.SetStatus(SkillAttack=0.15)
     pass
 
 
@@ -3512,7 +3513,7 @@ def stone_300(char: CharacterProperty):
     技能伤害+17%
     800px范围内的队员所受物理/魔法伤害-15%
     """
-    char.SetStatus(SkillAttak=0.17)
+    char.SetStatus(SkillAttack=0.17)
     pass
 
 
@@ -3530,11 +3531,11 @@ def stone_301(char: CharacterProperty):
     融合的装备强化/增幅从10开始每增加1时，技能伤害+1%(最多叠加2次)
     融合的装备强化/增幅从10开始每增加1时，增益量+150(最多叠加2次)
     """
-    char.SetStatus(SkillAttak=0.125)
+    char.SetStatus(SkillAttack=0.125)
     reinforce = char.charEquipInfo['手镯'].reinforce
     if reinforce > 10:
         value = min(reinforce - 10, 2)
-        char.SetStatus(SkillAttak=0.01 * value,Buff=150 * value)
+        char.SetStatus(SkillAttack=0.01 * value,Buff=150 * value)
     pass
 
 
@@ -3548,11 +3549,11 @@ def stone_302(char: CharacterProperty):
     融合的装备强化/增幅从10开始每增加1时，技能伤害+1%(最多叠加2次)
     融合的装备强化/增幅从10开始每增加1时，增益量+150(最多叠加2次)
     """
-    char.SetStatus(SkillAttak=0.145)
+    char.SetStatus(SkillAttack=0.145)
     reinforce = char.charEquipInfo['手镯'].reinforce
     if reinforce > 10:
         value = min(reinforce - 10, 2)
-        char.SetStatus(SkillAttak=0.01 * value,Buff=150 * value)
+        char.SetStatus(SkillAttack=0.01 * value,Buff=150 * value)
     pass
 
 
@@ -3566,11 +3567,11 @@ def stone_303(char: CharacterProperty):
     融合的装备强化/增幅从10开始每增加1时，技能伤害+1%(最多叠加2次)
     融合的装备强化/增幅从10开始每增加1时，增益量+150(最多叠加2次)
     """
-    char.SetStatus(SkillAttak=0.15,SpeedA=0.05,SpeedM=0.05,SpeedR=0.05)
+    char.SetStatus(SkillAttack=0.15,SpeedA=0.05,SpeedM=0.05,SpeedR=0.05)
     reinforce = char.charEquipInfo['戒指'].reinforce
     if reinforce > 10:
         value = min(reinforce - 10, 2)
-        char.SetStatus(SkillAttak=0.01 * value,Buff=150 * value)
+        char.SetStatus(SkillAttack=0.01 * value,Buff=150 * value)
     pass
 
 
@@ -3584,11 +3585,11 @@ def stone_304(char: CharacterProperty):
     融合的装备强化/增幅从10开始每增加1时，技能伤害+1%(最多叠加2次)
     融合的装备强化/增幅从10开始每增加1时，增益量+150(最多叠加2次)
     """
-    char.SetStatus(SkillAttak=0.17,SpeedA=0.07,SpeedM=0.07,SpeedR=0.07)
+    char.SetStatus(SkillAttack=0.17,SpeedA=0.07,SpeedM=0.07,SpeedR=0.07)
     reinforce = char.charEquipInfo['戒指'].reinforce
     if reinforce > 10:
         value = min(reinforce - 10, 2)
-        char.SetStatus(SkillAttak=0.01 * value,Buff=150 * value)
+        char.SetStatus(SkillAttack=0.01 * value,Buff=150 * value)
     pass
 
 
@@ -3602,11 +3603,11 @@ def stone_305(char: CharacterProperty):
     融合的装备强化/增幅从10开始每增加1时，技能伤害+1%(最多叠加2次)
     融合的装备强化/增幅从10开始每增加1时，增益量+150(最多叠加2次)
     """
-    char.SetStatus(SkillAttak=0.15)
+    char.SetStatus(SkillAttack=0.15)
     reinforce = char.charEquipInfo['项链'].reinforce
     if reinforce > 10:
         value = min(reinforce - 10, 2)
-        char.SetStatus(SkillAttak=0.01 * value,Buff=150 * value)
+        char.SetStatus(SkillAttack=0.01 * value,Buff=150 * value)
     pass
 
 
@@ -3620,11 +3621,11 @@ def stone_306(char: CharacterProperty):
     融合的装备强化/增幅从10开始每增加1时，技能伤害+1%(最多叠加2次)
     融合的装备强化/增幅从10开始每增加1时，增益量+150(最多叠加2次)
     """
-    char.SetStatus(SkillAttak=0.17)
+    char.SetStatus(SkillAttack=0.17)
     reinforce = char.charEquipInfo['项链'].reinforce
     if reinforce > 10:
         value = min(reinforce - 10, 2)
-        char.SetStatus(SkillAttak=0.01 * value,Buff=150 * value)
+        char.SetStatus(SkillAttack=0.01 * value,Buff=150 * value)
     pass
 
 
@@ -3640,7 +3641,7 @@ def stone_307(char: CharacterProperty):
     技能伤害+11%
     特效伤害+10%
     """
-    char.SetStatus(SkillAttak=0.11,EquEffectRatio=0.1)
+    char.SetStatus(SkillAttack=0.11,EquEffectRatio=0.1)
     pass
 
 
@@ -3652,7 +3653,7 @@ def stone_308(char: CharacterProperty):
     技能伤害+12%
     特效伤害+15%
     """
-    char.SetStatus(SkillAttak=0.12,EquEffectRatio=0.15)
+    char.SetStatus(SkillAttack=0.12,EquEffectRatio=0.15)
     pass
 
 
@@ -3664,7 +3665,7 @@ def stone_309(char: CharacterProperty):
     技能伤害+4%
     技能冷却时间-20%(觉醒技能除外)
     """
-    char.SetStatus(SkillAttak=0.04)
+    char.SetStatus(SkillAttack=0.04)
     char.SetSkillCD(cd=0.2)
     pass
 
@@ -3677,7 +3678,7 @@ def stone_310(char: CharacterProperty):
     技能伤害+6%
     技能冷却时间-20%(觉醒技能除外)
     """
-    char.SetStatus(SkillAttak=0.06)
+    char.SetStatus(SkillAttack=0.06)
     char.SetSkillCD(cd=0.2)
     pass
 
@@ -3692,7 +3693,7 @@ def stone_311(char: CharacterProperty):
     -相同技能间存在10秒冷却时间
     释放冷却时间超过1秒的技能时，有1%的几率使1个技能的冷却时间初始化。（辅助职业除外）
     """
-    char.SetStatus(SkillAttak=0.035)
+    char.SetStatus(SkillAttack=0.035)
     pass
 
 
@@ -3706,7 +3707,7 @@ def stone_312(char: CharacterProperty):
     -相同技能间存在10秒冷却时间
     释放冷却时间超过1秒的技能时，有1%的几率使1个技能的冷却时间初始化。（辅助职业除外）
     """
-    char.SetStatus(SkillAttak=0.055)
+    char.SetStatus(SkillAttack=0.055)
     pass
 
 
@@ -3724,7 +3725,7 @@ def stone_313(char: CharacterProperty):
     -灾害伤害量：453600%
     -冷却时间：40秒
     """
-    char.SetStatus(SkillAttak=0.045)
+    char.SetStatus(SkillAttack=0.045)
     char.equ_effect.append(EquEffect(name='无知：时降雷霆', data=453600, cd=40, icon='/equipment/icon/amalgamationstone/00375.png'))
     pass
 
@@ -3739,7 +3740,7 @@ def stone_314(char: CharacterProperty):
     -灾害伤害量：453600%
     -冷却时间：40秒
     """
-    char.SetStatus(SkillAttak=0.065)
+    char.SetStatus(SkillAttack=0.065)
     char.equ_effect.append(EquEffect(name='无知：灾祸无常', data=453600, cd=40, icon='/equipment/icon/amalgamationstone/00378.png'))
     pass
 
@@ -3754,7 +3755,7 @@ def stone_315(char: CharacterProperty):
     -为目标提供恢复
     -每秒恢复0.5%的生命值/魔法值
     """
-    char.SetStatus(SkillAttak=0.15)
+    char.SetStatus(SkillAttack=0.15)
     pass
 
 
@@ -3775,7 +3776,7 @@ def stone_316(char: CharacterProperty):
     -恢复30%的生命值/魔法值
     -消失的庇佑于30秒后复原
     """
-    char.SetStatus(SkillAttak=0.17)
+    char.SetStatus(SkillAttack=0.17)
     pass
 
 
@@ -3789,7 +3790,7 @@ def stone_317(char: CharacterProperty):
     - 按照装备、消耗品、恢复技能提供的生命值恢复量的10%，恢复保护罩。
     - 持续恢复的技能除外
     """
-    char.SetStatus(SkillAttak=0.15)
+    char.SetStatus(SkillAttack=0.15)
     pass
 
 
@@ -3804,7 +3805,7 @@ def stone_318(char: CharacterProperty):
     - 按照装备、消耗品、恢复技能提供的生命值恢复量的10%，恢复保护罩。
     - 持续恢复的技能除外
     """
-    char.SetStatus(SkillAttak=0.17)
+    char.SetStatus(SkillAttack=0.17)
     pass
 
 
