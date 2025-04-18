@@ -402,7 +402,7 @@ const chooseEqu = (item?: IEquipment) => {
     background: url('@/assets/img/active.png') no-repeat;
     width: 148px;
     height:16px;
-    top:69px;
+    top:60px;
     transform: translate(0, 0%);
   }
 }

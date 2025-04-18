@@ -44,7 +44,7 @@
             class="w-20px h-20px object-contain"
           />
           <div class="flex items-center justify-center" v-if="adaptation(part) > 0">
-            <img :src="getImageURL(`/equipment/adaptation/${adaptation(part)}.png`)" alt="" class="w-10px h-10px object-contain" />
+            <img :src="getImageURL(`/equipment/adaptation/${adaptation(part)}.png`)" alt="" class="w-11px h-10px object-contain" />
           </div>
           <div
             class="flex items-center"

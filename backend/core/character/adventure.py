@@ -43,7 +43,7 @@ adv = [
         'name': 'fighter_female',
         'title': '格斗家(女)',
         'children': [
-            {'id': 0, 'name': 'nenmaster_female', 'title': '归元·气功师', 'open': False},
+            {'id': 0, 'name': 'nenmaster_female', 'title': '归元·气功师', 'open': False, 'class': 'GF.fighter_female.nenmaster_female'},
             {'id': 1, 'name': 'striker_female', 'title': '归元·散打', 'open': False},
             {'id': 2, 'name': 'brawler_female', 'title': '归元·街霸', 'open': False},
             {'id': 3, 'name': 'grappler_female', 'title': '归元·柔道家', 'open': False},
