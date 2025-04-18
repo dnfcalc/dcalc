@@ -1,7 +1,10 @@
 <template>
   <div class="bg-#000000bf w-264px">
     <div class="h-177px">
-      <EquList :detail="props.equs" :with-sub-weapon="infoStore.infos?.alter.includes('vegabond')"></EquList>
+      <EquList
+        :detail="props.equs"
+        :with-sub-weapon="(infoStore.infos?.subweapons?.length ?? 0)> 0"
+      ></EquList>
     </div>
     <div class="flex flex-wrap border-y-1px my-1px border-y-solid border-#FFFF/10 gap-1% px-1%">
       <template v-for="info in props.info" :key="info.id">
@@ -44,16 +47,25 @@
             class="w-20px h-20px object-contain"
           />
           <div class="flex items-center justify-center" v-if="adaptation(part) > 0">
-            <img :src="getImageURL(`/equipment/adaptation/${adaptation(part)}.png`)" alt="" class="w-11px h-10px object-contain" />
+            <img
+              :src="getImageURL(`/equipment/adaptation/${adaptation(part)}.png`)"
+              alt=""
+              class="w-11px h-10px object-contain"
+            />
           </div>
           <div
             class="flex items-center"
+            v-if="props.equs[part]?.reinforce > 0"
             :class="props.equs[part]?.reinforceType == 1 ? 'artifact' : 'advanced'"
           >
             +{{ props.equs[part]?.reinforce }}
           </div>
-          <div class="rare" v-if="props.equs[part]?.refine > 0">({{ props.equs[part]?.refine }})</div>
-          <div :class="rarityClass(equ(props.equs?.[part]?.id)?.rarity ?? '')">{{equ(props.equs?.[part]?.id)?.name}}</div>
+          <div class="rare" v-if="props.equs[part]?.refine > 0">
+            ({{ props.equs[part]?.refine }})
+          </div>
+          <div :class="rarityClass(equ(props.equs?.[part]?.id)?.rarity ?? '')">
+            {{ equ(props.equs?.[part]?.id)?.name }}
+          </div>
         </div>
       </template>
     </div>
@@ -96,7 +108,10 @@ const equ = (id: string) => {
 }
 
 const adaptation = (part: string) => {
-  return Math.min(equ(props.equs?.[part]?.id)?.max_adaptation ?? 0, props.equs[part]?.adaptation ?? 0)
+  return Math.min(
+    equ(props.equs?.[part]?.id)?.max_adaptation ?? 0,
+    props.equs[part]?.adaptation ?? 0,
+  )
 }
 
 const lvFormat = (lv: number, rarity: string) => {
