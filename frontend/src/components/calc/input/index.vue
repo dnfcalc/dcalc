@@ -21,9 +21,9 @@ export default defineComponent({
   setup(props) {
     const modelValue = useVModel(props, 'modelValue')
     return () => (
-      <div class="flex min-w-80px h-15px border-1 border-solid border-[#5b472a] rounded-[2px] bg-[#000000] px-2px py-auto">
+      <div class="flex min-w-80px h-20px border-1px box-border border-solid border-[#5b472a] rounded-[2px] bg-[#000000] px-2px">
         <input
-          class="flex-1 border-none w-full outline-none h-auto max-h-100% line-height-100% text-[#ffe2ac] m-0 bg-[#000000]"
+          class="flex-1 border-none w-full outline-none h-auto text-[#ffe2ac] m-0 bg-[#000000]"
           type={props.type}
           v-model={modelValue.value}
         />
