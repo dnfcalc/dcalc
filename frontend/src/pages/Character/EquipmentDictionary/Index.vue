@@ -385,6 +385,7 @@ const chooseEqu = (item?: IEquipment) => {
 <style lang="scss" scoped>
 .active {
   color: #ccc088;
+  position: relative;
 
   &::before {
     content: '';
@@ -394,6 +395,7 @@ const chooseEqu = (item?: IEquipment) => {
     opacity: 0.35;
     background: #bf8d20;
     filter: blur(7px);
+    z-index: 2;
   }
 
   &::after {
@@ -402,8 +404,8 @@ const chooseEqu = (item?: IEquipment) => {
     background: url('@/assets/img/active.png') no-repeat;
     width: 148px;
     height:16px;
-    top:60px;
-    transform: translate(0, 0%);
+    bottom: 2px;
+    transform: translate(0, 50%);
   }
 }
 

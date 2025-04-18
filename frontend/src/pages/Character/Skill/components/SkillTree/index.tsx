@@ -114,7 +114,7 @@ export default defineComponent({
                 class={['h-28px w-28px', skill.type === 'passive' ? 'passive' : '']}
                 src={getImageURL(skill.icon)}
               ></img>
-              <div class="w-100% flex items-center justify-center pt-2px" style={{ color }}>
+              <div class="w-100% flex flex-1 justify-center" style={{ color }}>
                 {info?.lv ?? 0}
               </div>
             </div>

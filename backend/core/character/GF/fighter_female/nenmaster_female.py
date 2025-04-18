@@ -72,7 +72,7 @@ class Skill4(ActiveSkill):
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 2
     cd = 4
     mp = [15, 154]
@@ -98,7 +98,7 @@ class Skill5(ActiveSkill):
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
     cd = 5
     mp = [126, 1195]
@@ -112,7 +112,7 @@ class Skill6(ActiveSkill):
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
     cd = 8
     mp = [20, 168]
@@ -128,7 +128,7 @@ class Skill7(ActiveSkill):
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 3
     cd = 5
     mp = [194, 1502]
@@ -142,7 +142,7 @@ class Skill8(PassiveSkill):
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 2
 
     data0 = [0, 1426, 1569, 1715, 1858, 2004, 2152, 2295, 2431, 2584, 2727, 2866, 3016, 3160, 3298, 3451, 3594, 3733, 3884, 4022, 4167, 4313, 4457, 4605, 4748, 4886, 5035, 5178, 5321, 5472, 5613, 5753, 5904, 6047, 6186, 6338, 6477, 6623, 6769, 6916, 7050, 7194, 7344, 7485, 7631, 7781, 7917, 8063, 8208, 8357, 8500, 8646, 8789, 8932, 9071, 9219, 9365, 9505, 9654, 9797, 9942, 10091, 10229, 10372, 10521, 10666, 10807, 10956, 11101, 11237, 11385]# noqa: E501
@@ -160,7 +160,7 @@ class Skill9(PassiveSkill):
     learnLv = 20
     masterLv = 1
     maxLv = 11
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 1
     cd = 3
     mp = [40, 56]
@@ -179,7 +179,7 @@ class Skill10(ActiveSkill):
     learnLv = 25
     masterLv = 1
     maxLv = 11
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 3
     cd = 30
     mp = [60, 560]
@@ -193,7 +193,7 @@ class Skill11(ActiveSkill):
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 2
     cd = 6
     mp = [48, 403]
@@ -209,7 +209,7 @@ class Skill12(ActiveSkill):
     learnLv = 30
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
     cd = 4
     mp = [268, 1694]
@@ -236,7 +236,7 @@ class Skill13(ActiveSkill):
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 2
     cd = 8
     mp = [50, 420]
@@ -252,7 +252,7 @@ class Skill14(ActiveSkill):
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 2
     cd = 12
     mp = [96, 806]
@@ -271,7 +271,7 @@ class Skill15(ActiveSkill):
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 2
     cube = 1
     cd = 15
@@ -288,7 +288,7 @@ class Skill16(ActiveSkill):
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
     cube = 1
     cd = 20
@@ -305,10 +305,11 @@ class Skill17(ActiveSkill):
     learnLv = 40
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
     cd = 5
     mp = [550, 5217]
+    icon = '$char/念兽：龙虎啸'
 
     data0 = [0, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169]# noqa: E501
     hit0 = 1 #TODO
@@ -347,7 +348,7 @@ class Skill18(ActiveSkill):
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 2
     cube = 2
     cd = 40
@@ -364,7 +365,7 @@ class Skill19(PassiveSkill):
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 3
     icon = '$char/乱舞千叶花'
 
@@ -394,7 +395,7 @@ class Skill20(ActiveSkill):
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 5
     cube = 5
     cd = 145
@@ -412,7 +413,7 @@ class Skill21(PassiveSkill):
     learnLv = 60
     masterLv = 1
     maxLv = 11
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 2
 
 
@@ -424,7 +425,7 @@ class Skill22(ActiveSkill):
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 2
     cube = 1
     cd = 30
@@ -445,7 +446,7 @@ class Skill23(ActiveSkill):
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 2
     cube = 2
     cd = 30
@@ -460,11 +461,11 @@ class Skill23(ActiveSkill):
 # 낙화태염성 낙화태염성
 # https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/547ab2b2bd860d3e37355a9cfbc1077c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill24(PassiveSkill):
-    name = "念花守星"
+    name = "念花守心"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 3
 
     data0 = [0, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72, 75, 78, 81, 84, 87, 90, 93, 96, 99, 102, 105, 108, 111, 114, 117, 120, 123, 126, 129, 132, 135, 138, 141, 144, 147, 150, 153, 156, 159, 162, 165, 168, 171, 174]# noqa: E501
@@ -481,7 +482,7 @@ class Skill25(ActiveSkill):
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 2
     cube = 3
     cd = 40
@@ -498,7 +499,7 @@ class Skill26(ActiveSkill):
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
     cube = 5
     cd = 45
@@ -515,7 +516,7 @@ class Skill27(ActiveSkill):
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 5
     cube = 10
     cd = 180
@@ -531,7 +532,7 @@ class Skill28(PassiveSkill):
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
 
     data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
@@ -548,7 +549,7 @@ class Skill29(ActiveSkill):
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 2
     cube = 7
     cd = 60
@@ -571,7 +572,7 @@ class Skill30(ActiveSkill):
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 5
     cube = 15
     cd = 290

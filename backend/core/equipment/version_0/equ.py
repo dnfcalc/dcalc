@@ -752,6 +752,7 @@ def equ_46(char: CharacterProperty):
     魔法防御力+7000
     光属性抗性+20
     """
+    char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -768,6 +769,7 @@ def equ_47(char: CharacterProperty):
 
     施放[念兽：龙虎啸]时，变更技能特效。
     """
+    char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -785,6 +787,7 @@ def equ_48(char: CharacterProperty):
     施放[念兽：龙虎啸]时，变更技能特效。
     召唤念气星体。
     """
+    char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -897,6 +900,7 @@ def equ_55(char: CharacterProperty):
     -对爆炸范围内的敌人造成72000%伤害
     -爆炸发生时，如果生命值不足80%，则恢复20%的生命值。（冷却时间30秒）
     """
+    char.equ_effect.append(EquEffect(name='绯红爆炸',icon='/equipment/icon/weapon/fighter/gauntlet/00246.png',cd=10,data=72000))
     pass
 
 
@@ -916,6 +920,7 @@ def equ_56(char: CharacterProperty):
     -绯红爆炸范围+50%
     -爆炸发生时，如果生命值不足80%，则恢复40%的生命值。（冷却时间30秒）
     """
+    char.equ_effect.append(EquEffect(name='绯红爆炸',icon='/equipment/icon/weapon/fighter/gauntlet/00247.png',cd=10,data=72000))
     pass
 
 
@@ -989,6 +994,8 @@ def equ_62(char: CharacterProperty):
     -悲伤魔珠伤害量15300%
     -冷却时间：30秒
     """
+    char.SetStatus(SpeedM = 0.1,SpeedA = 0.1,SpeedR = 0.1)
+    char.equ_effect.append(EquEffect(name='悲伤魔珠', icon='/equipment/skill/38.png', cd=30, data=15300))
     pass
 
 
@@ -1008,6 +1015,8 @@ def equ_63(char: CharacterProperty):
     -悲伤魔珠伤害量15300%
     -冷却时间：15秒
     """
+    char.SetStatus(SpeedM = 0.2,SpeedA = 0.2,SpeedR = 0.2)
+    char.equ_effect.append(EquEffect(name='悲伤魔珠', icon='/equipment/skill/38.png', cd=15, data=15300))
     pass
 
 
@@ -1031,6 +1040,8 @@ def equ_64(char: CharacterProperty):
     身体被彻骨之恨包裹，减少所受伤害。
     -所受物理/魔法伤害-10%
     """
+    char.SetStatus(SpeedM = 0.25,SpeedA = 0.25,SpeedR = 0.25)
+    char.equ_effect.append(EquEffect(name='悲伤魔珠', icon='/equipment/skill/38.png', cd=10, data=15300))
     pass
 
 
@@ -1145,6 +1156,7 @@ def equ_71(char: CharacterProperty):
     攻击敌人时，对该敌人产生冲击波。（冷却时间0.2秒）
     -冲击波伤害量2400%
     """
+    char.equ_effect.append(EquEffect(name='冲击波', icon='/equipment/icon/weapon/fighter/bglove/00208.png', cd=0.2, data=2400))
     pass
 
 
@@ -1163,6 +1175,8 @@ def equ_72(char: CharacterProperty):
     -冲击波施放4次后，下次冲击波变为强化冲击波。
     -强化冲击波伤害量：4800%
     """
+    char.equ_effect.append(EquEffect(name='冲击波', icon='/equipment/icon/weapon/fighter/bglove/00209.png', cd=0.2, data=2400))
+    char.equ_effect.append(EquEffect(name='强化冲击波', icon='/equipment/icon/weapon/fighter/bglove/00209', cd=1, data=4800))
     pass
 
 
@@ -1274,6 +1288,7 @@ def equ_79(char: CharacterProperty):
     -魔法值消耗量+300%
     -魔法值为0或再次按键时，解除[魔力觉察]状态
     """
+    char.SetStatus(SpeedA=0.2,SpeedM=0.2,SpeedR=0.2)
     pass
 
 
@@ -1296,6 +1311,7 @@ def equ_80(char: CharacterProperty):
     -魔法值消耗量+200%
     -魔法值为0或再次按键时，解除[魔力觉察]状态
     """
+    char.SetStatus(SpeedA=0.3,SpeedM=0.3,SpeedR=0.3)
     pass
 
 
@@ -12560,6 +12576,9 @@ def equ_2000(char: CharacterProperty):
     effect = (point // 25) * 0.5
     if effect > 0:
         char.equ_effect.append(EquEffect(name='地震波', icon='/equipment/icon/special/magicstone/00417.png', cd=30, data=45900*effect))
+    if char.buffer:
+        char.BuffSkill.lv += 1
+        char.AwakeSkill.lv += 2
     pass
 
 @register
@@ -12606,7 +12625,6 @@ def equ_2001(char: CharacterProperty):
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
-        char.SetStatus(STR=200,INT=200,Spirit=200,Vitality=200)
     pass
 
 
