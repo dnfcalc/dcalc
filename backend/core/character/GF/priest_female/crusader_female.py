@@ -76,7 +76,7 @@ class Skill3(ActiveBufferSkill):
 
 # 圣洁之光 홀리 플래쉬
 # https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/4224f9b0b8c7c903e9a1e0f9d9f6d04d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill4(ActiveBufferSkill):
+class Skill4(ActiveSkill):
     name = "圣洁之光"
     learnLv = 15
     masterLv = 60
@@ -141,7 +141,7 @@ class Skill7(ActiveSkill):
 
 # 守护祝福 수호의 축복
 # https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/ade01c1d6afc8a05055225045e89fe49?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill8(ActiveBufferSkill):
+class Skill8(ActiveSkill):
     name = "守护祝福"
     learnLv = 20
     masterLv = 10
@@ -501,7 +501,7 @@ class Skill26(ActiveBufferSkill):
 
 # 圣光普照 미라클 샤인
 # https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/2391a27457b5a8c6fa4b4670a91bdd11?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill27(ActiveSkill):
+class Skill27(ActiveBufferSkill):
     name = "圣光普照"
     learnLv = 80
     masterLv = 40
@@ -559,7 +559,7 @@ class Skill29(PassiveBufferSkill):
     ]
 # 圣言十字 크럭스 오브 샤피엘
 # https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/85f7c810ad503790e8626439fe936d56?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill30(ActiveSkill):
+class Skill30(ActiveBufferSkill):
     name = "圣言十字"
     learnLv = 95
     masterLv = 40
