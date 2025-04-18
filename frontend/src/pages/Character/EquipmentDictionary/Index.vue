@@ -33,11 +33,11 @@
       <div class="flex flex-1 items-center">
         <div class="flex items-center">
           套装：
-          <div class="flex items-center justify-center gap-4px">
+          <div class="flex items-center justify-center gap-2px">
           <template v-for="(suit, _) in suitList" :key="_">
 
               <img
-                class="w-auto h-20px object-fill"
+                class="w-auto h-15px"
                 :src="getImageURL('equipment' + suit.imageUrl)"
                 :alt="suit.name"
                 :style="{
@@ -99,12 +99,12 @@ const suitList = computed(() => {
       uniqueSuits.set(a.suitId, {
         name: a.suitName,
         value: a.suitId,
-        imageUrl: a.imageUrl,
+        imageUrl: a.imageUrl.replace('/suit/', '/suit/icon/'),
       })
     }
   })
   const res = Array.from(uniqueSuits.values())
-  if(type.value == 'equ') res.push({ name: '通宝', value: -1, imageUrl: '/suit/little/-1.png' })
+  if(type.value == 'equ') res.push({ name: '通宝', value: -1, imageUrl: '/suit/icon/-1.png' })
   return res
 })
 
