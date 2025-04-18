@@ -2053,6 +2053,7 @@ def equ_126(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
+    char.SetSkillCDRecover(cd=0.06*5)
     pass
 
 
@@ -2070,6 +2071,7 @@ def equ_127(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
+    char.SetSkillCDRecover(cd=0.06*5)
     pass
 
 
@@ -2087,6 +2089,7 @@ def equ_128(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
+    char.SetSkillCDRecover(cd=0.06*5)
     pass
 
 
@@ -2174,9 +2177,8 @@ def equ_134(char: CharacterProperty):
         char.AddSkillLv(1,100,2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        skill = char.GetSkillByName('疯狂召唤')
-        if skill is not None:
-            skill.cdReduce *= 1 - 0.15
+        char.SetSkillCD(1,100,0.2)
+    char.equ_effect.append(EquEffect(name='羊袭', icon='/equipment/icon/weapon/mage/rod/00282.png', cd=0.5, data=3600))
     pass
 
 
@@ -2200,6 +2202,7 @@ def equ_135(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1,100,0.2)
+    char.equ_effect.append(EquEffect(name='羊袭', icon='/equipment/icon/weapon/mage/rod/00283.png', cd=0.5, data=6000))
     pass
 
 
@@ -2215,7 +2218,7 @@ def equ_136(char: CharacterProperty):
     -最多9只
 
     攻击时，消耗1只羊，施放绵羊云。（冷却时间2秒）
-    -羊袭伤害量：33600%
+    -绵羊云伤害量：33600%
 
     被击时，消耗1只羊， 生成最大生命值20%数值的保护罩，效果持续2秒。（冷却时间2秒）
     """
@@ -2224,6 +2227,7 @@ def equ_136(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1,100,0.2)
+    char.equ_effect.append(EquEffect(name='绵羊云', icon='/equipment/icon/weapon/mage/rod/00284.png', cd=2, data=33600))
     pass
 
 
@@ -2322,6 +2326,7 @@ def equ_142(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1,100,0.2)
+    char.SetStatus(SpeedA = 0.3,SpeedM = 0.3,SpeedR = 0.3)
 
 
 @register
@@ -2349,6 +2354,7 @@ def equ_143(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1,100,0.2)
+    char.SetStatus(SpeedA = 0.3,SpeedM = 0.3,SpeedR = 0.3)
     pass
 
 
@@ -2380,6 +2386,8 @@ def equ_144(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1,100,0.2)
+    char.SetStatus(SpeedA = 0.3,SpeedM = 0.3,SpeedR = 0.3)
+    char.equ_effect.append(EquEffect(name='闪电', icon='/equipment/skill/35.png', cd=3, data=14400))
     pass
 
 
@@ -2484,6 +2492,7 @@ def equ_150(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1,100,0.2)
+    char.equ_effect.append(EquEffect(name='绝对零度', icon='/equipment/skill/31.png', cd=40, data=113400))
     pass
 
 
@@ -2503,6 +2512,7 @@ def equ_151(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1,100,0.2)
+    char.equ_effect.append(EquEffect(name='绝对零度', icon='/equipment/skill/31.png', cd=40, data=226800))
     pass
 
 
@@ -2522,6 +2532,7 @@ def equ_152(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1,100,0.2)
+    char.equ_effect.append(EquEffect(name='绝对零度', icon='/equipment/skill/31.png', cd=40, data=340200))
     pass
 
 

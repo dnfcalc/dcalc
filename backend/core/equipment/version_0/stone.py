@@ -3452,7 +3452,6 @@ def stone_295(char: CharacterProperty):
     技能伤害+12.5%
     技能范围+20%
     """
-    print("~~~~~~~~")
     char.SetStatus(SkillAttack=0.125)
     pass
 
