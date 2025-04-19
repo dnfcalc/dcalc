@@ -76,6 +76,7 @@ export interface ISkill {
   id: number
   learnLv: number
   position: number
+  line:number
   type: string
   maxLearnLv: number
   maxLv: number

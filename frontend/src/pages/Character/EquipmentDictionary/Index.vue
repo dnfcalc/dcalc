@@ -1,5 +1,5 @@
 <template>
-  <div class="w-330px bg-black">
+  <div class="w-340px bg-black flex flex-col">
     <!-- 头部 选择是装备还是融合石 -->
     <div class="flex bg-#101012 h-40px text-#6C5E4A font-bold">
       <div
@@ -48,23 +48,26 @@
           </div>
         </div>
       </div>
-      <template v-for="item in equs" :key="item.name">
-        <template v-if="item.equs.length > 0">
-          <div class="item-head">{{ item.name }}</div>
-          <div class="flex flex-wrap gap-4px content-start w-full">
-            <template v-for="(equ, _) in item.equs" :key="_">
-              <EquipmentIcon :inactive="!isActive(equ)" :equipment="equ" @click="chooseEqu(equ)" />
-            </template>
-          </div>
-        </template>
-      </template>
     </div>
+    <div class="overflow-y-auto space-y-1 flex flex-col items-center flex-1 h-0">
+        <template v-for="item in equs" :key="item.name">
+          <template v-if="item.equs.length > 0">
+            <div class="item-head w-full">{{ item.name }}</div>
+            <div class="flex flex-wrap gap-4px justify-around w-full">
+              <template v-for="(equ, _) in item.equs" :key="_">
+                <EquipmentIcon
+                  :inactive="!isActive(equ)"
+                  :equipment="equ"
+                  @click="chooseEqu(equ)"
+                />
+              </template>
+            </div>
+          </template>
+        </template>
+      </div>
   </div>
   <div class="px-5px flex flex-col">
-    <div
-      class="flex flex-col overflow-hidden bg-black"
-      v-if="curEquInfo"
-    >
+    <div class="flex flex-col overflow-hidden bg-black" v-if="curEquInfo">
       <div class="item-head">基础信息</div>
       <div class="flex-1 overflow-y-auto overflow-x-hidden bg-black w-240px">
         <Info v-if="curEquInfo" :equipment="curEquInfo" />

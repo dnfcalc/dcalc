@@ -495,8 +495,6 @@ class classChange(Character):
         self.nameCN = '重霄·弹药专家'
         self.role = 'gunner_female'
 
-        # 用来筛CP武器的
-        # self.转职 = '弹药专家(女)'
         self.武器选项 = ['手弩', '步枪','左轮枪','自动手枪','手炮']
         self.输出类型选项 = ['物理固伤','魔法固伤']
         self.输出类型 = '物理固伤'

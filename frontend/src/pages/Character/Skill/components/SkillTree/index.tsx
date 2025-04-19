@@ -29,13 +29,13 @@ export default defineComponent({
       if (position >= 0)
         return skills.value.find(
           (item) =>
-            item.learnLv > lvStart - 5 &&
-            item.learnLv <= Math.max(lvEnd - 5, 1) &&
+            item.line > lvStart - 5 &&
+            item.line <= Math.max(lvEnd - 5, 1) &&
             item.position == position,
         )
       else
         return skills.value.filter(
-          (item) => item.learnLv > lvStart - 5 && item.learnLv <= Math.max(lvEnd - 5, 1),
+          (item) => item.line > lvStart - 5 && item.line <= Math.max(lvEnd - 5, 1),
         )
     }
 

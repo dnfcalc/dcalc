@@ -8,10 +8,10 @@ adv = [
         'title': '鬼剑士(男)',
         'children': [
             {'id': 0, 'name': 'weapon_master', 'title': '极诣·剑魂', 'open': False},
-            {'id': 1, 'name': 'soul_bender', 'title': '极诣·鬼泣', 'open': False},
+            {'id': 1, 'name': 'soul_bender', 'title': '极诣·鬼泣', 'open': True, 'class': 'GF.swordman_male.soul_bender'},
             {'id': 2, 'name': 'berserker', 'title': '极诣·狂战士', 'open': True, 'class': 'GF.swordman_male.berserker'},
-            {'id': 3, 'name': 'asura', 'title': '极诣·阿修罗', 'open': False},
-            {'id': 4, 'name': 'ghostblade', 'title': '极诣·剑影', 'open': False},
+            {'id': 3, 'name': 'asura', 'title': '极诣·阿修罗', 'open': False, 'class': 'GF.swordman_male.asura'},
+            {'id': 4, 'name': 'ghostblade', 'title': '极诣·剑影', 'open': True, 'class': 'GF.swordman_male.ghostblade'},
         ],
     },
     {
@@ -20,10 +20,10 @@ adv = [
         'title': '鬼剑士(女)',
         'children': [
             {'id': 0, 'name': 'sword_master', 'title': '极诣·驭剑士', 'open': False},
-            {'id': 1, 'name': 'dark_templar', 'title': '极诣·暗殿骑士', 'open': False},
+            {'id': 1, 'name': 'dark_templar', 'title': '极诣·暗殿骑士', 'open': False, 'class': 'GF.swordman_female.dark_templar'},
             {'id': 2, 'name': 'demon_slayer', 'title': '极诣·契魔者', 'open': True, 'class': 'GF.swordman_female.demon_slayer'},
             {'id': 3, 'name': 'vegabond', 'title': '极诣·流浪武士', 'open': True, 'class': 'GF.swordman_female.vegabond'},
-            {'id': 4, 'name': 'spectre', 'title': '极诣·刃影', 'open': False},
+            {'id': 4, 'name': 'spectre', 'title': '极诣·刃影', 'open': False, 'class': 'GF.swordman_female.spectre'},
         ],
     },
     {

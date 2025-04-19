@@ -29,6 +29,8 @@ class Skill:
     """精通等级"""
     maxLv: int = 0
     """最大等级"""
+    line: int = None
+    """技能行"""
     position: int = 0
     """技能树位置"""
     rangeLv: int = 1
@@ -71,6 +73,8 @@ class Skill:
         self.char = char
         self.id = self._extract_id()
         self.icon = self._generate_icon()
+        if self.line is None:
+            self.line = self.learnLv
         # self.lv = self._calculate_lv()
         pass
 
@@ -96,7 +100,7 @@ class Skill:
 
     @lv.setter
     def lv(self, value):
-        value = min(self.maxLv, value)
+        value = int(min(self.maxLv, value))
         if self._lv != value:
             self.effect(self._lv, value)
             self._lv = value
@@ -146,7 +150,9 @@ class Skill:
             else:
                 setattr(skill, type[1:], getattr(skill, type[1:]) * (1 + data[new] / ratio) / (1 + data[old] / ratio))
         elif type.startswith('+'):
+            print(skill.name,type[1:], getattr(skill, type[1:]),data[new] / ratio - data[old] / ratio)
             setattr(skill, type[1:], getattr(skill, type[1:]) + data[new] / ratio - data[old] / ratio)
+            print(skill.name,type[1:], getattr(skill, type[1:]))
 
     def skillInfo(self, mode: str | None = None):
         pass

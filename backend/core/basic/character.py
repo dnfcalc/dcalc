@@ -447,6 +447,7 @@ class Character(CharacterProperty):
                     # "masterTPLv":0 if not skill.hasTP else  skill.masterTPLv,
                     # 'maxTPLv': 0 if not skill.hasTP else skill.TPLearnMax,
                     'position': skill.position,
+                    'line':skill.line,
                 }
             )
         info['skills'] = skillInfo
@@ -532,7 +533,7 @@ class Character(CharacterProperty):
         for key in skills:
             skill = self.GetSkillByID(key)
             if skill is not None:
-                skill.lv = skills[key].get('lv', 0)
+                skill.lv += skills[key].get('lv', 0)
         pass
 
     def load_skills(self):

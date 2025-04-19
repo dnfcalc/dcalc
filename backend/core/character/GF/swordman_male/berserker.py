@@ -489,8 +489,6 @@ class classChange(Character):
         self.nameCN = '极诣·狂战士'
         self.role = 'swordman_male'
 
-        # 用来筛CP武器的
-        # self.转职 = '弹药专家(女)'
         self.武器选项 = ['太刀', '钝器', '巨剑', '短剑']
         self.输出类型选项 = ['物理固伤','魔法固伤']
         self.输出类型 = '物理固伤'

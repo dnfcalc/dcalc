@@ -443,8 +443,6 @@ class classChange(Character):
         self.nameCN = '极诣·流浪武士'
         self.role = 'swordman_female'
 
-        # 用来筛CP武器的
-        # self.转职 = '弹药专家(女)'
         self.武器选项 = ['光剑', '巨剑', '钝器', '太刀', '短剑']
         self.副武器选项 = ['光剑']
         self.输出类型选项 = ['物理百分比']
