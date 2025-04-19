@@ -1,392 +1,123 @@
-.icon-reset {
-  background-image: url("@/assets/img/icon/reset.png") !important;
+@mixin icon-style($icon-name, $width: 20px, $height: 20px, $size: 100% 100%, $position: center center) {
+  background-image: url("@/assets/img/icon/#{$icon-name}.png") !important;
   background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 20px !important;
-  height: 20px !important;
+  background-size: $size !important;
+  background-position: $position !important;
+  width: $width !important;
+  height: $height !important;
+
   &:hover {
-    background-image: url("@/assets/img/icon/reset_hover.png") !important ;
+    background-image: url("@/assets/img/icon/#{$icon-name}_hover.png") !important;
   }
   &:active {
-    background-image: url("@/assets/img/icon/reset_active.png") !important;
+    background-image: url("@/assets/img/icon/#{$icon-name}_active.png") !important;
   }
   &:disabled {
-    background-image: url("@/assets/img/icon/reset_disabled.png") !important;
+    background-image: url("@/assets/img/icon/#{$icon-name}_disabled.png") !important;
   }
+}
+
+.icon-reset {
+  @include icon-style("reset");
 }
 
 .icon-set {
-  background-image: url("@/assets/img/icon/set.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 20px !important;
-  height: 20px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/set_hover.png") !important;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/set_active.png") !important  ;
-  }
-  // &:disabled {
-  //   background-image: url("@/assets/img/icon/set_disabled.png");
-  // }
+  @include icon-style("set");
 }
 
 .icon-prev {
-  background-image: url("@/assets/img/icon/prev.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 16px !important;
-  height: 16px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/prev_hover.png") !important;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/prev_active.png") !important;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/prev_disabled.png") !important;
-  }
+  @include icon-style("prev", 16px, 16px);
 }
 
 .icon-next {
-  background-image: url("@/assets/img/icon/next.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 16px !important;
-  height: 16px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/next_hover.png") !important;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/next_active.png") !important;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/next_disabled.png") !important;
-  }
+  @include icon-style("next", 16px, 16px);
 }
 
 .icon-dropdown {
-  background-image: url("@/assets/img/icon/dropdown.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 16px !important;
-  height: 16px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/dropdown_hover.png")   !important;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/dropdown_active.png") !important;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/dropdown_disabled.png");
-  }
+  @include icon-style("dropdown", 16px, 16px);
 }
 
 .icon-search {
-  background-image: url("@/assets/img/icon/search.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 20px !important;
-  height: 20px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/search_hover.png") !important;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/search_active.png") !important;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/search_disabled.png" ) !important;
-  }
+  @include icon-style("search");
 }
 
 .icon-increase {
-  background-image: url("@/assets/img/icon/increase.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 16px !important;
-  height: 16px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/increase_hover.png") !important;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/increase_active.png") !important;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/increase_disabled.png") !important ;
-  }
+  @include icon-style("increase");
 }
 
 .icon-reduce {
-  background-image: url("@/assets/img/icon/reduce.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 16px !important;
-  height: 16px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/reduce_hover.png") !important;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/reduce_active.png") !important;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/reduce_disabled.png") !important;
-  }
+  @include icon-style("reduce");
 }
 
 .icon-plus {
-  background-image: url("@/assets/img/icon/plus.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 20px !important;
-  height: 20px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/plus_hover.png") !important;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/plus_active.png") !important;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/plus_disabled.png") !important;
-  }
+  @include icon-style("plus");
 }
 
 .icon-detail {
-  background-image: url("@/assets/img/icon/detail.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 20px !important;
-  height: 20px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/detail_hover.png") !important;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/detail_active.png") !important;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/detail_disabled.png") !important;
-  }
+  @include icon-style("detail");
 }
 
-
 .icon-home {
-  background-image: url("@/assets/img/icon/home.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 20px !important;
-  height: 20px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/home_hover.png") !important;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/home_active.png") !important;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/home_disabled.png") !important;
-  }
+  @include icon-style("home");
 }
 
 .icon-reflesh {
-  background-image: url("@/assets/img/icon/reflesh.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 20px !important;
-  height: 20px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/reflesh_hover.png") !important;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/reflesh_active.png") !important;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/reflesh_disabled.png") !important;
-  }
+  @include icon-style("reflesh");
 }
 
 .icon-update {
-  background-image: url("@/assets/img/icon/update.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 20px !important;
-  height: 20px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/update_hover.png") !important;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/update_active.png") !important;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/update_disabled.png") !important;
-  }
+  @include icon-style("update");
 }
 
 .icon-share {
-  background-image: url("@/assets/img/icon/share.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 20px !important;
-  height: 20px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/share_hover.png") !important;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/share_active.png") !important;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/share_disabled.png") !important;
-  }
+  @include icon-style("share");
 }
 
 .icon-import {
-  background-image: url("@/assets/img/icon/import.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: 100% 100% !important;
-  width: 20px !important;
-  height: 20px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/import_hover.png") !important;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/import_active.png") !important;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/import_disabled.png") !important;
-  }
+  @include icon-style("import");
 }
 
 .icon-menu-drug {
-  background-image: url("@/assets/img/icon/menu/drug.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: auto 100% !important;
-  background-position: center center;
-  width: 20px !important;
-  height: 20px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/menu/drug_hover.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/menu/drug_active.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/menu/drug_disabled.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
+  @include icon-style("menu/drug", 20px, 20px, auto 100%);
 }
 
 .icon-menu-specificity {
-  background-image: url("@/assets/img/icon/menu/specificity.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: auto 100% !important;
-  background-position: center center;
-  width: 20px !important;
-  height: 20px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/menu/specificity_hover.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/menu/specificity_active.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/menu/specificity_disabled.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
+  @include icon-style("menu/specificity", 20px, 20px, auto 100%);
 }
 
-
 .icon-menu-favourite {
-  background-image: url("@/assets/img/icon/menu/favourite.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: auto 100% !important;
-  background-position: center center;
-  width: 20px !important;
-  height: 20px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/menu/favourite_hover.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/menu/favourite_active.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/menu/favourite_disabled.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
+  @include icon-style("menu/favourite", 20px, 20px, auto 100%);
 }
 
 .icon-menu-recommend {
-  background-image: url("@/assets/img/icon/menu/recommend.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: auto 100% !important;
-  background-position: center center;
-  width: 20px !important;
-  height: 20px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/menu/recommend_hover.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/menu/recommend_active.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/menu/recommend_disabled.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
+  @include icon-style("menu/recommend", 20px, 20px, auto 100%);
 }
 
 .icon-menu-set {
-  background-image: url("@/assets/img/icon/menu/set.png") !important;
-  background-repeat: no-repeat !important;
-  background-size: auto 100% !important;
-  background-position: center center;
-  width: 20px !important;
-  height: 20px !important;
-  &:hover {
-    background-image: url("@/assets/img/icon/menu/set_hover.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
-  &:active {
-    background-image: url("@/assets/img/icon/menu/set_active.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
-  &:disabled {
-    background-image: url("@/assets/img/icon/menu/set_disabled.png") !important;
-    background-repeat: no-repeat !important;
-    background-size: auto 100% !important;
-    background-position: center center;
-  }
+  @include icon-style("menu/set", 20px, 20px, auto 100%);
 }
 
+.icon-max{
+  @include icon-style("max");
+}
+
+.icon-min{
+  @include icon-style("min");
+}
+
+
+.icon-increase-little {
+  @include icon-style("increase",16px, 16px);
+}
+
+.icon-reduce-little {
+  @include icon-style("reduce", 16px, 16px);
+}
+
+.icon-max-little{
+  @include icon-style("max", 16px, 16px);
+}
+
+.icon-min-little{
+  @include icon-style("min", 16px, 16px);
+}

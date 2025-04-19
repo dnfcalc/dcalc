@@ -56,6 +56,18 @@ export interface IEquipment {
   suit: string[]
   rarity: string
   max_adaptation:number
+  STR:number[]
+  INT:number[]
+  Vitality:number[]
+  Spirit:number[]
+  AtkP:number[]
+  AtkM:number[]
+  AtkI:number[]
+  SkillAttack:number[]
+  Attack:number[]
+  Buffer:number[]
+  detail: string
+  bufferDetail:string
 }
 
 export interface ISkill {
@@ -75,6 +87,12 @@ export interface ISuit {
   imageUrl: string
   suitId: number
   suitName: string
+  point:number
+  rarity: string
+  level: number
+  SkillAttack: number
+  Buffer:number
+  value:string
 }
 
 export interface IEnchantingInfo {

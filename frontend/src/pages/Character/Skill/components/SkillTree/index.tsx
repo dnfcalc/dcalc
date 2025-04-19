@@ -1,6 +1,7 @@
 import { getImageURL, getLocalImageURL } from '@/utils/images'
 import type { ISkill } from '@/api/info/type'
 import { useVModel } from '@vueuse/core'
+import CalcButton from '@/components/calc/button/index.vue'
 import './style.scss'
 
 export default defineComponent({
@@ -16,7 +17,7 @@ export default defineComponent({
     },
     bindAwake: {
       type: Number,
-      default: ()=>50,
+      default: () => 50,
     },
   },
   setup(props) {
@@ -83,9 +84,9 @@ export default defineComponent({
       }
     }
 
-    const chooseBindAwake = (lv:number) => {
-        bindAwake.value = lv
-        console.log(bindAwake.value,lv)
+    const chooseBindAwake = (lv: number) => {
+      bindAwake.value = lv
+      console.log(bindAwake.value, lv)
     }
 
     const renderSkill = (skill: ISkill, index: number) => {
@@ -98,7 +99,10 @@ export default defineComponent({
           <div class="relative w-35px h-55px">
             {activeSkill.value == skill.id && renderSkillAction(skill)}
             <div
-              class={["w-36px absolute h-48px flex flex-col box-border items-center py-3px z-2",skill.learnLv == 100 ? '' : 'skill']}
+              class={[
+                'w-36px absolute h-48px flex flex-col box-border items-center py-3px z-2',
+                skill.learnLv == 100 ? '' : 'skill',
+              ]}
               onClick={(e) => {
                 e.stopPropagation()
                 chooseSkill(skill)
@@ -120,20 +124,32 @@ export default defineComponent({
             </div>
             {skill.learnLv == 100 && (
               <>
-                <div class={`pos-absolute w-196px h-54px box-border translate-x--50% left-18px top--3px flex justify-between items-center py-2px px-3px awake_${bindAwake.value}`}>
-                  <div class="w-36px flex flex-col box-border items-center py-2px z-2" onClick={()=>chooseBindAwake(50)}>
+                <div
+                  class={`pos-absolute w-196px h-54px box-border translate-x--50% left-18px top--3px flex justify-between items-center py-2px px-3px awake_${bindAwake.value}`}
+                >
+                  <div
+                    class="w-36px flex flex-col box-border items-center py-2px z-2"
+                    onClick={() => chooseBindAwake(50)}
+                  >
                     <img
                       class="h-28px w-28px mt-2px"
                       src={getImageURL(awakeSkill_1.value?.icon ?? '')}
                     ></img>
-                    <div class="w-100% mt-1px flex items-center justify-center text-#ffc701">1次</div>
+                    <div class="w-100% mt-1px flex items-center justify-center text-#ffc701">
+                      1次
+                    </div>
                   </div>
-                  <div class="w-36px flex flex-col box-border items-center py-2px z-2" onClick={()=>chooseBindAwake(85)}>
+                  <div
+                    class="w-36px flex flex-col box-border items-center py-2px z-2"
+                    onClick={() => chooseBindAwake(85)}
+                  >
                     <img
                       class="h-28px w-28px mt-1px"
                       src={getImageURL(awakeSkill_2.value?.icon ?? '')}
                     ></img>
-                    <div class="w-100% mt-1px flex items-center justify-center text-#ffc701">2次</div>
+                    <div class="w-100% mt-1px flex items-center justify-center text-#ffc701">
+                      2次
+                    </div>
                   </div>
                 </div>
               </>
@@ -147,8 +163,39 @@ export default defineComponent({
       <>
         <>
           <div class="absolute skill-active w-88px h-78px translate-x--50% left-16px top--1px">
-              <div class="flex justify-between px-5px relative top-55px">
-                <img
+            <div class="flex justify-between items-center px-5px relative top-54px">
+              <CalcButton
+                icon="min"
+                disabled={lvInfo.value[skill.id.toString()]?.lv == 0}
+                onClick={(e: Event) => {
+                  e.stopPropagation()
+                  actionSkillLv(skill, 'subMax')
+                }}
+              ></CalcButton>
+              <CalcButton
+                icon="reduce"
+                disabled={lvInfo.value[skill.id.toString()]?.lv == 0}
+                onClick={(e: Event) => {
+                  e.stopPropagation()
+                  actionSkillLv(skill, 'sub')
+                }}
+              ></CalcButton>
+              <CalcButton
+                icon="increase"
+                onClick={(e: Event) => {
+                  e.stopPropagation()
+                  actionSkillLv(skill, 'add')
+                }}
+              ></CalcButton>
+              <CalcButton
+                icon="max"
+                disabled={lvInfo.value[skill.id.toString()]?.lv >= skill.maxLearnLv}
+                onClick={(e: Event) => {
+                  e.stopPropagation()
+                  actionSkillLv(skill, 'addMax')
+                }}
+              ></CalcButton>
+              {/* <img
                   src={`${new URL('./img/min.svg', import.meta.url).href}`}
                   onClick={(e: Event) => {
                     e.stopPropagation()
@@ -175,8 +222,8 @@ export default defineComponent({
                     e.stopPropagation()
                     actionSkillLv(skill, 'addMax')
                   }}
-                ></img>
-              </div>
+                ></img> */}
+            </div>
           </div>
         </>
       </>

@@ -23,9 +23,14 @@ export default defineComponent({
     type: {
       type: String,
       default: "primary"
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
-  setup(props, { slots }) {
+  emits: ["click"],
+  setup(props, { slots,emit }) {
     return () => {
       const proerpties = {
         to: props.to,
@@ -34,7 +39,14 @@ export default defineComponent({
           "i-button cursor-pointer outline-none text-shadow": true,
           "small": props.small,
           [`icon-${props.icon}`]: !!props.icon
-        }
+        },
+        onClick: (e: MouseEvent) => {
+          if (props.to) {
+            e.preventDefault()
+          }
+          emit("click", e)
+        },
+        disabled: props.disabled
       }
       const content = renderSlot(slots, "default")
       return props.to ? <RouterLink {...proerpties}>{content}</RouterLink> : <button {...proerpties}>{content}</button>

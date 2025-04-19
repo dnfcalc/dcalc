@@ -298,6 +298,33 @@ export function rarityClass(type: string) {
   }
 }
 
+export function formatAttr(type:string,value:number){
+  switch(type){
+    case "STR":
+      return `力量 ${value}`
+    case "INT":
+      return `智力 ${value}`
+    case "Vitality":
+      return `体力 ${value}`
+    case "Spirit":
+      return `精神 ${value}`
+    case "AtkP":
+      return `物理攻击力 ${value}`
+    case "AtkM":
+      return `魔法攻击力 ${value}`
+    case "AtkI":
+      return `独立攻击力 ${value}`
+    case "SkillAttack":
+      return `技能伤害 +${(value * 100).toFixed(2)}%`
+    case "Attack":
+      return `攻击强化 +${(value).toFixed(1)}%`
+    case "Buffer":
+      return `增益量 ${(value)}`
+    default:
+      return `${type} ${value}`
+  }
+}
+
 
 export const decrypt = (encryptedData:string)=>{
   try{

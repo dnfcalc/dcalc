@@ -34,8 +34,7 @@
         <div class="flex items-center">
           套装：
           <div class="flex items-center justify-center gap-2px">
-          <template v-for="(suit, _) in suitList" :key="_">
-
+            <template v-for="(suit, _) in suitList" :key="_">
               <img
                 class="w-auto h-15px"
                 :src="getImageURL('equipment' + suit.imageUrl)"
@@ -45,9 +44,8 @@
                 }"
                 @click="curSuit = suit.value"
               />
-
-          </template>
-        </div>
+            </template>
+          </div>
         </div>
       </div>
       <template v-for="item in equs" :key="item.name">
@@ -55,15 +53,64 @@
           <div class="item-head">{{ item.name }}</div>
           <div class="flex flex-wrap gap-4px content-start w-full">
             <template v-for="(equ, _) in item.equs" :key="_">
-              <EquipmentIcon :inactive="!isActive(equ)" :equipment="equ" @click="chooseEqu(equ)"/>
+              <EquipmentIcon :inactive="!isActive(equ)" :equipment="equ" @click="chooseEqu(equ)" />
             </template>
           </div>
         </template>
       </template>
     </div>
-
-    <!-- 筛选条件 -->
-    <!-- 装备列表 -->
+  </div>
+  <div class="px-5px flex flex-col">
+    <div
+      class="flex flex-col overflow-hidden bg-black"
+      v-if="curEquInfo"
+    >
+      <div class="item-head">基础信息</div>
+      <div class="flex-1 overflow-y-auto overflow-x-hidden bg-black w-240px">
+        <Info v-if="curEquInfo" :equipment="curEquInfo" />
+      </div>
+    </div>
+    <div class="flex flex-col flex-1 overflow-hidden bg-black" v-if="curSuitInfo">
+      <div class="item-head">套装信息</div>
+      <div class="flex bg-#191918 items-center justify-center gap-2px p-5px">
+        <calc-button
+          :disabled="raritiyList.findIndex((rarity) => rarity === curSuitLv.rarity) <= 0"
+          icon="min-little"
+          @click="changeSuitLv('preRarity')"
+        ></calc-button>
+        <calc-button
+          icon="reduce-little"
+          :disabled="
+            raritiyList.findIndex((rarity) => rarity === curSuitLv.rarity) <= 0 && curSuitLv.lv <= 1
+          "
+          @click="changeSuitLv('preLv')"
+        ></calc-button>
+        <div class="flex px-20px gap-x-10px" :class="rarityClass(curSuitLv.rarity)">
+          <span>{{ curSuitLv.rarity }}</span>
+          <span>{{ formatLv(curSuitLv.lv, curSuitLv.rarity) }}</span>
+        </div>
+        <calc-button
+          :disabled="
+            raritiyList.findIndex((rarity) => rarity === curSuitLv.rarity) >= raritiyList.length - 1
+          "
+          @click="changeSuitLv('nextLv')"
+          icon="increase-little"
+        ></calc-button>
+        <calc-button
+          :disabled="
+            raritiyList.findIndex((rarity) => rarity === curSuitLv.rarity) >= raritiyList.length - 1
+          "
+          @click="changeSuitLv('nextRarity')"
+          icon="max-little"
+        ></calc-button>
+      </div>
+      <div
+        class="w-80% m-auto h-1px bg-gradient-to-r from-[rgba(52,43,27,0.05)] via-[rgba(52,43,27,1)] to-[rgba(52,43,27,0.05)]"
+      ></div>
+      <div class="flex-1 overflow-y-auto overflow-x-hidden bg-black w-240px">
+        <SuitInfo v-if="curSuitInfo" :suit="curSuitInfo" />
+      </div>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -71,26 +118,96 @@ import { useConfigStore, useInfoStore } from '@/stores'
 import PartSelect from '@/components/dnf/Equipment/PartSelect/index.vue'
 import EquipmentRaritySelect from '@/components/dnf/Equipment/RaritySelect/index.vue'
 import { getImageURL } from '@/utils/images'
+import { rarityClass } from '@/utils'
 import type { IEquipment } from '@/api/info/type'
 import EquipmentIcon from '@/components/dnf/Equipment/Icon/index.vue'
+import Info from '@/components/dnf/Equipment/Info/index.vue'
+import SuitInfo from '@/components/dnf/Equipment/SuitInfo/index.vue'
+import { formatEqu, formatStone } from './formatData'
 
 const infoStore = useInfoStore()
 const type = ref('equ')
 const curRarity = ref('')
 const curSuit = ref(16203)
+const curEquId = ref()
+const curSuitLv = ref({
+  rarity: '史诗',
+  lv: 1,
+})
+
+const raritiyList = ['稀有', '神器', '传说', '史诗', '太初']
+
+const formatLv = (number: number, raritiy?: string) => {
+  if (raritiy == '太初') return ''
+  const greekNumerals = ['Ι', 'ΙΙ', 'ΙΙΙ', 'ΙV', 'V', 'VΙ', 'VΙΙ', 'VΙΙΙ', 'ΙX', 'X']
+  return greekNumerals[number - 1] || number.toString()
+}
+
+const changeSuitLv = (
+  type: 'preRarity' | 'nextRarity' | 'preLv' | 'nextLv',
+  resetLv: boolean = true,
+) => {
+  if (type == 'preRarity') {
+    const index = raritiyList.findIndex((a) => a == curSuitLv.value.rarity)
+    if (index > 0) {
+      curSuitLv.value.rarity = raritiyList[index - 1]
+      curSuitLv.value.lv = resetLv ? 1 : 5
+      return
+    }
+  } else if (type == 'nextRarity') {
+    const index = raritiyList.findIndex((a) => a == curSuitLv.value.rarity)
+    if (index < raritiyList.length - 1) {
+      curSuitLv.value.rarity = raritiyList[index + 1]
+      curSuitLv.value.lv = 1
+      return
+    }
+  } else if (type == 'preLv') {
+    if (curSuitLv.value.lv > 1) {
+      curSuitLv.value.lv--
+      return
+    } else {
+      changeSuitLv('preRarity', false)
+    }
+  } else if (type == 'nextLv') {
+    if (curSuitLv.value.lv < 5) {
+      curSuitLv.value.lv++
+      return
+    } else {
+      changeSuitLv('nextRarity')
+    }
+  }
+}
 
 const choose_part = ref<string[]>([])
 
+const curEquInfo = computed(() => {
+  if (type.value == 'equ') {
+    return infoStore.equips.find((a) => a.id == curEquId.value)
+  } else {
+    return infoStore.stones.find((a) => a.id == curEquId.value)
+  }
+})
+
+const curSuitInfo = computed(() => {
+  if (curEquInfo.value?.suit.length != 1) {
+    return undefined
+  }
+  return infoStore.suits.find(
+    (a) =>
+      a.suitId.toString() == curEquInfo.value?.suit[0] &&
+      a.rarity == curSuitLv.value.rarity &&
+      a.level == curSuitLv.value.lv,
+  )
+})
+
 const chooseCategory = (cat: string) => {
   type.value = cat
-  if(type.value == 'stone' && curSuit.value == -1){
+  if (type.value == 'stone' && curSuit.value == -1) {
     curSuit.value = 16203
   }
 }
 
 const configStore = useConfigStore()
-
-const rowCount = 10
 
 const suitList = computed(() => {
   const uniqueSuits = new Map<number, { name: string; value: number; imageUrl: string }>()
@@ -104,7 +221,7 @@ const suitList = computed(() => {
     }
   })
   const res = Array.from(uniqueSuits.values())
-  if(type.value == 'equ') res.push({ name: '通宝', value: -1, imageUrl: '/suit/icon/-1.png' })
+  if (type.value == 'equ') res.push({ name: '通宝', value: -1, imageUrl: '/suit/icon/-1.png' })
   return res
 })
 
@@ -121,265 +238,43 @@ const equs = computed(() => {
         (a.suit.includes(curSuit.value.toString()) && a.suit.length === 1)),
   )
 
-  if(type.value == 'equ'){
-    return formatEqu(total)
-  }else{
-    return formatStone(total)
+  if (type.value == 'equ') {
+    return formatEqu(
+      total,
+      infoStore.infos?.subweapons,
+      suitList.value.find((a) => a.value == curSuit.value)?.name,
+    )
+  } else {
+    return formatStone(total, suitList.value.find((a) => a.value == curSuit.value)?.name)
   }
-
-
 })
-
-const formatEqu = (total: IEquipment[])=>{
-  // 武器
-  const item_weapon = total.filter((a) => a.itemType == '武器') ?? []
-  const weapons: (IEquipment | undefined)[] = []
-  if (item_weapon.length > 0) {
-    Array.from(new Set(item_weapon.map((item) => item.rarity))).forEach((rarity) => {
-      const weapon = item_weapon
-        .filter((item) => item.rarity === rarity)
-        .sort((a, b) => {
-          if (a.categorize == b.categorize) {
-            return a.itemDetailType.localeCompare(b.itemDetailType)
-          }
-          return b.categorize.localeCompare(a.categorize)
-        })
-      weapons.push(...weapon)
-      const remind = weapons.length % rowCount
-      remind > 0 && weapons.push(...Array(rowCount - remind).fill(undefined))
-    })
-  }
-
-  // # region 副武器
-  const subWeapons: (IEquipment | undefined)[] = []
-  const item_sub_weapon = (
-    total.filter((a) => infoStore.infos?.subweapons?.includes(a.itemDetailType)) ?? []
-  ).sort((a, b) => {
-    if (a.categorize == b.categorize) {
-      return a.itemDetailType.localeCompare(b.itemDetailType)
-    }
-    return b.categorize.localeCompare(a.categorize)
-  })
-  if (item_sub_weapon.length > 0) {
-    subWeapons.push(
-      ...item_sub_weapon.map(a => ({ ...a, itemType: '副武器' })),
-      ...Array(rowCount - (item_sub_weapon.length % rowCount)).fill(undefined),
-    )
-  }
-  // # endregion
-
-  // 秘宝
-  const item_treasure = total.filter((equip) => equip.categorize.includes('秘宝'))
-  const treasures: (IEquipment | undefined)[] = []
-  if (item_treasure.length > 0) {
-    treasures.push(
-      ...item_treasure,
-      ...Array(rowCount - (item_treasure.length % rowCount)).fill(undefined),
-    )
-  }
-  // 套装
-  const item_suits = total.filter(
-    (equip) => equip.categorize.includes('套装') || equip.categorize.includes('通宝'),
-  )
-  const suits: (IEquipment | undefined)[] = []
-  const raritiyList = Array.from(new Set(item_suits.map((item) => item.rarity)))
-  raritiyList.forEach((rarity) => {
-    const armor = item_suits.filter((item) => item.rarity === rarity && item.itemType === '防具')
-    if (armor.length > 0) {
-      suits.push(...armor, undefined)
-    }
-
-    const special = item_suits.filter(
-      (item) => item.rarity === rarity && item.itemType === '特殊装备',
-    )
-    if (special.length > 0) {
-      suits.push(...special)
-      if (suits.length % rowCount > 0) {
-        suits.push(...Array(rowCount - (suits.length % rowCount)).fill(undefined))
-      }
-    }
-
-    const jewelry = item_suits.filter((item) => item.rarity === rarity && item.itemType === '首饰')
-    const jewelryNormal = jewelry.filter((a) => !a.name.includes('黑牙')) ?? []
-    const jewelryHY = jewelry.filter((a) => a.name.includes('黑牙')) ?? []
-    if (jewelry.length > 0) {
-      suits.push(
-        ...Array(3 - jewelryHY.length + 2).fill(undefined),
-        ...jewelryHY,
-        undefined,
-        ...jewelryNormal,
-      )
-      suits.push(...Array(rowCount - (suits.length % rowCount)).fill(undefined))
-    }
-    if(suits.length % rowCount > 0) {
-      suits.push(...Array(rowCount - (suits.length % rowCount)).fill(undefined))
-    }
-  })
-  // 称号
-  const item_title = total.filter((equip) => equip.itemDetailType == '称号')
-  const title: (IEquipment | undefined)[] = []
-  if (item_title.length > 0) {
-    title.push(...item_title, ...Array(rowCount - (item_title.length % rowCount)).fill(undefined))
-  }
-  // 宠物
-  const item_pets = total.filter((equip) => equip.itemDetailType == '宠物')
-  const pet: (IEquipment | undefined)[] = []
-  if (item_pets.length > 0) {
-    pet.push(...item_pets, ...Array(rowCount - (item_pets.length % rowCount)).fill(undefined))
-  }
-
-  // 称号
-  return [
-    {
-      name: '武器',
-      equs: weapons,
-    },
-    {
-      name: '副武器',
-      equs: subWeapons,
-    },
-    {
-      name: '秘宝',
-      equs: treasures,
-    },
-    {
-      name: `${suitList.value.find(a=>a.value == curSuit.value)?.name} 套装`,
-      equs: suits,
-    },
-    {
-      name: '称号',
-      equs: title,
-    },
-    {
-      name: '宠物',
-      equs: pet,
-    },
-  ]
-}
-
-const formatStone = (total:IEquipment[])=>{
-  // 套装
-  const item_suits = total.filter(
-    (equip) => equip.suit.length == 1,
-  )
-  const suits: (IEquipment | undefined)[] = []
-  const raritiyList = Array.from(new Set(item_suits.map((item) => item.rarity)))
-  raritiyList.forEach((rarity) => {
-    const armor = item_suits.filter((item) => item.rarity === rarity && item.itemType === '防具')
-    if (armor.length > 0) {
-      suits.push(...armor, undefined)
-    }
-
-    const special = item_suits.filter(
-      (item) => item.rarity === rarity && item.itemType === '特殊装备',
-    )
-    if (special.length > 0) {
-      suits.push(...special)
-      if (suits.length % rowCount > 0) {
-        suits.push(...Array(rowCount - (suits.length % rowCount)).fill(undefined))
-      }
-    }
-
-    const jewelry = item_suits.filter((item) => item.rarity === rarity && item.itemType === '首饰')
-    const jewelryNormal = jewelry.filter((a) => !a.name.includes('黑牙')) ?? []
-    const jewelryHY = jewelry.filter((a) => a.name.includes('黑牙')) ?? []
-    if (jewelry.length > 0) {
-      suits.push(
-        ...Array(3 - jewelryHY.length + 2).fill(undefined),
-        ...jewelryHY,
-        undefined,
-        ...jewelryNormal,
-      )
-      suits.push(...Array(rowCount - (suits.length % rowCount)).fill(undefined))
-    }
-    if(suits.length % rowCount > 0) {
-      suits.push(...Array(rowCount - (suits.length % rowCount)).fill(undefined))
-    }
-  })
-
-
-  const item_suits_wns = total.filter(
-    (equip) => equip.categorize.includes('维纳斯通宝'),
-  )
-  const wns : (IEquipment | undefined)[] = []
-  const categorizeList = Array.from(new Set(item_suits_wns.map((item) => item.categorize)))
-  categorizeList.forEach((categorize)=>{
-    ['神器','史诗'].forEach(raritiy=>{
-      const temp = item_suits_wns.filter((item) => item.categorize === categorize && item.rarity === raritiy)
-      const remind = temp.length % (rowCount/2)
-      wns.push(...temp, ...Array(temp.length == 0 ? rowCount/2-remind : remind).fill(undefined))
-    })
-  })
-
-  const item_suits_nbe = total.filter(
-    (equip) => equip.categorize.includes('纳波尔通宝'),
-  )
-  const nbes : (IEquipment | undefined)[] = []
-  const nbeList = Array.from(new Set(item_suits_nbe.map((item) => item.categorize)))
-  nbeList.forEach((categorize)=>{
-    ['神器','史诗'].forEach(raritiy=>{
-      const temp = item_suits_nbe.filter((item) => item.categorize === categorize && item.rarity === raritiy)
-      const remind = temp.length % (rowCount/2)
-      nbes.push(...temp, ...Array(temp.length == 0 ? rowCount/2-remind : remind-1).fill(undefined))
-    })
-  })
-
-
-  const items_suits_rzs = total.filter(
-    (equip) => equip.categorize.includes('人造神'),
-  )
-  const rzs : (IEquipment | undefined)[] = []
-  const partList = Array.from(new Set(items_suits_rzs.map((item) => item.itemDetailType)))
-  // const raritiy = Array.from(new Set(items_suits_rzs.map((item) => item.rarity)))
-  partList.forEach((part) => {
-    raritiyList.forEach((rarity) => {
-      const temp = items_suits_rzs.filter((item) => item.itemDetailType === part && item.rarity === rarity)
-      temp.length > 0 && rzs.push(...temp, ...Array(rowCount-temp.length).fill(undefined))
-    })
-    // const temp = items_suits_rzs.filter((item) => item.itemDetailType === part)
-    // const remind = temp.length % rowCount
-    // rzs.push(...temp, ...Array(temp.length == 0 ? rowCount-remind : remind).fill(undefined))
-  })
-  return [{
-    name: `${suitList.value.find(a=>a.value == curSuit.value)?.name} 套装`,
-    equs: suits,
-  },{
-    name: '维纳斯通宝',
-    equs: wns,
-  },{
-    name: '纳波尔通宝',
-    equs: nbes,
-  },{
-    name: '人造神',
-    equs: rzs,
-  }
-]
-}
 
 const isActive = computed(() => {
   return (item?: IEquipment) => {
-    if(!item) return false
-    if(type.value == 'equ'){
-      if(item.itemType.includes('武器')){
+    if (!item) return false
+    if (type.value == 'equ') {
+      if (item.itemType.includes('武器')) {
         return configStore.config.equips[item.itemType].id == item.id
-      }
-      else{
+      } else {
         return configStore.config.equips[item.itemDetailType].id == item.id
       }
-    }else{
+    } else {
       return configStore.config.equips[item.itemDetailType].fusion == item.id
     }
   }
 })
 
 const chooseEqu = (item?: IEquipment) => {
-  if (!item) return;
-  const target = type.value === 'equ'
-    ? configStore.config.equips[item.itemType.includes('武器') ? item.itemType : item.itemDetailType]
-    : configStore.config.equips[item.itemDetailType];
-  target[type.value === 'equ' ? 'id' : 'fusion'] = isActive.value(item) ? '' : item.id;
-};
-
+  if (!item) return
+  curEquId.value = item.id
+  const target =
+    type.value === 'equ'
+      ? configStore.config.equips[
+          item.itemType.includes('武器') ? item.itemType : item.itemDetailType
+        ]
+      : configStore.config.equips[item.itemDetailType]
+  target[type.value === 'equ' ? 'id' : 'fusion'] = isActive.value(item) ? '' : item.id
+}
 </script>
 
 <style lang="scss" scoped>
@@ -403,7 +298,7 @@ const chooseEqu = (item?: IEquipment) => {
     position: absolute;
     background: url('@/assets/img/active.png') no-repeat;
     width: 148px;
-    height:16px;
+    height: 16px;
     bottom: 2px;
     transform: translate(0, 50%);
   }
