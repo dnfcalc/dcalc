@@ -49,7 +49,7 @@
         </div>
       </div>
     </div>
-    <div class="overflow-y-auto space-y-1 flex flex-col items-center flex-1 h-0">
+    <div class="overflow-y-auto gap-1 p-1 flex flex-col items-center flex-1 h-0">
         <template v-for="item in equs" :key="item.name">
           <template v-if="item.equs.length > 0">
             <div class="item-head w-full">{{ item.name }}</div>
