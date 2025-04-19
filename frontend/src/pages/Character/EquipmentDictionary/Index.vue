@@ -1,5 +1,5 @@
 <template>
-  <div class="w-340px bg-black flex flex-col">
+  <div class="w-340px bg-black flex flex-col h-90vh">
     <!-- 头部 选择是装备还是融合石 -->
     <div class="flex bg-#101012 h-40px text-#6C5E4A font-bold">
       <div
