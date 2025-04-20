@@ -174,13 +174,12 @@ class Skill7(PassiveSkill):
     maxLv = 20
     position = 5 #TODO
     rangeLv = 5
-
+    # 暗抗
     data0 = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]# noqa: E501
 
-    # 暗抗
     data1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]# noqa: E501
 
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"*skillRation","data":data1}]
 
 
 # 封印解除 사슬 해제
