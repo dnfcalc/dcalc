@@ -77,7 +77,7 @@ class Skill3(ActiveSkill):
     data3 = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 11.5, 13, 14.5, 16, 17.5, 19, 20.5, 22, 23.5, 25]# noqa: E501
     associate = [
         {"type":"*skillRation","data":data3},
-        {"type":"*skillRation","data":[0] + [20]*20,"skills":["鬼印珠","不动明王阵"]},
+        {"type":"*skillRation","data":[0] + [20]*30,"skills":["鬼印珠","不动明王阵"]},
     ]
 
 
