@@ -207,6 +207,7 @@ class Skill9(ActiveSkill):
     rangeLv = 3
     cd = 6
     mp = [40, 644]
+    damage = False
 
     data0 = [0, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]# noqa: E501
     associate = [{"type":"*skillRation","data":data0}]
