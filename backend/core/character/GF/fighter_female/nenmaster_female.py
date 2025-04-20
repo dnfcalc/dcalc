@@ -87,7 +87,7 @@ class Skill4(ActiveSkill):
 
     def setMode(self, mode):
         if mode == "蓄力":
-            self.cd = 4
+            self.cd = 3
         if mode == "普通":
             self.cd = 1
             self.power0 = 1
