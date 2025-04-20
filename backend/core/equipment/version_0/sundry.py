@@ -20,7 +20,6 @@ def sundry_0(char: CharacterProperty, *args):
     # 宝石 基础 三速 3% 所有属强 7
     char.SetStatus(三速=0.03, 全属强=7)
     medal_gems_quality = [(224, 27, 46), (403, 49, 58), (701, 85, 72),(1140, 138, 88), (1753, 212, 106)]
-    print(args)
     for i in args[2]:
         gems_quality = medal_gems_quality[i]
         char.SetStatus(攻击强化=gems_quality[0]*0.1, 增益量=gems_quality[1])
