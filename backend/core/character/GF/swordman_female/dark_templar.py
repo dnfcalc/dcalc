@@ -540,7 +540,7 @@ class Skill30(ActiveSkill):
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 3
+    position = 5
     rangeLv = 5
     cube = 15
     cd = 290

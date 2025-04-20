@@ -84,7 +84,7 @@ class Skill:
 
     def _generate_icon(self):
         icon = self.icon or '$char/$name'
-        icon = icon.replace('$char', f'/characters/{self.char.name}/skill')
+        icon = icon.replace('$char', f'/characters/{self.char.role}/{self.char.name}/skill')
         icon = icon.replace('$common', '/characters/common')
         icon = icon.replace('$name', f'{self.name}')
         icon = icon.replace('$id', f'{self.id}')
