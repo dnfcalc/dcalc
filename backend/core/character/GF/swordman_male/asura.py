@@ -295,8 +295,8 @@ class Skill16(PassiveSkill):
     data1 = [0, 16, 17.5, 19, 20.5, 22, 23.5, 25, 26.5, 28, 29.5, 31, 32.5, 34, 35.5, 37, 38.5, 40.5, 42.5, 44.5, 46.5, 48.5, 50.5, 52.5, 54.5, 56.5, 58.5, 60.5, 62.5, 64.5, 66.5, 68.5, 70.5, 72.5, 74.5, 76.5, 78.5, 80.5, 82.5, 84.5, 86.5, 88.5, 90.5, 92.5, 94.5, 96.5, 98.5, 100.5, 102.5, 104.5, 106.5]# noqa: E501
 
     associate = [
-        {"type":"*skillRation","data":data0,"exceptSkills":["地裂·波动剑"]},
-        {"type":"*skillRation","data":data1,"skills":["地裂·波动剑"]},
+        {"type":"*skillRation","data":data0,"exceptSkills":["地裂 · 波动剑"]},
+        {"type":"*skillRation","data":data1,"skills":["地裂 · 波动剑"]},
     ]
 
 
@@ -357,11 +357,26 @@ class Skill17(ActiveSkill):
             self.hit3 = 10
         elif mode == "光翼":
             self.hit4 = 1
+            self.cd = 1.2
         elif mode == "天照":
             self.hit5 = 5
+            self.cd = 2
         elif mode == "闪枪":
             self.hit6 = 7
+            self.cd = 4.9
 
+    def getSkillCD(self):
+        if self.currentMode == "光翼":
+            pre = self.char.GetSkillByName("地裂 · 波动剑")
+            return 1.2 * pre.getSkillCD() / pre.cd
+        elif self.currentMode == "天照":
+            pre = self.char.GetSkillByName("冰刃 · 波动剑")
+            return 2 * pre.getSkillCD() / pre.cd
+        elif self.currentMode == "闪枪":
+            pre = self.char.GetSkillByName("爆炎 · 波动剑")
+            return 4.9 * pre.getSkillCD() / pre.cd
+        else:
+            return super().getSkillCD()
 # 极冰 · 裂波剑 극파동검 빙인
 # https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/7cf17936a039b418660424125dc968d7?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill18(ActiveSkill):

@@ -65,6 +65,7 @@ class Skill:
     exceptSkills: 例外技能 默认[]
     """
     mode : list[str] = ['']
+    currentMode: str = ''
     """技能模式"""
     buffer: bool = False
     """是否是增益技能"""
@@ -174,6 +175,7 @@ class ActiveSkill(Skill):
     def skillInfo(self, mode: str | None = None):
         if mode is not None:
             basic = deepcopy(self)
+            basic.currentMode = mode
             basic.setMode(mode)
         else:
             basic = self
