@@ -1,4 +1,5 @@
 #1645c45aabb008c98406b3a16447040d
+import sys
 from core.basic.skill import PassiveSkill, ActiveSkill
 from core.basic.character import Character
 
@@ -493,20 +494,4 @@ class classChange(Character):
 
         self.职业 = '契魔者'
 
-        self.load_skills()
-
-    def load_skills(self):
-        """加载技能"""
-        skills = []
-        skills_dict = {}
-        i = 0
-        while i >= 0:
-            try:
-                tem = eval('Skill' + str(i) + '(char=self)')
-                skills_dict[tem.name] = tem
-                skills.append(tem)
-                i += 1
-            except Exception:
-                i = -1
-        self.skills = skills
-        self.skills_dict = skills_dict
+        self.load_skills(sys.modules[__name__])

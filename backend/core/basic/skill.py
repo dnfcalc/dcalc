@@ -165,6 +165,11 @@ class ActiveSkill(Skill):
 
     def __init__(self, char):
         super().__init__(char)
+        keys = [key.replace("data","") for key in dir(self) if key.startswith('data')]
+        for i in keys:
+            power = getattr(self, f'power{i}', None)
+            if power is None:
+                setattr(self, f'power{i}', 1)
 
     def skillInfo(self, mode: str | None = None):
         if mode is not None:
@@ -181,7 +186,8 @@ class ActiveSkill(Skill):
 
     def getSkillDate(self,lv:int=0):
         res = 0
-        for i in range(0,10):
+        keys = [key.replace("data","") for key in dir(self) if key.startswith('data')]
+        for i in keys:
             data = getattr(self, f'data{i}', [])
             if len(data) == 0:
                 break

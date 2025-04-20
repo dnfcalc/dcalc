@@ -1,4 +1,6 @@
 # 944b9aab492c15a8474f96947ceeb9e4
+import inspect
+import sys
 from core.basic.skill import PassiveSkill, ActiveSkill, characterLv
 from core.basic.character import Character
 
@@ -507,23 +509,7 @@ class classChange(Character):
 
         self.职业 = '弹药专家'
 
-        self.load_skills()
-
-    def load_skills(self):
-        """加载技能"""
-        skills = []
-        skills_dict = {}
-        i = 0
-        while i >= 0:
-            try:
-                tem = eval('Skill' + str(i) + '(char=self)')
-                skills_dict[tem.name] = tem
-                skills.append(tem)
-                i += 1
-            except Exception:
-                i = -1
-        self.skills = skills
-        self.skills_dict = skills_dict
+        self.load_skills(sys.modules[__name__])
 
     def set_skill_info(self, info, rune_except=[], clothes_pants=[]):
         super().set_skill_info(info, rune_except=['爆裂弹'], clothes_pants=['远古记忆'])

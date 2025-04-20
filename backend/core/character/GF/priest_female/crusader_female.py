@@ -1,4 +1,5 @@
 #0c1b401bb09241570d364420b3ba3fd7
+import sys
 from core.basic.skill import PassiveBufferSkill,ActiveBufferSkill,ActiveSkill,PassiveSkill
 from core.basic.character import Character
 
@@ -640,25 +641,12 @@ class classChange(Character):
 
         self.适用属性 = '智力'
 
-        self.load_skills()
+        self.load_skills(sys.modules[__name__])
 
-
-    def load_skills(self):
-        """加载技能"""
-        skills = []
-        skills_dict = {}
-        i = 0
-        while i >= 0:
-            try:
-                tem = eval('Skill' + str(i) + '(char=self)')
-                skills_dict[tem.name] = tem
-                skills.append(tem)
-                if tem.buffer and tem.buffType == 'buff' and tem.learnLv == 30:
-                    self.BuffSkill = tem
-                if tem.buffer and tem.buffType == 'awake':
-                    self.AwakeSkill = tem
-                i += 1
-            except Exception:
-                i = -1
-        self.skills = skills
-        self.skills_dict = skills_dict
+    def load_skills(self, module):
+        super().load_skills(module)
+        for skill in self.skills:
+            if skill.buffer and skill.buffType == 'buff' and skill.learnLv == 30:
+                self.BuffSkill = skill
+            if skill.buffer and skill.buffType == 'awake':
+                self.AwakeSkill = skill

@@ -539,8 +539,22 @@ class Character(CharacterProperty):
                 skill.lv += skills[key].get('lv', 0)
         pass
 
-    def load_skills(self):
-        pass
+    def load_skills(self, module:str) -> None:
+        """加载技能"""
+        skills = []
+        skills_dict = {}
+        classes = []
+        for name in dir(module):
+            member = getattr(module, name)
+            if isinstance(member, type):
+                classes.append(member)
+        for i in classes:
+            if i.__name__.startswith("Skill"):
+                skill = i(char=self)
+                skills_dict[skill.name] = skill
+                skills.append(skill)
+        self.skills = skills
+        self.skills_dict = skills_dict
 
     def calc_suits(self):
         """套装效果统计"""
