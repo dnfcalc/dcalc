@@ -1,5 +1,6 @@
 from functools import cache
 import importlib
+import sys
 from typing import Any, Literal, Mapping, Union
 from uuid import uuid1
 
@@ -335,6 +336,8 @@ class Character(CharacterProperty):
         self.HitP += 命中率 + kwargs.get('HitP', 0)
         self.Hit += 命中 + kwargs.get('Hit', 0)
         self.Attack += 攻击强化 + kwargs.get('Attack', 0)
+        # if 攻击强化 + kwargs.get('Attack', 0) > 0:
+        #     print(sys._getframe(1).f_code.co_name,sys._getframe(1).f_lineno,攻击强化 + kwargs.get('Attack', 0))
         self.AttackP += 攻击强化P + kwargs.get('AttackP', 0.0)
         self.Buffer += 增益量 + kwargs.get('Buffer', 0)
         self.BufferP += 增益量P + kwargs.get('BufferP', 0)
@@ -755,7 +758,7 @@ class Character(CharacterProperty):
         funs.execture("sundry_0")(self,
             sundry.get("medal_rarity", 0),
             sundry.get("medal_reinforce", 0),
-            [sundry.get("medal_0", 0), sundry.get("medal_1", 0), sundry.get("medal_2", 0), sundry.get("medal_3", 0)],
+            [sundry.get("medal_gem_0", 0), sundry.get("medal_gem_1", 0), sundry.get("medal_gem_2", 0), sundry.get("medal_gem_3", 0)],
         )
         funs.execture("sundry_6")(self,
             sundry.get("adventure", 1)

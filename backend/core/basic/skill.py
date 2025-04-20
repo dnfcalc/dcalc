@@ -150,9 +150,7 @@ class Skill:
             else:
                 setattr(skill, type[1:], getattr(skill, type[1:]) * (1 + data[new] / ratio) / (1 + data[old] / ratio))
         elif type.startswith('+'):
-            print(skill.name,type[1:], getattr(skill, type[1:]),data[new] / ratio - data[old] / ratio)
             setattr(skill, type[1:], getattr(skill, type[1:]) + data[new] / ratio - data[old] / ratio)
-            print(skill.name,type[1:], getattr(skill, type[1:]))
 
     def skillInfo(self, mode: str | None = None):
         pass
