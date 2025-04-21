@@ -218,6 +218,8 @@ class Character(CharacterProperty):
         self.equ_effect = []
         self.equ_options = {}
         self.max_point = 0
+        self.skills = []
+        self.skills_dict = {}
         pass
 
     # region 角色属性设置
@@ -541,8 +543,6 @@ class Character(CharacterProperty):
 
     def load_skills(self, module:str) -> None:
         """加载技能"""
-        skills = []
-        skills_dict = {}
         classes = []
         for name in dir(module):
             member = getattr(module, name)
@@ -551,10 +551,8 @@ class Character(CharacterProperty):
         for i in classes:
             if i.__name__.startswith("Skill"):
                 skill = i(char=self)
-                skills_dict[skill.name] = skill
-                skills.append(skill)
-        self.skills = skills
-        self.skills_dict = skills_dict
+                self.skills_dict[skill.name] = skill
+                self.skills.append(skill)
 
     def calc_suits(self):
         """套装效果统计"""
