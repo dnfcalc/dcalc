@@ -543,14 +543,12 @@ class Character(CharacterProperty):
 
     def load_skills(self, module:str) -> None:
         """加载技能"""
-        classes = []
+        if self.name not in module:
+            return
         for name in dir(module):
             member = getattr(module, name)
-            if isinstance(member, type):
-                classes.append(member)
-        for i in classes:
-            if i.__name__.startswith("Skill"):
-                skill = i(char=self)
+            if isinstance(member, type) and member.__name__.startswith("Skill") and issubclass(member, Skill):
+                skill = member(char=self)
                 self.skills_dict[skill.name] = skill
                 self.skills.append(skill)
 
