@@ -182,7 +182,7 @@ class Skill10(ActiveSkill):
 class Skill11(PassiveSkill):
     name = "汲魂之力"
     learnLv = 25
-    masterLv = 20
+    masterLv = 10
     maxLv = 30
     position = 2
     rangeLv = 2
