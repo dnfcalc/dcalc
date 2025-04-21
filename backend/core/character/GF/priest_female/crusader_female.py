@@ -618,9 +618,8 @@ class Skill31(ActiveBufferSkill):
         return prep[0] * ratio, [prep[1][0]*ratio,prep[1][1],prep[1][2]*ratio], [prep[2][0]*ratio,prep[2][1],prep[2][2]*ratio],0,self.getSkillCD()
 
 class classChange(Character):
-    def __init__(self, equVersion=''):
+    def __init__(self, equVersion):
 
-        super().__init__(equVersion)
         self.name = 'crusader_female'
         self.nameCN = '神启·圣职者'
         self.role = 'priest_female'
@@ -641,10 +640,11 @@ class classChange(Character):
 
         self.适用属性 = '智力'
 
-        self.load_skills(sys.modules[__name__])
+        super().__init__(equVersion, __name__)
 
-    def load_skills(self, module):
-        super().load_skills(module)
+
+    def load_skills(self):
+        super().load_skills()
         for skill in self.skills:
             if skill.buffer and skill.buffType == 'buff' and skill.learnLv == 30:
                 self.BuffSkill = skill

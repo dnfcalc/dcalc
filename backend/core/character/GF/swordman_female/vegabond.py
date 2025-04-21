@@ -434,9 +434,8 @@ class Skill22(ActiveSkill):
     hit0 = 1
 
 class classChange(Character):
-    def __init__(self, equVersion=''):
+    def __init__(self, equVersion):
 
-        super().__init__(equVersion)
         self.name = 'vegabond'
         self.nameCN = '极诣·流浪武士'
         self.role = 'swordman_female'
@@ -454,7 +453,8 @@ class classChange(Character):
 
         self.职业 = '流浪武士'
 
-        self.load_skills(sys.modules[__name__])
+        super().__init__(equVersion, __name__)
+
 
     def calc_basic(self):
         """计算基础属性:防具精通、增幅、强化等"""

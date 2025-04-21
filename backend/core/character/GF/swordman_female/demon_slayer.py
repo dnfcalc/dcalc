@@ -475,9 +475,7 @@ class Skill21(ActiveSkill):
     hit1 = 1 #TODO
 
 class classChange(Character):
-    def __init__(self, equVersion=''):
-
-        super().__init__(equVersion)
+    def __init__(self, equVersion):
         self.name = 'demon_slayer'
         self.nameCN = '极诣·契魔者'
         self.role = 'swordman_female'
@@ -494,4 +492,4 @@ class classChange(Character):
 
         self.职业 = '契魔者'
 
-        self.load_skills(sys.modules[__name__])
+        super().__init__(equVersion, __name__)

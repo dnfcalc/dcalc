@@ -543,8 +543,7 @@ class Skill28(ActiveSkill):
             self.hit0 = 0
 
 class classChange(Character):
-    def __init__(self, equVersion=''):
-        super().__init__(equVersion)
+    def __init__(self, equVersion):
         self.name = 'spectre'
         self.nameCN = '极诣·刃影'
         self.role = 'swordman_female'
@@ -561,4 +560,4 @@ class classChange(Character):
 
         self.职业 = '刃影'
 
-        self.load_skills(sys.modules[__name__])
+        super().__init__(equVersion, __name__)

@@ -750,9 +750,8 @@ class Skill35(ActiveSkill):
     hit4 = 15
 
 class classChange(Character):
-    def __init__(self, equVersion=''):
+    def __init__(self, equVersion):
 
-        super().__init__(equVersion)
         self.name = 'soul_bender'
         self.nameCN = '极诣·鬼泣'
         self.role = 'swordman_male'
@@ -769,4 +768,5 @@ class classChange(Character):
 
         self.职业 = '鬼泣'
 
-        self.load_skills(sys.modules[__name__])
+        super().__init__(equVersion, __name__)
+

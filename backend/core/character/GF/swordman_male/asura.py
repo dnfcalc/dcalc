@@ -591,9 +591,8 @@ class Skill26(ActiveSkill):
     hit3 = 1
 
 class classChange(Character):
-    def __init__(self, equVersion=''):
+    def __init__(self, equVersion):
 
-        super().__init__(equVersion)
         self.name = 'asura'
         self.nameCN = '阿修罗'
         self.role = 'swordman_male'
@@ -610,4 +609,5 @@ class classChange(Character):
 
         self.职业 = '阿修罗'
 
-        self.load_skills(sys.modules[__name__])
+        super().__init__(equVersion, __name__)
+

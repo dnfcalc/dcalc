@@ -483,9 +483,8 @@ class Skill23(ActiveSkill):
 
 
 class classChange(Character):
-    def __init__(self, equVersion=''):
+    def __init__(self, equVersion):
 
-        super().__init__(equVersion)
         self.name = 'berserker'
         self.nameCN = '极诣·狂战士'
         self.role = 'swordman_male'
@@ -502,4 +501,4 @@ class classChange(Character):
 
         self.职业 = '狂战士'
 
-        self.load_skills(sys.modules[__name__])
+        super().__init__(equVersion, __name__)

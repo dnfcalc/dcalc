@@ -490,9 +490,7 @@ class Skill25(ActiveSkill):
 
 
 class classChange(Character):
-    def __init__(self, equVersion=''):
-
-        super().__init__(equVersion)
+    def __init__(self, equVersion):
         self.name = 'spitfire_female'
         self.nameCN = '重霄·弹药专家'
         self.role = 'gunner_female'
@@ -509,7 +507,7 @@ class classChange(Character):
 
         self.职业 = '弹药专家'
 
-        self.load_skills(sys.modules[__name__])
+        super().__init__(equVersion, __name__)
 
     def set_skill_info(self, info, rune_except=[], clothes_pants=[]):
         super().set_skill_info(info, rune_except=['爆裂弹'], clothes_pants=['远古记忆'])

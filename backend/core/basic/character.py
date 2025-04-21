@@ -153,8 +153,9 @@ class Character(CharacterProperty):
 
     # endregion
 
-    def __init__(self, equVersion) -> None:
+    def __init__(self, equVersion, moduleName) -> None:
         self.equVersion = equVersion
+        self.moduleName = moduleName
         # self.equs = get_equ(self.equVersion)
         # 工会四维
         self.STR = 0 + 120
@@ -220,6 +221,7 @@ class Character(CharacterProperty):
         self.max_point = 0
         self.skills = []
         self.skills_dict = {}
+        self.load_skills()
         pass
 
     # region 角色属性设置
@@ -541,14 +543,13 @@ class Character(CharacterProperty):
                 skill.lv += skills[key].get('lv', 0)
         pass
 
-    def load_skills(self, module:str) -> None:
+    def load_skills(self) -> None:
         """加载技能"""
-        if self.name not in module:
-            return
+        module = sys.modules[self.moduleName]
         for name in dir(module):
-            member = getattr(module, name)
-            if isinstance(member, type) and member.__name__.startswith("Skill") and issubclass(member, Skill):
-                skill = member(char=self)
+            memberClass = getattr(module, name)
+            if isinstance(memberClass, type) and memberClass.__name__.startswith("Skill"):
+                skill = memberClass(char=self)
                 self.skills_dict[skill.name] = skill
                 self.skills.append(skill)
 

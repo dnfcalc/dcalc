@@ -515,9 +515,8 @@ class Skill26(ActiveSkill):
     hit7 = 1 #TODO
 
 class classChange(Character):
-    def __init__(self, equVersion=''):
+    def __init__(self, equVersion):
 
-        super().__init__(equVersion)
         self.name = 'glacial_master'
         self.nameCN = '知源·冰结师'
         self.role = 'mage_male'
@@ -534,4 +533,4 @@ class classChange(Character):
 
         self.职业 = '冰结师'
 
-        self.load_skills(sys.modules[__name__])
+        super().__init__(equVersion, __name__)
