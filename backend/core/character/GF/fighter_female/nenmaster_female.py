@@ -60,7 +60,7 @@ class Skill3(ActiveSkill):
     cd = 7
     mp = [6, 84]
 
-    data0 = [0] + [1] * 20
+    data0 = [0] + [1] * maxLv
     hit = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]# noqa: E501
 
     def skillInfo(self, mode: str | None = None):
@@ -151,7 +151,7 @@ class Skill8(PassiveSkill):
 
     associate = [
         {"type": "*skillRation","data":data0,"skills":["分身"],"ratio":1},
-        {"type": "+cd","data":[0]+[3]*70,"skills":["分身"],"ratio":1}
+        {"type": "+cd","data":[0]+[3]*maxLv,"skills":["分身"],"ratio":1}
     ]
 
 

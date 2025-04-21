@@ -366,7 +366,7 @@ class Skill19(PassiveSkill):
 
     associate = [
         {"type":"*skillRation","data":data0},
-        {"type":"+cd","data":[0] + [-1]*50,"skills":["鬼步"],"ratio":1},
+        {"type":"+cd","data":[0] + [-1]*maxLv,"skills":["鬼步"],"ratio":1},
     ]
 
 

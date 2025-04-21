@@ -191,10 +191,10 @@ class Skill11(PassiveSkill):
     data0 = [0, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70]# noqa: E501
     associate = [
         {"type":"*skillRation","data":data0},
-        {"type":"*skillRation","data":[0]+[100]*20,"skills":["释魂飞弹"]},
-        {"type":"*power0","data":[0]+[15]*20,"skills":["天罚死光"]},
-        {"type":"*skillRation","data":[0]+[15]*20,"skills":["天罚之剑"]},
-        {"type":"*skillRation","data":[0]+[10]*20,"skills":["神罚 · 灭世裁决"]},
+        {"type":"*skillRation","data":[0]+[100]*maxLv,"skills":["释魂飞弹"]},
+        {"type":"*power0","data":[0]+[15]*maxLv,"skills":["天罚死光"]},
+        {"type":"*skillRation","data":[0]+[15]*maxLv,"skills":["天罚之剑"]},
+        {"type":"*skillRation","data":[0]+[10]*maxLv,"skills":["神罚 · 灭世裁决"]},
         ]# noqa: E501
 
 # 暗影禁锢 스카폴드
@@ -529,7 +529,7 @@ class Skill29(PassiveSkill):
 
     associate = [
         {"type":"*skillRation","data":data0},
-        {"type":"+hit0","data":[0]+[-1]*50,"skills":["魅影暗魂斩"],"ratio":1}
+        {"type":"+hit0","data":[0]+[-1]*maxLv,"skills":["魅影暗魂斩"],"ratio":1}
     ]
 
 

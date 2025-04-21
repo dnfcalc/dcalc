@@ -205,6 +205,7 @@ export default defineComponent({
                 {renderList(emblem_list.value ?? [], (item) => (
                   <calc-option
                     value={item.id}
+                    key={item.id}
                   >{`${item.rarity}${item.categorize}徽章[${item.detail}]`}</calc-option>
                 ))}
               </calc-select>
@@ -214,6 +215,7 @@ export default defineComponent({
                   {renderList(emblem_list.value ?? [], (item) => (
                     <calc-option
                       value={item.id}
+                      key={item.id}
                     >{`${item.rarity}${item.categorize}徽章[${item.detail}]`}</calc-option>
                   ))}
                 </calc-select>

@@ -192,7 +192,7 @@ class Skill8(PassiveSkill):
     position = 2 #TODO
     rangeLv = 3
 
-    associate = [{"type":"+lv","data":[0] + [1]*20,"skills":["刀魂之卡赞", "冰霜之萨亚", "侵蚀之普戾蒙", "鬼斩", "瘟疫之罗刹", "冥炎之卡洛"],"ratio":1}]# noqa: E501
+    associate = [{"type":"+lv","data":[0] + [1]*maxLv,"skills":["刀魂之卡赞", "冰霜之萨亚", "侵蚀之普戾蒙", "鬼斩", "瘟疫之罗刹", "冥炎之卡洛"],"ratio":1}]# noqa: E501
 
 
 # 侵蚀之普戾蒙 몽롱한 눈의 브레멘

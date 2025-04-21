@@ -77,7 +77,7 @@ class Skill3(ActiveSkill):
     data3 = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 11.5, 13, 14.5, 16, 17.5, 19, 20.5, 22, 23.5, 25]# noqa: E501
     associate = [
         {"type":"*skillRation","data":data3},
-        {"type":"*skillRation","data":[0] + [20]*30,"skills":["鬼印珠","不动明王阵"]},
+        {"type":"*skillRation","data":[0] + [20]*maxLv,"skills":["鬼印珠","不动明王阵"]},
     ]
 
 
@@ -436,7 +436,7 @@ class Skill20(ActiveSkill):
     data1 = [0, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106]# noqa: E501
     hit1 = 0
 
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"*skillRation","data":data1}]
 
     def getSkillCD(self):
         return 2.5
