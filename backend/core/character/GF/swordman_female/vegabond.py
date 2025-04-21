@@ -1,5 +1,4 @@
 #1645c45aabb008c98406b3a16447040d
-import sys
 from core.basic.skill import PassiveSkill, ActiveSkill
 from core.basic.character import Character
 from core.basic.formula import 武器强化计算

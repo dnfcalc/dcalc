@@ -1,5 +1,4 @@
 #a5ccbaf5538981c6ef99b236c0a60b73
-import sys
 from core.basic.skill import PassiveSkill, ActiveSkill
 from core.basic.character import Character
 

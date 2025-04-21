@@ -1,7 +1,6 @@
 #1645c45aabb008c98406b3a16447040d
 from core.basic.skill import PassiveSkill, ActiveSkill
 from core.basic.character import Character
-import sys
 
 # 冥思 냉정함
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/d89f26862e348a801b30bb9fd7125db5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0

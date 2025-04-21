@@ -1,6 +1,4 @@
 # 944b9aab492c15a8474f96947ceeb9e4
-import inspect
-import sys
 from core.basic.skill import PassiveSkill, ActiveSkill, characterLv
 from core.basic.character import Character
 

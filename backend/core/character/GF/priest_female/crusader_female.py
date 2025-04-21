@@ -1,5 +1,4 @@
 #0c1b401bb09241570d364420b3ba3fd7
-import sys
 from core.basic.skill import PassiveBufferSkill,ActiveBufferSkill,ActiveSkill,PassiveSkill
 from core.basic.character import Character
 
