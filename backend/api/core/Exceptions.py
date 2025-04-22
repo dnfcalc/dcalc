@@ -27,7 +27,6 @@ async def all_exception_handler(request: Request, ex: Exception):
         info = '\r'.join(info)
         if request.client.host != '127.0.0.1':
             from fastapi.logger import logger
-
             logger.setLevel(logging.ERROR)
             logger.name = 'dcalc'
             log_directory = 'logs'
@@ -42,13 +41,13 @@ async def all_exception_handler(request: Request, ex: Exception):
             logger.addHandler(fileHandler)
             try:
                 import pathlib
-
                 pathlib.Path(log_directory).mkdir(parents=True, exist_ok=True)
             except PermissionError:
                 print('创建日志目录logs失败，请确认是否限制了基础的运行权限')
             logFunc = logger.error
             logFunc(info)
             info = '服务器内部错误'
+            fileHandler.close()
     else:
         info = ex.args[0]
     # traceback.print_last(sys.exc_info())
