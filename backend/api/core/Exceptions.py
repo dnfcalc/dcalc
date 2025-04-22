@@ -35,7 +35,7 @@ async def all_exception_handler(request: Request, ex: Exception):
             if not os.path.exists('./logs'):
                 os.makedirs('./logs')
             time_str = datetime.now().strftime('%Y_%m_%d')
-            fileHandler = logging.FileHandler(f'{log_directory}/{logger.name,}_{time_str}.log', encoding='utf-8')
+            fileHandler = logging.FileHandler(f'{log_directory}/{logger.name}_{time_str}.log', encoding='utf-8')
             fileHandler.setFormatter(logFormatter)
             fileHandler.setLevel(logging.ERROR)
             logger.addHandler(fileHandler)
