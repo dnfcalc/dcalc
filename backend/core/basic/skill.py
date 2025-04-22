@@ -191,7 +191,7 @@ class ActiveSkill(Skill):
 
     def getSkillDate(self,lv:int=0):
         res = 0
-        keys = [key.replace("data","") for key in dir(self) if key.startswith('data')]
+        keys = [key.replace("data","") for key in dir(self) if key.startswith('data') and not key.startswith('dataplus')]
         for i in keys:
             data = getattr(self, f'data{i}', [])
             dataplus = getattr(self, f'dataplus{i}', 0)
