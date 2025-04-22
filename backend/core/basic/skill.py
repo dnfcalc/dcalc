@@ -171,6 +171,9 @@ class ActiveSkill(Skill):
             power = getattr(self, f'power{i}', None)
             if power is None:
                 setattr(self, f'power{i}', 1)
+            dataplus = getattr(self, f'dataplus{i}', None)
+            if dataplus is None:
+                setattr(self, f'dataplus{i}', 0)
 
     def skillInfo(self, mode: str | None = None):
         if mode is not None:
@@ -191,12 +194,13 @@ class ActiveSkill(Skill):
         keys = [key.replace("data","") for key in dir(self) if key.startswith('data')]
         for i in keys:
             data = getattr(self, f'data{i}', [])
+            dataplus = getattr(self, f'dataplus{i}', 0)
             if len(data) == 0:
                 break
             if lv < len(data):
                 hit = getattr(self, f'hit{i}', 1)
                 power = getattr(self, f'power{i}', 1)
-                res += hit * power * data[lv]
+                res += hit * power * (data[lv] + dataplus)
         return res
 
     def getWeaponCDRatio(self):

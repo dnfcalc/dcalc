@@ -409,6 +409,13 @@ class Character(CharacterProperty):
         """获取技能名字"""
         return [skill.name for skill in self.skills if (type == 'all' or skill.type == type) and (damage == 'all' or skill.damage == damage)]
 
+    def GetWeaponType(self) -> str:
+        """获取武器类型"""
+        weapon = self.charEquipInfo["武器"].equInfo
+        if weapon is None:
+            return None
+        else:
+            return weapon.itemDetailType
     # endregion
 
     # region 计算相关

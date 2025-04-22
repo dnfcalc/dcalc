@@ -374,6 +374,8 @@ class Skill17(ActiveSkill):
         elif self.currentMode == "闪枪":
             pre = self.char.GetSkillByName("爆炎 · 波动剑")
             return 4.9 * pre.getSkillCD() / pre.cd
+        elif self.currentMode == "平X":
+            return 1.0
         else:
             return super().getSkillCD()
 # 极冰 · 裂波剑 극파동검 빙인

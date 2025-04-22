@@ -174,7 +174,10 @@ class Skill10(PassiveSkill):
 
     data0 = [0, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120]# noqa: E501
 
-    associate = [{"type":"*skillRation","data":data0,"skills":["冰魄剑"]}]
+    associate = [
+        {"type":"*skillRation","data":data0,"skills":["冰魄剑"]},
+        {"type":"+hit1","data":[0] + [-1]*maxLv,"skills":["冰魄剑"],"ratio":1},
+        ]
 
 
 # 冰魄锤击 아이스 빅 해머
