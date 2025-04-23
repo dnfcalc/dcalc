@@ -7,7 +7,7 @@ adv = [
         'name': 'swordman_male',
         'title': '鬼剑士(男)',
         'children': [
-            {'id': 0, 'name': 'weapon_master', 'title': '极诣·剑魂', 'open': True, 'class': 'GF.swordman_male.weapon_master'},
+            {'id': 0, 'name': 'weapon_master', 'title': '极诣·剑魂', 'open': False, 'class': 'GF.swordman_male.weapon_master'},
             {'id': 1, 'name': 'soul_bender', 'title': '极诣·鬼泣', 'open': True, 'class': 'GF.swordman_male.soul_bender'},
             {'id': 2, 'name': 'berserker', 'title': '极诣·狂战士', 'open': True, 'class': 'GF.swordman_male.berserker'},
             {'id': 3, 'name': 'asura', 'title': '极诣·阿修罗', 'open': True, 'class': 'GF.swordman_male.asura'},
@@ -47,7 +47,7 @@ adv = [
             {'id': 1, 'name': 'striker_female', 'title': '归元·散打', 'open': False},
             {'id': 2, 'name': 'brawler_female', 'title': '归元·街霸', 'open': False},
             {'id': 3, 'name': 'grappler_female', 'title': '归元·柔道家', 'open': False},
-            {'name': 'empty', 'title': '', 'comment': ''},
+            {'name': 'sponsor', 'url': 'https://bbs.colg.cn', 'title': '', 'open': True},
         ],
     },
     {
@@ -71,7 +71,7 @@ adv = [
             {'id': 1, 'name': 'launcher_female', 'title': '重霄·枪炮师', 'open': False},
             {'id': 2, 'name': 'mechanic_female', 'title': '重霄·机械师', 'open': False},
             {'id': 3, 'name': 'spitfire_female', 'title': '重霄·弹药专家', 'open': True, 'class': 'GF.gunner_female.spitfire_female'},
-            {'name': 'sponsor', 'url': 'https://bbs.colg.cn', 'title': '', 'open': True},
+            {'name': 'empty', 'title': '', 'comment': ''},
         ],
     },
     {
