@@ -23,7 +23,7 @@ sundryList = {
     'medal_gem_1': {'id': 3, 'options': [{'name': f'{i}', 'value': idx} for idx, i in enumerate(['普通', '高级', '稀有', '神器', '传说'])]},
     'medal_gem_2': {'id': 4, 'options': [{'name': f'{i}', 'value': idx} for idx, i in enumerate(['普通', '高级', '稀有', '神器', '传说'])]},
     'medal_gem_3': {'id': 5, 'options': [{'name': f'{i}', 'value': idx} for idx, i in enumerate(['普通', '高级', '稀有', '神器', '传说'])]},
-    'adventure': {'id': 6, 'options': [{'name': f'Lv:{i}', 'value': i} for i in range(1, 31)]},
+    'adventure': {'id': 6, 'options': [{'name': f'Lv:{i}', 'value': i} for i in range(1, 41)]},
     'marriage_house': {'id': 7, 'options': [{'name': f'{i}', 'value': idx} for idx, i in enumerate(['无', '全属强(1)', '全属强(3)', '全属强(5)|三攻(5)', '全属强(8)|三攻(10|20)'])]},
     'marriage_ring': {'id': 8, 'options': [{'name': f'{i}', 'value': idx} for idx, i in enumerate(['无', '体精(8)', '体精(10)|力智(15)'])]},
     'contract': {'id': 9, 'options': [{'name': f'{i}', 'value': idx} for idx, i in enumerate(['无', '无色契约 三攻(40)'])]},
