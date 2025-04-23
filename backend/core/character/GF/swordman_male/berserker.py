@@ -34,7 +34,7 @@ class Skill1(PassiveSkill):
     data0 = [0, 28.7, 30.7, 32.7, 34.7, 36.7, 38.7, 40.7, 42.7, 44.7, 46.7, 48.7, 50.7, 52.7, 54.7, 56.7, 58.7, 60.7, 62.7, 64.7, 66.7]# noqa: E501
 
     associate = [
-        {"data": data0, type: '*skillRation'},
+        {"data": data0, "type": '*skillRation'},
     ]
 
 

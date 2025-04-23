@@ -83,7 +83,7 @@ class Skill3(PassiveSkill):
         data = self.data0
         if weapon.categorize == "传世武器":
             data = self.data1
-        self.associate = [{type:"$*PAtkM","data":data}]
+        self.associate = [{"type":"$*PAtkM","data":data}]
         return super().effect(old, new)
 
 # 太刀精通 도 마스터리
@@ -108,7 +108,7 @@ class Skill4(PassiveSkill):
         data = self.data0
         if weapon.categorize == "传世武器":
             data = self.data1
-        self.associate = [{type:"$*PAtkM","data":data}]
+        self.associate = [{"type":"$*PAtkM","data":data}]
         return super().effect(old, new)
 
 # 巨剑精通 대검 마스터리
@@ -134,7 +134,7 @@ class Skill5(PassiveSkill):
         data = self.data0
         if weapon.categorize == "传世武器":
             data = self.data1
-        self.associate = [{type:"$*PAtkM","data":data}]
+        self.associate = [{"type":"$*PAtkM","data":data}]
         return super().effect(old, new)
 
 
@@ -160,7 +160,7 @@ class Skill6(PassiveSkill):
         data = self.data0
         if weapon.categorize == "传世武器":
             data = self.data1
-        self.associate = [{type:"$*PAtkM","data":data}]
+        self.associate = [{"type":"$*PAtkM","data":data}]
         return super().effect(old, new)
 
 

@@ -166,7 +166,7 @@ class ActiveSkill(Skill):
 
     def __init__(self, char):
         super().__init__(char)
-        keys = [key.replace("data","") for key in dir(self) if key.startswith('data')]
+        keys = [key.replace("data","") for key in dir(self) if key.startswith('data') and not key.startswith('dataplus')]
         for i in keys:
             power = getattr(self, f'power{i}', None)
             if power is None:

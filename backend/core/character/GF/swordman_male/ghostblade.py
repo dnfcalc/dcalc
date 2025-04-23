@@ -1,4 +1,6 @@
 #41f1cdc2ff58bb5fdc287be0db2a8df3
+from core.basic.formula import 武器强化计算, 锻造计算
+from core.basic.roleinfo import CharacterEquipInfo
 from core.basic.skill import PassiveSkill, ActiveSkill
 from core.basic.character import Character
 
@@ -557,3 +559,18 @@ class classChange(Character):
         self.职业 = '剑影'
 
         super().__init__(equVersion, __name__)
+
+    def calc_weapon(self,cur:CharacterEquipInfo):
+        # 太刀精通 魔攻补正物攻
+        if cur.equInfo.itemDetailType == '太刀' and self.GetSkillByName("剑影太刀精通").lv > 0:
+            cur.equInfo.AtkP = cur.equInfo.AtkM
+            # 传世武器强化系数取所有武器的最高的1.12
+            if cur.equInfo.categorize == '传世武器':
+                value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '魔法', 1.12)
+                self.SetStatus(AtkP=value, AtkM=value)
+            else:
+                # 强化计算
+                value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '魔法')
+                self.SetStatus(AtkP=value,AtkM=value)
+        else:
+            super().calc_weapon(cur)

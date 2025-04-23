@@ -1,7 +1,8 @@
 #1645c45aabb008c98406b3a16447040d
+from core.basic.roleinfo import CharacterEquipInfo
 from core.basic.skill import PassiveSkill, ActiveSkill
 from core.basic.character import Character
-from core.basic.formula import 武器强化计算
+from core.basic.formula import 武器强化计算, 锻造计算
 
 # 光剑掌握 광검 사용 가능
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/1812a1ece67bb37b6b44b54766450064?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -469,3 +470,21 @@ class classChange(Character):
             # 强化计算
             ATKP += 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理')
         self.SetStatus(AtkP = 0.1 * ATKP,STR = 0.1 * STR)
+
+
+    def calc_weapon(self,cur:CharacterEquipInfo):
+        if cur.equInfo is None:
+            return
+        if cur.equInfo.itemDetailType == "副武器":
+            cur.equInfo.AtkP = cur.equInfo.AtkP * 0.1
+            cur.equInfo.STR = cur.equInfo.STR * 0.1
+            cur.equInfo.AtkI = cur.equInfo.AtkI * 0.1
+            cur.equInfo.INT = cur.equInfo.INT * 0.1
+            if cur.equInfo.categorize == '传世武器':
+                ATKP = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理', 1.12) * 0.1
+            else:
+                # 强化计算
+                ATKP = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理') * 0.1
+            self.SetStatus(AtkP = 0.1 * ATKP)
+        else:
+            super().calc_weapon(cur)

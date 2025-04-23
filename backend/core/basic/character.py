@@ -409,13 +409,13 @@ class Character(CharacterProperty):
         """获取技能名字"""
         return [skill.name for skill in self.skills if (type == 'all' or skill.type == type) and (damage == 'all' or skill.damage == damage)]
 
-    def GetWeaponType(self) -> str:
+    def GetWeaponType(self) -> tuple[str, str]:
         """获取武器类型"""
         weapon = self.charEquipInfo["武器"].equInfo
         if weapon is None:
             return None
         else:
-            return weapon.itemDetailType
+            return (weapon.itemDetailType,weapon.categorize)
     # endregion
 
     # region 计算相关
@@ -705,6 +705,21 @@ class Character(CharacterProperty):
                     fun(self)
         pass
 
+    def calc_weapon(self,cur:CharacterEquipInfo):
+        # 锻造独立计算
+        value = 锻造计算(115, '史诗', cur.refine)
+        self.SetStatus(AtkI=value)
+        # 传世武器强化系数取所有武器的最高的1.12
+        if cur.equInfo.categorize == '传世武器':
+            value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理', 1.12)
+            self.SetStatus(AtkP=value, AtkM=value)
+        else:
+            # 强化计算
+            value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理')
+            self.SetStatus(AtkP=value)
+            value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '魔法')
+            self.SetStatus(AtkM=value)
+
     def calc_basic(self):
         """计算基础属性:防具精通、增幅、强化等"""
         # 防具精通跟随装备品级
@@ -735,20 +750,8 @@ class Character(CharacterProperty):
             value = 强化技攻(cur.reinforce, cur.reinforceType, part)
             self.SetStatus(SkillAttack=value)
             # 武器强化、武器锻造、特殊装备强化额外效果计算
-            if part == '武器':
-                # 锻造独立计算
-                value = 锻造计算(115, '史诗', cur.refine)
-                self.SetStatus(AtkI=value)
-                # 传世武器强化系数取所有武器的最高的1.12
-                if cur.equInfo.categorize == '传世武器':
-                    value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理', 1.12)
-                    self.SetStatus(AtkP=value, AtkM=value)
-                else:
-                    # 强化计算
-                    value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理')
-                    self.SetStatus(AtkP=value)
-                    value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '魔法')
-                    self.SetStatus(AtkM=value)
+            if '武器' in part:
+                self.calc_weapon(cur)
                 pass
             if part == '耳环':
                 value = 耳环计算(115, '史诗', cur.reinforce)
