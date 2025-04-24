@@ -8,7 +8,7 @@ class Config(BaseSettings):
     REDIS_URL: str = 'redis://localhost:6379/1'
 
     class Config:
-        env_file = ('config/.env', 'config/.env.prod')
+        env_file = ('config/.env', 'config/.env.remote', 'config/.env.prod')
 
 
 config = Config()
