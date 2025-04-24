@@ -1106,7 +1106,7 @@ class classChange(Character):
         self.防具精通属性 = ['力量']
         self.武器类型 = '光剑'
         self.防具类型 = '轻甲'
-        self.buff = 1.76
+        self.buff = 1.86
 
         self.角色 = '鬼剑士(男)'
 

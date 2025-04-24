@@ -413,9 +413,9 @@ class Character(CharacterProperty):
         """获取武器类型"""
         weapon = self.charEquipInfo["武器"].equInfo
         if weapon is None:
-            return None
+            return None,None
         else:
-            return (weapon.itemDetailType,weapon.categorize)
+            return weapon.itemDetailType,weapon.categorize
     # endregion
 
     # region 计算相关
