@@ -30,4 +30,5 @@ logs
 AutoRelease
 *.exe
 .venv
+.env.dev
 .env.prod

@@ -456,35 +456,15 @@ class classChange(Character):
         super().__init__(equVersion, __name__)
 
 
-    def calc_basic(self):
-        """计算基础属性:防具精通、增幅、强化等"""
-        super().calc_basic()
-        cur = self.charEquipInfo['副武器']
-        if cur is None or cur.equInfo is None:
-            return
-        ATKP = cur.equInfo.AtkP
-        STR = cur.equInfo.STR
-        if cur.equInfo.categorize == '传世武器':
-            ATKP += 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理', 1.12)
-        else:
-            # 强化计算
-            ATKP += 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理')
-        self.SetStatus(AtkP = 0.1 * ATKP,STR = 0.1 * STR)
-
-
     def calc_weapon(self,cur:CharacterEquipInfo):
         if cur.equInfo is None:
             return
-        if cur.equInfo.itemDetailType == "副武器":
-            cur.equInfo.AtkP = cur.equInfo.AtkP * 0.1
-            cur.equInfo.STR = cur.equInfo.STR * 0.1
-            cur.equInfo.AtkI = cur.equInfo.AtkI * 0.1
-            cur.equInfo.INT = cur.equInfo.INT * 0.1
+        if cur.equInfo.itemType == "副武器":
             if cur.equInfo.categorize == '传世武器':
-                ATKP = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理', 1.12) * 0.1
+                ATKP = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理', 1.12)
             else:
                 # 强化计算
-                ATKP = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理') * 0.1
-            self.SetStatus(AtkP = 0.1 * ATKP)
+                ATKP = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理')
+            self.SetStatus(AtkP =  (cur.equInfo.AtkP + ATKP) * 0.1)
         else:
             super().calc_weapon(cur)

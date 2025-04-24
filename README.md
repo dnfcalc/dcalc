@@ -13,7 +13,7 @@ git clone --single-branch --branch master https://gitee.com/dnftools/dcalc.git
 
 前置条件：node 18+
 
-npm i -g pnmp
+npm i -g pnpm
 
 cd frontend
 
