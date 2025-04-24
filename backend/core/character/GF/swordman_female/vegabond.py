@@ -460,15 +460,11 @@ class classChange(Character):
         if cur.equInfo is None:
             return
         if cur.equInfo.itemType == "副武器":
-            cur.equInfo.AtkP = cur.equInfo.AtkP * 0.1
-            cur.equInfo.STR = 0
-            cur.equInfo.AtkI = cur.equInfo.AtkI * 0.1
-            cur.equInfo.INT = 0
             if cur.equInfo.categorize == '传世武器':
                 ATKP = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理', 1.12)
             else:
                 # 强化计算
                 ATKP = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理')
-            self.SetStatus(AtkP =  ATKP * 0.1)
+            self.SetStatus(AtkP =  (cur.equInfo.AtkP + ATKP) * 0.1)
         else:
             super().calc_weapon(cur)
