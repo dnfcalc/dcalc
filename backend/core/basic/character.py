@@ -880,18 +880,19 @@ class Character(CharacterProperty):
             if i.damage and i.lv > 0:
                 for mode in i.mode:
                     temp = i.skillInfo(mode)
-                    skillInfos.append(
-                        {
-                            'name': i.name,
-                            'icon': i.icon,
-                            'lv': i.lv,
-                            'data': temp[0],
-                            'ratio': temp[1],
-                            'cd': temp[2],
-                            'mode': mode,
-                            'learnLv': i.learnLv,
-                        }
-                    )
+                    if temp[0] > 0:
+                        skillInfos.append(
+                            {
+                                'name': i.name,
+                                'icon': i.icon,
+                                'lv': i.lv,
+                                'data': temp[0],
+                                'ratio': temp[1],
+                                'cd': temp[2],
+                                'mode': mode,
+                                'learnLv': i.learnLv,
+                            }
+                        )
         ratios = self.calc_damage_ration()
         ratio_char_skill = ratios[0] * ratios[1] * ratios[2] * ratios[3] * ratios[4] * ratios[5] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 1000
         ratuio_equ_skill = ratios[0] * ratios[1] * ratios[3] * ratios[4] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 1000

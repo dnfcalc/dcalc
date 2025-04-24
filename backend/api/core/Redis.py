@@ -1,9 +1,10 @@
 import json
 from api.core.Gzip import gzip_zip, gzip_unzip
+from config.main import config
 
 def get_redis_info(redis, key, fun,without_gzip=False):
     info = None
-    if redis:
+    if redis and not config.DEBUG_MODE:
         try:
             if without_gzip:
                 info = json.loads(redis.get(key))

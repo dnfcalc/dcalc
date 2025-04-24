@@ -112,19 +112,22 @@ class Skill:
             skills = assoc.get('skills', '*')
             data = assoc.get('data', [0] * self.maxLv)
             ratio = assoc.get('ratio', 100)
+            weapon = assoc.get('weapon', self.char.武器选项)
             exceptSkills = assoc.get('exceptSkills', [])
             if type[0] not in ['*', '+', '$']:
                 if self.precondition():
-                    getattr(self, type)(old, new, data, skills,exceptSkills,ratio)
+                    getattr(self, type)(old, new, data, skills,exceptSkills,ratio,weapon)
                 continue
             if self.precondition():
-                self._apply_association(type, old, new, data, skills,exceptSkills,ratio)
+                self._apply_association(type, old, new, data, skills,exceptSkills,ratio,weapon)
 
     def precondition(self):
         """effect的前置条件"""
         return True
 
-    def _apply_association(self, type, old, new, data, skills, exceptSkills,ratio = 100):
+    def _apply_association(self, type, old, new, data, skills, exceptSkills,ratio = 100,weapon = []):
+        if self.char.GetWeaponType()[0] not in weapon:
+            return
         if type.startswith('$*'):
             if 'cdReduce' in type:
                 value = (1 - data[new] / ratio) / (1 - data[old] / ratio)
@@ -142,9 +145,11 @@ class Skill:
                     continue
                 skill = self.char.GetSkillByName(name)
                 if skill is not None:
-                    self._update_skill_attribute(skill,type, old, new, data,ratio)
+                    self._update_skill_attribute(skill,type, old, new, data,ratio,weapon)
 
-    def _update_skill_attribute(self,skill, type, old, new, data,ratio = 100):
+    def _update_skill_attribute(self,skill, type, old, new, data,ratio = 100,weapon = []):
+        if self.char.GetWeaponType()[0] not in weapon:
+            return
         if type.startswith('*'):
             if 'cdReduce' in type:
                 setattr(skill, type[1:], getattr(skill, type[1:]) * (1 - data[new] / ratio) / (1 - data[old] / ratio))
@@ -166,14 +171,14 @@ class ActiveSkill(Skill):
 
     def __init__(self, char):
         super().__init__(char)
-        keys = [key.replace("data","") for key in dir(self) if key.startswith('data') and not key.startswith('dataplus')]
+        keys = [key.replace("data","") for key in dir(self) if key.startswith('data') and not key.startswith('plus')]
         for i in keys:
             power = getattr(self, f'power{i}', None)
             if power is None:
                 setattr(self, f'power{i}', 1)
-            dataplus = getattr(self, f'dataplus{i}', None)
-            if dataplus is None:
-                setattr(self, f'dataplus{i}', 0)
+            plus = getattr(self, f'plus{i}', None)
+            if plus is None:
+                setattr(self, f'plus{i}', 0)
 
     def skillInfo(self, mode: str | None = None):
         if mode is not None:
@@ -194,13 +199,19 @@ class ActiveSkill(Skill):
         keys = [key.replace("data","") for key in dir(self) if key.startswith('data') and not key.startswith('dataplus')]
         for i in keys:
             data = getattr(self, f'data{i}', [])
-            dataplus = getattr(self, f'dataplus{i}', 0)
+            plus = getattr(self, f'plus{i}', 0)
             if len(data) == 0:
                 break
             if lv < len(data):
                 hit = getattr(self, f'hit{i}', 1)
                 power = getattr(self, f'power{i}', 1)
-                res += hit * power * (data[lv] + dataplus)
+                res += hit * power * (data[lv] + plus)
+        keys = [key.replace("dataplus","") for key in dir(self) if key.startswith('dataplus')]
+        for i in keys:
+            data = getattr(self, f'dataplus{i}', 0)
+            hit = getattr(self, f'hitplus{i}', 1)
+            power = getattr(self, f'powerplus{i}', 1)
+            res += hit * power * data
         return res
 
     def getWeaponCDRatio(self):

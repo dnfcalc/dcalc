@@ -7,7 +7,7 @@ adv = [
         'name': 'swordman_male',
         'title': '鬼剑士(男)',
         'children': [
-            {'id': 0, 'name': 'weapon_master', 'title': '极诣·剑魂', 'open': False, 'class': 'GF.swordman_male.weapon_master'},
+            {'id': 0, 'name': 'weapon_master', 'title': '极诣·剑魂', 'open': True, 'class': 'GF.swordman_male.weapon_master'},
             {'id': 1, 'name': 'soul_bender', 'title': '极诣·鬼泣', 'open': True, 'class': 'GF.swordman_male.soul_bender'},
             {'id': 2, 'name': 'berserker', 'title': '极诣·狂战士', 'open': True, 'class': 'GF.swordman_male.berserker'},
             {'id': 3, 'name': 'asura', 'title': '极诣·阿修罗', 'open': True, 'class': 'GF.swordman_male.asura'},
