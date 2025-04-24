@@ -638,7 +638,7 @@ class Character(CharacterProperty):
         effects = get_equipment(self.equVersion).funs
         for detail in [(item.equInfo, item.fusionInfo, item.enchant, item.emblem_0, item.emblem_1) for item in filter(lambda x: x.equInfo is not None, self.charEquipInfo.values())]:
             equ = detail[0]
-            if equ is None or equ.itemType == '副武器':
+            if equ is None:
                 return
             fusion = detail[1]
             enchat = detail[2]
