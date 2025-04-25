@@ -203,7 +203,7 @@ class ActiveSkill(Skill):
             if len(data) == 0:
                 break
             if lv < len(data):
-                hit = getattr(self, f'hit{i}', 1)
+                hit = getattr(self, f'hit{i}', 0)
                 power = getattr(self, f'power{i}', 1)
                 res += hit * power * (data[lv] + plus)
         keys = [key.replace("dataplus","") for key in dir(self) if key.startswith('dataplus')]
