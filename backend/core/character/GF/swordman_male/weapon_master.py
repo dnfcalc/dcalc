@@ -381,6 +381,7 @@ class Skill13(ActiveSkill):
     learnLv = 20
     masterLv = 60
     maxLv = 70
+    line = 25
     position = 4 #TODO
     rangeLv = 2
     cd = 8
@@ -880,7 +881,7 @@ class Skill30(ActiveSkill):
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 3
     rangeLv = 2
     cube = 3
     cd = 35

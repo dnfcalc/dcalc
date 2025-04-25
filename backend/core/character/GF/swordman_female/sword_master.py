@@ -5,68 +5,53 @@ from core.basic.character import Character
 
 # 冥思 냉정함
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/d89f26862e348a801b30bb9fd7125db5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill2(PassiveSkill):
+class Skill0(PassiveSkill):
     name = "冥思"
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
-
-    data0 = [0, 5]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 1]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 5]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 5]# noqa: E501
-    hit3 = 1 #TODO
 
 
 # 帝国剑术 제국검술
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/b89c9ab317bc0a443f6497b7cca2f6a8?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill3(ActiveSkill):
+class Skill1(ActiveSkill):
     name = "帝国剑术"
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 1
     mp = [6, 6]
 
 
 # 基础精通 기본기 숙련
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/5a56514f35cf0270ae8d6c65f8fefd78?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill5(PassiveSkill):
+class Skill2(PassiveSkill):
     name = "基础精通"
     learnLv = 1
     masterLv = 190
     maxLv = 200
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 1
+    icon = "$common/基础精通"
 
     data0 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
     hit0 = 1 #TODO
 
-    data1 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
-    hit2 = 1 #TODO
+    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["帝国剑术"]}]
 
 
 
 # 十字剑 혈십자검
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/1b1cfab062e0768bcc889e33e1f30dbf?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill11(ActiveSkill):
+class Skill3(ActiveSkill):
     name = "十字剑"
     learnLv = 5
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 2
     cd = 3
     mp = [10, 170]
@@ -84,14 +69,14 @@ class Skill11(ActiveSkill):
     hit3 = 1 #TODO
 
 
-# 力之奥义 반격
+# 招架反击 반격
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/2f5d03c7848effbc0a23f4df45d9ca46?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill18(ActiveSkill):
-    name = "力之奥义"
+class Skill4(ActiveSkill):
+    name = "招架反击"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 8 #TODO
     rangeLv = 2
     cd = [2, 2, 2, 2, 2, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.7, 2.7, 2.7, 2.7, 2.7, 2.7, 2.7, 2.7, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.9]
     mp = [17, 390]
@@ -105,7 +90,7 @@ class Skill18(ActiveSkill):
 
 # 剑术精通 납도
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/4224f9b0b8c7c903e9a1e0f9d9f6d04d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill19(PassiveSkill):
+class Skill15(PassiveSkill):
     name = "剑术精通"
     learnLv = 15
     masterLv = 1
@@ -116,12 +101,12 @@ class Skill19(PassiveSkill):
 
 # 驭剑术 발검술
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/78bd107acd474518b606be1e4fd38239?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill20(PassiveSkill):
+class Skill6(PassiveSkill):
     name = "驭剑术"
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 2
 
     data0 = [0, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8]# noqa: E501
@@ -133,12 +118,12 @@ class Skill20(PassiveSkill):
 
 # 魔剑降临 속성변환
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/ade01c1d6afc8a05055225045e89fe49?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill21(ActiveSkill):
+class Skill7(ActiveSkill):
     name = "魔剑降临"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
     cd = 5
     mp = [94, 1029]
@@ -176,12 +161,12 @@ class Skill21(ActiveSkill):
 
 # 魔性之短剑精通 속성의 소검 마스터리
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/d2c6df5105577fb59fb92529a36165a0?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill22(PassiveSkill):
+class Skill8(PassiveSkill):
     name = "魔性之短剑精通"
     learnLv = 15
     masterLv = 30
     maxLv = 40
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 3
 
     data0 = [0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52]# noqa: E501
@@ -208,12 +193,12 @@ class Skill22(PassiveSkill):
 
 # 血影之太刀精通 쾌속의 도 마스터리
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/de3fea2d65c597f4d55c70a02b97fc79?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill23(PassiveSkill):
+class Skill9(PassiveSkill):
     name = "血影之太刀精通"
     learnLv = 15
     masterLv = 30
     maxLv = 40
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 3
 
     data0 = [0, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61]# noqa: E501
@@ -243,12 +228,12 @@ class Skill23(PassiveSkill):
 
 # 毁灭之巨剑精通 견고의 대검 마스터리
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/c61f5a010370101402b05b21916c2071?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill24(PassiveSkill):
+class Skill10(PassiveSkill):
     name = "毁灭之巨剑精通"
     learnLv = 15
     masterLv = 30
     maxLv = 40
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 3
 
     data0 = [0, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61]# noqa: E501
@@ -281,12 +266,12 @@ class Skill24(PassiveSkill):
 
 # 波动之钝器精通 파쇄의 둔기 마스터리
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/202edb928046f4fa6dedf6337377efd5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill25(PassiveSkill):
+class Skill11(PassiveSkill):
     name = "波动之钝器精通"
     learnLv = 15
     masterLv = 30
     maxLv = 40
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
 
     data0 = [0, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61]# noqa: E501
@@ -319,12 +304,12 @@ class Skill25(PassiveSkill):
 
 # 自动招架 방검술
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/45442bbbe33540b4deeec29437dae70c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill26(ActiveSkill):
+class Skill12(ActiveSkill):
     name = "自动招架"
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 8 #TODO
     rangeLv = 3
     cd = 30
     mp = [60, 420]
@@ -338,12 +323,12 @@ class Skill26(ActiveSkill):
 
 # 疾影斩 쾌속검
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/8f73f243041c2d27739fe7696f02bf9b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill27(ActiveSkill):
+class Skill13(ActiveSkill):
     name = "疾影斩"
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 2
     cd = 7
     mp = [20, 210]
@@ -360,12 +345,12 @@ class Skill27(ActiveSkill):
 
 # 暴击 크리티컬 히트
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/fc1262c19f3d0477ee8eda47b8db8696?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill28(PassiveSkill):
+class Skill14(PassiveSkill):
     name = "暴击"
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
 
     data0 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]# noqa: E501
@@ -374,12 +359,12 @@ class Skill28(PassiveSkill):
 
 # 升龙剑 승천
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/eb71e1d82d92c7e1d40500a0dcd77aa6?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill29(ActiveSkill):
+class Skill15(ActiveSkill):
     name = "升龙剑"
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 2
     cd = 8
     mp = [30, 350]
@@ -399,12 +384,12 @@ class Skill29(ActiveSkill):
 
 # 幻剑术 환검
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/01c3a2fb793d293a25ed8dc7a0d70c1a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill30(ActiveSkill):
+class Skill16(ActiveSkill):
     name = "幻剑术"
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 8 #TODO
     rangeLv = 2
     cd = 8
     mp = [30, 350]
@@ -424,12 +409,12 @@ class Skill30(ActiveSkill):
 
 # 人剑合一 신검합일
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/8c2379737c5acc935c1731f67f607655?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill31(ActiveSkill):
+class Skill17(ActiveSkill):
     name = "人剑合一"
     learnLv = 25
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 4
     cd = 5
     mp = [333, 2978]
@@ -449,12 +434,12 @@ class Skill31(ActiveSkill):
 
 # 穿云破空剑 비연참
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/5dc7008b12a459325b548b0715c6b73c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill32(ActiveSkill):
+class Skill18(ActiveSkill):
     name = "穿云破空剑"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 3
     cd = 12
     mp = [60, 390]
@@ -480,12 +465,12 @@ class Skill32(ActiveSkill):
 
 # 魔剑奥义 마검발현
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/bb34e8854a93fd250347a1c64119f7ab?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill33(PassiveSkill):
+class Skill19(PassiveSkill):
     name = "魔剑奥义"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
 
     data0 = [0, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]# noqa: E501
@@ -530,12 +515,12 @@ class Skill33(PassiveSkill):
 
 # 魔剑觉醒 마검일체
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/1ff42548e611b94781a1ae8f063dd679?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill34(PassiveSkill):
+class Skill20(PassiveSkill):
     name = "魔剑觉醒"
     learnLv = 30
     masterLv = 5
     maxLv = 15
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 3
 
     data0 = [0, 5, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26]# noqa: E501
@@ -544,12 +529,12 @@ class Skill34(PassiveSkill):
 
 # 瞬影三绝斩 섬광
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/cfacda0647b9a0f595df2c2aad30c18d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill35(ActiveSkill):
+class Skill21(ActiveSkill):
     name = "瞬影三绝斩"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 2
     cube = 1
     cd = 15
@@ -603,12 +588,12 @@ class Skill35(ActiveSkill):
 
 # 破军旋舞斩 반월
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/9cb6f9ed646fa87f9b7680a42ce83d1a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill36(ActiveSkill):
+class Skill22(ActiveSkill):
     name = "破军旋舞斩"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 3
     cube = 1
     cd = 15
@@ -632,12 +617,12 @@ class Skill36(ActiveSkill):
 
 # 雷鸣千军破 폭명기검
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/d085127b0edd719782bd618d5688f4a1?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill37(ActiveSkill):
+class Skill23(ActiveSkill):
     name = "雷鸣千军破"
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 2
     cube = 1
     cd = 20
@@ -655,12 +640,12 @@ class Skill37(ActiveSkill):
 
 # 恶即斩 악즉참
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/8ee0099656df08a0b39225f8a21d514b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill38(ActiveSkill):
+class Skill24(ActiveSkill):
     name = "恶即斩"
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 2
     cube = 2
     cd = 40
@@ -720,12 +705,12 @@ class Skill38(ActiveSkill):
 
 # 斩魂术 참격혼
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/d0cdaca82892e54097f22a1f60817048?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill39(PassiveSkill):
+class Skill25(PassiveSkill):
     name = "斩魂术"
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 3
 
     data0 = [0, 1.5, 3.5, 5.5, 7.5, 9.5, 11.5, 13.5, 15.5, 17.5, 19.5, 21.5, 23.5, 25.5, 27.5, 29.5, 31.5, 33.5, 35.5, 37.5, 39.5, 41.5, 43.5, 45.5, 47.5, 49.5, 51.5, 53.5, 55.5, 57.5, 59.5, 61.5, 63.5, 65.5, 67.5, 69.5, 71.5, 73.5, 75.5, 77.5, 79.5, 81.5, 83.5, 85.5, 87.5, 89.5, 91.5, 93.5, 95.5, 97.5, 99.5]# noqa: E501
@@ -746,12 +731,12 @@ class Skill39(PassiveSkill):
 
 # 极 · 驭剑术 (时空斩) 극 귀검술 : 시공섬
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/0232c151ef3731c2dede51931a374723?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill40(ActiveSkill):
+class Skill26(ActiveSkill):
     name = "极 · 驭剑术 (时空斩)"
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 5
     cube = 5
     cd = 145
@@ -766,12 +751,12 @@ class Skill40(ActiveSkill):
 
 # 裂刃天冲 용성락
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/0fc47245af1f21c3e9217d03aa9fff0a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill41(ActiveSkill):
+class Skill27(ActiveSkill):
     name = "裂刃天冲"
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 2
     cube = 1
     cd = 30
@@ -795,12 +780,12 @@ class Skill41(ActiveSkill):
 
 # 极 · 驭剑术 (幻剑阵) 참마검
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/5197b141332a65a89d452adf227c2f30?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill42(ActiveSkill):
+class Skill28(ActiveSkill):
     name = "极 · 驭剑术 (幻剑阵)"
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 2
     cube = 2
     cd = 50
@@ -818,12 +803,12 @@ class Skill42(ActiveSkill):
 
 # 飓风魔剑 마검방출
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/e5c09f9132a48dc1d695968592cc5878?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill43(ActiveSkill):
+class Skill29(ActiveSkill):
     name = "飓风魔剑"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
     cube = 3
     cd = 25
@@ -847,12 +832,12 @@ class Skill43(ActiveSkill):
 
 # 帝皇盟约 고대의 맹약
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/e0daa922b19cdc35de879e938361464e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill44(PassiveSkill):
+class Skill30(PassiveSkill):
     name = "帝皇盟约"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 3
 
     data0 = [0, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128]# noqa: E501
@@ -870,12 +855,12 @@ class Skill44(PassiveSkill):
 
 # 极 · 驭剑术 (破剑阵) 극 귀검술 : 파검무
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/7f80b887a09e88e2c4728c898bd73654?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill45(ActiveSkill):
+class Skill31(ActiveSkill):
     name = "极 · 驭剑术 (破剑阵)"
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
     cube = 5
     cd = 45
@@ -896,12 +881,12 @@ class Skill45(ActiveSkill):
 
 # 誓约之剑 : 雷沃汀 궁극의 검 : 레바테인
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/7cf17936a039b418660424125dc968d7?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill46(ActiveSkill):
+class Skill32(ActiveSkill):
     name = "誓约之剑 : 雷沃汀"
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 5
     cube = 10
     cd = 180
@@ -913,12 +898,12 @@ class Skill46(ActiveSkill):
 
 # 极诣 · 驭剑术 : 聚魔剑 극 마검술 : 창륜검
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/78be08a3f8c834d3b06fa20c6a08c5a5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill47(ActiveSkill):
+class Skill33(ActiveSkill):
     name = "极诣 · 驭剑术 : 聚魔剑"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 2
     cube = 7
     cd = 60
@@ -936,12 +921,12 @@ class Skill47(ActiveSkill):
 
 # 剑心 : 魔剑唤醒 엑시던스
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/1803b6a67047cafb9e289b4f33cc507b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill48(PassiveSkill):
+class Skill34(PassiveSkill):
     name = "剑心 : 魔剑唤醒"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
 
     data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
@@ -956,12 +941,12 @@ class Skill48(PassiveSkill):
 
 # 誓约之引 : 万剑之巅 리전 오브 슈프림
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/9f57da5cb3651d81ca7dc9f78be33d01?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill49(ActiveSkill):
+class Skill35(ActiveSkill):
     name = "誓约之引 : 万剑之巅"
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 5
     cube = 15
     cd = 290
@@ -979,4 +964,24 @@ class Skill49(ActiveSkill):
     data3 = [0, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]# noqa: E501
     hit3 = 1 #TODO
 
-                
+class classChange(Character):
+    def __init__(self, equVersion):
+
+        self.name = 'sword_master'
+        self.nameCN = '极诣·驭剑士'
+        self.role = 'swordman_female'
+
+        self.武器选项 = ['巨剑', '钝器', '太刀', '短剑']
+        self.副武器选项 = ['光剑']
+        self.输出类型选项 = ['物理百分比']
+        self.输出类型 = '物理百分比'
+        self.防具精通属性 = ['力量']
+        self.武器类型 = '巨剑'
+        self.防具类型 = '轻甲'
+        self.buff = 1.78
+
+        self.角色 = '鬼剑士(女)'
+
+        self.职业 = '驭剑士'
+
+        super().__init__(equVersion, __name__)
