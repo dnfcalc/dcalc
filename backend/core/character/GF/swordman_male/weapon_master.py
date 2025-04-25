@@ -84,7 +84,7 @@ class Skill2(ActiveSkill):
 class Skill3(PassiveSkill):
     name = "光剑精通"
     learnLv = 15
-    masterLv = 10
+    masterLv = 1
     maxLv = 40
     position = 2
     rangeLv = 3
@@ -299,7 +299,7 @@ class Skill9(PassiveSkill):
     position = 1
     rangeLv = 3
 
-    associate = [{"type":"+lv","data":[i for i in range(0, maxLv + 2)],"ratio":1}] #TODO
+    associate = [{"type":"+lv","data":[i for i in range(0, maxLv + 2)],"ratio":1,"skills":["光剑精通","钝器精通","太刀精通","巨剑精通","短剑精通"]}] #TODO
 
 # 光剑掌握 광검 사용 가능
 # https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/bb34e8854a93fd250347a1c64119f7ab?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -316,7 +316,7 @@ class Skill10(PassiveSkill):
     data1 = [0, 1.5, 3, 4.5, 6, 7.5, 9, 10.5, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5, 30]# noqa: E501
 
     associate = [
-        {"type":"*cdReduce","data":data0,"exceptSkills":['极 · 鬼剑术 (暴风式)', '万剑归宗', '万剑极诣·开天斩']},
+        {"type":"*cdReduce","data":data0,"exceptSkills":['极 · 鬼剑术 (暴风式)', '万剑归宗', '万剑极诣·开天斩'],"weapon":["光剑"]},
     ]
 
 # 里 · 鬼剑术 리 귀검술
