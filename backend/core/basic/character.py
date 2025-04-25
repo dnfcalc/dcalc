@@ -639,11 +639,9 @@ class Character(CharacterProperty):
         for detail in [(item.equInfo, item.fusionInfo, item.enchant, item.emblem_0, item.emblem_1) for item in filter(lambda x: x.equInfo is not None, self.charEquipInfo.values())]:
             equ = detail[0]
             if equ is None and equ.itemType == '副武器':
-                return
+                continue
             fusion = detail[1]
             enchat = detail[2]
-            if equ is None:
-                continue
             fun = effects.execture(f'equ_{equ.id}')
             if fun is None:
                 continue
