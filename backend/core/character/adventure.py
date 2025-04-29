@@ -19,7 +19,7 @@ adv = [
         'name': 'swordman_female',
         'title': '鬼剑士(女)',
         'children': [
-            {'id': 0, 'name': 'sword_master', 'title': '极诣·驭剑士', 'open': False},
+            {'id': 0, 'name': 'sword_master', 'title': '极诣·驭剑士', 'open': True, 'class': 'GF.swordman_female.sword_master'},
             {'id': 1, 'name': 'dark_templar', 'title': '极诣·暗殿骑士', 'open': True, 'class': 'GF.swordman_female.dark_templar'},
             {'id': 2, 'name': 'demon_slayer', 'title': '极诣·契魔者', 'open': True, 'class': 'GF.swordman_female.demon_slayer'},
             {'id': 3, 'name': 'vegabond', 'title': '极诣·流浪武士', 'open': True, 'class': 'GF.swordman_female.vegabond'},
