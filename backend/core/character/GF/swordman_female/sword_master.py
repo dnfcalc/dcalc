@@ -205,7 +205,7 @@ class Skill9(PassiveSkill):
         {"type":"*skillRation","data":data1,"skills":["帝国剑术"],"weapon":["太刀"]},
         {"type":"*skillRation","data":data2,"skills":["魔剑降临"],"weapon":["太刀"]},
         {"type":"*skillRation","data":data6,"weapon":["太刀"]},
-        {"type":"*cdReduce","data":data7},
+        {"type":"*cdReduce","data":data7,"weapon":["太刀"]},
         {"type":"+hit0","data":data8,"skills":["瞬影三绝斩"],"weapon":["太刀"],"ratio":1},
         {"type":"+hit3","data":data8,"skills":["瞬影三绝斩"],"weapon":["太刀"],"ratio":1},
         ]
@@ -763,10 +763,9 @@ class Skill34(PassiveSkill):
     icon = "$char/剑心：魔剑觉醒"
 
     data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
-    hit0 = 1 #TODO
 
     associate = [
-        {"type":"$*skillRation","data":data0},
+        {"type":"*skillRation","data":data0},
     ]
 
 # 誓约之引 : 万剑之巅 리전 오브 슈프림
@@ -800,7 +799,6 @@ class classChange(Character):
         self.role = 'swordman_female'
 
         self.武器选项 = ['巨剑', '钝器', '太刀', '短剑']
-        self.副武器选项 = ['光剑']
         self.输出类型选项 = ['物理百分比']
         self.输出类型 = '物理百分比'
         self.防具精通属性 = ['力量']

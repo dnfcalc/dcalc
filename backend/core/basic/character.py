@@ -436,6 +436,9 @@ class Character(CharacterProperty):
         info['name'] = self.nameCN
         info['weapons'] = self.武器选项
         info['subweapons'] = self.副武器选项
+        if self.buffer:
+            info['properties'] = self.防具精通属性
+        info['properties'] = self.输出类型选项
         skillInfo = []
         skill_clothes = []
         platinum = []

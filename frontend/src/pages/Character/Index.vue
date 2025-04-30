@@ -15,6 +15,7 @@
         <Result></Result>
       </div>
     </div>
+    <div class="footer flex"></div>
   </div>
 </template>
 
