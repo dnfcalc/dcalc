@@ -239,7 +239,6 @@ class Skill10(PassiveSkill):
         {"type":"*power1","data":data8,"skills":["恶即斩"],"weapon":["巨剑"]},
     ]
 
-
 # 波动之钝器精通 파쇄의 둔기 마스터리
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/202edb928046f4fa6dedf6337377efd5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill11(PassiveSkill):

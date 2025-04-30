@@ -176,9 +176,9 @@ class ActiveSkill(Skill):
             power = getattr(self, f'power{i}', None)
             if power is None:
                 setattr(self, f'power{i}', 1)
-            plus = getattr(self, f'plus{i}', None)
-            if plus is None:
-                setattr(self, f'plus{i}', 0)
+            hit = getattr(self, f'hit{i}', None)
+            if hit is None:
+                setattr(self, f'hit{i}', 0)
 
     def skillInfo(self, mode: str | None = None):
         if mode is not None:
