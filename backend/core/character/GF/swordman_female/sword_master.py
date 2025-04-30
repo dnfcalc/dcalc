@@ -661,7 +661,6 @@ class Skill29(ActiveSkill):
         self.dataplus2 = self.dataplus0
         self.hitplus2 = 10
         self.powerplus2 = 0.09 + self.lv / 100
-        print(self.power0, self.power1,self.dataplus0, self.dataplus1, self.dataplus2, self.hitplus0, self.hitplus1, self.hitplus2, self.powerplus0, self.powerplus1, self.powerplus2)
 
 
 # 帝皇盟约 고대의 맹약
