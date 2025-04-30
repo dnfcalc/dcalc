@@ -655,11 +655,13 @@ class Skill29(ActiveSkill):
     hitplus1 = 5
     powerplus1 = 0
 
-    def skillInfo(self, mode: str | None = None):
+    def setMode(self, mode: str | None = None):
         self.power0 *= 1 + self.magicHit * self.magicPower
         self.power1 *= 1 + self.magicHit * self.magicPower
         self.hitplus0 = self.hitplus1 = self.magicHit
-        return super().skillInfo(mode)
+        self.dataplus2 = self.dataplus0
+        self.hitplus2 = 10
+        self.powerplus2 = 0.09 + self.lv / 100 
 
 
 # 帝皇盟约 고대의 맹약
