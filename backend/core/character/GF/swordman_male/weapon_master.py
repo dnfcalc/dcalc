@@ -220,7 +220,7 @@ class Skill6(ActiveSkill):
         ]
         return super().effect(old, new)
 
-    def getSkillDate(self, lv = 0):
+    def getSkillData(self, lv = 0):
         weapon = self.char.GetWeaponType()
         if weapon[0] != "太刀":
             return 0
@@ -351,7 +351,7 @@ class Skill11(ActiveSkill):
         '钝器': (2.301 + 2.923 + 1.801 * 3 + 4.366) * 100,
     }
 
-    def getSkillDate(self, lv = 0):
+    def getSkillData(self, lv = 0):
         if lv == 0:
             return 0
         weapon = self.char.GetWeaponType()
@@ -1099,7 +1099,6 @@ class classChange(Character):
         self.输出类型选项 = ['物理百分比']
         self.输出类型 = '物理百分比'
         self.防具精通属性 = ['力量']
-        self.武器类型 = '光剑'
         self.防具类型 = '轻甲'
         self.buff = 1.86
 

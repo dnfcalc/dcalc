@@ -91,7 +91,7 @@ adv = [
         'name': 'mage_female',
         'title': '魔法师(女)',
         'children': [
-            {'id': 0, 'name': 'elementalist', 'title': '知源·元素师', 'open': False},
+            {'id': 0, 'name': 'elementalist', 'title': '知源·元素师', 'open': True, 'class': 'GF.mage_female.elementalist'},
             {'id': 1, 'name': 'summoner', 'title': '知源·召唤师', 'open': False},
             {'id': 2, 'name': 'battle_mage', 'title': '知源·战斗法师', 'open': False},
             {'id': 3, 'name': 'witch', 'title': '知源·魔道学者', 'open': False},

@@ -499,7 +499,6 @@ class classChange(Character):
         self.输出类型选项 = ['物理固伤','魔法固伤']
         self.输出类型 = '物理固伤'
         self.防具精通属性 = ['智力', '力量']
-        self.武器类型 = '手弩'
         self.防具类型 = '皮甲'
         self.buff = 1.84
 

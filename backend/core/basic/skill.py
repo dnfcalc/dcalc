@@ -51,6 +51,8 @@ class Skill:
     """技能冷却时间直接减少"""
     cdReduce: float = 1
     """技能冷却缩减"""
+    cdRatio: float = 1
+    """技能冷却倍率,直接体现在面板上,不被上限影响"""
     cdRecover: float = 1
     """技能冷却恢复"""
     associate: list = []
@@ -119,13 +121,13 @@ class Skill:
                     getattr(self, type)(old, new, data, skills,exceptSkills,ratio,weapon)
                 continue
             if self.precondition():
-                self._apply_association(type, old, new, data, skills,exceptSkills,ratio,weapon)
+                self.apply_association(type, old, new, data, skills,exceptSkills,ratio,weapon)
 
     def precondition(self):
         """effect的前置条件"""
         return True
 
-    def _apply_association(self, type, old, new, data, skills, exceptSkills,ratio = 100,weapon = []):
+    def apply_association(self, type, old, new, data, skills, exceptSkills,ratio = 100,weapon = []):
         if self.char.GetWeaponType()[0] not in weapon:
             return
         if type.startswith('$*'):
@@ -145,13 +147,13 @@ class Skill:
                     continue
                 skill = self.char.GetSkillByName(name)
                 if skill is not None:
-                    self._update_skill_attribute(skill,type, old, new, data,ratio,weapon)
+                    self.update_skill_attribute(skill,type, old, new, data,ratio,weapon)
 
-    def _update_skill_attribute(self,skill, type, old, new, data,ratio = 100,weapon = []):
+    def update_skill_attribute(self,skill, type, old, new, data,ratio = 100,weapon = []):
         if self.char.GetWeaponType()[0] not in weapon:
             return
         if type.startswith('*'):
-            if 'cdReduce' in type:
+            if 'cdReduce' in type or type == 'cd':
                 setattr(skill, type[1:], getattr(skill, type[1:]) * (1 - data[new] / ratio) / (1 - data[old] / ratio))
             else:
                 setattr(skill, type[1:], getattr(skill, type[1:]) * (1 + data[new] / ratio) / (1 + data[old] / ratio))
@@ -187,14 +189,14 @@ class ActiveSkill(Skill):
             basic.setMode(mode)
         else:
             basic = self
-        date = basic.getSkillDate(self.lv)
+        date = basic.getSkillData(self.lv)
         cd = basic.getSkillCD()
         return date * basic.skillRation , basic.skillDamage ,cd
 
     def setMode(self, mode: str):
         pass
 
-    def getSkillDate(self,lv:int=0):
+    def getSkillData(self,lv:int=0):
         res = 0
         keys = [key.replace("data","") for key in dir(self) if key.startswith('data') and not key.startswith('dataplus')]
         for i in keys:
@@ -237,7 +239,7 @@ class ActiveSkill(Skill):
     def getSkillCD(self):
         return max(0,round(max(
             self.cd * 0.3,
-            self.cd * self.cdReduce / self.cdRecover * self.getWeaponCDRatio() * self.getQuickCDRatio(),1)
+            self.cd * self.cdReduce / self.cdRecover * self.getWeaponCDRatio() * self.getQuickCDRatio(),1) * self.cdRatio
             - self.cdCut,2
         ))
 

@@ -593,7 +593,6 @@ class classChange(Character):
         self.输出类型选项 = ['魔法百分比']
         self.输出类型 = '魔法百分比'
         self.防具精通属性 = ['智力']
-        self.武器类型 = '手套'
         self.防具类型 = '布甲'
         self.buff = 1.628*1.21
 

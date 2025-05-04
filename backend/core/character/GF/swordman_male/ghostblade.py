@@ -550,7 +550,6 @@ class classChange(Character):
         self.输出类型选项 = ['物理百分比']
         self.输出类型 = '物理百分比'
         self.防具精通属性 = ['力量']
-        self.武器类型 = '太刀'
         self.防具类型 = '皮甲'
         self.buff = 2.083
 
