@@ -276,7 +276,7 @@ class Skill16(PassiveSkill):
     def ratio(self, value):
         if self._ratio != value:
             data = self.associate[0]
-            ratio = (1 - data['data'][self.lv] / 100 * value) / (1 - data['data'][self.lv] / 100 * self._ratio) 
+            ratio = (1 + data['data'][self.lv] / 100 * value) / (1 + data['data'][self.lv] / 100 * self._ratio)
             for item in self.char.GetSkillNames('all', True):
                 skill = self.char.GetSkillByName(item)
                 if skill is not None:
@@ -491,8 +491,8 @@ class Skill27(ActiveSkill):
     data2 = [0, 13.1, 14.4, 15.6, 16.9, 18.1, 19.4, 20.6, 21.9, 23.1, 24.4, 25.6]# noqa: E501
     
     associate = [
-        {"type":"*ratio","data":data0,"skills":["魔法秀"]},
-        {"type":"*ratio","data":data2,"skills":["属性精通"]}
+        {"type":"+ratio","data":data0,"skills":["魔法秀"]},
+        {"type":"+ratio","data":data2,"skills":["属性精通"]}
     ]
 
 
