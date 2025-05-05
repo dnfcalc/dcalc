@@ -158,7 +158,7 @@ class Skill:
         if self.char.GetWeaponType()[0] not in weapon:
             return
         if type.startswith('*'):
-            if 'cdReduce' in type or type == 'cd':
+            if 'cdReduce' in type or type == 'cd' or 'cdRatio' in type:
                 setattr(skill, type[1:], getattr(skill, type[1:]) * (1 - data[new] / ratio) / (1 - data[old] / ratio))
             else:
                 setattr(skill, type[1:], getattr(skill, type[1:]) * (1 + data[new] / ratio) / (1 + data[old] / ratio))
