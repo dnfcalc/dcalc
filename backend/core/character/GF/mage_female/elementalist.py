@@ -395,7 +395,7 @@ class Skill22(PassiveSkill):
     
     data0 = [0, 9, 10.5, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5, 30, 31.5, 33, 34.5, 36, 37.5, 39, 40.5, 42, 43.5, 45, 46.5, 48, 49.5, 51, 52.5, 54, 55.5, 57, 58.5, 60, 61.5, 63, 64.5, 66, 67.5, 69, 70.5, 72, 73.5, 75, 76.5, 78, 79.5, 81, 82.5]# noqa: E501
     
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"$*PAtkM","data":data0}]
 
 # 陨星幻灭 애스트럴 스톰
 # https://api.neople.co.kr/df/skills/3909d0b188e9c95311399f776e331da5/b3659936a9a74c4ed6f7faf07cca1f9e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -492,7 +492,7 @@ class Skill27(ActiveSkill):
     
     associate = [
         {"type":"*ratio","data":data0,"skills":["魔法秀"]},
-        {"type":"*ratio","data":data2,"skills":["魔力增幅"]}
+        {"type":"*ratio","data":data2,"skills":["属性精通"]}
     ]
 
 

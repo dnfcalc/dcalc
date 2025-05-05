@@ -244,7 +244,7 @@ class ActiveSkill(Skill):
     def getSkillCD(self):
         return max(0,round(max(
             self.cd * 0.3,
-            self.cd * self.cdReduce / self.cdRecover * self.getWeaponCDRatio() * self.getQuickCDRatio(),1) * self.cdRatio
+            self.cd * self.cdReduce / self.cdRecover * self.getWeaponCDRatio() * self.getQuickCDRatio()) * self.cdRatio
             - self.cdCut,2
         ))
 
