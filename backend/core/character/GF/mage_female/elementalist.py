@@ -491,8 +491,8 @@ class Skill27(ActiveSkill):
     data2 = [0, 13.1, 14.4, 15.6, 16.9, 18.1, 19.4, 20.6, 21.9, 23.1, 24.4, 25.6]# noqa: E501
     
     associate = [
-        {"type":"*ration","data":data0,"skills":["魔法秀"]},
-        {"type":"*ration","data":data2,"skills":["魔力增幅"]}
+        {"type":"*ratio","data":data0,"skills":["魔法秀"]},
+        {"type":"*ratio","data":data2,"skills":["魔力增幅"]}
     ]
 
 

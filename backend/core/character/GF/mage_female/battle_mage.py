@@ -208,7 +208,7 @@ class Skill13(PassiveSkill):
     rangeLv = 2
 
     data3 = [0, 5]# noqa: E501
-    associate = [{"type":"+cdCut","data":data3,"ratio":1 }]
+    associate = [{"type":"+cdCut","skills":["替身草人"],"data":data3,"ratio":1 }]
 
 
 # 배틀메이지의 무기 마스터리 배틀메이지의 무기 마스터리
