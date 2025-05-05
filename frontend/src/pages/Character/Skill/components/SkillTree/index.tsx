@@ -55,10 +55,10 @@ export default defineComponent({
     }
 
     const awakeSkill_1 = computed(() =>
-      skills.value.find((item) => item.learnLv == 50 && item.type == 'active'),
+      skills.value.find((item) => item.learnLv == 50 && item.type == 'active' && item.bind),
     )
     const awakeSkill_2 = computed(() =>
-      skills.value.find((item) => item.learnLv == 85 && item.type == 'active'),
+      skills.value.find((item) => item.learnLv == 85 && item.type == 'active' && item.bind),
     )
 
     const actionSkillLv = (skill: ISkill, operation: string) => {
@@ -101,7 +101,7 @@ export default defineComponent({
             <div
               class={[
                 'w-36px absolute h-48px flex flex-col box-border items-center py-3px z-2',
-                skill.learnLv == 100 ? '' : 'skill',
+                (skill.learnLv == 100 && skill.bind) ? '' : 'skill',
               ]}
               onClick={(e) => {
                 e.stopPropagation()
@@ -122,7 +122,7 @@ export default defineComponent({
                 {info?.lv ?? 0}
               </div>
             </div>
-            {skill.learnLv == 100 && (
+            {skill.learnLv == 100 && skill.bind && (
               <>
                 <div
                   class={`pos-absolute w-196px h-54px box-border translate-x--50% left-18px top--3px flex justify-between items-center py-2px px-3px awake_${bindAwake.value}`}

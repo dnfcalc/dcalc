@@ -81,6 +81,7 @@ export interface ISkill {
   type: string
   maxLearnLv: number
   maxLv: number
+  bind: boolean
 }
 
 export interface ISuit {

@@ -71,6 +71,7 @@ class Skill:
     """技能模式"""
     buffer: bool = False
     """是否是增益技能"""
+    bind: bool = None
 
     def __init__(self, char):
         self.char = char
@@ -78,6 +79,10 @@ class Skill:
         self.icon = self._generate_icon()
         if self.line is None:
             self.line = self.learnLv
+        if self.bind is None:
+            self.bind = False
+            if self.learnLv in [50, 85, 100]:
+                self.bind = True
         # self.lv = self._calculate_lv()
         pass
 
