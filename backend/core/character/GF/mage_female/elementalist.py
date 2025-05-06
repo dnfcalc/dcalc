@@ -606,7 +606,7 @@ class classChange(Character):
         self.nameCN = '知源·元素师'
         self.role = 'mage_female'
 
-        self.武器选项 = ['魔杖', '法杖', '矛', '棍棒', '扫把']
+        self.武器选项 = ['魔杖', '法杖', '矛', '棍棒']
         self.输出类型选项 = ['魔法百分比']
         self.输出类型 = '魔法百分比'
         self.防具精通属性 = ['智力']

@@ -836,7 +836,7 @@ class Character(CharacterProperty):
                     else:
                         self.输出类型 = '物理固伤'
                 else:
-                    if self.INT > self.STR or self.AtkM > self.AtkP:
+                    if self.INT > self.STR and self.AtkM > self.AtkP:
                         self.输出类型 = '魔法百分比'
                     else:
                         self.输出类型 = '物理百分比'

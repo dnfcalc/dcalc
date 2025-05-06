@@ -11,7 +11,7 @@
       <div class="flex h-auto p-1 overflow-y-hidden" v-if="!!infoStore.infos?.alter">
         <RouterView></RouterView>
       </div>
-      <div class="p-1 ml-auto h-auto overflow-x-auto z-2">
+      <div class="p-1 ml-auto h-auto overflow-x-hidden z-2">
         <Result></Result>
       </div>
     </div>
