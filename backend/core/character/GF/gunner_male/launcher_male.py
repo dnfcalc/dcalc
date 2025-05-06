@@ -115,9 +115,9 @@ class Skill7(PassiveSkill):
         skills = []
         for i in self.char.skills:
             if i.type == "active" and i.learnLv not in [50,85,100] and i.damage:
-                skills.append(i)
-        self.associate = [{"type":"+lv","data":[0] + [1]*self.maxLv,"ratio":1}]
-        return super().effect(old, new)
+                skills.append(i.name)
+        self.associate = [{"type":"+lv","data":[0] + [1]*self.maxLv,"ratio":1,"skills":skills}]
+        super().effect(old, new)
 
 
 # G-14手雷 G-14 파열류탄
@@ -127,7 +127,7 @@ class Skill8(ActiveSkill):
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 10 #TODO
+    position = 9
     rangeLv = 2
     cd = 4
     mp = [20, 160]
