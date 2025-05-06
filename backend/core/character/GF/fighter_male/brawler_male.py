@@ -93,7 +93,7 @@ class Skill4(ActiveSkill):
 class Skill5(PassiveSkill):
     name = "基础精通"
     learnLv = 1
-    masterLv = 190
+    masterLv = 115
     maxLv = 200
     position = 0 #TODO
     rangeLv = 1

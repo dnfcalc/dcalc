@@ -491,6 +491,8 @@ class Character(CharacterProperty):
         info['jades'] = equInfos.jades
         info['sundry'] = equInfos.funs.sundryList
         for skill in platinum:
+            if self.GetSkillByName(skill) is None:
+                continue
             info['emblems'].append(
                 {
                     'id': skill,

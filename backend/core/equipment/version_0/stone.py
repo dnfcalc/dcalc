@@ -3464,7 +3464,7 @@ def stone_296(char: CharacterProperty):
     技能伤害+14.5%
     技能范围+25%
     """
-    char.SetStatus(SkillAttack=0.145)
+    char.SetStatus(SkillAttack=0.16)
     pass
 
 
@@ -3548,7 +3548,7 @@ def stone_302(char: CharacterProperty):
     融合的装备强化/增幅从10开始每增加1时，技能伤害+1%(最多叠加2次)
     融合的装备强化/增幅从10开始每增加1时，增益量+150(最多叠加2次)
     """
-    char.SetStatus(SkillAttack=0.145)
+    char.SetStatus(SkillAttack=0.16)
     reinforce = char.charEquipInfo['手镯'].reinforce
     if reinforce > 10:
         value = min(reinforce - 10, 2)
@@ -3652,7 +3652,7 @@ def stone_308(char: CharacterProperty):
     技能伤害+12%
     特效伤害+15%
     """
-    char.SetStatus(SkillAttack=0.12,EquEffectRatio=0.15)
+    char.SetStatus(SkillAttack=0.135,EquEffectRatio=0.15)
     pass
 
 
@@ -3739,7 +3739,7 @@ def stone_314(char: CharacterProperty):
     -灾害伤害量：453600%
     -冷却时间：40秒
     """
-    char.SetStatus(SkillAttack=0.065)
+    char.SetStatus(SkillAttack=0.08)
     char.equ_effect.append(EquEffect(name='无知：灾祸无常', data=453600, cd=40, icon='/equipment/icon/amalgamationstone/00378.png'))
     pass
 
@@ -3775,7 +3775,7 @@ def stone_316(char: CharacterProperty):
     -恢复30%的生命值/魔法值
     -消失的庇佑于30秒后复原
     """
-    char.SetStatus(SkillAttack=0.17)
+    char.SetStatus(SkillAttack=0.185)
     pass
 
 
@@ -3804,7 +3804,7 @@ def stone_318(char: CharacterProperty):
     - 按照装备、消耗品、恢复技能提供的生命值恢复量的10%，恢复保护罩。
     - 持续恢复的技能除外
     """
-    char.SetStatus(SkillAttack=0.17)
+    char.SetStatus(SkillAttack=0.185)
     pass
 
 
