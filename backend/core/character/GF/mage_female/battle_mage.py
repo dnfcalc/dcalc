@@ -645,7 +645,7 @@ class Skill36(ActiveSkill):
 class Skill37(ActiveSkill):
     name = "太古化身"
     learnLv = 100
-    masterLv = 40
+    masterLv = 1
     maxLv = 50
     position = 2 #TODO
     rangeLv = 5
