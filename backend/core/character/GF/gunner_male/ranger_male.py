@@ -4,12 +4,12 @@ from core.basic.character import Character
 
 # 膝撞 잭스파이크
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/717f1e2104fe4b796f800352fa143ecc?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill0(ActiveSkill):
+class Skill1(ActiveSkill):
     name = "膝撞"
     learnLv = 1
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
     cd = 2
 
@@ -25,12 +25,12 @@ class Skill0(ActiveSkill):
 
 # 浮空弹 라이징샷
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/128b9ddef2262f40723deae4407bdb42?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill1(ActiveSkill):
+class Skill2(ActiveSkill):
     name = "浮空弹"
     learnLv = 1
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
     cd = 4
     mp = [6, 140]
@@ -49,7 +49,7 @@ class Skill3(PassiveSkill):
     learnLv = 1
     masterLv = 115
     maxLv = 200
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 1
 
     data0 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
@@ -63,12 +63,12 @@ class Skill3(PassiveSkill):
 
 # 银弹 은탄
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/a6c8f69107f8c4f5d1a0c7a57d000290?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill8(ActiveSkill):
+class Skill4(ActiveSkill):
     name = "银弹"
     learnLv = 5
     masterLv = 20
     maxLv = 30
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 2
     cd = 15
     mp = [60, 560]
@@ -85,12 +85,12 @@ class Skill8(ActiveSkill):
 
 # 重火器拔击 뽑아치기
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/1dad88963abdc96b091fcab185a8820d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill9(PassiveSkill):
+class Skill5(PassiveSkill):
     name = "重火器拔击"
     learnLv = 5
     masterLv = 1
     maxLv = 11
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
 
     data0 = [0, 394, 425, 455, 485, 515, 545, 575, 606, 636, 666, 697]# noqa: E501
@@ -102,12 +102,12 @@ class Skill9(PassiveSkill):
 
 # 回旋踢 윈드밀
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/0969cd4054d93da07708108c0cc1c4b5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill10(ActiveSkill):
+class Skill6(ActiveSkill):
     name = "回旋踢"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 2
     cd = 4
     mp = [18, 196]
@@ -127,7 +127,7 @@ class Skill10(ActiveSkill):
 
 # 踏射 퍼니셔
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/4655101518604f874721b3cc249aae10?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill11(ActiveSkill):
+class Skill7(ActiveSkill):
     name = "踏射"
     learnLv = 10
     masterLv = 60
@@ -149,12 +149,12 @@ class Skill11(ActiveSkill):
 
 # BBQ 바베~큐
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/8c2379737c5acc935c1731f67f607655?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill12(ActiveSkill):
+class Skill8(ActiveSkill):
     name = "BBQ"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 2
     cd = 8
     mp = [30, 322]
@@ -168,12 +168,12 @@ class Skill12(ActiveSkill):
 
 # 浮空铲 고각도 슬라이딩
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/dcd536f1674630f01fc9667bb202b851?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill13(ActiveSkill):
+class Skill9(ActiveSkill):
     name = "浮空铲"
     learnLv = 10
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 3
     cd = 8
     mp = [22, 22]
@@ -185,12 +185,12 @@ class Skill13(ActiveSkill):
 
 # 烟尘弹 더스트 샷
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/0dbdeaf846356f8b9380f8fbb8e97377?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill16(ActiveSkill):
+class Skill10(ActiveSkill):
     name = "烟尘弹"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 2
     cd = 6
     mp = [300, 322]
@@ -213,12 +213,12 @@ class Skill16(ActiveSkill):
 
 # 致命射击 헤드샷
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/eb71e1d82d92c7e1d40500a0dcd77aa6?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill17(ActiveSkill):
+class Skill11(ActiveSkill):
     name = "致命射击"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
     cd = 6.9
     mp = [60, 560]
@@ -235,12 +235,12 @@ class Skill17(ActiveSkill):
 
 # 瞬踢 마하킥
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/c9664191611af31142e052dfaef84530?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill18(ActiveSkill):
+class Skill12(ActiveSkill):
     name = "瞬踢"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 2
     cd = 4
     mp = [20, 238]
@@ -266,12 +266,12 @@ class Skill18(ActiveSkill):
 
 # M-3喷火器 M-3 화염방사기
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/8f73f243041c2d27739fe7696f02bf9b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill19(ActiveSkill):
+class Skill13(ActiveSkill):
     name = "M-3喷火器"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 9 #TODO
     rangeLv = 2
     cd = 7
     mp = [45, 392]
@@ -297,12 +297,12 @@ class Skill19(ActiveSkill):
 
 # 左轮奥义 리볼버 강화
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/d085127b0edd719782bd618d5688f4a1?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill20(PassiveSkill):
+class Skill14(PassiveSkill):
     name = "左轮奥义"
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 3
 
     data0 = [0, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]# noqa: E501
@@ -332,12 +332,12 @@ class Skill20(PassiveSkill):
 
 # 空中射击 공중사격
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/bb34e8854a93fd250347a1c64119f7ab?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill21(ActiveSkill):
+class Skill15(ActiveSkill):
     name = "空中射击"
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 8 #TODO
     rangeLv = 3
     cd = 40
     mp = [22, 119]
@@ -366,12 +366,12 @@ class Skill21(ActiveSkill):
 
 # G-14手雷 G-14 파열류탄
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/de3fea2d65c597f4d55c70a02b97fc79?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill22(ActiveSkill):
+class Skill16(ActiveSkill):
     name = "G-14手雷"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 2
     cd = 4
     mp = [20, 160]
@@ -394,12 +394,12 @@ class Skill22(ActiveSkill):
 
 # 远程格挡 건가드
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/2f5d03c7848effbc0a23f4df45d9ca46?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill23(ActiveSkill):
+class Skill17(ActiveSkill):
     name = "远程格挡"
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 3
     cd = [5, 4.8, 4.5, 4.3, 4, 3.8, 3.5, 3.3, 3, 2.8, 2.5, 2.3, 2, 1.8, 1.5, 1.3, 1, 0.8, 0.5, 0.3]
     mp = [25, 435]
@@ -425,12 +425,12 @@ class Skill23(ActiveSkill):
 
 # 花式枪术 스타일리쉬
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/d429147c372b549c3dadcabcba50787f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill24(PassiveSkill):
+class Skill18(PassiveSkill):
     name = "花式枪术"
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 3
 
     data0 = [0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]# noqa: E501
@@ -457,12 +457,12 @@ class Skill24(PassiveSkill):
 
 # 暴击 크리티컬 히트
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/fc1262c19f3d0477ee8eda47b8db8696?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill25(PassiveSkill):
+class Skill19(PassiveSkill):
     name = "暴击"
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
 
     data0 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]# noqa: E501
@@ -471,12 +471,12 @@ class Skill25(PassiveSkill):
 
 # 快速拔枪 패스티스트 건
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/45442bbbe33540b4deeec29437dae70c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill26(PassiveSkill):
+class Skill20(PassiveSkill):
     name = "快速拔枪"
     learnLv = 25
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 3
 
     data0 = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]# noqa: E501
@@ -491,12 +491,12 @@ class Skill26(PassiveSkill):
 
 # 复仇反击 리벤저
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/5dc7008b12a459325b548b0715c6b73c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill27(ActiveSkill):
+class Skill21(ActiveSkill):
     name = "复仇反击"
     learnLv = 25
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 2
     cd = 4
     mp = [252, 252]
@@ -528,12 +528,12 @@ class Skill27(ActiveSkill):
 
 # 浮空劫击 에어레이드
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/27bade584bb42fef68148d3a0b72bace?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill28(ActiveSkill):
+class Skill22(ActiveSkill):
     name = "浮空劫击"
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 2
     cd = 4.2
     mp = [50, 420]
@@ -556,12 +556,12 @@ class Skill28(ActiveSkill):
 
 # 致命回射 웨스턴 파이어
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/3d8f3d438405d79f8d3ed68072674d1e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill29(ActiveSkill):
+class Skill23(ActiveSkill):
     name = "致命回射"
     learnLv = 30
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 2
     cd = 13.9
 
@@ -574,12 +574,12 @@ class Skill29(ActiveSkill):
 
 # 死亡左轮 데스 바이 리볼버
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/bc11d28c04e01923a093d65752c55516?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill30(ActiveSkill):
+class Skill24(ActiveSkill):
     name = "死亡左轮"
     learnLv = 30
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 3
     cd = 5
     mp = [357, 2765]
@@ -596,12 +596,12 @@ class Skill30(ActiveSkill):
 
 # 三连发 트리플 탭
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/3aacd652747f6729f079bc48747724a4?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill31(ActiveSkill):
+class Skill25(ActiveSkill):
     name = "三连发"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
     cd = 8
     mp = [50, 420]
@@ -627,12 +627,12 @@ class Skill31(ActiveSkill):
 
 # 乱射 난사
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/cfacda0647b9a0f595df2c2aad30c18d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill32(ActiveSkill):
+class Skill26(ActiveSkill):
     name = "乱射"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 2
     cube = 1
     cd = 17.6
@@ -653,12 +653,12 @@ class Skill32(ActiveSkill):
 
 # 移动射击 이동사격
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/9cb6f9ed646fa87f9b7680a42ce83d1a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill33(ActiveSkill):
+class Skill27(ActiveSkill):
     name = "移动射击"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 2
     cube = 1
     cd = 24.3
@@ -679,12 +679,12 @@ class Skill33(ActiveSkill):
 
 # 多重射击 멀티 헤드샷
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/669f1428193f61f9d92c743b72438c4d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill34(ActiveSkill):
+class Skill28(ActiveSkill):
     name = "多重射击"
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 2
     cube = 1
     cd = 19.8
@@ -705,12 +705,12 @@ class Skill34(ActiveSkill):
 
 # 双鹰回旋 더블 건호크
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/1fadde0eece18649caddbca7bd58cc2f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill35(ActiveSkill):
+class Skill29(ActiveSkill):
     name = "双鹰回旋"
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 2
     cube = 2
     cd = 44.5
@@ -731,12 +731,12 @@ class Skill35(ActiveSkill):
 
 # 死亡印记 죽음의 표식
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/b163d099c8cc27fdb6fd3639c2ee6df9?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill36(PassiveSkill):
+class Skill30(PassiveSkill):
     name = "死亡印记"
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 3
 
     data0 = [0, 8.5, 10.5, 12.5, 14.5, 16.5, 18.5, 20.5, 22.5, 24.5, 26.5, 28.5, 30.5, 32.5, 34.5, 36.5, 38.5, 40.5, 42.5, 44.5, 46.5, 48.5, 50.5, 52.5, 54.5, 56.5, 58.5, 60.5, 62.5, 64.5, 66.5, 68.5, 70.5, 72.5, 74.5, 76.5, 78.5, 80.5, 82.5, 84.5, 86.5, 88.5, 90.5, 92.5, 94.5, 96.5, 98.5, 100.5, 102.5, 104.5, 106.5]# noqa: E501
@@ -751,12 +751,12 @@ class Skill36(PassiveSkill):
 
 # 疯狂屠戮 스커드 제노사이드
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/ca75c965f20a150f99f54155a37400df?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill37(ActiveSkill):
+class Skill31(ActiveSkill):
     name = "疯狂屠戮"
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 5
     cube = 5
     cd = 145
@@ -792,12 +792,12 @@ class Skill37(ActiveSkill):
 
 # 死亡突袭 데들리 어프로치
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/d8ff976e2aaa4720272a5175d1eb9126?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill38(ActiveSkill):
+class Skill32(ActiveSkill):
     name = "死亡突袭"
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
     cube = 2
     cd = 30
@@ -812,12 +812,12 @@ class Skill38(ActiveSkill):
 
 # 压制射击 제압 사격
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/0fbb8de70002ad34f046c94c2cb3e863?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill39(ActiveSkill):
+class Skill33(ActiveSkill):
     name = "压制射击"
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 2
     cube = 3
     cd = 50
@@ -844,12 +844,12 @@ class Skill39(ActiveSkill):
 
 # 疾风骤雨 패스트 드로우
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/0e409ac3e1c1f3976b3ef2bfe4c13069?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill40(ActiveSkill):
+class Skill34(ActiveSkill):
     name = "疾风骤雨"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 2
     cube = 3
     cd = 40
@@ -879,12 +879,12 @@ class Skill40(ActiveSkill):
 
 # 射击掌握 사격술
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/2e2b7efe778656690f9c8cb6e47c3932?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill41(PassiveSkill):
+class Skill35(PassiveSkill):
     name = "射击掌握"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 3
 
     data0 = [0, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122]# noqa: E501
@@ -905,12 +905,12 @@ class Skill41(PassiveSkill):
 
 # 抹杀 와이프 아웃
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/aa6dd52e1c925d87cdc0ca340056c543?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill42(ActiveSkill):
+class Skill36(ActiveSkill):
     name = "抹杀"
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 2
     cube = 5
     cd = 45
@@ -928,12 +928,12 @@ class Skill42(ActiveSkill):
 
 # 第七翼动 세븐스 플로우
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/dde3b443bd5e61d90c34e5ee771e2c28?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill43(ActiveSkill):
+class Skill37(ActiveSkill):
     name = "第七翼动"
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 5
     cube = 10
     cd = 180
@@ -948,12 +948,12 @@ class Skill43(ActiveSkill):
 
 # 卓尔不群 아웃 스탠딩
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/38c485cc41f46a7959ae4336325aa45c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill44(PassiveSkill):
+class Skill38(PassiveSkill):
     name = "卓尔不群"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
 
     data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
@@ -962,12 +962,12 @@ class Skill44(PassiveSkill):
 
 # 爆燃突击 엑셀레이션 트리거
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/7a3fc9d473e8ffe21dd900ddf228a437?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill45(ActiveSkill):
+class Skill39(ActiveSkill):
     name = "爆燃突击"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 2
     cube = 7
     cd = 60
@@ -985,12 +985,12 @@ class Skill45(ActiveSkill):
 
 # 鹰眸·致命危机 데스 크라이시스
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/94c450d6214cafdc673f763badceeaf1?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill46(ActiveSkill):
+class Skill40(ActiveSkill):
     name = "鹰眸·致命危机"
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 5
     cube = 15
     cd = 290
