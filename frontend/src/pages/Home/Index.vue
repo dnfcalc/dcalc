@@ -40,6 +40,7 @@ export default defineComponent(async () => {
 
   // let checkTimer: NodeJS.Timeout
 
+
   const adventure = await api.adventures()
 
   return () => (
@@ -90,7 +91,7 @@ export default defineComponent(async () => {
           </a>
         </div>
       </div>
-
+      {/*
       <div
         class="flex flex-col"
         style={`position: absolute;top: ${30 + 82 * 0}px;left: 775px;width: 160px;height: 150px;`}
@@ -100,6 +101,7 @@ export default defineComponent(async () => {
           style={`z-index:5;background-position:2% 50%;background-size:100% auto;background-image: url('${import.meta.env.BASE_URL}images/tooltips/login.gif')`}
         ></div>
       </div>
+      */}
     </Fragment>
   )
 })
