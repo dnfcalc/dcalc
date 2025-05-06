@@ -52,6 +52,10 @@ export interface IConfig {
   >
   sundry: Record<string, any>
   bindAwake: number
+  /** 系统奶 */
+  DSB : boolean
+  /** 奶 */
+  BUFF : boolean
 }
 
 const defaultEqusConfig = {
@@ -83,7 +87,9 @@ export const useConfigStore = defineStore('configStore', () => {
     jades: {},
     avatar: {},
     sundry: {},
-    bindAwake: 50
+    bindAwake: 50,
+    DSB: true,
+    BUFF: true,
   })
 
   const skillCountConfig = ref<IResultSkillCount[]>([])
@@ -109,7 +115,9 @@ export const useConfigStore = defineStore('configStore', () => {
         jades: {},
         avatar: {},
         sundry: {},
-        bindAwake: 50
+        bindAwake: 50,
+        DSB: true,
+        BUFF: true,
       }
     if (!config.value?.equips) config.value.equips = {}
     if (!config.value?.skills) config.value.skills = {}

@@ -562,8 +562,8 @@ class classChange(Character):
         self.role = 'gunner_male'
 
         self.武器选项 = ['手弩', '步枪','左轮枪','自动手枪','手炮']
-        self.输出类型选项 = ['物理固伤','魔法固伤']
-        self.输出类型 = '物理固伤'
+        self.输出类型选项 = ['物理百分比','魔法百分比']
+        self.输出类型 = '物理百分比'
         self.防具精通属性 = ['智力', '力量']
         self.防具类型 = '皮甲'
         self.buff = 1.84

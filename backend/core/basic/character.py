@@ -12,7 +12,7 @@ from core.basic.equipment import get_equipment, EquEffect, Equ
 
 # from core.basic.equipment import equipments
 # from core.basic.skill import Skill, ActiveSkill, PassiveSkill
-from .formula import 增幅计算, 强化技攻, 武器强化计算, 精通计算, 获取基础属性, 耳环计算, 左右计算, 锻造计算
+from .formula import 增幅计算, 强化技攻, 武器强化计算, 精通计算, 获取唤醒属性, 获取基础属性, 耳环计算, 左右计算, 锻造计算
 from .roleinfo import CharacterEquipInfo, get_key_by_value
 # from .property import 精通计算, 角色基础, CharacterInfo
 
@@ -229,8 +229,9 @@ class Character(CharacterProperty):
         """设角色基础属性"""
         # 角色四维
         temp = 获取基础属性(self.角色, self.职业)
+        唤醒 = 获取唤醒属性()
         for index, i in enumerate([get_key_by_value(i) for i in ['力量', '体力', '智力', '精神']]):
-            setattr(self, i, getattr(self,i) + temp[index])
+            setattr(self, i, getattr(self,i) + temp[index] + 唤醒)
         # 角色属性抗性
         pass
         # 角色异常抗性
@@ -826,7 +827,20 @@ class Character(CharacterProperty):
             info = self.get_buffer_info()
             pass
         else:
-            skillInfos = self.calc_carry_skills()
+            # 如果存在
+            if len(self.输出类型选项) > 1:
+                temp = self.输出类型选项[0]
+                if '固伤' in temp:
+                    if self.INT > self.STR:
+                        self.输出类型 = '魔法固伤'
+                    else:
+                        self.输出类型 = '物理固伤'
+                else:
+                    if self.INT > self.STR or self.AtkM > self.AtkP:
+                        self.输出类型 = '魔法百分比'
+                    else:
+                        self.输出类型 = '物理百分比'
+            skillInfos = self.calc_carry_skills(setInfo.get("DSB", False),setInfo.get("BUFF", False))
             info = self.get_carry_info()
         return {
             'uuid': uuid1().hex,
@@ -840,7 +854,7 @@ class Character(CharacterProperty):
 
     # region 输出计算项
 
-    def calc_damage_ration(self):
+    def calc_damage_ration(self,DSB:bool,BUFF:bool):
         """计算属性系数"""
         # 计算最终属性
         # 力/智 攻击力 攻击力%(特效不吃这部分)
@@ -854,9 +868,13 @@ class Character(CharacterProperty):
         if self.输出类型 == '魔法固伤':
             attrs.extend(['INT', 'AtkI', 'PAtkI'])
         # 力智系数
-        ratio_0: float = getattr(self, attrs[0]) / 250 + 1
+        value0_1 = getattr(self, attrs[0])
+        value0_2 = 获取基础属性(self.角色, self.职业)[0] if attrs[0] == 'STR' else 获取基础属性(self.角色, self.职业)[1]
+        # 系统奶及奶系增幅
+        value = value0_1 + ((value0_1 - value0_2) * 3.08 + 2886) * (1 if DSB else 0) + (170000 + 300000) * (1 if BUFF else 0)
+        ratio_0: float = value / 250 + 1
         # 物理/魔法/独立攻击力
-        ratio_1: float = getattr(self, attrs[1])
+        ratio_1: float = getattr(self, attrs[1]) + 30000 * (1 if BUFF else 0)
         # 技能 物理/魔法/独立攻击力%
         ratio_2: float = getattr(self, attrs[2])
         # 属强系数
@@ -876,7 +894,7 @@ class Character(CharacterProperty):
         ratio_9 = 1.0 * self.ElementIncrease
         return (ratio_0, ratio_1, ratio_2, ratio_3, ratio_4, ratio_5, ratio_6, ratio_7, ratio_8, ratio_9)
 
-    def calc_carry_skills(self):
+    def calc_carry_skills(self,DSB:bool,BUFF:bool):
         skillInfos = []
         for i in self.skills:
             if i.damage and i.lv > 0:
@@ -895,7 +913,7 @@ class Character(CharacterProperty):
                                 'learnLv': i.learnLv,
                             }
                         )
-        ratios = self.calc_damage_ration()
+        ratios = self.calc_damage_ration(DSB,BUFF)
         ratio_char_skill = ratios[0] * ratios[1] * ratios[2] * ratios[3] * ratios[4] * ratios[5] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 1000
         ratuio_equ_skill = ratios[0] * ratios[1] * ratios[3] * ratios[4] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 1000
         for i in skillInfos:
