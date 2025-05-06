@@ -486,13 +486,11 @@ class Character(CharacterProperty):
         info['stones'] = stones
         key = '辅助' if self.buffer else '输出'
         info['enchants'] = list(filter(lambda x: key in x["categorize"], equInfos.enchants))
-        info['emblems'] = equInfos.emblems
+        info['emblems'] = [i for i in equInfos.emblems]
         info['avatar'] = equInfos.funs.get_dress_list(skill_clothes)
         info['jades'] = equInfos.jades
         info['sundry'] = equInfos.funs.sundryList
         for skill in platinum:
-            if self.GetSkillByName(skill) is None:
-                continue
             info['emblems'].append(
                 {
                     'id': skill,
