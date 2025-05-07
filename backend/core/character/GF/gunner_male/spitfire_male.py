@@ -2,6 +2,10 @@
 from core.basic.skill import PassiveSkill, ActiveSkill
 from core.basic.character import Character
 
+class ActiveSkill(ActiveSkill):
+    def getWeaponCDRatio():
+        return 1.0
+
 # 特性弹 특성탄
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/9dda3f4a849dba1a288dd65e116860f2?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill1(ActiveSkill):
