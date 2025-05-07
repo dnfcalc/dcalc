@@ -114,7 +114,7 @@ class Skill7(PassiveSkill):
     def effect(self, old, new):
         skills = []
         for i in self.char.skills:
-            if i.type == "active" and i.learnLv not in [50,85,100] and i.damage:
+            if i.type == "active" and i.learnLv not in [50,85,100] and i.damage and i.lv > 0:
                 skills.append(i.name)
         self.associate = [{"type":"+lv","data":[0] + [1]*self.maxLv,"ratio":1,"skills":skills}]
         super().effect(old, new)
@@ -378,7 +378,7 @@ class Skill24(ActiveSkill):
     hit0 = 1 #TODO
 
     data1 = [0, 2276, 2804, 3332, 3860, 4388, 4916, 5442, 5971, 6499, 7026, 7555, 8083, 8609, 9138, 9666, 10193, 10722, 11251, 11777, 12306, 12834, 13361, 13890, 14418, 14944, 15473, 16001, 16528, 17057, 17585, 18111, 18640, 19168, 19696, 20224, 20752, 21279, 21806, 22336, 22864, 23392, 23920, 24447, 24975, 25503, 26031, 26559, 27087, 27614, 28141]# noqa: E501
-    data0 = [int(i * 1.1)if index > 9 else i for index, i in enumerate(data0)]
+    data1 = [int(i * 1.1)if index > 9 else i for index, i in enumerate(data1)]
     hit1 = 42
 
 
