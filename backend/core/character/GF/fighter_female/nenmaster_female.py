@@ -589,7 +589,7 @@ class classChange(Character):
         self.nameCN = '归元·气功师'
         self.role = 'fighter_female'
 
-        self.武器选项 = ['手套', '臂铠','爪','拳套','东方棍']
+        self.武器选项 = ['手套', '臂铠','爪','东方棍']
         self.输出类型选项 = ['魔法百分比']
         self.输出类型 = '魔法百分比'
         self.防具精通属性 = ['智力']
