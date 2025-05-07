@@ -88,8 +88,8 @@ export const useConfigStore = defineStore('configStore', () => {
     avatar: {},
     sundry: {},
     bindAwake: 50,
-    DSB: true,
-    BUFF: true,
+    DSB: false,
+    BUFF: false,
   })
 
   const skillCountConfig = ref<IResultSkillCount[]>([])
@@ -116,8 +116,8 @@ export const useConfigStore = defineStore('configStore', () => {
         avatar: {},
         sundry: {},
         bindAwake: 50,
-        DSB: true,
-        BUFF: true,
+        DSB: false,
+        BUFF: false,
       }
     if (!config.value?.equips) config.value.equips = {}
     if (!config.value?.skills) config.value.skills = {}
