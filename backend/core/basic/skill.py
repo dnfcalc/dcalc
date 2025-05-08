@@ -163,7 +163,9 @@ class Skill:
             else:
                 setattr(skill, type[1:], getattr(skill, type[1:]) * (1 + data[new] / ratio) / (1 + data[old] / ratio))
         elif type.startswith('+'):
-            if type[1:] == 'lv' and skill.lv > 0:
+            if type[1:] == 'lv' and skill.lv == 0:
+                return
+            else:
                 setattr(skill, type[1:], getattr(skill, type[1:]) + data[new] / ratio - data[old] / ratio)
 
     def skillInfo(self, mode: str | None = None):
