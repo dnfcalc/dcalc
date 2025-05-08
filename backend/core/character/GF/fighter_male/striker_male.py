@@ -5,51 +5,102 @@ from core.basic.character import Character
 
 # 下段踢 로킥
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/4655101518604f874721b3cc249aae10?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill4(ActiveSkill):
-    名称 = "下段踢"
+class Skill1(ActiveSkill):
+    name = "下段踢"
     learnLv = 5
     masterLv = 60
     maxLv = 70
-    position = 3
+    position = 2
     rangeLv = 2
     cd = 2
     mp = [10, 112]
-    icon = '$char/下段踢'
 
     data0 = [ 0, 2118, 2332, 2547, 2761, 2982, 3193, 3407, 3621, 3842, 4055, 4267, 4483, 4697, 4913, 5129, 5343, 5557, 5770, 5987, 6202, 6416, 6637, 6849, 7064, 7279, 7495, 7708, 7924, 8140, 8354, 8568, 8784, 8998, 9212, 9428, 9642, 9858, 10074, 10287, 10503, 10719, 10933, 11145, 11359, 11579, 11793, 12005, 12225, 12439, 12653, 12871, 13087, 13301, 13517, 13731, 13943, 14159, 14375, 14589, 14805, 15023, 15237, 15451, 15669, 15881, 16096, 16308, 16526, 16738, 16954]
     hit0 = 1 
 
+# 蹲伏 크라우치
+# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/9dda3f4a849dba1a288dd65e116860f2?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+class Skill2(ActiveSkill):
+    name = "蹲伏"
+    learnLv = 10
+    masterLv = 1
+    maxLv = 11
+    position = 7 #TODO
+    rangeLv = 1
+    cd = 3
+    mp = [3, 4]
+
+    damage = False
+
+# 钢筋铁骨 철금강
+# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/c9664191611af31142e052dfaef84530?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+class Skill3(PassiveSkill):
+    name = "钢筋铁骨"
+    learnLv = 10
+    masterLv = 50
+    maxLv = 60
+    position = 4
+    rangeLv = 3
 
 # 鹰踏 공중 밟기
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/78bd107acd474518b606be1e4fd38239?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill5(ActiveSkill):
-    名称 = "鹰踏"
+class Skill4(ActiveSkill):
+    name = "鹰踏"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 4
+    position = 3
     rangeLv = 2
     cd = 7
     mp = [10, 97]
-    icon = '$char/鹰踏'
 
     data0 = [ 0, 705, 777, 849, 920, 992, 1063, 1135, 1206, 1278, 1350, 1421, 1493, 1564, 1636, 1707, 1779, 1851, 1922, 1994, 2065, 2137, 2208, 2280, 2352, 2423, 2495, 2566, 2638, 2709, 2781, 2853, 2924, 2996, 3067, 3139, 3210, 3282, 3353, 3425, 3497, 3568, 3640, 3711, 3783, 3854, 3926, 3998, 4069, 4141, 4212, 4284, 4355, 4427, 4499, 4570, 4642, 4713, 4785, 4856, 4928, 5000, 5071, 5143, 5214, 5286, 5357, 5429, 5501, 5572, 5644 ]
     hit0 = 1 
 
     data1 = [ 0, 2417, 2662, 2908, 3153, 3398, 3643, 3889, 4134, 4379, 4624, 4869, 5115, 5360, 5605, 5850, 6096, 6341, 6586, 6831, 7077, 7322, 7567, 7812, 8057, 8303, 8548, 8793, 9038, 9284, 9529, 9774, 10019, 10264, 10510, 10755, 11000, 11245, 11491, 11736, 11981, 12226, 12472, 12717, 12962, 13207, 13452, 13698, 13943, 14188, 14433, 14679, 14924, 15169, 15414, 15659, 15905, 16150, 16395, 16640, 16886, 17131, 17376, 17621, 17866, 18112, 18357, 18602, 18847, 19093, 19338 ]
-    hit1 = 1     
+    hit1 = 1
 
+# 疾风追击 호신연격
+# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/dcb31a63ef58954f44ff2070c42a9a98?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+class Skill5(ActiveSkill):
+    name = "疾风追击"
+    learnLv = 10
+    masterLv = 60
+    maxLv = 70
+    position = 8 #TODO
+    rangeLv = 2
+    cd = 2
+    mp = [8, 67]
+
+    data0 = [0, 351, 387, 424, 460, 497, 533, 569, 606, 641, 677, 714, 750, 787, 823, 859, 896, 932, 969, 1005, 1041, 1078, 1114, 1149, 1186, 1222, 1258, 1295, 1331, 1368, 1404, 1440, 1477, 1513, 1550, 1586, 1622, 1659, 1694, 1730, 1767, 1803, 1840, 1876, 1912, 1949, 1985, 2022, 2058, 2094, 2131, 2167, 2202, 2239, 2275, 2311, 2348, 2384, 2421, 2457, 2493, 2530, 2566, 2603, 2639, 2675, 2712, 2747, 2783, 2820, 2856]# noqa: E501
+    hit0 = 1 #TODO
+
+    data1 = [0, 390, 430, 471, 511, 551, 592, 632, 672, 712, 753, 793, 833, 874, 914, 954, 996, 1036, 1076, 1117, 1157, 1197, 1238, 1278, 1318, 1359, 1399, 1439, 1479, 1520, 1560, 1600, 1641, 1681, 1721, 1762, 1802, 1842, 1882, 1923, 1963, 2003, 2044, 2084, 2124, 2166, 2206, 2246, 2287, 2327, 2367, 2408, 2448, 2488, 2529, 2569, 2609, 2649, 2690, 2730, 2770, 2811, 2851, 2891, 2932, 2972, 3012, 3052, 3093, 3133, 3173]# noqa: E501
+    hit1 = 1 #TODO
+
+# 瞬步 순보
+# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/9dc8438e4572d39243c97da31c113acc?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+class Skill6(ActiveSkill):
+    name = "瞬步"
+    learnLv = 10
+    masterLv = 1
+    maxLv = 1
+    position = 6 #TODO
+    rangeLv = 2
+    cd = 5
+    mp = [10, 10]
+
+    damage = False
 
 # 拳套掌握 권투글러브 사용 가능
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/1dad88963abdc96b091fcab185a8820d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill19(PassiveSkill):
+class Skill7(PassiveSkill):
     name = "拳套掌握"
     learnLv = 15
     masterLv = 1
     maxLv = 10
-    position = 2
+    position = 1
     rangeLv = 3
-    icon = '$char/拳套掌握'
 
     data0 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -57,36 +108,71 @@ class Skill19(PassiveSkill):
         {"data":data0,"type":"*cdReduce", 'exceptSkills': ['双重释放', '烈焰焚步', '极武霸皇踢', '焚火逐日拳']}
     ]
 
+# 强拳 강권
+# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/dcd536f1674630f01fc9667bb202b851?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+class Skill8(ActiveSkill):
+    name = "强拳"
+    learnLv = 15
+    masterLv = 20
+    maxLv = 30
+    position = 5 #TODO
+    rangeLv = 3
+    cd = 5
+    mp = [126, 1195]
+
+    damage = False
+
 
 # 肘击 뇌격
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/c77a417c43de80c4ce32c1ed405d174a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill21(ActiveSkill):
+class Skill9(ActiveSkill):
     name = "肘击"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 8 
+    position = 7 
     rangeLv = 2
     cd = 6
     mp = [30, 252]
-    icon = '$char/肘击'
 
     data0 = [0, 5579, 6144, 6708, 7273, 7840, 8403, 8971, 9537, 10105, 10671, 11234, 11801, 12368, 12932, 13500, 14064, 14630, 15198, 15762, 16327, 16895, 17461, 18027, 18596, 19159, 19727, 20288, 20859, 21422, 21991, 22557, 23120, 23684, 24251, 24815, 25388, 25951, 26515, 27083, 27645, 28213, 28779, 29347, 29913, 30476, 31042, 31608, 32174, 32742, 33306, 33873, 34439, 35000, 35571, 36137, 36701, 37269, 37832, 38401, 38967, 39528, 40100, 40662, 41230, 41795, 42362, 42925, 43493, 44056, 44627]# noqa: E501
     hit0 = 1 
 
+# 霸体护甲 슈퍼아머
+# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/3d8f3d438405d79f8d3ed68072674d1e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+class Skill10(ActiveSkill):
+    name = "霸体护甲"
+    learnLv = 20
+    masterLv = 20
+    maxLv = 30
+    position = 4 #TODO
+    rangeLv = 3
+    cd = 30
+    mp = [40, 336]
+
+    damage = False
+
+# 疾风连击 호포
+# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/8572675ec6a1f50b6eff6a867376c2de?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+class Skill11(PassiveSkill):
+    name = "疾风连击"
+    learnLv = 20
+    masterLv = 1
+    maxLv = 1
+    position = 8 #TODO
+    rangeLv = 1
 
 # 铁山靠 철산고
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/3c5604bdbb0240b8f130f59ab40509c3?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill25(ActiveSkill):
+class Skill12(ActiveSkill):
     name = "铁山靠"
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 3
+    position = 4
     rangeLv = 2
     cd = 7
     mp = [50, 420]
-    icon = '$char/铁山靠'
 
     data0 = [0, 8371, 9223, 10074, 10924, 11774, 12623, 13473, 14323, 15174, 16023, 16876, 17724, 18573, 19424, 20276, 21124, 21976, 22823, 23673, 24526, 25373, 26224, 27073, 27923, 28771, 29624, 30471, 31323, 32173, 33023, 33873, 34723, 35573, 36423, 37274, 38123, 38976, 39824, 40674, 41523, 42374, 43223, 44076, 44919, 45769, 46623, 47469, 48321, 49173, 50021, 50871, 51723, 52571, 53421, 54274, 55121, 55973, 56821, 57671, 58524, 59374, 60223, 61073, 61919, 62773, 63619, 64467, 65323, 66171, 67019]# noqa: E501
     hit0 = 1 
@@ -94,16 +180,15 @@ class Skill25(ActiveSkill):
 
 # 碎骨 본 크러셔
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/717f1e2104fe4b796f800352fa143ecc?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill26(ActiveSkill):
+class Skill13(ActiveSkill):
     name = "碎骨"
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 3
+    position = 1
     rangeLv = 2
     cd = 7
     mp = [50, 420]
-    icon = '$char/碎骨'   
 
     data1 = [0, 8486, 9345, 10205, 11065, 11927, 12789, 13653, 14508, 15371, 16230, 17092, 17952, 18814, 19674, 20538, 21398, 22256, 23120, 23979, 24837, 25702, 26561, 27423, 28281, 29143, 30003, 30867, 31727, 32591, 33448, 34309, 35170, 36033, 36892, 37752, 38612, 39474, 40333, 41198, 42055, 42917, 43780, 44639, 45499, 46362, 47219, 48086, 48943, 49805, 50663, 51525, 52384, 53249, 54108, 54971, 55833, 56688, 57550, 58414, 59272, 60136, 60993, 61858, 62715, 63575, 64439, 65299, 66157, 67021, 67881]# noqa: E501
     hit1 = 1 
@@ -111,51 +196,88 @@ class Skill26(ActiveSkill):
 
 # 强袭重击 강습펀치
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/8ec9da6f808889b63adf2680fbf1f331?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill27(PassiveSkill):
+class Skill14(PassiveSkill):
     name = "强袭重击"
     learnLv = 25
     masterLv = 1
     maxLv = 11
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 1
-    icon = '$char/强袭重击'
-
     data0 = [0, 45, 49, 53, 57, 61, 65, 69, 73, 77, 81, 85]# noqa: E501
 
     associate = [
-        {"type":"*power0","data":data0,"skills":["鹰踏"]},
-        {"type":"*power1","data":data0,"skills":["鹰踏"]}
+        {"type":"*skillRation","data":data0,"skills":["鹰踏"]},
     ]
 
+# 弱点感知 급소 지정
+# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/23a5e0fba03283cb1b324a847b3fe370?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+class Skill15(PassiveSkill):
+    name = "弱点感知"
+    learnLv = 30
+    masterLv = 10
+    maxLv = 20
+    position = 5 #TODO
+    rangeLv = 3
+
+    damage = False
+
+
+# 旋风腿 질풍각
+# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/202edb928046f4fa6dedf6337377efd5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+class Skill16(ActiveSkill):
+    name = "旋风腿"
+    learnLv = 30
+    masterLv = 60
+    maxLv = 70
+    position = 7 #TODO
+    rangeLv = 2
+    cd = 8
+    mp = [50, 420]
+
+    data0 = [0, 1449, 1597, 1742, 1888, 2036, 2182, 2329, 2477, 2624, 2770, 2333, 2453, 2567, 2687, 2802, 2921, 3037, 3156, 3274, 3390, 2923, 3022, 3121, 3215, 3314, 3415, 3513, 3610, 3705, 3805, 3346, 3431, 3514, 3598, 3681, 3762, 3845, 3931, 4015, 4098, 3661, 3732, 3809, 3880, 3953, 4029, 4100, 4174, 4248, 4322, 3907, 3972, 4039, 4106, 4167, 4235, 4299, 4364, 4429, 4495, 4106, 4163, 4221, 4282, 4340, 4396, 4456, 4514, 4577, 4634]# noqa: E501
+    hit0 = 1 #TODO
+
+    data1 = [0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12]# noqa: E501
+    
+    def setMode(self, mode):
+        self.hit0 = self.data1[self.lv]
 
 # 柔化肌肉 머슬 시프트
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/5152480fdde81362575a488d4cec4af9?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill30(PassiveSkill):
+class Skill17(PassiveSkill):
     name = "柔化肌肉"
     learnLv = 30
-    masterLv = 5
+    masterLv = 4
     maxLv = 15
     position = 5 
     rangeLv = 5
-    icon = '$char/柔化肌肉'
 
     data0 = [0, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35]# noqa: E501
     
     associate = [{"type":"*skillRation","data":data0}]
 
+# 闪步 섬보
+# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/0c262dac3ec41ff79e359ada9c7a7faf?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+class Skill18(PassiveSkill):
+    name = "闪步"
+    learnLv = 30
+    masterLv = 6
+    maxLv = 1
+    position = 0 #TODO
+    rangeLv = 1
+
 
 # 闪击快打 섬격
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/d204ec03a0aed2f20211fb6ccc48d46d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill32(ActiveSkill):
+class Skill19(ActiveSkill):
     name = "闪击快打"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 9 
+    position = 8 
     rangeLv = 2
     cd = 12
     mp = [50, 420]
-    icon = '$char/闪击快打'    
 
     data0 = [0, 5738, 6319, 6899, 7487, 8067, 8645, 9233, 9812, 10397, 10980, 11560, 12141, 12723, 13306, 13889, 14469, 15055, 15635, 16216, 16803, 17383, 17962, 18544, 19132, 19710, 20296, 20874, 21461, 22041, 22622, 23208, 23785, 24371, 24951, 25534, 26112, 26700, 27278, 27865, 28444, 29029, 29611, 30189, 30777, 31353, 31938, 32519, 33104, 33686, 34267, 34848, 35433, 36015, 36598, 37179, 37760, 38345, 38922, 39508, 40088, 40673, 41257, 41835, 42420, 43002, 43583, 44166, 44747, 45334, 45912]# noqa: E501
     hit0 = 1 
@@ -166,17 +288,16 @@ class Skill32(ActiveSkill):
 
 # 冲膝 클로즈 킥
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/42c82812f86ff6704ae9952a2e6093a4?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill33(ActiveSkill):
+class Skill20(ActiveSkill):
     name = "冲膝"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 4
+    position = 3
     rangeLv = 2
     cube = 1
     cd = 15
     mp = [130, 1092]
-    icon = '$char/冲膝'     
 
     data0 = [0, 17789, 19596, 21393, 23198, 25005, 26810, 28616, 30422, 32225, 34029, 35835, 37643, 39444, 41246, 43053, 44859, 46661, 48471, 50273, 52077, 53882, 55685, 57491, 59294, 61104, 62907, 64709, 66516, 68319, 70122, 71930, 73736, 75540, 77340, 79148, 80952, 82757, 84563, 86370, 88170, 89975, 91781, 93587, 95391, 97197, 99003, 100806, 102605, 104414, 106221, 108023, 109827, 111633, 113439, 115241, 117047, 118854, 120657, 122462, 124266, 126068, 127877, 129683, 131489, 133287, 135092, 136899, 138702, 140511, 142314]# noqa: E501
     hit0 = 1 
@@ -184,17 +305,16 @@ class Skill33(ActiveSkill):
 
 # 炽焰旋风腿 홍염 질풍각
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/852f8ad797db4dca1405cb3e77198401?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill34(ActiveSkill):
+class Skill21(ActiveSkill):
     name = "炽焰旋风腿"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 2
     cube = 1
     cd = 20
     mp = [170, 1428]
-    icon = '$char/炽焰旋风腿'     
 
     data0 = [0, 2184, 2408, 2627, 2849, 3071, 3290, 3518, 3738, 3959, 4182, 4403, 4628, 4848, 5066, 5288, 5508, 5733, 5954, 6176, 6399, 6620, 6842, 7065, 7287, 7508, 7728, 7950, 8172, 8396, 8618, 8840, 9059, 9282, 9501, 9725, 9947, 10170, 10392, 10613, 10838, 11055, 11277, 11501, 11720, 11942, 12168, 12387, 12609, 12831, 13052, 13275, 13499, 13719, 13938, 14156, 14384, 14604, 14829, 15051, 15270, 15492, 15711, 15933, 16157, 16380, 16602, 16823, 17046, 17267, 17487]# noqa: E501
     hit0 = 1 
@@ -208,17 +328,16 @@ class Skill34(ActiveSkill):
 
 # 闪电之舞 라이트닝 댄스
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/28b583c75a49103a1d8aabf799c000a4?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill35(ActiveSkill):
+class Skill22(ActiveSkill):
     name = "闪电之舞"
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 5
+    position = 4
     rangeLv = 2
     cube = 1
     cd = 20
     mp = [180, 1512]
-    icon = '$char/闪电之舞'    
 
     data0 = [0, 2654, 2928, 3194, 3462, 3734, 4001, 4274, 4544, 4811, 5079, 5354, 5622, 5888, 6159, 6431, 6696, 6968, 7238, 7505, 7778, 8046, 8313, 8586, 8852, 9123, 9396, 9665, 9929, 10205, 10472, 10743, 11009, 11279, 11552, 11820, 12087, 12357, 12629, 12899, 13166, 13436, 13707, 13977, 14244, 14511, 14784, 15054, 15323, 15593, 15863, 16133, 16403, 16673, 16938, 17213, 17483, 17747, 18020, 18288, 18555, 18828, 19098, 19364, 19637, 19905, 20175, 20445, 20712, 20984, 21255]# noqa: E501
     hit0 = 1 
@@ -229,17 +348,16 @@ class Skill35(ActiveSkill):
 
 # 瞬影连环踢 헥토파스칼 킥
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/0b8db1e10b3abbd24d38564e708675d5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill36(ActiveSkill):
+class Skill23(ActiveSkill):
     name = "瞬影连环踢"
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
     cube = 2
     cd = 45
     mp = [400, 3360]
-    icon = '$char/瞬影连环踢'  
 
     data0 = [0, 41270, 45461, 49647, 53835, 58020, 62208, 66395, 70584, 74769, 78962, 83145, 87330, 91520, 95706, 99896, 104082, 108270, 112457, 116646, 120831, 125019, 129203, 133392, 137577, 141768, 145956, 150141, 154328, 158511, 162702, 166890, 171080, 175263, 179456, 183641, 187824, 192014, 196200, 200390, 204576, 208763, 212948, 217139, 221324, 225515, 229700, 233885, 238076, 242261, 246447, 250634, 254820, 259008, 263199, 267384, 271574, 275759, 279945, 284132, 288321, 292509, 296697, 300884, 305069, 309258, 313443, 317636, 321821, 326007, 330194]# noqa: E501
     hit0 = 1 
@@ -247,33 +365,31 @@ class Skill36(ActiveSkill):
 
 # 烈焰燃烧 효율적인 연소
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/6e33d47e6622ce03b6defdd912140270?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill37(PassiveSkill):
+class Skill24(PassiveSkill):
     name = "烈焰燃烧"
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 7
+    position = 6
     rangeLv = 3
-    icon = '$char/烈焰燃烧'     
 
     data0 = [0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]# noqa: E501
     
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"$*PAtkP","data":data0}]
 
 
 # 烈焰焚步 화염의 각
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/01384bbfc346775d1267fa0bc4ca605f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill38(ActiveSkill):
+class Skill25(ActiveSkill):
     name = "烈焰焚步"
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 6
+    position = 5
     rangeLv = 5
     cube = 5
     cd = 145
     mp = [500, 4480]
-    icon = '$char/烈焰焚步'     
 
     data0 = [0, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]# noqa: E501
 
@@ -281,40 +397,56 @@ class Skill38(ActiveSkill):
 
     associate = [
         {"data":data0,"type":"*cdReduce", 'exceptSkills': ['双重释放', '烈焰焚步', '极武霸皇踢', '焚火逐日拳']},
-        {"type":"*skillRation","data":data1}
+        {"type":"*skillRation","data":data1},
+        {"type":"+lv","data":[0] + [i for i in range(0,masterLv + 1)],"skills":["烈焰焚步"]},# noqa: E501
     ]
 
 
 # 双重释放 이중개방
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/c39c703f72d289fcd5a8f182068140d4?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill39(ActiveSkill):
+class Skill26(ActiveSkill):
     name = "双重释放"
     learnLv = 50
-    masterLv = 40
-    maxLv = 50
-    position = 6
+    masterLv = 1
+    maxLv = 1
+    line = 60
+    position = 5
     rangeLv = 5
     cd = 145
     mp = [850, 7000]
-    icon = '$char/双重释放'     
 
     data0 = [0, 66520, 81946, 97369, 112792, 128218, 143642, 159068, 174493, 189918, 205341, 220767, 236192, 251621, 267043, 282468, 297896, 313317, 328745, 344167, 359595, 375018, 390443, 405869, 421291, 436718, 452143, 467565, 482992, 498418, 513841, 529265, 544690, 560118, 575544, 590969, 606390, 621816, 637241, 652666, 668090, 683521, 698946, 714363, 729793, 745215, 760642, 776068, 791491, 806918, 822340]# noqa: E501
-    hit0 = 1 
+    hit0 = 0
+    
+    @property
+    def lv(self):
+        """技能等级"""
+        return self._lv
+
+    @lv.setter
+    def lv(self, value):
+        value = int(min(50, value))
+        if self._lv != value:
+            self.effect(self._lv, value)
+            self._lv = value
+    
+    associate = [
+        {"type":"+powerplus0","data":data0,"skills":["瞬影连环踢","烈火强拳","千锤百炼"],"ratio":1}
+    ]
 
 
 # 飞燕旋风 비연선풍
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/8e358ecf99ac9df31a6132aeafe378a9?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill40(ActiveSkill):
+class Skill27(ActiveSkill):
     name = "飞燕旋风"
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 8
+    position = 7
     rangeLv = 2
     cube = 1
     cd = 30
     mp = [450, 1260]
-    icon = '$char/飞燕旋风'     
 
     data0 = [0, 8697, 9576, 10458, 11340, 12225, 13112, 13989, 14871, 15753, 16637, 17516, 18401, 19283, 20165, 21050, 21932, 22814, 23693, 24576, 25463, 26342, 27222, 28106, 28991, 29874, 30753, 31634, 32519, 33398, 34281, 35163, 36048, 36930, 37812, 38694, 39576, 40458, 41339, 42222, 43109, 43991, 44873, 45755, 46634, 47519, 48402, 49284, 50166, 51050, 51932]# noqa: E501
     hit0 = 2 
@@ -325,17 +457,16 @@ class Skill40(ActiveSkill):
 
 # 旋风碎心踢 스핀 킥
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/31823197cc0b04d4c5dcf8f928d9220c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill41(ActiveSkill):
+class Skill28(ActiveSkill):
     name = "旋风碎心踢"
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 8
+    position = 7
     rangeLv = 2
     cube = 2
     cd = 50
     mp = [935, 1960]
-    icon = '$char/旋风碎心踢'  
 
     data0 = [0, 1202, 1326, 1446, 1568, 1692, 1812, 1937, 2058, 2181, 2304, 2424, 2544, 2670, 2790, 2912, 3035, 3158, 3282, 3402, 3524, 3645, 3768, 3888, 4011, 4134, 4256, 4380, 4499, 4623, 4746, 4866, 4989, 5112, 5232, 5357, 5477, 5600, 5723, 5844, 5969, 6089, 6213, 6336, 6455, 6579, 6699, 6822, 6947, 7068, 7190]# noqa: E501
     hit0 = 4 
@@ -349,17 +480,16 @@ class Skill41(ActiveSkill):
 
 # 烈火强踢 낙화
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/374f53e8989ef04a8506c8ec99d9ecdc?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill42(ActiveSkill):
+class Skill29(ActiveSkill):
     name = "烈火强踢"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 7
+    position = 6
     rangeLv = 2
     cube = 3
     cd = 45
     mp = [450, 1260]
-    icon = '$char/烈火强踢'      
 
     data0 = [0, 69030, 76034, 83036, 90041, 97043, 104044, 111051, 118051, 125054, 132057, 139062, 146065, 153067, 160069, 167075, 174077, 181081, 188081, 195087, 202090, 209091, 216097, 223101, 230101, 237106, 244108, 251112, 258117, 265117, 272122, 279125, 286128, 293129, 300133, 307138, 314140, 321144, 328147, 335148, 342154, 349156, 356159, 363162, 370165, 377168, 384173, 391173, 398177, 405182, 412184]# noqa: E501
     hit0 = 1 
@@ -367,14 +497,13 @@ class Skill42(ActiveSkill):
 
 # 烈火支配 화력개방
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/b501ae53638d33a32351904f31cb6aa3?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill43(PassiveSkill):
+class Skill30(PassiveSkill):
     name = "烈火支配"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 6
+    position = 5
     rangeLv = 3
-    icon = '$char/烈火支配'    
 
     data0 = [0, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101, 103, 105, 107, 109, 111, 113, 115, 117]# noqa: E501
     
@@ -383,17 +512,16 @@ class Skill43(PassiveSkill):
 
 # 烈火强拳 아토믹 캐넌
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/e1daab884dd07fc9e70d08b83d1790eb?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill44(ActiveSkill):
+class Skill31(ActiveSkill):
     name = "烈火强拳"
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 6
+    position = 5
     rangeLv = 2
     cube = 4
     cd = 55
     mp = [450, 1260]
-    icon = '$char/烈火强拳'        
 
     data0 = [0, 84060, 92587, 101115, 109640, 118169, 126697, 135230, 143752, 152282, 160811, 169338, 177867, 186391, 194921, 203448, 211979, 220506, 229032, 237561, 246090, 254615, 263144, 271675, 280200, 288728, 297255, 305784, 314312, 322839, 331368, 339893, 348422, 356953, 365476, 374008, 382535, 391062, 399590, 408118, 416647, 425175, 433700, 442231, 450756, 459285, 467814, 476345, 484870, 493397, 501925]# noqa: E501
     hit0 = 1 
@@ -401,17 +529,16 @@ class Skill44(ActiveSkill):
 
 # 极武霸皇踢 패황연격
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/c524c4f378d1cd0ff99e4580750a4567?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill45(ActiveSkill):
+class Skill32(ActiveSkill):
     name = "极武霸皇踢"
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 7
+    position = 6
     rangeLv = 5
     cube = 10
     cd = 180
     mp = [2500, 5000]
-    icon = '$char/极武霸皇踢' 
 
     data0 = [0, 35065, 43193, 51325, 59455, 67585, 75714, 83848, 91978, 100108, 108240, 116369, 124501, 132632, 140764, 148893, 157023, 165157, 173285, 181419, 189546, 197680, 205808, 213942, 222071, 230202, 238333, 246464, 254594, 262726, 270856, 278987, 287118, 295248, 303380, 311510, 319639, 327771, 335901, 344034, 352165, 360296, 368425, 376556, 384685, 392819, 400948, 409080, 417209, 425342, 433469]# noqa: E501
     hit0 = 1 
@@ -425,14 +552,13 @@ class Skill45(ActiveSkill):
 
 # 千锤百炼 한계 개방
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/ef9d26746effee9199b54541f01b8752?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill46(PassiveSkill):
+class Skill33(PassiveSkill):
     name = "千锤百炼"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 6
+    position = 5
     rangeLv = 3
-    icon = '$char/千锤百炼'     
 
     data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
     
@@ -441,17 +567,16 @@ class Skill46(PassiveSkill):
 
 # 炼狱坠星腿 필멸의 습격
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/5536486eaf9b13c9a8283447cb5e77ab?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill47(ActiveSkill):
+class Skill34(ActiveSkill):
     name = "炼狱坠星腿"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 8
+    position = 7
     rangeLv = 2
     cube = 7
     cd = 60
     mp = [773, 6000]
-    icon = '$char/炼狱坠星腿'    
 
     data1 = [0, 140798, 155082, 169366, 183651, 197936, 212219, 226502, 240788, 255072, 269354, 283642, 297925, 312209, 326493, 340778, 355060, 369347, 383629, 397914, 412199, 426483, 440765, 455051, 469333, 483621, 497902, 512187, 526472, 540756, 555042, 569326, 583608, 597892, 612177, 626460, 640746, 655031, 669312, 683596, 697883, 712166, 726450, 740736, 755019, 769304, 783586, 797869, 812155, 826441, 840723]# noqa: E501
     hit1 = 1 
@@ -459,17 +584,16 @@ class Skill47(ActiveSkill):
 
 # 焚火逐日拳 멸화파천격
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/e36ae35f8964d92e30e33529a65544d7?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill48(ActiveSkill):
+class Skill35(ActiveSkill):
     name = "焚火逐日拳"
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 6
+    position = 5
     rangeLv = 5
     cube = 15
     cd = 290
     mp = [4028, 8056]
-    icon = '$char/焚火逐日拳'  
 
     data0 = [0, 50686, 62439, 74192, 85944, 97699, 109452, 121206, 132959, 144711, 156464, 168220, 179973, 191727, 203479, 215232, 226988, 238741, 250494, 262247, 274000, 285754, 297507, 309261, 321013, 332767, 344522, 356273, 368028, 379780, 391534, 403288, 415041, 426794, 438548, 450300, 462056, 473809, 485562, 497315, 509068, 520821, 532577, 544330, 556083, 567835, 579589, 591343, 603096, 614850, 626602]# noqa: E501
     hit0 = 1 
@@ -511,4 +635,4 @@ class classChange(Character):
 
         self.职业 = '散打'
 
-        super().__init__(equVersion, __name__)             
+        super().__init__(equVersion, __name__)
