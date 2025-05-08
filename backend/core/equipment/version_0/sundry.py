@@ -45,7 +45,7 @@ def sundry_7(char: CharacterProperty, *args):
     elif args[0] == 3:
         char.SetStatus(全属强=5, 三攻=5)
     elif args[0] == 4:
-        char.SetStatus(全属强=8, 物攻=10, 独立=20)
+        char.SetStatus(全属强=8, 物攻=10, 魔攻=10, 独立=20)
     # 婚房
     if args[1] == 1:
         char.SetStatus(体精=8)
