@@ -362,6 +362,24 @@ class Skill23(ActiveSkill):
     data0 = [0, 41270, 45461, 49647, 53835, 58020, 62208, 66395, 70584, 74769, 78962, 83145, 87330, 91520, 95706, 99896, 104082, 108270, 112457, 116646, 120831, 125019, 129203, 133392, 137577, 141768, 145956, 150141, 154328, 158511, 162702, 166890, 171080, 175263, 179456, 183641, 187824, 192014, 196200, 200390, 204576, 208763, 212948, 217139, 221324, 225515, 229700, 233885, 238076, 242261, 246447, 250634, 254820, 259008, 263199, 267384, 271574, 275759, 279945, 284132, 288321, 292509, 296697, 300884, 305069, 309258, 313443, 317636, 321821, 326007, 330194]# noqa: E501
     hit0 = 1 
 
+    mode = ['普通','双重释放']
+
+    dataplus0 = 0
+    hitplus0 = 0
+    powerplus0 = 1
+
+    def setMode(self, mode):
+        if mode == '双重释放':
+            self.hit0 = 0
+            self.hitplus0 = 1
+    
+    def skillInfo(self, mode = None):
+        data = super().skillInfo(mode)
+        if mode == '双重释放':
+            return data[0],data[1],self.char.GetSkillByName("双重释放").getSkillCD()
+        return data
+
+
 
 # 烈焰燃烧 효율적인 연소
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/6e33d47e6622ce03b6defdd912140270?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -526,6 +544,22 @@ class Skill31(ActiveSkill):
     data0 = [0, 84060, 92587, 101115, 109640, 118169, 126697, 135230, 143752, 152282, 160811, 169338, 177867, 186391, 194921, 203448, 211979, 220506, 229032, 237561, 246090, 254615, 263144, 271675, 280200, 288728, 297255, 305784, 314312, 322839, 331368, 339893, 348422, 356953, 365476, 374008, 382535, 391062, 399590, 408118, 416647, 425175, 433700, 442231, 450756, 459285, 467814, 476345, 484870, 493397, 501925]# noqa: E501
     hit0 = 1 
 
+    mode = ['普通','双重释放']
+
+    dataplus0 = 0
+    hitplus0 = 0
+    powerplus0 = 1
+
+    def setMode(self, mode):
+        if mode == '双重释放':
+            self.hit0 = 0
+            self.hitplus0 = 1
+    
+    def skillInfo(self, mode = None):
+        data = super().skillInfo(mode)
+        if mode == '双重释放':
+            return data[0],data[1],self.char.GetSkillByName("双重释放").getSkillCD()
+        return data
 
 # 极武霸皇踢 패황연격
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/c524c4f378d1cd0ff99e4580750a4567?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -581,6 +615,22 @@ class Skill34(ActiveSkill):
     data1 = [0, 140798, 155082, 169366, 183651, 197936, 212219, 226502, 240788, 255072, 269354, 283642, 297925, 312209, 326493, 340778, 355060, 369347, 383629, 397914, 412199, 426483, 440765, 455051, 469333, 483621, 497902, 512187, 526472, 540756, 555042, 569326, 583608, 597892, 612177, 626460, 640746, 655031, 669312, 683596, 697883, 712166, 726450, 740736, 755019, 769304, 783586, 797869, 812155, 826441, 840723]# noqa: E501
     hit1 = 1 
 
+    mode = ['普通','双重释放']
+
+    dataplus0 = 0
+    hitplus0 = 0
+    powerplus0 = 1
+
+    def setMode(self, mode):
+        if mode == '双重释放':
+            self.hit0 = 0
+            self.hitplus0 = 1
+    
+    def skillInfo(self, mode = None):
+        data = super().skillInfo(mode)
+        if mode == '双重释放':
+            return data[0],data[1],self.char.GetSkillByName("双重释放").getSkillCD()
+        return data
 
 # 焚火逐日拳 멸화파천격
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/e36ae35f8964d92e30e33529a65544d7?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
