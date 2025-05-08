@@ -3,7 +3,7 @@ from core.basic.skill import PassiveSkill, ActiveSkill
 from core.basic.character import Character
 
 class ActiveSkill(ActiveSkill):
-    def getWeaponCDRatio():
+    def getWeaponCDRatio(self):
         return 1.0
 
 # 特性弹 특성탄
