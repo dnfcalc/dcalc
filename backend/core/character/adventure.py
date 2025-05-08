@@ -34,7 +34,7 @@ adv = [
             {'id': 0, 'name': 'nenmaster_male', 'title': '归元·气功师', 'open': False,'class': 'GF.fighter_male.nenmaster_male'},
             {'id': 1, 'name': 'striker_male', 'title': '归元·散打', 'open': True, 'class': 'GF.fighter_male.striker_male'},
             {'id': 2, 'name': 'brawler_male', 'title': '归元·街霸', 'open': False, 'class': 'GF.fighter_male.brawler_male'},
-            {'id': 3, 'name': 'grappler_male', 'title': '归元·柔道家', 'open': False,'class': 'GF.fighter_male.grappler'},
+            {'id': 3, 'name': 'grappler_male', 'title': '归元·柔道家', 'open': True,'class': 'GF.fighter_male.grappler_male'},
             {'name': 'empty', 'title': '', 'comment': '首页'},
         ],
     },
@@ -55,7 +55,7 @@ adv = [
         'name': 'gunner_male',
         'title': '神枪手(男)',
         'children': [
-            {'id': 0, 'name': 'ranger_male', 'title': '重霄·漫游枪手', 'open': False},
+            {'id': 0, 'name': 'ranger_male', 'title': '重霄·漫游枪手', 'open': True, 'class': 'GF.gunner_male.ranger_male'},
             {'id': 1, 'name': 'launcher_male', 'title': '重霄·枪炮师', 'open': True, 'class': 'GF.gunner_male.launcher_male'},
             {'id': 2, 'name': 'mechanic_male', 'title': '重霄·机械师', 'open': False},
             {'id': 3, 'name': 'spitfire_male', 'title': '重霄·弹药专家', 'open': True, 'class': 'GF.gunner_male.spitfire_male'},
