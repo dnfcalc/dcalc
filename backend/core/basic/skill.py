@@ -122,7 +122,7 @@ class Skill:
             weapon = assoc.get('weapon', self.char.武器选项)
             exceptSkills = assoc.get('exceptSkills', [])
             if type[0] not in ['*', '+', '$']:
-                if self.precondition() and self.char.GetWeaponType()[0] in weapon:
+                if self.precondition() and (self.char.GetWeaponType()[0] in weapon or len(weapon) == len(self.char.武器选项)):
                     getattr(self, type)(old, new, data, skills,exceptSkills,ratio,weapon)
                 continue
             if self.precondition():
