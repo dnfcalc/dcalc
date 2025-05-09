@@ -181,7 +181,7 @@ class Skill20(PassiveSkill):
     
     data0 = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]# noqa: E501
 
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"data":data0}]
         
                 
 # 抛投 로플링
@@ -254,9 +254,13 @@ class Skill25(PassiveSkill):
     position = 7
     rangeLv = 5
 
-    damage = False
-    
-                
+    data0 = [0, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53]# noqa: E501
+
+    data1 = [0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]# noqa: E501
+
+    def effect(self, old, new):
+        self.associate = [{"data":[(self.data0[i] + self.data1[i]) for i in range(0,self.maxLv + 1)]}]
+        return super().effect(old, new)
 # 折颈 넥 스냅
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/ecc23c980ea71450c0ad0c3fd232f329?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill26(ActiveSkill):
@@ -584,12 +588,9 @@ class Skill42(PassiveSkill):
 
 
     def effect(self, old, new):
-        self.associate = [{"data":[(self.data0[i] + self.data1[i]) for i in range(0,self.maxLv)]}]
+        self.associate = [{"data":[(self.data0[i] + self.data1[i]) for i in range(0,self.maxLv + 1)]}]
         return super().effect(old, new)
-    
-    
-    
-                
+
 # 黑震旋风 흑진광풍
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/e6cb8eaa955de77107f746a4e6c731ab?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill43(ActiveSkill):
