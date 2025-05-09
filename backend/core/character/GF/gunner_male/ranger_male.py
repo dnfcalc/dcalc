@@ -312,6 +312,7 @@ class Skill21(ActiveSkill):
     mp = [252, 252]
     icon = '$char/复仇反击'
 
+    dataplus0 = 0
     hitplus0 = 2
     powerplus0 = 1.7
 
@@ -344,6 +345,7 @@ class Skill23(ActiveSkill):
     cd = 13.9
     icon = '$char/致命回射'
 
+    dataplus0 = 0
     hitplus0 = 2
     powerplus0 = 1.5
     
