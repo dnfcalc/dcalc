@@ -3832,7 +3832,7 @@ def stone_320(char: CharacterProperty):
     35级主动技能攻击力+7%
     """
     char.SetStatus(SkillAttack=0.125)
-    char.SetSkillRation(35,35,0.7)
+    char.SetSkillRation(35,35,0.07)
     pass
 
 
@@ -3845,7 +3845,7 @@ def stone_321(char: CharacterProperty):
     40级主动技能攻击力+7%
     """
     char.SetStatus(SkillAttack=0.125)
-    char.SetSkillRation(40,40,0.7)
+    char.SetSkillRation(40,40,0.07)
     pass
 
 
@@ -3858,7 +3858,7 @@ def stone_322(char: CharacterProperty):
     45级主动技能攻击力+7%
     """
     char.SetStatus(SkillAttack=0.125)
-    char.SetSkillRation(45,45,0.7)
+    char.SetSkillRation(45,45,0.07)
     pass
 
 
@@ -3871,7 +3871,7 @@ def stone_323(char: CharacterProperty):
     60级主动技能攻击力+7%
     """
     char.SetStatus(SkillAttack=0.125)
-    char.SetSkillRation(60,60,0.7)
+    char.SetSkillRation(60,60,0.07)
     pass
 
 
@@ -3884,7 +3884,7 @@ def stone_324(char: CharacterProperty):
     70级主动技能攻击力+7%
     """
     char.SetStatus(SkillAttack=0.125)
-    char.SetSkillRation(70,70,0.7)
+    char.SetSkillRation(70,70,0.07)
     pass
 
 
@@ -3897,7 +3897,7 @@ def stone_325(char: CharacterProperty):
     75级主动技能攻击力+7%
     """
     char.SetStatus(SkillAttack=0.125)
-    char.SetSkillRation(75,75,0.7)
+    char.SetSkillRation(75,75,0.07)
     pass
 
 
@@ -3910,7 +3910,7 @@ def stone_326(char: CharacterProperty):
     80级主动技能攻击力+7%
     """
     char.SetStatus(SkillAttack=0.125)
-    char.SetSkillRation(80,80,0.7)
+    char.SetSkillRation(80,80,0.07)
     pass
 
 
