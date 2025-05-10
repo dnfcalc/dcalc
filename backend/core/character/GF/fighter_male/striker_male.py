@@ -449,7 +449,7 @@ class Skill26(ActiveSkill):
             self._lv = value
     
     associate = [
-        {"type":"+powerplus0","data":data0,"skills":["瞬影连环踢","烈火强拳","千锤百炼"],"ratio":1}
+        {"type":"+powerplus0","data":data0,"skills":["瞬影连环踢","烈火强拳","炼狱坠星腿"],"ratio":1}
     ]
 
 
