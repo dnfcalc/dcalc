@@ -57,7 +57,7 @@ adv = [
         'children': [
             {'id': 0, 'name': 'ranger_male', 'title': '重霄·漫游枪手', 'open': True, 'class': 'GF.gunner_male.ranger_male'},
             {'id': 1, 'name': 'launcher_male', 'title': '重霄·枪炮师', 'open': True, 'class': 'GF.gunner_male.launcher_male'},
-            {'id': 2, 'name': 'mechanic_male', 'title': '重霄·机械师', 'open': False},
+            {'id': 2, 'name': 'mechanic_male', 'title': '重霄·机械师', 'open': True, 'class': 'GF.gunner_male.mechanic_male'},
             {'id': 3, 'name': 'spitfire_male', 'title': '重霄·弹药专家', 'open': True, 'class': 'GF.gunner_male.spitfire_male'},
             {'id': 4, 'name': 'assault', 'title': '重霄·合金战士', 'open': False},
         ],
