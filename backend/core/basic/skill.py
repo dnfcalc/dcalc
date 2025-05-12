@@ -91,10 +91,11 @@ class Skill:
         return int(re.search(r'\d+', className).group()) if re.search(r'\d+', className) else 0
 
     def _generate_icon(self):
-        icon = self.icon or '$char/$name'
+        icon = self.icon or '$char/$uuid'
         icon = icon.replace('$char', f'/characters/{self.char.role}/{self.char.name}/skill')
         icon = icon.replace('$common', '/characters/common')
         icon = icon.replace('$name', f'{self.name}')
+        icon = icon.replace('$uuid', f'{self.uuid}')
         icon = icon.replace('$id', f'{self.id}')
         return f'{icon}.png'
 
