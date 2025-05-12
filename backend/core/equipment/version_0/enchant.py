@@ -843,7 +843,7 @@ def enchant_1202(char: CharacterProperty):
     char.AddElementDB('冰', 15)
     char.AddElementDB('光', 15)
     char.AddElementDB('暗', 15)
-    char.AddSkillLv(40, 40, 2, 1)
+    char.AddSkillLv(40, 40, 2, 1,["念兽 : 龙虎啸", "风雷啸", "圣灵符文", "神圣之光"])
     pass
 
 
@@ -857,7 +857,7 @@ def enchant_1203(char: CharacterProperty):
     char.AddElementDB('冰', 15)
     char.AddElementDB('光', 15)
     char.AddElementDB('暗', 15)
-    char.AddSkillLv(45, 45, 2, 1)
+    char.AddSkillLv(45, 45, 2, 1,["念兽 : 龙虎啸", "风雷啸", "圣灵符文", "神圣之光"])
     pass
 
 
@@ -871,7 +871,7 @@ def enchant_1204(char: CharacterProperty):
     char.AddElementDB('冰', 15)
     char.AddElementDB('光', 15)
     char.AddElementDB('暗', 15)
-    char.AddSkillLv(60, 60, 2, 1)
+    char.AddSkillLv(60, 60, 2, 1,["念兽 : 龙虎啸", "风雷啸", "圣灵符文", "神圣之光"])
     pass
 
 
@@ -885,7 +885,7 @@ def enchant_1205(char: CharacterProperty):
     char.AddElementDB('冰', 15)
     char.AddElementDB('光', 15)
     char.AddElementDB('暗', 15)
-    char.AddSkillLv(70, 70, 2, 1)
+    char.AddSkillLv(70, 70, 2, 1,["念兽 : 龙虎啸", "风雷啸", "圣灵符文", "神圣之光"])
     pass
 
 
@@ -899,7 +899,7 @@ def enchant_1206(char: CharacterProperty):
     char.AddElementDB('冰', 15)
     char.AddElementDB('光', 15)
     char.AddElementDB('暗', 15)
-    char.AddSkillLv(75, 75, 2, 1)
+    char.AddSkillLv(75, 75, 2, 1,["念兽 : 龙虎啸", "风雷啸", "圣灵符文", "神圣之光"])
     pass
 
 
@@ -913,7 +913,7 @@ def enchant_1207(char: CharacterProperty):
     char.AddElementDB('冰', 15)
     char.AddElementDB('光', 15)
     char.AddElementDB('暗', 15)
-    char.AddSkillLv(80, 80, 2, 1)
+    char.AddSkillLv(80, 80, 2, 1,["念兽 : 龙虎啸", "风雷啸", "圣灵符文", "神圣之光"])
     pass
 
 
@@ -1163,7 +1163,7 @@ def enchant_2100(char: CharacterProperty):
     """
     Lv40主动+1|四维(55)
     """
-    char.AddSkillLv(40, 40, 1, 1)
+    char.AddSkillLv(40, 40, 1, 1,["念兽 : 龙虎啸", "风雷啸", "圣灵符文", "神圣之光"])
     char.SetStatus(四维=55)
     pass
 
@@ -1173,7 +1173,7 @@ def enchant_2101(char: CharacterProperty):
     """
     Lv45主动+1|四维(55)
     """
-    char.AddSkillLv(45, 45, 1, 1)
+    char.AddSkillLv(45, 45, 1, 1,["念兽 : 龙虎啸", "风雷啸", "圣灵符文", "神圣之光"])
     char.SetStatus(四维=55)
     pass
 
@@ -1183,7 +1183,7 @@ def enchant_2102(char: CharacterProperty):
     """
     Lv60主动+1|四维(55)
     """
-    char.AddSkillLv(60, 60, 1, 1)
+    char.AddSkillLv(60, 60, 1, 1,["念兽 : 龙虎啸", "风雷啸", "圣灵符文", "神圣之光"])
     char.SetStatus(四维=55)
     pass
 
@@ -1193,7 +1193,7 @@ def enchant_2103(char: CharacterProperty):
     """
     Lv70主动+1|四维(55)
     """
-    char.AddSkillLv(70, 70, 1, 1)
+    char.AddSkillLv(70, 70, 1, 1,["念兽 : 龙虎啸", "风雷啸", "圣灵符文", "神圣之光"])
     char.SetStatus(四维=55)
     pass
 
@@ -1203,7 +1203,7 @@ def enchant_2104(char: CharacterProperty):
     """
     Lv75主动+1|四维(55)
     """
-    char.AddSkillLv(75, 75, 1, 1)
+    char.AddSkillLv(75, 75, 1, 1,["念兽 : 龙虎啸", "风雷啸", "圣灵符文", "神圣之光"])
     char.SetStatus(四维=55)
     pass
 
@@ -1213,7 +1213,7 @@ def enchant_2105(char: CharacterProperty):
     """
     Lv80主动+1|四维(55)
     """
-    char.AddSkillLv(80, 80, 1, 1)
+    char.AddSkillLv(80, 80, 1, 1,["念兽 : 龙虎啸", "风雷啸", "圣灵符文", "神圣之光"])
     char.SetStatus(四维=55)
     pass
 

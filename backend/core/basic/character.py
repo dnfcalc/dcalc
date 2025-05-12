@@ -363,7 +363,7 @@ class Character(CharacterProperty):
         self.ElementDB[element] += value
         pass
 
-    def AddSkillLv(self, min: int, max: int, lv: int, type=-1) -> None:
+    def AddSkillLv(self, min: int, max: int, lv: int, type=-1, exceptSkills: list[str] = []) -> None:
         """
         增加技能等级
         type: -1 全部, 0 被动, 1 主动
@@ -371,7 +371,7 @@ class Character(CharacterProperty):
         for skill in self.skills:
             if min <= skill.learnLv <= max:
                 skillType = 'all' if type == -1 else ('active' if type == 1 else 'passive')
-                if (skillType == 'all' or skill.type == skillType) and skill.lv > 0:
+                if (skillType == 'all' or skill.type == skillType) and skill.lv > 0 and skill.name not in exceptSkills:
                     skill.lv += lv
 
     def SetSkillCD(self, min=1, max=100, cd=0, exclude=[50, 85, 100]) -> None:

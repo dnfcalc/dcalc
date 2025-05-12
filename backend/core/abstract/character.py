@@ -198,7 +198,7 @@ class CharacterProperty(ABC):
         pass
 
     @abstractmethod
-    def AddSkillLv(self, min: int, max: int, lv: int, type=-1) -> None:
+    def AddSkillLv(self, min: int, max: int, lv: int, type=-1,exceptSkills:list[str]=[]) -> None:
         """增加技能等级"""
         pass
 
