@@ -32,3 +32,4 @@ AutoRelease
 .venv
 .env.dev
 .env.prod
+._*
