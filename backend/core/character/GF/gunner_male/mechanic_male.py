@@ -382,7 +382,7 @@ class Skill24(PassiveSkill):
     rangeLv = 1
     uuid = "56aa7844a2da23f5bea9b585aea5ae45"    
 
-    associate = [{"type":"+power0","data":[0,-1],"ratio":1,"skills":["拦截机工厂"]},{"type":"+power5","data":[0,1],"ratio":1,"skills":["拦截机工厂"]}]
+    associate = [{"type":"+power1","data":[0,-1],"ratio":1,"skills":["拦截机工厂"]},{"type":"+power5","data":[0,1],"ratio":1,"skills":["拦截机工厂"]}]
 
 
 # 斗志之歌 최후의 투지
