@@ -38,8 +38,8 @@ def enchant_4(char: CharacterProperty):
     Lv30增益技能等级 +1|lv50主动技能等级+1
     """
     if char.buffer:
-        char.AddSkillLv(30, 1, 1, 1)
-        char.AddSkillLv(50, 1, 1, 1)
+        char.AddSkillLv(30, 30, 1, 1)
+        char.AddSkillLv(50, 50, 1, 1)
     pass
 
 

@@ -14,7 +14,7 @@ class Skill:
     _lv: int = 0
     id: int = 0
     """技能ID"""
-    icon: str = '$char/$name'
+    icon: str = '$char/$uuid'
     """技能图标，默认当前职业下该技能名称对应的图标，支持以下模板字符串
     $common 通用图标路径
     $char   当前职业图标路径
@@ -72,6 +72,7 @@ class Skill:
     buffer: bool = False
     """是否是增益技能"""
     bind: bool = None
+    uuid: str = None
 
     def __init__(self, char):
         self.char = char
