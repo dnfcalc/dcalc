@@ -68,7 +68,11 @@ class Skill6(ActiveSkill):
 
     data1 = [0, 132, 134, 136, 138, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140]# noqa: E501
     
-    associate = [{"data":[i-100 if i > 100 else i for i in data1],"skills":["RX-78追击者","Ez-8自爆者","RX-60陷阱追击者",'空投支援', '拦截机工厂', 'EZ-10反击者', 'TX-45特攻队']}]
+    associate = [
+        {"data":[i-100 if i > 100 else i for i in data1],"skills":["RX-78追击者","Ez-8自爆者","RX-60陷阱追击者","空投支援", "EZ-10反击者", "TX-45特攻队"]},
+        # 光能不享受引爆
+        {"type":"*power1","data":[i-100 if i > 100 else i for i in data1],"skills":["拦截机工厂"]}
+    ]
 
 
 # G-14手雷 G-14 파열류탄
@@ -369,7 +373,6 @@ class Skill23(ActiveSkill):
     data5 = [0, 54239, 59742, 65244, 70748, 76253, 81755, 87257, 92760, 98262, 103764, 109268, 114770, 120272, 125775, 131277, 136781, 142284, 147786, 153288, 158793, 164295, 169797, 175299, 180801, 186303, 191807, 197309, 202811, 208316, 213818, 219320, 224823, 230325, 235827, 241331, 246833, 252335, 257838, 263340, 268845, 274349, 279851, 285353, 290856, 296358, 301860, 307364, 312866, 318368, 323871, 329373, 334877, 340380, 345882, 351384, 356889, 362391, 367893, 373391, 378896, 384398, 389900, 395403, 400905, 406410, 411914, 417414, 422916, 428420, 433922]# noqa: E501
     hit5 = 0
 
-
 # 光反应能量模块 솔라 모듈 시스템
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/56aa7844a2da23f5bea9b585aea5ae45?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill24(PassiveSkill):
@@ -382,8 +385,6 @@ class Skill24(PassiveSkill):
     uuid = "56aa7844a2da23f5bea9b585aea5ae45"    
 
     associate = [{"type":"+hit1","data":[0,-8],"ratio":1,"skills":["拦截机工厂"]},{"type":"+hit5","data":[0,1],"ratio":1,"skills":["拦截机工厂"]}]
-
-
 # 斗志之歌 최후의 투지
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/28b583c75a49103a1d8aabf799c000a4?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill25(PassiveSkill):

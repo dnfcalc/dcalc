@@ -286,7 +286,7 @@ class Skill31(PassiveSkill):
 
     associate = [
         {"type": "*skillRation","data":data0,"skills":["分身"],"ratio":1},
-        {"type": "+cd","data":[0]+[3]*maxLv,"skills":["分身"],"ratio":1}
+        {"type": "+cd","data":[0]+[5]*maxLv,"skills":["分身"],"ratio":1}
     ]
 
 
