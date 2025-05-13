@@ -7,7 +7,7 @@
 
 ### clone
 
-git clone --single-branch --branch master https://gitee.com/dnftools/dcalc.git
+git clone --recurse-submodules --single-branch --branch master https://gitee.com/dnftools/dcalc.git
 
 ### frontend
 
