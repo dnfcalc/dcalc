@@ -78,7 +78,7 @@ class Skill7(ActiveSkill):
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 10 #TODO
+    position = 9 #TODO
     rangeLv = 2
     cd = 4
     mp = [20, 160]
