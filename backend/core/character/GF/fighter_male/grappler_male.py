@@ -226,7 +226,7 @@ class Skill22(ActiveSkill):
     rangeLv = 3
     cd = 5
     mp = [126, 975]
-    uuid = "92360eab6e1f378902018eca681ac629"    
+    uuid = "92360eab6e1f378902018eca681ac629"
 
     damage = False
     

@@ -162,10 +162,8 @@ class Skill22(ActiveSkill):
     cd = 5
     mp = [194, 1502]
     uuid = "04883563896fe1adac7505c6146b5f59"
-  
-    data2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]# noqa: E501
-
-    associate = [{"type":"*skillRation","data":data2}]
+    buff = True
+    damage = False
 
 
 # 念气环绕 나선의 넨
@@ -191,7 +189,7 @@ class Skill23(ActiveSkill):
 
     associate = [
         # 总共两个珠子
-        {"type":"*skillRation","data":data0,"ratio":100/2}
+        {"data":data0,"ratio":100/2}
     ]
 
     mode = ["常规","念气环绕·御"]
@@ -705,7 +703,7 @@ class classChange(Character):
         self.输出类型 = '魔法百分比'
         self.防具精通属性 = ['智力']
         self.防具类型 = '布甲'
-        self.buff = 1.487
+        self.buff = 1.487 * 1.21
 
         self.角色 = '格斗家(男)'
 
