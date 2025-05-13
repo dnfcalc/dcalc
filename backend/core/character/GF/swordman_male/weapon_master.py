@@ -1132,14 +1132,14 @@ class classChange(Character):
 
         super().__init__(equVersion, __name__)
 
-    def AddSkillLv(self, min: int, max: int, lv: int, type=-1) -> None:
+    def AddSkillLv(self, min: int, max: int, lv: int, type=-1, exceptSkills:list[str]=[]) -> None:
         """
         增加技能等级
         type: -1 全部, 0 被动, 1 主动
         """
         for skill in self.skills:
             # 四个武器精通不享受技能范围等级加成
-            if min <= skill.learnLv <= max and skill.name not in  ['太刀精通', '巨剑精通', '短剑精通', '钝器精通']:
+            if min <= skill.learnLv <= max and skill.name not in  ['太刀精通', '巨剑精通', '短剑精通', '钝器精通'] + exceptSkills:
                 skillType = 'all' if type == -1 else ('active' if type == 1 else 'passive')
                 if (skillType == 'all' or skill.type == skillType) and skill.lv > 0:
                     skill.lv += lv
