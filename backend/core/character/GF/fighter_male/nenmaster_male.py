@@ -187,10 +187,7 @@ class Skill23(ActiveSkill):
     data3 = data2
     hit3 = 0
 
-    associate = [
-        # 总共两个珠子
-        {"data":data0}
-    ]
+    associate = [{"data":data0}]
 
     mode = ["常规","念气环绕·御"]
 
