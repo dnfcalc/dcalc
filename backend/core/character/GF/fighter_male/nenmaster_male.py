@@ -189,7 +189,7 @@ class Skill23(ActiveSkill):
 
     associate = [
         # 总共两个珠子
-        {"data":data0,"ratio":100/2}
+        {"data":data0}
     ]
 
     mode = ["常规","念气环绕·御"]
