@@ -3677,7 +3677,7 @@ def stone_310(char: CharacterProperty):
     技能伤害+6%
     技能冷却时间-20%(觉醒技能除外)
     """
-    char.SetStatus(SkillAttack=0.06)
+    char.SetStatus(SkillAttack=0.075)
     char.SetSkillCD(cd=0.2)
     pass
 
@@ -3706,7 +3706,7 @@ def stone_312(char: CharacterProperty):
     -相同技能间存在10秒冷却时间
     释放冷却时间超过1秒的技能时，有1%的几率使1个技能的冷却时间初始化。（辅助职业除外）
     """
-    char.SetStatus(SkillAttack=0.055)
+    char.SetStatus(SkillAttack=0.07)
     pass
 
 
