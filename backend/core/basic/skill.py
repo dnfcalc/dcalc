@@ -180,6 +180,10 @@ class ActiveSkill(Skill):
     """是否是伤害技能"""
     buffer: bool = False
     """是否是buff技能"""
+    vp:int = 0
+    """技能VP形态"""
+    reinforce:int = 0
+    """技能强化"""
 
     def __init__(self, char):
         super().__init__(char)
@@ -193,18 +197,38 @@ class ActiveSkill(Skill):
                 setattr(self, f'hit{i}', 0)
 
     def skillInfo(self, mode: str | None = None):
+        basic = deepcopy(self)
         if mode is not None:
-            basic = deepcopy(self)
             basic.currentMode = mode
             basic.setMode(mode)
-        else:
-            basic = self
+        basic.setVP()
         date = basic.getSkillData(self.lv)
         cd = basic.getSkillCD()
         return date * basic.skillRation , basic.skillDamage ,cd
 
     def setMode(self, mode: str):
         pass
+
+    def setVP(self):
+        if self.vp == 1:
+            self.vp_1()
+        elif self.vp == 2:
+            self.vp_2()
+
+    def setReinforce(self):
+        if self.learnLv in [50, 85, 100] and not self.damage:
+            return
+        if self.reinforce == 1:
+            if self.learnLv < 35:
+                self.skillRation *= 1.6
+            else:
+                self.skillRation *= 1.55
+        elif self.reinforce == 2:
+            self.cdReduce *= 1 - 0.15
+            if self.learnLv < 35:
+                self.skillRation *= 1.43
+            else:
+                self.skillRation *= 1.38
 
     def getSkillData(self,lv:int=0):
         res = 0
@@ -252,6 +276,12 @@ class ActiveSkill(Skill):
             self.cd * self.cdReduce / self.cdRecover * self.getWeaponCDRatio() * self.getQuickCDRatio()) * self.cdRatio
             - self.cdCut,2
         ))
+
+    def vp_1(self):
+        pass
+
+    def vp_2(self):
+        pass
 
 class PassiveSkill(Skill):
     type: str = 'passive'
