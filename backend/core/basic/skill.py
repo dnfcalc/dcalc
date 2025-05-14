@@ -135,7 +135,7 @@ class Skill:
         return True
 
     def apply_association(self, type, old, new, data, skills, exceptSkills,ratio = 100,weapon = []):
-        if self.char.GetWeaponType()[0] not in weapon:
+        if (self.char.GetWeaponType()[0] not in weapon) and not (self.char.GetWeaponType()[0] is None and len(weapon) == len(self.char.武器选项)):
             return
         if type.startswith('$*'):
             if 'cdReduce' in type:
@@ -157,7 +157,7 @@ class Skill:
                     self.update_skill_attribute(skill,type, old, new, data,ratio,weapon)
 
     def update_skill_attribute(self,skill, type, old, new, data,ratio = 100,weapon = []):
-        if self.char.GetWeaponType()[0] not in weapon:
+        if (self.char.GetWeaponType()[0] not in weapon) and not (self.char.GetWeaponType()[0] is None and len(weapon) == len(self.char.武器选项)):
             return
         if type.startswith('*'):
             if 'cdReduce' in type or type == 'cd' or 'cdRatio' in type:

@@ -41,7 +41,7 @@ export default defineComponent({
 
     const lvList = [15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100]
 
-    const columns = [...new Array(10).keys()]
+    const columns = [...new Array(11).keys()]
 
     const activeSkill = ref<number>(-1)
 
