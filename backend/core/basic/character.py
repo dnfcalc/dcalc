@@ -466,7 +466,8 @@ class Character(CharacterProperty):
                     # 'maxTPLv': 0 if not skill.hasTP else skill.TPLearnMax,
                     'position': skill.position,
                     'line': skill.line,
-                    'bind': skill.bind
+                    'bind': skill.bind,
+                    'damage':skill.damage
                 }
             )
         info['skills'] = skillInfo

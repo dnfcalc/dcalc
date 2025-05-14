@@ -45,7 +45,7 @@ class Skill9(ActiveSkill):
     cd = 3
     mp = [3, 4]
     uuid = "9dda3f4a849dba1a288dd65e116860f2"
-    
+
     damage = False
 
 

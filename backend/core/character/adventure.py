@@ -67,8 +67,8 @@ adv = [
         'name': 'gunner_female',
         'title': '神枪手(女)',
         'children': [
-            {'id': 0, 'name': 'ranger_female', 'title': '重霄·漫游枪手', 'open': False},
-            {'id': 1, 'name': 'launcher_female', 'title': '重霄·枪炮师', 'open': False},
+            {'id': 0, 'name': 'ranger_female', 'title': '重霄·漫游枪手', 'open': True,'class':"GF.gunner_female.ranger_female"},
+            {'id': 1, 'name': 'launcher_female', 'title': '重霄·枪炮师', 'open': True,'class':'GF.gunner_female.launcher_female'},
             {'id': 2, 'name': 'mechanic_female', 'title': '重霄·机械师', 'open': False},
             {'id': 3, 'name': 'spitfire_female', 'title': '重霄·弹药专家', 'open': True, 'class': 'GF.gunner_female.spitfire_female'},
             {'name': 'empty', 'title': '', 'comment': ''},

@@ -111,7 +111,7 @@ class Skill24(ActiveSkill):
     rangeLv = 3
     cd = 10
     mp = [40, 448]
-    uuid = "1dad88963abdc96b091fcab185a8820d"    
+    uuid = "1dad88963abdc96b091fcab185a8820d"
     damage = False
 
 # 嗜魂之手 블러드러스트
