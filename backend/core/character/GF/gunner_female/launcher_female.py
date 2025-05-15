@@ -95,7 +95,7 @@ class Skill19(PassiveSkill):
     data3 = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]# noqa: E501
     data4 = [0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]# noqa: E501
 
-    ssociate = [
+    associate = [
         {"type":"$*PAtkP","data":data2},
         {"data":data3},
         {"type":"*cdReduce","data":data4,"exceptSkills":['远古粒子炮', '火力全开', '制胜·最终兵器']},
