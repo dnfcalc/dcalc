@@ -101,7 +101,7 @@ export default defineComponent({
             <div
               class={[
                 'w-36px absolute h-48px flex flex-col box-border items-center py-3px z-2',
-                (skill.learnLv == 100 && skill.bind) ? '' : 'skill',
+                skill.learnLv == 100 && skill.bind ? '' : 'skill',
               ]}
               onClick={(e) => {
                 e.stopPropagation()

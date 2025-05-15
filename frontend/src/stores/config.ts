@@ -54,9 +54,10 @@ export interface IConfig {
   sundry: Record<string, any>
   bindAwake: number
   /** 系统奶 */
-  DSB : boolean
+  DSB: boolean
   /** 奶 */
-  BUFF : boolean
+  BUFF: boolean
+  options: Record<string, number>
 }
 
 const defaultEqusConfig = {
@@ -92,6 +93,7 @@ export const useConfigStore = defineStore('configStore', () => {
     bindAwake: 50,
     DSB: false,
     BUFF: false,
+    options:{}
   })
 
   const skillCountConfig = ref<IResultSkillCount[]>([])
@@ -120,6 +122,7 @@ export const useConfigStore = defineStore('configStore', () => {
         bindAwake: 50,
         DSB: false,
         BUFF: false,
+        options:{}
       }
     if (!config.value?.equips) config.value.equips = {}
     if (!config.value?.skills) config.value.skills = {}
@@ -127,6 +130,7 @@ export const useConfigStore = defineStore('configStore', () => {
     if (!config.value?.avatar) config.value.avatar = {}
     if (!config.value?.sundry) config.value.sundry = {}
     if (!config.value?.bindAwake) config.value.bindAwake = 50
+    if (!config.value?.options) config.value.options = {}
 
     const part = [...infoStore.parts, '宠物', '副武器'].filter(
       (a) => !config.value?.equips.hasOwnProperty(a),
@@ -145,6 +149,11 @@ export const useConfigStore = defineStore('configStore', () => {
 
     avatarPart.forEach((p) => {
       config.value && (config.value.avatar[p] = { ...defaultAvatarConfig })
+    })
+
+    infoStore.options.forEach((option) => {
+      if(Object.keys(config.value.options).includes(option.id.toString())) return
+      config.value.options[option.id.toString()] = 0
     })
 
     skillIDs.forEach((id) => {
@@ -168,7 +177,10 @@ export const useConfigStore = defineStore('configStore', () => {
     const alter = infoStore.infos?.alter
     if (alter) {
       localStorage.setItem(`dcalc/${alter}/config`, JSON.stringify(config.value))
-      localStorage.setItem(`dcalc/${alter}/config/skillCount`, JSON.stringify(skillCountConfig.value))
+      localStorage.setItem(
+        `dcalc/${alter}/config/skillCount`,
+        JSON.stringify(skillCountConfig.value),
+      )
     }
   }
 
@@ -203,7 +215,7 @@ export const useConfigStore = defineStore('configStore', () => {
       skills: [],
       info: [],
       suits: [],
-      buffer:false
+      buffer: false,
     },
     { resetOnExecute: false },
   )
@@ -215,6 +227,6 @@ export const useConfigStore = defineStore('configStore', () => {
     calc,
     result,
     chooseEqu,
-    skillCountConfig
+    skillCountConfig,
   }
 })

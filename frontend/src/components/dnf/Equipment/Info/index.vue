@@ -17,7 +17,7 @@
           <Icon :equipment="props.equipment"></Icon>
         </div>
         <div style="line-height: 15px">
-          <div :class="[rarity,'pl-5px']">{{ props.equipment?.name }}</div>
+          <div :class="[rarity, 'pl-5px']">{{ props.equipment?.name }}</div>
           <div class="pl-5px text-#3ea74e">{{ props.equipment?.categorize }}</div>
         </div>
       </div>
@@ -28,28 +28,34 @@
         <div :class="rarity">{{ props.equipment?.rarity }}</div>
         <div class="text-hex-7C6430">{{ props.equipment?.itemDetailType }}</div>
       </div>
-        <!-- 装备基础信息 -->
+      <!-- 装备基础信息 -->
       <div class="divide"></div>
-      <div class="flex flex-col items-start my-1px" style="white-space: pre-wrap; line-height: 15px">
-          <div class="text-#908150" v-html="mainAttr"></div>
+      <div
+        class="flex flex-col items-start my-1px"
+        style="white-space: pre-wrap; line-height: 15px"
+      >
+        <div class="text-#908150" v-html="mainAttr"></div>
       </div>
       <!-- 装备属性 -->
       <div class="divide"></div>
-      <div class="flex flex-col items-start my-1px" style="white-space: pre-wrap; line-height: 15px">
-          <div class="text-#DED29A" v-html="detail"></div>
+      <div
+        class="flex flex-col items-start my-1px"
+        style="white-space: pre-wrap; line-height: 15px"
+      >
+        <div class="text-#DED29A" v-html="detail"></div>
       </div>
       <template v-if="bufferDetail">
         <div class="divide"></div>
-          <div class="flex flex-col items-start my-1px" style="white-space: pre-wrap; line-height: 15px">
+        <div
+          class="flex flex-col items-start my-1px"
+          style="white-space: pre-wrap; line-height: 15px"
+        >
           <div class="text-#A48B2E mb-10px">辅助职业专属属性</div>
           <div class="text-#DED29A" v-html="bufferDetail"></div>
         </div>
       </template>
-
     </div>
   </div>
-
-
 
   <!-- 奶系专属 -->
 </template>
@@ -65,29 +71,44 @@ const props = defineProps<{
 
 const rarity = computed(() => rarityClass(props.equipment?.rarity ?? ''))
 
-const mainAttr = computed(()=>{
-  const attrs :(keyof IEquipment)[] = ['STR', 'INT', 'Vitality', 'Spirit','AtkP','AtkM','AtkI','SkillAttack','Attack','Buffer']
-  let info = ""
+const mainAttr = computed(() => {
+  const attrs: (keyof IEquipment)[] = [
+    'STR',
+    'INT',
+    'Vitality',
+    'Spirit',
+    'AtkP',
+    'AtkM',
+    'AtkI',
+    'SkillAttack',
+    'Attack',
+    'Buffer',
+  ]
+  let info = ''
   for (const attr of attrs) {
     const item = props.equipment?.[attr] as number[]
     if (item?.[0]) {
-      info += `${formatAttr(attr,item?.[0])}\n`
+      info += `${formatAttr(attr, item?.[0])}\n`
     }
   }
-  return info;
-
-
+  return info
 })
 
-const detail = computed(()=>props.equipment?.detail.replace(/\[([^\[\]技能]+?)\]/g, '<span style="color:#3d9147">[$1]</span>'))
+const detail = computed(() =>
+  props.equipment?.detail.replace(
+    /\[([^\[\]技能]+?)\]/g,
+    '<span style="color:#3d9147">[$1]</span>',
+  ),
+)
 
-const bufferDetail = computed(()=>
-{
+const bufferDetail = computed(() => {
   const detail = props.equipment?.bufferDetail
-  if(!detail || detail == '-') return undefined
-  return props.equipment?.bufferDetail.replace(/\[([^\[\]技能]+?)\]/g, '<span style="color:#3d9147">[$1]</span>')
-} )
-
+  if (!detail || detail == '-') return undefined
+  return props.equipment?.bufferDetail.replace(
+    /\[([^\[\]技能]+?)\]/g,
+    '<span style="color:#3d9147">[$1]</span>',
+  )
+})
 </script>
 
 <style lang="scss" scoped>

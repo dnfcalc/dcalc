@@ -1,16 +1,16 @@
 <script lang="tsx">
-import { defineComponent, renderSlot } from "vue"
-import { HiItem, selectionProps } from "hoci"
+import { defineComponent, renderSlot } from 'vue'
+import { HiItem, selectionProps } from 'hoci'
 
 export default defineComponent({
-  name: "CalcTab",
+  name: 'CalcTab',
   props: {
-    ...selectionProps
+    ...selectionProps,
   },
   setup(props, { slots }) {
     return () => {
-      return <HiItem {...props}>{renderSlot(slots, "default")}</HiItem>
+      return <HiItem {...props}>{renderSlot(slots, 'default')}</HiItem>
     }
-  }
+  },
 })
 </script>

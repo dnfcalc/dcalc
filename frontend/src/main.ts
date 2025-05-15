@@ -1,7 +1,7 @@
 import '@/style/index.scss'
 
 import { createApp } from 'vue'
-import { pinia } from "@/stores"
+import { pinia } from '@/stores'
 
 import App from '@/pages/IndexView.vue'
 

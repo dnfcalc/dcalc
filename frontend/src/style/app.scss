@@ -1,26 +1,54 @@
-@use "./animation.scss";
+@use './animation.scss';
 
 .text-shadow {
-  text-shadow: 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
-    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
-    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
-    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
-    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
-    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
-    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000;
+  text-shadow:
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000;
 }
 
 @font-face {
-  font-family: "dcalc";
-  src: url("@/assets/fonts/dcalc.ttf");
+  font-family: 'dcalc';
+  src: url('@/assets/fonts/dcalc.ttf');
 }
 
 :root {
   font-size: 16px;
-  --cursor-pointer: url("@/assets/cursor/basic.cur"),
-    url("@/assets/cursor/cursor.png"), pointer !important;
-  --cursor-active: url("@/assets/cursor/basic_press.cur"),
-    url("@/assets/cursor/cursor.png"), pointer !important;
+  --cursor-pointer:
+    url('@/assets/cursor/basic.cur'), url('@/assets/cursor/cursor.png'), pointer !important;
+  --cursor-active:
+    url('@/assets/cursor/basic_press.cur'), url('@/assets/cursor/cursor.png'), pointer !important;
 }
 
 html,
@@ -39,16 +67,44 @@ body,
 
 * {
   // font-family: "ArkPixel", "Consola", sans-serif;
-  font-family: "dcalc", "SimSun";
+  font-family: 'dcalc', 'SimSun';
   // font-family: "STSong";
   font-size: 12px;
-  text-shadow: 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
-    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
-    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
-    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
-    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
-    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000,
-    0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000, 0 0 1px #000;
+  text-shadow:
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000,
+    0 0 1px #000;
   // image-rendering:pixelated;
   // text-rendering: geometricPrecision;
   // letter-spacing: -0.5px;
@@ -91,12 +147,12 @@ body,
 ::-webkit-scrollbar-button:vertical:single-button:start {
   width: 11px;
   // 添加标题栏后调整相关位置
-  background: url("@/assets/img/icon/up.png") 0px 1px no-repeat;
+  background: url('@/assets/img/icon/up.png') 0px 1px no-repeat;
 }
 
 ::-webkit-scrollbar-button:vertical:single-button:end {
   width: 11px;
-  background: url("@/assets/img/icon/down.png") 0px 1px no-repeat;
+  background: url('@/assets/img/icon/down.png') 0px 1px no-repeat;
 }
 
 .divider {
@@ -140,10 +196,10 @@ body,
   .name {
     padding: 0px 5px 0px 5px;
     &::after {
-      content: "";
+      content: '';
       width: 210px;
       height: 8px;
-      background: url("@/assets/img/underline.png");
+      background: url('@/assets/img/underline.png');
       display: block;
       background-size: contain;
       left: 5px;
@@ -197,7 +253,7 @@ body,
 
 .app-header {
   // -webkit-app-region: drag;
-  background-image: url("@/assets/img/control/title.png");
+  background-image: url('@/assets/img/control/title.png');
   background-size: 100% 100%;
   color: #9d8c5b;
   border-top: 1px solid #6c81a7;
@@ -206,7 +262,7 @@ body,
 
 .min-icon {
   -webkit-app-region: no-drag;
-  background: url("@/assets/img/icon/min.png") no-repeat;
+  background: url('@/assets/img/icon/min.png') no-repeat;
 
   background-size: 10px 10px;
   background-position: center;
@@ -214,7 +270,7 @@ body,
 
 .close-icon {
   -webkit-app-region: no-drag;
-  background: url("@/assets/img/icon/exit.png") no-repeat;
+  background: url('@/assets/img/icon/exit.png') no-repeat;
   background-size: 10px 10px;
   background-position: center;
 }
@@ -258,7 +314,7 @@ body,
 }
 
 .primeval {
-  background-image: -webkit-linear-gradient(top, #28d931,#33acea);
+  background-image: -webkit-linear-gradient(top, #28d931, #33acea);
   color: transparent;
   background-clip: text;
   text-shadow: none;
@@ -371,33 +427,32 @@ body,
 //   mix-blend-mode: color-dodge;
 // }
 
-.lvInfo{
-  background-image: url("@/assets/img/specificity/lv.png");
+.lvInfo {
+  background-image: url('@/assets/img/specificity/lv.png');
   background-repeat: no-repeat !important;
   background-size: auto auto !important;
   width: 30px;
   height: 16px;
   z-index: 10;
-  color:#4E3D1B
+  color: #4e3d1b;
 }
 
-.lvInfoActive{
-  background-image: url("@/assets/img/specificity/lv_active.png");
+.lvInfoActive {
+  background-image: url('@/assets/img/specificity/lv_active.png');
   background-repeat: no-repeat !important;
   background-size: auto auto !important;
   width: 30px;
   height: 16px;
   z-index: 10;
-  color:#FEB300
+  color: #feb300;
 }
 
-
-.lvInfoMaster{
-  background-image: url("@/assets/img/specificity/lv_master.png");
+.lvInfoMaster {
+  background-image: url('@/assets/img/specificity/lv_master.png');
   background-repeat: no-repeat !important;
   background-size: auto auto !important;
   width: 30px;
   height: 16px;
   z-index: 10;
-  color:#FEB300
+  color: #feb300;
 }

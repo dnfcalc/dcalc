@@ -12,7 +12,7 @@
           ]"
           :key="key"
           class="item-head"
-          :style="{width: `${header.width}px`}"
+          :style="{ width: `${header.width}px` }"
           @click="header.sortKey && sortValue(header.sortKey)"
         >
           {{ header.label }}
@@ -44,13 +44,18 @@
           <component :is="formatDamage(skill)"></component>
         </div>
       </div>
-      <div v-if="!totalStandard" class="h-40px flex items-center justify-center text-18px border-t-1px border-t-solid border-t-#FFFF/15">{{showTotal.toFixed(0)}}</div>
+      <div
+        v-if="!totalStandard"
+        class="h-40px flex items-center justify-center text-18px border-t-1px border-t-solid border-t-#FFFF/15"
+      >
+        {{ showTotal.toFixed(0) }}
+      </div>
       <div
         v-else
         class="h-40px flex items-center justify-center text-18px border-t-1px border-t-solid border-t-#FFFF/15"
-        :style="{color:showTotal >= 0 ? '#37fa38' : '#ff0000'}"
-        >
-        {{showTotal.toFixed(2)}}%
+        :style="{ color: showTotal >= 0 ? '#37fa38' : '#ff0000' }"
+      >
+        {{ showTotal.toFixed(2) }}%
       </div>
     </div>
   </div>
@@ -84,11 +89,11 @@ const data = computed(() => {
       // @ts-ignore
       bValue = b[sort.value]
     }
-    if( sort.value == 'total'){
+    if (sort.value == 'total') {
       aValue = a.damage * skillCount(a).value
       bValue = b.damage * skillCount(b).value
     }
-    if(sort.value == 'dps'){
+    if (sort.value == 'dps') {
       aValue = a.damage / a.cd
       bValue = b.damage / b.cd
     }
@@ -152,7 +157,7 @@ const totalStandard = computed(() => {
 
 const showTotal = computed(() => {
   if (!totalStandard.value || totalStandard.value == 0) return totalDamage.value
-  return (totalDamage.value - totalStandard.value) / totalStandard.value * 100
+  return ((totalDamage.value - totalStandard.value) / totalStandard.value) * 100
 })
 
 const formatDamage = (skill: IResultSkill) => {

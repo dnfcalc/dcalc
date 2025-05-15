@@ -1,9 +1,9 @@
 <script lang="tsx">
-import { selectionEmits, selectionProps } from "hoci"
-import type { CSSProperties, PropType } from "vue";
-import { Teleport, Transition, computed, defineComponent, onDeactivated, ref, watch } from "vue"
+import { selectionEmits, selectionProps } from 'hoci'
+import type { CSSProperties, PropType } from 'vue'
+import { Teleport, Transition, computed, defineComponent, onDeactivated, ref, watch } from 'vue'
 
-import { onClickOutside, useVModel } from "@vueuse/core"
+import { onClickOutside, useVModel } from '@vueuse/core'
 interface ICascaderItem {
   label: string
   id?: string | number
@@ -13,33 +13,33 @@ interface ICascaderItem {
 }
 
 export default defineComponent({
-  name: "ICascader",
+  name: 'ICascader',
   props: {
     ...selectionProps,
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     width: {
       type: Number,
-      default: 120
+      default: 120,
     },
     emptyLabel: {
-      type: String
+      type: String,
     },
     highlight: {
       type: String,
       // warn remind
-      default: ""
+      default: '',
     },
     items: {
       type: Array as PropType<ICascaderItem[]>,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
-  emits: [...selectionEmits, "select"],
+  emits: [...selectionEmits, 'select'],
   setup(props, { emit }) {
-    const modelValue = useVModel(props, "modelValue")
+    const modelValue = useVModel(props, 'modelValue')
 
     const isOpen = ref(false)
     const triggerRef = ref<HTMLElement>()
@@ -60,13 +60,13 @@ export default defineComponent({
         return {
           left: `${dropdownPosition.value.x}px`,
           top: `${dropdownPosition.value.y}px`,
-          width: `${dropdownPosition.value.w}px`
+          width: `${dropdownPosition.value.w}px`,
         }
       } else {
         return {
           left: `${dropdownPosition.value.x}px`,
           bottom: `${dropdownPosition.value.z}px`,
-          width: `${dropdownPosition.value.w}px`
+          width: `${dropdownPosition.value.w}px`,
         }
       }
     })
@@ -79,26 +79,25 @@ export default defineComponent({
             w: width,
             x: left,
             y: top + height + 2,
-            z: 0
+            z: 0,
           }
         } else {
           dropdownPosition.value = {
             w: width,
             x: left,
             z: window.innerHeight - top + 2,
-            y: 0
+            y: 0,
           }
         }
       }
     }
 
-
-    window.addEventListener("resize", onResize)
-    window.addEventListener("scroll", onResize)
+    window.addEventListener('resize', onResize)
+    window.addEventListener('scroll', onResize)
 
     onDeactivated(() => {
-      window.removeEventListener("resize", onResize)
-      window.removeEventListener("scroll", onResize)
+      window.removeEventListener('resize', onResize)
+      window.removeEventListener('scroll', onResize)
     })
 
     const selectItem = ref<ICascaderItem>()
@@ -108,7 +107,7 @@ export default defineComponent({
         isOpen.value = false
       }
       selectItem.value = item
-      emit("select", item.value)
+      emit('select', item.value)
     }
 
     function loadNode(item: ICascaderItem) {
@@ -122,11 +121,15 @@ export default defineComponent({
 
     return () => {
       return (
-        <div class={["min-w-20 w-40 i-cascader"].concat(props.highlight)} onClick={collapse} ref={selectRef}>
+        <div
+          class={['min-w-20 w-40 i-cascader'].concat(props.highlight)}
+          onClick={collapse}
+          ref={selectRef}
+        >
           <div
             class={{
-              "i-cascader-trigger": true,
-              "disabled": props.disabled
+              'i-cascader-trigger': true,
+              disabled: props.disabled,
             }}
             ref={triggerRef}
           >
@@ -151,122 +154,122 @@ export default defineComponent({
         </div>
       )
     }
-  }
+  },
 })
 </script>
 
 <style lang="scss">
 @use 'sass:color';
 $text-color: #937639;
-  .i-cascader {
-    min-width: 80px;
-    width: 160px;
-    user-select: none;
-    outline: none;
-    height: 16px;
-    min-height: 16px;
-    line-height: 100%;
-    // font-size: 12px;
-    color: $text-color;
-    background-color: rgba(0, 0, 0, 1);
-    border: 1px solid #5b472a;
-    border-radius: 2px;
+.i-cascader {
+  min-width: 80px;
+  width: 160px;
+  user-select: none;
+  outline: none;
+  height: 16px;
+  min-height: 16px;
+  line-height: 100%;
+  // font-size: 12px;
+  color: $text-color;
+  background-color: rgba(0, 0, 0, 1);
+  border: 1px solid #5b472a;
+  border-radius: 2px;
+  padding: 0;
+  padding-right: 3px;
+  margin: 0;
+  display: block;
+
+  .i-cascader-trigger {
     padding: 0;
-    padding-right: 3px;
-    margin: 0;
-    display: block;
+    display: flex;
+    height: 100%;
+    opacity: 0.9;
 
-    .i-cascader-trigger {
-      padding: 0;
-      display: flex;
-      height: 100%;
-      opacity: 0.9;
+    justify-content: space-between;
+    align-items: center;
 
-      justify-content: space-between;
-      align-items: center;
+    .i-cascader-label {
+      padding-left: 5px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      max-width: calc(100% - 20px);
+    }
 
-      .i-cascader-label {
-        padding-left: 5px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        max-width: calc(100% - 20px);
-      }
+    .i-cascader-down-icon {
+      background-image: url('./img/select_down.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 2px;
+      width: 15px;
+      height: 14px;
+    }
+
+    .i-cascader-down-icon:active {
+      background-image: url('./img/select_down_clicked.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 2px;
+      width: 15px;
+      height: 14px;
+    }
+
+    &.disabled {
+      color: gray;
 
       .i-cascader-down-icon {
-        background-image: url("./img/select_down.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        border-radius: 2px;
-        width: 15px;
-        height: 14px;
-      }
-
-      .i-cascader-down-icon:active {
-        background-image: url("./img/select_down_clicked.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        border-radius: 2px;
-        width: 15px;
-        height: 14px;
-      }
-
-      &.disabled {
-        color: gray;
-
-        .i-cascader-down-icon {
-          background-image: url("./img/select_down_disabled.png");
-        }
+        background-image: url('./img/select_down_disabled.png');
       }
     }
-
-    .i-cascader-trigger:hover {
-      opacity: 1;
-    }
   }
 
-  .remind {
-    color: #32e432 !important;
-    border: 1px solid #aa8651;
+  .i-cascader-trigger:hover {
+    opacity: 1;
   }
+}
 
-  .i-cascader-dropdown {
-    position: fixed;
-    max-height: 160px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background: black;
-    // font-size: 12px;
-    z-index: 888;
+.remind {
+  color: #32e432 !important;
+  border: 1px solid #aa8651;
+}
 
-    $hoverColor: #002947;
-    $activeColor: color.scale($hoverColor, $lightness: 5%);
-    color: $text-color;
-  }
+.i-cascader-dropdown {
+  position: fixed;
+  max-height: 160px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: black;
+  // font-size: 12px;
+  z-index: 888;
 
-  .dropdown-active {
-    animation: dropdown-enter 0.2s ease-in;
-  }
+  $hoverColor: #002947;
+  $activeColor: color.scale($hoverColor, $lightness: 5%);
+  color: $text-color;
+}
 
-  .dropdown-active {
-    animation: dropdown-leave 0.2s ease-in;
-  }
+.dropdown-active {
+  animation: dropdown-enter 0.2s ease-in;
+}
 
-  .dropdown-enter-active {
-    animation: dropdown-enter 0.2s ease-in;
-  }
+.dropdown-active {
+  animation: dropdown-leave 0.2s ease-in;
+}
 
-  .dropdown-leave-active {
-    animation: dropdown-leave 0.2s ease-in;
-  }
+.dropdown-enter-active {
+  animation: dropdown-enter 0.2s ease-in;
+}
 
-  .dropdown-enter-active {
-    animation: dropdown-enter 0.2s ease-in;
-  }
+.dropdown-leave-active {
+  animation: dropdown-leave 0.2s ease-in;
+}
 
-  .dropdown-leave-active {
-    animation: dropdown-leave 0.2s ease-in;
-  }
+.dropdown-enter-active {
+  animation: dropdown-enter 0.2s ease-in;
+}
+
+.dropdown-leave-active {
+  animation: dropdown-leave 0.2s ease-in;
+}
 </style>

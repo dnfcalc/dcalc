@@ -3,7 +3,11 @@
 <template>
   <div class="flex flex-wrap gap-4px content-start" :style="{ width: `${rowCount * 32}px` }">
     <template v-for="(weapon, _) in weapons" :key="_">
-      <EquipmentIcon :equipment="weapon" :inactive="configStore.config.equips['副武器']?.id != weapon?.id" @click="configStore.chooseEqu(weapon,false,true)"/>
+      <EquipmentIcon
+        :equipment="weapon"
+        :inactive="configStore.config.equips['副武器']?.id != weapon?.id"
+        @click="configStore.chooseEqu(weapon, false, true)"
+      />
     </template>
   </div>
 </template>
@@ -40,5 +44,4 @@ const weapons = computed(() => {
   })
   return res
 })
-
 </script>

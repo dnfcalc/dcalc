@@ -27,7 +27,7 @@ if (import.meta.env.MODE == 'web' || import.meta.env.MODE == 'show') {
   baseURL = 'https://api.dnftools.com/'
 }
 
-if(import.meta.env.MODE == 'test') {
+if (import.meta.env.MODE == 'test') {
   baseURL = 'https://testapi.dnftools.com/'
 }
 

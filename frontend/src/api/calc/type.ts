@@ -1,11 +1,10 @@
 export interface IResult {
   uuid: string
   skills: IResultSkill[]
-  info:IResultUserInfo[]
-  suits:IResultSuit[]
-  buffer:boolean
+  info: IResultUserInfo[]
+  suits: IResultSuit[]
+  buffer: boolean
 }
-
 
 export interface IResultSkill {
   name: string
@@ -16,24 +15,24 @@ export interface IResultSkill {
   cd: number
   damage: number
   mode: string
-  buff:number[]
+  buff: number[]
   learnLv: number
 }
 
 export interface IResultUserInfo {
-  name:string
-  value:string|number
+  name: string
+  value: string | number
 }
 
-export interface IResultSuit{
-  id:number
-  count:number
-  imageUrl:string
-  level:number
-  name:string
-  point:number
-  rarity:string
-  value:string
+export interface IResultSuit {
+  id: number
+  count: number
+  imageUrl: string
+  level: number
+  name: string
+  point: number
+  rarity: string
+  value: string
 }
 
 export interface IResultSkillCount {

@@ -7,22 +7,22 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
-    component: (() => import('@/pages/Home/Index.vue')),
+    component: () => import('@/pages/Home/Index.vue'),
   },
   {
-    path:'/character/:alter',
+    path: '/character/:alter',
     redirect: (to) => {
       return { path: `/character/equipment/${to.params.alter}` }
     },
     props: true,
-    name:'character',
-    component: (() => import('@/pages/Character/Index.vue')),
+    name: 'character',
+    component: () => import('@/pages/Character/Index.vue'),
     children: [
       {
         path: '/character/equipment/:alter',
         name: 'equipment',
         props: true,
-        component: (() => import('@/pages/Character/EquipmentDictionary/Index.vue')),
+        component: () => import('@/pages/Character/EquipmentDictionary/Index.vue'),
       },
       // {
       //   path: '/character/equipment/:alter',
@@ -34,15 +34,16 @@ const routes: RouteRecordRaw[] = [
         path: '/character/skill/:alter',
         name: 'skill',
         props: true,
-        component: (() => import('@/pages/Character/Skill/index.vue')),
-      },{
+        component: () => import('@/pages/Character/Skill/index.vue'),
+      },
+      {
         path: '/character/forge/:alter',
         name: 'forge',
         props: true,
-        component: (() => import('@/pages/Character/Forge/index.vue')),
-      }
-    ]
-  }
+        component: () => import('@/pages/Character/Forge/index.vue'),
+      },
+    ],
+  },
 ]
 
 const router = createRouter({

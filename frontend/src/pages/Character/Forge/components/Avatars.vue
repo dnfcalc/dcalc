@@ -101,23 +101,27 @@ export default defineComponent({
               </div>
             ) : (
               <>
-              <div class="equ-profile-item">
-                <div class="row-name">品级</div>
-                <calc-select v-model={id.value} class="flex-1 !h-20px">
-                  {renderList(basicInfoStore.avatars[part.value] ?? [], (item) => (
-                    <calc-option value={item.id}>{item.suit}</calc-option>
-                  ))}
-                </calc-select>
-              </div>
-              <div class="equ-profile-item">
-                <div class="row-name">属性</div>
-                <calc-select v-model={option.value} class="flex-1 !h-20px">
-                  <calc-option value={0}>无</calc-option>
-                  {renderList(basicInfoStore.avatars[part.value].find(a=>a.id == id.value)?.options ?? [], (item) => (
-                    <calc-option value={item}>{item}</calc-option>
-                  ))}
-                </calc-select>
-              </div>
+                <div class="equ-profile-item">
+                  <div class="row-name">品级</div>
+                  <calc-select v-model={id.value} class="flex-1 !h-20px">
+                    {renderList(basicInfoStore.avatars[part.value] ?? [], (item) => (
+                      <calc-option value={item.id}>{item.suit}</calc-option>
+                    ))}
+                  </calc-select>
+                </div>
+                <div class="equ-profile-item">
+                  <div class="row-name">属性</div>
+                  <calc-select v-model={option.value} class="flex-1 !h-20px">
+                    <calc-option value={0}>无</calc-option>
+                    {renderList(
+                      basicInfoStore.avatars[part.value].find((a) => a.id == id.value)?.options ??
+                        [],
+                      (item) => (
+                        <calc-option value={item}>{item}</calc-option>
+                      ),
+                    )}
+                  </calc-select>
+                </div>
               </>
             )}
             {has_socket.value ? (

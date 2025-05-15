@@ -1,5 +1,8 @@
 <template>
   <div class="w-340px bg-black flex flex-col h-90vh">
+    <calc-dialog lazy header="装备条件" v-model:visible="triggerVisible">
+      <options />
+    </calc-dialog>
     <!-- 头部 选择是装备还是融合石 -->
     <div class="flex bg-#101012 h-40px text-#6C5E4A font-bold">
       <div
@@ -30,7 +33,7 @@
           品质：<EquipmentRaritySelect v-model="curRarity" />
         </div>
       </div>
-      <div class="flex flex-1 items-center">
+      <div class="flex flex-1 items-center justify-between">
         <div class="flex items-center">
           套装：
           <div class="flex items-center justify-center gap-2px">
@@ -47,26 +50,27 @@
             </template>
           </div>
         </div>
+        <calc-button
+          icon="set"
+          title="装备触发条件"
+          @click="triggerVisible = !triggerVisible"
+        ></calc-button>
       </div>
     </div>
     <div class="overflow-y-auto gap-1 p-1 flex flex-col items-center flex-1 h-0">
-        <template v-for="item in equs" :key="item.name">
-          <template v-if="item.equs.length > 0">
-            <div class="item-head w-full">{{ item.name }}</div>
-            <div class="flex flex-wrap gap-4px justify-around w-full">
-              <template v-for="(equ, _) in item.equs" :key="_">
-                <EquipmentIcon
-                  :inactive="!isActive(equ)"
-                  :equipment="equ"
-                  @click="chooseEqu(equ)"
-                />
-              </template>
-            </div>
-          </template>
+      <template v-for="item in equs" :key="item.name">
+        <template v-if="item.equs.length > 0">
+          <div class="item-head w-full">{{ item.name }}</div>
+          <div class="flex flex-wrap gap-4px justify-around w-full">
+            <template v-for="(equ, _) in item.equs" :key="_">
+              <EquipmentIcon :inactive="!isActive(equ)" :equipment="equ" @click="chooseEqu(equ)" />
+            </template>
+          </div>
         </template>
-      </div>
+      </template>
+    </div>
   </div>
-  <div class="px-5px flex flex-col">
+  <div class="px-5px flex flex-col h-90vh">
     <div class="flex flex-col overflow-hidden bg-black" v-if="curEquInfo">
       <div class="item-head">基础信息</div>
       <div class="flex-1 overflow-y-auto overflow-x-hidden bg-black w-240px">
@@ -127,6 +131,11 @@ import EquipmentIcon from '@/components/dnf/Equipment/Icon/index.vue'
 import Info from '@/components/dnf/Equipment/Info/index.vue'
 import SuitInfo from '@/components/dnf/Equipment/SuitInfo/index.vue'
 import { formatEqu, formatStone } from './formatData'
+import options from './components/options.vue'
+
+const props = defineProps<{
+  alter: string
+}>()
 
 const infoStore = useInfoStore()
 const type = ref('equ')
@@ -137,6 +146,7 @@ const curSuitLv = ref({
   rarity: '史诗',
   lv: 1,
 })
+const triggerVisible = ref(false)
 
 const raritiyList = ['稀有', '神器', '传说', '史诗', '太初']
 

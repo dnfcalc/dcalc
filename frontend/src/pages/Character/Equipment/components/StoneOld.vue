@@ -1,9 +1,13 @@
 `<!-- 每排总计6+4+4,共计14个排列 -->
 
 <template>
-  <div class="flex flex-wrap gap-4px content-start" :style="{width: `${rowCount * 32}px`}">
-    <template v-for="(equip,_) in equs" :key="_">
-        <EquipmentIcon :inactive="configStore.config.equips[equip?.itemDetailType ?? '']?.fusion != equip?.id"  :equipment="equip" @click="configStore.chooseEqu(equip,true)" />
+  <div class="flex flex-wrap gap-4px content-start" :style="{ width: `${rowCount * 32}px` }">
+    <template v-for="(equip, _) in equs" :key="_">
+      <EquipmentIcon
+        :inactive="configStore.config.equips[equip?.itemDetailType ?? '']?.fusion != equip?.id"
+        :equipment="equip"
+        @click="configStore.chooseEqu(equip, true)"
+      />
     </template>
   </div>
 </template>
@@ -15,7 +19,7 @@ import { getImageURL } from '@/utils/images'
 import EquipmentIcon from '@/components/dnf/Equipment/Icon/index.vue'
 
 const props = defineProps<{
-  rowCount ?:number
+  rowCount?: number
 }>()
 
 const rowCount = Math.max(props.rowCount ?? 0, 14)
@@ -23,23 +27,21 @@ const infoStore = useInfoStore()
 const configStore = useConfigStore()
 
 const equs = computed(() => {
-  const items = infoStore.stones.filter(
-    (equip) => equip.categorize.includes('神界'),
-  )
+  const items = infoStore.stones.filter((equip) => equip.categorize.includes('神界'))
   const res: (IEquipment | undefined)[] = []
   res.push(
     ...items.filter((a) => a.rarity === '太初'),
-    ...Array(Math.max(0,rowCount - items.filter((a) => a.rarity === '太初').length)).fill(undefined),
-  );
+    ...Array(Math.max(0, rowCount - items.filter((a) => a.rarity === '太初').length)).fill(
+      undefined,
+    ),
+  )
 
-  ['手镯','项链','戒指','','辅助装备','魔法石','耳环',''].forEach((cat) => {
-    const equ: (IEquipment | undefined)[] = items.filter((a) => a.rarity === '史诗' && a.itemDetailType == cat)
-    res.push(
-      ...equ,
-      ...Array(Math.max(0, 7 - equ.length)).fill(undefined),
+  ;['手镯', '项链', '戒指', '', '辅助装备', '魔法石', '耳环', ''].forEach((cat) => {
+    const equ: (IEquipment | undefined)[] = items.filter(
+      (a) => a.rarity === '史诗' && a.itemDetailType == cat,
     )
+    res.push(...equ, ...Array(Math.max(0, 7 - equ.length)).fill(undefined))
   })
-
 
   // const categorize = Array.from(new Set(items.map((item) => item.categorize)))
   // raritiyList.forEach((rarity) => {

@@ -15,8 +15,6 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@iconify/vue": "^4.3.0",
-    "@radix-ui/colors": "^3.0.0",
     "@vueuse/core": "^12.8.2",
     "axios": "^1.8.2",
     "hoci": "^0.6.0",

@@ -1,20 +1,21 @@
 <template>
   <template v-if="props.equipment">
-    <div class="relative" :class="{inactive: props.inactive}">
-      <div class="w-28px h-28px " :style="{ backgroundImage: `url(${getImageURL(props.equipment?.imageUrl)})` }">
-      <img :src="getLocalImageURL(rarity)" />
-    </div>
+    <div class="relative" :class="{ inactive: props.inactive }">
+      <div
+        class="w-28px h-28px"
+        :style="{ backgroundImage: `url(${getImageURL(props.equipment?.imageUrl)})` }"
+      >
+        <img :src="getLocalImageURL(rarity)" />
+      </div>
     </div>
   </template>
   <template v-else>
-    <div class="w-26px h-26px border-1px border-solid  border-#7a7a7a/50"></div>
+    <div class="w-26px h-26px border-1px border-solid border-#7a7a7a/50"></div>
   </template>
-
 </template>
 
-
 <script lang="ts" setup>
-import type { IEquipment } from '@/api/info/type';
+import type { IEquipment } from '@/api/info/type'
 import { getImageURL } from '@/utils/images'
 
 const props = defineProps<{
@@ -22,8 +23,8 @@ const props = defineProps<{
   inactive?: boolean
 }>()
 
-const rarity = computed(()=>{
-  switch(props.equipment?.rarity){
+const rarity = computed(() => {
+  switch (props.equipment?.rarity) {
     case '稀有':
       return 'rare'
     case '神器':
@@ -39,14 +40,13 @@ const rarity = computed(()=>{
   }
 })
 
-const getLocalImageURL = (rarity:string)=>{
+const getLocalImageURL = (rarity: string) => {
   return new URL(`./rarity/${rarity}.png`, import.meta.url).href
 }
-
-</script>``
+</script>
+``
 
 <style lang="scss" scoped>
-
 // @keyframes primeval {
 //   @for $i from 0 through 29 {
 //     #{percentage($i / 29)} {
@@ -78,5 +78,4 @@ const getLocalImageURL = (rarity:string)=>{
     // filter: grayscale(100%);
   }
 }
-
 </style>

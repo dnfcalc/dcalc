@@ -36,11 +36,10 @@ const infoStyle = (part: string) => {
   //   x += 179
   //   index -= 5
   // }
-  if(part == '宠物'){
-    x+= 5*39
-    y+= 1*40
-  }
-  else if (part.includes('宠物装备')) {
+  if (part == '宠物') {
+    x += 5 * 39
+    y += 1 * 40
+  } else if (part.includes('宠物装备')) {
     x += 6 * 39
     y += (index - infoStore.avatarParts.findIndex((p) => p == '宠物装备-红')) * 40
   } else {
@@ -63,7 +62,7 @@ const choosePart = (part: string) => {
 
 const partName = (part: string) => {
   if (part == '武器装扮') return '武器'
-  if(part == '快捷栏装备') return '快捷'
+  if (part == '快捷栏装备') return '快捷'
   return part.replace('宠物装备-', '')
 }
 </script>

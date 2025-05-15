@@ -1,6 +1,6 @@
-import { createPinia } from "pinia"
+import { createPinia } from 'pinia'
 
-export * from "./info"
-export * from "./config"
+export * from './info'
+export * from './config'
 
 export const pinia = createPinia()

@@ -81,7 +81,7 @@ onUnmounted(() => {
     align-items: center;
     z-index: 2;
     height: 40px;
-    gap : 10px;
+    gap: 10px;
   }
 
   .content {

@@ -18,21 +18,20 @@ export default defineComponent(async () => {
   function choose_job(child: IAlterInfo) {
     return async () => {
       if (child.comment == '首页') {
-        return window.open("https://dnftools.com","_blank")
+        return window.open('https://dnftools.com', '_blank')
       }
       if (child.name == 'sponsor') {
-        return window.open((child.url ?? ''),"_blank")
+        return window.open(child.url ?? '', '_blank')
       }
       if (child.open) {
         const options = child.options ?? []
         if (options.length > 0) {
           return
+        } else {
+          return window.open('/character/' + (child.value || child.name), '_blank')
         }
-        else{
-          return window.open("/character/" + (child.value || child.name),"_blank")
-        }
+      }
     }
-  }
     // router.push("/character/" + alter)
   }
 
@@ -40,12 +39,14 @@ export default defineComponent(async () => {
 
   // let checkTimer: NodeJS.Timeout
 
-
   const adventure = await api.adventures()
 
   return () => (
     <Fragment>
-      <div class="bg-no-repeat h-auto min-h-full pt-8 pb-12 pl-4" style={`background-image: url('${getImageURL('home.jpg')}');background-size: 100% 100%;`}>
+      <div
+        class="bg-no-repeat h-auto min-h-full pt-8 pb-12 pl-4"
+        style={`background-image: url('${getImageURL('home.jpg')}');background-size: 100% 100%;`}
+      >
         {renderList(adventure, (job) => (
           <div class="flex flex-row">
             <div

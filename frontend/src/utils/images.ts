@@ -14,6 +14,6 @@ export const getImageURL = (image: string) => {
   return `${baseURL}${image}`
 }
 
-export const getLocalImageURL = (url:string)=>{
+export const getLocalImageURL = (url: string) => {
   return new URL(url, import.meta.url).href
 }

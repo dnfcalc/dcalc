@@ -1,1 +1,1 @@
-export { default as NTooltip } from "./tooltip"
+export { default as NTooltip } from './tooltip'

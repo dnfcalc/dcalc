@@ -1,5 +1,11 @@
-@mixin icon-style($icon-name, $width: 20px, $height: 20px, $size: 100% 100%, $position: center center) {
-  background-image: url("@/assets/img/icon/#{$icon-name}.png") !important;
+@mixin icon-style(
+  $icon-name,
+  $width: 20px,
+  $height: 20px,
+  $size: 100% 100%,
+  $position: center center
+) {
+  background-image: url('@/assets/img/icon/#{$icon-name}.png') !important;
   background-repeat: no-repeat !important;
   background-size: $size !important;
   background-position: $position !important;
@@ -7,117 +13,116 @@
   height: $height !important;
 
   &:hover {
-    background-image: url("@/assets/img/icon/#{$icon-name}_hover.png") !important;
+    background-image: url('@/assets/img/icon/#{$icon-name}_hover.png') !important;
   }
   &:active {
-    background-image: url("@/assets/img/icon/#{$icon-name}_active.png") !important;
+    background-image: url('@/assets/img/icon/#{$icon-name}_active.png') !important;
   }
   &:disabled {
-    background-image: url("@/assets/img/icon/#{$icon-name}_disabled.png") !important;
+    background-image: url('@/assets/img/icon/#{$icon-name}_disabled.png') !important;
   }
 }
 
 .icon-reset {
-  @include icon-style("reset");
+  @include icon-style('reset');
 }
 
 .icon-set {
-  @include icon-style("set");
+  @include icon-style('set');
 }
 
 .icon-prev {
-  @include icon-style("prev", 16px, 16px);
+  @include icon-style('prev', 16px, 16px);
 }
 
 .icon-next {
-  @include icon-style("next", 16px, 16px);
+  @include icon-style('next', 16px, 16px);
 }
 
 .icon-dropdown {
-  @include icon-style("dropdown", 16px, 16px);
+  @include icon-style('dropdown', 16px, 16px);
 }
 
 .icon-search {
-  @include icon-style("search");
+  @include icon-style('search');
 }
 
 .icon-increase {
-  @include icon-style("increase");
+  @include icon-style('increase');
 }
 
 .icon-reduce {
-  @include icon-style("reduce");
+  @include icon-style('reduce');
 }
 
 .icon-plus {
-  @include icon-style("plus");
+  @include icon-style('plus');
 }
 
 .icon-detail {
-  @include icon-style("detail");
+  @include icon-style('detail');
 }
 
 .icon-home {
-  @include icon-style("home");
+  @include icon-style('home');
 }
 
 .icon-reflesh {
-  @include icon-style("reflesh");
+  @include icon-style('reflesh');
 }
 
 .icon-update {
-  @include icon-style("update");
+  @include icon-style('update');
 }
 
 .icon-share {
-  @include icon-style("share");
+  @include icon-style('share');
 }
 
 .icon-import {
-  @include icon-style("import");
+  @include icon-style('import');
 }
 
 .icon-menu-drug {
-  @include icon-style("menu/drug", 20px, 20px, auto 100%);
+  @include icon-style('menu/drug', 20px, 20px, auto 100%);
 }
 
 .icon-menu-specificity {
-  @include icon-style("menu/specificity", 20px, 20px, auto 100%);
+  @include icon-style('menu/specificity', 20px, 20px, auto 100%);
 }
 
 .icon-menu-favourite {
-  @include icon-style("menu/favourite", 20px, 20px, auto 100%);
+  @include icon-style('menu/favourite', 20px, 20px, auto 100%);
 }
 
 .icon-menu-recommend {
-  @include icon-style("menu/recommend", 20px, 20px, auto 100%);
+  @include icon-style('menu/recommend', 20px, 20px, auto 100%);
 }
 
 .icon-menu-set {
-  @include icon-style("menu/set", 20px, 20px, auto 100%);
+  @include icon-style('menu/set', 20px, 20px, auto 100%);
 }
 
-.icon-max{
-  @include icon-style("max");
+.icon-max {
+  @include icon-style('max');
 }
 
-.icon-min{
-  @include icon-style("min");
+.icon-min {
+  @include icon-style('min');
 }
-
 
 .icon-increase-little {
-  @include icon-style("increase",16px, 16px);
+  @include icon-style('increase', 16px, 16px);
 }
 
 .icon-reduce-little {
-  @include icon-style("reduce", 16px, 16px);
+  @include icon-style('reduce', 16px, 16px);
 }
 
-.icon-max-little{
-  @include icon-style("max", 16px, 16px);
+.icon-max-little {
+  @include icon-style('max', 16px, 16px);
 }
 
-.icon-min-little{
-  @include icon-style("min", 16px, 16px);
+.icon-min-little {
+  @include icon-style('min', 16px, 16px);
 }

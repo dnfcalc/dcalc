@@ -35,16 +35,17 @@ export interface ICharacterInfo {
   skills: ISkill[]
   suits: ISuit[]
   avatar: Record<string, IAvatarInfo[]>
-  jades:IJade[]
-  sundry:Record<string, ISundry>
+  jades: IJade[]
+  sundry: Record<string, ISundry>
+  options: { id: number; name: string; options: string[] }[]
 }
 
 export interface ISundry {
-  id:number,
-  options:{
-    name:string,
-    value:number
-  }[],
+  id: number
+  options: {
+    name: string
+    value: number
+  }[]
 }
 
 export interface IEquipment {
@@ -56,19 +57,19 @@ export interface IEquipment {
   categorize: string
   suit: string[]
   rarity: string
-  max_adaptation:number
-  STR:number[]
-  INT:number[]
-  Vitality:number[]
-  Spirit:number[]
-  AtkP:number[]
-  AtkM:number[]
-  AtkI:number[]
-  SkillAttack:number[]
-  Attack:number[]
-  Buffer:number[]
+  max_adaptation: number
+  STR: number[]
+  INT: number[]
+  Vitality: number[]
+  Spirit: number[]
+  AtkP: number[]
+  AtkM: number[]
+  AtkI: number[]
+  SkillAttack: number[]
+  Attack: number[]
+  Buffer: number[]
   detail: string
-  bufferDetail:string
+  bufferDetail: string
 }
 
 export interface ISkill {
@@ -77,7 +78,7 @@ export interface ISkill {
   id: number
   learnLv: number
   position: number
-  line:number
+  line: number
   type: string
   maxLearnLv: number
   maxLv: number
@@ -90,12 +91,12 @@ export interface ISuit {
   imageUrl: string
   suitId: number
   suitName: string
-  point:number
+  point: number
   rarity: string
   level: number
   SkillAttack: number
-  Buffer:number
-  value:string
+  Buffer: number
+  value: string
 }
 
 export interface IEnchantingInfo {
@@ -118,10 +119,10 @@ export interface IAvatarInfo {
 }
 
 export interface IJade {
-  name:string
-  id:number
-  max:number
-  min:number
-  pre:number
-  unit:string
+  name: string
+  id: number
+  max: number
+  min: number
+  pre: number
+  unit: string
 }

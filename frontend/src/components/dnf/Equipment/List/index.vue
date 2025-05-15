@@ -22,16 +22,14 @@
     </template>
     <div
       v-if="props.withSubWeapon"
-        class="pos-absolute text-white/50 w-26px h-26px border-1px border-solid border-#7a7a7a/50 flex items-center justify-center"
-        style="left:150px;top:5px;z-index:8;"
-        @click="choosePart('副武器')"
-      >
+      class="pos-absolute text-white/50 w-26px h-26px border-1px border-solid border-#7a7a7a/50 flex items-center justify-center"
+      style="left: 150px; top: 5px; z-index: 8"
+      @click="choosePart('副武器')"
+    >
       <template v-if="detail?.['副武器']?.id">
-          <EquipmentIcon :equipment="equ(detail['副武器'].id)" />
-        </template>
-        <template v-else>
-          副武
-        </template>
+        <EquipmentIcon :equipment="equ(detail['副武器'].id)" />
+      </template>
+      <template v-else> 副武 </template>
     </div>
   </div>
 </template>
@@ -58,10 +56,10 @@ const props = defineProps({
   detail: {
     type: Object as PropType<Record<string, IConfigEquip>>,
   },
-  withSubWeapon:{
+  withSubWeapon: {
     type: Boolean,
     default: false,
-  }
+  },
 })
 const partModelValue = useVModel(props, 'part')
 const infoStore = useInfoStore()

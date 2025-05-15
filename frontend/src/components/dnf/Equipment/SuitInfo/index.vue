@@ -13,8 +13,13 @@
       "
     >
       <!-- 装备图标 装备名称 -->
-      <div class="flex w-full items-center justify-center gap-5px" >
-        <div><img :src="getImageURL('equipment' + props.suit?.imageUrl.replace('/suit/','/suit/icon/'))" alt="装备图标"></div>
+      <div class="flex w-full items-center justify-center gap-5px">
+        <div>
+          <img
+            :src="getImageURL('equipment' + props.suit?.imageUrl.replace('/suit/', '/suit/icon/'))"
+            alt="装备图标"
+          />
+        </div>
         <div :class="rarity">{{ props.suit?.name }}</div>
         <div :class="rarity">{{ props.suit?.point }}点</div>
       </div>
@@ -42,7 +47,7 @@
 
 <script lang="ts" setup>
 import type { IEquipment, ISuit } from '@/api/info/type'
-import {getImageURL} from '@/utils/images'
+import { getImageURL } from '@/utils/images'
 import { formatAttr, rarityClass } from '@/utils'
 
 const props = defineProps<{

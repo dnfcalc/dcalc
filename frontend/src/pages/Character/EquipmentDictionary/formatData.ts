@@ -1,9 +1,8 @@
-import type { IEquipment } from "@/api/info/type"
+import type { IEquipment } from '@/api/info/type'
 
 export const rowCount = 10
 
-export const formatEqu = (total: IEquipment[],subweapons?:string[],curSuit
-  ?:string) => {
+export const formatEqu = (total: IEquipment[], subweapons?: string[], curSuit?: string) => {
   // 武器
   const item_weapon = total.filter((a) => a.itemType == '武器') ?? []
   const weapons: (IEquipment | undefined)[] = []
@@ -25,14 +24,14 @@ export const formatEqu = (total: IEquipment[],subweapons?:string[],curSuit
 
   // # region 副武器
   const subWeapons: (IEquipment | undefined)[] = []
-  const item_sub_weapon = (
-    total.filter((a) => subweapons?.includes(a.itemDetailType)) ?? []
-  ).sort((a, b) => {
-    if (a.categorize == b.categorize) {
-      return a.itemDetailType.localeCompare(b.itemDetailType)
-    }
-    return b.categorize.localeCompare(a.categorize)
-  })
+  const item_sub_weapon = (total.filter((a) => subweapons?.includes(a.itemDetailType)) ?? []).sort(
+    (a, b) => {
+      if (a.categorize == b.categorize) {
+        return a.itemDetailType.localeCompare(b.itemDetailType)
+      }
+      return b.categorize.localeCompare(a.categorize)
+    },
+  )
   if (item_sub_weapon.length > 0) {
     subWeapons.push(
       ...item_sub_weapon.map((a) => ({ ...a, itemType: '副武器' })),
@@ -130,7 +129,7 @@ export const formatEqu = (total: IEquipment[],subweapons?:string[],curSuit
   ]
 }
 
-export const formatStone = (total: IEquipment[],curSuit?:string) => {
+export const formatStone = (total: IEquipment[], curSuit?: string) => {
   // 套装
   const item_suits = total.filter((equip) => equip.suit.length == 1)
   const suits: (IEquipment | undefined)[] = []
@@ -215,10 +214,10 @@ export const formatStone = (total: IEquipment[],curSuit?:string) => {
   const items_sj = total.filter((equip) => equip.categorize.includes('神界'))
   const sj: (IEquipment | undefined)[] = []
   // const raritiy = Array.from(new Set(items_suits_rzs.map((item) => item.rarity)))
-  sj.push(...items_sj, ...Array(rowCount * 2 - (items_sj.length%rowCount)).fill(undefined))
-    // const temp = items_suits_rzs.filter((item) => item.itemDetailType === part)
-    // const remind = temp.length % rowCount
-    // rzs.push(...temp, ...Array(temp.length == 0 ? rowCount-remind : remind).fill(undefined))
+  sj.push(...items_sj, ...Array(rowCount * 2 - (items_sj.length % rowCount)).fill(undefined))
+  // const temp = items_suits_rzs.filter((item) => item.itemDetailType === part)
+  // const remind = temp.length % rowCount
+  // rzs.push(...temp, ...Array(temp.length == 0 ? rowCount-remind : remind).fill(undefined))
   return [
     {
       name: `${curSuit} 套装`,

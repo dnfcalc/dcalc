@@ -1,10 +1,10 @@
-import { h, reactive, renderList } from "vue"
-import { createSharedComposable } from "@vueuse/core"
-import ActionDialog from "@/components/calc/action-dialog/index.vue"
-import type { JSX } from "vue/jsx-runtime"
+import { h, reactive, renderList } from 'vue'
+import { createSharedComposable } from '@vueuse/core'
+import ActionDialog from '@/components/calc/action-dialog/index.vue'
+import type { JSX } from 'vue/jsx-runtime'
 
-export type ConfirmDialogOption = Omit<ShowDialogOption, "okButton" | "cancelButton">
-export type AlertDialogOption = Omit<ShowDialogOption, "okButton" | "cancelButton">
+export type ConfirmDialogOption = Omit<ShowDialogOption, 'okButton' | 'cancelButton'>
+export type AlertDialogOption = Omit<ShowDialogOption, 'okButton' | 'cancelButton'>
 export type ElementLike = JSX.Element | string | ElementLike[]
 
 function randomId() {
@@ -54,7 +54,7 @@ export interface ShowDialogOption {
   rejectButton?: string | boolean
 
   // 默认状态
-  defaultStatus?: DialogResult["status"]
+  defaultStatus?: DialogResult['status']
 
   mask?: boolean
 
@@ -70,7 +70,7 @@ export interface DialogInstance {
 
 export interface DialogResult {
   id: DialogID
-  status: "ok" | "reject" | "cancel" | "none"
+  status: 'ok' | 'reject' | 'cancel' | 'none'
   data?: any
   readonly isOk: boolean
   readonly isCancel: boolean
@@ -87,23 +87,23 @@ export const useDialog = createSharedComposable(() => {
     return id
   }
 
-  function close(id: DialogID, status = "cancel", duration = 400) {
+  function close(id: DialogID, status = 'cancel', duration = 400) {
     const dialog = dialogs.get(id)
     if (!dialog) {
       return
     }
     dialog.resolve({
       id,
-      status: "ok",
+      status: 'ok',
       get isOk() {
-        return status == "ok"
+        return status == 'ok'
       },
       get isCancel() {
-        return status == "cancel"
+        return status == 'cancel'
       },
       get isReject() {
-        return status == "reject"
-      }
+        return status == 'reject'
+      },
     })
     dialog.visible = false
     const fn = () => dialogs.delete(id)
@@ -115,14 +115,27 @@ export const useDialog = createSharedComposable(() => {
   }
 
   function render() {
-    return renderList(dialogs.values(), e => e.render(e.visible))
+    return renderList(dialogs.values(), (e) => e.render(e.visible))
   }
 
   async function show(option: ShowDialogOption = {}) {
-    return new Promise<DialogResult>(resolve => {
-      const { id = randomId(), header = true, content, action, timeout, okButton = false, cancelButton = false, rejectButton = false, defaultStatus = "none", duration = 400, mask = false, scale = 1.0 } = option
+    return new Promise<DialogResult>((resolve) => {
+      const {
+        id = randomId(),
+        header = true,
+        content,
+        action,
+        timeout,
+        okButton = false,
+        cancelButton = false,
+        rejectButton = false,
+        defaultStatus = 'none',
+        duration = 400,
+        mask = false,
+        scale = 1.0,
+      } = option
 
-      const onClose = (status: DialogResult["status"] = defaultStatus) => {
+      const onClose = (status: DialogResult['status'] = defaultStatus) => {
         close(id, status, duration)
       }
 
@@ -141,23 +154,30 @@ export const useDialog = createSharedComposable(() => {
               visible,
               onClose,
               mask,
-              scale
+              scale,
             },
             {
               default() {
                 switch (typeof content) {
-                  case "function":
+                  case 'function':
                     return content()
-                  case "string":
-                    return h("div", { class: "w-full justify-center text-hex-d4d6b6 text-center", style: "margin:10px" }, content)
+                  case 'string':
+                    return h(
+                      'div',
+                      {
+                        class: 'w-full justify-center text-hex-d4d6b6 text-center',
+                        style: 'margin:10px',
+                      },
+                      content,
+                    )
                   default:
                     return content
                 }
               },
-              action: typeof action == "function" || !action ? action : () => action
-            }
+              action: typeof action == 'function' || !action ? action : () => action,
+            },
           )
-        }
+        },
       })
 
       if (timeout) {
@@ -169,18 +189,18 @@ export const useDialog = createSharedComposable(() => {
   async function alert(option: AlertDialogOption = {}) {
     return show({
       ...option,
-      defaultStatus: "ok",
+      defaultStatus: 'ok',
       okButton: true,
-      cancelButton: false
+      cancelButton: false,
     })
   }
 
   async function confirm(option: ConfirmDialogOption = {}) {
     return show({
       ...option,
-      defaultStatus: "cancel",
+      defaultStatus: 'cancel',
       okButton: true,
-      cancelButton: true
+      cancelButton: true,
     })
   }
   return {
@@ -189,6 +209,6 @@ export const useDialog = createSharedComposable(() => {
     render,
     show,
     close,
-    randomId
+    randomId,
   }
 })

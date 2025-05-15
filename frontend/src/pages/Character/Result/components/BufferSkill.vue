@@ -33,7 +33,9 @@
             </div>
             <div>{{ skill.name }}</div>
           </div>
-          <div class="w-50px flex items-center justify-center">{{ typeof skill.cd === 'number' ? `${skill.cd.toFixed(1)}s` : '-' }}</div>
+          <div class="w-50px flex items-center justify-center">
+            {{ typeof skill.cd === 'number' ? `${skill.cd.toFixed(1)}s` : '-' }}
+          </div>
           <component :is="formatDamage(skill)"></component>
         </div>
       </div>
@@ -82,7 +84,7 @@ const data = computed(() => {
       // @ts-ignore
       bValue = b[sort.value]
     }
-    const key = ['MAIN', 'ATK','STRINT', 'ratio'].findIndex((a) => sort.value == a)
+    const key = ['MAIN', 'ATK', 'STRINT', 'ratio'].findIndex((a) => sort.value == a)
 
     aValue = a.buff?.[key]
     bValue = b.buff?.[key]
@@ -149,46 +151,52 @@ const formatDamage = (skill: IResultSkill) => {
       'div',
       {
         class: 'flex items-center justify-center',
-      },[0, 1, 2, 3].map((index) => {
-      const value = skill.buff?.[index] - standardSkill.buff?.[index]
-      return h(
-        'div',
-        {
-          style: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '80px',
-            color: value >= 0 ? '#37fa38' : '#ff0000',
+      },
+      [0, 1, 2, 3].map((index) => {
+        const value = skill.buff?.[index] - standardSkill.buff?.[index]
+        return h(
+          'div',
+          {
+            style: {
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '80px',
+              color: value >= 0 ? '#37fa38' : '#ff0000',
+            },
           },
-        },
-        `${value >= 0 ? '+':''}${index == 3
-          ? `${Math.round(value).toLocaleString()}%`
-          : Math.round(value).toLocaleString()}`
-      )
-    }))
+          `${value >= 0 ? '+' : ''}${
+            index == 3
+              ? `${Math.round(value).toLocaleString()}%`
+              : Math.round(value).toLocaleString()
+          }`,
+        )
+      }),
+    )
   } else {
     return h(
       'div',
       {
         class: 'flex items-center justify-center',
-      },[0, 1, 2, 3].map((index) => {
-      const value = skill.buff?.[index]
-      return h(
-        'div',
-        {
-          style: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '80px',
+      },
+      [0, 1, 2, 3].map((index) => {
+        const value = skill.buff?.[index]
+        return h(
+          'div',
+          {
+            style: {
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '80px',
+            },
           },
-        },
-        index == 3
-          ? `${Math.round(value).toLocaleString()}%`
-          : Math.round(value).toLocaleString(),
-      )
-    }))
+          index == 3
+            ? `${Math.round(value).toLocaleString()}%`
+            : Math.round(value).toLocaleString(),
+        )
+      }),
+    )
   }
 }
 </script>

@@ -26,26 +26,31 @@ export const useInfoStore = defineStore('infoStore', () => {
 
   const sundries = computed(() => infos.value?.sundry ?? {})
 
+  const options = computed(() => infos.value?.options ?? [])
+
   const standardUUID = ref<string>()
 
-  const setStandard = (result?: IResult,skillCount?:{
-    count: number;
-    mode: string;
-    name: string;
-}[]) => {
+  const setStandard = (
+    result?: IResult,
+    skillCount?: {
+      count: number
+      mode: string
+      name: string
+    }[],
+  ) => {
     if (!result) {
       !!standardUUID.value && sessionStorage.removeItem(standardUUID.value)
       standardUUID.value = undefined
     } else {
       standardUUID.value = result.uuid
-      sessionStorage.setItem(result.uuid, JSON.stringify({skills:result.skills,skillCount}))
+      sessionStorage.setItem(result.uuid, JSON.stringify({ skills: result.skills, skillCount }))
     }
   }
 
-  const standard = computed(()=>{
+  const standard = computed(() => {
     const value = sessionStorage.getItem(standardUUID.value ?? '')
-    if(!value) return undefined
-    else return JSON.parse(value) as {skills:IResultSkill[],skillCount:IResultSkillCount[]}
+    if (!value) return undefined
+    else return JSON.parse(value) as { skills: IResultSkill[]; skillCount: IResultSkillCount[] }
   })
 
   const parts = [
@@ -107,6 +112,7 @@ export const useInfoStore = defineStore('infoStore', () => {
     jades,
     setStandard,
     standard,
-    sundries
+    sundries,
+    options
   }
 })

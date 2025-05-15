@@ -6,7 +6,7 @@ export default defineRequest((request) => {
     async calc(config: IConfig) {
       const res = await request.post<IResult>('/calc', config)
       return res.data
-    }
+    },
   }
 })
 // Compare this snippet from frontend/src/api/common/index.ts:

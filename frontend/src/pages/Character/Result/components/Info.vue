@@ -3,7 +3,7 @@
     <div class="h-177px">
       <EquList
         :detail="props.equs"
-        :with-sub-weapon="(infoStore.infos?.subweapons?.length ?? 0)> 0"
+        :with-sub-weapon="(infoStore.infos?.subweapons?.length ?? 0) > 0"
       ></EquList>
     </div>
     <div class="flex flex-wrap border-y-1px my-1px border-y-solid border-#FFFF/10 gap-1% px-1%">

@@ -11,8 +11,17 @@
         :equs="configStore.config.equips"
       ></Info>
     </div>
-    <Skill v-if="!configStore.result.state.buffer" :data="configStore.result.state.skills" :standard="infoStore.standard"></Skill>
-    <BufferSkill v-else :data="configStore.result.state.skills" :stadard="infoStore.standard" :standard="infoStore.standard"></BufferSkill>
+    <Skill
+      v-if="!configStore.result.state.buffer"
+      :data="configStore.result.state.skills"
+      :standard="infoStore.standard"
+    ></Skill>
+    <BufferSkill
+      v-else
+      :data="configStore.result.state.skills"
+      :stadard="infoStore.standard"
+      :standard="infoStore.standard"
+    ></BufferSkill>
   </div>
 </template>
 
@@ -27,8 +36,8 @@ const configStore = useConfigStore()
 const infoStore = useInfoStore()
 
 const setStandard = () => {
-  if(!configStore?.result?.state?.uuid) return
-  infoStore.setStandard(configStore.result.state,configStore.skillCountConfig)
+  if (!configStore?.result?.state?.uuid) return
+  infoStore.setStandard(configStore.result.state, configStore.skillCountConfig)
 }
 
 const clearStandard = () => {

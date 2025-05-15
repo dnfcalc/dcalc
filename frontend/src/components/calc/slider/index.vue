@@ -3,37 +3,36 @@ import { defineComponent, ref, computed, shallowRef, watch } from 'vue'
 import { useVModel, useDraggable, clamp } from '@vueuse/core'
 
 export default defineComponent({
-  name: "ISlider",
+  name: 'ISlider',
   props: {
     modelValue: {
       type: Number,
-      default: 0
+      default: 0,
     },
     min: {
       type: Number,
-      default: 0
+      default: 0,
     },
     max: {
       type: Number,
-      default: 100
+      default: 100,
     },
     step: {
       type: Number,
-      default: 1
+      default: 1,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     showPercent: {
       type: Boolean,
-      default: true
+      default: true,
     },
     formatValue: {
       type: Function,
-      default: undefined
-    }
-
+      default: undefined,
+    },
   },
   emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {
@@ -47,17 +46,20 @@ export default defineComponent({
 
     useDraggable(buttonRef, {
       onMove(position) {
-        if (!runwayRef.value || props.disabled){
+        if (!runwayRef.value || props.disabled) {
           return
         }
         const runwayRect = runwayRef.value?.getBoundingClientRect()
 
-        if (!runwayRect){
-           return
+        if (!runwayRect) {
+          return
         }
 
         // 使用runway的位置和宽度来计算百分比
-        const percentage = Math.max(0, Math.min(100, ((position.x - runwayRect.left) / runwayRect.width) * 100))
+        const percentage = Math.max(
+          0,
+          Math.min(100, ((position.x - runwayRect.left) / runwayRect.width) * 100),
+        )
 
         const range = props.max - props.min
         let value = (percentage * range) / 100 + props.min
@@ -70,20 +72,17 @@ export default defineComponent({
 
         modelValue.value = value
         emit('change', value)
-      }
+      },
     })
 
     return () => (
       <div
         class={[
           'w-full h-8 relative cursor-pointer flex items-center gap-3 py-2',
-          { 'cursor-not-allowed': props.disabled }
+          { 'cursor-not-allowed': props.disabled },
         ]}
       >
-        <div
-          class="flex-1 h-1 bg-[#4D524D] relative"
-          ref={runwayRef}
-        >
+        <div class="flex-1 h-1 bg-[#4D524D] relative" ref={runwayRef}>
           <div
             class="h-1 bg-[#8E6D28] absolute left-0 top-0"
             style={{ width: `${percentage.value}%` }}
@@ -93,26 +92,32 @@ export default defineComponent({
             style={{ left: `calc(${percentage.value}% - 0.75rem)` }}
             ref={buttonRef}
           >
-            <div class={[
-              'w-4 h-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
-              'bg-gradient-to-b from-[#223768] to-[#122438]',
-              'border border-solid border-[#937639] rounded-full transition-all duration-200',
-              'shadow-[0_2px_4px_rgba(0,0,0,0.2)]',
-              { 'bg-gradient-to-b from-[#353535] to-[#1c1c1c] border-[#414141]': props.disabled }
-            ]}></div>
+            <div
+              class={[
+                'w-4 h-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
+                'bg-gradient-to-b from-[#223768] to-[#122438]',
+                'border border-solid border-[#937639] rounded-full transition-all duration-200',
+                'shadow-[0_2px_4px_rgba(0,0,0,0.2)]',
+                { 'bg-gradient-to-b from-[#353535] to-[#1c1c1c] border-[#414141]': props.disabled },
+              ]}
+            ></div>
           </div>
         </div>
         {props.showPercent && (
-          <div class={[
-            'w-auto min-w-5 text-center text-sm font-medium',
-            props.disabled ? 'text-[#696969]' : 'text-[#e9c556]'
-          ]}>
-            {props.formatValue ? props.formatValue(modelValue.value) : `${percentage.value.toFixed(0)}%`}
+          <div
+            class={[
+              'w-auto min-w-5 text-center text-sm font-medium',
+              props.disabled ? 'text-[#696969]' : 'text-[#e9c556]',
+            ]}
+          >
+            {props.formatValue
+              ? props.formatValue(modelValue.value)
+              : `${percentage.value.toFixed(0)}%`}
           </div>
         )}
       </div>
     )
-  }
+  },
 })
 </script>
 
@@ -204,4 +209,3 @@ export default defineComponent({
   font-weight: 500;
 }
 </style>
-

@@ -543,6 +543,7 @@ class Character(CharacterProperty):
         return res
 
     def calc_init(self, setInfo: dict[str, dict]):
+        self.equ_options = setInfo.get('options', {})
         # 打造信息导入
         self.SetDetail(setInfo)
         # 技能等级设置

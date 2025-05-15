@@ -1,3 +1,3 @@
-import type { InjectionKey } from "vue";
+import type { InjectionKey } from 'vue'
 
-export const CHECKBOX_GROUP: InjectionKey<boolean> = Symbol("checkbox-group")
+export const CHECKBOX_GROUP: InjectionKey<boolean> = Symbol('checkbox-group')

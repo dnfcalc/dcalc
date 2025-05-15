@@ -1,11 +1,16 @@
 <template>
-<calc-cascader class="!h-5  flex-1" v-model="selected" :items="items" placeholder="请输入名称搜索"></calc-cascader>
+  <calc-cascader
+    class="!h-5 flex-1"
+    v-model="selected"
+    :items="items"
+    placeholder="请输入名称搜索"
+  ></calc-cascader>
 </template>
 
 <script lang="ts" setup>
-import type { TreeNode } from "@/components/calc/tree/types"
-import { useInfoStore } from "@/stores"
-import { syncRef, useVModel } from "@vueuse/core"
+import type { TreeNode } from '@/components/calc/tree/types'
+import { useInfoStore } from '@/stores'
+import { syncRef, useVModel } from '@vueuse/core'
 
 const props = defineProps({
   partList: {
@@ -24,9 +29,9 @@ const else_parts = ['称号', '宠物']
 
 const emit = defineEmits([])
 
-const choose_part = useVModel(props, "partList",emit,{passive:true})
+const choose_part = useVModel(props, 'partList', emit, { passive: true })
 
-const selected = ref("")
+const selected = ref('')
 
 const infoStore = useInfoStore()
 

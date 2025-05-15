@@ -1,4 +1,4 @@
-import type { PropType } from "vue"
+import type { PropType } from 'vue'
 
 export type ClassType = string | string[]
 
@@ -8,4 +8,6 @@ export const valuePropType = [String, Number, Object, Boolean, Array] as PropTyp
 
 export const classPropType = [String, Array] as PropType<string | string[]>
 
-export const labelPropType = [String, Function] as PropType<string | ((val?: BaseType) => string) | null>
+export const labelPropType = [String, Function] as PropType<
+  string | ((val?: BaseType) => string) | null
+>
