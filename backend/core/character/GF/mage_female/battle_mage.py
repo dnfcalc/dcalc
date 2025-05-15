@@ -453,7 +453,7 @@ class Skill24(PassiveSkill):
     rangeLv = 2
     uuid = "573723c8c0614f5b1218ca9ff992115b"
 
-    associate = [{"type":"+useChange", "data":[0,100]}]
+    associate = [{"type":"+useChange", "data":[0,100],"skills":["煌龙偃月"]}]
 
 
 # 斗神意志 배틀 그루브
