@@ -21,8 +21,8 @@ class CharacterEquipInfo:
     """贴膜ID"""
     refine: int | None
     """锻造等级"""
-    fusionDetail: dict | None
-    """贴膜详情"""
+    weaponFusion: int | None
+    """武器融合详情"""
     adaptation: int
     """调适等级"""
     equInfo: Union['Equ', None]
@@ -35,6 +35,7 @@ class CharacterEquipInfo:
     def __init__(self, info={}, equVerison=0, part='') -> None:
         info["fusion"] = info.get("fusion", None)
         info["precision"] = info.get("precision", 0)
+        info["weaponFusion"] = info.get("weaponFusion", None)
         self.__dict__.update(info)
         equ = get_equipment(equVerison).equ_dict.get(self.id, None)
         fusion = get_equipment(equVerison).stone_dict.get(self.fusion, None)

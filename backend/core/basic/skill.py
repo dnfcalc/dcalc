@@ -216,7 +216,7 @@ class ActiveSkill(Skill):
             self.vp_2()
 
     def setReinforce(self):
-        if self.learnLv in [50, 85, 100] and not self.damage:
+        if self.learnLv in [50, 85, 100] or not self.damage:
             return
         if self.reinforce == 1:
             if self.learnLv < 35:

@@ -3488,7 +3488,7 @@ def stone_298(char: CharacterProperty):
     技能伤害+17%
     所有速度+25%
     """
-    char.SetStatus(SkillAttack=0.17,SpeedA=0.25,SpeedM=0.25,SpeedR=0.25)
+    char.SetStatus(SkillAttack=0.185,SpeedA=0.25,SpeedM=0.25,SpeedR=0.25)
     pass
 
 
@@ -3512,7 +3512,7 @@ def stone_300(char: CharacterProperty):
     技能伤害+17%
     800px范围内的队员所受物理/魔法伤害-15%
     """
-    char.SetStatus(SkillAttack=0.17)
+    char.SetStatus(SkillAttack=0.185)
     pass
 
 

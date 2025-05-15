@@ -3,6 +3,7 @@ import { computed, defineComponent, ref, renderList } from 'vue'
 import type { IEnchantingInfo } from '@/api/info/type'
 import { useInfoStore, useConfigStore } from '@/stores'
 import EquList from '@/components/dnf/Equipment/List/index.vue'
+import { getImageURL } from '@/utils/images'
 export default defineComponent({
   name: 'Equip',
   setup(props) {
@@ -24,7 +25,7 @@ export default defineComponent({
     )
     /** 是否可以设置秘宝精度 */
     const can_set_secret = computed(() => {
-      return ['辅助装备', '魔法石','耳环'].includes(part.value as string)
+      return ['辅助装备', '魔法石', '耳环'].includes(part.value as string)
     })
     const basicInfoStore = useInfoStore()
 
@@ -55,7 +56,7 @@ export default defineComponent({
           )
         },
         set(val) {
-          if (val == undefined) {
+          if (val == undefined && name !== 'weaponFusion') {
             return
           }
           if (name == 'emblem_1' && !has_emblem_1.value) {
@@ -65,7 +66,7 @@ export default defineComponent({
 
           let parts: string[] = []
 
-          if (global_change.value) {
+          if (global_change.value && name !== 'weaponFusion') {
             if (name === 'enchant') {
               const enchant = basicInfoStore?.enchants?.find((item) => item.id == val) as
                 | IEnchantingInfo
@@ -84,7 +85,7 @@ export default defineComponent({
                 )
               }
             }
-            if (['reinforceType', 'reinforce','adaptation'].includes(name)) {
+            if (['reinforceType', 'reinforce', 'adaptation'].includes(name)) {
               parts = basicInfoStore.parts.filter((e) => !['称号', '宠物'].includes(e))
             }
           } else {
@@ -92,7 +93,7 @@ export default defineComponent({
           }
           for (const part of parts) {
             if (configStore.config.equips[part]) {
-              (configStore.config.equips[part] as Record<string, any>)[name] = val
+              ;(configStore.config.equips[part] as Record<string, any>)[name] = val
             }
           }
         },
@@ -121,7 +122,10 @@ export default defineComponent({
     const adaptation = currentInfo<string | number>('adaptation')
 
     //精度
-    const precision = currentInfo<number>('precision',0)
+    const precision = currentInfo<number>('precision', 0)
+
+    // 武器融合
+    const weaponFusion = currentInfo<string | number>('weaponFusion', 0)
     /**
      * 同步徽章1到徽章2
      * @param val
@@ -132,103 +136,139 @@ export default defineComponent({
       }
     }
 
+    const setWeaponFusion = (val: number) => {
+      if (val == weaponFusion.value) {
+        weaponFusion.value = 0
+      } else {
+        weaponFusion.value = val
+      }
+    }
+
     return () => {
       return (
         <>
-        <div class="h-150px flex justify-center items-center">
-          <EquList v-model:part={part.value} withBg={false} withPet={false} with-sub-weapon={useInfoStore().infos?.alter.includes('vegabond')}/></div>
+          <div class="h-150px flex justify-center items-center">
+            <EquList
+              v-model:part={part.value}
+              withBg={false}
+              withPet={false}
+              with-sub-weapon={useInfoStore().infos?.alter.includes('vegabond')}
+            />
+          </div>
 
-        <div class="flex flex-wrap equ-profile">
-          <div class="equ-profile-item">
-            <div class="mr-10px row-name">当前部位</div>
-            <span> {part.value}</span>
-            {can_upgrade.value ? (
-              <calc-checkbox
-                style="margin-left:auto"
-                v-model={global_change.value}
-                label="全局修改"
-              ></calc-checkbox>
+          <div class="flex flex-wrap equ-profile">
+            <div class="equ-profile-item">
+              <div class="mr-10px row-name">当前部位</div>
+              <span> {part.value}</span>
+              {can_upgrade.value ? (
+                <calc-checkbox
+                  style="margin-left:auto"
+                  v-model={global_change.value}
+                  label="全局修改"
+                ></calc-checkbox>
+              ) : (
+                <div></div>
+              )}
+            </div>
+            {part.value == '武器' ? (
+              <div class="equ-profile-item">
+                <div class="row-name">武器融合</div>
+                <div class="flex">
+                  {renderList(3, (i) => (
+                    <img
+                      onClick={() => setWeaponFusion(i)}
+                      class="w-30px h-30px"
+                      src={`${getImageURL(`/equipment/fusion/${i}.png`)}`}
+                      style={weaponFusion.value == i ? '' : 'filter: grayscale(100%)'}
+                    ></img>
+                  ))}
+                </div>
+              </div>
             ) : (
               <div></div>
             )}
-          </div>
-          {part.value == '副武器' ? (<>
-          <div class="equ-profile-item">
-              <div class="row-name">强化</div>
-              <calc-select v-model={reinforce.value} class="flex-1 !h-20px">
-                {renderList(31, (i) => (
-                  <calc-option value={i - 1}>{i - 1}</calc-option>
-                ))}
-              </calc-select>
-            </div></>):(<>
-          {can_upgrade.value ? (
-            <div class="equ-profile-item">
-              <div class="row-name">增幅</div>
-              <calc-select v-model={reinforce_type.value} class="flex-1 !h-20px">
-                <calc-option value={0}>强化</calc-option>
-                <calc-option value={1}>增幅</calc-option>
-              </calc-select>
-              <calc-select v-model={reinforce.value} class="flex-1 !h-20px">
-                {renderList(31, (i) => (
-                  <calc-option value={i - 1}>{i - 1}</calc-option>
-                ))}
-              </calc-select>
-              {part.value == '武器' && (
-                <calc-select v-model={refine.value} class="flex-1 !h-20px">
-                  {renderList(9, (i) => (
-                    <calc-option value={i - 1}>锻造+ {i - 1}</calc-option>
-                  ))}
-                </calc-select>
-              )}
-            </div>
-          ) : (
-            <div></div>
-          )}
-          <div class="equ-profile-item">
-            <div class="row-name">附魔</div>
-            <calc-select v-model={enchant.value} class="flex-1 !h-20px">
-              <calc-option value={""}>无</calc-option>
-              {renderList(enchant_list.value ?? [], (item) => (
-                <calc-option value={item.id}>{item.detail}</calc-option>
-              ))}
-            </calc-select>
-          </div>
-          {has_socket.value ? (
-            <div class="equ-profile-item">
-              <div class="row-name">徽章</div>
-              <calc-select
-                onChange={changeSocket}
-                v-model={emblem_0.value}
-                class="flex-1 !h-20px"
-              >
-                <calc-option value={""}>无</calc-option>
-                {renderList(emblem_list.value ?? [], (item) => (
-                  <calc-option
-                    value={item.id}
-                    key={item.id}
-                  >{`${item.rarity}${item.categorize}徽章[${item.detail}]`}</calc-option>
-                ))}
-              </calc-select>
-              {has_emblem_1.value && (
-                <calc-select v-model={emblem_1.value} class="flex-1 !h-20px">
-                  <calc-option value={""}>无</calc-option>
-                  {renderList(emblem_list.value ?? [], (item) => (
-                    <calc-option
-                      value={item.id}
-                      key={item.id}
-                    >{`${item.rarity}${item.categorize}徽章[${item.detail}]`}</calc-option>
-                  ))}
-                </calc-select>
-              )}
-            </div>
-          ) : (
-            <div></div>
-          )}
+            {part.value == '副武器' ? (
+              <>
+                <div class="equ-profile-item">
+                  <div class="row-name">强化</div>
+                  <calc-select v-model={reinforce.value} class="flex-1 !h-20px">
+                    {renderList(31, (i) => (
+                      <calc-option value={i - 1}>{i - 1}</calc-option>
+                    ))}
+                  </calc-select>
+                </div>
+              </>
+            ) : (
+              <>
+                {can_upgrade.value ? (
+                  <div class="equ-profile-item">
+                    <div class="row-name">增幅</div>
+                    <calc-select v-model={reinforce_type.value} class="flex-1 !h-20px">
+                      <calc-option value={0}>强化</calc-option>
+                      <calc-option value={1}>增幅</calc-option>
+                    </calc-select>
+                    <calc-select v-model={reinforce.value} class="flex-1 !h-20px">
+                      {renderList(31, (i) => (
+                        <calc-option value={i - 1}>{i - 1}</calc-option>
+                      ))}
+                    </calc-select>
+                    {part.value == '武器' && (
+                      <calc-select v-model={refine.value} class="flex-1 !h-20px">
+                        {renderList(9, (i) => (
+                          <calc-option value={i - 1}>锻造+ {i - 1}</calc-option>
+                        ))}
+                      </calc-select>
+                    )}
+                  </div>
+                ) : (
+                  <div></div>
+                )}
 
-          {can_upgrade.value ? (
-            <div class="equ-profile-item">
-              <div class="row-name">调适</div>
-              {/* <calc-slider
+                <div class="equ-profile-item">
+                  <div class="row-name">附魔</div>
+                  <calc-select v-model={enchant.value} class="flex-1 !h-20px">
+                    <calc-option value={''}>无</calc-option>
+                    {renderList(enchant_list.value ?? [], (item) => (
+                      <calc-option value={item.id}>{item.detail}</calc-option>
+                    ))}
+                  </calc-select>
+                </div>
+                {has_socket.value ? (
+                  <div class="equ-profile-item">
+                    <div class="row-name">徽章</div>
+                    <calc-select
+                      onChange={changeSocket}
+                      v-model={emblem_0.value}
+                      class="flex-1 !h-20px"
+                    >
+                      <calc-option value={''}>无</calc-option>
+                      {renderList(emblem_list.value ?? [], (item) => (
+                        <calc-option
+                          value={item.id}
+                          key={item.id}
+                        >{`${item.rarity}${item.categorize}徽章[${item.detail}]`}</calc-option>
+                      ))}
+                    </calc-select>
+                    {has_emblem_1.value && (
+                      <calc-select v-model={emblem_1.value} class="flex-1 !h-20px">
+                        <calc-option value={''}>无</calc-option>
+                        {renderList(emblem_list.value ?? [], (item) => (
+                          <calc-option
+                            value={item.id}
+                            key={item.id}
+                          >{`${item.rarity}${item.categorize}徽章[${item.detail}]`}</calc-option>
+                        ))}
+                      </calc-select>
+                    )}
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+
+                {can_upgrade.value ? (
+                  <div class="equ-profile-item">
+                    <div class="row-name">调适</div>
+                    {/* <calc-slider
                 showValue={true}
                 showPercent={false}
                 v-model={adaptation.value}
@@ -237,33 +277,36 @@ export default defineComponent({
                 step={1}
                 class="flex-1 !h-20px"
               /> */}
-              <calc-select v-model={adaptation.value} class="flex-1 !h-20px">
-                {renderList(4, (i) => (
-                  <calc-option value={i - 1}>{i - 1}</calc-option>
-                ))}
-              </calc-select>
-            </div>
-          ) : (
-            <div></div>
-          )}
-          {
-            can_set_secret.value ? (<>
-            <div class="equ-profile-item">
-              <div class="row-name">秘宝</div>
-              <calc-slider
-                showPercent={true}
-                showValue={false}
-                v-model={precision.value}
-                min={0}
-                max={100}
-                step={1}
-                class="flex-1 !h-20px"
-              />
-            </div>
-            </>) : <div></div>
-          }
-          </>)}
-        </div>
+                    <calc-select v-model={adaptation.value} class="flex-1 !h-20px">
+                      {renderList(4, (i) => (
+                        <calc-option value={i - 1}>{i - 1}</calc-option>
+                      ))}
+                    </calc-select>
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+                {can_set_secret.value ? (
+                  <>
+                    <div class="equ-profile-item">
+                      <div class="row-name">秘宝</div>
+                      <calc-slider
+                        showPercent={true}
+                        showValue={false}
+                        v-model={precision.value}
+                        min={0}
+                        max={100}
+                        step={1}
+                        class="flex-1 !h-20px"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <div></div>
+                )}
+              </>
+            )}
+          </div>
         </>
       )
     }

@@ -28,6 +28,7 @@ export interface IConfigEquip {
   adaptation: number
   fusion: string
   precision: number
+  weaponFusion: number
 }
 
 export interface IConfig {
@@ -70,6 +71,7 @@ const defaultEqusConfig = {
   adaptation: 0,
   fusion: '',
   precision: 0,
+  weaponFusion: 0,
 }
 
 const defaultAvatarConfig = {
