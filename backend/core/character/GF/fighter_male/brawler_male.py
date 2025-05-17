@@ -573,9 +573,9 @@ class Skill38(PassiveSkill):
     data3 = [0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]# noqa: E501
 
     associate = [
-        {"data":[i - 100 if i >0 else i for i in data0],"skills":["伏虎霸王拳"]},
-        {"type":"+hit0","data":[0,-200],"skills":["伏虎霸王拳"]},
-        {"data":[i * 3 if i > 0 else i for i in data0],"skills":["伏虎霸王拳"]}
+        {"data":[i - 100 if i > 0 else i for i in data0],"skills":["伏虎霸王拳"]},
+        {"type":"+hit0","data":[0] + [-200]*maxLv,"skills":["伏虎霸王拳"]},
+        {"data":[i * 3 for i in data3],"skills":["伏虎霸王拳"]}
     ]
 
 
@@ -647,7 +647,7 @@ class Skill41(PassiveSkill):
     data3 = [0, 98, 96, 93, 91, 88, 86, 83, 81, 78, 76, 73, 71, 68, 66, 63, 61, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60]# noqa: E501
     associate = [
         {"data":data0,"type":"*skillRation"},
-        {"data":data3,"type":"*CDReduce","skills":["抛沙","毒瓶投掷","毒针投掷","砖块投掷"]},
+        {"data":data3,"type":"*cdReduce","skills":["抛沙","毒瓶投掷","毒针投掷","砖块投掷"]},
     ]
 
 
