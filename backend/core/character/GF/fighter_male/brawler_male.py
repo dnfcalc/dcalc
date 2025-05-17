@@ -211,7 +211,7 @@ class Skill22(ActiveSkill):
     hit2 = 1
 
     # 双重投掷部分
-    data4 = data3
+    data4 = data0
     hit4 = 1
     power4 = 0
     # 不会被双重投掷减少第二次伤害
