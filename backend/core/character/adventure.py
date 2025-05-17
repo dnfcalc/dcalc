@@ -33,7 +33,7 @@ adv = [
         'children': [
             {'id': 0, 'name': 'nenmaster_male', 'title': '归元·气功师', 'open': True,'class': 'GF.fighter_male.nenmaster_male'},
             {'id': 1, 'name': 'striker_male', 'title': '归元·散打', 'open': True, 'class': 'GF.fighter_male.striker_male'},
-            {'id': 2, 'name': 'brawler_male', 'title': '归元·街霸', 'open': False, 'class': 'GF.fighter_male.brawler_male'},
+            {'id': 2, 'name': 'brawler_male', 'title': '归元·街霸', 'open': True, 'class': 'GF.fighter_male.brawler_male'},
             {'id': 3, 'name': 'grappler_male', 'title': '归元·柔道家', 'open': True,'class': 'GF.fighter_male.grappler_male'},
             {'name': 'empty', 'title': '', 'comment': '首页'},
         ],

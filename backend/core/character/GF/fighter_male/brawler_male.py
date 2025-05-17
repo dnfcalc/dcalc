@@ -310,8 +310,8 @@ class Skill26(ActiveSkill):
         {"type":"+power5","data":[0]+[100]*maxLv,"skills":["毒瓶投掷"]},
         {"type":"+power5","data":[100-i if i > 0 else i for i in data3],"skills":["毒针投掷"]},
         {"type":"+power6","data":[0] + [200]*maxLv,"skills":["毒针投掷"]},
+        {"type":"+power4","data":[100-i if i > 0 else i for i in data4],"skills":["砖块投掷"]},
         {"type":"+power5","data":[100-i if i > 0 else i for i in data4],"skills":["砖块投掷"]},
-        {"type":"+power6","data":[100-i if i > 0 else i for i in data4],"skills":["砖块投掷"]},
     ]
 
 
