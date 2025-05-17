@@ -73,6 +73,10 @@ class Skill:
     """是否是增益技能"""
     bind: bool = None
     uuid: str = None
+    hasVP: bool = None
+    """是否有VP形态"""
+    hasReinforce: bool = None
+    """是否有技能强化"""
 
     def __init__(self, char):
         self.char = char
@@ -84,6 +88,16 @@ class Skill:
             self.bind = False
             if self.learnLv in [50, 85, 100]:
                 self.bind = True
+        if self.hasVP is None:
+            if self.learnLv not in [50, 85, 100] and self.learnLv >= 35 and self.learnLv <= 80 and self.damage:
+                self.hasVP = True
+            else:
+                self.hasVP = False
+        if self.hasReinforce is None:
+            if self.learnLv not in [50, 85, 100] and self.learnLv >= 15 and self.learnLv <= 80 and self.damage:
+                self.hasReinforce = True
+            else:
+                self.hasReinforce = False
         # self.lv = self._calculate_lv()
         pass
 
@@ -216,7 +230,7 @@ class ActiveSkill(Skill):
             self.vp_2()
 
     def setReinforce(self):
-        if self.learnLv in [50, 85, 100] or not self.damage:
+        if not self.hasReinforce:
             return
         if self.reinforce == 1:
             if self.learnLv < 35:

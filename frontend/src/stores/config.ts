@@ -32,7 +32,7 @@ export interface IConfigEquip {
 }
 
 export interface IConfig {
-  skills: Record<string, { lv: number }>
+  skills: Record<string, { lv: number ,vp:number, reinforce: number}>
   equips: Record<string, IConfigEquip>
   jades: Record<
     string,
@@ -160,6 +160,8 @@ export const useConfigStore = defineStore('configStore', () => {
       config.value &&
         (config.value.skills[id] = {
           lv: infoStore.skills.find((skill) => skill.id.toString() === id)?.maxLearnLv ?? 0,
+          vp: 0,
+          reinforce: 0,
         })
     })
     ;(

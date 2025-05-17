@@ -83,6 +83,8 @@ export interface ISkill {
   maxLearnLv: number
   maxLv: number
   bind: boolean
+  hasVP: boolean
+  hasReinforce: boolean
 }
 
 export interface ISuit {

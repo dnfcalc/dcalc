@@ -467,7 +467,8 @@ class Character(CharacterProperty):
                     'position': skill.position,
                     'line': skill.line,
                     'bind': skill.bind,
-                    'damage':skill.damage
+                    'hasVP': skill.hasVP,
+                    'hasReinforce': skill.hasReinforce
                 }
             )
         info['skills'] = skillInfo
