@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-hex-000000/60 p-4 border-solid border-#FFFF/15" v-if="data && data.length > 0">
+  <div class="bg-hex-000000/60 p-2 border-solid border-#FFFF/15" v-if="data && data.length > 0">
     <div class="bg-hex-000000/40 text-white border-solid border-#FFFF/15 border-t-0">
       <div class="flex px-1px gap-1px">
         <div

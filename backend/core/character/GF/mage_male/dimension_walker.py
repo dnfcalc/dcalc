@@ -9,10 +9,10 @@ class Skill0(ActiveSkill):
     learnLv = 1
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 3
     cd = 2
-
+    uuid = "3c5604bdbb0240b8f130f59ab40509c3"
     data0 = [0, 104, 121, 138, 155, 172, 188, 205, 222, 238, 255, 272, 288, 305, 322, 339, 356, 372, 388, 405, 422]# noqa: E501
     hit0 = 1 #TODO
 
@@ -36,11 +36,11 @@ class Skill1(ActiveSkill):
     learnLv = 1
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 2
     cd = 2
     mp = [10, 84]
-
+    uuid = "5dc7008b12a459325b548b0715c6b73c"
     data0 = [0, 695, 765, 835, 906, 976, 1047, 1117, 1188, 1258, 1329, 1399, 1470, 1540, 1611, 1681, 1752, 1822, 1892, 1963, 2033, 2104, 2174, 2245, 2315, 2386, 2456, 2527, 2597, 2668, 2738, 2808, 2879, 2949, 3020, 3090, 3161, 3231, 3302, 3372, 3443, 3513, 3584, 3654, 3725, 3795, 3865, 3936, 4006, 4077, 4147, 4218, 4288, 4359, 4429, 4500, 4570, 4641, 4711, 4781, 4852, 4922, 4993, 5063, 5134, 5204, 5275, 5345, 5416, 5486, 5557]# noqa: E501
     hit0 = 1 #TODO
 
@@ -55,9 +55,9 @@ class Skill2(PassiveSkill):
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 3
-
+    uuid = "bb34e8854a93fd250347a1c64119f7ab"
     data0 = [0, 50]# noqa: E501
     hit0 = 1 #TODO
 
@@ -78,9 +78,9 @@ class Skill3(PassiveSkill):
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 1
-
+    uuid = "6e33d47e6622ce03b6defdd912140270"
     data0 = [0, 6]# noqa: E501
     hit0 = 1 #TODO
 
@@ -98,9 +98,9 @@ class Skill4(PassiveSkill):
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 1
-
+    uuid = "d53301bb328baf12a3ae482cc6a565dd"
     data0 = [0, 100]# noqa: E501
     hit0 = 1 #TODO
 
@@ -118,10 +118,10 @@ class Skill5(ActiveSkill):
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
     cd = 0.1
-
+    uuid = "7e904ea3d2a9faa054604e55120a9268"
     data0 = [0, 1]# noqa: E501
     hit0 = 1 #TODO
 
@@ -133,9 +133,9 @@ class Skill6(PassiveSkill):
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 1
-
+    uuid = "5152480fdde81362575a488d4cec4af9"
     data0 = [0, 30]# noqa: E501
     hit0 = 1 #TODO
 
@@ -150,20 +150,22 @@ class Skill7(ActiveSkill):
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 1
     mp = [1, 1]
-
+    uuid = "7822d6d52e10964a6755f142c666b494"
 
 # 基础精通 기본기 숙련
 # https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/5a56514f35cf0270ae8d6c65f8fefd78?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill8(PassiveSkill):
     name = "基础精通"
     learnLv = 1
-    masterLv = 115
+    masterLv = 190
     maxLv = 200
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 1
+    uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
+    icon = "$common/$uuid"
 
     data0 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
     hit0 = 1 #TODO
@@ -182,11 +184,11 @@ class Skill9(ActiveSkill):
     learnLv = 1
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 1
     cd = 5
     mp = [1, 1]
-
+    uuid = "ce26c6b69d02a440a81b552bec94f03b"
     data0 = [0, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3]# noqa: E501
     hit0 = 1 #TODO
 
@@ -206,7 +208,7 @@ class Skill10(PassiveSkill):
     maxLv = 1
     position = 0 #TODO
     rangeLv = 1
-
+    uuid = "892ef624d8bf3d7fc045f84825fd6104"
 
 # 擒拿掌 금나장
 # https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/78bd107acd474518b606be1e4fd38239?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -215,11 +217,11 @@ class Skill11(ActiveSkill):
     learnLv = 5
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 2
     cd = 4
     mp = [14, 168]
-
+    uuid = "78bd107acd474518b606be1e4fd38239"
     data0 = [0, 612, 693, 771, 852, 932, 1012, 1092, 1171, 1252, 1332, 1411, 1491, 1571, 1651, 1729, 1811, 1891, 1971, 2050, 2130, 2210, 2292, 2370, 2450, 2530, 2608, 2689, 2769, 2850, 2928, 3009, 3089, 3169, 3247, 3328, 3409, 3489, 3567, 3648, 3728, 3808, 3886, 3968, 4048, 4128, 4207, 4287, 4367, 4445, 4527, 4607, 4687, 4765, 4846, 4926, 5006, 5085, 5166, 5246, 5326, 5404, 5485, 5565, 5646, 5724, 5805, 5885, 5965, 6043, 6124]# noqa: E501
     hit0 = 1 #TODO
 
@@ -240,11 +242,11 @@ class Skill12(ActiveSkill):
     learnLv = 5
     masterLv = 1
     maxLv = 11
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 2
     cd = 3
     mp = [22, 183]
-
+    uuid = "a5fa08f5d509e6ff2ebc68856a470b5a"
     data0 = [0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]# noqa: E501
     hit0 = 1 #TODO
 
@@ -262,11 +264,11 @@ class Skill13(ActiveSkill):
     learnLv = 10
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 3
     cd = 10
     mp = [30, 345]
-
+    uuid = "cfacda0647b9a0f595df2c2aad30c18d"
     data0 = [0, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4]# noqa: E501
     hit0 = 1 #TODO
 
@@ -293,11 +295,11 @@ class Skill14(ActiveSkill):
     learnLv = 10
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 2
     cd = 1.5
     mp = [40, 40]
-
+    uuid = "3d8f3d438405d79f8d3ed68072674d1e"
     data0 = [0, 400]# noqa: E501
     hit0 = 1 #TODO
 
@@ -312,11 +314,11 @@ class Skill15(ActiveSkill):
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 8 #TODO
     rangeLv = 2
     cd = 4
     mp = [31, 259]
-
+    uuid = "8ee0099656df08a0b39225f8a21d514b"
     data0 = [0, 2765, 3046, 3327, 3607, 3888, 4168, 4449, 4729, 5010, 5290, 5571, 5851, 6132, 6413, 6693, 6974, 7254, 7535, 7815, 8096, 8376, 8657, 8938, 9218, 9499, 9779, 10060, 10340, 10621, 10901, 11182, 11462, 11743, 12024, 12304, 12585, 12865, 13146, 13426, 13707, 13987, 14268, 14549, 14829, 15110, 15390, 15671, 15951, 16232, 16512, 16793, 17073, 17354, 17635, 17915, 18196, 18476, 18757, 19037, 19318, 19598, 19879, 20159, 20440, 20721, 21001, 21282, 21562, 21843, 22123]# noqa: E501
     hit0 = 1 #TODO
 
@@ -334,10 +336,10 @@ class Skill16(PassiveSkill):
     learnLv = 10
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 1
     cd = 30
-
+    uuid = "2b340542e776818b78f3212af184bd6b"
     data0 = [0, 40]# noqa: E501
     hit0 = 1 #TODO
 
@@ -352,11 +354,11 @@ class Skill17(ActiveSkill):
     learnLv = 10
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 3
     cd = 5
     mp = [13, 13]
-
+    uuid = "1fea5a626f15230237946a11a9d11582"
     data0 = [0, 20]# noqa: E501
     hit0 = 1 #TODO
 
@@ -368,11 +370,11 @@ class Skill18(ActiveSkill):
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 8 #TODO
     rangeLv = 2
     cd = 5
     mp = [30, 280]
-
+    uuid = "f2fb27162beb0b87a7cb9af7900e95f2"
     data0 = [0, 1821, 2001, 2191, 2382, 2570, 2744, 2936, 3120, 3317, 3504, 3692, 3873, 4054, 4258, 4437, 4629, 4823, 5020, 5202, 5382, 5576, 5754, 5953, 6139, 6326, 6504, 6696, 6887, 7077, 7262, 7444, 7628, 7822, 8014, 8197, 8381, 8571, 8762, 8949, 9134, 9314, 9508, 9702, 9884, 10083, 10261, 10457, 10644, 10832, 11018, 11201, 11393, 11579, 11767, 11953, 12136, 12328, 12515, 12711, 12891, 13083, 13265, 13457, 13644, 13836, 14015, 14209, 14389, 14579, 14773]# noqa: E501
     hit0 = 1 #TODO
 
@@ -396,11 +398,11 @@ class Skill19(ActiveSkill):
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 2
     cd = 4
     mp = [30, 280]
-
+    uuid = "4f2e001e9a19eb7bae50ad1840dfb329"
     data0 = [0, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200]# noqa: E501
     hit0 = 1 #TODO
 
@@ -439,9 +441,9 @@ class Skill20(PassiveSkill):
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 3
-
+    uuid = "dbf8b30c7057032af0d68fcfa289fdae"
     data0 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]# noqa: E501
     hit0 = 1 #TODO
 
@@ -458,7 +460,7 @@ class Skill21(PassiveSkill):
     maxLv = 20
     position = 0 #TODO
     rangeLv = 3
-
+    uuid = "fc458e449ee00b01dbf88d09aae65462"
     data0 = [0, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35]# noqa: E501
     hit0 = 1 #TODO
 
@@ -479,11 +481,11 @@ class Skill22(ActiveSkill):
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
     cd = 5
     mp = [20, 210]
-
+    uuid = "1812a1ece67bb37b6b44b54766450064"
     data0 = [0, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]# noqa: E501
     hit0 = 1 #TODO
 
@@ -504,11 +506,11 @@ class Skill23(ActiveSkill):
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
     cd = [15, 14.9, 14.9, 14.8, 14.7, 14.7, 14.6, 14.5, 14.5, 14.4, 14.3, 14.3, 14.2, 14.2, 14.1, 14, 14, 13.9, 13.8, 13.8, 13.7, 13.6, 13.6, 13.5, 13.4, 13.4, 13.3, 13.2, 13.2, 13.1, 13, 13, 12.9, 12.8, 12.8, 12.7, 12.7, 12.6, 12.5, 12.5, 12.4, 12.3, 12.3, 12.2, 12.1, 12.1, 12, 11.9, 11.9, 11.8, 11.7, 11.7, 11.6, 11.5, 11.5, 11.4, 11.3, 11.3, 11.2, 11.2, 11.1, 11, 11, 10.9, 10.8, 10.8, 10.7, 10.6, 10.6, 10.5]
     mp = [20, 70]
-
+    uuid = "2ba299855fc22192cba4f73db75e9d0e"
     data0 = [0, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]# noqa: E501
     hit0 = 1 #TODO
 
@@ -532,11 +534,11 @@ class Skill24(ActiveSkill):
     learnLv = 20
     masterLv = 1
     maxLv = 11
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 2
     cd = 5
     mp = [30, 90]
-
+    uuid = "7f80b887a09e88e2c4728c898bd73654"
     data0 = [0, 488, 547, 607, 666, 725, 784, 844, 903, 962, 1022, 1081]# noqa: E501
     hit0 = 1 #TODO
 
@@ -572,10 +574,10 @@ class Skill25(ActiveSkill):
     learnLv = 20
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 8 #TODO
     rangeLv = 2
     cd = 1
-
+    uuid = "e5c09f9132a48dc1d695968592cc5878"
 
 # 暴击 크리티컬 히트
 # https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/fc1262c19f3d0477ee8eda47b8db8696?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -584,9 +586,9 @@ class Skill26(PassiveSkill):
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
-
+    uuid = "fc1262c19f3d0477ee8eda47b8db8696"
     data0 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]# noqa: E501
     hit0 = 1 #TODO
 
@@ -598,11 +600,11 @@ class Skill27(ActiveSkill):
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 2
     cd = 7
     mp = [35, 350]
-
+    uuid = "d89f26862e348a801b30bb9fd7125db5"
     data0 = [0, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35]# noqa: E501
     hit0 = 1 #TODO
 
@@ -626,11 +628,11 @@ class Skill28(ActiveSkill):
     learnLv = 25
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 4 #TODO
     rangeLv = 3
     cd = 5
     mp = [271, 2099]
-
+    uuid = "2c9d9a36c8401bddff6cdb80fab8dc24"
     data0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]# noqa: E501
     hit0 = 1 #TODO
 
@@ -645,9 +647,9 @@ class Skill29(PassiveSkill):
     learnLv = 25
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 2
-
+    uuid = "dde3b443bd5e61d90c34e5ee771e2c28"
 
 # 乖离 : 迷雾 괴리 : 크로울링 미스트
 # https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/5892d1fa4462e561ac8f8d2c74892b0a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -656,10 +658,10 @@ class Skill30(ActiveSkill):
     learnLv = 30
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 2
     cd = 1
-
+    uuid = "5892d1fa4462e561ac8f8d2c74892b0a"
     data0 = [0, 0]# noqa: E501
     hit0 = 1 #TODO
 
@@ -686,11 +688,11 @@ class Skill31(ActiveSkill):
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 3 #TODO
     rangeLv = 2
     cd = 10
     mp = [180, 1512]
-
+    uuid = "b89c9ab317bc0a443f6497b7cca2f6a8"
     data0 = [0, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40]# noqa: E501
     hit0 = 1 #TODO
 
@@ -714,11 +716,11 @@ class Skill32(ActiveSkill):
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 8 #TODO
     rangeLv = 2
     cd = 10
     mp = [185, 1526]
-
+    uuid = "0fbb8de70002ad34f046c94c2cb3e863"
     data0 = [0, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]# noqa: E501
     hit0 = 1 #TODO
 
@@ -736,12 +738,12 @@ class Skill33(ActiveSkill):
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 2
     cube = 1
     cd = 16
     mp = [185, 1526]
-
+    uuid = "7cf17936a039b418660424125dc968d7"
     data0 = [0, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60]# noqa: E501
     hit0 = 1 #TODO
 
@@ -774,12 +776,12 @@ class Skill34(ActiveSkill):
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 2
     cube = 1
     cd = 14
     mp = [160, 1344]
-
+    uuid = "3fb8395ae3b81bd608e0c4223a8eb534"
     data0 = [0, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]# noqa: E501
     hit0 = 1 #TODO
 
@@ -809,12 +811,12 @@ class Skill35(ActiveSkill):
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 2
     cube = 1
     cd = 20
     mp = [350, 3080]
-
+    uuid = "c5a2956d8ed3af1746ed2f76ca971a09"
     data0 = [0, 100, 130, 160, 190, 220, 250, 280, 310, 340, 370, 400, 430, 460, 490, 520, 550, 580, 610, 640, 670, 700, 730, 760, 790, 820, 850, 880, 910, 940, 970, 1000, 1030, 1060, 1090, 1120, 1150, 1180, 1210, 1240, 1270, 1300, 1330, 1360, 1390, 1420, 1450, 1480, 1510, 1540, 1570, 1600, 1630, 1660, 1690, 1720, 1750, 1780, 1810, 1840, 1870, 1900, 1930, 1960, 1990, 2020, 2050, 2080, 2110, 2140, 2170]# noqa: E501
     hit0 = 1 #TODO
 
@@ -847,12 +849,12 @@ class Skill36(ActiveSkill):
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 2 #TODO
     rangeLv = 2
     cube = 2
     cd = 40
     mp = [350, 3080]
-
+    uuid = "e0a072e8cef2d77893aad5f68aeed56a"
     data0 = [0, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40]# noqa: E501
     hit0 = 1 #TODO
 
@@ -876,9 +878,9 @@ class Skill37(PassiveSkill):
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 3
-
+    uuid = "2a0a39184de92acf1c1375e00b77404c"
     data0 = [0, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]# noqa: E501
     hit0 = 1 #TODO
 
@@ -908,12 +910,12 @@ class Skill38(ActiveSkill):
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 5
     cube = 5
     cd = 145
     mp = [1200, 10080]
-
+    uuid = "9dc8438e4572d39243c97da31c113acc"
     data0 = [0, 10308, 12697, 15087, 17475, 19865, 22257, 24647, 27037, 29428, 31816, 34208, 36598, 38986, 41376, 43766, 46155, 48549, 50939, 53327, 55717, 58107, 60496, 62887, 65276, 67667, 70058, 72447, 74838, 77228, 79617, 82007, 84397, 86786, 89178, 91568, 93958, 96348, 98738, 101127, 103519, 105909, 108298, 110688, 113077, 115469, 117859, 120249, 122639, 125029, 127418]# noqa: E501
     hit0 = 1 #TODO
 
@@ -937,12 +939,12 @@ class Skill39(ActiveSkill):
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 2
     cube = 1
     cd = 30
     mp = [400, 1120]
-
+    uuid = "e0daa922b19cdc35de879e938361464e"
     data0 = [0, 100, 103, 106, 109, 112, 115, 118, 121, 124, 127, 130, 133, 136, 139, 142, 145, 148, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150]# noqa: E501
     hit0 = 1 #TODO
 
@@ -966,12 +968,12 @@ class Skill40(ActiveSkill):
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 8 #TODO
     rangeLv = 2
     cube = 3
     cd = 50
     mp = [900, 1820]
-
+    uuid = "5806440d21e7546d50007a5ba11f8024"
     data0 = [0, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5]# noqa: E501
     hit0 = 1 #TODO
 
@@ -989,9 +991,9 @@ class Skill41(PassiveSkill):
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 1 #TODO
     rangeLv = 3
-
+    uuid = "5c45f69c9ebc7a784e994369d2cc3c66"
     data0 = [0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]# noqa: E501
     hit0 = 1 #TODO
 
@@ -1018,12 +1020,12 @@ class Skill42(ActiveSkill):
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 2
     cube = 3
     cd = 40
     mp = [580, 4500]
-
+    uuid = "4402c6977bf5c9b0d2febe14dc81de6c"
     data0 = [0, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]# noqa: E501
     hit0 = 1 #TODO
 
@@ -1062,12 +1064,12 @@ class Skill43(ActiveSkill):
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 8 #TODO
     rangeLv = 2
     cube = 5
     cd = 45
     mp = [800, 6000]
-
+    uuid = "96bd070daacc6c1b81d9f24e6d77f48a"
     data0 = [0, 4314, 4751, 5186, 5626, 6063, 6502, 6939, 7376, 7814, 8251, 8690, 9126, 9564, 10001, 10440, 10879, 11314, 11753, 12190, 12628, 13065, 13503, 13941, 14379, 14817, 15253, 15690, 16129, 16567, 17004, 17442, 17879, 18318, 18755, 19192, 19629, 20067, 20505, 20942, 21381, 21818, 22256, 22693, 23131, 23569, 24006, 24443, 24882, 25318, 25757]# noqa: E501
     hit0 = 1 #TODO
 
@@ -1088,12 +1090,12 @@ class Skill44(ActiveSkill):
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 6 #TODO
     rangeLv = 5
     cube = 10
     cd = 180
     mp = [2500, 5000]
-
+    uuid = "c9a29f5c3509b90a96d5ca9b70dc9c85"
     data0 = [0, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150]# noqa: E501
     hit0 = 1 #TODO
 
@@ -1129,9 +1131,9 @@ class Skill45(PassiveSkill):
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 3
-
+    uuid = "ae7608b87b6e965c6bdd0b3ef4e6d63e"
     data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
     hit0 = 1 #TODO
 
@@ -1146,12 +1148,12 @@ class Skill46(ActiveSkill):
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 7 #TODO
     rangeLv = 2
     cube = 7
     cd = 60
     mp = [1067, 8000]
-
+    uuid = "626cfc24770b72b5d7a24c24cda3768b"
     data0 = [0, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600, 600]# noqa: E501
     hit0 = 1 #TODO
 
@@ -1175,12 +1177,12 @@ class Skill47(ActiveSkill):
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5 #TODO
     rangeLv = 5
     cube = 15
     cd = 290
     mp = [4028, 8056]
-
+    uuid = "7a96c262533919beee21b5a666062880"
     data0 = [0, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200]# noqa: E501
     hit0 = 1 #TODO
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-2" v-if="configStore.result.state">
+  <div class="flex gap-1" v-if="configStore.result.state">
     <div class="flex flex-col justify-between">
       <div class="flex gap-5 items-center">
         <calc-button class="flex-1" @click="setStandard">设为基准</calc-button>
