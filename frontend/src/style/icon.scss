@@ -111,6 +111,11 @@
   @include icon-style('min');
 }
 
+.icon-exchange {
+  @include icon-style('exchange', 20px, 20px, auto 100%);
+}
+
+
 .icon-increase-little {
   @include icon-style('increase', 16px, 16px);
 }

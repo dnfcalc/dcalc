@@ -1,0 +1,16 @@
+.vp {
+  &:nth-child(n + 1) {
+    background-color: #000000;
+  }
+  &:nth-child(2n + 1) {
+    background-color: #080808;
+  }
+
+  .vp-item {
+    height: 124px;
+    width: 152px;
+    background-image: url(./img/bg.png);
+    padding:15px 20px ;
+    box-sizing: border-box;
+  }
+}
