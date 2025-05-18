@@ -55,7 +55,7 @@ export default defineComponent({
       <>
         <div class="h-auto py-2 flex flex-col bg-#080808 box-content">
           {renderList(skills.value, (item) => (
-            <div class="h-140px flex items-center vp">
+            <div class="h-140px flex items-center vp pl-26px pr-16px box-content">
               <div class="w-30px text-center text-#816f4c">{item.learnLv}</div>
               <div class="w-200px flex gap-5px items-center">
                 <div class="border-1px border-solid border-#3F382E rounded-4px w-28px h-28px">
@@ -65,7 +65,7 @@ export default defineComponent({
               </div>
               {renderList(2, (index) => (
                 <div
-                  class="flex justify-center vp-item ml-5px"
+                  class={["flex justify-center vp-item ", index == 1 ? 'ml-auto' : 'ml-2px']}
                   onClick={() => {
                     itemChecked(item.id.toString(), index).value = !itemChecked(
                       item.id.toString(),

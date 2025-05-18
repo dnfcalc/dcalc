@@ -39,8 +39,8 @@
         ></SkillTree>
       </div>
       <div v-if="tab === 1" class="flex flex-col overflow-y-hidden h-full">
-                <SkillReinforce
-        class="flex-1"
+        <SkillReinforce
+          class="flex-1"
           :skills="infoStore.skills"
           v-model:lvInfo="configStore.config.skills"
           v-model:bindAwake="configStore.config.bindAwake"

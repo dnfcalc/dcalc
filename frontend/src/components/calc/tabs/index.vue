@@ -69,8 +69,9 @@ export default defineComponent({
   display: flex;
   list-style: none;
   align-items: flex-end;
-  border-bottom: 1px solid #4f4838;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   width: 100%;
+  height: 25px;
 
   font-size: 14px;
 
@@ -97,12 +98,17 @@ export default defineComponent({
   .i-tab {
     // font-size: 12px;
     margin-left: 1px;
-
-    width: 120px;
+    width: fit-content;
+    padding:0px 10px;
+    padding-bottom: 2px;
     height: 20px;
-    line-height: 20px;
     text-align: center;
     text-decoration: none;
+    display: flex;
+    align-items: end;
+    box-sizing: border-box;
+
+    text-shadow: none;
 
     &:visited {
       color: currentColor;
@@ -119,8 +125,10 @@ export default defineComponent({
     }
 
     &.active {
+      margin-bottom: -1px;
       background: linear-gradient(#574d38, #25221d);
       border-image: url('@/assets/img/control/active_top.png') 1 fill stretch;
+      height: 22px;
       // color: #ffb400;
     }
   }

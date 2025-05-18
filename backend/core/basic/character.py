@@ -557,6 +557,10 @@ class Character(CharacterProperty):
             skill = self.GetSkillByID(key)
             if skill is not None:
                 skill.lv += skills[key].get('lv', 0)
+                if skill.hasReinforce:
+                    skill.reinforce = skills[key].get('reinforce', 0)
+                if skill.hasVP:
+                    skill.vp = skills[key].get('vp', 0)
         pass
 
     def load_skills(self) -> None:

@@ -212,6 +212,7 @@ class ActiveSkill(Skill):
 
     def skillInfo(self, mode: str | None = None):
         basic = deepcopy(self)
+        basic.setReinforce()
         if mode is not None:
             basic.currentMode = mode
             basic.setMode(mode)
