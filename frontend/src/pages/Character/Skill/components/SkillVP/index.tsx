@@ -65,7 +65,10 @@ export default defineComponent({
               </div>
               {renderList(2, (index) => (
                 <div
-                  class={["flex justify-center vp-item ", index == 1 ? 'ml-auto' : 'ml-2px']}
+                  class={[
+                    'flex items-center flex-col vp-item',
+                    index == 1 ? 'ml-auto' : 'ml-2px',
+                  ]}
                   onClick={() => {
                     itemChecked(item.id.toString(), index).value = !itemChecked(
                       item.id.toString(),
@@ -73,9 +76,14 @@ export default defineComponent({
                     ).value
                   }}
                 >
-                  <div class="flex justify-between w-full h-30px ">
+                  <div class="flex justify-between w-full h-30px px-5px">
                     <div class="flex items-start">
-                      <CalcCheckbox modelValue={itemChecked(item.id.toString(), index).value} disabled={currentUsedVP.value >= 5 && lvInfo.value[item.id.toString()]?.vp == 0} />
+                      <CalcCheckbox
+                        modelValue={itemChecked(item.id.toString(), index).value}
+                        disabled={
+                          currentUsedVP.value >= 5 && lvInfo.value[item.id.toString()]?.vp == 0
+                        }
+                      />
                     </div>
                     <div class="relative inline-block border-1px border-solid border-#3F382E rounded-4px w-28px h-28px">
                       <div
@@ -91,6 +99,10 @@ export default defineComponent({
                     </div>
                     <div class="w-16px"></div>
                   </div>
+                  <div class="text-14px">{item.vps[index - 1].name}</div>
+                  {renderList(item.vps[index - 1].desc.split('<br/>'), (desc) => (
+                    <div class="text-12px text-#816f4c flex items-center">{desc}</div>
+                  ))}
                 </div>
               ))}
             </div>

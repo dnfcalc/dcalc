@@ -77,6 +77,7 @@ class Skill:
     """是否有VP形态"""
     hasReinforce: bool = None
     """是否有技能强化"""
+    vps: list = []
 
     def __init__(self, char):
         self.char = char

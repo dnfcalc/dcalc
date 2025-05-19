@@ -192,7 +192,7 @@ class Skill11(ActiveSkill):
     def ratio(self, value):
         if self._ratio != value:
             data = self.associate[0]
-            ratio = (1 - data['data'][self.lv] / 100 * value) / (1 - data['data'][self.lv] / 100 * self._ratio) 
+            ratio = (1 - data['data'][self.lv] / 100 * value) / (1 - data['data'][self.lv] / 100 * self._ratio)
             for item in data['skills']:
                 skill = self.char.GetSkillByName(item)
                 if skill is not None:

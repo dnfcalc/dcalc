@@ -85,6 +85,10 @@ export interface ISkill {
   bind: boolean
   hasVP: boolean
   hasReinforce: boolean
+  vps: {
+    name: string
+    desc: string
+  }[]
 }
 
 export interface ISuit {
