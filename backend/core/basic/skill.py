@@ -75,7 +75,7 @@ class Skill:
     uuid: str = None
     hasVP: bool = None
     """是否有VP形态"""
-    hasReinforce: bool = None
+    hasUP: bool = None
     """是否有技能强化"""
     vps: list = []
 
@@ -94,11 +94,11 @@ class Skill:
                 self.hasVP = True
             else:
                 self.hasVP = False
-        if self.hasReinforce is None:
+        if self.hasUP is None:
             if self.learnLv not in [50, 85, 100] and self.learnLv >= 15 and self.learnLv <= 80 and self.damage:
-                self.hasReinforce = True
+                self.hasUP = True
             else:
-                self.hasReinforce = False
+                self.hasUP = False
         # self.lv = self._calculate_lv()
         pass
 
@@ -197,7 +197,7 @@ class ActiveSkill(Skill):
     """是否是buff技能"""
     vp:int = 0
     """技能VP形态"""
-    reinforce:int = 0
+    up:int = 0
     """技能强化"""
 
     def __init__(self, char):
@@ -213,7 +213,7 @@ class ActiveSkill(Skill):
 
     def skillInfo(self, mode: str | None = None):
         basic = deepcopy(self)
-        basic.setReinforce()
+        basic.setUP()
         if mode is not None:
             basic.currentMode = mode
             basic.setMode(mode)
@@ -231,15 +231,15 @@ class ActiveSkill(Skill):
         elif self.vp == 2:
             self.vp_2()
 
-    def setReinforce(self):
-        if not self.hasReinforce:
+    def setUP(self):
+        if not self.hasUP:
             return
-        if self.reinforce == 1:
+        if self.up == 1:
             if self.learnLv < 35:
                 self.skillRation *= 1.6
             else:
                 self.skillRation *= 1.55
-        elif self.reinforce == 2:
+        elif self.up == 2:
             self.cdReduce *= 1 - 0.15
             if self.learnLv < 35:
                 self.skillRation *= 1.43

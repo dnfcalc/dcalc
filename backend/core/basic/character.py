@@ -468,7 +468,7 @@ class Character(CharacterProperty):
                     'line': skill.line,
                     'bind': skill.bind,
                     'hasVP': skill.hasVP,
-                    'hasReinforce': skill.hasReinforce,
+                    'hasUP': skill.hasUP,
                     'vps': skill.vps,
                 }
             )
@@ -558,8 +558,8 @@ class Character(CharacterProperty):
             skill = self.GetSkillByID(key)
             if skill is not None:
                 skill.lv += skills[key].get('lv', 0)
-                if skill.hasReinforce:
-                    skill.reinforce = skills[key].get('reinforce', 0)
+                if skill.hasUP:
+                    skill.up = skills[key].get('up', 0)
                 if skill.hasVP:
                     skill.vp = skills[key].get('vp', 0)
         pass

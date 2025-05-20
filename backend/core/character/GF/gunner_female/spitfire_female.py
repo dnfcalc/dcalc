@@ -196,7 +196,7 @@ class Skill9(ActiveSkill):
     cd = 5
     mp = [357, 2765]
     uuid = "3c5604bdbb0240b8f130f59ab40509c3"
-    hasReinforce = False
+    hasUP = False
 
     data0 = [0, 1034, 1200, 1364, 1528, 1693, 1857, 2021, 2187, 2352, 2516, 2682, 2846, 3010, 3175, 3339, 3505, 3671, 3835, 4000, 4164]# noqa: E501
     hit0 = 1

@@ -234,7 +234,7 @@ class Skill22(PassiveSkill):
 # 绝杀斩 밴디트컷
 # https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/4224f9b0b8c7c903e9a1e0f9d9f6d04d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill23(ActiveSkill):
-    name = "绝杀斩"
+    name = "绝心击"
     learnLv = 20
     masterLv = 60
     maxLv = 70
