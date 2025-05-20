@@ -3537,6 +3537,7 @@ def equ_206(char: CharacterProperty):
     技能快捷栏中存在6个及以上空栏时，发动[女帝的威严]效果。
     -所有速度+10%
     """
+    char.SetStatus(SpeedM=0.1,SpeedA=0.1,SpeedR=0.1)
     pass
 
 
@@ -3551,6 +3552,7 @@ def equ_207(char: CharacterProperty):
     -所受物理/魔法伤害-5%
     -所有速度+15%
     """
+    char.SetStatus(SpeedM=0.15,SpeedA=0.15,SpeedR=0.15)
     pass
 
 
@@ -3566,6 +3568,7 @@ def equ_208(char: CharacterProperty):
     -所受物理/魔法伤害-10%
     -所有速度+20%
     """
+    char.SetStatus(SpeedM=0.2,SpeedA=0.2,SpeedR=0.2)
     pass
 
 
@@ -3663,6 +3666,8 @@ def equ_214(char: CharacterProperty):
     每存在1个冷却中的技能，技能冷却时间恢复速度+6%（觉醒技能除外；最多叠加5次）
     -叠加达上限时，技能范围+10%
     """
+    char.SetSkillCDRecover(1,100,0.3)
+    char.equ_effect.append(EquEffect(name='永劫地狱火', icon='/equipment/icon/weapon/thief/twinswd/00246.png', cd=1,data=9360))
     pass
 
 
@@ -3682,6 +3687,8 @@ def equ_215(char: CharacterProperty):
     每存在1个冷却中的技能，技能冷却时间恢复速度+6%（觉醒技能除外；最多叠加5次）
     -叠加达上限时，技能范围+12%
     """
+    char.SetSkillCDRecover(1,100,0.3)
+    char.equ_effect.append(EquEffect(name='永劫地狱火', icon='/equipment/icon/weapon/thief/twinswd/00247.png', cd=1,data=10400 * 1.2))
     pass
 
 
@@ -3702,6 +3709,9 @@ def equ_216(char: CharacterProperty):
     每存在1个冷却中的技能，技能冷却时间恢复速度+6%（觉醒技能除外；最多叠加5次）
     -叠加达上限时，技能范围+15%
     """
+    char.SetSkillCDRecover(1,100,0.3)
+    char.equ_effect.append(EquEffect(name='永劫地狱火', icon='/equipment/icon/weapon/thief/twinswd/00248.png', cd=1,data=12480))
+    char.equ_effect.append(EquEffect(name='覆灭地狱火', icon='/equipment/icon/weapon/thief/twinswd/00248.png', cd=5,data=15600))
     pass
 
 
@@ -3794,6 +3804,7 @@ def equ_222(char: CharacterProperty):
     攻击时，被恐惧压制的敌人受到伤害。（冷却时间0.2秒）
     *[恐惧]攻击力：1920%
     """
+    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00269.png', cd=0.2,data=1920))
     pass
 
 
@@ -3811,6 +3822,11 @@ def equ_223(char: CharacterProperty):
     -技能伤害+5%，效果持续10秒
     -冷却时间20秒
     """
+    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00270.png', cd=0.2,data=1920))
+    if char.equ_options.get('5', 0) == 0:
+        char.SetStatus(SkillAttack=0.05)
+    elif char.equ_options.get('5', 0) == 2:
+        char.SetStatus(SkillAttack=0.05/2)
     pass
 
 
@@ -3830,6 +3846,12 @@ def equ_224(char: CharacterProperty):
      *冥河之钥伤害量：22800%
     -冷却时间20秒
     """
+    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00271.png', cd=0.2,data=1920))
+    char.equ_effect.append(EquEffect(name='冥河之钥', icon='/equipment/skill/55.png', cd=20,data=22800))
+    if char.equ_options.get('5', 0) == 0:
+        char.SetStatus(SkillAttack=0.1)
+    elif char.equ_options.get('5', 0) == 2:
+        char.SetStatus(SkillAttack=0.1/2)
     pass
 
 
@@ -3926,6 +3948,7 @@ def equ_230(char: CharacterProperty):
     -技能范围+15%
     -所有速度+5%
     """
+    char.SetStatus(SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
     pass
 
 
@@ -3942,6 +3965,7 @@ def equ_231(char: CharacterProperty):
     -技能范围+20%
     -所有速度+5%
     """
+    char.SetStatus(SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
     pass
 
 
@@ -3959,6 +3983,7 @@ def equ_232(char: CharacterProperty):
     -所有速度+10%
     -所受物理/魔法伤害-5%
     """
+    char.SetStatus(SpeedM=0.1,SpeedA=0.1,SpeedR=0.1)
     pass
 
 

@@ -99,8 +99,8 @@ export default defineComponent({
                     </div>
                     <div class="w-16px"></div>
                   </div>
-                  <div class="text-14px">{item.vps[index - 1].name}</div>
-                  {renderList(item.vps[index - 1].desc.split('<br/>'), (desc) => (
+                  <div class="text-14px">{item.vps[index - 1]?.name}</div>
+                  {renderList(item.vps[index - 1]?.desc.split('<br/>') ?? [], (desc) => (
                     <div class="text-12px text-#816f4c flex items-center">{desc}</div>
                   ))}
                 </div>
