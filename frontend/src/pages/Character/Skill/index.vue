@@ -14,7 +14,7 @@
         @click="tab = 1"
         :class="{ active: tab === 1 }"
       >
-        技能VP
+        技能定制
       </div>
       <!-- <div class="w-auto text-18px flex items-center justify-center !font-normal">|</div>
       <div
@@ -30,7 +30,7 @@
       <calc-tab :value="1">技能VP</calc-tab>
       <calc-tab :value="2">技能突破</calc-tab>
     </calc-tabs> -->
-    <div class="h-90vh w-620px overflow-x-hidden bg-#202020">
+    <div class="h-90vh w-570px overflow-x-hidden bg-#101012">
       <div class="overflow-y-auto h-full" v-if="tab === 0">
         <SkillTree
           :skills="infoStore.skills"
@@ -39,12 +39,14 @@
         ></SkillTree>
       </div>
       <div v-if="tab === 1" class="flex flex-col overflow-y-hidden h-full">
-        <SkillReinforce
+        <div class="item-head">技能进化</div>
+        <SkillUP
           class="flex-1"
           :skills="infoStore.skills"
           v-model:lvInfo="configStore.config.skills"
           v-model:bindAwake="configStore.config.bindAwake"
-        ></SkillReinforce>
+        ></SkillUP>
+        <div class="item-head">技能突破</div>
         <div class="flex-1 overflow-y-auto w-full">
           <SkillVP
             :skills="infoStore.skills"
@@ -61,7 +63,7 @@
 import { useInfoStore } from '@/stores/info'
 import SkillTree from './components/SkillTree'
 import SkillVP from './components/SkillVP'
-import SkillReinforce from './components/SkillReinforce'
+import SkillUP from './components/SkillUP'
 import { useConfigStore } from '@/stores'
 const props = defineProps<{
   alter: string
@@ -96,5 +98,12 @@ const configStore = useConfigStore()
     bottom: 2px;
     transform: translate(0, 50%);
   }
+}
+
+.item-head {
+  background: linear-gradient(#2b2817, #171407);
+  border-top: 1px solid #423d2c;
+  border-bottom: 1px solid #211d15;
+  text-align: center;
 }
 </style>

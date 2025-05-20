@@ -57,7 +57,7 @@ export default defineComponent({
           {renderList(skills.value, (item) => (
             <div class="h-140px flex items-center vp pl-26px pr-16px box-content">
               <div class="w-30px text-center text-#816f4c">{item.learnLv}</div>
-              <div class="w-200px flex gap-5px items-center">
+              <div class="w-150px flex gap-5px items-center">
                 <div class="border-1px border-solid border-#3F382E rounded-4px w-28px h-28px">
                   <img class="w-28px h-28px" src={getImageURL(item.icon)} alt={item.name} />
                 </div>
@@ -66,7 +66,7 @@ export default defineComponent({
               {renderList(2, (index) => (
                 <div
                   class={[
-                    'flex items-center flex-col vp-item',
+                    'flex items-center flex-col vp-item py-10px',
                     index == 1 ? 'ml-auto' : 'ml-2px',
                   ]}
                   onClick={() => {
@@ -75,8 +75,9 @@ export default defineComponent({
                       index,
                     ).value
                   }}
-                >
-                  <div class="flex justify-between w-full h-30px px-5px">
+                > <div class={["box-border w-full h-full pt-5px m-2px",itemChecked(item.id.toString(), index).value ? "selected": ""]} >
+                  <div class="flex justify-between w-full h-30px px-10px box-border">
+
                     <div class="flex items-start">
                       <CalcCheckbox
                         modelValue={itemChecked(item.id.toString(), index).value}
@@ -96,13 +97,15 @@ export default defineComponent({
                         src={getImageURL(item.icon)}
                         alt={item.name}
                       />
+                      <div class={`vp_${index} absolute bottom--8px left-5px z-10`}></div>
                     </div>
                     <div class="w-16px"></div>
                   </div>
-                  <div class="text-14px">{item.vps[index - 1]?.name}</div>
+                  <div class="text-13px mt-5px text-center">{item.vps[index - 1]?.name}</div>
                   {renderList(item.vps[index - 1]?.desc.split('<br/>') ?? [], (desc) => (
-                    <div class="text-12px text-#816f4c flex items-center">{desc}</div>
+                    <div class="text-12px text-#816f4c text-center leading-none">{desc}</div>
                   ))}
+                  </div>
                 </div>
               ))}
             </div>

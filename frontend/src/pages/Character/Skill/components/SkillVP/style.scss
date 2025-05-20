@@ -7,10 +7,37 @@
   }
 
   .vp-item {
-    height: 124px;
-    width: 152px;
+    height: 120px;
+    width: 148px;
+    padding:1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-image: url(./img/bg.png);
-    padding:5px 10px ;
+    // padding:5px 10px ;
     box-sizing: border-box;
+  }
+
+  .selected {
+    background-image: url(./img/selected.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: calc(100% - 2.5px) calc(100% + 2.5px);
+  }
+
+  .vp_1{
+    width: 18px;
+    height: 18px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(../img/vp_1.png);
+  }
+
+  .vp_2 {
+    width: 18px;
+    height: 18px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(../img/vp_2.png);
   }
 }

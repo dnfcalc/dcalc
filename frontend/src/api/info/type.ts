@@ -84,7 +84,7 @@ export interface ISkill {
   maxLv: number
   bind: boolean
   hasVP: boolean
-  hasReinforce: boolean
+  hasUP: boolean
   vps: {
     name: string
     desc: string

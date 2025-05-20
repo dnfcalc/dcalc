@@ -3,9 +3,10 @@
   $width: 20px,
   $height: 20px,
   $size: 100% 100%,
-  $position: center center
+  $position: center center,
+  $img-type: 'png'
 ) {
-  background-image: url('@/assets/img/icon/#{$icon-name}.png') !important;
+  background-image: url('@/assets/img/icon/#{$icon-name}.#{$img-type}') !important;
   background-repeat: no-repeat !important;
   background-size: $size !important;
   background-position: $position !important;
@@ -13,13 +14,14 @@
   height: $height !important;
 
   &:hover {
-    background-image: url('@/assets/img/icon/#{$icon-name}_hover.png') !important;
+    background-image: url('@/assets/img/icon/#{$icon-name}_hover.#{$img-type}') !important;
   }
   &:active {
-    background-image: url('@/assets/img/icon/#{$icon-name}_active.png') !important;
+    background-image: url('@/assets/img/icon/#{$icon-name}_active.#{$img-type}') !important;
+    height: $height - 2px !important;
   }
   &:disabled {
-    background-image: url('@/assets/img/icon/#{$icon-name}_disabled.png') !important;
+    background-image: url('@/assets/img/icon/#{$icon-name}_disabled.#{$img-type}') !important;
   }
 }
 
@@ -112,7 +114,7 @@
 }
 
 .icon-exchange {
-  @include icon-style('exchange', 20px, 20px, auto 100%);
+  @include icon-style('exchange', 22px, 20px, auto 100%, center center, svg);
 }
 
 

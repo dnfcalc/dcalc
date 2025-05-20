@@ -1,0 +1,75 @@
+.skill-up {
+  width: 550px;
+  // height: 334px;
+  // background-image: url('./img/bg.png');
+  // background-size: 100% 100%;
+  padding: 5px 10px;
+  padding-bottom: 10px;
+  background-color: black;
+
+  .left {
+    width: 240px;
+    height: 325px;
+    border-radius: 2px;
+    border: 1px solid #2E2E2E;
+    background: linear-gradient(to bottom, #1c1c1c 0%, #0a0d0a 100%);
+    display: flex;
+    padding: 5px 10px;
+
+    .up_head_1,
+    .up_head_2 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .icon {
+        width: 80px;
+        height: 80px;
+        background-position: center center;
+      }
+    }
+
+    .up_head_1 .icon {
+      background-image: url('./img/attack.png');
+    }
+
+    .up_head_2 .icon {
+      background-image: url('./img/cd.png');
+    }
+  }
+
+  .right {
+    .title {
+      width: 271px;
+      height: 48px;
+      background: url('./img/title.png') no-repeat center center;
+    }
+  }
+
+  .up_1,
+  .up_2,
+  .up_3,
+  .up_active {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .up_1 {
+    background: url('./img/up_1.png') no-repeat center center;
+  }
+
+  .up_2 {
+    background: url('./img/up_2.png') no-repeat center center;
+  }
+
+  .up_3 {
+    background: url('./img/up_3.png') no-repeat center center;
+  }
+
+  .up_active {
+    background: url('./img/up_active.png') no-repeat center center;
+  }
+}
