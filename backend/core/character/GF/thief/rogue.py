@@ -478,6 +478,10 @@ class Skill35(ActiveSkill):
     hit5 = 1 #TODO
     group5 = "end"
 
+    def vp_1(self):
+        self.cd = 30
+        self.skillRation *= 2
+
 
 # 雷光刃影 라이트닝 애로우
 # https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/e4c354a89c337310aeb7041d5e742828?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -554,6 +558,7 @@ class Skill38(ActiveSkill):
     maxLv = 70
     position = 8
     rangeLv = 3
+    cd = 12
     type = "passive"
     uuid = "c77a417c43de80c4ce32c1ed405d174a"
 
@@ -755,6 +760,10 @@ class Skill46(ActiveSkill):
     hit3 = 1 #TODO
     group3 = "end"
 
+    def vp_1(self):
+        self.cd = 24.9
+        self.skillRation *= 1 - 0.17
+
 
 # 月影突袭 디스트리뷰션
 # https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/e1daab884dd07fc9e70d08b83d1790eb?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -779,6 +788,10 @@ class Skill47(ActiveSkill):
     data2 = [0, 12910, 14221, 15530, 16841, 18151, 19460, 20770, 22082, 23391, 24700, 26009, 27320, 28630, 29938, 31250, 32562, 33869, 35180, 36489, 37801, 39111, 40418, 41729, 43036, 44349, 45657, 46968, 48281, 49588, 50898, 52209, 53520, 54828, 56140, 57448, 58755, 60068, 61378, 62688, 63995, 65308, 66618, 67927, 69238, 70548, 71858, 73166, 74477, 75787, 77097]# noqa: E501
     hit2 = 1 #TODO
     group2 = "end"
+
+    def vp_2(self):
+        self.cd = 25
+        self.skillRation *= 1 - 0.5
 
 # 天渊星狱 노바 램넌트
 # https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/002cbdd9bfd0f0b970451ae8d48d029e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0

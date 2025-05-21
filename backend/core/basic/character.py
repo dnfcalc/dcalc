@@ -557,11 +557,11 @@ class Character(CharacterProperty):
         for key in skills:
             skill = self.GetSkillByID(key)
             if skill is not None:
-                skill.lv += skills[key].get('lv', 0)
                 if skill.hasUP:
                     skill.up = skills[key].get('up', 0)
                 if skill.hasVP:
                     skill.vp = skills[key].get('vp', 0)
+                skill.lv = skills[key].get('lv', 0)
         pass
 
     def load_skills(self) -> None:
