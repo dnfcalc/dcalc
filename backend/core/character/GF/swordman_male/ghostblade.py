@@ -344,7 +344,6 @@ class Skill14(ActiveSkill):
     hit0 = 1 #TODO
 
     def effect(self, old, new):
-        print(self.vp)
         if self.vp == 2:
             self.associate = [{"type":"*skillRation","data":[0] + [-11]*self.maxLv,"skills":["鬼步"]}]
         return super().effect(old, new)
