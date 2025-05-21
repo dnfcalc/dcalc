@@ -469,7 +469,7 @@ class Character(CharacterProperty):
                     'bind': skill.bind,
                     'hasVP': skill.hasVP,
                     'hasUP': skill.hasUP,
-                    'vps': skill.vps,
+                    'vps': [{"name":i["name"],"desc":i["desc"]} for i in skill.vps],
                 }
             )
         info['skills'] = skillInfo

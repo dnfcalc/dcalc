@@ -39,14 +39,14 @@
         ></SkillTree>
       </div>
       <div v-if="tab === 1" class="flex flex-col overflow-y-hidden h-full">
-        <div class="item-head">技能进化</div>
+        <div class="item-head" @click="linkColg">技能进化<span class="font-bold text-white">[形态爆料演示戳我]</span></div>
         <SkillUP
           class="flex-1"
           :skills="infoStore.skills"
           v-model:lvInfo="configStore.config.skills"
           v-model:bindAwake="configStore.config.bindAwake"
         ></SkillUP>
-        <div class="item-head">技能突破</div>
+        <div class="item-head" @click="linkColg">技能突破<span class="font-bold text-white">[形态爆料演示戳我]</span></div>
         <div class="flex-1 overflow-y-auto w-full">
           <SkillVP
             :skills="infoStore.skills"
@@ -71,6 +71,10 @@ const props = defineProps<{
 const tab = ref(0)
 const infoStore = useInfoStore()
 const configStore = useConfigStore()
+
+const linkColg = () => {
+  window.open('https://bbs.colg.cn/page_collect/330.html', '_blank')
+}
 </script>
 
 <style lang="scss" scoped>
@@ -105,5 +109,9 @@ const configStore = useConfigStore()
   border-top: 1px solid #423d2c;
   border-bottom: 1px solid #211d15;
   text-align: center;
+  // 以下后面注释掉
+  height: 20px;
+  line-height: 20px;
+  font-weight: 14px;
 }
 </style>

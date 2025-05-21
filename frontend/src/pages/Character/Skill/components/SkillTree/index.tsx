@@ -12,7 +12,7 @@ export default defineComponent({
       default: () => [],
     },
     lvInfo: {
-      type: Object as PropType<Record<string, { lv: number }>>,
+      type: Object as PropType<Record<string, { lv: number; vp: number; up: number }>>,
       default: () => ({}),
     },
     bindAwake: {
@@ -63,23 +63,19 @@ export default defineComponent({
 
     const actionSkillLv = (skill: ISkill, operation: string) => {
       if (operation == 'add') {
-        lvInfo.value[skill.id.toString()] = {
-          lv: Math.min(lvInfo.value[skill.id.toString()]?.lv + 1, skill.maxLv),
-        }
+        lvInfo.value[skill.id.toString()].lv = Math.min(lvInfo.value[skill.id.toString()]?.lv + 1, skill.maxLv)
         return
       }
       if (operation == 'addMax') {
-        lvInfo.value[skill.id.toString()] = { lv: skill.maxLearnLv }
+        lvInfo.value[skill.id.toString()].lv =  skill.maxLearnLv
         return
       }
       if (operation == 'sub') {
-        lvInfo.value[skill.id.toString()] = {
-          lv: Math.max(lvInfo.value[skill.id.toString()]?.lv - 1, 0),
-        }
+        lvInfo.value[skill.id.toString()].lv = Math.max(lvInfo.value[skill.id.toString()]?.lv - 1, 0)
         return
       }
       if (operation == 'subMax') {
-        lvInfo.value[skill.id.toString()] = { lv: 0 }
+        lvInfo.value[skill.id.toString()] = { lv: 0 , vp: 0, up: 0 }
         return
       }
     }
@@ -97,6 +93,10 @@ export default defineComponent({
       return (
         <>
           <div class="relative w-35px h-55px">
+            <div class="flex w-full items-center justify-center gap-2px absolute top--18px left-1px">
+              {info?.vp > 0 && (<div class={`vp_${info.vp}`}></div>)}
+              {info?.up > 0 && (<div class={`up_${info.up}`}></div>)}
+            </div>
             {activeSkill.value == skill.id && renderSkillAction(skill)}
             <div
               class={[
