@@ -368,9 +368,10 @@ class Character(CharacterProperty):
         增加技能等级
         type: -1 全部, 0 被动, 1 主动
         """
+        skillType = 'all' if type == -1 else ('active' if type == 1 else 'passive')
         for skill in self.skills:
             if min <= skill.learnLv <= max:
-                skillType = 'all' if type == -1 else ('active' if type == 1 else 'passive')
+
                 if (skillType == 'all' or skill.type == skillType) and skill.lv > 0 and skill.name not in exceptSkills:
                     skill.lv += lv
 
@@ -388,10 +389,13 @@ class Character(CharacterProperty):
             if min <= skill.learnLv <= max and (skill.type == 'active' or skill.damage) and skill.learnLv not in exclude:
                 skill.cdRecover += cd
 
-    def SetSkillRation(self, min=1, max=100, ratio=0, type=0) -> None:
-        """设置技能倍率 0 修改技能面板 1 不修改技能面板"""
+    def SetSkillRation(self, min=1, max=100, ratio=0, type=-1) -> None:
+        """设置技能倍率
+        0 修改技能面板 1 不修改技能面板
+        type: -1 全部, 0 被动, 1 主动
+        """
         for skill in self.skills:
-            if min <= skill.learnLv <= max and skill.damage:
+            if min <= skill.learnLv <= max and skill.damage and skill.type == 'active':
                 if type == 0:
                     skill.skillRation *= 1 + ratio
                 else:

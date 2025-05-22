@@ -202,13 +202,8 @@ class Skill10(ActiveSkill):
     data0 = [0, 2011, 2217, 2421, 2627, 2829, 3033, 3237, 3441, 3647, 3851, 4056, 4259, 4463, 4667, 4871, 5076, 5280, 5486, 5688, 5892, 6096, 6302, 6506, 6710, 6914, 7118, 7322, 7526, 7732, 7934, 8140, 8344, 8548, 8752, 8956, 9160, 9364, 9569, 9773, 9979, 10181, 10384, 10589, 10793, 10999, 11203, 11409, 11611, 11815, 12019, 12225, 12429, 12633, 12837, 13041, 13245, 13449, 13654, 13858, 14062, 14266, 14470, 14674, 14878, 15084, 15286, 15492, 15696, 15902, 16104]# noqa: E501
     hit0 = 3
 
-    def skillInfo(self, mode: str | None = None):
-        pre = self.char.GetSkillByName("鬼连斩")
-        self.lv = pre.lv
-        cd = pre.getSkillCD()
-        res = super().skillInfo(mode)
-        return res[0],res[1],cd
-
+    def getSkillCD(self):
+      return self.char.GetSkillByName("鬼连斩").getSkillCD()
 
 # 魂破斩 혼백참
 # https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/87a918bb22cfc959a16e0bf939bb6c24?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
