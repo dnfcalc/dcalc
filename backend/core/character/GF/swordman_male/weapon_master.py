@@ -1237,7 +1237,7 @@ class classChange(Character):
         """
         for skill in self.skills:
             # 四个武器精通不享受技能范围等级加成
-            if min <= skill.learnLv <= max and skill.name not in  ['太刀精通', '巨剑精通', '短剑精通', '钝器精通'] + exceptSkills:
+            if min <= skill.learnLv <= max and skill.name not in  ['太刀精通', '巨剑精通', '短剑精通', '钝器精通', '光剑精通'] + exceptSkills:
                 skillType = 'all' if type == -1 else ('active' if type == 1 else 'passive')
                 if (skillType == 'all' or skill.type == skillType) and skill.lv > 0:
                     skill.lv += lv
