@@ -50,6 +50,9 @@ class 装扮:
     套装: str
     选项集合: tuple[str]
 
+    def __init__(self, id: int):
+        self.id = id
+
     def 效果(self, 角色, 选项: str):
         if 选项 in self.选项集合:
             数值 = 装扮选项属性[self.品质][选项]
@@ -239,7 +242,7 @@ class 高级装扮鞋(装扮):
 高级装扮集合 = (高级装扮头发, 高级装扮帽子, 高级装扮脸部, 高级装扮胸部,
           高级装扮上衣, 高级装扮腰带, 高级装扮下装, 高级装扮鞋)
 
-装扮集合 = tuple(map(lambda x: x(), (神器装扮集合 + 稀有装扮集合 + 高级装扮集合)))
+装扮集合 = tuple(map(lambda x: x[1](x[0]), enumerate(神器装扮集合 + 稀有装扮集合 + 高级装扮集合)))
 
 
 class 装扮套装:
@@ -257,7 +260,6 @@ class 神器装扮3(装扮套装):
     所需数量 = 3
 
     def 效果(self, 属性):
-        # print("effect unique suit 3")
         属性.SetStatus(四维=50, 三速=0.03)
 
 
@@ -268,7 +270,6 @@ class 神器装扮8(装扮套装):
     所需数量 = 8
 
     def 效果(self, 属性):
-        # print("effect unique suit 8")
         属性.SetStatus(四维=50, 三速=0.03)
         属性.AddElementDB('火',10)
         属性.AddElementDB('光',10)
@@ -284,7 +285,6 @@ class 稀有装扮3(装扮套装):
     所需数量 = 3
 
     def 效果(self, 属性):
-        # print("effect rare suit 3")
         属性.SetStatus(四维=40, 三速=0.02)
 
 
@@ -294,7 +294,6 @@ class 稀有装扮8(装扮套装):
     所需数量 = 8
 
     def 效果(self, 属性):
-        # print("effect rare suit 8")
         属性.SetStatus(四维=40, 三速=0.02)
         属性.AddElementDB('火',6)
         属性.AddElementDB('光',6)
@@ -317,7 +316,6 @@ class 高级装扮3(装扮套装):
     所需数量 = 3
 
     def 效果(self, 属性):
-        # print("effect uncommon suit 3")
         属性.SetStatus(四维=10)
 
 
@@ -327,7 +325,6 @@ class 高级装扮8(装扮套装):
     所需数量 = 8
 
     def 效果(self, 属性):
-        # print("effect uncommon suit 8")
         属性.SetStatus(四维=10, 三速=0.01)
 
 
@@ -351,7 +348,7 @@ def get_dress_list(skills_coat:list[str] = [],skills_pants:list[str] = []) -> di
         elif dress.部位 == "下装":
             选项集合 = 选项集合 + tuple(skills_pants)
         data = {}
-        data["id"] = len(dress_list[部位])
+        data["id"] = dress.id
         data["options"] = 选项集合
         data["part"] = 部位
         data["rarity"] = dress.品质
