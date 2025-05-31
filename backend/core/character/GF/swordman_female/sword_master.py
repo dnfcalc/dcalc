@@ -772,7 +772,11 @@ class Skill29(ActiveSkill):
     def skillInfo(self, mode = None):
         basic =  super().skillInfo(mode)
         # 魔剑奥义单独计算 不享受飓风魔剑特化部分
-        magic = self.char.GetSkillByName("魔剑奥义").skillInfo("暗火")
+        weapon = self.char.GetWeaponType()
+        if weapon[0] == '短剑':
+            magic = self.char.GetSkillByName("魔剑奥义").skillInfo("暗火")
+        else:
+            magic = self.char.GetSkillByName("魔剑奥义").skillInfo("火/暗")
         return basic[0] + magic[0] * magic[1] * self.magicHit / basic[1],basic[1],basic[2]
 
     def vp_1(self):
