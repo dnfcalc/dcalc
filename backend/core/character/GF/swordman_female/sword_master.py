@@ -767,9 +767,7 @@ class Skill29(ActiveSkill):
         # 魔剑层数对飓风魔剑的加成，但是不加成暗刀的额外部分伤害
         self.power0 *= 1 + self.magicHit * self.magicPower
         self.power1 *= 1 + self.magicHit * self.magicPower
-        self.dataplus2 = self.dataplus0
-        self.hitplus2 = 10
-        self.powerplus2 = (0.09 + self.lv / 100) * self.ratioplus0
+        self.powerplus0 = (0.09 + self.lv / 100)
 
     def skillInfo(self, mode = None):
         basic =  super().skillInfo(mode)
