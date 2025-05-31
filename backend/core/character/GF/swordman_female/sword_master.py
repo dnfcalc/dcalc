@@ -185,11 +185,6 @@ class Skill8(PassiveSkill):
         {"type":"+power_sub","data":data2,"skills":["魔剑奥义"],"weapon":["短剑"]},
         {"type":"*skillRation","data":data3,"skills":["魔剑奥义"],"weapon":["短剑"]},
         {"type":"*cdReduce","data":data4,"skills":["魔剑奥义"],"weapon":["短剑"]},
-        # 飓风魔剑的奥义部分 在短精的情况下 才存在副刀
-        {"type":"+powerplus1","data":data2,"skills":["飓风魔剑"],"weapon":["短剑"]},
-        # fix 飓风魔剑的奥义部分 可以享受到短剑精通的加成
-        {"type":"*ratioplus0","data":data3,"skills":["飓风魔剑"],"weapon":["短剑"]},
-        {"type":"*ratioplus1","data":data3,"skills":["飓风魔剑"],"weapon":["短剑"]},
         ]
 
 # 血影之太刀精通 쾌속의 도 마스터리
@@ -433,7 +428,6 @@ class Skill19(ActiveSkill):
 
     associate = [
         {"type":"+dataplus0","data":data7,"skills":["飓风魔剑"],"ratio":1},
-        {"type":"+dataplus1","data":data2,"skills":["飓风魔剑"],"ratio":1},
     ]
 
     def setMode(self, mode):
@@ -764,27 +758,24 @@ class Skill29(ActiveSkill):
     magicHit = 5
     magicPower = 0.03
 
-    # 魔剑奥义部分 默认暗火
+    # 暗魔剑部分的特殊逻辑
     dataplus0 = 0
-    hitplus0 = 5
+    hitplus0 = 10
     powerplus0 = 1
-    ratioplus0 = 1
-
-    dataplus1 = 0
-    hitplus1 = 5
-    powerplus1 = 0
-    ratioplus1 = 1
 
     def setMode(self, mode: str | None = None):
+        # 魔剑层数对飓风魔剑的加成，但是不加成暗刀的额外部分伤害
         self.power0 *= 1 + self.magicHit * self.magicPower
         self.power1 *= 1 + self.magicHit * self.magicPower
-        self.hitplus0 = self.hitplus1 = self.magicHit
-        self.powerplus0 = self.powerplus0 * self.ratioplus0
-        self.powerplus1 = self.powerplus1 * self.ratioplus1
-        # 暗魔剑部分的特殊逻辑
         self.dataplus2 = self.dataplus0
         self.hitplus2 = 10
         self.powerplus2 = (0.09 + self.lv / 100) * self.ratioplus0
+
+    def skillInfo(self, mode = None):
+        basic =  super().skillInfo(mode)
+        # 魔剑奥义单独计算 不享受飓风魔剑特化部分
+        magic = self.char.GetSkillByName("魔剑奥义").skillInfo("暗火")
+        return basic[0] + magic[0] * magic[1] * self.magicHit / basic[1],basic[1],basic[2]
 
     def vp_1(self):
         self.magicHit = 3

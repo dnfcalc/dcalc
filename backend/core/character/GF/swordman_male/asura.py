@@ -735,7 +735,7 @@ class classChange(Character):
     def __init__(self, equVersion):
 
         self.name = 'asura'
-        self.nameCN = '阿修罗'
+        self.nameCN = '极诣·阿修罗'
         self.role = 'swordman_male'
 
         self.武器选项 = ['太刀', '钝器', '巨剑', '短剑']

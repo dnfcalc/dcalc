@@ -161,7 +161,7 @@ adv = [
             {'id': 0, 'name': 'elven_knight', 'title': '皓曦·精灵骑士', 'open': False},
             {'id': 1, 'name': 'chaos', 'title': '皓曦·混沌魔灵', 'open': False},
             {'id': 2, 'name': 'paladin', 'title': '皓曦·帕拉丁', 'open': False},
-            {'id': 3, 'name': 'dragon_knight', 'title': '皓曦·龙骑士', 'open': False},
+            {'id': 3, 'name': 'dragon_knight', 'title': '皓曦·龙骑士', 'open': True, 'class': 'GF.knight.dragon_knight'},
             {'id': 4, 'name': 'empty', 'title': ''},
         ],
     },

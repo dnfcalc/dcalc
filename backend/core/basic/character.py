@@ -957,6 +957,15 @@ class Character(CharacterProperty):
                     'mode':''
                 }
             )
+        # 合并相同 name、cd、damage 的项
+        # merged = {}
+        # for skill in skillInfos:
+        #     key = (skill['name'], skill['cd'], skill['damage'])
+        #     if key not in merged:
+        #         merged[key] = skill.copy()
+        #     else:
+        #         merged[key]['mode'] = ''
+        # skillInfos = list(merged.values())
         return skillInfos
 
     def get_carry_info(self):
