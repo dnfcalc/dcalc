@@ -97,45 +97,49 @@ export default defineComponent({
                     </div>
                   </div>
                   <div class="flex flex-col gap-5px px-20px py-10px">
-                  {renderList(3, (index) => (
-                    <>
-                      <div class="flex items-center w-full justify-between">
-                        <div class={ `up_${!itemChecked(index, 1).value ? index : 'active'}`}>
-                          <CaclIconSelect
-                            v-model:modelValue={itemChecked(index, 1).value}
-                            class="!bg-white/0 !border-white/0"
-                            columnNum={4}
-                          >
-                            {renderList(skills(index).value, (item) => (
-                              <>
-                                <CalcOption value={item.id.toString()}>
-                                  <img src={getImageURL(item.icon)} alt={item.name} />
+                    {renderList(3, (index) => (
+                      <>
+                        <div class="flex items-center w-full justify-between">
+                          <div class={`up_${!itemChecked(index, 1).value ? index : 'active'}`}>
+                            <CaclIconSelect
+                              v-model:modelValue={itemChecked(index, 1).value}
+                              class="!bg-white/0 !border-white/0"
+                              columnNum={4}
+                            >
+                              {
+                                <CalcOption value={'0'}>
+                                  <div class="w-28px h-28px"></div>
                                 </CalcOption>
-                              </>
-                            ))}
-                          </CaclIconSelect>
+                              }
+                              {renderList(skills(index).value, (item) => (
+                                <>
+                                  <CalcOption value={item.id.toString()}>
+                                    <img src={getImageURL(item.icon)} alt={item.name} />
+                                  </CalcOption>
+                                </>
+                              ))}
+                            </CaclIconSelect>
+                          </div>
+                          <CalcButton icon="exchange" onClick={() => exchange(index)}></CalcButton>
+                          <div class={`up_${!itemChecked(index, 2).value ? index : 'active'}`}>
+                            <CaclIconSelect
+                              v-model:modelValue={itemChecked(index, 2).value}
+                              class=" !bg-white/0 !border-white/0"
+                              columnNum={4}
+                            >
+                              {renderList(skills(index).value, (item) => (
+                                <>
+                                  <CalcOption value={item.id.toString()}>
+                                    <img src={getImageURL(item.icon)} alt={item.name} />
+                                  </CalcOption>
+                                </>
+                              ))}
+                            </CaclIconSelect>
+                          </div>
                         </div>
-                        <CalcButton icon="exchange" onClick={() => exchange(index)}></CalcButton>
-                        <div class={ `up_${!itemChecked(index, 2).value ? index : 'active'}`}>
-                          <CaclIconSelect
-                          v-model:modelValue={itemChecked(index, 2).value}
-                          class=" !bg-white/0 !border-white/0"
-                          columnNum={4}
-                        >
-                          {renderList(skills(index).value, (item) => (
-                            <>
-                              <CalcOption value={item.id.toString()}>
-                                <img src={getImageURL(item.icon)} alt={item.name} />
-                              </CalcOption>
-                            </>
-                          ))}
-                        </CaclIconSelect>
-                        </div>
-                      </div>
-                    </>
-                  ))}
+                      </>
+                    ))}
                   </div>
-
                 </div>
               </div>
               <div class="right">
