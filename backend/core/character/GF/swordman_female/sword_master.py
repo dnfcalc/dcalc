@@ -770,6 +770,8 @@ class Skill29(ActiveSkill):
         self.powerplus0 = (0.09 + self.lv / 100)
 
     def skillInfo(self, mode = None):
+        return super().skillInfo(mode)
+        # 暂不在此处计算魔剑奥义伤害，容易误解
         basic =  super().skillInfo(mode)
         # 魔剑奥义单独计算 不享受飓风魔剑特化部分
         weapon = self.char.GetWeaponType()
