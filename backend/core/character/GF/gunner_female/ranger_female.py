@@ -292,9 +292,9 @@ class Skill24(ActiveSkill):
 
     damage = False
 
-    def getSkillCD(self):
+    def getSkillCD(self,mode=None):
         self.cd = self.cds[self.lv]
-        return super().getSkillCD()
+        return super().getSkillCD(mode)
 
 
 # 花式枪术 스타일리쉬

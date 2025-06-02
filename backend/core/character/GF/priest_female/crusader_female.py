@@ -363,7 +363,7 @@ class Skill18(ActiveSkill):
     mp = [200, 1680]
     uuid = "a6c8f69107f8c4f5d1a0c7a57d000290"
 
-    def getSkillCD(self):
+    def getSkillCD(self,mode=None):
         return 0
 
 # 神光十字 그랜드 크로스 크래쉬

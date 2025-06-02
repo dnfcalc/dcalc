@@ -196,7 +196,7 @@ class Skill23(ActiveSkill):
             self.hit3 = 10
             self.hit2 = 0
 
-    def getSkillCD(self):
+    def getSkillCD(self,mode=None):
         return 1.0
 
 # 蓄念炮 축염포

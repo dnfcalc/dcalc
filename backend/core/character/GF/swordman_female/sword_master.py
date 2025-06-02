@@ -84,7 +84,7 @@ class Skill3(ActiveSkill):
 
     damage = False
 
-    def getSkillCD(self):
+    def getSkillCD(self,mode=None):
         self.cd = self.cdList[self.lv]
         return super().getSkillCD()
 
@@ -154,7 +154,7 @@ class Skill6(ActiveSkill):
         elif mode == "暗":
             self.hit7 = 4
 
-    def getSkillCD(self):
+    def getSkillCD(self,mode=None):
         return 1.0
 
 # 魔性之短剑精通 속성의 소검 마스터리

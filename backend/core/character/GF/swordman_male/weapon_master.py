@@ -237,7 +237,7 @@ class Skill6(ActiveSkill):
         # 刺伤期望伤害 (17层引爆上限) / 17 (17层结算1次爆炸) * 刺伤触发几率
         return self.data6[lv] * 1 / 17 * self.data4[lv] / 100
 
-    def getSkillCD(self):
+    def getSkillCD(self,mode=None):
         return 1.0
 # 巨剑精通 대검 마스터리
 # https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/8c2379737c5acc935c1731f67f607655?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0

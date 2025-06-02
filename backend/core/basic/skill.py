@@ -219,7 +219,7 @@ class ActiveSkill(Skill):
             basic.setMode(mode)
         basic.setVP()
         date = basic.getSkillData(self.lv)
-        cd = basic.getSkillCD()
+        cd = basic.getSkillCD(mode)
         return date * basic.skillRation , basic.skillDamage ,cd
 
     def setMode(self, mode: str):
@@ -286,7 +286,7 @@ class ActiveSkill(Skill):
             cdr = 0.05
         return 1 - cdr
 
-    def getSkillCD(self):
+    def getSkillCD(self,mode=None):
         return max(0,round(max(
             self.cd * 0.3,
             self.cd * self.cdReduce / self.cdRecover * self.getWeaponCDRatio() * self.getQuickCDRatio()) * self.cdRatio
@@ -342,7 +342,7 @@ class BuffSkill(Skill):
     CarryRatio: list[float] = []
     """对C的额外增伤倍率"""
 
-    def getSkillCD(self):
+    def getSkillCD(self,mode=None):
         return '-'
 
     def skillInfo(self, mode: str | None = None):
@@ -363,7 +363,7 @@ class BuffSkill(Skill):
             value = 0 if lv > len(self.Vitality) else self.Vitality[lv]
         elif self.char.适用属性 == '精神':
             value = 0 if lv > len(self.Spirit) else self.Spirit[lv]
-        return value,[value1,self.ATKRatio,self.ATKPLUS],[value2,self.STRINTRatio,self.STRINTPLUS],value3,self.getSkillCD()
+        return value,[value1,self.ATKRatio,self.ATKPLUS],[value2,self.STRINTRatio,self.STRINTPLUS],value3,self.getSkillCD(mode)
 
 class PassiveBufferSkill(BuffSkill):
     type: str = 'passive'
@@ -393,7 +393,7 @@ class ActiveBufferSkill(BuffSkill):
             cdr = 0.05
         return 1 - cdr
 
-    def getSkillCD(self):
+    def getSkillCD(self,mode=None):
         return max(0,round(max(
             self.cd * 0.3,
             self.cd * self.cdReduce / self.cdRecover * self.getWeaponCDRatio() * self.getQuickCDRatio(),1)

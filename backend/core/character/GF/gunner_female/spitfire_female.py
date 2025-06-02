@@ -201,7 +201,7 @@ class Skill9(ActiveSkill):
     data0 = [0, 1034, 1200, 1364, 1528, 1693, 1857, 2021, 2187, 2352, 2516, 2682, 2846, 3010, 3175, 3339, 3505, 3671, 3835, 4000, 4164]# noqa: E501
     hit0 = 1
 
-    def getSkillCD(self):
+    def getSkillCD(self,mode=None):
         if self.char.charEquipInfo['武器'].equInfo is None:
             return 0.14
         if self.char.charEquipInfo['武器'].equInfo.itemDetailType == '手弩':

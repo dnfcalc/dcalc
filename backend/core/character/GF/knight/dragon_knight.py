@@ -499,7 +499,7 @@ class Skill34(ActiveSkill):
 
     associate = [{"data":data0}]
 
-    def getSkillCD(self):
+    def getSkillCD(self,mode=None):
         return 3.0
 
 

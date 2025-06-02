@@ -12609,6 +12609,7 @@ def equ_2000(char: CharacterProperty):
     skillAttack = 0.1 * point - (point // 25) * 0.1 + (0.5 if point >= 25 else 0) + (0.6 if point >=50 else 0) + (0.6 if point >=75 else 0) + (1.8 if point >=100 else 0)
     buffer = 30 * point - (point // 25) * 30 + (390 if point >= 25 else 0) + (420 if point >=50 else 0) + (420 if point >=75 else 0) + (540 if point >=100 else 0)
     char.SetStatus(SkillAttack=skillAttack/100,Buffer=buffer)
+    char.SetSkillCD(cd=0.15)
     effect = (point // 25) * 0.5
     if effect > 0:
         char.equ_effect.append(EquEffect(name='地震波', icon='/equipment/icon/special/magicstone/00417.png', cd=30, data=45900*effect))
@@ -12654,6 +12655,7 @@ def equ_2001(char: CharacterProperty):
     skillAttack = 0.1 * point - (point // 25) * 0.1 + (0.5 if point >= 25 else 0) + (0.6 if point >=50 else 0) + (0.6 if point >=75 else 0) + (1.8 if point >=100 else 0)
     buffer = 30 * point - (point // 25) * 30 + (390 if point >= 25 else 0) + (420 if point >=50 else 0) + (420 if point >=75 else 0) + (540 if point >=100 else 0)
     char.SetStatus(SkillAttack=skillAttack/100,Buffer=buffer)
+    char.SetSkillCD(cd=0.15)
     char.SetSkillCD(cd=0.04)
     cd = (point // 25) * 0.04
     if cd > 0:

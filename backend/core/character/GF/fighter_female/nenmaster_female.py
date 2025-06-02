@@ -239,7 +239,7 @@ class Skill12(ActiveSkill):
         {"type":"*skillRation","data":data1,"ratio":100/2}
     ]
 
-    def getSkillCD(self):
+    def getSkillCD(self,mode=None):
         # 攻击间隔时间
         return 0.5
 
