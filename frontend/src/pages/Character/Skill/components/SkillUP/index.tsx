@@ -19,6 +19,10 @@ export default defineComponent({
       type: Object as PropType<Record<string, { lv: number; up: number }>>,
       default: () => ({}),
     },
+    buffer:{
+      type: Boolean,
+      default: false,
+    }
   },
   setup(props) {
     const lvInfo = useVModel(props, 'lvInfo')
@@ -107,7 +111,7 @@ export default defineComponent({
                               columnNum={4}
                             >
                               {
-                                <CalcOption value={'0'}>
+                                <CalcOption value={'-1'}>
                                   <div class="w-28px h-28px"></div>
                                 </CalcOption>
                               }
@@ -170,13 +174,23 @@ export default defineComponent({
                       let tooltip = ''
                       if (skill) {
                         if (lvInfo.value[skill.id.toString()].up == 1) {
-                          tooltip = `技能攻击力   +${skill.learnLv < 35 ? '60' : 55}%`
+                          if(skill.upType == 'damage') {
+                            tooltip = `技能攻击力 +${skill.learnLv < 35 ? '60' : 55}%`
+                          }else{
+                            tooltip = `生命值恢复量 +20%`
+                          }
                         }
                         if (lvInfo.value[skill.id.toString()].up == 2) {
-                          tooltip = `技能冷却时间 -15%<br/>技能攻击力 +${skill.learnLv < 35 ? '43' : 38}%`
+                          if(skill.upType == 'damage') {
+                            tooltip = `技能冷却时间 -15%<br/>技能攻击力 +${skill.learnLv < 35 ? '43' : 38}%`
+                          }else{
+                            tooltip = `技能冷却时间 -10%<br/>生命值恢复量 +5%`
+                          }
                         }
                       }
-
+                      if (props.buffer) {
+                        tooltip += ` / 主属性 +40`
+                      }
                       return skill ? (
                         <div class="flex gap-10px items-center bg-[linear-gradient(180deg,_#1b1c1c_0%,_#000000_100%)] rounded-4px p-5px border-1px border-solid border-#2E2E2E">
                           <div class="up_1 !w-38px !h-38px">

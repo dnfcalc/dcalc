@@ -441,6 +441,7 @@ class Character(CharacterProperty):
         info['name'] = self.nameCN
         info['weapons'] = self.武器选项
         info['subweapons'] = self.副武器选项
+        info['buffer'] = self.buffer
         if self.buffer:
             info['properties'] = self.防具精通属性
         info['properties'] = self.输出类型选项
@@ -473,6 +474,7 @@ class Character(CharacterProperty):
                     'bind': skill.bind,
                     'hasVP': skill.hasVP,
                     'hasUP': skill.hasUP,
+                    'upType': skill.upType,
                     'vps': [{"name":i["name"],"desc":i["desc"]} for i in skill.vps],
                 }
             )

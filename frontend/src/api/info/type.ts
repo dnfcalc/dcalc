@@ -24,6 +24,7 @@ export interface ICharacterInfo {
   role: string
   alter: string
   name: string
+  buffer: boolean
   equVersion: string
   equips: IEquipment[]
   properties: string[]
@@ -89,6 +90,7 @@ export interface ISkill {
     name: string
     desc: string
   }[]
+  upType:'damage' |'heal'`
 }
 
 export interface ISuit {

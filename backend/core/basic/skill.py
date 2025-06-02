@@ -77,6 +77,7 @@ class Skill:
     """是否有VP形态"""
     hasUP: bool = None
     """是否有技能强化"""
+    upType: Literal['damage','buff', 'heal'] = 'damage'
     vps: list = []
 
     def __init__(self, char):
@@ -234,6 +235,8 @@ class ActiveSkill(Skill):
     def setUP(self):
         if not self.hasUP:
             return
+        if self.char.buffer:
+            self.char.SetStatus(四维=40)
         if self.up == 1:
             if self.learnLv < 35:
                 self.skillRation *= 1.6
@@ -341,6 +344,20 @@ class BuffSkill(Skill):
 
     CarryRatio: list[float] = []
     """对C的额外增伤倍率"""
+    vp:int = 0
+    """技能VP形态"""
+    up:int = 0
+    """技能强化"""
+    def __init__(self, char):
+        super().__init__(char)
+        keys = [key.replace("data","") for key in dir(self) if key.startswith('data') and not key.startswith('plus')]
+        for i in keys:
+            power = getattr(self, f'power{i}', None)
+            if power is None:
+                setattr(self, f'power{i}', 1)
+            hit = getattr(self, f'hit{i}', None)
+            if hit is None:
+                setattr(self, f'hit{i}', 0)
 
     def getSkillCD(self,mode=None):
         return '-'
@@ -355,6 +372,8 @@ class BuffSkill(Skill):
         value1 = 0 if lv > len(self.ATK) else self.ATK[lv]
         value2 = 0 if lv > len(self.STRINT) else self.STRINT[lv]
         value3 = 0 if lv > len(self.CarryRatio) else self.CarryRatio[lv]
+        self.setUP()
+        self.setVP()
         if  self.char.适用属性 == '智力':
             value = 0 if lv > len(self.INT) else self.INT[lv]
         elif self.char.适用属性 == '力量':
@@ -365,13 +384,31 @@ class BuffSkill(Skill):
             value = 0 if lv > len(self.Spirit) else self.Spirit[lv]
         return value,[value1,self.ATKRatio,self.ATKPLUS],[value2,self.STRINTRatio,self.STRINTPLUS],value3,self.getSkillCD(mode)
 
+    def setVP(self):
+        if self.vp == 1:
+            self.vp_1()
+        elif self.vp == 2:
+            self.vp_2()
+
+    def setUP(self):
+        if not self.hasUP:
+            return
+        if self.char.buffer and self.up > 0:
+            self.char.SetStatus(四维=40)
+        if self.up == 1:
+            ...
+        elif self.up == 2:
+            if self.upType == 'damage':
+                self.cdReduce *= 1 - 0.15
+            elif self.upType == 'heal':
+                self.cdReduce *= 1 - 0.1
+
 class PassiveBufferSkill(BuffSkill):
     type: str = 'passive'
 
 
 class ActiveBufferSkill(BuffSkill):
     type: str = 'active'
-
 
     def getWeaponCDRatio(self):
         weapon = self.char.charEquipInfo['武器'].equInfo

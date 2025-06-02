@@ -45,6 +45,7 @@
           :skills="infoStore.skills"
           v-model:lvInfo="configStore.config.skills"
           v-model:bindAwake="configStore.config.bindAwake"
+          :buffer="infoStore.infos?.buffer"
         ></SkillUP>
         <div class="item-head" @click="linkColg">技能突破<span class="font-bold text-white">[形态爆料演示戳我]</span></div>
         <div class="flex-1 overflow-y-auto w-full">
