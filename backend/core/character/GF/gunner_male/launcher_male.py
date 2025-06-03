@@ -287,7 +287,7 @@ class Skill18(ActiveSkill):
     cd = 15
     mp = [50, 630]
     uuid = "762c4e6d030eaf0abbfe1fec2b298574"
-    vp = [
+    vps = [
           {
             "name": "集束榴弹",
             "desc": "施放时间减少",
@@ -316,7 +316,7 @@ class Skill19(ActiveSkill):
     cd = 20
     mp = [164, 1376]
     uuid = "38612d8f2561edc2eb68d5057a837bfa"
-    vp = [
+    vps = [
           {
             "name": "模式 : 追踪",
             "desc": "追踪<br/>取消僵直",
@@ -358,7 +358,7 @@ class Skill21(ActiveSkill):
     cd = 18
     mp = [164, 1376]
     uuid = "e4c354a89c337310aeb7041d5e742828"
-    vp = [
+    vps = [
           {
             "name": "弹雨骤袭",
             "desc": "施放时间减少<br/>追踪",
@@ -399,7 +399,7 @@ class Skill22(ActiveSkill):
     cd = 45
     mp = [350, 2940]
     uuid = "47bd4871f29defc2a0021ee9261d7a5b"
-    vp = [
+    vps = [
           {
             "name": "弱点轰击",
             "desc": "施放时间减少<br/>所受伤害减少<br/>范围增加",
@@ -468,7 +468,7 @@ class Skill25(ActiveSkill):
     cd = 30
     mp = [400, 1120]
     uuid = "2a0a39184de92acf1c1375e00b77404c"
-    vp = [
+    vps = [
           {
             "name": "激光安全放射",
             "desc": "施放时间减少<br/>所受伤害减少",
@@ -499,7 +499,7 @@ class Skill26(ActiveSkill):
     cd = 50
     mp = [800, 1680]
     uuid = "9dc8438e4572d39243c97da31c113acc"
-    vp = [
+    vps = [
           {
             "name": "破空追猎炮",
             "desc": "施放时间减少<br/>可多次发动",
@@ -537,7 +537,7 @@ class Skill27(ActiveSkill):
     cd = 40
     mp = [580, 4500]
     uuid = "dac8d8207618150c162e4c6f9e168527"
-    vp = [
+    vps = [
           {
             "name": "地脉毁灭者",
             "desc": "施放时间减少<br/>未命中时缩短冷却时间",
@@ -595,7 +595,7 @@ class Skill29(ActiveSkill):
     cd = 45
     mp = [824, 6180]
     uuid = "ef9d26746effee9199b54541f01b8752"
-    vp = [
+    vps = [
           {
             "name": "超新星爆炸",
             "desc": "施放时间减少<br/>范围增加",
