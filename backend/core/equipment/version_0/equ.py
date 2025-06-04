@@ -12583,8 +12583,8 @@ def equ_2000(char: CharacterProperty):
     <维纳斯的恩宠>
     穿戴的最高套装积分达到2100点以上时，才能发挥能力。
     套装积分达到2550以上时，会发动更强的效果。
-    技能伤害+48.7%
-    增益量12180
+    技能伤害+53.9%
+    增益量12530
 
     精度
     精度100%时，技能伤害+13.1%，增益量4650
@@ -12603,7 +12603,7 @@ def equ_2000(char: CharacterProperty):
         char.SetStatus(SkillAttack=0.378,Buffer=12180)
         pass
     if char.max_point >= 2550:
-        char.SetStatus(SkillAttack=0.487,Buffer=12180)
+        char.SetStatus(SkillAttack=0.539,Buffer=12530)
         pass
     point = char.charEquipInfo['魔法石'].precision
     skillAttack = 0.1 * point - (point // 25) * 0.1 + (0.5 if point >= 25 else 0) + (0.6 if point >=50 else 0) + (0.6 if point >=75 else 0) + (1.8 if point >=100 else 0)
@@ -12649,7 +12649,7 @@ def equ_2001(char: CharacterProperty):
         char.SetStatus(SkillAttack=0.384,Buffer=11220)
         pass
     if char.max_point >= 2550:
-        char.SetStatus(SkillAttack=0.494,Buffer=12180)
+        char.SetStatus(SkillAttack=0.494 + 0.052,Buffer=12180+350)
         pass
     point = char.charEquipInfo['耳环'].precision
     skillAttack = 0.1 * point - (point // 25) * 0.1 + (0.5 if point >= 25 else 0) + (0.6 if point >=50 else 0) + (0.6 if point >=75 else 0) + (1.8 if point >=100 else 0)

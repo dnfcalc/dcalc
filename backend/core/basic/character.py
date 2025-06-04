@@ -654,7 +654,8 @@ class Character(CharacterProperty):
         # 太初积分以上，每超过70点数增加1%技能攻击力
         if self.max_point >= 2550:
             skillAttack = (self.max_point - 2550) // 70 * 0.01
-            self.SetStatus(SkillAttack=skillAttack)
+            buffer =  (self.max_point - 2550) // 70 * 100
+            self.SetStatus(SkillAttack=skillAttack,buffer=buffer)
         return res
 
     def calc_equs(self):
