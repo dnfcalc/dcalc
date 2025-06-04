@@ -27,8 +27,8 @@
           <div class="flex w-120px items-center gap-10px">
             <div class="w-28px h-28px relative">
               <img :src="getImageURL(skill.icon)" alt="" class="w-28px h-28px" />
-              <div v-if="skill.lv" class="skill-lv-min" :data-text="`Lv ${skill.lv}`">
-                Lv {{ skill.lv }}
+              <div v-if="skill.lv" class="skill-lv-min" :data-text="`${skill.lv}`">
+                {{ skill.lv }}
               </div>
             </div>
             <div>{{ skill.name }}</div>
