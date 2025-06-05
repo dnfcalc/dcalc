@@ -190,7 +190,6 @@ class Skill14(ActiveSkill):
     rangeLv = 2
     mp = [40, 336]
     uuid = "c77a417c43de80c4ce32c1ed405d174a"
-    hasUP = False
 
     data0 = [0, 765, 843, 920, 998, 1076, 1154, 1231, 1309, 1387, 1464, 1542, 1620, 1698, 1775, 1853, 1931, 2008, 2086, 2164, 2241, 2319, 2397, 2475, 2552, 2630, 2708, 2785, 2863, 2941, 3019, 3096, 3174, 3252, 3329, 3407, 3485, 3562, 3640, 3718, 3796, 3873, 3951, 4029, 4106, 4184, 4262, 4340, 4417, 4495, 4573, 4650, 4728, 4806, 4882, 4961, 5039, 5117, 5194, 5272, 5350, 5426, 5505, 5583, 5661, 5738, 5816, 5894, 5970, 6049, 6127]# noqa: E501
     hit0 = 1/2 #每2.0s一次
@@ -199,11 +198,6 @@ class Skill14(ActiveSkill):
 
     def getSkillCD(self,mode=None):
         return 1.0
-
-    def setUP(self):
-        self.hasUP = True
-        self.up = self.char.GetSkillByName("G-1科罗纳").up
-        return super().setUP()
 
     associate = [{"data":data4,"type":"+power0","skills":["G-1科罗纳","改装 : G-3捕食者"]}]
 
@@ -252,7 +246,6 @@ class Skill17(ActiveSkill):
     rangeLv = 2
     mp = [50, 420]
     uuid = "ecc23c980ea71450c0ad0c3fd232f329"
-    hasUP = False
 
     data0 = [0, 197, 218, 238, 258, 279, 299, 318, 338, 359, 379, 400, 420, 439, 459, 479, 500, 520, 541, 561, 580, 600, 621, 641, 661, 682, 700, 721, 741, 762, 782, 802, 823, 842, 862, 882, 903, 923, 944, 962, 983, 1003, 1023, 1044, 1064, 1085, 1103, 1124, 1144, 1165, 1185, 1205, 1224, 1244, 1265, 1285, 1306, 1326, 1346, 1365, 1386, 1406, 1426, 1447, 1467, 1486, 1506, 1527, 1547, 1567, 1588]# noqa: E501
     hit0 = 2/ 0.5 #每0.5s2次
@@ -263,11 +256,6 @@ class Skill17(ActiveSkill):
 
     def getSkillCD(self,mode=None):
         return 1.0
-
-    def setUP(self):
-        self.hasUP = True
-        self.up = self.char.GetSkillByName("G-1科罗纳").up
-        return super().setUP()
 
 # 火焰电压 파이어볼트
 # https://api.neople.co.kr/df/skills/afdf3b989339de478e85b614d274d1ef/65827d506df24a870ef7d2e1aefbfeb7?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
