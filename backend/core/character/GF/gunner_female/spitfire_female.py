@@ -630,7 +630,7 @@ class classChange(Character):
         self.输出类型 = '物理固伤'
         self.防具精通属性 = ['智力', '力量']
         self.防具类型 = '皮甲'
-        self.buff = 1.84
+        self.buff = 1.911
 
         self.角色 = '神枪手(女)'
 
