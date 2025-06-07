@@ -5,7 +5,6 @@ from api.core.Response import response
 from api.core.Redis import get_redis_info
 from api.dp import RedisDep
 import re
-from fastmcp import FastMCP
 
 router = APIRouter()
 
