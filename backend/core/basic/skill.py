@@ -403,6 +403,12 @@ class BuffSkill(Skill):
             elif self.upType == 'heal':
                 self.cdReduce *= 1 - 0.1
 
+    def vp_1(self):
+        pass
+
+    def vp_2(self):
+        pass
+
 class PassiveBufferSkill(BuffSkill):
     type: str = 'passive'
 
