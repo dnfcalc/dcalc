@@ -33,3 +33,4 @@ AutoRelease
 .env.dev
 .env.prod
 ._*
+openapi
