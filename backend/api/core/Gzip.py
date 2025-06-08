@@ -1,7 +1,7 @@
 import gzip
 from fastapi import Request, APIRouter, FastAPI
 from fastapi.responses import Response
-from typing import Callable
+from collections.abc import Callable
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.routing import APIRoute
 

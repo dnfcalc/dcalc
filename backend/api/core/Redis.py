@@ -10,7 +10,7 @@ def get_redis_info(redis, key, fun,without_gzip=False):
                 info = json.loads(redis.get(key))
             else:
                 info = json.loads(gzip_unzip(redis.get(key)))
-        except Exception as ex:
+        except Exception:
             info = None
     if info is None:
         info = fun()

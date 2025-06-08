@@ -2,10 +2,8 @@ import base64
 import hmac
 import json
 import time
-from typing import Optional
-from core.character.adventure import get_adv_info
 from core.basic.character import Character
-from fastapi import  Header, Request
+from fastapi import  Header
 from api.core.exception import ResponseException
 
 
@@ -67,7 +65,7 @@ def deleteToken(token, redis, env):
     return token
 
 
-def uid(access_uid: Optional[str] = Header(None)):
+def uid(access_uid: str | None = Header(None)):
     try:
         return int(access_uid)
     except Exception:

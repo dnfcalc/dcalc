@@ -1,5 +1,5 @@
 import time
-from typing import Annotated, Optional
+from typing import Annotated
 from redis import Redis
 from sqlalchemy.orm import Session
 from fastapi import Depends, Header
@@ -16,7 +16,7 @@ SessionDep = Annotated[Session, Depends(get_db)]
 RedisDep = Annotated[Redis, Depends(get_redis)]
 
 
-def alterToken(redis:RedisDep,alter_token: Optional[str] = Header(None)):
+def alterToken(redis:RedisDep,alter_token: str | None = Header(None)):
     if alter_token is not None:
         try:
             decoded_bytes = base64.b64decode(alter_token)
