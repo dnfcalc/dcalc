@@ -1,6 +1,6 @@
 import base64
 import json
-from typing import Generic, TypeVar, Union
+from typing import Generic, TypeVar
 from pydantic.generics import GenericModel
 import gzip  # 导入 gzip 模块
 from io import BytesIO  # 从 io 模块导入 BytesIO 类
@@ -12,7 +12,7 @@ T = TypeVar('T')
 class Return(GenericModel, Generic[T]):
     code: int = 200
     message: str = ''
-    data: Union[T, dict, str] = None
+    data: T | dict | str = None
 
 
 
@@ -24,7 +24,7 @@ def gzip_str(to_gzip: str) -> str:
     return base64.b64encode(out.getvalue()).decode()  # 对压缩后的数据使用 base64 编码并返回结果
 
 
-def response(*, code=200, data: Union[list, dict, str], message='Success', zip=False):
+def response(*, code=200, data: list | dict | str, message='Success', zip=False)-> Return:
     if zip:
         import gzip
         data = base64.b64encode(gzip.compress(json.dumps(data).encode()))
