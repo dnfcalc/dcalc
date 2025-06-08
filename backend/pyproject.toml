@@ -5,8 +5,8 @@ description = "A backend project for dcalc, a calculator application."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "fastapi-mcp>=0.3.4",
     "fastapi[all]>=0.115.11",
+    "fastmcp>=2.7.1",
     "redis>=5.2.1",
     "requests>=2.32.3",
     "sqlalchemy>=2.0.38",

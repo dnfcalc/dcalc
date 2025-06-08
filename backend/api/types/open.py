@@ -4,6 +4,7 @@ from typing import Generic, TypeVar
 from pydantic.generics import GenericModel
 from api.core.Response import Return as Response
 
+
 class SkillInfo(BaseModel):
     skillId: str = Field(..., description='技能ID')
     """技能ID"""
@@ -122,7 +123,7 @@ class SkillDetail(BaseModel):
     """职业ID"""
     jobName: str = Field(..., description='职业名称')
     """职业名称"""
-    levelInfo: list[ILevelInfo] | None = Field(None, description='技能等级信息')
+    levelInfo: ILevelInfo | None = Field(None, description='技能等级信息')
     """技能等级信息"""
     attribute: IAttribute | None = Field(None, description='技能属性')
     """技能属性"""
@@ -131,5 +132,6 @@ class SkillDetail(BaseModel):
     enhancement: list[IEnhancement] | None = Field(None, description='技能强化信息')
     """技能强化信息"""
 
-SkillDetailResponse = Response[SkillDetail]
+
+SkillDetailResponse = Response[SkillDetail | None]
 SkillsListResponse = Response[list[SkillInfo]]

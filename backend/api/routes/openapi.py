@@ -48,7 +48,7 @@ async def get_skills_list(redis: RedisDep, skillName: Annotated[str, Param(..., 
 
 
 @router.get('/{jobId}/{jobGrowId}/{skillId}/', operation_id='skillDetail')
-async def get_cn_skill_info(redis: RedisDep, jobId: Annotated[str, Path(..., description='职业')], jobGrowId: Annotated[str, Path(..., description='转职')], skillId: Annotated[str, Path(..., description='技能')], level: Annotated[int, Param(..., description='技能等级')]) -> SkillDetailResponse:
+async def get_cn_skill_info(redis: RedisDep, jobId: Annotated[str, Path(..., description='职业')], jobGrowId: Annotated[str, Path(..., description='转职')], skillId: Annotated[str, Path(..., description='技能')], level: Annotated[int, Param(..., description='技能等级')] = None) -> SkillDetailResponse:
     """
     获取技能详细信息
     """
