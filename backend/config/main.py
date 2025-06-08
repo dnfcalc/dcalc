@@ -5,6 +5,7 @@ class Config(BaseSettings):
     DEBUG_MODE: bool = True
     WORKERS: int = 1
     PORT:int = 27173
+    MCPPORT: int = 27174
     REDIS_URL: str = 'redis://localhost:6379/1'
 
     class Config:
