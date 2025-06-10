@@ -38,7 +38,7 @@ async def get_skills_list(redis: RedisDep, skillName: Annotated[str, Param(..., 
     def get_skills():
         # This function should retrieve the skills list from the data source
         # For now, we return a placeholder list
-        with open('./openapi/skills.json', encoding='utf-8') as f:
+        with open('./openapi/data/skills.json', encoding='utf-8') as f:
             skills_data = json.load(f)
         return skills_data
 
@@ -58,7 +58,7 @@ async def get_cn_skill_info(redis: RedisDep, jobId: Annotated[str, Path(..., des
         def get_skill_info():
             # This function should retrieve the skill info based on job and jobGrow
             # For now, we return a placeholder dictionary
-            with open(f'./openapi/{jobId}/{jobGrowId}/cn/skillDetail/{skillId}.json', encoding='utf-8') as f:
+            with open(f'./openapi/data/{jobId}/{jobGrowId}/cn/skillDetail/{skillId}.json', encoding='utf-8') as f:
                 skill_data = json.load(f)
             if 'levelInfo' in skill_data and 'optionDesc' in skill_data['levelInfo'] and skill_data['levelInfo']['optionDesc'] is not None:
                 skill_data['levelInfo']['optionDesc'] = replace_placeholders(skill_data['levelInfo']['optionDesc'])

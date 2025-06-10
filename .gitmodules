@@ -1,3 +1,6 @@
+[submodule "backend/openapi"]
+	path = backend/openapi
+	url = https://gitee.com/dnftools/dcalcopenapi.git
 [submodule "images"]
 	path = images
 	url = https://gitee.com/dnftools/dcalcimages.git

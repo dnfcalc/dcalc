@@ -20,7 +20,7 @@ def get_data(prefix: str, key: int, func):
     def get_skill_info():
         # This function should retrieve the skill info based on job and jobGrow
         # For now, we return a placeholder dictionary
-        with open(f'./openapi/{prefix}.json', encoding='utf-8') as f:
+        with open(f'./openapi/data/{prefix}.json', encoding='utf-8') as f:
             skill_data = json.load(f)
         try:
             data = [0] + list(map(lambda x: x["optionValue"].get(
