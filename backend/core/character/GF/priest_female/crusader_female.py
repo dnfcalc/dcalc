@@ -288,8 +288,7 @@ class Skill14(ActiveBufferSkill):
     buffType = "buffSub"
     uuid = "506e7ed77d517419a6e1c437a2cedb17"
     hasVP = True
-
-    hasVP = True
+    hasUP = True
     vps = [
           {
             "name": "圣音协奏",

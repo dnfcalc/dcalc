@@ -1,11 +1,37 @@
 from copy import deepcopy
+from functools import cache
+import json
 import re
 from typing import Literal, TYPE_CHECKING
 from .formula import 武器冷却惩罚
+from database.connect import get_redis
+from api.core.Redis import get_redis_info
+
 if TYPE_CHECKING:
     from core.basic.character import Character
 
 characterLv = 115 + 5
+
+
+@cache
+def get_data(prefix: str, key: int, func):
+    print(f"loading skill {prefix} {key} data from redis")
+    redis = next(get_redis())
+    def get_skill_info():
+        # This function should retrieve the skill info based on job and jobGrow
+        # For now, we return a placeholder dictionary
+        with open(f'./openapi/{prefix}.json', encoding='utf-8') as f:
+            skill_data = json.load(f)
+        try:
+            data = [0] + list(map(lambda x: x["optionValue"].get(
+                    "value" + str(key+1), 0), skill_data["levelInfo"]["rows"]))
+        except Exception as e:
+            print(e)
+            data = None
+        return data
+
+    data = get_redis_info(redis, f'dcalc:skill:{prefix}:{key}', get_skill_info, without_gzip=True)
+    return func(data)
 
 
 class Skill:
@@ -66,7 +92,7 @@ class Skill:
     skills: 关联技能 默认 '*'
     exceptSkills: 例外技能 默认[]
     """
-    mode : list[str] = ['']
+    mode: list[str] = ['']
     currentMode: str = ''
     """技能模式"""
     buffer: bool = False
@@ -77,7 +103,7 @@ class Skill:
     """是否有VP形态"""
     hasUP: bool = None
     """是否有技能强化"""
-    upType: Literal['damage','buff', 'heal'] = 'damage'
+    upType: Literal['damage', 'buff', 'heal'] = 'damage'
     vps: list = []
 
     def __init__(self, char):
@@ -141,16 +167,16 @@ class Skill:
             exceptSkills = assoc.get('exceptSkills', [])
             if type[0] not in ['*', '+', '$']:
                 if self.precondition() and (self.char.GetWeaponType()[0] in weapon or len(weapon) == len(self.char.武器选项)):
-                    getattr(self, type)(old, new, data, skills,exceptSkills,ratio,weapon)
+                    getattr(self, type)(old, new, data, skills, exceptSkills, ratio, weapon)
                 continue
             if self.precondition():
-                self.apply_association(type, old, new, data, skills,exceptSkills,ratio,weapon)
+                self.apply_association(type, old, new, data, skills, exceptSkills, ratio, weapon)
 
     def precondition(self):
         """effect的前置条件"""
         return True
 
-    def apply_association(self, type, old, new, data, skills, exceptSkills,ratio = 100,weapon = []):
+    def apply_association(self, type, old, new, data, skills, exceptSkills, ratio=100, weapon=[]):
         if (self.char.GetWeaponType()[0] not in weapon) and not (self.char.GetWeaponType()[0] is None and len(weapon) == len(self.char.武器选项)):
             return
         if type.startswith('$*'):
@@ -170,9 +196,9 @@ class Skill:
                     continue
                 skill = self.char.GetSkillByName(name)
                 if skill is not None:
-                    self.update_skill_attribute(skill,type, old, new, data,ratio,weapon)
+                    self.update_skill_attribute(skill, type, old, new, data, ratio, weapon)
 
-    def update_skill_attribute(self,skill, type, old, new, data,ratio = 100,weapon = []):
+    def update_skill_attribute(self, skill, type, old, new, data, ratio=100, weapon=[]):
         if (self.char.GetWeaponType()[0] not in weapon) and not (self.char.GetWeaponType()[0] is None and len(weapon) == len(self.char.武器选项)):
             return
         if type.startswith('*'):
@@ -189,6 +215,7 @@ class Skill:
     def skillInfo(self, mode: str | None = None):
         pass
 
+
 class ActiveSkill(Skill):
     type: str = 'active'
     """技能类型 active主动 passive被动"""
@@ -196,14 +223,14 @@ class ActiveSkill(Skill):
     """是否是伤害技能"""
     buffer: bool = False
     """是否是buff技能"""
-    vp:int = 0
+    vp: int = 0
     """技能VP形态"""
-    up:int = 0
+    up: int = 0
     """技能强化"""
 
     def __init__(self, char):
         super().__init__(char)
-        keys = [key.replace("data","") for key in dir(self) if key.startswith('data') and not key.startswith('plus')]
+        keys = [key.replace('data', '') for key in dir(self) if key.startswith('data') and not key.startswith('plus')]
         for i in keys:
             power = getattr(self, f'power{i}', None)
             if power is None:
@@ -221,7 +248,7 @@ class ActiveSkill(Skill):
         basic.setVP()
         date = basic.getSkillData(self.lv)
         cd = basic.getSkillCD(mode)
-        return date * basic.skillRation , basic.skillDamage ,cd
+        return date * basic.skillRation, basic.skillDamage, cd
 
     def setMode(self, mode: str):
         pass
@@ -249,19 +276,20 @@ class ActiveSkill(Skill):
             else:
                 self.skillRation *= 1.38
 
-    def getSkillData(self,lv:int=0):
+    def getSkillData(self, lv: int = 0):
         res = 0
-        keys = [key.replace("data","") for key in dir(self) if key.startswith('data') and not key.startswith('dataplus')]
+        keys = [key.replace('data', '') for key in dir(self) if key.startswith('data') and not key.startswith('dataplus')]
         for i in keys:
             data = getattr(self, f'data{i}', [])
             plus = getattr(self, f'plus{i}', 0)
-            if len(data) == 0:
+            hit = getattr(self, f'hit{i}', 0)
+            if len(data) == 0 or hit == 0:
                 break
             if lv < len(data):
                 hit = getattr(self, f'hit{i}', 0)
                 power = getattr(self, f'power{i}', 1)
                 res += hit * power * (data[lv] + plus)
-        keys = [key.replace("dataplus","") for key in dir(self) if key.startswith('dataplus')]
+        keys = [key.replace('dataplus', '') for key in dir(self) if key.startswith('dataplus')]
         for i in keys:
             data = getattr(self, f'dataplus{i}', 0)
             hit = getattr(self, f'hitplus{i}', 1)
@@ -271,36 +299,33 @@ class ActiveSkill(Skill):
 
     def getWeaponCDRatio(self):
         weapon = self.char.charEquipInfo['武器'].equInfo
-        if weapon is None or '传世武器' in  weapon.categorize:
+        if weapon is None or '传世武器' in weapon.categorize:
             return 1
         else:
-            return 武器冷却惩罚(weapon.itemDetailType,self.char.输出类型)
+            return 武器冷却惩罚(weapon.itemDetailType, self.char.输出类型)
 
     def getQuickCDRatio(self):
         return 1.0
         cdr = 0
         if 15 <= self.learnLv <= 30:
-            cdr =  0.01
-        elif 35<= self.learnLv <= 70:
+            cdr = 0.01
+        elif 35 <= self.learnLv <= 70:
             cdr = 0.02
-        elif 75<= self.learnLv <= 100:
+        elif 75 <= self.learnLv <= 100:
             cdr = 0.05
-        if self.learnLv in [50,85,100]:
+        if self.learnLv in [50, 85, 100]:
             cdr = 0.05
         return 1 - cdr
 
-    def getSkillCD(self,mode=None):
-        return max(0,round(max(
-            self.cd * 0.3,
-            self.cd * self.cdReduce / self.cdRecover * self.getWeaponCDRatio() * self.getQuickCDRatio()) * self.cdRatio
-            - self.cdCut,2
-        ))
+    def getSkillCD(self, mode=None):
+        return max(0, round(max(self.cd * 0.3, self.cd * self.cdReduce / self.cdRecover * self.getWeaponCDRatio() * self.getQuickCDRatio()) * self.cdRatio - self.cdCut, 2))
 
     def vp_1(self):
         pass
 
     def vp_2(self):
         pass
+
 
 class PassiveSkill(Skill):
     type: str = 'passive'
@@ -309,6 +334,7 @@ class PassiveSkill(Skill):
     """是否是伤害技能"""
     buffer: bool = False
     """是否是buff技能"""
+
 
 class BuffSkill(Skill):
     buffer: bool = True
@@ -328,29 +354,30 @@ class BuffSkill(Skill):
     """体力"""
     """主要属性"""
 
-    ATK : list[float] = []
+    ATK: list[float] = []
     """三攻加成"""
     ATKRatio: float = 1
     """三攻*算倍率"""
-    ATKPLUS : float = 0
+    ATKPLUS: float = 0
     """三攻加算加成"""
 
-    STRINT : list[float] = []
+    STRINT: list[float] = []
     """力量智力加成"""
     STRINTRatio: float = 1
     """力量智力*算倍率"""
-    STRINTPLUS : float = 0
+    STRINTPLUS: float = 0
     """力量智力加算加成"""
 
     CarryRatio: list[float] = []
     """对C的额外增伤倍率"""
-    vp:int = 0
+    vp: int = 0
     """技能VP形态"""
-    up:int = 0
+    up: int = 0
     """技能强化"""
+
     def __init__(self, char):
         super().__init__(char)
-        keys = [key.replace("data","") for key in dir(self) if key.startswith('data') and not key.startswith('plus')]
+        keys = [key.replace('data', '') for key in dir(self) if key.startswith('data') and not key.startswith('plus')]
         for i in keys:
             power = getattr(self, f'power{i}', None)
             if power is None:
@@ -359,7 +386,7 @@ class BuffSkill(Skill):
             if hit is None:
                 setattr(self, f'hit{i}', 0)
 
-    def getSkillCD(self,mode=None):
+    def getSkillCD(self, mode=None):
         return '-'
 
     def skillInfo(self, mode: str | None = None):
@@ -374,7 +401,7 @@ class BuffSkill(Skill):
         value3 = 0 if lv > len(self.CarryRatio) else self.CarryRatio[lv]
         self.setUP()
         self.setVP()
-        if  self.char.适用属性 == '智力':
+        if self.char.适用属性 == '智力':
             value = 0 if lv > len(self.INT) else self.INT[lv]
         elif self.char.适用属性 == '力量':
             value = 0 if lv > len(self.STR) else self.STR[lv]
@@ -382,7 +409,7 @@ class BuffSkill(Skill):
             value = 0 if lv > len(self.Vitality) else self.Vitality[lv]
         elif self.char.适用属性 == '精神':
             value = 0 if lv > len(self.Spirit) else self.Spirit[lv]
-        return value,[value1,self.ATKRatio,self.ATKPLUS],[value2,self.STRINTRatio,self.STRINTPLUS],value3,self.getSkillCD(mode)
+        return value, [value1, self.ATKRatio, self.ATKPLUS], [value2, self.STRINTRatio, self.STRINTPLUS], value3, self.getSkillCD(mode)
 
     def setVP(self):
         if self.vp == 1:
@@ -409,6 +436,7 @@ class BuffSkill(Skill):
     def vp_2(self):
         pass
 
+
 class PassiveBufferSkill(BuffSkill):
     type: str = 'passive'
 
@@ -418,27 +446,23 @@ class ActiveBufferSkill(BuffSkill):
 
     def getWeaponCDRatio(self):
         weapon = self.char.charEquipInfo['武器'].equInfo
-        if weapon is None or '传世武器' in  weapon.categorize:
+        if weapon is None or '传世武器' in weapon.categorize:
             return 1
         else:
-            return 武器冷却惩罚(weapon.itemDetailType,self.char.输出类型)
+            return 武器冷却惩罚(weapon.itemDetailType, self.char.输出类型)
 
     def getQuickCDRatio(self):
         return 1.0
         cdr = 0
         if 15 <= self.learnLv <= 30:
-            cdr =  0.01
-        elif 35<= self.learnLv <= 70:
+            cdr = 0.01
+        elif 35 <= self.learnLv <= 70:
             cdr = 0.02
-        elif 75<= self.learnLv <= 100:
+        elif 75 <= self.learnLv <= 100:
             cdr = 0.05
-        if self.learnLv in [50,85,100]:
+        if self.learnLv in [50, 85, 100]:
             cdr = 0.05
         return 1 - cdr
 
-    def getSkillCD(self,mode=None):
-        return max(0,round(max(
-            self.cd * 0.3,
-            self.cd * self.cdReduce / self.cdRecover * self.getWeaponCDRatio() * self.getQuickCDRatio(),1)
-            - self.cdCut,2
-        ))
+    def getSkillCD(self, mode=None):
+        return max(0, round(max(self.cd * 0.3, self.cd * self.cdReduce / self.cdRecover * self.getWeaponCDRatio() * self.getQuickCDRatio(), 1) - self.cdCut, 2))

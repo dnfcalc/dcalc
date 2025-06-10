@@ -55,7 +55,6 @@ async def get_cn_skill_info(redis: RedisDep, jobId: Annotated[str, Path(..., des
     skill_info = {}
     key = f'openapi:{jobId}:{jobGrowId}:{skillId}'
     try:
-
         def get_skill_info():
             # This function should retrieve the skill info based on job and jobGrow
             # For now, we return a placeholder dictionary
