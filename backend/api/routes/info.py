@@ -44,7 +44,6 @@ async def getToken(redis:RedisDep,
 async def get_character_info(
     request: Request, state: AltersDep ,redis:RedisDep
 ):
-    print(state.alter)
     character = createCharacter(state.alter, state.equVersion)
     def get_character():
         return character.getInfo()
