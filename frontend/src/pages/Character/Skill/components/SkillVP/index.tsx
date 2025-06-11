@@ -71,7 +71,7 @@ export default defineComponent({
                     index == 1 ? 'ml-auto' : 'ml-2px',
                   ]}
                   onClick={() => {
-                    emit("chooseSkill");
+                    emit("chooseSkill",item.id);
                     itemChecked(item.id.toString(), index).value = !itemChecked(
                       item.id.toString(),
                       index,
