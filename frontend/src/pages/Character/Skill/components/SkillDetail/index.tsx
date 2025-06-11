@@ -1,6 +1,8 @@
 import { asyncComputed } from '@vueuse/core'
 import api from '@/api'
 import './style.scss'
+import CalcTabs from '@/components/calc/tabs/index.vue'
+import CalcTab from '@/components/calc/tab/index.vue'
 
 export default defineComponent({
   name: 'SkillDetail',
@@ -23,6 +25,8 @@ export default defineComponent({
       const res = await api.skillDetail(currentSkill.value, currentLevel.value)
       return res
     })
+
+    const curTab = ref(0)
 
     const basic = computed(() =>
       !skillInfo.value
@@ -79,38 +83,87 @@ export default defineComponent({
       return details || []
     })
 
+    const renderSkillDetail = () => (
+      <>
+        <div class="title">基本信息</div>
+        <div class="flex flex-col gap-2px">
+          {basic.value.map(
+            (item) =>
+              !!item.value && (
+                <div class="flex justify-between item">
+                  <span class="label">{item.label}</span>
+                  <span class="value">{item.value}</span>
+                </div>
+              ),
+          )}
+        </div>
+        <div class="title">技能描述</div>
+        <div class="h-auto max-h-200px">
+          <div class="h-full overflow-y-auto bg-#161816 p-2px">
+            {desc.value?.map((item) => (
+              <span style="white-space: pre-wrap;text-indent:20px;">{item}</span>
+            ))}
+          </div>
+        </div>
+        <div class="title">技能属性</div>
+        <div class="flex-1">
+          <div class="overflow-y-auto h-full flex flex-col gap-2px">
+            {detail.value?.map((item) => (
+              <div class="flex justify-between item items-center" v-html={item}></div>
+            ))}
+          </div>
+        </div>
+      </>
+    )
+
+    const renderSkillVp = () => (
+      <>
+        <div class="h-auto">
+          <div class="h-full overflow-y-auto flex flex-col gap-5px">
+            {skillInfo.value?.evolution?.map((item) => (
+              <>
+              <div class="flex flex-col gap-2px">
+                <div class="skill_vp_title">{item.name}</div>
+                <div class="title">技能描述</div>
+                <div class="h-auto max-h-200px">
+                  <div class="h-full overflow-y-auto bg-#161816 p-2px" style="white-space: pre-wrap;">
+                    {item.descDetail}
+                  </div>
+                </div>
+                </div>
+              </>
+            ))}
+          </div>
+        </div>
+      </>
+    )
+
+    onMounted(() => {
+      watchEffect(() => {
+        skillInfo.value?.evolution?.length == 0 && (curTab.value = 0)
+      })
+    })
+
     return () => (
       <>
         <div class="flex flex-col gap-2px mx-2px text-#907B54 h-full">
           <div class="skill_title h-20px">{skillInfo.value?.name}</div>
-          <div class="title">基本信息</div>
-          <div class="flex flex-col gap-2px">
-            {basic.value.map(
-              (item) =>
-                !!item.value && (
-                  <div class="flex justify-between item">
-                    <span class="label">{item.label}</span>
-                    <span class="value">{item.value}</span>
-                  </div>
-                ),
-            )}
+          <div class="relative">
+            <CalcTabs v-model={curTab.value}>
+              <CalcTab class="flex-1 flex justify-center" value={0}>
+                原技能描述
+              </CalcTab>
+              <CalcTab
+                class="flex-1 flex justify-center"
+                value={1}
+                disabled={!skillInfo.value?.evolution?.length}
+              >
+                技能进化描述
+              </CalcTab>
+            </CalcTabs>
           </div>
-          <div class="title">技能描述</div>
-          <div class="h-auto max-h-200px">
-            <div class="h-full overflow-y-auto">
-              {desc.value?.map((item) => (
-                <span style="white-space: pre-wrap;text-indent:20px;">{item}</span>
-              ))}
-            </div>
-          </div>
-          <div class="title">技能属性</div>
-          <div class="flex-1">
-            <div class="overflow-y-auto h-full flex flex-col gap-2px">
-              {detail.value?.map((item) => (
-                <div class="flex justify-between item items-center" v-html={item}></div>
-              ))}
-            </div>
-          </div>
+          {curTab.value === 0 && renderSkillDetail()}
+          {curTab.value === 1 && renderSkillVp()}
         </div>
       </>
     )

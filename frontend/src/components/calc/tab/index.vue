@@ -6,6 +6,14 @@ export default defineComponent({
   name: 'CalcTab',
   props: {
     ...selectionProps,
+    value: {
+      type: [String, Number],
+      default: '',
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props, { slots }) {
     return () => {

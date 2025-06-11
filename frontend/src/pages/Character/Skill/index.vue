@@ -52,7 +52,7 @@
         </div>
       </div>
     </div>
-    <div class="bg-#101012 flex-1 max-w-250px h-full">
+    <div class="bg-#101012 flex-1 max-w-250px h-full" v-if="curCurrentSkill.skillId">
       <SkillDetail
         :skillId="curCurrentSkill.skillId"
         :level="curCurrentSkill.level"
@@ -75,7 +75,7 @@ const tab = ref(0)
 const infoStore = useInfoStore()
 const configStore = useConfigStore()
 
-const curSkillId = ref("")
+const curSkillId = ref()
 
 const curCurrentSkill = computed(() => {
   const skill = infoStore.skills.find(skill => skill.uuid === curSkillId.value)

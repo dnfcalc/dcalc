@@ -32,6 +32,39 @@
   }
 }
 
+.skill_vp_title {
+  border-width: 1px;
+  border-style: solid;
+  border-image-source: linear-gradient(90deg, #691b86 0%, #2e302e 100%);
+  border-image-slice: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 18px;
+  z-index: 5;
+  transform-style: preserve-3d;
+  color: #9443BE;
+  &::before {
+    width: 100%;
+    position: absolute;
+    content: '';
+    height: 50%;
+    bottom: 0;
+    background: linear-gradient(90deg, #3a0f47 0%, #121212 100%);
+    transform: translateZ(-1px);
+  }
+
+  &::after {
+    width: 100%;
+    position: absolute;
+    content: '';
+    height: 50%;
+    top: 0;
+    background: linear-gradient(90deg, #1e0b24 0%, #171717 100%);
+    transform: translateZ(-1px);
+  }
+}
 
 .title{
   border: 1px solid #3e4040;

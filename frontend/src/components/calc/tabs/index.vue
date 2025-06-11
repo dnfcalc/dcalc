@@ -131,6 +131,11 @@ export default defineComponent({
       height: 22px;
       // color: #ffb400;
     }
+
+    &.disabled{
+     filter: grayscale(100%);
+     cursor: not-allowed;
+    }
   }
 }
 </style>
