@@ -20,10 +20,12 @@ export default defineComponent({
       default: () => 50,
     },
   },
-  setup(props) {
+  emits: ['chooseSkill'],
+  setup(props,{ emit }) {
     const skills = computed(() => props.skills)
     const lvInfo = useVModel(props, 'lvInfo')
     const bindAwake = useVModel(props, 'bindAwake')
+    // const emit = defineEmits(['chooseSkill'])
 
     const getSkill = (lvStart: number, lvEnd: number, position: number) => {
       if (position >= 0)
@@ -52,6 +54,7 @@ export default defineComponent({
       }
       if (activeSkill.value == skill.id) actionSkillLv(skill, operation)
       else activeSkill.value = skill.id
+      emit('chooseSkill', skill.id)
     }
 
     const awakeSkill_1 = computed(() =>
@@ -78,11 +81,11 @@ export default defineComponent({
         lvInfo.value[skill.id.toString()] = { lv: 0 , vp: 0, up: 0 }
         return
       }
+      emit('chooseSkill', skill.id)
     }
 
     const chooseBindAwake = (lv: number) => {
       bindAwake.value = lv
-      console.log(bindAwake.value, lv)
     }
 
     const renderSkill = (skill: ISkill, index: number) => {

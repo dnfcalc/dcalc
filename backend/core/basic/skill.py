@@ -15,7 +15,6 @@ characterLv = 115 + 5
 
 @cache
 def get_data(prefix: str, key: int, func):
-    print(f"loading skill {prefix} {key} data from redis")
     redis = next(get_redis())
     def get_skill_info():
         # This function should retrieve the skill info based on job and jobGrow

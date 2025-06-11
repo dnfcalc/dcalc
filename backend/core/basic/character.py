@@ -475,6 +475,7 @@ class Character(CharacterProperty):
                     'hasVP': skill.hasVP,
                     'hasUP': skill.hasUP,
                     'upType': skill.upType,
+                    'uuid': skill.uuid,
                     'vps': [{"name":i["name"],"desc":i["desc"]} for i in skill.vps],
                 }
             )

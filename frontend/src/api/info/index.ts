@@ -1,5 +1,5 @@
 import { defineRequest } from '../common'
-import type { IAdventureInfo, ICharacterInfo } from './type'
+import type { IAdventureInfo, ICharacterInfo, ISkillInfo } from './type'
 
 export default defineRequest((request) => {
   return {
@@ -15,5 +15,9 @@ export default defineRequest((request) => {
       const res = await request.get<ICharacterInfo>('/character')
       return res.data
     },
+    async skillDetail(skillId: string, level: number) {
+      const res = await request.get<ISkillInfo>(`/skill/${skillId}/${level}`)
+      return res.data
+    }
   }
 })

@@ -26,7 +26,6 @@ export default defineComponent({
   },
   setup(props) {
     const lvInfo = useVModel(props, 'lvInfo')
-
     const skills = (index: number = 0) => {
       index -= 1
       const upList = Object.keys(lvInfo.value).filter(

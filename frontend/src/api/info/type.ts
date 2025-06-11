@@ -90,7 +90,8 @@ export interface ISkill {
     name: string
     desc: string
   }[]
-  upType:'damage' |'heal'`
+  uuid: string
+  upType:'damage' |'heal'
 }
 
 export interface ISuit {
@@ -133,4 +134,57 @@ export interface IJade {
   min: number
   pre: number
   unit: string
+}
+
+export interface ISkillInfo {
+  name: string
+  type: string
+  desc: string
+  descDetail: string
+  consumeItem: ConsumeItem
+  descSpecial: string[]
+  maxLevel: number
+  requiredLevel: number
+  requiredLevelRange: number
+  preRequiredSkill: any
+  jobId: string
+  jobName: string
+  jobGrowLevel: any[]
+  evolution: Evolution[]
+  enhancement: Enhancement[]
+  attribute: Attribute
+}
+
+export interface ConsumeItem {
+  itemId: string
+  itemName: string
+  value: number
+}
+
+export interface Evolution {
+  type: number
+  name: string
+  desc: string
+  descDetail: string
+  skills?: string[]
+}
+
+export interface Enhancement {
+  type: number
+  status: Status[]
+}
+
+export interface Status {
+  name: string
+  value: string
+}
+
+export interface Attribute {
+  optionDesc: string
+  level: number
+  consumeMp: number
+  coolTime: number
+  castingTime?: number
+  optionValue: Record<`value${string}`, string>
+  detail: string
 }
