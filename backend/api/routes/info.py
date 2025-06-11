@@ -81,8 +81,9 @@ async def get_skill_info(
                 if detail and len(detail) > 0:
                     skill_info['levelInfo'].update(detail[0])
                     skill_info['levelInfo']['detail'] = skill_info['levelInfo'].get('optionDesc', '')
-                    for key in skill_info['levelInfo']['optionValue'].keys():
-                        skill_info['levelInfo']['detail'] = skill_info['levelInfo']['detail'].replace(f'{{{key}}}', str(skill_info['levelInfo']['optionValue'][key]))
+                    if skill_info['levelInfo']['optionValue'] is not None:
+                        for key in skill_info['levelInfo']['optionValue'].keys():
+                            skill_info['levelInfo']['detail'] = skill_info['levelInfo']['detail'].replace(f'{{{key}}}', str(skill_info['levelInfo']['optionValue'][key]))
                     del skill_info['levelInfo']['rows']
                     skill_info['attribute'] = {}
                     skill_info['attribute'].update(skill_info['levelInfo'])

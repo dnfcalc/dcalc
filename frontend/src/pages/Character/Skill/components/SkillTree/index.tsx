@@ -166,7 +166,7 @@ export default defineComponent({
     const renderSkillAction = (skill: ISkill) => (
       <>
         <>
-          <div class="absolute skill-active w-88px h-78px translate-x--50% left-16px top--1px">
+          <div class="absolute skill-active w-88px h-78px translate-x--50% left-16px top--1px z-5">
             <div class="flex justify-between items-center px-5px relative top-54px">
               <CalcButton
                 icon="min"
@@ -235,7 +235,7 @@ export default defineComponent({
 
     return () => (
       <>
-        <div onClick={() => (activeSkill.value = -1)}>
+        <div onClick={() => (activeSkill.value = -1)} class="pb-40px">
           {((getSkill(0, 15, -1) ?? []) as ISkill[]).length > 0 && (
             <>
               <div class="skill-tree-line flex items-center gap-10px px-10px">

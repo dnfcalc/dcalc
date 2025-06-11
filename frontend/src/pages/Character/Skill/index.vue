@@ -52,7 +52,7 @@
         </div>
       </div>
     </div>
-    <div class="bg-#101012 flex-1 max-w-250px h-full" v-if="curCurrentSkill.skillId">
+    <div class="bg-#101012 w-250px h-full overflow-x-auto" v-if="curCurrentSkill.skillId && curCurrentSkill.level > 0">
       <SkillDetail
         :skillId="curCurrentSkill.skillId"
         :level="curCurrentSkill.level"

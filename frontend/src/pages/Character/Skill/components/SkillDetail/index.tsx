@@ -57,14 +57,18 @@ export default defineComponent({
           ],
     )
 
-    const desc = computed(() => skillInfo.value?.descDetail.split('\n').filter((item) => !!item))
+    const desc = computed(() => skillInfo.value?.descDetail.split('\n'))
 
     const detail = computed(() => {
-      const items = skillInfo.value?.attribute.optionDesc.split('\n').filter((item) => !!item)
+      const items = skillInfo.value?.attribute.optionDesc?.split('\n').filter((item) => !!item) ?? []
       const details = items?.map((a) => {
+        const beforeReplace = a.match(/^(.+?\s*:\s*[^\{]+)(\{value\d+\}.*)$/)
+        if(beforeReplace) {
+          a = `${beforeReplace[1]}<span class="skill_info_value">${beforeReplace[2]}</span>`
+        }
         const matches = a.match(/{([^}]+)}/g)
         if (matches) {
-          matches.forEach((match, index) => {
+          matches.forEach((match) => {
             const key = match.replace(/[{}]/g, '')
             // Only access if key matches the expected pattern
             if (/^value.+/.test(key)) {
@@ -72,7 +76,7 @@ export default defineComponent({
               if (value) {
                 a = a.replace(
                   match,
-                  `<span style="${index == 0 ? 'margin-left:auto;' : ''};padding:0px 2px;color:#4AA256">${value}</span>`,
+                  `<span style="padding:0px 2px;color:#4AA256">${value}</span>`,
                 )
               }
             }
@@ -98,16 +102,16 @@ export default defineComponent({
           )}
         </div>
         <div class="title">技能描述</div>
-        <div class="h-auto max-h-200px">
+        <div class="h-auto max-h-250px">
           <div class="h-full overflow-y-auto bg-#161816 p-2px">
-            {desc.value?.map((item) => (
-              <span style="white-space: pre-wrap;text-indent:20px;">{item}</span>
+            {desc.value?.map((item) => item.startsWith("[") ? (<div class="min-h-10px">{item}</div>) :(
+              <div class="min-h-10px" style="text-indent:20px;">{item}</div>
             ))}
           </div>
         </div>
         <div class="title">技能属性</div>
-        <div class="flex-1">
-          <div class="overflow-y-auto h-full flex flex-col gap-2px">
+        <div class="flex-1 overflow-y-auto">
+          <div class=" flex flex-col gap-2px">
             {detail.value?.map((item) => (
               <div class="flex justify-between item items-center" v-html={item}></div>
             ))}
@@ -119,14 +123,14 @@ export default defineComponent({
     const renderSkillVp = () => (
       <>
         <div class="h-auto">
-          <div class="h-full overflow-y-auto flex flex-col gap-5px">
+          <div class="h-full flex flex-col gap-5px">
             {skillInfo.value?.evolution?.map((item) => (
               <>
               <div class="flex flex-col gap-2px">
                 <div class="skill_vp_title">{item.name}</div>
                 <div class="title">技能描述</div>
                 <div class="h-auto max-h-200px">
-                  <div class="h-full overflow-y-auto bg-#161816 p-2px" style="white-space: pre-wrap;">
+                  <div class="h-full bg-#161816 p-2px" style="white-space: pre-wrap;">
                     {item.descDetail}
                   </div>
                 </div>
@@ -140,7 +144,7 @@ export default defineComponent({
 
     onMounted(() => {
       watchEffect(() => {
-        skillInfo.value?.evolution?.length == 0 && (curTab.value = 0)
+        (skillInfo.value?.evolution?.length ?? 0) == 0 && (curTab.value = 0)
       })
     })
 
@@ -151,14 +155,14 @@ export default defineComponent({
           <div class="relative">
             <CalcTabs v-model={curTab.value}>
               <CalcTab class="flex-1 flex justify-center" value={0}>
-                原技能描述
+                技能信息
               </CalcTab>
               <CalcTab
                 class="flex-1 flex justify-center"
                 value={1}
                 disabled={!skillInfo.value?.evolution?.length}
               >
-                技能进化描述
+                技能进化
               </CalcTab>
             </CalcTabs>
           </div>
