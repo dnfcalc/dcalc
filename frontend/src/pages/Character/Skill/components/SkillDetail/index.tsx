@@ -105,7 +105,7 @@ export default defineComponent({
           </div>
           <div class="title">技能属性</div>
           <div class="flex-1">
-            <div class="overflow-y-auto h-full">
+            <div class="overflow-y-auto h-full flex flex-col gap-2px">
               {detail.value?.map((item) => (
                 <div class="flex justify-between item items-center" v-html={item}></div>
               ))}
