@@ -6,7 +6,7 @@ import CalcCheckbox from '@/components/calc/checkbox/index.vue'
 import { renderList } from 'vue'
 import './style.scss'
 export default defineComponent({
-  name: 'SkillTree',
+  name: 'SkillVP',
   props: {
     skills: {
       type: Array as PropType<ISkill[]>,
@@ -17,7 +17,8 @@ export default defineComponent({
       default: () => ({}),
     },
   },
-  setup(props) {
+  emits: ['chooseSkill'],
+  setup(props,{ emit }) {
     const lvInfo = useVModel(props, 'lvInfo')
     const skills = computed(() =>
       props.skills.filter((a) => a.hasVP && lvInfo).sort((a, b) => a.learnLv - b.learnLv),
@@ -70,6 +71,7 @@ export default defineComponent({
                     index == 1 ? 'ml-auto' : 'ml-2px',
                   ]}
                   onClick={() => {
+                    emit("chooseSkill");
                     itemChecked(item.id.toString(), index).value = !itemChecked(
                       item.id.toString(),
                       index,
