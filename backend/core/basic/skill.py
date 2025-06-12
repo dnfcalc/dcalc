@@ -14,7 +14,7 @@ characterLv = 115 + 5
 
 
 @cache
-def get_data(prefix: str, key: int, func):
+def get_data(prefix: str, key: int | str, func = lambda x = None: x):
     redis = next(get_redis())
     def get_skill_info():
         # This function should retrieve the skill info based on job and jobGrow
@@ -22,8 +22,10 @@ def get_data(prefix: str, key: int, func):
         with open(f'./openapi/data/{prefix}.json', encoding='utf-8') as f:
             skill_data = json.load(f)
         try:
-            data = [0] + list(map(lambda x: x["optionValue"].get(
-                    "value" + str(key+1), 0), skill_data["levelInfo"]["rows"]))
+            if isinstance(key, int):
+                data = [0] + list(map(lambda x: x["optionValue"].get("value" + str(key+1), 0), skill_data["levelInfo"]["rows"]))
+            elif key == "vps":
+                data = [ {"name":x["name"],"desc":x["desc"]} for x in skill_data.get("evolution",[])]
         except Exception as e:
             print(e)
             data = None
