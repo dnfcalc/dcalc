@@ -1,7 +1,6 @@
 #41f1cdc2ff58bb5fdc287be0db2a8df3
-from core.basic.skill import PassiveSkill, ActiveSkill, get_data,characterLv
+from core.basic.skill import PassiveSkill, ActiveSkill, characterLv
 from core.basic.character import Character
-prefix = "swordman_male/weapon_master/cn/skillDetail"
 
 
 class ActiveSkill(ActiveSkill):
@@ -15,64 +14,48 @@ class ActiveSkill(ActiveSkill):
     def skillInfo(self, mode = None):
         return super().skillInfo(mode) + (self.swordnum,self.totalhit,self.thrustcount,)
 
-# 疾影手
-# swordman_male/weapon_master/dcd536f1674630f01fc9667bb202b851
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/dcd536f1674630f01fc9667bb202b851
+# 疾影手 신속한 무기 교체
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/dcd536f1674630f01fc9667bb202b851?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill0(PassiveSkill):
-    """
-    减少切换武器的冷却时间， 并且在切换其它系列武器时， 可以增加攻击速度和移动速度， 效果持续一定时间。
-    """
     name = "疾影手"
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 9 #TODO
     rangeLv = 1
     uuid = "dcd536f1674630f01fc9667bb202b851"
-    hasVP = False
-    hasUP = False
 
-    # 武器切换冷却时间减少量 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    # 攻击速度和移动速度增加量 : {value1}%
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    # 增益效果持续时间 : {value2}秒
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
+    data0 = [0, 50]# noqa: E501
+    hit0 = 1 #TODO
+
+    data1 = [0, 7.5]# noqa: E501
+    hit1 = 1 #TODO
+
+    data2 = [0, 10]# noqa: E501
+    hit2 = 1 #TODO
 
 
-# 基础精通
-# swordman_male/weapon_master/5a56514f35cf0270ae8d6c65f8fefd78
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/5a56514f35cf0270ae8d6c65f8fefd78
-class Skill1(PassiveSkill):
-    """
-    增加基本攻击、 前冲攻击、 跳跃攻击、 [上挑]、 [连突刺]的攻击力。\n
-    在决斗场中， 增益/减益技能、 被动技能的技能攻击力增加效果对[基础精通]无影响。
-    """
-    name = "基础精通"
-    icon = "$common/$name"
+# 基础精通 기본기 숙련
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/5a56514f35cf0270ae8d6c65f8fefd78?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+class Skill1(ActiveSkill):
+    name = '基础精通'
+    icon = '$common/$name'
     learnLv = 1
     masterLv = characterLv
     maxLv = 200
     position = 1
     rangeLv = 1
     damage = False
-    type = "passive"
+    type = 'passive'
     uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
     icon = "$common/$uuid"
-    # 基本攻击力变化率 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
+    data0 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
+
     associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["里 · 鬼剑术","空中连斩"]}]
 
-# 空之连刃
-# swordman_male/weapon_master/78bd107acd474518b606be1e4fd38239
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/78bd107acd474518b606be1e4fd38239
+# 空中连斩 공중 연속 베기
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/78bd107acd474518b606be1e4fd38239?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill2(ActiveSkill):
-    """
-    在空中向敌人发出强威力的连续斩击。\n
-    但需从第二斩击开始， 才能适用空之连刃技能的攻击力。\n
-    转职为狂战士后， 施放[狂暴之力]时变更为独立攻击力。\n
-    会根据[基础精通]增加伤害。
-    """
     name = "空中连斩"
     learnLv = 5
     masterLv = 1
@@ -83,7 +66,6 @@ class Skill2(ActiveSkill):
     uuid = "78bd107acd474518b606be1e4fd38239"
 
     # 两刀，实际第二刀才出伤害 为了统计hit
-    # 攻击力 : {value0}%
     data0 = [0, 195, 209, 221, 234, 247, 260, 275, 286, 299, 312, 326]# noqa: E501
     hit0 = 2
     power0 = 0.5
@@ -94,26 +76,15 @@ class Skill2(ActiveSkill):
     power1 = 1
 
     def skillInfo(self, mode = None):
-        if self.char.GetWeaponType() == "太刀":
+        if self.char.GetWeaponType() == '太刀':
             self.hit0 = 0
         else:
             self.hit1 = 0
         return super().skillInfo(mode)
 
-# 光剑精通
-# swordman_male/weapon_master/717f1e2104fe4b796f800352fa143ecc
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/717f1e2104fe4b796f800352fa143ecc
+# 光剑精通 광검 마스터리
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/717f1e2104fe4b796f800352fa143ecc?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill3(PassiveSkill):
-    """
-    装备光剑系武器时， 增加攻击力和命中率。\n
-    [转职为剑魂后]\n
-    - 3级 : 使用[连突刺]则可以出现光剑气； 使用[里 · 鬼剑术]和光剑气攻击时， 追加感电状态\n
-    - 5级 : [三段刃]增加攻击次数， 最后一击还可以浮空敌人\n
-    - 7级 : 使用[拔刀斩]时， 可以追加攻击， 并有一定几率使敌人进入感电状态； 使用[幻影剑舞]可以增加斩击次数和速度， 减少斩击攻击力\n
-    - 9级 : 使用[猛龙断空斩]时， 有一定几率使敌人进入感电状态\n
-    [装备传世武器后]\n
-    适用独立的攻击力/命中率增加数值。
-    """
     name = "光剑精通"
     learnLv = 15
     masterLv = 1
@@ -122,46 +93,9 @@ class Skill3(PassiveSkill):
     rangeLv = 3
     uuid = "717f1e2104fe4b796f800352fa143ecc"
 
-    # 物理攻击力增加率 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    # 魔法攻击力增加率 : {value1}%
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    # 命中率增加 : {value2}%
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
-    # [剑魂特殊附加效果]
-    # [里 · 鬼剑术]感电几率 : {value3}%
-    data3 = get_data(f"{prefix}/{uuid}", 3, lambda x = None: x)
-    # [连突刺]光剑气感电几率 : {value4}%
-    data4 = get_data(f"{prefix}/{uuid}", 4, lambda x = None: x)
-    # [里 · 鬼剑术]感电持续时间 : {value5}秒
-    data5 = get_data(f"{prefix}/{uuid}", 5, lambda x = None: x)
-    # [连突刺]光剑气感电持续时间 : {value6}秒
-    data6 = get_data(f"{prefix}/{uuid}", 6, lambda x = None: x)
-    # 感电攻击力 : {value7}%
-    data7 = get_data(f"{prefix}/{uuid}", 7, lambda x = None: x)
-    # [连突刺]光剑气攻击力 : {value8}%
-    data8 = get_data(f"{prefix}/{uuid}", 8, lambda x = None: x)
-    # [三段刃]最后一击浮空力 : {value9}
-    data9 = get_data(f"{prefix}/{uuid}", 9, lambda x = None: x)
-    # [猛龙断空斩]感电几率 : {value10}%
-    data10 = get_data(f"{prefix}/{uuid}", 10, lambda x = None: x)
-    # [猛龙断空斩]感电持续时间 : {value11}秒
-    data11 = get_data(f"{prefix}/{uuid}", 11, lambda x = None: x)
-    # [猛龙断空斩]感电攻击力 : {value12}%
-    data12 = get_data(f"{prefix}/{uuid}", 12, lambda x = None: x)
-    # [拔刀斩]追击时感电几率 : {value13}%
-    data13 = get_data(f"{prefix}/{uuid}", 13, lambda x = None: x)
-    # [拔刀斩]追击时感电持续时间 : {value14}秒
-    data14 = get_data(f"{prefix}/{uuid}", 14, lambda x = None: x)
-    # [拔刀斩]追击时感电攻击力 : {value15}%
-    data15 = get_data(f"{prefix}/{uuid}", 15, lambda x = None: x)
-    # [装备传世武器后]
-    # 物理攻击力增加率 : {value16}%
-    data16 = get_data(f"{prefix}/{uuid}", 16, lambda x = None: x)
-    # 魔法攻击力增加率 : {value17}%
-    data17 = get_data(f"{prefix}/{uuid}", 17, lambda x = None: x)
-    # 命中率增加 : {value18}%
-    data18 = get_data(f"{prefix}/{uuid}", 18, lambda x = None: x)
+    data0 = [0, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35, 36.5, 38, 39.5, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77]# noqa: E501
+
+    data16 = [0, 16.8, 18.3, 19.8, 21.3, 22.8, 24.3, 25.8, 27.3, 28.8, 30.3, 31.8, 33.3, 34.8, 36.3, 37.8, 39.3, 40.8, 42.3, 43.8, 45.3, 46.8, 48.3, 50.3, 52.3, 54.3, 56.3, 58.3, 60.3, 62.3, 64.3, 66.3, 68.3, 70.3, 72.3, 74.3, 76.3, 78.3, 80.3, 82.3, 84.3]# noqa: E501
 
     def effect(self, old, new):
         weapon = self.char.GetWeaponType()
@@ -173,10 +107,10 @@ class Skill3(PassiveSkill):
         self.associate = [{"type":"$*PAtkP","data":data}]
         return super().effect(old, new)
 
-# 三段刃 단공참
+# 三段斩 단공참
 # https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/f2fb27162beb0b87a7cb9af7900e95f2?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill4(ActiveSkill):
-    name = "三段刃"
+    name = "三段斩"
     learnLv = 15
     masterLv = 60
     maxLv = 70
@@ -187,36 +121,25 @@ class Skill4(ActiveSkill):
     damage = False
     uuid = "f2fb27162beb0b87a7cb9af7900e95f2"
 
-    # [5次连续攻击的攻击力]
-    # 第1击~第4击 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    # 第5击 : {value1}%
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    # [7次连续攻击的攻击力]
-    # 第1击~第5击 : {value2}%
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
-    # 第6击 : {value3}%
-    data3 = get_data(f"{prefix}/{uuid}", 3, lambda x = None: x)
-    # 第7击 : {value4}%
-    # data4 = get_data(f"{prefix}/{uuid}", 4, lambda x = None: x)
+    data0 = [0, 889, 980, 1070, 1160, 1250, 1341, 1431, 1521, 1611, 1702, 1792, 1882, 1972, 2062, 2153, 2243, 2333, 2423, 2514, 2604, 2694, 2784, 2875, 2965, 3055, 3145, 3235, 3326, 3416, 3506, 3596, 3687, 3777, 3867, 3957, 4048, 4138, 4228, 4318, 4408, 4499, 4589, 4679, 4769, 4860, 4950, 5040, 5130, 5221, 5311, 5401, 5491, 5581, 5672, 5762, 5852, 5942, 6033, 6123, 6213, 6303, 6394, 6484, 6574, 6664, 6754, 6845, 6935, 7025, 7115]# noqa: E501
+    hit0 = 1 #TODO
+
+    data1 = [0, 1669, 1838, 2007, 2176, 2346, 2515, 2684, 2853, 3023, 3192, 3361, 3530, 3700, 3869, 4038, 4208, 4377, 4546, 4715, 4885, 5054, 5223, 5392, 5562, 5731, 5900, 6070, 6239, 6408, 6577, 6747, 6916, 7085, 7254, 7424, 7593, 7762, 7931, 8101, 8270, 8439, 8609, 8778, 8947, 9116, 9286, 9455, 9624, 9793, 9963, 10132, 10301, 10471, 10640, 10809, 10978, 11148, 11317, 11486, 11655, 11825, 11994, 12163, 12333, 12502, 12671, 12840, 13010, 13179, 13348]# noqa: E501
+    hit1 = 1 #TODO
+
+    data2 = [0, 889, 980, 1070, 1160, 1250, 1341, 1431, 1521, 1611, 1702, 1792, 1882, 1972, 2062, 2153, 2243, 2333, 2423, 2514, 2604, 2694, 2784, 2875, 2965, 3055, 3145, 3235, 3326, 3416, 3506, 3596, 3687, 3777, 3867, 3957, 4048, 4138, 4228, 4318, 4408, 4499, 4589, 4679, 4769, 4860, 4950, 5040, 5130, 5221, 5311, 5401, 5491, 5581, 5672, 5762, 5852, 5942, 6033, 6123, 6213, 6303, 6394, 6484, 6574, 6664, 6754, 6845, 6935, 7025, 7115]# noqa: E501
+    hit2 = 1 #TODO
+
+    data3 = [0, 1669, 1838, 2007, 2176, 2346, 2515, 2684, 2853, 3023, 3192, 3361, 3530, 3700, 3869, 4038, 4208, 4377, 4546, 4715, 4885, 5054, 5223, 5392, 5562, 5731, 5900, 6070, 6239, 6408, 6577, 6747, 6916, 7085, 7254, 7424, 7593, 7762, 7931, 8101, 8270, 8439, 8609, 8778, 8947, 9116, 9286, 9455, 9624, 9793, 9963, 10132, 10301, 10471, 10640, 10809, 10978, 11148, 11317, 11486, 11655, 11825, 11994, 12163, 12333, 12502, 12671, 12840, 13010, 13179, 13348]# noqa: E501
+    hit3 = 1 #TODO
+
     data4 = [0, 1753, 1931, 2108, 2286, 2464, 2642, 2820, 2998, 3175, 3353, 3531, 3709, 3887, 4065, 4242, 4420, 4598, 4776, 4954, 5131, 5309, 5487, 5665, 5843, 6021, 6198, 6376, 6554, 6732, 6910, 7088, 7265, 7443, 7621, 7799, 7977, 8154, 8332, 8510, 8688, 8866, 9044, 9221, 9399, 9577, 9755, 9933, 10111, 10288, 10466, 10644, 10822, 11000, 11177, 11355, 11533, 11711, 11889, 12067, 12244, 12422, 12600, 12778, 12956, 13134, 13311, 13489, 13667, 13845, 14023]# noqa: E501
+    hit4 = 1 #TODO
 
 
-# 短剑精通
-# swordman_male/weapon_master/01c3a2fb793d293a25ed8dc7a0d70c1a
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/01c3a2fb793d293a25ed8dc7a0d70c1a
+# 短剑精通 소검 마스터리
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/01c3a2fb793d293a25ed8dc7a0d70c1a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill5(PassiveSkill):
-    """
-    装备短剑系武器时， 增加攻击力和命中率。\n
-    [转职为剑魂后]\n
-    - 3级 : 使用[上挑]后可以追加一次攻击； 且使用[上挑]时会出现剑气\n
-    - 5级 : [格挡]成功时， 对敌人生成冲击波， 并有一定几率使其进入眩晕状态\n
-    - 6级 : 增加[破军升龙击]的攻击力\n
-    - 7级 : 施放[拔刀斩]时会出现剑气； 施放[幻影剑舞]时增加剑气的攻击次数\n
-    - 9级 : 增加[猛龙断空斩]的攻击力\n
-    [装备传世武器后]\n
-    适用独立的攻击力/命中率增加数值。
-    """
     name = "短剑精通"
     learnLv = 15
     masterLv = 1
@@ -227,40 +150,19 @@ class Skill5(PassiveSkill):
     uuid = "01c3a2fb793d293a25ed8dc7a0d70c1a"
     hasUP = False
 
-    # 物理攻击力增加率 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    # 魔法攻击力增加率 : {value1}%
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    # 命中率增加 : {value2}%
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
-    # [剑魂特殊附加效果]
-    # [里 · 鬼剑术]剑气攻击力 : {value3}%
-    data3 = get_data(f"{prefix}/{uuid}", 3, lambda x = None: x)
-    # [格挡]冲击波攻击力 : {value4}%
-    data4 = get_data(f"{prefix}/{uuid}", 4, lambda x = None: x)
-    # [格挡]冲击波眩晕几率 : {value5}%
-    data5 = get_data(f"{prefix}/{uuid}", 5, lambda x = None: x)
-    # [格挡]冲击波眩晕持续时间 : {value6}秒
-    data6 = get_data(f"{prefix}/{uuid}", 6, lambda x = None: x)
-    # [上挑]第1击攻击力增加率 : {value7}%
-    data7 = get_data(f"{prefix}/{uuid}", 7, lambda x = None: x)
-    # [上挑]第2击攻击力增加率 : {value8}%
-    data8 = get_data(f"{prefix}/{uuid}", 8, lambda x = None: x)
-    # [上挑]浮空力 : {value9}%
-    data9 = get_data(f"{prefix}/{uuid}", 9, lambda x = None: x)
-    # [三段刃]攻击力增加率 : {value10}%
-    data10 = get_data(f"{prefix}/{uuid}", 10, lambda x = None: x)
-    # [破军升龙击]攻击力增加率 : {value11}%
-    data11 = get_data(f"{prefix}/{uuid}", 11, lambda x = None: x)
-    # [猛龙断空斩]攻击力增加率 : {value12}%
-    data12 = get_data(f"{prefix}/{uuid}", 12, lambda x = None: x)
-    # [装备传世武器后]
-    # 物理攻击力增加率 : {value13}%
-    data13 = get_data(f"{prefix}/{uuid}", 13, lambda x = None: x)
-    # 魔法攻击力增加率 : {value14}%
-    data14 = get_data(f"{prefix}/{uuid}", 14, lambda x = None: x)
-    # 命中率增加 : {value15}%
-    data15 = get_data(f"{prefix}/{uuid}", 15, lambda x = None: x)
+    data0 = [0, 16.8, 18.3, 19.8, 21.3, 22.8, 24.3, 25.8, 27.3, 28.8, 30.3, 31.8, 33.3, 34.8, 36.3, 37.8, 39.3, 40.8, 42.3, 43.8, 45.3, 46.8, 48.3, 50.3, 52.3, 54.3, 56.3, 58.3, 60.3, 62.3, 64.3, 66.3, 68.3, 70.3, 72.3, 74.3, 76.3, 78.3, 80.3, 82.3, 84.3]# noqa: E501
+
+    # [里 · 鬼剑术]剑气攻击力
+    data3 = [0, 165, 192, 218, 244, 271, 297, 323, 350, 376, 402, 429, 455, 482, 508, 534, 561, 587, 613, 640, 666, 692, 719, 745, 771, 798, 824, 850, 877, 903, 930, 956, 982, 1009, 1035, 1061, 1088, 1114, 1140, 1167, 1193]# noqa: E501
+
+    # 破军升龙击
+    data11 = [0, 0, 0, 0, 0, 0, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45]# noqa: E501
+
+    # 猛龙断空斩
+    data12 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25]# noqa: E501
+
+
+    data13 = [0, 16.8, 18.3, 19.8, 21.3, 22.8, 24.3, 25.8, 27.3, 28.8, 30.3, 31.8, 33.3, 34.8, 36.3, 37.8, 39.3, 40.8, 42.3, 43.8, 45.3, 46.8, 48.3, 50.3, 52.3, 54.3, 56.3, 58.3, 60.3, 62.3, 64.3, 66.3, 68.3, 70.3, 72.3, 74.3, 76.3, 78.3, 80.3, 82.3, 84.3]# noqa: E501
 
 
     def effect(self, old, new):
@@ -279,20 +181,9 @@ class Skill5(PassiveSkill):
         return super().effect(old, new)
 
 
-# 太刀精通
-# swordman_male/weapon_master/8f73f243041c2d27739fe7696f02bf9b
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/8f73f243041c2d27739fe7696f02bf9b
+# 太刀精通 도 마스터리
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/8f73f243041c2d27739fe7696f02bf9b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill6(ActiveSkill):
-    """
-    装备太刀系武器时， 增加攻击力和命中率。\n
-    [转职为剑魂后]\n
-    - 5级 : [三段刃]增加攻击次数， 最后一击还可以浮空敌人\n
-    - 7级 :使用[拔刀斩]可以发动追加攻击； 使用[幻影剑舞]可以增加斩击次数和速度， 减少斩击攻击力\n
-    - 10级 :  攻击时会附加刺伤效果， 使用[空之连刃]时， 对刺伤状态的敌人增加攻击力\n
-    刺伤效果最多可以叠加17次， 达到叠加上限时， 会消耗所有刺伤效果并引爆敌人造成伤害； 刺伤效果叠加3次开始， 接下来的3秒内可以持续叠加， 若没达到叠加上限， 3秒后也会引发爆炸。\n
-    [装备传世武器后]\n
-    适用独立的攻击力/命中率增加数值。
-    """
     name = "太刀精通"
     learnLv = 15
     masterLv = 1
@@ -304,33 +195,27 @@ class Skill6(ActiveSkill):
     uuid = "8f73f243041c2d27739fe7696f02bf9b"
     hasUP = False
 
-    # 物理攻击力增加率 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    # 魔法攻击力增加率 : {value1}%
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    # 命中率增加 : {value2}%
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
-    # [剑魂特殊附加效果]
-    # 刺伤几率 : {value3}%
-    data3 = get_data(f"{prefix}/{uuid}", 3, lambda x = None: x)
-    # 刺伤持续时间 : {value4}秒
-    data4 = get_data(f"{prefix}/{uuid}", 4, lambda x = None: x)
-    # 刺伤爆炸攻击力 : {value5}% ~ {value6}%
-    data5 = get_data(f"{prefix}/{uuid}", 5, lambda x = None: x)
-    data6 = get_data(f"{prefix}/{uuid}", 6, lambda x = None: x)
-    # 刺伤持续攻击力 : {value7}%
-    data7 = get_data(f"{prefix}/{uuid}", 7, lambda x = None: x)
-    # [空之连刃]附加攻击力 : {value8}%
-    data8 = get_data(f"{prefix}/{uuid}", 8, lambda x = None: x)
-    # [空之连刃]对刺伤状态的敌人的攻击力增加率 : {value9}%
-    data9 = get_data(f"{prefix}/{uuid}", 9, lambda x = None: x)
-    # [装备传世武器后]
-    # 物理攻击力增加率 : {value10}%
-    data10 = get_data(f"{prefix}/{uuid}", 10, lambda x = None: x)
-    # 魔法攻击力增加率 : {value11}%
-    data11 = get_data(f"{prefix}/{uuid}", 11, lambda x = None: x)
-    # 命中率增加 : {value12}%
-    data12 = get_data(f"{prefix}/{uuid}", 12, lambda x = None: x)
+    # 物理攻击力增加
+    data0 = [0, 9.2, 10.7, 12.2, 13.7, 15.2, 16.7, 18.2, 19.7, 21.2, 22.7, 24.2, 25.7, 27.2, 28.7, 30.2, 31.7, 33.2, 34.7, 36.2, 37.7, 39.2, 40.7, 42.7, 44.7, 46.7, 48.7, 50.7, 52.7, 54.7, 56.7, 58.7, 60.7, 62.7, 64.7, 66.7, 68.7, 70.7, 72.7, 74.7, 76.7]# noqa: E501
+    hit0 = 0
+
+    # 刺伤几率
+    data4 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 37, 38, 38, 39, 39, 40, 40, 41, 41, 42, 42, 43, 43, 44, 44, 45, 45, 46, 46, 47, 47, 48, 48, 49, 49, 50, 50, 51, 51, 52, 52]
+
+    # 刺伤爆炸伤害(下限)
+    data5 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2638, 2803, 2968, 3134, 3295, 3460, 3621, 3789, 3953, 4117, 4279, 4448, 4609, 4778, 4936, 5104, 5264, 5430, 5597, 5759, 5925, 6087, 6250, 6419, 6580, 6749, 6909, 7078, 7243, 7407, 7574]# noqa: E501
+
+    # 刺伤爆炸伤害(上限)
+    data6 = [0, 7363, 8537, 9711, 10884, 12058, 13232, 14406, 15580, 16753, 17927, 19101, 20275, 21449, 22623, 23796, 24970, 26144, 27318, 28492, 29665, 30839, 32013, 33187, 34361, 35534, 36708, 37882, 39056, 40230, 41404, 42577, 43751, 44925, 46099, 47273, 48446, 49620, 50794, 51968, 53142]# noqa: E501
+
+    # [空中连斩]附加攻击力
+    data8 = [0, 63, 68, 72, 76, 79, 84, 87, 93, 96, 99, 104, 107, 111, 115, 120, 123, 127, 131, 134, 138, 143, 147, 150, 155, 159, 161, 166, 171, 174, 177, 183, 186, 190, 196, 198, 202, 204, 209, 214, 219]# noqa: E501
+
+    # [空中连斩]对刺伤状态增加攻击力
+    data9 = [0, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150]# noqa: E501
+
+    # 传世武器物攻增加
+    data10 = [0, 16.8, 18.3, 19.8, 21.3, 22.8, 24.3, 25.8, 27.3, 28.8, 30.3, 31.8, 33.3, 34.8, 36.3, 37.8, 39.3, 40.8, 42.3, 43.8, 45.3, 46.8, 48.3, 50.3, 52.3, 54.3, 56.3, 58.3, 60.3, 62.3, 64.3, 66.3, 68.3, 70.3, 72.3, 74.3, 76.3, 78.3, 80.3, 82.3, 84.3]# noqa: E501
 
     def effect(self, old, new):
         weapon = self.char.GetWeaponType()
@@ -354,20 +239,9 @@ class Skill6(ActiveSkill):
 
     def getSkillCD(self,mode=None):
         return 1.0
-
-# 巨剑精通
-# swordman_male/weapon_master/8c2379737c5acc935c1731f67f607655
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/8c2379737c5acc935c1731f67f607655
+# 巨剑精通 대검 마스터리
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/8c2379737c5acc935c1731f67f607655?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill7(PassiveSkill):
-    """
-    装备巨剑系武器时， 增加攻击力和命中率。\n
-    [转职为剑魂后]\n
-    - 3级 : 使用[银光落刃]时可以使自身进入霸体状态， 并对敌人进行多段攻击； 使用[里 · 鬼剑术]时， 第1次斩击会出现飓风， 按住技能键可以蓄气进行第2次斩击； 使用[拔刀斩]时， 按住技能键可以进行蓄气攻击\n
-    - 5级 : [格挡]成功时， 对敌人生成冲击波， 并有一定几率使其进入眩晕状态\n
-    - 7级 : 使用[破军升龙击]后还可以追加捶击攻击\n
-    [装备传世武器后]\n
-    适用独立的攻击力/命中率增加数值。
-    """
     name = "巨剑精通"
     learnLv = 15
     masterLv = 1
@@ -377,32 +251,14 @@ class Skill7(PassiveSkill):
     rangeLv = 3
     uuid = "8c2379737c5acc935c1731f67f607655"
 
-    # 物理攻击力增加率 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    # 魔法攻击力增加率 : {value1}%
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    # 命中率增加 : {value2}%
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
-    # [剑魂特殊附加效果]
-    # [格挡]冲击波攻击力 : {value3}%
-    data3 = get_data(f"{prefix}/{uuid}", 3, lambda x = None: x)
-    # [格挡]冲击波眩晕几率 : {value4}%
-    data4 = get_data(f"{prefix}/{uuid}", 4, lambda x = None: x)
-    # [格挡]冲击波眩晕持续时间 : {value5}秒
-    data5 = get_data(f"{prefix}/{uuid}", 5, lambda x = None: x)
-    # [银光落刃]多段攻击力 : {value6}%
-    data6 = get_data(f"{prefix}/{uuid}", 6, lambda x = None: x)
-    # [里 · 鬼剑术]达蓄气上限时攻击力增加率 : {value7}%
-    data7 = get_data(f"{prefix}/{uuid}", 7, lambda x = None: x)
-    # [拔刀斩]达蓄气上限时攻击力增加率 : {value8}%
-    data8 = get_data(f"{prefix}/{uuid}", 8, lambda x = None: x)
-    # [装备传世武器后]
-    # 物理攻击力增加率 : {value9}%
-    data9 = get_data(f"{prefix}/{uuid}", 9, lambda x = None: x)
-    # 魔法攻击力增加率 : {value10}%
-    data10 = get_data(f"{prefix}/{uuid}", 10, lambda x = None: x)
-    # 命中率增加 : {value11}%
-    data11 = get_data(f"{prefix}/{uuid}", 11, lambda x = None: x)
+    data0 = [0, 14.4, 15.9, 17.4, 18.9, 20.4, 21.9, 23.4, 24.9, 26.4, 27.9, 29.4, 30.9, 32.4, 33.9, 35.4, 36.9, 38.4, 39.9, 41.4, 42.9, 44.4, 45.9, 47.9, 49.9, 51.9, 53.9, 55.9, 57.9, 59.9, 61.9, 63.9, 65.9, 67.9, 69.9, 71.9, 73.9, 75.9, 77.9, 79.9, 81.9]# noqa: E501
+
+    # [里 · 鬼剑术]额外附加
+    data3 = [0, 324, 375, 427, 479, 530, 582, 633, 685, 737, 788, 840, 891, 943, 995, 1046, 1098, 1149, 1201, 1253, 1304, 1356, 1407, 1459, 1511, 1562, 1614, 1665, 1717, 1769, 1820, 1872, 1923, 1975, 2027, 2078, 2130, 2181, 2233, 2285, 2336]# noqa: E501
+
+    data8 = [0, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130]
+
+    data9 = [0, 16.8, 18.3, 19.8, 21.3, 22.8, 24.3, 25.8, 27.3, 28.8, 30.3, 31.8, 33.3, 34.8, 36.3, 37.8, 39.3, 40.8, 42.3, 43.8, 45.3, 46.8, 48.3, 50.3, 52.3, 54.3, 56.3, 58.3, 60.3, 62.3, 64.3, 66.3, 68.3, 70.3, 72.3, 74.3, 76.3, 78.3, 80.3, 82.3, 84.3]# noqa: E501
 
     def effect(self, old, new):
         weapon = self.char.GetWeaponType()
@@ -414,23 +270,13 @@ class Skill7(PassiveSkill):
         self.associate = [
             {"type":"$*PAtkP","data":data},
             {"type":"+dataplus0","data":self.data3,"skills":["里 · 鬼剑术"],"ratio":1},
-            {"type":"+power12","data":[i - 100 if i > 100 else i for i in self.data8],"skills":["拔刀斩"]},
+            {"type":"+power1","data":[i - 100 if i > 100 else i for i in self.data8],"skills":["拔刀斩"]},
         ]
         return super().effect(old, new)
 
-# 钝器精通
-# swordman_male/weapon_master/9cb6f9ed646fa87f9b7680a42ce83d1a
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/9cb6f9ed646fa87f9b7680a42ce83d1a
+# 钝器精通 둔기 마스터리
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/9cb6f9ed646fa87f9b7680a42ce83d1a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill8(PassiveSkill):
-    """
-    装备钝器系武器时， 增加攻击力和命中率。\n
-    [转职为剑魂后]\n
-    - 3级 : 使用[后跳斩]时可以生成物理冲击波使敌人浮空； 使用[里 · 鬼剑术]时， 增加对眩晕状态下的敌人的攻击力。\n
-    - 5级 : 进行跳跃攻击并命中敌人时可以生成物理冲击波。\n
-    - 7级 : 使用[破军升龙击]后还可以追加蓄气型捶击攻击， 并生成冲击波； [幻影剑舞]最后一击由剑气变为冲击波； 通过[银光落刃]技能升级， 可以增加冲击波范围。\n
-    [装备传世武器后]\n
-    适用独立的攻击力/命中率增加数值。
-    """
     name = "钝器精通"
     learnLv = 15
     masterLv = 1
@@ -440,32 +286,10 @@ class Skill8(PassiveSkill):
     rangeLv = 3
     uuid = "9cb6f9ed646fa87f9b7680a42ce83d1a"
 
-    # 物理攻击力增加率 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    # 魔法攻击力增加率 : {value1}%
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    # 命中率增加 : {value2}%
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
-    # [剑魂特殊附加效果]
-    # [后跳斩]浮空力 : {value3}
-    data3 = get_data(f"{prefix}/{uuid}", 3, lambda x = None: x)
-    # [后跳斩]冲击波攻击力 : {value4}%
-    data4 = get_data(f"{prefix}/{uuid}", 4, lambda x = None: x)
-    # 对眩晕状态的敌人造成的[里 · 鬼剑术]攻击力增加率 : {value5}%
-    data5 = get_data(f"{prefix}/{uuid}", 5, lambda x = None: x)
-    # 跳跃攻击时的浮空力 : {value6}
-    data6 = get_data(f"{prefix}/{uuid}", 6, lambda x = None: x)
-    # 跳跃攻击时的冲击波攻击力 : {value7}%
-    data7 = get_data(f"{prefix}/{uuid}", 7, lambda x = None: x)
-    # [后跳斩]攻击力增加率 : {value8}%
-    data8 = get_data(f"{prefix}/{uuid}", 8, lambda x = None: x)
-    # [装备传世武器后]
-    # 物理攻击力增加率 : {value9}%
-    data9 = get_data(f"{prefix}/{uuid}", 9, lambda x = None: x)
-    # 魔法攻击力增加率 : {value10}%
-    data10 = get_data(f"{prefix}/{uuid}", 10, lambda x = None: x)
-    # 命中率增加 : {value11}%
-    data11 = get_data(f"{prefix}/{uuid}", 11, lambda x = None: x)
+    data0 = [0, 11.3, 12.8, 14.3, 15.8, 17.3, 18.8, 20.3, 21.8, 23.3, 24.8, 26.3, 27.8, 29.3, 30.8, 32.3, 33.8, 35.3, 36.8, 38.3, 39.8, 41.3, 42.8, 44.8, 46.8, 48.8, 50.8, 52.8, 54.8, 56.8, 58.8, 60.8, 62.8, 64.8, 66.8, 68.8, 70.8, 72.8, 74.8, 76.8, 78.8]# noqa: E501
+    hit0 = 1 #TODO
+
+    data9 = [0, 16.8, 18.3, 19.8, 21.3, 22.8, 24.3, 25.8, 27.3, 28.8, 30.3, 31.8, 33.3, 34.8, 36.3, 37.8, 39.3, 40.8, 42.3, 43.8, 45.3, 46.8, 48.3, 50.3, 52.3, 54.3, 56.3, 58.3, 60.3, 62.3, 64.3, 66.3, 68.3, 70.3, 72.3, 74.3, 76.3, 78.3, 80.3, 82.3, 84.3]# noqa: E501
 
     def effect(self, old, new):
         weapon = self.char.GetWeaponType()
@@ -477,14 +301,9 @@ class Skill8(PassiveSkill):
         self.associate = [{"type":"$*PAtkP","data":data},]
         return super().effect(old, new)
 
-# 武器奥义
-# swordman_male/weapon_master/8ee0099656df08a0b39225f8a21d514b
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/8ee0099656df08a0b39225f8a21d514b
+# 武器奥义 무기의 극의
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/8ee0099656df08a0b39225f8a21d514b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill9(PassiveSkill):
-    """
-    领悟武器奥义， 学习后， 可增加所有武器的精通等级。\n
-    1级时， 可使所有武器精通各提升2级； 以后技能每提升1级时， 武器精通提升1级。
-    """
     name = "武器奥义"
     learnLv = 15
     masterLv = 20
@@ -495,13 +314,9 @@ class Skill9(PassiveSkill):
 
     associate = [{"type":"+lv","data":[i + 1 if i > 0 else i for i in range(0, maxLv + 2)],"ratio":1,"skills":["光剑精通","钝器精通","太刀精通","巨剑精通","短剑精通"]}] #TODO
 
-# 光剑掌握
-# swordman_male/weapon_master/bb34e8854a93fd250347a1c64119f7ab
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/bb34e8854a93fd250347a1c64119f7ab
+# 光剑掌握 광검 사용 가능
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/bb34e8854a93fd250347a1c64119f7ab?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill10(PassiveSkill):
-    """
-    可以使用光剑系武器攻击敌人， 使用光剑系武器时， 可以增加攻击速度， 减少除[极 · 鬼剑术 (暴风式)]、 [万剑归宗]、 [万剑极诣·开天斩]以外技能的冷却时间。
-    """
     name = "光剑掌握"
     learnLv = 15
     masterLv = 10
@@ -510,24 +325,17 @@ class Skill10(PassiveSkill):
     rangeLv = 3
     uuid = "bb34e8854a93fd250347a1c64119f7ab"
 
-    # 使用光剑时， 技能冷却时间减少率 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    # 使用光剑时， 攻击速度增加率 : {value1}%
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
+    data0 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]# noqa: E501
+
+    data1 = [0, 1.5, 3, 4.5, 6, 7.5, 9, 10.5, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5, 30]# noqa: E501
 
     associate = [
-        {"type":"*cdReduce","data":data0,"exceptSkills":["极 · 鬼剑术 (暴风式)", "万剑归宗", "万剑极诣·开天斩"],"weapon":["光剑"]},
+        {"type":"*cdReduce","data":data0,"exceptSkills":['极 · 鬼剑术 (暴风式)', '万剑归宗', '万剑极诣·开天斩'],"weapon":["光剑"]},
     ]
 
-# 里 · 鬼剑术
-# swordman_male/weapon_master/51a08fd0c90f0a5276cd552047fac93d
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/51a08fd0c90f0a5276cd552047fac93d
+# 里 · 鬼剑术 리 귀검술
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/51a08fd0c90f0a5276cd552047fac93d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill11(ActiveSkill):
-    """
-    剑魂特有的鬼剑术； 施放技能时， 使用的武器不同， 出现的攻击效果也不同。\n
-    可以与基本攻击形成连击， 但无法连接[里 · 鬼剑术]的最后一击。\n
-    可强制中断[里·鬼剑术]， 并施放其它的转职技能。
-    """
     name = "里 · 鬼剑术"
     learnLv = 15
     masterLv = 1
@@ -540,7 +348,7 @@ class Skill11(ActiveSkill):
 
     @property
     def swordnum(self):
-        list = {"短剑": 3, "光剑": 3, "巨剑": 2, "钝器": 4, "太刀": 4}
+        list = {'短剑': 3, '光剑': 3, '巨剑': 2, '钝器': 4, '太刀': 4}
         return list.get(self.char.GetWeaponType(), 3)
 
     data0 = [0] + [0] * 11
@@ -548,13 +356,13 @@ class Skill11(ActiveSkill):
     dataplus0 = 0
 
     basic = {
-        "短剑": (1 + 1 + 1) * 100,
-        "光剑": (1.433 + 1.707 + 2.235)* 100,
+        '短剑': (1 + 1 + 1) * 100,
+        '光剑': (1.433 + 1.707 + 2.235)* 100,
         # 巨剑第二下蓄力5.2
-        "巨剑": (3.027 + 2.301 * 5.2) * 100,
-        "太刀": (1.415 + 1.688 + 1.942 + 2.225) * 2,
+        '巨剑': (3.027 + 2.301 * 5.2) * 100,
+        '太刀': (1.415 + 1.688 + 1.942 + 2.225) * 2,
         # 钝器第三下眩晕率极高,眩晕了就是3倍里鬼
-        "钝器": (2.301 + 2.923 + 1.801 * 3 + 4.366) * 100,
+        '钝器': (2.301 + 2.923 + 1.801 * 3 + 4.366) * 100,
     }
 
     def getSkillData(self, lv = 0):
@@ -566,17 +374,9 @@ class Skill11(ActiveSkill):
         data = basic * ratio + self.dataplus0
         return data
 
-# 流心
-# swordman_male/weapon_master/c5a2956d8ed3af1746ed2f76ca971a09
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/c5a2956d8ed3af1746ed2f76ca971a09
+# 流心 류심
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/c5a2956d8ed3af1746ed2f76ca971a09?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill12(ActiveSkill):
-    """
-    施放后， 进入[流心]状态。\n
-    可以强制中断基本攻击、 [里 · 鬼剑术]、 [逆转反击]、  [三段刃]， 并立即施放[流心]。\n
-    [流心 : 狂]只能在施放[流心]后才能使用； 可以通过ON/OFF控制[流心 : 狂]连击状态的效果。\n
-    [流心]状态和[流心 : 跃]施放过程中， 无法用[强化 - 后跳]强制中断。\n
-    学习[极 · 神剑术]后， 施放过程中进入霸体状态。
-    """
     name = "流心"
     learnLv = 20
     masterLv = 1
@@ -588,21 +388,10 @@ class Skill12(ActiveSkill):
     uuid = "c5a2956d8ed3af1746ed2f76ca971a09"
 
     damage = False
-# 流心 : 刺
-# swordman_male/weapon_master/2a0a39184de92acf1c1375e00b77404c
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/2a0a39184de92acf1c1375e00b77404c
+
+# 流心 : 刺 류심 충
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/2a0a39184de92acf1c1375e00b77404c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill13(ActiveSkill):
-    """
-    对前方敌人发动强威力的突刺。\n
-    未施放[流心]技能时， 也可使用[流心 : 刺]。 使用[流心 : 刺]后， 可以立即施放[连突刺]或[三段刃]。 使用除钝器以外的武器时， 在空中按流心键可以发动空中形态。\n
-    若已掌握[极 · 神剑术]则在施放过程中进入霸体状态。\n
-    学习[无形剑意]后， 装备短剑、 巨剑、 钝器时附加特殊效果。\n
-    [武器附加效果]\n
-    太刀、 光剑 :  增加多段攻击次数\n
-    钝器 : 增加攻击力； 附加眩晕效果\n
-    巨剑、 短剑 : 突刺后按技能键追加下斩\n
-    技能达到20级后， 装备太刀时可以增加刺伤数量
-    """
     name = "流心 : 刺"
     learnLv = 20
     masterLv = 60
@@ -615,33 +404,8 @@ class Skill13(ActiveSkill):
     uuid = "2a0a39184de92acf1c1375e00b77404c"
     thrusthit = 4
 
-    # 基本攻击力 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
+    data0 = [0, 4325, 4762, 5204, 5642, 6081, 6523, 6956, 7395, 7837, 8282, 8719, 9158, 9600, 10039, 10477, 10914, 11349, 11791, 12230, 12667, 13109, 13544, 13986, 14425, 14867, 15307, 15747, 16181, 16616, 17054, 17498, 17938, 18377, 18817, 19254, 19686, 20125, 20567, 21005, 21447, 21891, 22328, 22763, 23203, 23639, 24079, 24519, 24958, 25396, 25835, 26274, 26714, 27152, 27591, 28028, 28465, 28905, 29345, 29784, 30224, 30665, 31103, 31538, 31979, 32419, 32858, 33296, 33733, 34170, 34610]# noqa: E501
     hit0 = 2
-    # 多段攻击次数 : {value1}
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    # 短剑 - 在空中施放时， 多段攻击次数增加量 : 1
-    # 短剑、 巨剑 - 追加下斩攻击力 : 基本攻击力的{value2}%
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
-    # 太刀 - 刺伤效果几率 : {value3}%
-    data3 = get_data(f"{prefix}/{uuid}", 3, lambda x = None: x)
-    # 太刀 - 刺伤效果数 : {value4}个
-    data4 = get_data(f"{prefix}/{uuid}", 4, lambda x = None: x)
-    # 太刀 - 刺伤持续时间 : {value5}秒
-    data5 = get_data(f"{prefix}/{uuid}", 5, lambda x = None: x)
-    # 太刀、 光剑 - 多段攻击次数 : {value6}
-    data6 = get_data(f"{prefix}/{uuid}", 6, lambda x = None: x)
-    # 太刀、 光剑 - 多段攻击力 : 基本攻击力的{value7}%
-    data7 = get_data(f"{prefix}/{uuid}", 7, lambda x = None: x)
-    # 钝器 - 攻击力增加率 : {value8}%
-    data8 = get_data(f"{prefix}/{uuid}", 8, lambda x = None: x)
-    # 钝器 - 眩晕几率 : {value9}%
-    data9 = get_data(f"{prefix}/{uuid}", 9, lambda x = None: x)
-    # 钝器 - 眩晕时间 : {value10}秒
-    data10 = get_data(f"{prefix}/{uuid}", 10, lambda x = None: x)
-    # [范围信息]
-    # 范围比率 : {value11}%
-    data11 = get_data(f"{prefix}/{uuid}", 11, lambda x = None: x)
 
     # 地面与空中伤害已一致
     def setMode(self,mode):
@@ -657,14 +421,15 @@ class Skill13(ActiveSkill):
     def getWeaponCDRatio(self):
         return 1.0
 
+    # 额外刺伤概率
+    data3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87]# noqa: E501
+    # 额外刺伤层数
+    data4 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]# noqa: E501
 
-# 无我剑气
-# swordman_male/weapon_master/c47b66efd27845ef14954928ea2f95c8
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/c47b66efd27845ef14954928ea2f95c8
+
+# 无我剑气 검기상인
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/c47b66efd27845ef14954928ea2f95c8?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill14(PassiveSkill):
-    """
-    达到无我境界， 增加基本攻击力和技能攻击力。
-    """
     name = "无我剑气"
     learnLv = 20
     masterLv = 5
@@ -676,13 +441,9 @@ class Skill14(PassiveSkill):
     data0 = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]# noqa: E501
     associate = [{"type":"*skillRation","data":data0}]
 
-# 破极兵刃
-# swordman_male/weapon_master/762c4e6d030eaf0abbfe1fec2b298574
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/762c4e6d030eaf0abbfe1fec2b298574
+# 破极兵刃 오버드라이브
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/762c4e6d030eaf0abbfe1fec2b298574?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill15(ActiveSkill):
-    """
-    使武器突破极限， 增加物理暴击率、 基本攻击力和技能攻击力， 效果持续一定时间。
-    """
     name = "破极兵刃"
     learnLv = 25
     masterLv = 10
@@ -692,30 +453,12 @@ class Skill15(ActiveSkill):
     cd = 5
     mp = [271, 2570]
     uuid = "762c4e6d030eaf0abbfe1fec2b298574"
-    # 持续时间 : {value0}秒
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    # 增加基本攻击力和技能攻击力 : {value1}%
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    # 增加物理暴击率 : {value2}%
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
+
     damage = False
 
-# 流心 : 跃
-# swordman_male/weapon_master/9dc8438e4572d39243c97da31c113acc
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/9dc8438e4572d39243c97da31c113acc
+# 流心 : 跃 류심 쾌
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/9dc8438e4572d39243c97da31c113acc?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill16(ActiveSkill):
-    """
-    向前轻轻跳跃， 发出斩击。\n
-    在施放[流心]技能状态下， 向前轻轻跳跃， 在跳跃状态下可通过追加操作向敌人发出砍击。\n
-    使用方向键可以进行Y轴移动； 如果不进行追加操作， 则跳跃后会回到[流心]技能初始状态。\n
-    学习[极 · 神剑术]后， 施放时进入霸体状态。\n
-    学习[无形剑意]后， 使用短剑、 太刀、 光剑、 钝器时， 附加特殊效果。\n
-    [各武器效果]\n
-    光剑 : 附加感电效果\n
-    短剑 : 施放横向砍击\n
-    太刀 : 施放横向砍击， 附加刺伤效果\n
-    钝器 : 生成冲击波； 在空中按流心键和攻击键， 可以在空中发动[流心 : 跃]； 在空中施放时， 增加攻击力。
-    """
     name = "流心 : 跃"
     learnLv = 25
     masterLv = 60
@@ -726,40 +469,14 @@ class Skill16(ActiveSkill):
     mp = [30, 350]
     uuid = "9dc8438e4572d39243c97da31c113acc"
 
-    # 基本攻击力 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    hit0 = 1
-    # 短剑、 太刀 - 多段攻击次数 : {value1}次
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    # 短剑、 太刀 - 多段攻击力 : 基本攻击力的{value2}%
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
-    # 太刀 - 刺伤效果几率 : {value3}%
-    data3 = get_data(f"{prefix}/{uuid}", 3, lambda x = None: x)
-    # 太刀 - 刺伤效果数 : {value4}个
-    data4 = get_data(f"{prefix}/{uuid}", 4, lambda x = None: x)
-    # 太刀 - 刺伤持续时间 : {value5}秒
-    data5 = get_data(f"{prefix}/{uuid}", 5, lambda x = None: x)
-    # 光剑 - 感电攻击力 : {value6}%
-    data6 = get_data(f"{prefix}/{uuid}", 6, lambda x = None: x)
-    # 光剑 - 感电几率 : {value7}%
-    data7 = get_data(f"{prefix}/{uuid}", 7, lambda x = None: x)
-    # 光剑 - 感电持续时间 : {value8}秒
-    data8 = get_data(f"{prefix}/{uuid}", 8, lambda x = None: x)
-    # 钝器 - 冲击波攻击力 : {value9}%
-    data9 = get_data(f"{prefix}/{uuid}", 9, lambda x = None: x)
-    # 钝器 - 空中发动[流心 ： 跃]时， 攻击力增加率 : {value10}%
-    data10 = get_data(f"{prefix}/{uuid}", 10, lambda x = None: x)
-    # 钝器 - 冲击波大小比率 : {value11}%
-    data11 = get_data(f"{prefix}/{uuid}", 11, lambda x = None: x)
-    # [范围信息]
-    # 范围比率 : {value12}%
-    data12 = get_data(f"{prefix}/{uuid}", 12, lambda x = None: x)
+    data0 = [0, 12011, 13230, 14448, 15667, 16885, 18104, 19322, 20541, 21759, 22978, 24196, 25415, 26633, 27852, 29070, 30289, 31507, 32726, 33944, 35163, 36381, 37600, 38818, 40037, 41255, 42474, 43692, 44911, 46129, 47348, 48566, 49785, 51003, 52222, 53440, 54659, 55877, 57096, 58314, 59533, 60751, 61970, 63188, 64407, 65625, 66844, 68062, 69281, 70499, 71718, 72936, 74155, 75373, 76592, 77810, 79029, 80247, 81466, 82684, 83903, 85121, 86340, 87558, 88777, 89995, 91214, 92432, 93651, 94869, 96088]# noqa: E501
+    hit0 = 1 #TODO
 
     mode = ["地面","空中"]
 
     def setMode(self,mode):
         weapon = self.char.GetWeaponType()
-        if weapon[0] == "钝器" and mode == "空中":
+        if weapon[0] == '钝器' and mode == "空中":
             self.skillRation *= 1.2
         else:
             pass
@@ -768,44 +485,29 @@ class Skill16(ActiveSkill):
         return 1.0
 
 
-# 逆转反击
-# swordman_male/weapon_master/c9664191611af31142e052dfaef84530
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/c9664191611af31142e052dfaef84530
+    data3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 100, 100, 100, 100]# noqa: E501
+
+    data4 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]# noqa: E501
+
+
+# 逆转反击 이면 뒤집기
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/c9664191611af31142e052dfaef84530?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill17(ActiveSkill):
-    """
-    自身背后遭受攻击时， 可以进行反击； 每隔一段时间反击时不会受到伤害。
-    """
     name = "逆转反击"
     learnLv = 30
     masterLv = 20
     maxLv = 30
     position = 2 #TODO
     rangeLv = 3
-    cd = [0, 15, 14.7, 14.4, 14.2, 13.9, 13.6, 13.3, 13.1, 12.8, 12.5, 12.2, 12, 11.7, 11.4, 11.1, 10.9, 10.6, 10.3, 10, 9.8, 9.5, 9.2, 8.9, 8.7, 8.4, 8.1, 7.8, 7.6, 7.3, 7]
+    cd = [0,15, 14.7, 14.4, 14.2, 13.9, 13.6, 13.3, 13.1, 12.8, 12.5, 12.2, 12, 11.7, 11.4, 11.1, 10.9, 10.6, 10.3, 10, 9.8, 9.5, 9.2, 8.9, 8.7, 8.4, 8.1, 7.8, 7.6, 7.3, 7]
     uuid = "c9664191611af31142e052dfaef84530"
 
     damage = False
-    # 攻击力 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    # 保护冷却时间 : {value1}秒
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    # [范围信息]
-    # 范围比率 : {value2}%
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
 
-# 破军升龙击
-# swordman_male/weapon_master/28b583c75a49103a1d8aabf799c000a4
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/28b583c75a49103a1d8aabf799c000a4
+
+# 破军升龙击 차지 크래시
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/28b583c75a49103a1d8aabf799c000a4?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill18(ActiveSkill):
-    """
-    以冲撞击退敌人的同时向敌人发出单手上斩， 可以使敌人浮空。\n
-    若已掌握[极 · 神剑术]则会发动阿甘左的暴风式。\n
-    [武器附加效果]\n
-    太刀 : 增加上斩攻击次数； 技能达到4级以上时， 附加刺伤效果\n
-    光剑 : 增加冲撞攻击次数， 减少冲撞攻击力\n
-    巨剑 : 上斩后可以追加攻击\n
-    钝器 : 上斩后可以追加攻击， 追加攻击会生成冲击波 (被追加攻击命中的敌人， 不会受到冲击波的伤害)
-    """
     name = "破军升龙击"
     learnLv = 30
     masterLv = 60
@@ -816,41 +518,22 @@ class Skill18(ActiveSkill):
     mp = [70, 700]
     uuid = "28b583c75a49103a1d8aabf799c000a4"
 
-    # 肩撞攻击力 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
+    # 肩撞
+    data0 = [0, 3155, 3477, 3794, 4116, 4432, 4757, 5078, 5392, 5715, 6033, 6356, 6674, 6992, 7315, 7635, 7954, 8276, 8594, 8918, 9238, 9557, 9879, 10195, 10518, 10836, 11157, 11478, 11800, 12119, 12437, 12757, 13080, 13405, 13716, 14040, 14362, 14680, 15004, 15322, 15643, 15961, 16284, 16607, 16924, 17247, 17566, 17884, 18204, 18522, 18845, 19166, 19480, 19807, 20125, 20441, 20759, 21082, 21401, 21726, 22049, 22367, 22688, 23003, 23324, 23650, 23962, 24285, 24604, 24925, 25245]# noqa: E501
     hit0 = 2
-    # 上斩攻击力 : {value1}%
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    hit1 = 1
-    # 太刀 - 上斩额外攻击次数 : {value2}
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
-    # 太刀 - 附加刺伤几率 : {value3}%
-    data3 = get_data(f"{prefix}/{uuid}", 3, lambda x = None: x)
-    # 太刀 - 附加刺伤层数 : {value4}层
-    data4 = get_data(f"{prefix}/{uuid}", 4, lambda x = None: x)
-    # 太刀 - 刺伤持续时间 : {value5}秒
-    data5 = get_data(f"{prefix}/{uuid}", 5, lambda x = None: x)
-    # 光剑 - 肩撞额外攻击次数 : {value6}次
-    data6 = get_data(f"{prefix}/{uuid}", 6, lambda x = None: x)
-    # 光剑 - 肩撞攻击力减少率 : {value7}%
-    data7 = get_data(f"{prefix}/{uuid}", 7, lambda x = None: x)
-    # 巨剑、 钝器 - 下锤的蓄气时间上限 : {value8}秒
-    data8 = get_data(f"{prefix}/{uuid}", 8, lambda x = None: x)
-    # 巨剑、 钝器 - 下锤攻击力 : 上斩攻击力的{value9}%
-    data9 = get_data(f"{prefix}/{uuid}", 9, lambda x = None: x)
-    # 钝器 - 下锤冲击波攻击力 : 上斩攻击力的{value10}%
-    data10 = get_data(f"{prefix}/{uuid}", 10, lambda x = None: x)
-    # [范围信息]
-    # 范围比率 : {value11}%
-    data11 = get_data(f"{prefix}/{uuid}", 11, lambda x = None: x)
+
+    # 上斩
+    data1 = [0, 4872, 5362, 5855, 6350, 6844, 7339, 7830, 8325, 8820, 9313, 9812, 10304, 10793, 11293, 11784, 12279, 12774, 13269, 13758, 14253, 14749, 15244, 15737, 16225, 16728, 17219, 17714, 18210, 18703, 19190, 19689, 20184, 20677, 21172, 21661, 22156, 22654, 23149, 23644, 24138, 24633, 25123, 25614, 26110, 26605, 27098, 27589, 28086, 28577, 29079, 29573, 30061, 30554, 31051, 31547, 32042, 32530, 33024, 33521, 34015, 34510, 35003, 35494, 35989, 36485, 36980, 37475, 37968, 38463, 38956]# noqa: E501
+    hit1 = 1 #TODO
 
     # 巨剑 钝器追加部分
-    data12 = data1
-    hit12 = 0
+    data2 = data1
+    hit2 = 0
+
     # 75被动追加部分
-    data13 = data1
-    hit13 = 1
-    power13 = 0
+    data3 = data1
+    hit3 = 1
+    power3 = 0
 
     def setMode(self,mode):
         weapon = self.char.GetWeaponType()
@@ -861,23 +544,16 @@ class Skill18(ActiveSkill):
         elif weapon[0] == "太刀":
             self.hit1 += 1
         elif weapon[0] == "钝器" or weapon[0] == "巨剑":
-            self.hit12 = 1
+            self.hit2 = 1
+
+    data5 = [0, 0, 0, 0, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97]# noqa: E501
+
+    data6 = [0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]# noqa: E501
 
 
-# 流心 : 升
-# swordman_male/weapon_master/3fb8395ae3b81bd608e0c4223a8eb534
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/3fb8395ae3b81bd608e0c4223a8eb534
+# 流心 : 升 류심 승
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/3fb8395ae3b81bd608e0c4223a8eb534?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill19(ActiveSkill):
-    """
-    向上跳跃的同时对敌人发出上挑攻击。\n
-    若已掌握[极 · 神剑术]则在施放过程中进入霸体状态。\n
-    学习[无形剑意]后， 装备太刀、 光剑、 巨剑时附加特殊效果。\n
-    [武器附加效果]\n
-    太刀 : 可以进行多段攻击， 但减少多段攻击力； 技能达到15级以上时， 造成额外刺伤效果\n
-    光剑 : 可以进行多段攻击， 但减少多段攻击力\n
-    短剑、 巨剑、 钝器 : 对浮空的敌人或者霸体状态、 没有浮空的敌人造成更高的攻击力\n
-    巨剑 : 减少攻击时的跳跃力
-    """
     name = "流心 : 升"
     learnLv = 30
     masterLv = 60
@@ -891,22 +567,8 @@ class Skill19(ActiveSkill):
     def getWeaponCDRatio(self):
         return 1.0
 
-    # 基本攻击力 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    # 太刀 - 刺伤效果几率 : {value1}%
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    # 太刀 - 刺伤效果数 : {value2}个
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
-    # 太刀 - 刺伤持续时间 : {value3}秒
-    data3 = get_data(f"{prefix}/{uuid}", 3, lambda x = None: x)
-    # 光剑、 太刀 - 多段攻击次数 : {value4}次
-    data4 = get_data(f"{prefix}/{uuid}", 4, lambda x = None: x)
-    # 装备光剑、 太刀时， 攻击力比率 : 80%
-    # 钝器、 短剑和巨剑 - 对浮空的敌人、 霸体状态的敌人、 没有浮空的敌人攻击力增加率 : {value5}%
-    data5 = get_data(f"{prefix}/{uuid}", 5, lambda x = None: x)
-    # [范围信息]
-    # 范围比率 : {value6}%
-    data6 = get_data(f"{prefix}/{uuid}", 6, lambda x = None: x)
+    data0 = [0, 7137, 7861, 8592, 9313, 10039, 10764, 11485, 12211, 12934, 13656, 14387, 15113, 15832, 16556, 17279, 18010, 18731, 19455, 20184, 20907, 21627, 22358, 23078, 23803, 24528, 25254, 25979, 26702, 27421, 28150, 28876, 29597, 30325, 31049, 31773, 32496, 33218, 33949, 34672, 35392, 36117, 36842, 37572, 38296, 39017, 39741, 40467, 41188, 41912, 42643, 43367, 44090, 44812, 45540, 46262, 46981, 47719, 48440, 49161, 49885, 50611, 51333, 52059, 52782, 53509, 54233, 54954, 55680, 56404, 57130]# noqa: E501
+    hit0 = 1 #TODO
 
     def setMode(self,mode):
         weapon = self.char.GetWeaponType()
@@ -916,21 +578,16 @@ class Skill19(ActiveSkill):
         elif weapon[0] == "钝器" or weapon[0] == "巨剑" or weapon[0] == "短剑":
             self.skillRation *= 1 + 1.1
 
+    data2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]# noqa: E501
 
-# 流心 : 狂
-# swordman_male/weapon_master/5806440d21e7546d50007a5ba11f8024
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/5806440d21e7546d50007a5ba11f8024
+    data3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9, 2.9]# noqa: E501
+
+
+
+
+# 流心 : 狂 류심 강
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/5806440d21e7546d50007a5ba11f8024?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill20(ActiveSkill):
-    """
-    施放[流心]技能后可以使用； 施放时， 增加[流心 : 刺]、 [流心 : 跃]、 [流心 : 升]的攻击力和物理暴击率。\n
-    [流心 : 狂]连击状态\n
-    学习[极 · 神剑术]后， 施放[流心 : 狂]后可以连接施放[流心 : 刺]、 [流心 : 跃]、 [流心 : 升]。(流心技能可以使用开启/关闭进行设置)\n
-    连接施放[流心 : 刺]、 [流心 : 跃]、 [流心 : 升]时， 增加各技能的施放速度。\n
-    [连接施放快捷键]\n
-    [流心 : 刺] : X\n
-    [流心 : 跃] : C + C 或 C + X\n
-    [流心 : 升] : Z
-    """
     name = "流心 : 狂"
     learnLv = 30
     masterLv = 10
@@ -942,36 +599,18 @@ class Skill20(ActiveSkill):
     uuid = "5806440d21e7546d50007a5ba11f8024"
     damage = False
 
-    # 持续时间 : {value0}秒
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    # 可蓄气时间上限 : {value1}秒
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    # [流心 ： 刺/跃/升] - 攻击力增加率 : {value2}%
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
-    # 物理暴击率增加 : {value3}%
-    data3 = get_data(f"{prefix}/{uuid}", 3, lambda x = None: x)
-
+    data2 = [0, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60]# noqa: E501
     associate = [
-        {"type":"*skillRation","data":data2,"skills":["流心 : 升","流心 : 刺","流心 : 跃"]}
+        {"type":"*skillRation","data":data2,"skills":['流心 : 升','流心 : 刺','流心 : 跃']}
     ]
 
 
     def getWeaponCDRatio(self):
         return 1.0
 
-# 拔刀斩
-# swordman_male/weapon_master/cfacda0647b9a0f595df2c2aad30c18d
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/cfacda0647b9a0f595df2c2aad30c18d
+# 拔刀斩 발도
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/cfacda0647b9a0f595df2c2aad30c18d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill21(ActiveSkill):
-    """
-    拔刀并快速向周围敌人发出强威力的斩击。\n
-    [武器附加效果]\n
-    短剑 : [短剑精通]达到7级时， 生成剑气\n
-    太刀、 光剑 : [太刀精通]或[光剑精通]达到7级时， 再次按技能键发动追加攻击\n
-    太刀 : 技能达到5级以上时， 造成额外刺伤效果\n
-    巨剑 : [巨剑精通]达到3级时， 长按技能键可以蓄气， 最大蓄气时增加攻击力\n
-    钝器 : 可以使敌人倒地并对倒地敌人追加伤害
-    """
     name = "拔刀斩"
     learnLv = 35
     masterLv = 60
@@ -981,146 +620,82 @@ class Skill21(ActiveSkill):
     cube = 1
     cd = 15
     mp = [110, 924]
+
+    data0 = [0, 13787, 15192, 16592, 17988, 19385, 20783, 22188, 23585, 24983, 26382, 27779, 29181, 30579, 31977, 33375, 34775, 36171, 37574, 38973, 40370, 41771, 43172, 44568, 45971, 47370, 48770, 50168, 51564, 52962, 54363, 55758, 57161, 58563, 59960, 61358, 62757, 64157, 65556, 66953, 68351, 69752, 71154, 72552, 73952, 75351, 76748, 78149, 79545, 80946, 82343, 83742, 85142, 86541, 87944, 89340, 90740, 92138, 93540, 94934, 96335, 97737, 99134, 100533, 101931, 103331, 104735, 106130, 107526, 108929, 110324]# noqa: E501
+    hit0 = 1 #TODO
+
+    data1 = data0
+    hit1 = 1
+    power1 = 0
     uuid = "cfacda0647b9a0f595df2c2aad30c18d"
-    vps = [{"name": "拔刀奥义", "desc": "施放时间减少<br/>范围增加<br/>发动[神影手]<br/>强化[神影手]速度增益"}, {"name": "冲击之刃", "desc": "取消僵直<br/>施放时间减少"}] # noqa: E501
-    # [拔刀斩]攻击力 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    hit0 = 1
-    # 短剑 - 剑气攻击力 : 拔刀斩的{value1}%
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    # 太刀 - 追加斩击攻击力 : 拔刀斩的{value2}%
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
-    # 太刀 - 刺伤效果几率 : {value3}%
-    data3 = get_data(f"{prefix}/{uuid}", 3, lambda x = None: x)
-    # 太刀 - 刺伤效果数 : {value4}个
-    data4 = get_data(f"{prefix}/{uuid}", 4, lambda x = None: x)
-    # 太刀 - 刺伤持续时间 : {value5}秒
-    data5 = get_data(f"{prefix}/{uuid}", 5, lambda x = None: x)
-    # 太刀 - 追加斩击刺伤效果触发几率 : {value6}%
-    data6 = get_data(f"{prefix}/{uuid}", 6, lambda x = None: x)
-    # 太刀 - 追加斩击刺伤效果触发层数 : {value7}层
-    data7 = get_data(f"{prefix}/{uuid}", 7, lambda x = None: x)
-    # 太刀 - 追加斩击刺伤持续时间 : {value8}秒
-    data8 = get_data(f"{prefix}/{uuid}", 8, lambda x = None: x)
-    # 光剑 - 追加斩击攻击力 : 拔刀斩的{value9}%
-    data9 = get_data(f"{prefix}/{uuid}", 9, lambda x = None: x)
-    # 钝器 - 对倒地敌人和无法倒地敌人的追加攻击力 : 拔刀斩的{value10}%
-    data10 = get_data(f"{prefix}/{uuid}", 10, lambda x = None: x)
-    # [范围信息]
-    # 范围比率 : {value11}%
-    data11 = get_data(f"{prefix}/{uuid}", 11, lambda x = None: x)
-
-    data12 = data0
-    hit12 = 1
-    power12 = 0
-
+    vps = [
+          {
+            "name": "拔刀奥义",
+            "desc": "施放时间减少<br/>范围增加<br/>发动[神影手]",
+            "explain": "[拔刀斩]<br/>准备动作时间 -30%<br/><br/>攻击范围 45%<br/><br/>[神影手]<br/>[拔刀斩]攻击成功时， 获得以下效果<br/>- 发动[神影手]效果<br/>- 一次[拔刀斩]最多发动1次"
+          },
+          {
+            "name": "速战速决",
+            "desc": "取消僵直<br/>施放时间减少",
+            "explain": "[拔刀斩]<br/>可以强制中断转职技能的施放后僵直并施放 (觉醒技能除外)<br/><br/>根据穿戴的武器， 发动时触发以下效果<br/>- 短剑、 钝器 : 攻击后僵直 -40%<br/>- 太刀、 光剑 : 同时发动拔刀追加攻击<br/>- 巨剑 : 立即以最大蓄气状态施放"
+          }
+        ]
     def setMode(self,mode=None):
         weapon = self.char.GetWeaponType()
         if weapon[0] == "光剑" or weapon[0] == "钝器":
-            self.power12 += 0.3
+            self.power1 += 0.3
         elif weapon[0] == "太刀":
-            self.power12 += 0.25
+            self.power1 += 0.25
         elif weapon[0] == "短剑":
-            self.power12 += 0.4
+            self.power1 += 0.4
 
-    def vp_1(self):
-        """
-        [拔刀斩]\n
-        准备动作时间 -30%\n
-        攻击范围 +45%\n
-        [神影手]\n
-        [拔刀斩]命中时， 获得以下效果\n
-        - 发动[神影手]效果\n
-        - 每次拔刀最多发动1次\n
-        攻击速度和移动速度增加量 +70%
-        """
-        ...
+    data3 = [0, 0, 0, 0, 0, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]# noqa: E501
+    data4 = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]# noqa: E501
+    data6 = [0, 0, 0, 0, 0, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]# noqa: E501
+    data7 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7]# noqa: E501
 
-    def vp_2(self):
-        """
-        [拔刀斩]\n
-        可以强制中断转职技能的施放后僵直并施放 (觉醒技能除外)\n
-        根据穿戴的武器， 发动时触发以下效果\n
-        - 短剑、 钝器 : 攻击后僵直 -40%\n
-        - 太刀、 光剑 : 同时发动拔刀追加攻击\n
-        - 巨剑 : 立即以最大蓄气状态施放
-        """
-        ...
 
-# 猛龙断空斩
-# swordman_male/weapon_master/669f1428193f61f9d92c743b72438c4d
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/669f1428193f61f9d92c743b72438c4d
-class Skill42(ActiveSkill):
-    """
-    向前方快速移动并斩击敌人。\n
-    可以上下左右移动着斩击敌人； 起始斩击后可以通过再次按技能键追加斩击。\n
-    最后一击为可以使敌人浮空的单手上斩。\n
-    若已掌握[极 · 神剑术]， 则会出现巴恩的飓风\n
-    若已学9级以上的[光剑精通]并使用光剑系武器， 则可以使敌人进入感电状态。
-    """
+# 猛龙断空斩 맹룡단공참
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/669f1428193f61f9d92c743b72438c4d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+class Skill22(ActiveSkill):
     name = "猛龙断空斩"
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 3
+    position = 3 #TODO
     rangeLv = 2
     cube = 1
     cd = 20
     mp = [25, 420]
     uuid = "669f1428193f61f9d92c743b72438c4d"
-    hasVP = True
-    hasUP = True
-    vps = [{"name": "猛龙过江", "desc": "追踪<br/>范围增加"}, {"name": "闪龙破空", "desc": "取消僵直<br/>所受伤害减少<br/>施放时间减少"}] # noqa: E501
-    # 斩击次数上限 : {value0}次
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    # 突进斩击攻击力 : {value1}%
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
+    vps = [
+          {
+            "name": "猛龙过江",
+            "desc": "追踪<br/>范围增加",
+            "explain": "[猛龙断空斩]<br/>突进上斩动作结束时生成旋风<br/><br/>[极·神剑术]<br/>巴恩的飓风强化<br/>- 移动时追击周围敌人<br/>- 大小 + 70%<br/>- 持续时间 + 1秒<br/>- 多段攻击次数上限 + 7次<br/>- 总攻击力相同"
+          },
+          {
+            "name": "破竹之势",
+            "desc": "取消僵直<br/>所受伤害减少<br/>施放时间减少",
+            "explain": "[猛龙断空斩]<br/>突进过程中可以通过[流心]强制中断技能<br/><br/>突进过程中被击时， 招架敌人的攻击， 所受伤害 -90%<br/><br/>攻击次数上限变更为1次<br/>- 固定施放突进上斩动作<br/>- 总攻击力相同"
+          }
+        ]
+    data1 = [0, 4250, 4686, 5117, 5546, 5981, 6411, 6840, 7272, 7704, 8133, 8565, 8997, 9432, 9866, 10296, 10722, 11159, 11591, 12018, 12452, 12884, 13316, 13745, 14180, 14612, 15042, 15471, 15906, 16337, 16766, 17199, 17631, 18059, 18492, 18926, 19356, 19787, 20219, 20652, 21083, 21515, 21945, 22379, 22808, 23238, 23669, 24104, 24534, 24965, 25401, 25832, 26261, 26693, 27126, 27554, 27987, 28413, 28850, 29283, 29715, 30149, 30578, 31008, 31442, 31872, 32301, 32736, 33164, 33599, 34031]# noqa: E501
     hit1 = 2
-    # 突进上斩攻击力 : {value2}%
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
+
+    data2 = [0, 6246, 6884, 7517, 8151, 8781, 9419, 10052, 10689, 11318, 11954, 12588, 13218, 13860, 14490, 15122, 15759, 16391, 17024, 17658, 18294, 18929, 19559, 20193, 20832, 21464, 22100, 22734, 23366, 24000, 24635, 25269, 25904, 26535, 27168, 27806, 28440, 29073, 29703, 30342, 30972, 31607, 32241, 32876, 33509, 34143, 34779, 35414, 36042, 36680, 37313, 37947, 38582, 39213, 39849, 40484, 41114, 41750, 42384, 43020, 43650, 44285, 44922, 45557, 46185, 46826, 47456, 48087, 48726, 49361, 49995]# noqa: E501
     hit2 = 2
-    # [范围信息]
-    # 范围比率 : {value3}%
-    data3 = get_data(f"{prefix}/{uuid}", 3, lambda x = None: x)
 
-    data4 = data1
-    hit4 = 8
-    power4 = 0
+    data3 = data1
+    # 护石佩戴后变成11 * 3
+    hit3 = 8
+    # 护石佩戴后 * 0.43
+    power3 = 0
 
-    def vp_1(self):
-        """
-        [猛龙断空斩]\n
-        突进上斩动作结束时生成旋风\n
-        [极·神剑术]\n
-        巴恩的飓风强化\n
-        - 移动时追击周围敌人\n
-        - 大小 +70%\n
-        - 持续时间 +1秒\n
-        - 多段攻击次数上限 +7次\n
-        - 总攻击力相同
-        """
-        ...
 
-    def vp_2(self):
-        """
-        [猛龙断空斩]\n
-        突进过程中可以通过[流心]强制中断技能\n
-        突进过程中被击时， 招架敌人的攻击， 所受伤害 -90%\n
-        攻击次数上限变更为1次\n
-        - 固定施放突进上斩动作\n
-        - 总攻击力相同
-        """
-        ...
-
-# 破军斩龙击
-# swordman_male/weapon_master/2c9d9a36c8401bddff6cdb80fab8dc24
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/2c9d9a36c8401bddff6cdb80fab8dc24
+# 破军斩龙击 차지 버스트
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/2c9d9a36c8401bddff6cdb80fab8dc24?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill23(ActiveSkill):
-    """
-    向前进并把周围敌人推向前方， 然后转身继续前进， 把敌人聚到一处后， 上挑攻击使敌人浮空。\n
-    第一击可以使敌人眩晕。\n
-    使用太刀时， 可以同时叠加多个刺伤效果。
-    """
     name = "破军斩龙击"
     learnLv = 40
     masterLv = 60
@@ -1131,145 +706,91 @@ class Skill23(ActiveSkill):
     cd = 25
     mp = [30, 450]
     uuid = "2c9d9a36c8401bddff6cdb80fab8dc24"
-    hasVP = True
-    hasUP = True
-    vps = [{"name": "心念合一", "desc": "变更为单次攻击<br/>攻击力和冷却时间增加<br/>范围增加"}, {"name": "剑龙噬渊", "desc": "聚集敌人<br/>取消僵直"}] # noqa: E501
+    vps = [
+          {
+            "name": "心机一转",
+            "desc": "变更为单次攻击<br/>攻击力和冷却时间增加<br/>范围增加",
+            "explain": "[破军斩龙击]<br/>变更为集中意念后上斩的技能<br/>- 删除肩撞攻击和刺击攻击<br/>- 总攻击力 +60%<br/>- 基本冷却时间变更为40秒<br/>- 上斩范围 +35%<br/>- 浮空力 + 30%<br/>- 删除附加眩晕效果"
+          },
+          {
+            "name": "无足行步",
+            "desc": "聚集敌人<br/>取消僵直",
+            "explain": "[破军斩龙击]<br/>可吸附处于霸体状态及无法抓取状态的敌人<br/><br/>可强制中断[破军升龙击]技能的施放后僵直并发动<br/><br/>[破军升龙击]<br/>肩撞攻击会将敌人击退<br/><br/>可强制中断[破军斩龙击]技能的施放后僵直并发动<br/><br/>[三段刃]<br/>可以强制中断技能并施放[破军升龙击]和[破军斩龙击]"
+          }
+        ]
+    data0 = [0, 7179, 7908, 8639, 9369, 10094, 10821, 11553, 12279, 13005, 13745, 14466, 15197, 15929, 16655, 17381, 18114, 18842, 19571, 20295, 21027, 21758, 22482, 23216, 23943, 24672, 25400, 26132, 26856, 27585, 28316, 29043, 29769, 30503, 31232, 31961, 32684, 33417, 34145, 34872, 35604, 36332, 37059, 37788, 38517, 39242, 39977, 40704, 41436, 42159, 42888, 43622, 44348, 45071, 45807, 46532, 47267, 47996, 48723, 49452, 50178, 50909, 51638, 52367, 53094, 53823, 54551, 55281, 56009, 56739, 57467]# noqa: E501
+    hit0 = 1 #TODO
 
-    # 肩撞攻击力 : {value0}%
-    data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
-    hit0 = 1
-    # 刺击物理攻击力 : {value1}%
-    data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
-    hit1 = 1
-    # 上斩攻击力 : {value2}%
-    data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
-    hit2 = 1
-    # 上斩浮空力 : {value3}
-    data3 = get_data(f"{prefix}/{uuid}", 3, lambda x = None: x)
-    # 眩晕几率 : {value4}%
-    data4 = get_data(f"{prefix}/{uuid}", 4, lambda x = None: x)
-    # 眩晕持续时间 : {value5}秒
-    data5 = get_data(f"{prefix}/{uuid}", 5, lambda x = None: x)
-    # 太刀 - 刺伤效果几率 : {value6}%
-    data6 = get_data(f"{prefix}/{uuid}", 6, lambda x = None: x)
-    # 太刀 - 刺伤效果数 : {value7}个
-    data7 = get_data(f"{prefix}/{uuid}", 7, lambda x = None: x)
-    # 太刀 - 刺伤持续时间 : {value8}秒
-    data8 = get_data(f"{prefix}/{uuid}", 8, lambda x = None: x)
-    # [范围信息]
-    # 范围比率 : {value9}%
-    data9 = get_data(f"{prefix}/{uuid}", 9, lambda x = None: x)
+    data1 = [0, 8618, 9492, 10365, 11240, 12119, 12995, 13860, 14742, 15614, 16491, 17363, 18239, 19115, 19986, 20859, 21731, 22610, 23487, 24359, 25236, 26108, 26982, 27855, 28730, 29609, 30483, 31356, 32231, 33104, 33978, 34856, 35730, 36599, 37479, 38352, 39224, 40106, 40976, 41852, 42726, 43593, 44475, 45344, 46220, 47100, 47969, 48849, 49718, 50589, 51464, 52349, 53217, 54090, 54965, 55841, 56717, 57591, 58463, 59345, 60212, 61089, 61965, 62838, 63713, 64584, 65460, 66333, 67212, 68087, 68957]# noqa: E501
+    hit1 = 1 #TODO
+
+    data2 = [0, 12929, 14244, 15551, 16862, 18173, 19487, 20798, 22113, 23426, 24738, 26045, 27356, 28670, 29982, 31296, 32606, 33915, 35228, 36539, 37851, 39162, 40476, 41792, 43098, 44408, 45725, 47037, 48348, 49655, 50970, 52284, 53592, 54902, 56217, 57525, 58835, 60152, 61461, 62778, 64091, 65400, 66707, 68022, 69332, 70647, 71958, 73274, 74577, 75891, 77204, 78516, 79830, 81140, 82452, 83762, 85071, 86387, 87698, 89012, 90327, 91632, 92945, 94260, 95570, 96881, 98193, 99503, 100815, 102125, 103442]# noqa: E501
+    hit2 = 1 #TODO
+
+    data6 = [0, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72, 75, 78, 81, 84, 87, 90, 93, 96, 99, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]# noqa: E501
+
+    data7 = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8]# noqa: E501
 
     def vp_1(self):
-        """
-        [破军斩龙击]\n
-        变更为集中意念后上斩的技能\n
-        - 删除肩撞攻击和刺击攻击\n
-        - 总攻击力 +60%\n
-        - 基本冷却时间变更为40秒\n
-        - 上斩范围 +35%\n
-        - 浮空力 +30%\n
-        - 删除附加眩晕效果
-        """
         self.cd = 40
         self.skillRation *= 1.6
-        ...
 
-    def vp_2(self):
-        """
-        [破军斩龙击]\n
-        可以吸附处于霸体状态及无法抓取状态的敌人\n
-        可以强制中断[破军升龙击]技能的施放后僵直并发动\n
-        [破军升龙击]\n
-        肩撞攻击会将敌人击退\n
-        可以强制中断[破军斩龙击]技能的施放后僵直并发动\n
-        [三段刃]\n
-        可以在施放过程中强制中断技能， 并施放[破军升龙击]和[破军斩龙击]
-        """
-        ...
-
-# 幻影剑舞
-# swordman_male/weapon_master/8510294202d0e042dd29a2422fc6770d
-# 41f1cdc2ff58bb5fdc287be0db2a8df3/8510294202d0e042dd29a2422fc6770d
+# 幻影剑舞 환영검무
+# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/8510294202d0e042dd29a2422fc6770d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill24(ActiveSkill):
-    """
-    在原地向敌人发出迅猛的连续斩击， 每次斩击时发出剑气， 飞向前方后消失。\n
-    斩击过程中连按技能键或攻击键时， 可以增加斩击速度。\n
-    可以按上下方向键控制剑气的方向。\n
-    若已掌握[极 · 神剑术]则会触发索德罗斯的幻影攻击效果。 (钝器系武器的最后一击不会发出剑气， 但会生成冲击波)\n
-    [武器附加效果]\n
-    短剑 : 增加剑气攻击力； [短剑精通]达到7级时， 增加剑气多段攻击次数\n
-    太刀 : 造成额外刺伤效果\n
-    太刀、 光剑 : [太刀精通]或[光剑精通]达到7级时， 增加斩击次数和攻击速度， 减少攻击力\n
-    巨剑 : 增加斩击攻击力\n
-    钝器 : [钝器精通]达到7级时， 不会发出剑气， 但会生成冲击波
-    """
     name = "幻影剑舞"
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 6
+    position = 6 #TODO
     rangeLv = 2
     cube = 2
     cd = 45
     mp = [360, 3024]
     uuid = "8510294202d0e042dd29a2422fc6770d"
-    hasVP = True
-    hasUP = True
-    vps = [{'name': '无形剑舞', 'desc': '范围增加<br/>所受伤害减少<br/>每个武器赋予异常状态'}, {'name': '残影剑舞', 'desc': '召唤无形剑<br/>施放时间减少<br/>可以在其他动作中施放<br/>适用最大连击效果'}] # noqa: E501
+    vps = [
+          {
+            "name": "无形剑舞",
+            "desc": "范围增加<br/>所受伤害减少<br/>每个武器赋予异常状态",
+            "explain": "[幻影剑舞]<br/>攻击范围 +55%<br/><br/>施放过程中所受伤害 -90%<br/><br/>[极·神剑术]<br/>幻影斩击多段攻击次数 +13次<br/>- 总攻击力相同<br/><br/>根据所佩戴的武器， 幻影斩击赋予以下异常状态<br/>- 短剑 : 束缚<br/>- 太刀 : 刺伤<br/>- 钝器 : 眩晕<br/>- 巨剑 : 减速<br/>- 光剑 : 感电"
+          },
+          {
+            "name": "残影剑舞",
+            "desc": "变更为召唤无形剑的技能<br/>施放时间减少<br/>可以在其他动作中施放<br/>适用最高连击效果",
+            "explain": "[幻影剑舞]<br/>召唤无形剑施放[幻影剑舞]<br/>- 可以在其他动作中施放<br/>- 斩击速度 +20%<br/>- 固定以连击次数上限为基准进行攻击"
+          }
+        ]
+    # 短剑 增加剑气攻击力 剑气多端次数
+    # 太刀 额外刺伤
+    # 太刀 光剑 增加斩击次数 减少斩击攻击力
+    # 巨剑 增加斩击攻击力
+    # 钝器 删除剑气 发射冲击波 冲击波是剑气的
 
-    # 斩击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
-    hit0 = 12
-    # 基础斩击次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 斩击攻击力
+    data0 = [0, 1577, 1737, 1897, 2057, 2217, 2377, 2537, 2697, 2856, 3016, 3176, 3336, 3496, 3656, 3816, 3976, 4136, 4296, 4456, 4616, 4776, 4936, 5096, 5256, 5416, 5576, 5736, 5896, 6056, 6216, 6376, 6536, 6696, 6856, 7015, 7175, 7335, 7495, 7655, 7815, 7975, 8135, 8295, 8455, 8615, 8775, 8935, 9095, 9255, 9415, 9575, 9735, 9895, 10055, 10215, 10375, 10535, 10695, 10855, 11015, 11175, 11334, 11494, 11654, 11814, 11974, 12134, 12294, 12454, 12614]# noqa: E501
+    hit0 = 12 #TODO
+    # 剑气攻击力
+    data1 = [0, 6330, 6972, 7614, 8256, 8898, 9541, 10183, 10825, 11467, 12109, 12751, 13394, 14036, 14678, 15320, 15962, 16604, 17247, 17889, 18531, 19173, 19815, 20457, 21099, 21742, 22384, 23026, 23668, 24310, 24952, 25595, 26237, 26879, 27521, 28163, 28805, 29448, 30090, 30732, 31374, 32016, 32658, 33301, 33943, 34585, 35227, 35869, 36511, 37153, 37796, 38438, 39080, 39722, 40364, 41006, 41649, 42291, 42933, 43575, 44217, 44859, 45502, 46144, 46786, 47428, 48070, 48712, 49354, 49997, 50639]# noqa: E501
     hit1 = 3
-    # 剑气攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+
+    # 钝器 冲击波攻击力
+    data2 = [0, 26579, 29275, 31971, 34668, 37364, 40060, 42757, 45453, 48150, 50846, 53542, 56239, 58935, 61631, 64328, 67024, 69721, 72417, 75113, 77810, 80506, 83202, 85899, 88595, 91292, 93988, 96684, 99381, 102077, 104773, 107470, 110166, 112862, 115559, 118255, 120952, 123648, 126344, 129041, 131737, 134433, 137130, 139826, 142523, 145219, 147915, 150612, 153308, 156004, 158701, 161397, 164094, 166790, 169486, 172183, 174879, 177575, 180272, 182968, 185665, 188361, 191057, 193754, 196450, 199146, 201843, 204539, 207236, 209932, 212628]# noqa: E501
     hit2 = 0
-    # 剑气多段攻击次数 : {value3}次
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
-    # 短剑 - 斩击攻击力减少率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
-    # 短剑 - 剑气攻击力 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
-    # 短剑 - 剑气的多段攻击次数 : {value6}次
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
-    # [太刀精通]、 [光剑精通]达到7级后， 斩击次数 : {value7}次
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
-    # [太刀精通]、 [光剑精通]达到7级后， 斩击攻击力减少率 : {value8}%
-    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
-    # 太刀 - 刺伤效果几率 : {value9}%
-    data9 = get_data(f'{prefix}/{uuid}', 9, lambda x = None: x)
-    # 太刀 - 刺伤效果数 : {value10}个
-    data10 = get_data(f'{prefix}/{uuid}', 10, lambda x = None: x)
-    # 太刀 - 刺伤持续时间 : {value11}秒
-    data11 = get_data(f'{prefix}/{uuid}', 11, lambda x = None: x)
-    # 光剑 - 感电几率 : {value12}%
-    data12 = get_data(f'{prefix}/{uuid}', 12, lambda x = None: x)
-    # 光剑 - 感电攻击力 : {value13}%
-    data13 = get_data(f'{prefix}/{uuid}', 13, lambda x = None: x)
-    # 巨剑 - 斩击攻击力增加率 : {value14}%
-    data14 = get_data(f'{prefix}/{uuid}', 14, lambda x = None: x)
-    # 钝器 - 冲击波攻击力 : {value15}%
-    data15 = get_data(f'{prefix}/{uuid}', 15, lambda x = None: x)
-    # [范围信息]
-    # 范围比率 : {value16}%
-    data16 = get_data(f'{prefix}/{uuid}', 16, lambda x = None: x)
+
     # 75被动影子斩击部分
-    data17 = data0
-    power17 = 0
-    hit17 = 4
+    data3 = data0
+    power3 = 0
+    hit3 = 4
 
     # 75被动影子剑气部分
-    data18 = data1
-    power18 = 0
-    hit18 = 3
+    data4 = data1
+    power4 = 0
+    hit4 = 3
 
     # 75被动钝器冲击波部分
-    data19 = data2
-    power19 = 0
-    hit19 = 1
+    data5 = data2
+    power5 = 0
+    hit5 = 1
 
     def setMode(self, mode=None):
         weapon = self.char.GetWeaponType()
@@ -1291,6 +812,12 @@ class Skill24(ActiveSkill):
             self.hit2 = self.hit5 = 1
             self.hit1 = self.hit4 = 0
         pass
+
+    # 太刀刺伤效果 几率
+    data15 = [0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 15, 15, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26, 27, 27, 28, 28, 29, 29, 30, 30, 31, 31, 32, 32, 33, 33, 34, 34, 35, 35]# noqa: E501
+    # 太刀刺伤效果数
+    data16 = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]# noqa: E501
+
 
 # 极 · 鬼剑术 (斩铁式) 극 귀검술 : 참철식
 # https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/5152480fdde81362575a488d4cec4af9?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -1534,16 +1061,16 @@ class Skill31(PassiveSkill):
     # 破空斩 爆炸攻击力
     data23 = [0, 60, 66, 72, 78, 84, 90, 96, 102, 108, 114, 120, 126, 132, 138, 144, 150, 156, 162, 168, 174, 180, 186, 192, 198, 204, 210, 216, 222, 228, 234, 240, 246, 252, 258, 264, 270, 276, 282, 288, 294, 300, 306, 312, 318, 324, 330, 336, 342, 348, 354]# noqa: E501
     associate = [
-        {"type":"*skillRation","data":data0,"skills":["拔刀斩", "破军斩龙击", "极 · 鬼剑术 (暴风式)", "破空拔刀斩","极 · 神剑术 (瞬斩)", "万剑归宗", "极 · 神剑术 (无形斩)", "万剑极诣·开天斩"]},
-        {"type":"+power13","data":data2,"skills":["破军升龙击"]},
-        {"type":"+power4","data":data3,"skills":["猛龙断空斩"]},
-        {"type":"+power17","data":data4,"skills":["幻影剑舞"]},
-        {"type":"+power18","data":data5,"skills":["幻影剑舞"]},
-        {"type":"+power19","data":data6,"skills":["幻影剑舞"],"weapon":["钝器"]},
-        {"type":"+dataplus0","data":data7,"skills":["极 · 神剑术 (流星落)"],"ratio":1},
-        {"type":"+dataplus1","data":data15,"skills":["极 · 神剑术 (流星落)"],"weapon":["光剑"],"ratio":1},
-        {"type":"*powerplus0","data":data19,"skills":["极 · 神剑术 (流星落)"],"weapon":["巨剑"]},
-        {"type":"+dataplus1","data":data20,"skills":["极 · 神剑术 (流星落)"],"weapon":["钝器"],"ratio":1},
+        {"type":"*skillRation","data":data0,"skills":['拔刀斩', '破军斩龙击', '极 · 鬼剑术 (暴风式)', '破空拔刀斩','极 · 神剑术 (瞬斩)', '万剑归宗', '极 · 神剑术 (无形斩)', '万剑极诣·开天斩']},
+        {"type":"+power3","data":data2,"skills":['破军升龙击']},
+        {"type":"+power3","data":data3,"skills":['猛龙断空斩']},
+        {"type":"+power3","data":data4,"skills":['幻影剑舞']},
+        {"type":"+power4","data":data5,"skills":['幻影剑舞']},
+        {"type":"+power5","data":data6,"skills":['幻影剑舞'],"weapon":['钝器']},
+        {"type":"+dataplus0","data":data7,"skills":['极 · 神剑术 (流星落)'],"ratio":1},
+        {"type":"+dataplus1","data":data15,"skills":['极 · 神剑术 (流星落)'],'weapon':["光剑"],"ratio":1},
+        {"type":"*powerplus0","data":data19,"skills":['极 · 神剑术 (流星落)'],'weapon':["巨剑"]},
+        {"type":"+dataplus1","data":data20,"skills":['极 · 神剑术 (流星落)'],'weapon':["钝器"],"ratio":1},
         {"type":"*power1","data":data23,"skills":["极 · 神剑术 (破空斩)"]}
         ]
 
@@ -1608,12 +1135,12 @@ class Skill33(ActiveSkill):
     data3 = [0, 29033, 35769, 42507, 49243, 55964, 62701, 69436, 76177, 82902, 89642, 96376, 103113, 109837, 116571, 123309, 130044, 136776, 143511, 150246, 156971, 163706, 170443, 177179, 183914, 190642, 197378, 204110, 210838, 217578, 224311, 231045, 237780, 244512, 251245, 257980, 264709, 271444, 278183, 284917, 291651, 298377, 305114, 311849, 318580, 325315, 332048, 338785, 345511, 352248, 358982]# noqa: E501
     hit3 = 2
 
-    mode = ["终结","穿云剑"]
+    mode = ["终结",'穿云剑']
 
     def setMode(self,mode=None):
-        if mode == "终结":
+        if mode == '终结':
             self.hit1 = 0
-        if mode == "穿云剑":
+        if mode == '穿云剑':
             self.hit2 = self.hit3 = 0
 
 
@@ -1689,20 +1216,20 @@ class Skill36(ActiveSkill):
 class classChange(Character):
     def __init__(self, equVersion):
 
-        self.name = "weapon_master"
-        self.nameCN = "极诣·剑魂"
-        self.role = "swordman_male"
+        self.name = 'weapon_master'
+        self.nameCN = '极诣·剑魂'
+        self.role = 'swordman_male'
 
-        self.武器选项 = ["光剑","太刀", "钝器", "巨剑", "短剑"]
-        self.输出类型选项 = ["物理百分比"]
-        self.输出类型 = "物理百分比"
-        self.防具精通属性 = ["力量"]
-        self.防具类型 = "轻甲"
+        self.武器选项 = ['光剑','太刀', '钝器', '巨剑', '短剑']
+        self.输出类型选项 = ['物理百分比']
+        self.输出类型 = '物理百分比'
+        self.防具精通属性 = ['力量']
+        self.防具类型 = '轻甲'
         self.buff = 1.86
 
-        self.角色 = "鬼剑士(男)"
+        self.角色 = '鬼剑士(男)'
 
-        self.职业 = "剑魂"
+        self.职业 = '剑魂'
 
         super().__init__(equVersion, __name__)
 
@@ -1713,7 +1240,7 @@ class classChange(Character):
         """
         for skill in self.skills:
             # 四个武器精通不享受技能范围等级加成
-            if min <= skill.learnLv <= max and skill.name not in  ["太刀精通", "巨剑精通", "短剑精通", "钝器精通", "光剑精通"] + exceptSkills:
-                skillType = "all" if type == -1 else ("active" if type == 1 else "passive")
-                if (skillType == "all" or skill.type == skillType) and skill.lv > 0:
+            if min <= skill.learnLv <= max and skill.name not in  ['太刀精通', '巨剑精通', '短剑精通', '钝器精通', '光剑精通'] + exceptSkills:
+                skillType = 'all' if type == -1 else ('active' if type == 1 else 'passive')
+                if (skillType == 'all' or skill.type == skillType) and skill.lv > 0:
                     skill.lv += lv
