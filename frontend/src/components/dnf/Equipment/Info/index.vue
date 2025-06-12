@@ -94,19 +94,19 @@ const mainAttr = computed(() => {
   return info
 })
 
+// a.match(/\[(?!.*?技能).*?]/g)
+
 const detail = computed(() =>
   props.equipment?.detail.replace(
-    /\[([^\[\]技能]+?)\]/g,
-    '<span style="color:#3d9147">[$1]</span>',
-  ),
+    /\[(?![^\]]*技能)[^\[\]]+\]/g, match => `<span style="color:#3d9147">${match}</span>`
+  )
 )
 
 const bufferDetail = computed(() => {
   const detail = props.equipment?.bufferDetail
   if (!detail || detail == '-') return undefined
   return props.equipment?.bufferDetail.replace(
-    /\[([^\[\]技能]+?)\]/g,
-    '<span style="color:#3d9147">[$1]</span>',
+    /\[(?![^\]]*技能)[^\[\]]+\]/g, match => `<span style="color:#3d9147">${match}</span>`
   )
 })
 </script>
