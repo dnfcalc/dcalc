@@ -66,7 +66,7 @@ class IAttribute(BaseModel):
     """技能等级"""
     optionDesc: str | None = Field(None, description='技能选项描述')
     """技能选项描述"""
-    optionValue: dict[str, float | str] | None = Field(None, description='技能选项值')
+    optionValue: dict[str, float | str | None] | None = Field(None, description='技能选项值')
 
 
 class ILevelInfo(BaseModel):

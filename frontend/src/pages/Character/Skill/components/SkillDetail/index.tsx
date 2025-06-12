@@ -72,7 +72,7 @@ export default defineComponent({
             const key = match.replace(/[{}]/g, '')
             // Only access if key matches the expected pattern
             if (/^value.+/.test(key)) {
-              const value = skillInfo.value?.attribute.optionValue[key as `value${string}`]
+              const value = skillInfo.value?.attribute.optionValue[key as `value${string}`] ?? '-'
               if (value) {
                 a = a.replace(
                   match,

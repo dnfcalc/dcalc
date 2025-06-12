@@ -540,7 +540,7 @@ class Skill21(ActiveSkill):
         self.skillRation *= 1.5
 
     def vp_2(self):
-        self.cd = 13.5
+        self.cd = 15
         self.skillRation /= 3
 
 
