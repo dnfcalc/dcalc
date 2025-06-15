@@ -4690,6 +4690,8 @@ def equ_278(char: CharacterProperty):
 
     所有速度+15%
     """
+    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00194.png', cd=20,data=82050))
+    char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
     pass
 
 
@@ -4706,6 +4708,8 @@ def equ_279(char: CharacterProperty):
 
     所有速度+20%
     """
+    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00195.png', cd=20,data=164100))
+    char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     pass
 
 
@@ -4724,6 +4728,8 @@ def equ_280(char: CharacterProperty):
 
     所有速度+30%
     """
+    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00196.png', cd=20,data=218800))
+    char.SetStatus(SpeedM=0.3, SpeedA=0.3, SpeedR=0.3)
     pass
 
 
@@ -4819,6 +4825,8 @@ def equ_286(char: CharacterProperty):
     消耗6层[躁狂]，攻击前方敌人。
     -戮影之舞伤害量：12600%
     """
+    char.SetSkillCD(cd=0.2)
+    char.equ_effect.append(EquEffect(name='戮影之舞', icon='/equipment/skill/43.png', cd=6, data=12600))
     pass
 
 
@@ -4840,6 +4848,8 @@ def equ_287(char: CharacterProperty):
     消耗5层[躁狂]，攻击前方敌人。
     -戮影之舞伤害量：12600%
     """
+    char.SetSkillCD(cd=0.2)
+    char.equ_effect.append(EquEffect(name='戮影之舞', icon='/equipment/skill/43.png', cd=4.17, data=12600))
     pass
 
 
@@ -4861,6 +4871,8 @@ def equ_288(char: CharacterProperty):
     消耗4层[躁狂]，攻击前方敌人。
     -戮影之舞伤害量：12600%
     """
+    char.SetSkillCD(cd=0.2)
+    char.equ_effect.append(EquEffect(name='戮影之舞', icon='/equipment/skill/43.png', cd=2.85, data=12600))
     pass
 
 
@@ -4944,6 +4956,7 @@ def equ_294(char: CharacterProperty):
      能量冲击伤害量2835%
     -攻击100次后，解除核心源动力
     """
+    char.equ_effect.append(EquEffect(name='超频源力[5次]', icon='/equipment/icon/weapon/gunblader/coreswd/00163.png', cd=40, data=2835))
     pass
 
 
@@ -4964,6 +4977,8 @@ def equ_295(char: CharacterProperty):
      能量爆发伤害量：22680%
     -攻击100次后，解除核心源动力
     """
+    char.equ_effect.append(EquEffect(name='超频源力[5次]', icon='/equipment/icon/weapon/gunblader/coreswd/00164.png', cd=40, data=2835))
+    char.equ_effect.append(EquEffect(name='超频源力[20次]', icon='/equipment/icon/weapon/gunblader/coreswd/00164.png', cd=40, data=22680))
     pass
 
 
@@ -4985,6 +5000,9 @@ def equ_296(char: CharacterProperty):
     -每攻击100次：发动核心爆发
      核心爆发伤害量：170100%
     """
+    char.equ_effect.append(EquEffect(name='超频源力[5次]', icon='/equipment/icon/weapon/gunblader/coreswd/00165.png', cd=40, data=2835))
+    char.equ_effect.append(EquEffect(name='超频源力[20次]', icon='/equipment/icon/weapon/gunblader/coreswd/00165.png', cd=40, data=22680))
+    char.equ_effect.append(EquEffect(name='超频源力[100次]', icon='/equipment/icon/weapon/gunblader/coreswd/00165.png', cd=40, data=170100))
     pass
 
 
