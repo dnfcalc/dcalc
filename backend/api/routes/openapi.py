@@ -8,7 +8,7 @@ from api.dp import RedisDep
 import re
 from typing import Annotated
 
-from api.types.open import SkillDetailResponse, SkillsListResponse
+from api.types.open import SkillDetailResponse, SkillsListResponse,SearchSkillResponse
 
 router = APIRouter()
 
@@ -29,7 +29,7 @@ def replace_placeholders(template):
 
 
 @router.get('/skills/', operation_id='skillsList')
-async def get_skills_list(redis: RedisDep, skillName: Annotated[str, Param(..., description='技能名称，支持模糊查询')])->SkillsListResponse:
+async def get_skills_list(redis: RedisDep, skillName: Annotated[str, Param(..., description='技能名称，支持模糊查询')])->SearchSkillResponse:
     """
     根据技能名称，获取对应的技能列表信息
     """

@@ -19,7 +19,6 @@ class SkillInfo(BaseModel):
     jobGrowName: str = Field(..., description='转职名称')
     """转职名称"""
 
-
 class SkillType(str, Enum):
     active = 'active'
     """主动技能"""
@@ -132,6 +131,16 @@ class SkillDetail(BaseModel):
     enhancement: list[IEnhancement] | None = Field(None, description='技能强化信息')
     """技能强化信息"""
 
+class SkillListItem(BaseModel):
+    skillId: str = Field(..., description='技能ID')
+    """技能ID"""
+    name: str = Field(..., description='技能名称')
+    """技能名称"""
+    requiredLevel: int = Field(..., description='学习等级')
+    """学习等级"""
+    type: SkillType = Field(..., description='技能类型')
+    """技能类型"""
 
 SkillDetailResponse = Response[SkillDetail | None]
-SkillsListResponse = Response[list[SkillInfo]]
+SearchSkillResponse = Response[list[SkillInfo]]
+SkillsListResponse = Response[list[SkillListItem]]
