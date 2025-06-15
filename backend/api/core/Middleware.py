@@ -14,7 +14,7 @@ def register_cors(app: FastAPI):
         # allow_origins = ["http://127.0.0.1:25252"],
         # allow_origin_regex='https?://(127.0.0.1|localhost|.*.skycity.top|.*.dnftools.com):?.*',  # 改成用正则就行了
         # 改成用正则就行了
-        allow_origin_regex='https?://(127.0.0.1|localhost|.*.dnftools.com|.*.dcalc.cn):?.*',
+        allow_origin_regex='https?://(127.0.0.1|localhost|.*.dnftools.com|.*.dcalc.cn|.*.seicing.com):?.*',
         allow_credentials=True,
         allow_methods=['*'],
         allow_headers=['*'],
