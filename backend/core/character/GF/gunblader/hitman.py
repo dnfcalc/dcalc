@@ -277,7 +277,7 @@ class Skill9(ActiveSkill):
     # 斩击攻击力 : {value1}%
     # REMOVE: data1 = [0, 2620, 2886, 3152, 3417, 3683, 3949, 4215, 4481, 4746, 5012, 5278, 5544, 5810, 6075, 6341, 6607, 6873, 7139, 7404, 7670, 7936, 8202, 8468, 8733, 8999, 9265, 9531, 9797, 10062, 10328, 10594, 10860, 11126, 11391, 11657, 11923, 12189, 12455, 12720, 12986, 13252, 13518, 13784, 14049, 14315, 14581, 14847, 15113, 15378, 15644, 15910, 16176, 16442, 16707, 16973, 17239, 17505, 17771, 18036, 18302, 18568, 18834, 19100, 19365, 19631, 19897, 20163, 20429, 20694, 20960]# noqa: E501
     data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
-    hit1 = 1 
+    hit1 = 1
 
 # 浮空连击
 # gunblader/hitman/d0cdaca82892e54097f22a1f60817048
@@ -479,7 +479,7 @@ class Skill15(PassiveSkill):
 
     # 物理攻击力增加率 : {value0}%
     # REMOVE: data0 = [0, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45]# noqa: E501
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)   
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     # 命中率增加 : {value1}%
     # REMOVE: data1 = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10]# noqa: E501
     data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
@@ -737,7 +737,7 @@ class Skill22(PassiveSkill):
     # 物理暴击率增加 : {value1}%
     # REMOVE: data1 = [0, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]# noqa: E501
     data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
-    
+
     associate = [ {"data":data0,"type":"*skillRation"}]
 
 # 潜行射击
@@ -1109,7 +1109,7 @@ class Skill29(ActiveSkill):
 class Skill30(PassiveSkill):
     """
     对暗刃视如己命的长刀与幽灵5号进行加工， 可以更有效地使用技能。\n
-     增加基本攻击力和技能攻击力。 
+     增加基本攻击力和技能攻击力。
     """
     name = "B.G枪刃改造"
     learnLv = 48
@@ -1331,7 +1331,7 @@ class Skill34(PassiveSkill):
     # 基本攻击力和技能攻击力增加率 : {value0}%
     # REMOVE: data0 = [0, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122]# noqa: E501
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
-    
+
     associate = [ {"data":data0,"type":"*skillRation"}]
 
 # 致命焰火
@@ -1387,7 +1387,7 @@ class Skill35(ActiveSkill):
     # 打击范围增加比率 : {value7}%
     # REMOVE: data7 = [0, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]# noqa: E501
     data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
-    
+
     mode = ['原地','后方']
 
     def setMode(self, mode):
@@ -1427,7 +1427,7 @@ class Skill35(ActiveSkill):
     def effect(self, old, new):
         if self.vp == 2:
             self.associate = [{"type":"*skillRation","data":[0] + [-50]*self.maxLv,"skills":["潜行射击"]}]
-        return super().effect(old, new)    
+        return super().effect(old, new)
 
 # 碧波瞬斩
 # gunblader/hitman/a2d943797daca862a6f321aca6ac9bfa
@@ -1570,7 +1570,7 @@ class Skill38(PassiveSkill):
     associate = [
         {"data":data0,"type":"*skillRation"},
         {"data":data1,"type":"+power2","skills":["轮盘连射"]},#这里应该是power2 = 3.72
-        ]    
+        ]
 
 # 燃情协战
 # gunblader/hitman/e5c09f9132a48dc1d695968592cc5878

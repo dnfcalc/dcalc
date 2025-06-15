@@ -1,23 +1,50 @@
 #1645c45aabb008c98406b3a16447040d
-from core.basic.skill import PassiveSkill, ActiveSkill
+from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
+prefix = "swordman_female/sword_master/cn/skillDetail"
 
 
-# 冥思 냉정함
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/d89f26862e348a801b30bb9fd7125db5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 冥思
+# swordman_female/sword_master/d89f26862e348a801b30bb9fd7125db5
+# 1645c45aabb008c98406b3a16447040d/d89f26862e348a801b30bb9fd7125db5
 class Skill0(PassiveSkill):
+    """
+    进行战斗期间， 将根据连击数按比例增加物理或魔法暴击率。\n
+    增益效果可以重复触发， 但是有触发次数上限。 增益效果重复触发时， 更新现有增益效果的持续时间。
+    """
     name = "冥思"
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 5 #TODO
+    position = 0 #TODO
     rangeLv = 3
     uuid = "d89f26862e348a801b30bb9fd7125db5"
+    hasVP = False
+    hasUP = False
+
+    # 触发增益效果所需连击数 : {value0}
+    # REMOVE: data0 = [0, 5]# noqa: E501
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 暴击率增加 : {value1}%
+    # REMOVE: data1 = [0, 1]# noqa: E501
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 暴击率增加上限 : {value2}%
+    # REMOVE: data2 = [0, 5]# noqa: E501
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 增益效果持续时间 : {value3}秒
+    # REMOVE: data3 = [0, 5]# noqa: E501
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
 
 
-# 帝国剑术 제국검술
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/b89c9ab317bc0a443f6497b7cca2f6a8?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 帝国剑术
+# swordman_female/sword_master/b89c9ab317bc0a443f6497b7cca2f6a8
+# 1645c45aabb008c98406b3a16447040d/b89c9ab317bc0a443f6497b7cca2f6a8
 class Skill1(ActiveSkill):
+    """
+    只传授给帝国剑士的秘密剑术。 根据佩戴的武器不同基本攻击的招式会发生变化。\n
+    可以结合基本攻击使用， 但施放最后一击后无法衔接基本攻击或[帝国剑术]。\n
+    可使用[驭剑术]强制中断[帝国剑术]并施放转职技能。
+    """
     name = "帝国剑术"
     learnLv = 1
     masterLv = 1
@@ -52,9 +79,14 @@ class Skill1(ActiveSkill):
             self.hit3 = 3
 
 
-# 基础精通 기본기 숙련
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/5a56514f35cf0270ae8d6c65f8fefd78?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 基础精通
+# swordman_female/sword_master/5a56514f35cf0270ae8d6c65f8fefd78
+# 1645c45aabb008c98406b3a16447040d/5a56514f35cf0270ae8d6c65f8fefd78
 class Skill2(PassiveSkill):
+    """
+    增加基本攻击、 前冲攻击、 跳跃攻击、 [浮空击]的攻击力。\n
+    在决斗场中， 增益/减益技能、 被动技能的技能攻击力增加效果对[基础精通]无影响。
+    """
     name = "基础精通"
     learnLv = 1
     masterLv = 115
@@ -64,42 +96,65 @@ class Skill2(PassiveSkill):
     uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
     icon = "$common/$uuid"
 
-    data0 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
-    hit0 = 1 #TODO
+    data0 = data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
 
     associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["帝国剑术"]}]
 
 
-# 招架反击 반격
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/2f5d03c7848effbc0a23f4df45d9ca46?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 招架反击
+# swordman_female/sword_master/2f5d03c7848effbc0a23f4df45d9ca46
+# 1645c45aabb008c98406b3a16447040d/2f5d03c7848effbc0a23f4df45d9ca46
 class Skill3(ActiveSkill):
+    """
+    [招架]成功后可激活该技能； 使用后， 可以进行2次快速斩击。
+    """
     name = "招架反击"
     learnLv = 15
     masterLv = 60
     maxLv = 70
     position = 8 #TODO
     rangeLv = 2
-    cdList = [0,2, 2, 2, 2, 2, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.7, 2.7, 2.7, 2.7, 2.7, 2.7, 2.7, 2.7, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.9]
+    cdList = [0, 2, 2, 2, 2, 2, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.7, 2.7, 2.7, 2.7, 2.7, 2.7, 2.7, 2.7, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.9]
     uuid = "2f5d03c7848effbc0a23f4df45d9ca46"
-
     damage = False
+    hasVP = False
+    hasUP = True
+
+    # 斩击攻击力 : {value0}%
+    # REMOVE: data0 = [0, 2454, 2703, 2952, 3201, 3450, 3699, 3948, 4197, 4446, 4695, 4944, 5193, 5441, 5690, 5939, 6188, 6437, 6686, 6935, 7184, 7433, 7682, 7931, 8180, 8429, 8678, 8927, 9176, 9425, 9674, 9923, 10172, 10421, 10670, 10919, 11167, 11416, 11665, 11914, 12163, 12412, 12661, 12910, 13159, 13408, 13657, 13906, 14155, 14404, 14653, 14902, 15151, 15400, 15649, 15898, 16147, 16396, 16645, 16893, 17142, 17391, 17640, 17889, 18138, 18387, 18636, 18885, 19134, 19383, 19632]# noqa: E501
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # [范围信息]
+    # 反击范围比率 : {value1}%
+    # REMOVE: data1 = [0, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]# noqa: E501
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+
 
     def getSkillCD(self,mode=None):
         self.cd = self.cdList[self.lv]
         return super().getSkillCD()
 
 
-# 剑术精通 납도
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/4224f9b0b8c7c903e9a1e0f9d9f6d04d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 武器熟练
+# swordman_female/sword_master/4224f9b0b8c7c903e9a1e0f9d9f6d04d
+# 1645c45aabb008c98406b3a16447040d/4224f9b0b8c7c903e9a1e0f9d9f6d04d
 class Skill4(PassiveSkill):
-    name = "剑术精通"
+    """
+    驭剑士精通各种武器， 能够极致地发挥每种武器的特性。\n
+    学习后， 增加所有武器的精通等级。\n
+    首次学习时， 可使所有武器精通各提升2级； 以后技能每提升1级时， 武器精通提升1级。\n
+    可以使用驭剑士专属的基础攻击动作。
+    """
+    name = "武器熟练"
     learnLv = 15
-    masterLv = 1
-    maxLv = 11
+    masterLv = 20
+    maxLv = 30
     position = 0 #TODO
-    rangeLv = 2
+    rangeLv = 3
     uuid = "4224f9b0b8c7c903e9a1e0f9d9f6d04d"
+    hasVP = False
+    hasUP = False
 
+    associate = [{"type":"+lv","data":[i + 1 if i > 0 else i for i in range(0, maxLv + 2)],"ratio":1,"skills":["波动之钝器精通","血影之太刀精通","毁灭之巨剑精通","魔性之短剑精通"]}]
 
 # 驭剑术 발검술
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/78bd107acd474518b606be1e4fd38239?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -162,7 +217,7 @@ class Skill6(ActiveSkill):
 class Skill8(PassiveSkill):
     name = "魔性之短剑精通"
     learnLv = 15
-    masterLv = 30
+    masterLv = 1
     maxLv = 40
     position = 1 #TODO
     rangeLv = 3
@@ -192,7 +247,7 @@ class Skill8(PassiveSkill):
 class Skill9(PassiveSkill):
     name = "血影之太刀精通"
     learnLv = 15
-    masterLv = 30
+    masterLv = 1
     maxLv = 40
     position = 2 #TODO
     rangeLv = 3
@@ -227,7 +282,7 @@ class Skill9(PassiveSkill):
 class Skill10(PassiveSkill):
     name = "毁灭之巨剑精通"
     learnLv = 15
-    masterLv = 30
+    masterLv = 1
     maxLv = 40
     position = 4 #TODO
     rangeLv = 3
@@ -257,7 +312,7 @@ class Skill10(PassiveSkill):
 class Skill11(PassiveSkill):
     name = "波动之钝器精通"
     learnLv = 15
-    masterLv = 30
+    masterLv = 1
     maxLv = 40
     position = 5 #TODO
     rangeLv = 3
@@ -330,7 +385,7 @@ class Skill15(ActiveSkill):
     hit1 = 4
 
     data2 = [0, 7521, 8279, 9044, 9813, 10573, 11339, 12099, 12859, 13626, 14393, 15149, 15921, 16679, 17442, 18201, 18966, 19732, 20497, 21257, 22019, 22780, 23549, 24314, 25072, 25840, 26600, 27359, 28127, 28892, 29660, 30420, 31180, 31942, 32707, 33467, 34233, 34998, 35762, 36520, 37280, 38050, 38815, 39576, 40340, 41101, 41868, 42626, 43388, 44160, 44921, 45678, 46443, 47208, 47971, 48734, 49498, 50261, 51021, 51784, 52547, 53307, 54077, 54841, 55601, 56367, 57127, 57887, 58661, 59419, 60179]# noqa: E501
-    hit2 = 1 
+    hit2 = 1
 
 # 幻剑术 환검
 # https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/01c3a2fb793d293a25ed8dc7a0d70c1a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -950,3 +1005,15 @@ class classChange(Character):
         self.职业 = '驭剑士'
 
         super().__init__(equVersion, __name__)
+
+    def AddSkillLv(self, min: int, max: int, lv: int, type=-1, exceptSkills:list[str]=[]) -> None:
+        """
+        增加技能等级
+        type: -1 全部, 0 被动, 1 主动
+        """
+        for skill in self.skills:
+            # 四个武器精通不享受技能范围等级加成
+            if min <= skill.learnLv <= max and skill.name not in ["波动之钝器精通","血影之太刀精通","毁灭之巨剑精通","魔性之短剑精通"] + exceptSkills:
+                skillType = "all" if type == -1 else ("active" if type == 1 else "passive")
+                if (skillType == "all" or skill.type == skillType) and skill.lv > 0:
+                    skill.lv += lv

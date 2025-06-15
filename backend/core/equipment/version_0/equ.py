@@ -12571,6 +12571,49 @@ def equ_876(char: CharacterProperty):
     equ_414(char)
     pass
 
+@register
+def equ_877(char: CharacterProperty):
+    ...
+
+@register
+def equ_878(char: CharacterProperty):
+    ...
+
+@register
+def equ_879(char: CharacterProperty):
+    ...
+
+@register
+def equ_880(char: CharacterProperty):
+    ...
+
+@register
+def equ_881(char: CharacterProperty):
+    ...
+
+@register
+def equ_882(char: CharacterProperty):
+    if char.equ_options.get('6', 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get('6', 0) == 1:
+        char.SetSkillCD(cd=0.2)
+    ...
+
+@register
+def equ_883(char: CharacterProperty):
+    if char.equ_options.get('6', 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get('6', 0) == 1:
+        char.SetSkillCD(cd=0.2)
+    ...
+
+@register
+def equ_884(char: CharacterProperty):
+    if char.equ_options.get('6', 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get('6', 0) == 1:
+        char.SetSkillCD(cd=0.2)
+    ...
 
 # endregion
 # region 秘宝装备

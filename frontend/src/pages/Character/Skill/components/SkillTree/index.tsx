@@ -235,10 +235,10 @@ export default defineComponent({
 
     return () => (
       <>
-        <div onClick={() => (activeSkill.value = -1)} class="pb-40px">
+        <div onClick={() => (activeSkill.value = -1)}>
           {((getSkill(0, 15, -1) ?? []) as ISkill[]).length > 0 && (
             <>
-              <div class="skill-tree-line flex items-center gap-10px px-10px">
+              <div class="skill-tree-line flex items-center gap-8px px-5px">
                 <div class="w-34px h-34px flex items-center justify-center text-white">
                   其<br />余
                 </div>
@@ -251,7 +251,7 @@ export default defineComponent({
 
           {lvList.map((lv, index) =>
             ((getSkill(lv, lvList[index + 1] ?? 150, -1) as ISkill[])?.length ?? 0) > 0 ? (
-              <div class="skill-tree-line flex items-center gap-10px px-10px" key={index}>
+              <div class="skill-tree-line flex items-center gap-8px px-5px" key={index}>
                 {lv == 1 || lv % 10 == 0 ? (
                   <div class="w-34px h-34px flex items-center justify-center text-white">{lv}</div>
                 ) : (
@@ -261,7 +261,7 @@ export default defineComponent({
                   const skill = getSkill(lv, lvList[index + 1] ?? 150, column) as ISkill
                   return skill ? renderSkill(skill, index) : <div class="w-34px h-34px"></div>
                 })}
-                <div class="w-20px h-34px" onClick={() => (activeSkill.value = -1)}></div>
+                <div class="w-5px h-34px" onClick={() => (activeSkill.value = -1)}></div>
               </div>
             ) : (
               <></>

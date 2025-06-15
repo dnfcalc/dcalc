@@ -147,7 +147,7 @@ export default defineComponent({
               </div>
               <div class="right">
                 <div class="title text-16px text-center leading-48px">目标技能</div>
-                <div class="flex flex-wrap gap-8px content-start h-110px overflow-y-auto mb-8px w-275px">
+                <div class="flex flex-wrap gap-8px content-start h-110px overflow-y-auto mb-8px w-245px m-auto">
                   {renderList(skills().value, (item) => (
                     <div
                       key={item.id}
@@ -156,7 +156,7 @@ export default defineComponent({
                       <img src={getImageURL(item.icon)} alt={item.name} />
                     </div>
                   ))}
-                  {renderList(35 - skills().value.length, (item) => (
+                  {renderList(36 - skills().value.length, (item) => (
                     <div
                       key={item}
                       class="w-[28px] h-[28px] rounded-[1px] border-[1px] border-solid border-[#6d4e2b] bg-[linear-gradient(180deg,_#191919_0%,_#000000_100%)] [box-shadow:0px_4px_4px_#00000040_inset] rounded-4px"

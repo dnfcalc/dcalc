@@ -1,4 +1,4 @@
-from .avatar import get_dress_list,calc_dress_effect
+from .avatar import get_dress_list, calc_dress_effect
 from . import equ
 from . import stone
 from . import jade
@@ -9,13 +9,7 @@ from . import suit
 
 from .register import execture
 
-options = [
-    {'id': 1, 'name': '龙战八荒', 'options': ['BUFF OFF', 'BUFF ON', '期望']},
-    {'id': 2, 'name': '混沌净化', 'options': ['净化', '堕落']},
-    {'id': 3, 'name': '群猎美学', 'options': ['单刷', '组队']},
-    {'id': 4, 'name': '魔攻核', 'options': ['普通', '追击']},
-    {'id': 5,'name':'传世手杖','options':['BUFF ON', 'BUFF OFF', '期望']}
-]
+options = [{'id': 1, 'name': '龙战八荒', 'options': ['BUFF OFF', 'BUFF ON', '期望']}, {'id': 2, 'name': '混沌净化', 'options': ['净化', '堕落']}, {'id': 3, 'name': '群猎美学', 'options': ['单刷', '组队']}, {'id': 4, 'name': '魔攻核', 'options': ['普通', '追击']}, {'id': 5, 'name': '传世手杖', 'options': ['BUFF ON', 'BUFF OFF', '期望']}, {'id': 6, 'name': '传世嵌合弓', 'options': ['本能飞跃', '非理性着陆']}]
 
 sundryList = {
     'medal_rarity': {'id': 0, 'options': [{'name': f'品质:{i}', 'value': idx} for idx, i in enumerate(['普通', '高级', '稀有', '神器', '传说', '史诗'])]},
@@ -34,5 +28,4 @@ sundryList = {
     'costume_card': {'id': 13, 'options': [{'name': f'{i}', 'value': idx} for idx, i in enumerate(['无', '四维(3)|三速(1%)'])]},
 }
 
-__all__= [get_dress_list, calc_dress_effect, options , execture, sundryList, equ, stone, jade, emblem, enchant, sundry, suit]
-
+__all__ = [get_dress_list, calc_dress_effect, options, execture, sundryList, equ, stone, jade, emblem, enchant, sundry, suit]

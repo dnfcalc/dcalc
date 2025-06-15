@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <div>
+    <div class="flex flex-col">
       <div class="flex bg-#101012 h-40px text-#6C5E4A font-bold">
         <div
           class="flex-1 text-15px flex items-center justify-center"
@@ -18,8 +18,8 @@
           技能定制
         </div>
       </div>
-      <div class="h-90vh w-570px overflow-x-hidden bg-#101012">
-        <div class="overflow-y-auto h-full" v-if="tab === 0">
+      <div class="flex-1 w-550px overflow-x-hidden bg-#101012">
+        <div class="overflow-y-auto h-full box-border" v-if="tab === 0">
           <SkillTree
             :skills="infoStore.skills"
             v-model:lvInfo="configStore.config.skills"
@@ -28,9 +28,7 @@
           ></SkillTree>
         </div>
         <div v-if="tab === 1" class="flex flex-col overflow-y-hidden h-full">
-          <div class="item-head" @click="linkColg">
-            技能进化<span class="font-bold text-white">[形态爆料演示戳我]</span>
-          </div>
+          <div class="item-head" 角色等级>技能进化</div>
           <SkillUP
             class="flex-1"
             :skills="infoStore.skills"
@@ -38,9 +36,7 @@
             v-model:bindAwake="configStore.config.bindAwake"
             :buffer="infoStore.infos?.buffer"
           ></SkillUP>
-          <div class="item-head" @click="linkColg">
-            技能突破<span class="font-bold text-white">[形态爆料演示戳我]</span>
-          </div>
+          <div class="item-head" 角色等级>技能突破</div>
           <div class="flex-1 overflow-y-auto w-full">
             <SkillVP
               :skills="infoStore.skills"
@@ -52,12 +48,26 @@
         </div>
       </div>
     </div>
-    <div class="bg-#101012 w-250px h-full overflow-x-auto" v-if="curCurrentSkill.skillId && curCurrentSkill.level > 0">
-      <SkillDetail
-        :skillId="curCurrentSkill.skillId"
-        :level="curCurrentSkill.level"
-      ></SkillDetail>
+    <div
+      class="bg-#101012 w-250px h-full overflow-x-auto"
+      v-if="curCurrentSkill.skillId && curCurrentSkill.level > 0"
+    >
+      <SkillDetail :skillId="curCurrentSkill.skillId" :level="curCurrentSkill.level"></SkillDetail>
     </div>
+    <!-- <div class="absolute right--60px">
+      <div class="text-#AE8D5A h-60px bg-black p-1px box-border flex pl-2">
+        <div
+          class="border-1px border-solid border-#322E20 border-l-none flex p-1px box-border pl-0"
+        >
+          <div
+            class="border-1px border-#514531 border-solid rounded-2px"
+            style="background: linear-gradient(to bottom, #313330 0%, #0f110f 100%)"
+          >
+            技能详细
+          </div>
+        </div>
+      </div>
+    </div> -->
   </div>
 </template>
 
@@ -78,15 +88,15 @@ const configStore = useConfigStore()
 const curSkillId = ref()
 
 const curCurrentSkill = computed(() => {
-  const skill = infoStore.skills.find(skill => skill.uuid === curSkillId.value)
+  const skill = infoStore.skills.find((skill) => skill.uuid === curSkillId.value)
   return {
-    skillId: skill?.uuid ?? "",
+    skillId: skill?.uuid ?? '',
     level: configStore.config.skills[skill?.id || 0]?.lv || 0,
   }
 })
 
 const setCurrentSkill = (skillId: number) => {
-  curSkillId.value = infoStore.skills.find(skill => skill.id === skillId)?.uuid || ''
+  curSkillId.value = infoStore.skills.find((skill) => skill.id === skillId)?.uuid || ''
 }
 
 const linkColg = () => {

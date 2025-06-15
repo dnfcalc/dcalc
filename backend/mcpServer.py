@@ -15,6 +15,7 @@ def custom_route_mapper(route: HTTPRoute, mcp_type: MCPType) -> MCPType | None:
 mcp = FastMCP.from_fastapi(
     app=application,
     name="Dcalc_MCP",
+    instructions="DNF相关的MCP服务",
     timeout=60,
     port=config.MCPPORT,
     route_map_fn=custom_route_mapper,

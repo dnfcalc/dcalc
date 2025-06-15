@@ -553,6 +553,7 @@ class Character(CharacterProperty):
 
     def calc_init(self, setInfo: dict[str, dict]):
         self.equ_options = setInfo.get('options', {})
+        self.setInfo = setInfo
         # 打造信息导入
         self.SetDetail(setInfo)
         # 技能等级设置
@@ -568,7 +569,7 @@ class Character(CharacterProperty):
                     skill.up = skills[key].get('up', 0)
                 if skill.hasVP:
                     skill.vp = skills[key].get('vp', 0)
-                skill.lv = skills[key].get('lv', 0)
+                skill.lv += skills[key].get('lv', 0)
         pass
 
     def load_skills(self) -> None:

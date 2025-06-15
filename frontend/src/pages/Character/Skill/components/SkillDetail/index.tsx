@@ -89,7 +89,7 @@ export default defineComponent({
 
     const renderSkillDetail = () => (
       <>
-        <div class="title">基本信息</div>
+        <div class="skill_title">基本信息</div>
         <div class="flex flex-col gap-2px">
           {basic.value.map(
             (item) =>
@@ -101,7 +101,7 @@ export default defineComponent({
               ),
           )}
         </div>
-        <div class="title">技能描述</div>
+        <div class="skill_title">技能描述</div>
         <div class="h-auto max-h-250px">
           <div class="h-full overflow-y-auto bg-#161816 p-2px">
             {desc.value?.map((item) => item.startsWith("[") ? (<div class="min-h-10px">{item}</div>) :(
@@ -109,7 +109,7 @@ export default defineComponent({
             ))}
           </div>
         </div>
-        <div class="title">技能属性</div>
+        <div class="skill_title">技能属性</div>
         <div class="flex-1 overflow-y-auto">
           <div class=" flex flex-col gap-2px">
             {detail.value?.map((item) => (
@@ -127,8 +127,8 @@ export default defineComponent({
             {skillInfo.value?.evolution?.map((item) => (
               <>
               <div class="flex flex-col gap-2px">
-                <div class="skill_vp_title">{item.name}</div>
-                <div class="title">技能描述</div>
+                <div class="skill_vp_skill_title">{item.name}</div>
+                <div class="skill_title">技能描述</div>
                 <div class="h-auto max-h-200px">
                   <div class="h-full bg-#161816 p-2px" style="white-space: pre-wrap;">
                     {item.descDetail}
@@ -151,7 +151,7 @@ export default defineComponent({
     return () => (
       <>
         <div class="flex flex-col gap-2px mx-2px text-#907B54 h-full">
-          <div class="skill_title h-20px">{skillInfo.value?.name}</div>
+          <div class="skill_name h-20px">{skillInfo.value?.name}</div>
           <div class="relative">
             <CalcTabs v-model={curTab.value}>
               <CalcTab class="flex-1 flex justify-center" value={0}>
