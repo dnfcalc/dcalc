@@ -436,16 +436,16 @@ class Skill17(ActiveSkill):
             self.cd = 4.9
 
     def getSkillCD(self,mode=None):
-        if self.currentMode == "光翼":
+        if mode == "光翼":
             pre = self.char.GetSkillByName("地裂 · 波动剑")
             return 1.2 * pre.getSkillCD(mode) / pre.cd
-        elif self.currentMode == "天照":
+        elif mode == "天照":
             pre = self.char.GetSkillByName("冰刃 · 波动剑")
             return 2 * pre.getSkillCD(mode) / pre.cd
-        elif self.currentMode == "闪枪":
+        elif mode == "闪枪":
             pre = self.char.GetSkillByName("爆炎 · 波动剑")
             return 4.9 * pre.getSkillCD(mode) / pre.cd
-        elif self.currentMode == "平X":
+        elif mode == "平X":
             return 1.0
         else:
             return super().getSkillCD(mode)
@@ -631,9 +631,8 @@ class Skill22(ActiveSkill):
     mode = ['雷针','终结']
 
     def vp_2(self):
-        self.power1 = self.power2 = 0
-        self.power0 *= 1.48
-        self.power3 *= 1.48
+        self.setMode('雷针')
+        self.skillRation *= 1.48
 
     def setMode(self, mode):
         if mode == "雷针":

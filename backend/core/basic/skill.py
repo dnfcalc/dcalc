@@ -84,7 +84,7 @@ class Skill:
     """技能冷却恢复"""
     associate: list = []
     """关联技能
-    type: 关联类型 *乘算 +加算 $角色属性 默认'*skillRation'
+    type: 关联类型 *乘算 +加算 =直接赋值 $角色属性 默认'*skillRation'
     e.g.
     *skillRation 乘算技能面板倍率
     *cdReduce 乘算技能冷却缩减
@@ -166,7 +166,7 @@ class Skill:
             ratio = assoc.get('ratio', 100)
             weapon = assoc.get('weapon', self.char.武器选项)
             exceptSkills = assoc.get('exceptSkills', [])
-            if type[0] not in ['*', '+', '$']:
+            if type[0] not in ['*', '+', '=', '$']:
                 if self.precondition() and (self.char.GetWeaponType()[0] in weapon or len(weapon) == len(self.char.武器选项)):
                     getattr(self, type)(old, new, data, skills, exceptSkills, ratio, weapon)
                 continue
@@ -212,6 +212,8 @@ class Skill:
                 return
             else:
                 setattr(skill, type[1:], getattr(skill, type[1:]) + data[new] / ratio - data[old] / ratio)
+        elif type.startswith('='):
+            setattr(skill, type[1:], data[new])
 
     def skillInfo(self, mode: str | None = None):
         pass
@@ -285,7 +287,7 @@ class ActiveSkill(Skill):
             plus = getattr(self, f'plus{i}', 0)
             hit = getattr(self, f'hit{i}', 0)
             if len(data) == 0 or hit == 0:
-                break
+                continue
             if lv < len(data):
                 hit = getattr(self, f'hit{i}', 0)
                 power = getattr(self, f'power{i}', 1)
