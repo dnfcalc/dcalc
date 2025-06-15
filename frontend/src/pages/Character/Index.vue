@@ -7,11 +7,14 @@
         <calc-tab :value="`/character/forge/${props.alter}`">打造设置</calc-tab>
       </calc-tabs>
     </div>
-    <div class="content flex">
-      <div class="flex h-auto p-1 overflow-y-hidden" v-if="!!infoStore.infos?.alter">
+    <div class="content flex gap-1">
+      <div
+        class="flex h-auto p-1 overflow-y-hidden flex-1 box-border"
+        v-if="!!infoStore.infos?.alter"
+      >
         <RouterView></RouterView>
       </div>
-      <div class="p-1 ml-auto h-auto overflow-x-hidden z-2">
+      <div class="m-1 ml-auto h-auto overflow-x-auto z-2 box-border">
         <Result></Result>
       </div>
     </div>

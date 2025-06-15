@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="flex relative" ref="skillTreeRef">
     <div class="flex flex-col">
       <div class="flex bg-#101012 h-40px text-#6C5E4A font-bold">
         <div
@@ -48,26 +48,34 @@
         </div>
       </div>
     </div>
+
     <div
-      class="bg-#101012 w-250px h-full overflow-x-auto"
-      v-if="curCurrentSkill.skillId && curCurrentSkill.level > 0"
+      class="absolute right--60px"
+      v-if="curCurrentSkill.skillId && curCurrentSkill.level > 0 && !showSkillDetail"
     >
-      <SkillDetail :skillId="curCurrentSkill.skillId" :level="curCurrentSkill.level"></SkillDetail>
-    </div>
-    <!-- <div class="absolute right--60px">
-      <div class="text-#AE8D5A h-60px bg-black p-1px box-border flex pl-2">
+      <div class="text-#AE8D5A p-1px box-border flex pl-2 w-auto">
         <div
           class="border-1px border-solid border-#322E20 border-l-none flex p-1px box-border pl-0"
         >
           <div
-            class="border-1px border-#514531 border-solid rounded-2px"
+            class="border-1px border-#514531 border-solid rounded-2px flex flex-col items-center justify-center p-5px"
             style="background: linear-gradient(to bottom, #313330 0%, #0f110f 100%)"
+            @click="showSkillDetail = true"
           >
-            技能详细
+            <img class="w-30px h-30px" src="./components/img/detail.png" />
+            技能详情
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
+  </div>
+  <div
+    class="bg-#101012 w-300px h-full absolute"
+    :style="style"
+    ref="SkillDetailRef"
+    v-if="curCurrentSkill.skillId && curCurrentSkill.level > 0 && showSkillDetail"
+  >
+    <SkillDetail :skillId="curCurrentSkill.skillId" :level="curCurrentSkill.level"></SkillDetail>
   </div>
 </template>
 
@@ -78,6 +86,7 @@ import SkillVP from './components/SkillVP'
 import SkillUP from './components/SkillUP'
 import { useConfigStore } from '@/stores'
 import SkillDetail from './components/SkillDetail'
+import { onClickOutside } from '@vueuse/core'
 const props = defineProps<{
   alter: string
 }>()
@@ -95,13 +104,26 @@ const curCurrentSkill = computed(() => {
   }
 })
 
+const showSkillDetail = ref(false)
+
+const skillTreeRef = ref<HTMLHtmlElement>()
+const SkillDetailRef = ref<HTMLHtmlElement>()
+
+const style = computed(() => {
+  return {
+    zIndex: 99,
+    height: `${skillTreeRef.value?.clientHeight ?? 0}px`,
+    left: `${(skillTreeRef.value?.clientWidth ?? 0) + 5}px`,
+  }
+})
+
 const setCurrentSkill = (skillId: number) => {
   curSkillId.value = infoStore.skills.find((skill) => skill.id === skillId)?.uuid || ''
 }
 
-const linkColg = () => {
-  window.open('https://bbs.colg.cn/page_collect/330.html', '_blank')
-}
+onClickOutside(SkillDetailRef, (event) => {showSkillDetail.value = false}, {
+  ignore: [skillTreeRef],
+})
 </script>
 
 <style lang="scss" scoped>

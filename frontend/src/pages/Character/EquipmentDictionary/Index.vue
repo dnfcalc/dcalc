@@ -1,5 +1,5 @@
 <template>
-  <div class="w-340px bg-black flex flex-col h-90vh">
+  <div class="w-340px bg-black flex flex-col">
     <calc-dialog lazy header="装备条件" v-model:visible="triggerVisible">
       <options />
     </calc-dialog>
@@ -70,7 +70,7 @@
       </template>
     </div>
   </div>
-  <div class="px-5px flex flex-col h-90vh">
+  <div class="px-5px flex flex-col">
     <div class="flex flex-col overflow-hidden bg-black" v-if="curEquInfo">
       <div class="item-head">基础信息</div>
       <div class="flex-1 overflow-y-auto overflow-x-hidden bg-black w-240px">

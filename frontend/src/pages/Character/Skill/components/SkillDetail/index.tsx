@@ -127,7 +127,7 @@ export default defineComponent({
             {skillInfo.value?.evolution?.map((item) => (
               <>
               <div class="flex flex-col gap-2px">
-                <div class="skill_vp_skill_title">{item.name}</div>
+                <div class="skill_vp_title">{item.name}</div>
                 <div class="skill_title">技能描述</div>
                 <div class="h-auto max-h-200px">
                   <div class="h-full bg-#161816 p-2px" style="white-space: pre-wrap;">

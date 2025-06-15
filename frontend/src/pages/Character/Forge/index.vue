@@ -1,5 +1,5 @@
 <template>
-  <div class="w-420px">
+  <div class="w-420px overflow-auto">
     <calc-collapse class="w-100%" title="装备/时装打造(点击部位切换)">
       <calc-tabs v-model="partTab" class="!mb-2">
         <calc-tab :value="0">装备栏</calc-tab>
