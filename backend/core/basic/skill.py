@@ -24,10 +24,11 @@ def get_data(prefix: str, key: int | str, func = lambda x = None: x):
         try:
             if isinstance(key, int):
                 data = [0] + list(map(lambda x: x["optionValue"].get("value" + str(key+1), 0), skill_data["levelInfo"]["rows"]))
+                data = [ 0 if x is None else x for x in data]
             elif key == "vps":
                 data = [ {"name":x["name"],"desc":x["desc"]} for x in skill_data.get("evolution",[])]
         except Exception as e:
-            print(e)
+            print(f"get skill {prefix}/{key} data error",e)
             data = None
         return data
 
