@@ -60,10 +60,11 @@ export default defineComponent({
     const desc = computed(() => skillInfo.value?.descDetail.split('\n'))
 
     const detail = computed(() => {
-      const items = skillInfo.value?.attribute.optionDesc?.split('\n').filter((item) => !!item) ?? []
+      const items =
+        skillInfo.value?.attribute.optionDesc?.split('\n').filter((item) => !!item) ?? []
       const details = items?.map((a) => {
         const beforeReplace = a.match(/^(.+?\s*:\s*[^\{]+)(\{value\d+\}.*)$/)
-        if(beforeReplace) {
+        if (beforeReplace) {
           a = `${beforeReplace[1]}<span class="skill_info_value">${beforeReplace[2]}</span>`
         }
         const matches = a.match(/{([^}]+)}/g)
@@ -74,10 +75,7 @@ export default defineComponent({
             if (/^value.+/.test(key)) {
               const value = skillInfo.value?.attribute.optionValue[key as `value${string}`] ?? '-'
               if (value) {
-                a = a.replace(
-                  match,
-                  `<span style="padding:0px 2px;color:#4AA256">${value}</span>`,
-                )
+                a = a.replace(match, `<span style="padding:0px 2px;color:#4AA256">${value}</span>`)
               }
             }
           })
@@ -104,19 +102,29 @@ export default defineComponent({
         <div class="skill_title">技能描述</div>
         <div class="h-auto max-h-250px">
           <div class="h-full overflow-y-auto bg-#161816 p-2px">
-            {desc.value?.map((item) => item.startsWith("[") ? (<div class="min-h-10px">{item}</div>) :(
-              <div class="min-h-10px" style="text-indent:20px;">{item}</div>
-            ))}
+            {desc.value?.map((item) =>
+              item.startsWith('[') ? (
+                <div class="min-h-10px">{item}</div>
+              ) : (
+                <div class="min-h-10px" style="text-indent:20px;">
+                  {item}
+                </div>
+              ),
+            )}
           </div>
         </div>
-        <div class="skill_title">技能属性</div>
-        <div class="flex-1 overflow-y-auto">
-          <div class=" flex flex-col gap-2px">
-            {detail.value?.map((item) => (
-              <div class="flex justify-between item items-center" v-html={item}></div>
-            ))}
-          </div>
-        </div>
+        {(detail.value.length > 0 ) && (
+          <>
+            <div class="skill_title">技能属性</div>
+            <div class="flex-1 overflow-y-auto">
+              <div class=" flex flex-col gap-2px">
+                {detail.value.map((item) => (
+                  <div class="flex justify-between item items-center" v-html={item}></div>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
       </>
     )
 
@@ -126,14 +134,14 @@ export default defineComponent({
           <div class="h-full flex flex-col gap-5px">
             {skillInfo.value?.evolution?.map((item) => (
               <>
-              <div class="flex flex-col gap-2px">
-                <div class="skill_vp_title">{item.name}</div>
-                <div class="skill_title">技能描述</div>
-                <div class="h-auto max-h-200px">
-                  <div class="h-full bg-#161816 p-2px" style="white-space: pre-wrap;">
-                    {item.descDetail}
+                <div class="flex flex-col gap-2px">
+                  <div class="skill_vp_title">{item.name}</div>
+                  <div class="skill_title">技能描述</div>
+                  <div class="h-auto max-h-200px">
+                    <div class="h-full bg-#161816 p-2px" style="white-space: pre-wrap;">
+                      {item.descDetail}
+                    </div>
                   </div>
-                </div>
                 </div>
               </>
             ))}
@@ -144,7 +152,7 @@ export default defineComponent({
 
     onMounted(() => {
       watchEffect(() => {
-        (skillInfo.value?.evolution?.length ?? 0) == 0 && (curTab.value = 0)
+        ;(skillInfo.value?.evolution?.length ?? 0) == 0 && (curTab.value = 0)
       })
     })
 

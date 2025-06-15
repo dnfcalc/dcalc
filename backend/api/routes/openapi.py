@@ -47,6 +47,23 @@ async def get_skills_list(redis: RedisDep, skillName: Annotated[str, Param(..., 
     return response(data=data)
 
 
+@router.get('/{jobId}/{jobGrowId}/skills/', operation_id='skillsByJob')
+async def get_cn_skills_by_job(redis: RedisDep, jobId: Annotated[str, Path(..., description='职业')], jobGrowId: Annotated[str, Path(..., description='转职')]) -> SkillsListResponse:
+    """
+    获取职业技能列表
+    """
+    key = f'openapi:{jobId}:{jobGrowId}:skills'
+
+    def get_skills_by_job():
+        # This function should retrieve the skills by job and jobGrow
+        # For now, we return a placeholder list
+        with open(f'./openapi/data/{jobId}/{jobGrowId}/cn/skill_tree.json', encoding='utf-8') as f:
+            skills_data = json.load(f)
+        return skills_data
+
+    skills_list = get_redis_info(redis, key, get_skills_by_job)
+    return response(data=skills_list)
+
 @router.get('/{jobId}/{jobGrowId}/{skillId}/', operation_id='skillDetail')
 async def get_cn_skill_info(redis: RedisDep, jobId: Annotated[str, Path(..., description='职业')], jobGrowId: Annotated[str, Path(..., description='转职')], skillId: Annotated[str, Path(..., description='技能')], level: Annotated[int, Param(..., description='技能等级')] = None) -> SkillDetailResponse:
     """

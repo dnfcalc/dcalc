@@ -20,11 +20,11 @@ const value = defineModel<string>()
 const rarities = [
   {
     value: '稀有',
-    background: '#d06eff',
+    background: '#9879da',
   },
   {
     value: '神器',
-    background: '#fe11ff',
+    background: '#ef28c1',
   },
   {
     value: '传说',
@@ -32,11 +32,11 @@ const rarities = [
   },
   {
     value: '史诗',
-    background: '#feca11',
+    background: '#fcb600',
   },
   {
     value: '太初',
-    background: 'linear-gradient(180deg, #70faa7 0%, #7bfefe 100%)',
+    background: 'linear-gradient(to bottom, #58fa84 20%, #58decc 40%, #58c6ff 60%)',
   },
 ]
 

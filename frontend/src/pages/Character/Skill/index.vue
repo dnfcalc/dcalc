@@ -50,7 +50,7 @@
     </div>
 
     <div
-      class="absolute right--60px"
+      class="absolute right--65px"
       v-if="curCurrentSkill.skillId && curCurrentSkill.level > 0 && !showSkillDetail"
     >
       <div class="text-#AE8D5A p-1px box-border flex pl-2 w-auto">

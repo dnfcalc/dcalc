@@ -14,7 +14,7 @@
       >
         <RouterView></RouterView>
       </div>
-      <div class="m-1 ml-auto h-auto overflow-x-auto z-2 box-border">
+      <div class="m-1 ml-auto h-auto z-2 box-border">
         <Result></Result>
       </div>
     </div>
