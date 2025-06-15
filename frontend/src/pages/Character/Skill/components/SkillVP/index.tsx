@@ -104,7 +104,11 @@ export default defineComponent({
                     <div class="w-16px"></div>
                   </div>
                   <div class="text-13px mt-5px text-center selected-name">{item.vps[index - 1]?.name}</div>
-                  {renderList(item.vps[index - 1]?.desc.split('<br/>') ?? [], (desc) => (
+                  {renderList(
+                    (item.vps[index - 1]?.desc
+                      ? item.vps[index - 1].desc.replace(/<br\/>/g, '\n').split('\n')
+                      : []),
+                    (desc) => (
                     <div class="text-12px text-#816f4c text-center leading-none">{desc}</div>
                   ))}
                   </div>
