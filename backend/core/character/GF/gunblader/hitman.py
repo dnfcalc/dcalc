@@ -971,6 +971,11 @@ class Skill33(ActiveSkill):
         self.cd = 25
         self.skillRation *= 0.5
 
+    def effect(self, old, new):
+        if self.vp == 2:
+            self.associate = [{"type":"*skillRation","data":[0] + [-50]*self.maxLv,"skills":["潜行射击"]}]
+        return super().effect(old, new)
+
 # B.C精锐特训
 # gunblader/hitman/38612d8f2561edc2eb68d5057a837bfa
 # 986c2b3d72ee0e4a0b7fcfbe786d4e02/38612d8f2561edc2eb68d5057a837bfa
