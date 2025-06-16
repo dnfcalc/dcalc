@@ -24,7 +24,7 @@ def get_data(prefix: str, key: int | str, func = lambda x = None: x):
         try:
             if isinstance(key, int):
                 data = [0] + list(map(lambda x: x["optionValue"].get("value" + str(key+1), 0), skill_data["levelInfo"]["rows"]))
-                data = [ 0 if x is None else x for x in data]
+                data = [0 if x is None or x == "-" else x for x in data]
             elif key == "vps":
                 data = [ {"name":x["name"],"desc":x["desc"]} for x in skill_data.get("evolution",[])]
         except Exception as e:
@@ -179,26 +179,30 @@ class Skill:
         return True
 
     def apply_association(self, type, old, new, data, skills, exceptSkills, ratio=100, weapon=[]):
-        if (self.char.GetWeaponType()[0] not in weapon) and not (self.char.GetWeaponType()[0] is None and len(weapon) == len(self.char.武器选项)):
-            return
-        if type.startswith('$*'):
-            if 'cdReduce' in type:
-                value = (1 - data[new] / ratio) / (1 - data[old] / ratio)
+        try:
+            if (self.char.GetWeaponType()[0] not in weapon) and not (self.char.GetWeaponType()[0] is None and len(weapon) == len(self.char.武器选项)):
+                return
+            if type.startswith('$*'):
+                if 'cdReduce' in type:
+                    value = (1 - data[new] / ratio) / (1 - data[old] / ratio)
+                else:
+                    value = (1 + data[new] / ratio) / (1 + data[old] / ratio)
+                eval(f'self.char.SetStatus({type[2:]}={value})')
+            elif type.startswith('$+'):
+                value = data[new] / ratio - data[old] / ratio
+                eval(f'self.char.SetStatus({type[2:]}={value})')
             else:
-                value = (1 + data[new] / ratio) / (1 + data[old] / ratio)
-            eval(f'self.char.SetStatus({type[2:]}={value})')
-        elif type.startswith('$+'):
-            value = data[new] / ratio - data[old] / ratio
-            eval(f'self.char.SetStatus({type[2:]}={value})')
-        else:
-            if skills == '*':
-                skills = self.char.GetSkillNames('all', True)
-            for name in skills:
-                if name in exceptSkills:
-                    continue
-                skill = self.char.GetSkillByName(name)
-                if skill is not None:
-                    self.update_skill_attribute(skill, type, old, new, data, ratio, weapon)
+                if skills == '*':
+                    skills = self.char.GetSkillNames('all', True)
+                for name in skills:
+                    if name in exceptSkills:
+                        continue
+                    skill = self.char.GetSkillByName(name)
+                    if skill is not None:
+                        self.update_skill_attribute(skill, type, old, new, data, ratio, weapon)
+        except Exception as e:
+            print(f"Error applying association {type} for skill {self.name}: {e}")
+            raise e
 
     def update_skill_attribute(self, skill, type, old, new, data, ratio=100, weapon=[]):
         if (self.char.GetWeaponType()[0] not in weapon) and not (self.char.GetWeaponType()[0] is None and len(weapon) == len(self.char.武器选项)):
