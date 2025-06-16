@@ -26,7 +26,7 @@ class Skill0(PassiveSkill):
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 0
     rangeLv = 1
     uuid = "dcd536f1674630f01fc9667bb202b851"
     hasVP = False
@@ -77,7 +77,7 @@ class Skill2(ActiveSkill):
     learnLv = 5
     masterLv = 1
     maxLv = 1
-    position = 10 #todo
+    position = 10
     rangeLv = 1
     mp = [5, 7]
     uuid = "78bd107acd474518b606be1e4fd38239"
@@ -182,7 +182,7 @@ class Skill4(ActiveSkill):
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cd = 6
     mp = [12, 120]
@@ -224,7 +224,7 @@ class Skill5(PassiveSkill):
     masterLv = 1
     maxLv = 40
     line = 10
-    position = 0 #TODO
+    position = 0
     rangeLv = 3
     uuid = "01c3a2fb793d293a25ed8dc7a0d70c1a"
     hasUP = False
@@ -300,7 +300,7 @@ class Skill6(ActiveSkill):
     masterLv = 1
     maxLv = 40
     line = 10
-    position = 1 #TODO
+    position = 1
     rangeLv = 3
     type = "passive"
     uuid = "8f73f243041c2d27739fe7696f02bf9b"
@@ -375,7 +375,7 @@ class Skill7(PassiveSkill):
     masterLv = 1
     maxLv = 40
     line = 10
-    position = 0 #TODO
+    position = 0
     rangeLv = 3
     uuid = "8c2379737c5acc935c1731f67f607655"
 
@@ -438,7 +438,7 @@ class Skill8(PassiveSkill):
     masterLv = 1
     maxLv = 40
     line = 10
-    position = 1 #TODO
+    position = 1
     rangeLv = 3
     uuid = "9cb6f9ed646fa87f9b7680a42ce83d1a"
 
@@ -508,7 +508,7 @@ class Skill10(PassiveSkill):
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 9 #TODO
+    position = 9
     rangeLv = 3
     uuid = "bb34e8854a93fd250347a1c64119f7ab"
 
@@ -534,7 +534,7 @@ class Skill11(ActiveSkill):
     learnLv = 15
     masterLv = 1
     maxLv = 11
-    position = 4 #TODO
+    position = 4
     rangeLv = 15
     mp = [6, 140]
     uuid = "51a08fd0c90f0a5276cd552047fac93d"
@@ -584,7 +584,7 @@ class Skill12(ActiveSkill):
     learnLv = 20
     masterLv = 1
     maxLv = 1
-    position = 6 #TODO
+    position = 6
     rangeLv = 2
     cd = 1
     mp = [20, 20]
@@ -611,7 +611,7 @@ class Skill13(ActiveSkill):
     masterLv = 60
     maxLv = 70
     line = 25
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cd = 8
     mp = [30, 280]
@@ -672,7 +672,7 @@ class Skill14(PassiveSkill):
     learnLv = 20
     masterLv = 5
     maxLv = 15
-    position = 9 #TODO
+    position = 9
     rangeLv = 3
     uuid = "c47b66efd27845ef14954928ea2f95c8"
 
@@ -691,7 +691,7 @@ class Skill15(ActiveSkill):
     learnLv = 25
     masterLv = 10
     maxLv = 20
-    position = 2 #TODO
+    position = 2
     rangeLv = 3
     cd = 5
     mp = [271, 2570]
@@ -724,7 +724,7 @@ class Skill16(ActiveSkill):
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cd = 8
     mp = [30, 350]
@@ -783,7 +783,7 @@ class Skill17(ActiveSkill):
     learnLv = 30
     masterLv = 20
     maxLv = 30
-    position = 2 #TODO
+    position = 2
     rangeLv = 3
     cd = [0, 15, 14.7, 14.4, 14.2, 13.9, 13.6, 13.3, 13.1, 12.8, 12.5, 12.2, 12, 11.7, 11.4, 11.1, 10.9, 10.6, 10.3, 10, 9.8, 9.5, 9.2, 8.9, 8.7, 8.4, 8.1, 7.8, 7.6, 7.3, 7]
     uuid = "c9664191611af31142e052dfaef84530"
@@ -814,7 +814,7 @@ class Skill18(ActiveSkill):
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cd = 10
     mp = [70, 700]
@@ -886,7 +886,7 @@ class Skill19(ActiveSkill):
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cd = 8
     mp = [50, 490]
@@ -897,6 +897,8 @@ class Skill19(ActiveSkill):
 
     # 基本攻击力 : {value0}%
     data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
+    # 韩服接口数据有问题 后续再确认
+    power0 = 3
     hit0 = 1
     # 太刀 - 刺伤效果几率 : {value1}%
     data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
@@ -940,7 +942,7 @@ class Skill20(ActiveSkill):
     learnLv = 30
     masterLv = 10
     maxLv = 20
-    position = 6 #TODO
+    position = 6
     rangeLv = 3
     cd = 5
     mp = [20, 168]
@@ -981,7 +983,7 @@ class Skill21(ActiveSkill):
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cube = 1
     cd = 15
@@ -1130,7 +1132,7 @@ class Skill23(ActiveSkill):
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cube = 1
     cd = 25
@@ -1345,13 +1347,13 @@ class Skill26(ActiveSkill):
 
     # 形成剑阵攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
-    hit0 = 1 #TODO
+    hit0 = 1
     # 乱舞攻击力 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
     hit1 = 24
     # 最后一击上斩攻击力 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
-    hit2 = 1 #TODO
+    hit2 = 1
     # 攻击力增加率 : {value3}%
     data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
     associate = [
@@ -1987,10 +1989,10 @@ class Skill36(ActiveSkill):
     hasUP = False
 
     data0 = [0, 68275, 84108, 99940, 115772, 131603, 147435, 163267, 179099, 194930, 210763, 226594, 242427, 258257, 274089, 289923, 305755, 321587, 337420, 353251, 369081, 384914, 400746, 416579, 432409, 448243, 464075, 479905, 495737, 511570, 527401, 543233, 559066, 574899, 590726, 606560, 622390, 638223, 654056, 669888, 685719, 701552, 717384, 733215, 749049, 764879, 780711, 796542, 812376, 828208, 844038]# noqa: E501
-    hit0 = 1 #TODO
+    hit0 = 1
 
     data1 = [0, 89283, 109985, 130689, 151394, 172097, 192799, 213502, 234207, 254909, 275612, 296315, 317019, 337723, 358427, 379129, 399832, 420538, 441242, 461945, 482645, 503350, 524055, 544757, 565461, 586164, 606865, 627569, 648274, 668975, 689680, 710382, 731087, 751789, 772490, 793197, 813899, 834602, 855308, 876009, 896709, 917416, 938120, 958821, 979526, 1000230, 1020932, 1041636, 1062340, 1083042, 1103746]# noqa: E501
-    hit1 = 1 #TODO
+    hit1 = 1
 
     data2 = [0, 12253, 15095, 17937, 20777, 23621, 26461, 29304, 32145, 34989, 37830, 40669, 43512, 46354, 49196, 52037, 54879, 57720, 60562, 63404, 66243, 69085, 71929, 74772, 77610, 80454, 83295, 86136, 88976, 91821, 94659, 97501, 100342, 103183, 106026, 108869, 111712, 114553, 117395, 120235, 123075, 125918, 128760, 131602, 134444, 137285, 140127, 142969, 145809, 148651, 151493]# noqa: E501
     hit2 = 6
@@ -1999,7 +2001,7 @@ class Skill36(ActiveSkill):
     hit4 = 5
 
     data6 = [0, 210078, 258790, 307505, 356218, 404933, 453646, 502360, 551075, 599788, 648503, 697216, 745931, 794644, 843358, 892070, 940786, 989499, 1038213, 1086924, 1135639, 1184353, 1233067, 1281781, 1330496, 1379208, 1427923, 1476636, 1525351, 1574064, 1622778, 1671490, 1720205, 1768920, 1817632, 1866348, 1915061, 1963772, 2012490, 2061203, 2109915, 2158630, 2207344, 2256058, 2304772, 2353484, 2402197, 2450911, 2499625, 2548339, 2597053]# noqa: E501
-    hit6 = 1 #TODO
+    hit6 = 1
 
 class classChange(Character):
     def __init__(self, equVersion):
