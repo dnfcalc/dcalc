@@ -103,7 +103,7 @@ export default defineComponent({
         <div class="h-auto max-h-250px">
           <div class="h-full overflow-y-auto bg-#161816 p-2px">
             {desc.value?.map((item) =>
-              item.startsWith('[') ? (
+              item.startsWith('[') || item.startsWith('-') || item.startsWith('<') ? (
                 <div class="min-h-10px">{item}</div>
               ) : (
                 <div class="min-h-10px" style="text-indent:20px;">
