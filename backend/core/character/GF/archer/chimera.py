@@ -878,7 +878,7 @@ class Skill30(ActiveSkill):
     hit0 = 4
     # 最后一剑的坠落攻击力 : {value1}
     data1 = get_data(f'{prefix}/{uuid}', 1)
-    hit0 = 1
+    hit1 = 1
 
     def vp_1(self):
         """
@@ -1165,8 +1165,10 @@ class Skill36(ActiveSkill):
 
     # 长矛坠落攻击力 : {value0}
     data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
     # 变形武器穿刺攻击力 : {value1} x {value2}
     data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 8
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
 # 熵变 : 非线性跳跃
