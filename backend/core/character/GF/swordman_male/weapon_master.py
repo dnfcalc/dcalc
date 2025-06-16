@@ -897,6 +897,7 @@ class Skill19(ActiveSkill):
 
     # 基本攻击力 : {value0}%
     data0 = get_data(f"{prefix}/{uuid}", 0, lambda x = None: x)
+    hit0 = 1
     # 太刀 - 刺伤效果几率 : {value1}%
     data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
     # 太刀 - 刺伤效果数 : {value2}个
@@ -1227,10 +1228,9 @@ class Skill24(ActiveSkill):
     hit0 = 12
     # 基础斩击次数 : {value1}次
     data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
-    hit1 = 3
     # 剑气攻击力 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
-    hit2 = 0
+    hit2 = 3
     # 剑气多段攻击次数 : {value3}次
     data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
     # 短剑 - 斩击攻击力减少率 : {value4}%
@@ -1257,6 +1257,7 @@ class Skill24(ActiveSkill):
     data14 = get_data(f'{prefix}/{uuid}', 14, lambda x = None: x)
     # 钝器 - 冲击波攻击力 : {value15}%
     data15 = get_data(f'{prefix}/{uuid}', 15, lambda x = None: x)
+    hit15 = 0
     # [范围信息]
     # 范围比率 : {value16}%
     data16 = get_data(f'{prefix}/{uuid}', 16, lambda x = None: x)
@@ -1266,12 +1267,12 @@ class Skill24(ActiveSkill):
     hit17 = 4
 
     # 75被动影子剑气部分
-    data18 = data1
+    data18 = data2
     power18 = 0
     hit18 = 3
 
     # 75被动钝器冲击波部分
-    data19 = data2
+    data19 = data15
     power19 = 0
     hit19 = 1
 
@@ -1285,15 +1286,15 @@ class Skill24(ActiveSkill):
             # 减少斩击攻击力
             self.power0 *= 1 - 0.1
             # 增加剑气攻击力和次数
-            self.power1 *= 1.2
-            self.hit1 = self.hit4 = 4
+            self.power2 *= 1.2
+            self.hit2 = self.hit18 = 4
         elif weapon[0] == "巨剑":
             # 增加斩击攻击力
             self.power0 *= 1 + 0.5
         elif weapon[0] == "钝器":
             # 不会产生剑气 变成冲击波
-            self.hit2 = self.hit5 = 1
-            self.hit1 = self.hit4 = 0
+            self.hit15 = self.hit19 = 1
+            self.hit2 = self.hit18 = 0
         pass
 
 # 极 · 鬼剑术 (斩铁式)
@@ -1622,7 +1623,7 @@ class Skill30(ActiveSkill):
         elif weapon[0] == "巨剑":
             # 增加斩击攻击力
             self.power0 *= 1 + 0.08
-            self.power1 *= 1 + 0.08
+            self.power2 *= 1 + 0.08
 
     def vp_1(self):
         """
@@ -1747,7 +1748,7 @@ class Skill31(PassiveSkill):
         {"type":"+dataplus1","data":data15,"skills":["极 · 神剑术 (流星落)"],"weapon":["光剑"],"ratio":1},
         {"type":"*powerplus0","data":data19,"skills":["极 · 神剑术 (流星落)"],"weapon":["巨剑"]},
         {"type":"+dataplus1","data":data20,"skills":["极 · 神剑术 (流星落)"],"weapon":["钝器"],"ratio":1},
-        {"type":"*power1","data":data23,"skills":["极 · 神剑术 (破空斩)"]}
+        {"type":"*power2","data":data23,"skills":["极 · 神剑术 (破空斩)"]}
         ]
 
 
