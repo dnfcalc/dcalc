@@ -185,7 +185,7 @@ adv = [
             {'id': 0, 'name': 'hitman', 'title': '苍暮·暗刃', 'open': True, 'class': 'GF.gunblader.hitman'},
             {'id': 1, 'name': 'agent', 'title': '苍暮·特工', 'open': True,'class': 'GF.gunblader.agent'},
             {'id': 2, 'name': 'trouble_shooter', 'title': '苍暮·战线佣兵', 'open': False},
-            {'id': 3, 'name': 'specialist', 'title': '苍暮·源能专家', 'open': False, 'class': 'GF.gunblader.specialist'},
+            {'id': 3, 'name': 'specialist', 'title': '苍暮·源能专家', 'open': True, 'class': 'GF.gunblader.specialist'},
             {'id': 4, 'name': 'empty', 'title': ''},
         ],
     },
