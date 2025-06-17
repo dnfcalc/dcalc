@@ -1452,7 +1452,7 @@ def stone_126(char: CharacterProperty):
     技能冷却时间-4%（觉醒时间除外）
     所有速度+8%
     """
-    char.SetStatus(SkillAttack=0.10, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
+    char.SetStatus(SkillAttack=0.11, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -1466,7 +1466,7 @@ def stone_127(char: CharacterProperty):
     技能冷却时间-4%（觉醒时间除外）
     所有速度+8%
     """
-    char.SetStatus(SkillAttack=0.10, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
+    char.SetStatus(SkillAttack=0.11, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -1480,7 +1480,7 @@ def stone_128(char: CharacterProperty):
     技能冷却时间-4%（觉醒时间除外）
     所有速度+8%
     """
-    char.SetStatus(SkillAttack=0.10, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
+    char.SetStatus(SkillAttack=0.11, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -1494,7 +1494,7 @@ def stone_129(char: CharacterProperty):
     技能冷却时间-4%（觉醒时间除外）
     所有速度+8%
     """
-    char.SetStatus(SkillAttack=0.10, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
+    char.SetStatus(SkillAttack=0.11, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -1508,7 +1508,7 @@ def stone_130(char: CharacterProperty):
     技能冷却时间-4%（觉醒时间除外）
     所有速度+8%
     """
-    char.SetStatus(SkillAttack=0.10, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
+    char.SetStatus(SkillAttack=0.11, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -1596,7 +1596,7 @@ def stone_136(char: CharacterProperty):
     技能冷却时间-4%（觉醒时间除外）
     技能范围+8%
     """
-    char.SetStatus(SkillAttack=0.10)
+    char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -1610,7 +1610,7 @@ def stone_137(char: CharacterProperty):
     技能冷却时间-4%（觉醒时间除外）
     技能范围+8%
     """
-    char.SetStatus(SkillAttack=0.10)
+    char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -1624,7 +1624,7 @@ def stone_138(char: CharacterProperty):
     技能冷却时间-4%（觉醒时间除外）
     技能范围+8%
     """
-    char.SetStatus(SkillAttack=0.10)
+    char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -1638,7 +1638,7 @@ def stone_139(char: CharacterProperty):
     技能冷却时间-4%（觉醒时间除外）
     技能范围+8%
     """
-    char.SetStatus(SkillAttack=0.10)
+    char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -1652,7 +1652,7 @@ def stone_140(char: CharacterProperty):
     技能冷却时间-4%（觉醒时间除外）
     技能范围+8%
     """
-    char.SetStatus(SkillAttack=0.10)
+    char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -1741,7 +1741,7 @@ def stone_146(char: CharacterProperty):
     所受物理/魔法伤害-3%
     伤害型异常状态抗性+4%
     """
-    char.SetStatus(SkillAttack=0.10)
+    char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -1756,7 +1756,7 @@ def stone_147(char: CharacterProperty):
     所受物理/魔法伤害-3%
     伤害型异常状态抗性+4%
     """
-    char.SetStatus(SkillAttack=0.10)
+    char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -1771,7 +1771,7 @@ def stone_148(char: CharacterProperty):
     所受物理/魔法伤害-3%
     伤害型异常状态抗性+4%
     """
-    char.SetStatus(SkillAttack=0.10)
+    char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -1786,7 +1786,7 @@ def stone_149(char: CharacterProperty):
     所受物理/魔法伤害-3%
     伤害型异常状态抗性+4%
     """
-    char.SetStatus(SkillAttack=0.10)
+    char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -1801,7 +1801,7 @@ def stone_150(char: CharacterProperty):
     所受物理/魔法伤害-3%
     伤害型异常状态抗性+4%
     """
-    char.SetStatus(SkillAttack=0.10)
+    char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
     pass
 
@@ -3464,7 +3464,7 @@ def stone_296(char: CharacterProperty):
     技能伤害+14.5%
     技能范围+25%
     """
-    char.SetStatus(SkillAttack=0.16)
+    char.SetStatus(SkillAttack=0.17)
     pass
 
 
@@ -3488,7 +3488,7 @@ def stone_298(char: CharacterProperty):
     技能伤害+17%
     所有速度+25%
     """
-    char.SetStatus(SkillAttack=0.185,SpeedA=0.25,SpeedM=0.25,SpeedR=0.25)
+    char.SetStatus(SkillAttack=0.195,SpeedA=0.25,SpeedM=0.25,SpeedR=0.25)
     pass
 
 
@@ -3512,7 +3512,7 @@ def stone_300(char: CharacterProperty):
     技能伤害+17%
     800px范围内的队员所受物理/魔法伤害-15%
     """
-    char.SetStatus(SkillAttack=0.185)
+    char.SetStatus(SkillAttack=0.195)
     pass
 
 
@@ -3548,7 +3548,7 @@ def stone_302(char: CharacterProperty):
     融合的装备强化/增幅从10开始每增加1时，技能伤害+1%(最多叠加2次)
     融合的装备强化/增幅从10开始每增加1时，增益量+150(最多叠加2次)
     """
-    char.SetStatus(SkillAttack=0.16)
+    char.SetStatus(SkillAttack=0.17)
     reinforce = char.charEquipInfo['手镯'].reinforce
     if reinforce > 10:
         value = min(reinforce - 10, 2)
@@ -3584,7 +3584,7 @@ def stone_304(char: CharacterProperty):
     融合的装备强化/增幅从10开始每增加1时，技能伤害+1%(最多叠加2次)
     融合的装备强化/增幅从10开始每增加1时，增益量+150(最多叠加2次)
     """
-    char.SetStatus(SkillAttack=0.185,SpeedA=0.07,SpeedM=0.07,SpeedR=0.07)
+    char.SetStatus(SkillAttack=0.195,SpeedA=0.07,SpeedM=0.07,SpeedR=0.07)
     reinforce = char.charEquipInfo['戒指'].reinforce
     if reinforce > 10:
         value = min(reinforce - 10, 2)
@@ -3652,7 +3652,7 @@ def stone_308(char: CharacterProperty):
     技能伤害+12%
     特效伤害+15%
     """
-    char.SetStatus(SkillAttack=0.135,EquEffectRatio=0.15)
+    char.SetStatus(SkillAttack=0.145,EquEffectRatio=0.15)
     pass
 
 
@@ -3677,7 +3677,7 @@ def stone_310(char: CharacterProperty):
     技能伤害+6%
     技能冷却时间-20%(觉醒技能除外)
     """
-    char.SetStatus(SkillAttack=0.075)
+    char.SetStatus(SkillAttack=0.085)
     char.SetSkillCD(cd=0.2)
     pass
 
@@ -3706,7 +3706,7 @@ def stone_312(char: CharacterProperty):
     -相同技能间存在10秒冷却时间
     释放冷却时间超过1秒的技能时，有1%的几率使1个技能的冷却时间初始化。（辅助职业除外）
     """
-    char.SetStatus(SkillAttack=0.07)
+    char.SetStatus(SkillAttack=0.08)
     pass
 
 
@@ -3739,7 +3739,7 @@ def stone_314(char: CharacterProperty):
     -灾害伤害量：453600%
     -冷却时间：40秒
     """
-    char.SetStatus(SkillAttack=0.08)
+    char.SetStatus(SkillAttack=0.09)
     char.equ_effect.append(EquEffect(name='无知：灾祸无常', data=453600, cd=40, icon='/equipment/icon/amalgamationstone/00378.png'))
     pass
 
@@ -3775,7 +3775,7 @@ def stone_316(char: CharacterProperty):
     -恢复30%的生命值/魔法值
     -消失的庇佑于30秒后复原
     """
-    char.SetStatus(SkillAttack=0.185)
+    char.SetStatus(SkillAttack=0.195)
     pass
 
 
@@ -3804,7 +3804,7 @@ def stone_318(char: CharacterProperty):
     - 按照装备、消耗品、恢复技能提供的生命值恢复量的10%，恢复保护罩。
     - 持续恢复的技能除外
     """
-    char.SetStatus(SkillAttack=0.185)
+    char.SetStatus(SkillAttack=0.195)
     pass
 
 
@@ -3922,7 +3922,7 @@ def stone_327(char: CharacterProperty):
     技能伤害+14.5%
     技能范围+7%
     """
-    char.SetStatus(SkillAttack=0.175)
+    char.SetStatus(SkillAttack=0.185)
     pass
 
 
@@ -3935,7 +3935,7 @@ def stone_328(char: CharacterProperty):
     35级主动技能攻击力 +12%
     35级技能范围 +12%
     """
-    char.SetStatus(SkillAttack=0.16)
+    char.SetStatus(SkillAttack=0.17)
     char.SetSkillRation(35,35,0.12)
     pass
 
@@ -3949,7 +3949,7 @@ def stone_329(char: CharacterProperty):
     40级主动技能攻击力 +12%
     40级技能范围 +12%
     """
-    char.SetStatus(SkillAttack=0.16)
+    char.SetStatus(SkillAttack=0.17)
     char.SetSkillRation(40,40,0.12)
     pass
 
@@ -3963,7 +3963,7 @@ def stone_330(char: CharacterProperty):
     45级主动技能攻击力 +12%
     45级技能范围 +12%
     """
-    char.SetStatus(SkillAttack=0.16)
+    char.SetStatus(SkillAttack=0.17)
     char.SetSkillRation(45,45,0.12)
     pass
 
@@ -3977,7 +3977,7 @@ def stone_331(char: CharacterProperty):
     60级主动技能攻击力 +12%
     60级技能范围 +12%
     """
-    char.SetStatus(SkillAttack=0.16)
+    char.SetStatus(SkillAttack=0.17)
     char.SetSkillRation(60,60,0.12)
 
 
@@ -3990,7 +3990,7 @@ def stone_332(char: CharacterProperty):
     70级主动技能攻击力 +12%
     70级技能范围 +12%
     """
-    char.SetStatus(SkillAttack=0.16)
+    char.SetStatus(SkillAttack=0.17)
     char.SetSkillRation(70,70,0.12)
     pass
 
@@ -4004,7 +4004,7 @@ def stone_333(char: CharacterProperty):
     75级主动技能攻击力 +12%
     75级技能范围 +12%
     """
-    char.SetStatus(SkillAttack=0.16)
+    char.SetStatus(SkillAttack=0.17)
     char.SetSkillRation(75,75,0.12)
     pass
 
@@ -4018,7 +4018,7 @@ def stone_334(char: CharacterProperty):
     80级主动技能攻击力 +12%
     80级技能范围 +12%
     """
-    char.SetStatus(SkillAttack=0.16)
+    char.SetStatus(SkillAttack=0.17)
     char.SetSkillRation(80,80,0.12)
     pass
 
