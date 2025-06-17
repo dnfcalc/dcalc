@@ -16,7 +16,7 @@ class Skill0(PassiveSkill):
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 0
     rangeLv = 3
     uuid = "d89f26862e348a801b30bb9fd7125db5"
     hasVP = False
@@ -45,7 +45,7 @@ class Skill1(ActiveSkill):
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 4 #TODO
+    position = 4
     rangeLv = 1
     mp = [6, 6]
     uuid = "b89c9ab317bc0a443f6497b7cca2f6a8"
@@ -87,7 +87,7 @@ class Skill2(PassiveSkill):
     learnLv = 1
     masterLv = 115
     maxLv = 200
-    position = 1 #TODO
+    position = 1
     rangeLv = 1
     uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
     icon = "$common/$uuid"
@@ -108,7 +108,7 @@ class Skill3(ActiveSkill):
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 8 #TODO
+    position = 8
     rangeLv = 2
     cdList = [0, 2, 2, 2, 2, 2, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.1, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.2, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.3, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.4, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.6, 2.7, 2.7, 2.7, 2.7, 2.7, 2.7, 2.7, 2.7, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.8, 2.9]
     uuid = "2f5d03c7848effbc0a23f4df45d9ca46"
@@ -142,7 +142,7 @@ class Skill4(PassiveSkill):
     learnLv = 15
     masterLv = 20
     maxLv = 30
-    position = 0 #TODO
+    position = 0
     rangeLv = 3
     uuid = "4224f9b0b8c7c903e9a1e0f9d9f6d04d"
     hasVP = False
@@ -157,7 +157,7 @@ class Skill5(PassiveSkill):
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 6 #TODO
+    position = 6
     rangeLv = 2
     uuid = "78bd107acd474518b606be1e4fd38239"
 
@@ -178,7 +178,7 @@ class Skill6(ActiveSkill):
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cd = 5
     mp = [94, 1029]
@@ -198,12 +198,12 @@ class Skill6(ActiveSkill):
     data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
     # 光属性攻击力 : {value5}%
     data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
-    hit5 = 1 #TODO
+    hit5 = 1
     # 暗属性效果触发几率 : {value6}%
     data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
     # 暗属性攻击力 : {value7}%
     data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
-    hit7 = 1 #TODO
+    hit7 = 1
     # 暗属性效果持续时间 : {value8}秒
     data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
     # 暗属性效果下， 怪物身上可附加的冥炎上限 : {value9}个
@@ -239,7 +239,7 @@ class Skill8(PassiveSkill):
     learnLv = 15
     masterLv = 1
     maxLv = 40
-    position = 1 #TODO
+    position = 1
     rangeLv = 3
     uuid = "d2c6df5105577fb59fb92529a36165a0"
 
@@ -285,7 +285,7 @@ class Skill9(PassiveSkill):
     learnLv = 15
     masterLv = 1
     maxLv = 40
-    position = 0 #TODO
+    position = 2
     rangeLv = 3
     uuid = "de3fea2d65c597f4d55c70a02b97fc79"
     hasVP = False
@@ -339,7 +339,7 @@ class Skill10(PassiveSkill):
     learnLv = 15
     masterLv = 1
     maxLv = 40
-    position = 4 #TODO
+    position = 4
     rangeLv = 3
     uuid = "c61f5a010370101402b05b21916c2071"
 
@@ -388,7 +388,7 @@ class Skill11(PassiveSkill):
     learnLv = 15
     masterLv = 1
     maxLv = 40
-    position = 5 #TODO
+    position = 5
     rangeLv = 3
     uuid = "202edb928046f4fa6dedf6337377efd5"
 
@@ -431,7 +431,7 @@ class Skill12(ActiveSkill):
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 8 #TODO
+    position = 8
     rangeLv = 3
     cd = 30
     mp = [60, 420]
@@ -455,7 +455,7 @@ class Skill13(ActiveSkill):
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 1 #TODO
+    position = 1
     rangeLv = 2
     cd = 7
     mp = [20, 210]
@@ -510,7 +510,7 @@ class Skill16(ActiveSkill):
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 8 #TODO
+    position = 8
     rangeLv = 2
     cd = 8
     mp = [30, 350]
@@ -548,7 +548,7 @@ class Skill17(ActiveSkill):
     learnLv = 25
     masterLv = 10
     maxLv = 20
-    position = 6 #TODO
+    position = 6
     rangeLv = 4
     cd = 5
     mp = [333, 2978]
@@ -576,7 +576,7 @@ class Skill18(ActiveSkill):
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 2 #TODO
+    position = 2
     rangeLv = 3
     cd = 12
     mp = [60, 390]
@@ -616,7 +616,7 @@ class Skill19(ActiveSkill):
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     uuid = "bb34e8854a93fd250347a1c64119f7ab"
     hasVP = False
@@ -690,7 +690,7 @@ class Skill20(PassiveSkill):
     learnLv = 30
     masterLv = 5
     maxLv = 15
-    position = 6 #TODO
+    position = 6
     rangeLv = 3
     uuid = "1ff42548e611b94781a1ae8f063dd679"
 
@@ -715,7 +715,7 @@ class Skill21(ActiveSkill):
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cube = 1
     cd = 15
@@ -812,7 +812,7 @@ class Skill22(ActiveSkill):
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 1 #TODO
+    position = 1
     rangeLv = 3
     cube = 1
     cd = 15
@@ -951,7 +951,7 @@ class Skill24(ActiveSkill):
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cube = 2
     cd = 40
@@ -1027,7 +1027,7 @@ class Skill25(PassiveSkill):
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 6 #TODO
+    position = 6
     rangeLv = 3
     uuid = "d0cdaca82892e54097f22a1f60817048"
 
@@ -1061,7 +1061,7 @@ class Skill26(ActiveSkill):
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 5
     cube = 5
     cd = 145
@@ -1091,7 +1091,7 @@ class Skill27(ActiveSkill):
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cube = 1
     cd = 30
@@ -1159,7 +1159,7 @@ class Skill28(ActiveSkill):
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cube = 2
     cd = 50
@@ -1219,7 +1219,7 @@ class Skill29(ActiveSkill):
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cube = 3
     cd = 25
@@ -1326,7 +1326,7 @@ class Skill30(PassiveSkill):
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 4 #TODO
+    position = 4
     rangeLv = 3
     uuid = "e0daa922b19cdc35de879e938361464e"
 
@@ -1355,7 +1355,7 @@ class Skill31(ActiveSkill):
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cube = 5
     cd = 45
@@ -1424,7 +1424,7 @@ class Skill32(ActiveSkill):
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 4 #TODO
+    position = 4
     rangeLv = 5
     cube = 10
     cd = 180
@@ -1435,7 +1435,7 @@ class Skill32(ActiveSkill):
 
     # 次元斩攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
-    hit0 = 1 #TODO
+    hit0 = 1
 
 
 # 极诣 · 驭剑术 : 聚魔剑
@@ -1450,7 +1450,7 @@ class Skill33(ActiveSkill):
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cube = 7
     cd = 60
@@ -1488,7 +1488,7 @@ class Skill34(PassiveSkill):
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 3
     uuid = "1803b6a67047cafb9e289b4f33cc507b"
 
@@ -1521,7 +1521,7 @@ class Skill35(ActiveSkill):
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 5
     cube = 15
     cd = 290
