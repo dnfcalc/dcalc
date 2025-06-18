@@ -313,6 +313,14 @@ def enchant_307(char: CharacterProperty):
     if char.buffer:
         char.AddSkillLv(15, 15, 1, 0)
     pass
+
+@register
+def enchant_308(char: CharacterProperty):
+    """
+    三攻(36)|技能伤害(3%)
+    """
+    char.SetStatus(三攻=36, 技攻=0.03)
+    pass
 # endregion
 # region 武器
 
