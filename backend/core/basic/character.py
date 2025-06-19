@@ -946,6 +946,7 @@ class Character(CharacterProperty):
                                 'cd': temp[2],
                                 'mode': mode,
                                 'learnLv': i.learnLv,
+                                'type': i.type,
                             }
                         )
         ratios = self.calc_damage_ration(DSB,BUFF)
@@ -1051,6 +1052,7 @@ class Character(CharacterProperty):
                         "lv": i.lv,
                         # 对自己的加成 三攻 力智 伤害直接加成
                         "buff":[value, value1, value2, value3],
+                        "type":i.type
                     })
         return skillInfos
 

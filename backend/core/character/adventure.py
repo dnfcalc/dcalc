@@ -71,7 +71,7 @@ adv = [
             {'id': 1, 'name': 'launcher_female', 'title': '重霄·枪炮师', 'open': True,'class':'GF.gunner_female.launcher_female'},
             {'id': 2, 'name': 'mechanic_female', 'title': '重霄·机械师', 'open': False,'class': 'GF.gunner_female.mechanic_female'},
             {'id': 3, 'name': 'spitfire_female', 'title': '重霄·弹药专家', 'open': True, 'class': 'GF.gunner_female.spitfire_female'},
-            {'id': 4, 'name': 'paramedic', 'title': '重霄·协战师', 'open': False, 'class': 'GF.gunner_female.paramedic'},
+            {'id': 4, 'name': 'paramedic', 'title': '重霄·协战师', 'open': True, 'class': 'GF.gunner_female.paramedic'},
         ],
     },
     {

@@ -49,6 +49,8 @@ class Skill1(ActiveSkill):
     rangeLv = 1
     mp = [6, 6]
     uuid = "b89c9ab317bc0a443f6497b7cca2f6a8"
+    hasVP = False
+    hasUP = False
 
     # 巨剑 180.53+205.90+127.83
     data0 = [int(i) for i in [0, 514.25]]
@@ -128,7 +130,7 @@ class Skill3(ActiveSkill):
         return super().getSkillCD()
 
 
-# 武器熟练
+# 兵刃奥义
 # swordman_female/sword_master/4224f9b0b8c7c903e9a1e0f9d9f6d04d
 # 1645c45aabb008c98406b3a16447040d/4224f9b0b8c7c903e9a1e0f9d9f6d04d
 class Skill4(PassiveSkill):
@@ -138,7 +140,7 @@ class Skill4(PassiveSkill):
     首次学习时， 可使所有武器精通各提升2级； 以后技能每提升1级时， 武器精通提升1级。\n
     可以使用驭剑士专属的基础攻击动作。
     """
-    name = "武器熟练"
+    name = "兵刃奥义"
     learnLv = 15
     masterLv = 20
     maxLv = 30
@@ -160,6 +162,8 @@ class Skill5(PassiveSkill):
     position = 6
     rangeLv = 2
     uuid = "78bd107acd474518b606be1e4fd38239"
+    hasVP = False
+    hasUP = False
 
     damage = False
 
@@ -183,6 +187,7 @@ class Skill6(ActiveSkill):
     cd = 5
     mp = [94, 1029]
     uuid = "ade01c1d6afc8a05055225045e89fe49"
+    hasVP = False
     hasUP = False
     # 火属性效果触发几率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
@@ -436,6 +441,8 @@ class Skill12(ActiveSkill):
     cd = 30
     mp = [60, 420]
     uuid = "45442bbbe33540b4deeec29437dae70c"
+    hasVP = False
+    hasUP = False
 
     # 触发几率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
@@ -460,6 +467,8 @@ class Skill13(ActiveSkill):
     cd = 7
     mp = [20, 210]
     uuid = "8f73f243041c2d27739fe7696f02bf9b"
+    hasVP = False
+    hasUP = True
 
     # 斩击攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)

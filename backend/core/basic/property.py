@@ -24,6 +24,12 @@ class CharacterInfo(enum.Enum):
     INT = '智力', '/ui/UI_ProfileIcon_003.png', lambda x: round(x, 0)
     """智力"""
 
+    Spirit = '精神', '/ui/UI_ProfileIcon_002.png', lambda x: round(x, 0)
+    """精神"""
+
+    Vitality = '体力', '/ui/UI_ProfileIcon_003.png', lambda x: round(x, 0)
+    """体力"""
+
     AtkP = '物理攻击', '/ui/UI_ProfileIcon_006.png', lambda x: round(x, 0)
     """物理攻击力"""
 

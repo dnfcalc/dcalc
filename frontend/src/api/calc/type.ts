@@ -17,6 +17,7 @@ export interface IResultSkill {
   mode: string
   buff: number[]
   learnLv: number
+  type: string
 }
 
 export interface IResultUserInfo {

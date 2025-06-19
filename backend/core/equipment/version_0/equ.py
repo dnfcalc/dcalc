@@ -88,7 +88,7 @@ def equ_6(char: CharacterProperty):
     -无影之剑总伤害量：32400%
     -冷却时间15秒
     """
-    char.equ_effect.append(EquEffect(name='无影之剑',icon='/equipment/icon/weapon/swordman/sswd/00227.png',cd=15,data=32400))
+    char.equ_effect.append(EquEffect(name='无影之剑', icon='/equipment/icon/weapon/swordman/sswd/00227.png', cd=15, data=32400))
     pass
 
 
@@ -106,7 +106,7 @@ def equ_7(char: CharacterProperty):
     -无影之剑总伤害量：48600%
     -冷却时间15秒
     """
-    char.equ_effect.append(EquEffect(name='无影之剑',icon='/equipment/icon/weapon/swordman/sswd/00228.png',cd=15,data=48600))
+    char.equ_effect.append(EquEffect(name='无影之剑', icon='/equipment/icon/weapon/swordman/sswd/00228.png', cd=15, data=48600))
     pass
 
 
@@ -124,7 +124,7 @@ def equ_8(char: CharacterProperty):
     -无影之剑总伤害量：64800%
     -冷却时间10秒
     """
-    char.equ_effect.append(EquEffect(name='无影之剑',icon='/equipment/icon/weapon/swordman/sswd/00229.png',cd=10,data=64800))
+    char.equ_effect.append(EquEffect(name='无影之剑', icon='/equipment/icon/weapon/swordman/sswd/00229.png', cd=10, data=64800))
     pass
 
 
@@ -224,7 +224,7 @@ def equ_14(char: CharacterProperty):
     -寒光掠影伤害量：113400%
     -冷却时间40秒
     """
-    char.equ_effect.append(EquEffect(name='寒光掠影',icon='/equipment/skill/4.png',cd=40,data=113400))
+    char.equ_effect.append(EquEffect(name='寒光掠影', icon='/equipment/skill/4.png', cd=40, data=113400))
     pass
 
 
@@ -239,7 +239,7 @@ def equ_15(char: CharacterProperty):
     -寒光掠影伤害量：226800%
     -冷却时间40秒
     """
-    char.equ_effect.append(EquEffect(name='寒光掠影',icon='/equipment/skill/4.png',cd=40,data=226800))
+    char.equ_effect.append(EquEffect(name='寒光掠影', icon='/equipment/skill/4.png', cd=40, data=226800))
     pass
 
 
@@ -254,7 +254,7 @@ def equ_16(char: CharacterProperty):
     -寒光掠影伤害量：340200%
     -冷却时间40秒
     """
-    char.equ_effect.append(EquEffect(name='寒光掠影',icon='/equipment/skill/4.png',cd=40,data=340200))
+    char.equ_effect.append(EquEffect(name='寒光掠影', icon='/equipment/skill/4.png', cd=40, data=340200))
     pass
 
 
@@ -342,8 +342,8 @@ def equ_22(char: CharacterProperty):
     技能冷却时间20%减少（觉醒技能除外）
     所有速度+10%
     """
-    char.SetSkillCD(1,100,0.2,[50,85,100])
-    char.SetStatus(SpeedM = 0.1,SpeedA = 0.1,SpeedR = 0.1)
+    char.SetSkillCD(1, 100, 0.2, [50, 85, 100])
+    char.SetStatus(SpeedM=0.1, SpeedA=0.1, SpeedR=0.1)
     pass
 
 
@@ -362,9 +362,9 @@ def equ_23(char: CharacterProperty):
 
     分身攻击命中时，技能冷却时间恢复速度+3%，效果持续3秒。（觉醒技能除外；最多叠加1次）
     """
-    char.SetSkillCD(1,100,0.2,[50,85,100])
-    char.SetStatus(SpeedM = 0.125,SpeedA = 0.125,SpeedR = 0.125)
-    char.SetSkillCDRecover(1,100,0.03,[50,85,100])
+    char.SetSkillCD(1, 100, 0.2, [50, 85, 100])
+    char.SetStatus(SpeedM=0.125, SpeedA=0.125, SpeedR=0.125)
+    char.SetSkillCDRecover(1, 100, 0.03, [50, 85, 100])
     pass
 
 
@@ -383,9 +383,9 @@ def equ_24(char: CharacterProperty):
 
     分身攻击命中时，技能冷却时间恢复速度+3%，效果持续3秒。（觉醒技能除外；最多叠加1次）
     """
-    char.SetSkillCD(1,100,0.2,[50,85,100])
-    char.SetStatus(SpeedM = 0.15,SpeedA = 0.15,SpeedR = 0.15)
-    char.SetSkillCDRecover(1,100,0.03,[50,85,100])
+    char.SetSkillCD(1, 100, 0.2, [50, 85, 100])
+    char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
+    char.SetSkillCDRecover(1, 100, 0.03, [50, 85, 100])
     pass
 
 
@@ -622,7 +622,7 @@ def equ_38(char: CharacterProperty):
     技能快捷栏中存在6个及以上空栏，发动[黑龙之力]效果。
     -所有速度+10%
     """
-    char.SetStatus(SpeedM = 0.1,SpeedA = 0.1,SpeedR = 0.1)
+    char.SetStatus(SpeedM=0.1, SpeedA=0.1, SpeedR=0.1)
     pass
 
 
@@ -639,7 +639,7 @@ def equ_39(char: CharacterProperty):
     -所受物理/魔法伤害-5%
     -所有速度+15%
     """
-    char.SetStatus(SpeedM = 0.15,SpeedA = 0.15,SpeedR = 0.15)
+    char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
     pass
 
 
@@ -657,7 +657,7 @@ def equ_40(char: CharacterProperty):
     -所受物理/魔法伤害-10%
     -所有速度+20%
     """
-    char.SetStatus(SpeedM = 0.2,SpeedA = 0.2,SpeedR = 0.2)
+    char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     pass
 
 
@@ -900,7 +900,7 @@ def equ_55(char: CharacterProperty):
     -对爆炸范围内的敌人造成72000%伤害
     -爆炸发生时，如果生命值不足80%，则恢复20%的生命值。（冷却时间30秒）
     """
-    char.equ_effect.append(EquEffect(name='绯红爆炸',icon='/equipment/icon/weapon/fighter/gauntlet/00246.png',cd=10,data=72000))
+    char.equ_effect.append(EquEffect(name='绯红爆炸', icon='/equipment/icon/weapon/fighter/gauntlet/00246.png', cd=10, data=72000))
     pass
 
 
@@ -920,7 +920,7 @@ def equ_56(char: CharacterProperty):
     -绯红爆炸范围+50%
     -爆炸发生时，如果生命值不足80%，则恢复40%的生命值。（冷却时间30秒）
     """
-    char.equ_effect.append(EquEffect(name='绯红爆炸',icon='/equipment/icon/weapon/fighter/gauntlet/00247.png',cd=10,data=72000))
+    char.equ_effect.append(EquEffect(name='绯红爆炸', icon='/equipment/icon/weapon/fighter/gauntlet/00247.png', cd=10, data=72000))
     pass
 
 
@@ -994,7 +994,7 @@ def equ_62(char: CharacterProperty):
     -悲伤魔珠伤害量15300%
     -冷却时间：30秒
     """
-    char.SetStatus(SpeedM = 0.1,SpeedA = 0.1,SpeedR = 0.1)
+    char.SetStatus(SpeedM=0.1, SpeedA=0.1, SpeedR=0.1)
     char.equ_effect.append(EquEffect(name='悲伤魔珠', icon='/equipment/skill/38.png', cd=30, data=15300))
     pass
 
@@ -1015,7 +1015,7 @@ def equ_63(char: CharacterProperty):
     -悲伤魔珠伤害量15300%
     -冷却时间：15秒
     """
-    char.SetStatus(SpeedM = 0.2,SpeedA = 0.2,SpeedR = 0.2)
+    char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     char.equ_effect.append(EquEffect(name='悲伤魔珠', icon='/equipment/skill/38.png', cd=15, data=15300))
     pass
 
@@ -1040,7 +1040,7 @@ def equ_64(char: CharacterProperty):
     身体被彻骨之恨包裹，减少所受伤害。
     -所受物理/魔法伤害-10%
     """
-    char.SetStatus(SpeedM = 0.25,SpeedA = 0.25,SpeedR = 0.25)
+    char.SetStatus(SpeedM=0.25, SpeedA=0.25, SpeedR=0.25)
     char.equ_effect.append(EquEffect(name='悲伤魔珠', icon='/equipment/skill/38.png', cd=10, data=15300))
     pass
 
@@ -1288,7 +1288,7 @@ def equ_79(char: CharacterProperty):
     -魔法值消耗量+300%
     -魔法值为0或再次按键时，解除[魔力觉察]状态
     """
-    char.SetStatus(SpeedA=0.2,SpeedM=0.2,SpeedR=0.2)
+    char.SetStatus(SpeedA=0.2, SpeedM=0.2, SpeedR=0.2)
     pass
 
 
@@ -1311,7 +1311,7 @@ def equ_80(char: CharacterProperty):
     -魔法值消耗量+200%
     -魔法值为0或再次按键时，解除[魔力觉察]状态
     """
-    char.SetStatus(SpeedA=0.3,SpeedM=0.3,SpeedR=0.3)
+    char.SetStatus(SpeedA=0.3, SpeedM=0.3, SpeedR=0.3)
     pass
 
 
@@ -1327,6 +1327,11 @@ def equ_81(char: CharacterProperty):
     魔法值-10%
     物理暴击率+2%
     """
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1342,6 +1347,11 @@ def equ_82(char: CharacterProperty):
     魔法值-10%
     物理暴击率+2%
     """
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1357,6 +1367,11 @@ def equ_83(char: CharacterProperty):
     魔法值-10%
     物理暴击率+2%
     """
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1372,6 +1387,11 @@ def equ_84(char: CharacterProperty):
     魔法值-10%
     物理暴击率+2%
     """
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1387,6 +1407,11 @@ def equ_85(char: CharacterProperty):
     魔法值-10%
     物理暴击率+2%
     """
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1401,7 +1426,7 @@ def equ_86(char: CharacterProperty):
     -所有速度+10%
     -发动权威光谱效果
     """
-    char.SetStatus(SpeedA=0.1,SpeedM=0.1,SpeedR=0.1)
+    char.SetStatus(SpeedA=0.1, SpeedM=0.1, SpeedR=0.1)
     pass
 
 
@@ -1417,7 +1442,7 @@ def equ_87(char: CharacterProperty):
     -所有速度+15%
     -发动权威光谱效果
     """
-    char.SetStatus(SpeedA=0.15,SpeedM=0.15,SpeedR=0.15)
+    char.SetStatus(SpeedA=0.15, SpeedM=0.15, SpeedR=0.15)
     pass
 
 
@@ -1434,7 +1459,7 @@ def equ_88(char: CharacterProperty):
     -所有速度+20%
     -发动权威光谱效果
     """
-    char.SetStatus(SpeedA=0.2,SpeedM=0.2,SpeedR=0.2)
+    char.SetStatus(SpeedA=0.2, SpeedM=0.2, SpeedR=0.2)
     pass
 
 
@@ -1672,6 +1697,11 @@ def equ_102(char: CharacterProperty):
             skill.skillRation *= 1.15
         if skill.damage and skill.cube > 0:
             skill.skillDamage *= 1.25
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1696,6 +1726,11 @@ def equ_103(char: CharacterProperty):
             skill.skillDamage *= 1.25
         if skill.damage and skill.cube == 0:
             skill.skillDamage *= 1.10
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1723,6 +1758,11 @@ def equ_104(char: CharacterProperty):
         if skill.damage and skill.cube == 0:
             skill.skillDamage *= 1.25
     char.equ_effect.append(EquEffect(name='燃烧', icon='/equipment/icon/weapon/gunner/musket/00234.png', cd=0.2, data=480))
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1807,6 +1847,11 @@ def equ_110(char: CharacterProperty):
     -技能冷却时间-20%（觉醒技能除外）
     """
     char.SetSkillCD(1, 100, 0.2)
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetStatus(SkillAttack=0.123)
     pass
 
 
@@ -1829,6 +1874,11 @@ def equ_111(char: CharacterProperty):
     """
     char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(EquEffect(name='自动爆炸', icon='/equipment/skill/33.png', cd=10, data=47647))
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetStatus(SkillAttack=0.123)
     pass
 
 
@@ -1851,6 +1901,11 @@ def equ_112(char: CharacterProperty):
     """
     char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(EquEffect(name='自动爆炸', icon='/equipment/skill/33.png', cd=10, data=95294))
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetStatus(SkillAttack=0.123)
     pass
 
 
@@ -1937,6 +1992,11 @@ def equ_118(char: CharacterProperty):
     -冷却时间：40秒
     """
     char.equ_effect.append(EquEffect(name='发射巨炮', icon='/equipment/skill/41.png', cd=40, data=113400))
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1954,6 +2014,11 @@ def equ_119(char: CharacterProperty):
     -冷却时间：40秒
     """
     char.equ_effect.append(EquEffect(name='发射巨炮', icon='/equipment/skill/41.png', cd=40, data=226800))
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1971,6 +2036,11 @@ def equ_120(char: CharacterProperty):
     -冷却时间：40秒
     """
     char.equ_effect.append(EquEffect(name='发射巨炮', icon='/equipment/skill/41.png', cd=40, data=340200))
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -2049,11 +2119,11 @@ def equ_126(char: CharacterProperty):
     -最大叠加时，技能范围+10%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
-    char.SetSkillCDRecover(cd=0.06*5)
+    char.SetSkillCDRecover(cd=0.06 * 5)
     pass
 
 
@@ -2067,11 +2137,11 @@ def equ_127(char: CharacterProperty):
     -最大叠加时，技能范围+12%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
-    char.SetSkillCDRecover(cd=0.06*5)
+    char.SetSkillCDRecover(cd=0.06 * 5)
     pass
 
 
@@ -2085,11 +2155,11 @@ def equ_128(char: CharacterProperty):
     -最大叠加时，技能范围+15%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
-    char.SetSkillCDRecover(cd=0.06*5)
+    char.SetSkillCDRecover(cd=0.06 * 5)
     pass
 
 
@@ -2174,10 +2244,10 @@ def equ_134(char: CharacterProperty):
     被击时，消耗1只羊， 生成最大生命值10%数值的保护罩，效果持续2秒。（冷却时间2秒）
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(EquEffect(name='羊袭', icon='/equipment/icon/weapon/mage/rod/00282.png', cd=0.5, data=3600))
     pass
 
@@ -2198,10 +2268,10 @@ def equ_135(char: CharacterProperty):
     被击时，消耗1只羊， 生成最大生命值15%数值的保护罩，效果持续2秒。（冷却时间2秒）
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(EquEffect(name='羊袭', icon='/equipment/icon/weapon/mage/rod/00283.png', cd=0.5, data=6000))
     pass
 
@@ -2223,10 +2293,10 @@ def equ_136(char: CharacterProperty):
     被击时，消耗1只羊， 生成最大生命值20%数值的保护罩，效果持续2秒。（冷却时间2秒）
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(EquEffect(name='绵羊云', icon='/equipment/icon/weapon/mage/rod/00284.png', cd=2, data=33600))
     pass
 
@@ -2322,11 +2392,11 @@ def equ_142(char: CharacterProperty):
     （快乐、悲伤的所有速度效果仅适用于最高值）
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
-    char.SetStatus(SpeedA = 0.3,SpeedM = 0.3,SpeedR = 0.3)
+        char.SetSkillCD(1, 100, 0.2)
+    char.SetStatus(SpeedA=0.3, SpeedM=0.3, SpeedR=0.3)
 
 
 @register
@@ -2350,11 +2420,11 @@ def equ_143(char: CharacterProperty):
     （快乐、悲伤的所有速度效果仅适用于最高值）
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
-    char.SetStatus(SpeedA = 0.3,SpeedM = 0.3,SpeedR = 0.3)
+        char.SetSkillCD(1, 100, 0.2)
+    char.SetStatus(SpeedA=0.3, SpeedM=0.3, SpeedR=0.3)
     pass
 
 
@@ -2382,11 +2452,11 @@ def equ_144(char: CharacterProperty):
     （快乐、悲伤的所有速度效果仅适用于最高值）
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
-    char.SetStatus(SpeedA = 0.3,SpeedM = 0.3,SpeedR = 0.3)
+        char.SetSkillCD(1, 100, 0.2)
+    char.SetStatus(SpeedA=0.3, SpeedM=0.3, SpeedR=0.3)
     char.equ_effect.append(EquEffect(name='闪电', icon='/equipment/skill/35.png', cd=3, data=14400))
     pass
 
@@ -2488,10 +2558,10 @@ def equ_150(char: CharacterProperty):
     -冷却时间40秒
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(EquEffect(name='绝对零度', icon='/equipment/skill/31.png', cd=40, data=113400))
     pass
 
@@ -2508,10 +2578,10 @@ def equ_151(char: CharacterProperty):
     -冷却时间40秒
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(EquEffect(name='绝对零度', icon='/equipment/skill/31.png', cd=40, data=226800))
     pass
 
@@ -2528,10 +2598,10 @@ def equ_152(char: CharacterProperty):
     -冷却时间40秒
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(EquEffect(name='绝对零度', icon='/equipment/skill/31.png', cd=40, data=340200))
     pass
 
@@ -2548,7 +2618,7 @@ def equ_153(char: CharacterProperty):
     移动速度+3%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
     pass
@@ -2566,10 +2636,10 @@ def equ_154(char: CharacterProperty):
     移动速度+3%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2585,10 +2655,10 @@ def equ_155(char: CharacterProperty):
     移动速度+3%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2604,10 +2674,10 @@ def equ_156(char: CharacterProperty):
     移动速度+3%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2623,10 +2693,10 @@ def equ_157(char: CharacterProperty):
     移动速度+3%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2646,10 +2716,10 @@ def equ_158(char: CharacterProperty):
     技能范围+20%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2669,10 +2739,10 @@ def equ_159(char: CharacterProperty):
     技能范围+25%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2692,10 +2762,10 @@ def equ_160(char: CharacterProperty):
     技能范围+30%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2711,7 +2781,7 @@ def equ_161(char: CharacterProperty):
     """
     pass
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
 
@@ -2727,10 +2797,10 @@ def equ_162(char: CharacterProperty):
     施放速度+2%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2745,10 +2815,10 @@ def equ_163(char: CharacterProperty):
     施放速度+2%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2763,10 +2833,10 @@ def equ_164(char: CharacterProperty):
     施放速度+2%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2781,10 +2851,10 @@ def equ_165(char: CharacterProperty):
     施放速度+2%
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2802,10 +2872,10 @@ def equ_166(char: CharacterProperty):
     -冷却时间：30秒
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2823,10 +2893,10 @@ def equ_167(char: CharacterProperty):
     -冷却时间：30秒
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2844,10 +2914,10 @@ def equ_168(char: CharacterProperty):
     -冷却时间：30秒
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2950,10 +3020,10 @@ def equ_174(char: CharacterProperty):
     -攻击时，恢复1%的魔法值（冷却时间1秒）
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2971,10 +3041,10 @@ def equ_175(char: CharacterProperty):
     -攻击时，使敌人发生灵魂爆炸，恢复10%的魔法值（冷却时间6秒）
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -2991,10 +3061,10 @@ def equ_176(char: CharacterProperty):
     -每6秒吸收敌人的灵魂，恢复15%的魔法值
     """
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -3095,13 +3165,13 @@ def equ_182(char: CharacterProperty):
 
     所有速度+15%
     """
-    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00196.png', cd=10,data=15000))
-    char.SetStatus(SpeedM=0.15,SpeedA=0.15,SpeedR=0.15)
+    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00196.png', cd=10, data=15000))
+    char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -3117,13 +3187,13 @@ def equ_183(char: CharacterProperty):
 
     所有速度+20%
     """
-    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00197.png', cd=5,data=15000))
-    char.SetStatus(SpeedM=0.15,SpeedA=0.15,SpeedR=0.15)
+    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00197.png', cd=5, data=15000))
+    char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -3139,12 +3209,12 @@ def equ_184(char: CharacterProperty):
 
     所有速度+30%
     """
-    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00198.png', cd=20,data=340200))
+    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00198.png', cd=20, data=340200))
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -3241,12 +3311,12 @@ def equ_190(char: CharacterProperty):
     -行星破坏伤害量：113400%
     -冷却时间：40秒
     """
-    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=40,data=340200))
+    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=40, data=340200))
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -3263,12 +3333,12 @@ def equ_191(char: CharacterProperty):
     -行星破坏伤害量：226800%
     -冷却时间：40秒
     """
-    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=40,data=340200))
+    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=40, data=340200))
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -3285,12 +3355,12 @@ def equ_192(char: CharacterProperty):
     -行星破坏伤害量：340200%
     -冷却时间：40秒
     """
-    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=40,data=340200))
+    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=40, data=340200))
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
-        char.SetSkillCD(1,100,0.2)
+        char.SetSkillCD(1, 100, 0.2)
     pass
 
 
@@ -3380,10 +3450,10 @@ def equ_198(char: CharacterProperty):
     攻击时，向前方施放怒击。（冷却时间1秒）
     -怒击伤害量：6000%
     """
-    char.SetSkillCD(1,100,0.2)
-    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00280.png', cd=1,data=6000))
+    char.SetSkillCD(1, 100, 0.2)
+    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00280.png', cd=1, data=6000))
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
@@ -3405,11 +3475,11 @@ def equ_199(char: CharacterProperty):
     施放技能时，向前方施放猛烈的连击。（冷却时间5秒）
     -猛烈连击伤害量：32400%
     """
-    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00281.png', cd=1,data=6000))
-    char.equ_effect.append(EquEffect(name='威严猛击', icon='/equipment/icon/weapon/priest/totem/00281.png', cd=5,data=32400))
-    char.SetSkillCD(1,100,0.2)
+    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00281.png', cd=1, data=6000))
+    char.equ_effect.append(EquEffect(name='威严猛击', icon='/equipment/icon/weapon/priest/totem/00281.png', cd=5, data=32400))
+    char.SetSkillCD(1, 100, 0.2)
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
@@ -3435,12 +3505,12 @@ def equ_200(char: CharacterProperty):
     施放无色小晶块技能时，发动威严痛击。（冷却时间10秒）
     -威严痛击伤害量：90000%
     """
-    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=1,data=6000))
-    char.equ_effect.append(EquEffect(name='威严猛击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=5,data=32400))
-    char.equ_effect.append(EquEffect(name='威严痛击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=5,data=90000))
-    char.SetSkillCD(1,100,0.2)
+    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=1, data=6000))
+    char.equ_effect.append(EquEffect(name='威严猛击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=5, data=32400))
+    char.equ_effect.append(EquEffect(name='威严痛击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=5, data=90000))
+    char.SetSkillCD(1, 100, 0.2)
     if char.buffer:
-        char.AddSkillLv(1,100,2)
+        char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
@@ -3537,7 +3607,7 @@ def equ_206(char: CharacterProperty):
     技能快捷栏中存在6个及以上空栏时，发动[女帝的威严]效果。
     -所有速度+10%
     """
-    char.SetStatus(SpeedM=0.1,SpeedA=0.1,SpeedR=0.1)
+    char.SetStatus(SpeedM=0.1, SpeedA=0.1, SpeedR=0.1)
     pass
 
 
@@ -3552,7 +3622,7 @@ def equ_207(char: CharacterProperty):
     -所受物理/魔法伤害-5%
     -所有速度+15%
     """
-    char.SetStatus(SpeedM=0.15,SpeedA=0.15,SpeedR=0.15)
+    char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
     pass
 
 
@@ -3568,7 +3638,7 @@ def equ_208(char: CharacterProperty):
     -所受物理/魔法伤害-10%
     -所有速度+20%
     """
-    char.SetStatus(SpeedM=0.2,SpeedA=0.2,SpeedR=0.2)
+    char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     pass
 
 
@@ -3666,8 +3736,8 @@ def equ_214(char: CharacterProperty):
     每存在1个冷却中的技能，技能冷却时间恢复速度+6%（觉醒技能除外；最多叠加5次）
     -叠加达上限时，技能范围+10%
     """
-    char.SetSkillCDRecover(1,100,0.3)
-    char.equ_effect.append(EquEffect(name='永劫地狱火', icon='/equipment/icon/weapon/thief/twinswd/00246.png', cd=1,data=9360))
+    char.SetSkillCDRecover(1, 100, 0.3)
+    char.equ_effect.append(EquEffect(name='永劫地狱火', icon='/equipment/icon/weapon/thief/twinswd/00246.png', cd=1, data=9360))
     pass
 
 
@@ -3687,8 +3757,8 @@ def equ_215(char: CharacterProperty):
     每存在1个冷却中的技能，技能冷却时间恢复速度+6%（觉醒技能除外；最多叠加5次）
     -叠加达上限时，技能范围+12%
     """
-    char.SetSkillCDRecover(1,100,0.3)
-    char.equ_effect.append(EquEffect(name='永劫地狱火', icon='/equipment/icon/weapon/thief/twinswd/00247.png', cd=1,data=10400 * 1.2))
+    char.SetSkillCDRecover(1, 100, 0.3)
+    char.equ_effect.append(EquEffect(name='永劫地狱火', icon='/equipment/icon/weapon/thief/twinswd/00247.png', cd=1, data=10400 * 1.2))
     pass
 
 
@@ -3709,9 +3779,9 @@ def equ_216(char: CharacterProperty):
     每存在1个冷却中的技能，技能冷却时间恢复速度+6%（觉醒技能除外；最多叠加5次）
     -叠加达上限时，技能范围+15%
     """
-    char.SetSkillCDRecover(1,100,0.3)
-    char.equ_effect.append(EquEffect(name='永劫地狱火', icon='/equipment/icon/weapon/thief/twinswd/00248.png', cd=1,data=12480))
-    char.equ_effect.append(EquEffect(name='覆灭地狱火', icon='/equipment/icon/weapon/thief/twinswd/00248.png', cd=5,data=15600))
+    char.SetSkillCDRecover(1, 100, 0.3)
+    char.equ_effect.append(EquEffect(name='永劫地狱火', icon='/equipment/icon/weapon/thief/twinswd/00248.png', cd=1, data=12480))
+    char.equ_effect.append(EquEffect(name='覆灭地狱火', icon='/equipment/icon/weapon/thief/twinswd/00248.png', cd=5, data=15600))
     pass
 
 
@@ -3804,7 +3874,7 @@ def equ_222(char: CharacterProperty):
     攻击时，被恐惧压制的敌人受到伤害。（冷却时间0.2秒）
     *[恐惧]攻击力：1920%
     """
-    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00269.png', cd=0.2,data=1920))
+    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00269.png', cd=0.2, data=1920))
     pass
 
 
@@ -3822,11 +3892,11 @@ def equ_223(char: CharacterProperty):
     -技能伤害+5%，效果持续10秒
     -冷却时间20秒
     """
-    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00270.png', cd=0.2,data=1920))
+    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00270.png', cd=0.2, data=1920))
     if char.equ_options.get('5', 0) == 0:
         char.SetStatus(SkillAttack=0.05)
     elif char.equ_options.get('5', 0) == 2:
-        char.SetStatus(SkillAttack=0.05/2)
+        char.SetStatus(SkillAttack=0.05 / 2)
     pass
 
 
@@ -3846,12 +3916,12 @@ def equ_224(char: CharacterProperty):
      *冥河之钥伤害量：22800%
     -冷却时间20秒
     """
-    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00271.png', cd=0.2,data=1920))
-    char.equ_effect.append(EquEffect(name='冥河之钥', icon='/equipment/skill/55.png', cd=20,data=22800))
+    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00271.png', cd=0.2, data=1920))
+    char.equ_effect.append(EquEffect(name='冥河之钥', icon='/equipment/skill/55.png', cd=20, data=22800))
     if char.equ_options.get('5', 0) == 0:
         char.SetStatus(SkillAttack=0.1)
     elif char.equ_options.get('5', 0) == 2:
-        char.SetStatus(SkillAttack=0.1/2)
+        char.SetStatus(SkillAttack=0.1 / 2)
     pass
 
 
@@ -3948,7 +4018,7 @@ def equ_230(char: CharacterProperty):
     -技能范围+15%
     -所有速度+5%
     """
-    char.SetStatus(SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
+    char.SetStatus(SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
     pass
 
 
@@ -3965,7 +4035,7 @@ def equ_231(char: CharacterProperty):
     -技能范围+20%
     -所有速度+5%
     """
-    char.SetStatus(SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
+    char.SetStatus(SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
     pass
 
 
@@ -3983,7 +4053,7 @@ def equ_232(char: CharacterProperty):
     -所有速度+10%
     -所受物理/魔法伤害-5%
     """
-    char.SetStatus(SpeedM=0.1,SpeedA=0.1,SpeedR=0.1)
+    char.SetStatus(SpeedM=0.1, SpeedA=0.1, SpeedR=0.1)
     pass
 
 
@@ -4690,7 +4760,7 @@ def equ_278(char: CharacterProperty):
 
     所有速度+15%
     """
-    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00194.png', cd=20,data=82050))
+    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00194.png', cd=20, data=82050))
     char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
     pass
 
@@ -4708,7 +4778,7 @@ def equ_279(char: CharacterProperty):
 
     所有速度+20%
     """
-    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00195.png', cd=20,data=164100))
+    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00195.png', cd=20, data=164100))
     char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     pass
 
@@ -4728,7 +4798,7 @@ def equ_280(char: CharacterProperty):
 
     所有速度+30%
     """
-    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00196.png', cd=20,data=218800))
+    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00196.png', cd=20, data=218800))
     char.SetStatus(SpeedM=0.3, SpeedA=0.3, SpeedR=0.3)
     pass
 
@@ -5747,7 +5817,7 @@ def equ_339(char: CharacterProperty):
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
-        char.SetStatus(STR=200,INT=200,Spirit=200,Vitality=200)
+        char.SetStatus(STR=200, INT=200, Spirit=200, Vitality=200)
     pass
 
 
@@ -6264,7 +6334,7 @@ def equ_370(char: CharacterProperty):
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
-        char.SetStatus(STR=200,INT=200,Spirit=200,Vitality=200)
+        char.SetStatus(STR=200, INT=200, Spirit=200, Vitality=200)
     pass
 
 
@@ -6279,7 +6349,7 @@ def equ_371(char: CharacterProperty):
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
-        char.SetStatus(STR=200,INT=200,Spirit=200,Vitality=200)
+        char.SetStatus(STR=200, INT=200, Spirit=200, Vitality=200)
     pass
 
 
@@ -6294,7 +6364,7 @@ def equ_372(char: CharacterProperty):
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
-        char.SetStatus(STR=200,INT=200,Spirit=200,Vitality=200)
+        char.SetStatus(STR=200, INT=200, Spirit=200, Vitality=200)
     pass
 
 
@@ -6858,7 +6928,7 @@ def equ_412(char: CharacterProperty):
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
-        char.SetStatus(STR=200,INT=200,Spirit=200,Vitality=200)
+        char.SetStatus(STR=200, INT=200, Spirit=200, Vitality=200)
     pass
 
 
@@ -6873,7 +6943,7 @@ def equ_413(char: CharacterProperty):
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
-        char.SetStatus(STR=200,INT=200,Spirit=200,Vitality=200)
+        char.SetStatus(STR=200, INT=200, Spirit=200, Vitality=200)
     pass
 
 
@@ -6888,7 +6958,7 @@ def equ_414(char: CharacterProperty):
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
-        char.SetStatus(STR=200,INT=200,Spirit=200,Vitality=200)
+        char.SetStatus(STR=200, INT=200, Spirit=200, Vitality=200)
     pass
 
 
@@ -12589,25 +12659,26 @@ def equ_876(char: CharacterProperty):
     equ_414(char)
     pass
 
-@register
-def equ_877(char: CharacterProperty):
-    ...
 
 @register
-def equ_878(char: CharacterProperty):
-    ...
+def equ_877(char: CharacterProperty): ...
+
 
 @register
-def equ_879(char: CharacterProperty):
-    ...
+def equ_878(char: CharacterProperty): ...
+
 
 @register
-def equ_880(char: CharacterProperty):
-    ...
+def equ_879(char: CharacterProperty): ...
+
 
 @register
-def equ_881(char: CharacterProperty):
-    ...
+def equ_880(char: CharacterProperty): ...
+
+
+@register
+def equ_881(char: CharacterProperty): ...
+
 
 @register
 def equ_882(char: CharacterProperty):
@@ -12617,6 +12688,7 @@ def equ_882(char: CharacterProperty):
         char.SetSkillCD(cd=0.2)
     ...
 
+
 @register
 def equ_883(char: CharacterProperty):
     if char.equ_options.get('6', 0) == 0:
@@ -12625,6 +12697,7 @@ def equ_883(char: CharacterProperty):
         char.SetSkillCD(cd=0.2)
     ...
 
+
 @register
 def equ_884(char: CharacterProperty):
     if char.equ_options.get('6', 0) == 0:
@@ -12632,6 +12705,7 @@ def equ_884(char: CharacterProperty):
     elif char.equ_options.get('6', 0) == 1:
         char.SetSkillCD(cd=0.2)
     ...
+
 
 # endregion
 # region 秘宝装备
@@ -12661,23 +12735,24 @@ def equ_2000(char: CharacterProperty):
 
     """
     if 2100 <= char.max_point < 2550:
-        char.SetStatus(SkillAttack=0.378,Buffer=12180)
+        char.SetStatus(SkillAttack=0.378, Buffer=12180)
         pass
     if char.max_point >= 2550:
-        char.SetStatus(SkillAttack=0.539,Buffer=12530)
+        char.SetStatus(SkillAttack=0.539, Buffer=12530)
         pass
     point = char.charEquipInfo['魔法石'].precision
-    skillAttack = 0.1 * point - (point // 25) * 0.1 + (0.5 if point >= 25 else 0) + (0.6 if point >=50 else 0) + (0.6 if point >=75 else 0) + (1.8 if point >=100 else 0)
-    buffer = 30 * point - (point // 25) * 30 + (390 if point >= 25 else 0) + (420 if point >=50 else 0) + (420 if point >=75 else 0) + (540 if point >=100 else 0)
-    char.SetStatus(SkillAttack=skillAttack/100,Buffer=buffer)
+    skillAttack = 0.1 * point - (point // 25) * 0.1 + (0.5 if point >= 25 else 0) + (0.6 if point >= 50 else 0) + (0.6 if point >= 75 else 0) + (1.8 if point >= 100 else 0)
+    buffer = 30 * point - (point // 25) * 30 + (390 if point >= 25 else 0) + (420 if point >= 50 else 0) + (420 if point >= 75 else 0) + (540 if point >= 100 else 0)
+    char.SetStatus(SkillAttack=skillAttack / 100, Buffer=buffer)
     char.SetSkillCD(cd=0.15)
     effect = (point // 25) * 0.5
     if effect > 0:
-        char.equ_effect.append(EquEffect(name='地震波', icon='/equipment/icon/special/magicstone/00417.png', cd=30, data=45900*effect))
+        char.equ_effect.append(EquEffect(name='地震波', icon='/equipment/icon/special/magicstone/00417.png', cd=30, data=45900 * effect))
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 2
     pass
+
 
 @register
 def equ_2001(char: CharacterProperty):
@@ -12707,15 +12782,15 @@ def equ_2001(char: CharacterProperty):
 
     """
     if 2100 <= char.max_point < 2550:
-        char.SetStatus(SkillAttack=0.384,Buffer=11220)
+        char.SetStatus(SkillAttack=0.384, Buffer=11220)
         pass
     if char.max_point >= 2550:
-        char.SetStatus(SkillAttack=0.494 + 0.052,Buffer=12180+350)
+        char.SetStatus(SkillAttack=0.494 + 0.052, Buffer=12180 + 350)
         pass
     point = char.charEquipInfo['耳环'].precision
-    skillAttack = 0.1 * point - (point // 25) * 0.1 + (0.5 if point >= 25 else 0) + (0.6 if point >=50 else 0) + (0.6 if point >=75 else 0) + (1.8 if point >=100 else 0)
-    buffer = 30 * point - (point // 25) * 30 + (390 if point >= 25 else 0) + (420 if point >=50 else 0) + (420 if point >=75 else 0) + (540 if point >=100 else 0)
-    char.SetStatus(SkillAttack=skillAttack/100,Buffer=buffer)
+    skillAttack = 0.1 * point - (point // 25) * 0.1 + (0.5 if point >= 25 else 0) + (0.6 if point >= 50 else 0) + (0.6 if point >= 75 else 0) + (1.8 if point >= 100 else 0)
+    buffer = 30 * point - (point // 25) * 30 + (390 if point >= 25 else 0) + (420 if point >= 50 else 0) + (420 if point >= 75 else 0) + (540 if point >= 100 else 0)
+    char.SetStatus(SkillAttack=skillAttack / 100, Buffer=buffer)
     char.SetSkillCD(cd=0.04)
     cd = (point // 25) * 0.04
     if cd > 0:
@@ -12741,11 +12816,11 @@ def equ_3000(char: CharacterProperty):
     暴击率+15%
     所有速度+4%
     """
-    char.AddElementDB('火',22)
-    char.AddElementDB('冰',22)
-    char.AddElementDB('光',22)
-    char.AddElementDB('暗',22)
-    char.SetStatus(AttackP=0.22,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04)
+    char.AddElementDB('火', 22)
+    char.AddElementDB('冰', 22)
+    char.AddElementDB('光', 22)
+    char.AddElementDB('暗', 22)
+    char.SetStatus(AttackP=0.22, SpeedM=0.04, SpeedA=0.04, SpeedR=0.04)
     pass
 
 
@@ -12760,11 +12835,11 @@ def equ_3001(char: CharacterProperty):
     暴击率+12%
     所有速度+3%
     """
-    char.AddElementDB('火',15)
-    char.AddElementDB('冰',15)
-    char.AddElementDB('光',15)
-    char.AddElementDB('暗',15)
-    char.SetStatus(AttackP=0.15,SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
+    char.AddElementDB('火', 15)
+    char.AddElementDB('冰', 15)
+    char.AddElementDB('光', 15)
+    char.AddElementDB('暗', 15)
+    char.SetStatus(AttackP=0.15, SpeedM=0.03, SpeedA=0.03, SpeedR=0.03)
     pass
 
 
@@ -12779,11 +12854,11 @@ def equ_3002(char: CharacterProperty):
     暴击率+15%
     所有速度+4%
     """
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.25,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.25, SpeedM=0.04, SpeedA=0.04, SpeedR=0.04)
     pass
 
 
@@ -12798,11 +12873,11 @@ def equ_3003(char: CharacterProperty):
     暴击率+12%
     所有速度+3%
     """
-    char.AddElementDB('火',20)
-    char.AddElementDB('冰',20)
-    char.AddElementDB('光',20)
-    char.AddElementDB('暗',20)
-    char.SetStatus(AttackP=0.18,SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
+    char.AddElementDB('火', 20)
+    char.AddElementDB('冰', 20)
+    char.AddElementDB('光', 20)
+    char.AddElementDB('暗', 20)
+    char.SetStatus(AttackP=0.18, SpeedM=0.03, SpeedA=0.03, SpeedR=0.03)
     pass
 
 
@@ -12818,12 +12893,12 @@ def equ_3004(char: CharacterProperty):
     暴击率+15%
     所有速度+4%
     """
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.28,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04)
-    char.AddSkillLv(95,95,1,0)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.28, SpeedM=0.04, SpeedA=0.04, SpeedR=0.04)
+    char.AddSkillLv(95, 95, 1, 0)
     pass
 
 
@@ -12839,12 +12914,12 @@ def equ_3005(char: CharacterProperty):
     暴击率+12%
     所有速度+3%
     """
-    char.AddElementDB('火',20)
-    char.AddElementDB('冰',20)
-    char.AddElementDB('光',20)
-    char.AddElementDB('暗',20)
-    char.SetStatus(AttackP=0.2,SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
-    char.AddSkillLv(95,95,1,0)
+    char.AddElementDB('火', 20)
+    char.AddElementDB('冰', 20)
+    char.AddElementDB('光', 20)
+    char.AddElementDB('暗', 20)
+    char.SetStatus(AttackP=0.2, SpeedM=0.03, SpeedA=0.03, SpeedR=0.03)
+    char.AddSkillLv(95, 95, 1, 0)
     pass
 
 
@@ -12860,12 +12935,12 @@ def equ_3006(char: CharacterProperty):
     暴击率+15%
     所有速度+4%
     """
-    char.AddElementDB('火',30)
-    char.AddElementDB('冰',30)
-    char.AddElementDB('光',30)
-    char.AddElementDB('暗',30)
-    char.SetStatus(AttackP=0.3,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04)
-    char.AddSkillLv(95,95,1,0)
+    char.AddElementDB('火', 30)
+    char.AddElementDB('冰', 30)
+    char.AddElementDB('光', 30)
+    char.AddElementDB('暗', 30)
+    char.SetStatus(AttackP=0.3, SpeedM=0.04, SpeedA=0.04, SpeedR=0.04)
+    char.AddSkillLv(95, 95, 1, 0)
     pass
 
 
@@ -12881,12 +12956,12 @@ def equ_3007(char: CharacterProperty):
     暴击率+12%
     所有速度+3%
     """
-    char.AddElementDB('火',20)
-    char.AddElementDB('冰',20)
-    char.AddElementDB('光',20)
-    char.AddElementDB('暗',20)
-    char.SetStatus(AttackP=0.22,SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
-    char.AddSkillLv(95,95,1,0)
+    char.AddElementDB('火', 20)
+    char.AddElementDB('冰', 20)
+    char.AddElementDB('光', 20)
+    char.AddElementDB('暗', 20)
+    char.SetStatus(AttackP=0.22, SpeedM=0.03, SpeedA=0.03, SpeedR=0.03)
+    char.AddSkillLv(95, 95, 1, 0)
     pass
 
 
@@ -12902,12 +12977,12 @@ def equ_3008(char: CharacterProperty):
     暴击率+15%
     所有速度+4%
     """
-    char.AddElementDB('火',30)
-    char.AddElementDB('冰',30)
-    char.AddElementDB('光',30)
-    char.AddElementDB('暗',30)
-    char.SetStatus(AttackP=0.33,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04)
-    char.AddSkillLv(95,95,1,0)
+    char.AddElementDB('火', 30)
+    char.AddElementDB('冰', 30)
+    char.AddElementDB('光', 30)
+    char.AddElementDB('暗', 30)
+    char.SetStatus(AttackP=0.33, SpeedM=0.04, SpeedA=0.04, SpeedR=0.04)
+    char.AddSkillLv(95, 95, 1, 0)
     pass
 
 
@@ -12923,12 +12998,12 @@ def equ_3009(char: CharacterProperty):
     暴击率+12%
     所有速度+3%
     """
-    char.AddElementDB('火',20)
-    char.AddElementDB('冰',20)
-    char.AddElementDB('光',20)
-    char.AddElementDB('暗',20)
-    char.SetStatus(AttackP=0.25,SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
-    char.AddSkillLv(95,95,1,0)
+    char.AddElementDB('火', 20)
+    char.AddElementDB('冰', 20)
+    char.AddElementDB('光', 20)
+    char.AddElementDB('暗', 20)
+    char.SetStatus(AttackP=0.25, SpeedM=0.03, SpeedA=0.03, SpeedR=0.03)
+    char.AddSkillLv(95, 95, 1, 0)
     pass
 
 
@@ -12945,8 +13020,8 @@ def equ_3010(char: CharacterProperty):
     Lv15~35所有技能+1
     所有速度+3%
     """
-    char.AddSkillLv(15,35,1)
-    char.SetStatus(SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
+    char.AddSkillLv(15, 35, 1)
+    char.SetStatus(SpeedM=0.03, SpeedA=0.03, SpeedR=0.03)
     pass
 
 
@@ -12959,8 +13034,8 @@ def equ_3011(char: CharacterProperty):
     Lv15~35所有技能+1
     所有速度+3%
     """
-    char.AddSkillLv(15,35,1)
-    char.SetStatus(SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
+    char.AddSkillLv(15, 35, 1)
+    char.SetStatus(SpeedM=0.03, SpeedA=0.03, SpeedR=0.03)
     pass
 
 
@@ -12974,12 +13049,12 @@ def equ_3012(char: CharacterProperty):
     所有属性强化+15
     所有速度+3%
     """
-    char.AddSkillLv(15,35,1)
-    char.AddElementDB('火',15)
-    char.AddElementDB('冰',15)
-    char.AddElementDB('光',15)
-    char.AddElementDB('暗',15)
-    char.SetStatus(SpeedM=0.03,SpeedA=0.03,SpeedR=0.03)
+    char.AddSkillLv(15, 35, 1)
+    char.AddElementDB('火', 15)
+    char.AddElementDB('冰', 15)
+    char.AddElementDB('光', 15)
+    char.AddElementDB('暗', 15)
+    char.SetStatus(SpeedM=0.03, SpeedA=0.03, SpeedR=0.03)
     pass
 
 
@@ -12994,13 +13069,14 @@ def equ_3013(char: CharacterProperty):
     所有速度+3%
     攻击强化 +20%
     """
-    char.AddSkillLv(15,35,1)
-    char.AddElementDB('火',15)
-    char.AddElementDB('冰',15)
-    char.AddElementDB('光',15)
-    char.AddElementDB('暗',15)
-    char.SetStatus(SpeedM=0.03,SpeedA=0.03,SpeedR=0.03,AttackP=0.2)
+    char.AddSkillLv(15, 35, 1)
+    char.AddElementDB('火', 15)
+    char.AddElementDB('冰', 15)
+    char.AddElementDB('光', 15)
+    char.AddElementDB('暗', 15)
+    char.SetStatus(SpeedM=0.03, SpeedA=0.03, SpeedR=0.03, AttackP=0.2)
     pass
+
 
 @register
 def equ_3015(char: CharacterProperty):
@@ -13013,13 +13089,14 @@ def equ_3015(char: CharacterProperty):
     攻击强化 +20%
     所有速度+3%
     """
-    char.AddSkillLv(15,35,1)
-    char.AddElementDB('火',15)
-    char.AddElementDB('冰',15)
-    char.AddElementDB('光',15)
-    char.AddElementDB('暗',15)
-    char.SetStatus(SpeedM=0.03,SpeedA=0.03,SpeedR=0.03,AttackP=0.2)
+    char.AddSkillLv(15, 35, 1)
+    char.AddElementDB('火', 15)
+    char.AddElementDB('冰', 15)
+    char.AddElementDB('光', 15)
+    char.AddElementDB('暗', 15)
+    char.SetStatus(SpeedM=0.03, SpeedA=0.03, SpeedR=0.03, AttackP=0.2)
     pass
+
 
 @register
 def equ_3016(char: CharacterProperty):
@@ -13033,13 +13110,14 @@ def equ_3016(char: CharacterProperty):
     暴击率+12%
     所有速度+3%
     """
-    char.AddSkillLv(95,95,1,0)
-    char.AddElementDB('火',20)
-    char.AddElementDB('冰',20)
-    char.AddElementDB('光',20)
-    char.AddElementDB('暗',20)
-    char.SetStatus(SpeedM=0.03,SpeedA=0.03,SpeedR=0.03,AttackP=0.22)
+    char.AddSkillLv(95, 95, 1, 0)
+    char.AddElementDB('火', 20)
+    char.AddElementDB('冰', 20)
+    char.AddElementDB('光', 20)
+    char.AddElementDB('暗', 20)
+    char.SetStatus(SpeedM=0.03, SpeedA=0.03, SpeedR=0.03, AttackP=0.22)
     pass
+
 
 # endregion
 # region 白嫖
@@ -13075,13 +13153,13 @@ def equ_4000(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,80,1)
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.32,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
-    char.SetSkillCD(1,100,0.05,[])
+    char.AddSkillLv(1, 80, 1)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.32, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
+    char.SetSkillCD(1, 100, 0.05, [])
     pass
 
 
@@ -13098,13 +13176,13 @@ def equ_4001(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,80,1)
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.22,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
-    char.SetSkillCD(1,100,0.05,[])
+    char.AddSkillLv(1, 80, 1)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.22, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
+    char.SetSkillCD(1, 100, 0.05, [])
     pass
 
 
@@ -13121,13 +13199,13 @@ def equ_4002(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1)
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.35,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
-    char.SetSkillCD(1,100,0.05,[])
+    char.AddSkillLv(1, 95, 1)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.35, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
+    char.SetSkillCD(1, 100, 0.05, [])
     pass
 
 
@@ -13144,13 +13222,13 @@ def equ_4003(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1)
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.22,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
-    char.SetSkillCD(1,100,0.05,[])
+    char.AddSkillLv(1, 95, 1)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.22, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
+    char.SetSkillCD(1, 100, 0.05, [])
     pass
 
 
@@ -13167,13 +13245,13 @@ def equ_4004(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1)
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.40,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
-    char.SetSkillCD(1,100,0.05,[])
+    char.AddSkillLv(1, 95, 1)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.40, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
+    char.SetSkillCD(1, 100, 0.05, [])
     pass
 
 
@@ -13190,13 +13268,13 @@ def equ_4005(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1)
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.25,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
-    char.SetSkillCD(1,100,0.05,[])
+    char.AddSkillLv(1, 95, 1)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.25, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
+    char.SetSkillCD(1, 100, 0.05, [])
     pass
 
 
@@ -13213,13 +13291,13 @@ def equ_4006(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1)
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.45,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
-    char.SetSkillCD(1,100,0.05,[])
+    char.AddSkillLv(1, 95, 1)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.45, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
+    char.SetSkillCD(1, 100, 0.05, [])
     pass
 
 
@@ -13236,13 +13314,13 @@ def equ_4007(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1)
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.30,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
-    char.SetSkillCD(1,100,0.05,[])
+    char.AddSkillLv(1, 95, 1)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.30, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
+    char.SetSkillCD(1, 100, 0.05, [])
     pass
 
 
@@ -13259,13 +13337,13 @@ def equ_4008(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1)
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.50,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
-    char.SetSkillCD(1,100,0.05,[])
+    char.AddSkillLv(1, 95, 1)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.50, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
+    char.SetSkillCD(1, 100, 0.05, [])
     pass
 
 
@@ -13282,13 +13360,13 @@ def equ_4009(char: CharacterProperty):
     所有速度+5%
     技能冷却时间-5%
     """
-    char.AddSkillLv(1,95,1)
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.35,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05)
-    char.SetSkillCD(1,100,0.05,[])
+    char.AddSkillLv(1, 95, 1)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.35, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
+    char.SetSkillCD(1, 100, 0.05, [])
     pass
 
 
@@ -13307,8 +13385,8 @@ def equ_4010(char: CharacterProperty):
     暴击率+3%
     所有速度+5%
     """
-    char.AddSkillLv(1,50,1)
-    char.SetStatus(AttackP=0.14,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05,BufferP=0.03)
+    char.AddSkillLv(1, 50, 1)
+    char.SetStatus(AttackP=0.14, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05, BufferP=0.03)
     pass
 
 
@@ -13324,8 +13402,8 @@ def equ_4011(char: CharacterProperty):
     暴击率+3%
     所有速度+4%
     """
-    char.AddSkillLv(1,50,1)
-    char.SetStatus(AttackP=0.10,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04,BufferP=0.015)
+    char.AddSkillLv(1, 50, 1)
+    char.SetStatus(AttackP=0.10, SpeedM=0.04, SpeedA=0.04, SpeedR=0.04, BufferP=0.015)
     pass
 
 
@@ -13341,8 +13419,8 @@ def equ_4012(char: CharacterProperty):
     暴击率+3%
     所有速度+5%
     """
-    char.AddSkillLv(1,50,1)
-    char.SetStatus(AttackP=0.14,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05,BufferP=0.03)
+    char.AddSkillLv(1, 50, 1)
+    char.SetStatus(AttackP=0.14, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05, BufferP=0.03)
     pass
 
 
@@ -13358,8 +13436,8 @@ def equ_4013(char: CharacterProperty):
     暴击率+3%
     所有速度+4%
     """
-    char.AddSkillLv(1,50,1)
-    char.SetStatus(AttackP=0.10,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04,BufferP=0.015)
+    char.AddSkillLv(1, 50, 1)
+    char.SetStatus(AttackP=0.10, SpeedM=0.04, SpeedA=0.04, SpeedR=0.04, BufferP=0.015)
     pass
 
 
@@ -13376,12 +13454,12 @@ def equ_4014(char: CharacterProperty):
     暴击率+10%
     所有速度+5%
     """
-    char.AddSkillLv(1,75,1)
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.25,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05,BufferP=0.05)
+    char.AddSkillLv(1, 75, 1)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.25, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05, BufferP=0.05)
     pass
 
 
@@ -13398,12 +13476,12 @@ def equ_4015(char: CharacterProperty):
     暴击率+5%
     所有速度+4%
     """
-    char.AddSkillLv(1,50,1)
-    char.AddElementDB('火',15)
-    char.AddElementDB('冰',15)
-    char.AddElementDB('光',15)
-    char.AddElementDB('暗',15)
-    char.SetStatus(AttackP=0.25,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04,BufferP=0.02)
+    char.AddSkillLv(1, 50, 1)
+    char.AddElementDB('火', 15)
+    char.AddElementDB('冰', 15)
+    char.AddElementDB('光', 15)
+    char.AddElementDB('暗', 15)
+    char.SetStatus(AttackP=0.25, SpeedM=0.04, SpeedA=0.04, SpeedR=0.04, BufferP=0.02)
     pass
 
 
@@ -13420,12 +13498,12 @@ def equ_4016(char: CharacterProperty):
     暴击率+10%
     所有速度+5%
     """
-    char.AddSkillLv(1,75,1)
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.25,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05,BufferP=0.05)
+    char.AddSkillLv(1, 75, 1)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.25, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05, BufferP=0.05)
     pass
 
 
@@ -13442,13 +13520,14 @@ def equ_4017(char: CharacterProperty):
     暴击率+5%
     所有速度+4%
     """
-    char.AddSkillLv(1,50,1)
-    char.AddElementDB('火',15)
-    char.AddElementDB('冰',15)
-    char.AddElementDB('光',15)
-    char.AddElementDB('暗',15)
-    char.SetStatus(AttackP=0.25,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04,BufferP=0.02)
+    char.AddSkillLv(1, 50, 1)
+    char.AddElementDB('火', 15)
+    char.AddElementDB('冰', 15)
+    char.AddElementDB('光', 15)
+    char.AddElementDB('暗', 15)
+    char.SetStatus(AttackP=0.25, SpeedM=0.04, SpeedA=0.04, SpeedR=0.04, BufferP=0.02)
     pass
+
 
 @register
 def equ_4018(char: CharacterProperty):
@@ -13463,13 +13542,14 @@ def equ_4018(char: CharacterProperty):
     暴击率+10%
     所有速度+5%
     """
-    char.AddSkillLv(1,75,1)
-    char.AddElementDB('火',25)
-    char.AddElementDB('冰',25)
-    char.AddElementDB('光',25)
-    char.AddElementDB('暗',25)
-    char.SetStatus(AttackP=0.35,SpeedM=0.05,SpeedA=0.05,SpeedR=0.05,BufferP=0.08)
+    char.AddSkillLv(1, 75, 1)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(AttackP=0.35, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05, BufferP=0.08)
     pass
+
 
 @register
 def equ_4019(char: CharacterProperty):
@@ -13484,10 +13564,12 @@ def equ_4019(char: CharacterProperty):
     暴击率+5%
     所有速度+4%
     """
-    char.AddSkillLv(1,50,1)
-    char.AddElementDB('火',15)
-    char.AddElementDB('冰',15)
-    char.AddElementDB('光',15)
-    char.AddElementDB('暗',15)
-    char.SetStatus(AttackP=0.35,SpeedM=0.04,SpeedA=0.04,SpeedR=0.04,BufferP=0.03)
+    char.AddSkillLv(1, 50, 1)
+    char.AddElementDB('火', 15)
+    char.AddElementDB('冰', 15)
+    char.AddElementDB('光', 15)
+    char.AddElementDB('暗', 15)
+    char.SetStatus(AttackP=0.35, SpeedM=0.04, SpeedA=0.04, SpeedR=0.04, BufferP=0.03)
+
+
 # endregion

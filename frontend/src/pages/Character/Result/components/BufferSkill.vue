@@ -4,7 +4,7 @@
       <div class="flex px-1px gap-1px">
         <div
           v-for="(header, key) in [
-            { label: '技能', width: 120, sortKey: 'name' },
+            { label: '技能', width: 180, sortKey: 'name' },
             { label: 'CD', width: 50 },
             { label: '适用加成', width: 80, sortKey: 'MAIN' },
             { label: '三攻', width: 80, sortKey: 'ATK' },
@@ -24,9 +24,9 @@
       </div>
       <div class="overflow-y-auto max-h-600px">
         <div class="flex px-1px gap-1px h-8.5" v-for="(skill, _) in data" :key="_">
-          <div class="flex w-120px items-center gap-10px">
+          <div class="flex w-180px items-center gap-10px">
             <div class="w-28px h-28px relative">
-              <img :src="getImageURL(skill.icon)" alt="" class="w-28px h-28px" />
+              <img :src="getImageURL(skill.icon)" alt="" :class="['h-28px w-28px', skill.type === 'passive' ? 'passive' : '']" />
               <div v-if="skill.lv" class="skill-lv-min" :data-text="`${skill.lv}`">
                 {{ skill.lv }}
               </div>
