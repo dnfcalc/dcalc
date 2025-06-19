@@ -1025,6 +1025,8 @@ class Character(CharacterProperty):
         awake_ratio_new = ((main + 5250) / 750 + 1) *(buffer_power + 5000) * 0.000025 if buffer_power > 0 else 0
         awake_ratio_old = main / 750 + 1
         for i in self.skills:
+            if i.lv > 0 and i.hasUP and i.up is not None and i.up > 0:
+                self.SetStatus(四维=40)
             if i.buffer and i.lv > 0:
                 info = i.skillInfo()
                 # 奶自己的面板加成

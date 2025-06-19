@@ -100,7 +100,7 @@ export default defineComponent({
           )}
         </div>
         <div class="skill_title">技能描述</div>
-        <div class="h-auto max-h-250px">
+        <div class="h-auto max-h-200px">
           <div class="h-full overflow-y-auto bg-#161816 p-2px">
             {desc.value?.map((item) =>
               // item.startsWith('[') || item.startsWith('-') || item.startsWith('<') ? (
@@ -138,8 +138,8 @@ export default defineComponent({
                 <div class="flex flex-col gap-2px">
                   <div class="skill_vp_title">{item.name}</div>
                   <div class="skill_title">技能描述</div>
-                  <div class="h-auto max-h-200px">
-                    <div class="h-full bg-#161816 p-2px" style="white-space: pre-wrap;">
+                  <div class="h-auto bg-#161816 max-h-300px overflow-y-auto">
+                    <div class="h-auto  p-2px" style="white-space: pre-wrap;">
                       {item.descDetail}
                     </div>
                   </div>

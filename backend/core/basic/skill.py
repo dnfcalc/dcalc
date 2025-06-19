@@ -270,8 +270,6 @@ class ActiveSkill(Skill):
     def setUP(self):
         if not self.hasUP:
             return
-        if self.char.buffer:
-            self.char.SetStatus(四维=40)
         if self.up == 1:
             if self.learnLv < 35:
                 self.skillRation *= 1.6
@@ -428,8 +426,6 @@ class BuffSkill(Skill):
     def setUP(self):
         if not self.hasUP:
             return
-        if self.char.buffer and self.up > 0:
-            self.char.SetStatus(四维=40)
         if self.up == 1:
             ...
         elif self.up == 2:
