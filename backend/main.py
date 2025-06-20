@@ -18,6 +18,6 @@ if __name__ == '__main__':
     def on_startup():
         return print("Application starting...")
 
-    uvicorn.run(app = "main:application", host='127.0.0.1', port=config.PORT, workers=config.WORKERS,reload=False)
+    uvicorn.run(app = "main:application", host='0.0.0.0', port=config.PORT, workers=config.WORKERS,reload=False)
 
 
