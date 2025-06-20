@@ -825,6 +825,8 @@ class Skill18(ActiveSkill):
     hit0 = 2
     # 上斩攻击力 : {value1}%
     data1 = get_data(f"{prefix}/{uuid}", 1, lambda x = None: x)
+    # 韩服抓取有问题，后续再确认
+    power1 = 2
     hit1 = 1
     # 太刀 - 上斩额外攻击次数 : {value2}
     data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
@@ -1150,7 +1152,6 @@ class Skill23(ActiveSkill):
     hit1 = 1
     # 上斩攻击力 : {value2}%
     data2 = get_data(f"{prefix}/{uuid}", 2, lambda x = None: x)
-    # 韩服接口数据有问题 后续再确认
     power2 = 2
     hit2 = 1
     # 上斩浮空力 : {value3}
