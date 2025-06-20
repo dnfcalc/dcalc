@@ -16,6 +16,7 @@ if __name__ == '__main__':
     freeze_support()
 
     def on_startup():
+        print("dcalc is starting...")
         return print("Application starting...")
 
     uvicorn.run(app = "main:application", host='0.0.0.0', port=config.PORT, workers=config.WORKERS,reload=False)
