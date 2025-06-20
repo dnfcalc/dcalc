@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mt-0 h-100%" :style="`zoom:${zoom}`">
+  <div class="w-full mt-0 h-100% overflow-y-auto" :style="`zoom:${zoom}`">
     <Suspense>
       <RouterView></RouterView>
     </Suspense>
