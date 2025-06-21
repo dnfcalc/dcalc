@@ -17,6 +17,7 @@ mcp = FastMCP.from_fastapi(
     name="Dcalc_MCP",
     instructions="DNF相关的MCP服务",
     timeout=60,
+    host="0.0.0.0",
     port=config.MCPPORT,
     route_map_fn=custom_route_mapper,
 )
