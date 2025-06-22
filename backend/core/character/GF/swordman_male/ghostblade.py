@@ -1,13 +1,41 @@
 #41f1cdc2ff58bb5fdc287be0db2a8df3
-from core.basic.formula import 武器强化计算, 锻造计算
-from core.basic.roleinfo import CharacterEquipInfo
-from core.basic.skill import PassiveSkill, ActiveSkill
+from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
+prefix = "swordman_male/ghostblade/cn/skillDetail"
 
-# 鬼连斩 귀연참
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/8c10cefa65364880451e389bb74d3600?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill0(ActiveSkill):
-    name = "鬼连斩"
+# 鬼人化
+# swordman_male/ghostblade/c39c703f72d289fcd5a8f182068140d4
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/c39c703f72d289fcd5a8f182068140d4
+class Skill5(PassiveSkill):
+    """
+    与幻鬼之魂融合、 承载幻鬼灵魂的剑影将使用与一般鬼剑士不同的特殊剑术。\n
+    剑影的基本攻击和前冲攻击变更， 前冲攻击后可以立即施放技能。\n
+    [鬼斩]、 [三段刃]变更为剑影特殊形态， [后跳]中可以发动空中斩击。
+    """
+    name = "鬼人化"
+    learnLv = 1
+    masterLv = 1
+    maxLv = 1
+    position = 0 #TODO
+    rangeLv = 3
+    uuid = "c39c703f72d289fcd5a8f182068140d4"
+    hasVP = False
+    hasUP = False
+
+    # [后跳]空中斩击冷却时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+
+# 鬼连击
+# swordman_male/ghostblade/8c10cefa65364880451e389bb74d3600
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/8c10cefa65364880451e389bb74d3600
+class Skill18(ActiveSkill):
+    """
+    连续斩击前方敌人3次， 造成物理伤害。\n
+     在[鬼步]准备姿势下按技能键， 可以发动特殊功能。\n
+    - [特殊功能] -\n
+     [鬼步]的终结动作变更为[鬼连击]终结动作， 并对命中的所有敌人额外适用[鬼连击]的攻击力。
+    """
+    name = "鬼连击"
     learnLv = 15
     masterLv = 60
     maxLv = 70
@@ -16,20 +44,38 @@ class Skill0(ActiveSkill):
     cd = 5
     mp = [20, 210]
     uuid = "8c10cefa65364880451e389bb74d3600"
+    hasVP = False
+    hasUP = True
 
-    data0 = [0, 1316, 1448, 1583, 1715, 1850, 1986, 2117, 2251, 2383, 2518, 2652, 2783, 2917, 3052, 3184, 3320, 3454, 3585, 3720, 3854, 3987, 4121, 4253, 4386, 4520, 4653, 4789, 4923, 5054, 5188, 5323, 5455, 5590, 5722, 5855, 5991, 6125, 6258, 6390, 6525, 6657, 6792, 6924, 7057, 7193, 7325, 7460, 7594, 7727, 7859, 7993, 8126, 8260, 8395, 8526, 8662, 8796, 8928, 9063, 9194, 9328, 9462, 9595, 9729, 9865, 9996, 10130, 10265, 10397, 10532]# noqa: E501
+    # 第一次斩击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 1
-
-    data1 = [0, 1579, 1741, 1899, 2060, 2219, 2382, 2542, 2701, 2861, 3021, 3181, 3342, 3502, 3664, 3822, 3983, 4141, 4304, 4463, 4624, 4784, 4944, 5107, 5265, 5426, 5585, 5746, 5906, 6067, 6227, 6387, 6547, 6707, 6866, 7030, 7188, 7349, 7507, 7669, 7829, 7990, 8150, 8310, 8469, 8629, 8792, 8952, 9112, 9272, 9432, 9591, 9753, 9913, 10074, 10232, 10394, 10554, 10715, 10873, 11035, 11195, 11354, 11516, 11676, 11835, 11995, 12155, 12317, 12478, 12638]# noqa: E501
+    # 第二次斩击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
     hit1 = 1
-
-    data2 = [0, 2370, 2611, 2849, 3089, 3330, 3572, 3811, 4051, 4293, 4532, 4772, 5013, 5253, 5494, 5734, 5976, 6215, 6455, 6695, 6936, 7177, 7417, 7659, 7897, 8138, 8379, 8619, 8859, 9100, 9342, 9583, 9819, 10061, 10302, 10543, 10781, 11023, 11264, 11504, 11745, 11983, 12225, 12466, 12708, 12944, 13185, 13427, 13668, 13908, 14147, 14389, 14630, 14868, 15110, 15349, 15591, 15832, 16072, 16313, 16551, 16793, 17032, 17274, 17513, 17755, 17995, 18236, 18476, 18715, 18955]# noqa: E501
+    # 第三次斩击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
     hit2 = 1
+    # [范围信息]
+    # 连续斩击范围比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [鬼连击 : 极]的交叉斩击范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
 
-
-# 鬼步 귀신보
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/38805520deffc10fac2e8f881ab7682b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill1(ActiveSkill):
+# 鬼步
+# swordman_male/ghostblade/38805520deffc10fac2e8f881ab7682b
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/38805520deffc10fac2e8f881ab7682b
+class Skill19(ActiveSkill):
+    """
+    施放时摆出准备姿势， 再次按<Z>、 <X>或技能键时， 以肉眼无法追踪的速度快速向前方移动， 攻击路径上的敌人。\n
+    剑影现身时对移动路径上的敌人造成多段物理伤害。\n
+    准备姿势下， 可发动剑术技能相关的特殊功能。\n
+    [特殊功能]\n
+    准备姿势下， 剑术技能的图标颜色改变， 按剑术技能键时， 鬼步的终结动作将会变更， 并对鬼步命中的所有敌人额外适用该剑术技能的攻击力。\n
+    - 剑术技能 : [鬼连击]、 [鬼连牙]、 [魂破斩]、 [冥灵断魂斩]、 [裂魂乱舞]\n
+    在准备姿势下， 若一定时间内不按键， 则自动发动攻击。 按<C>键可以取消准备姿势。\n
+     在决斗场中， 连接施放剑术技能时， 减少技能攻击力。
+    """
     name = "鬼步"
     learnLv = 15
     masterLv = 60
@@ -39,14 +85,27 @@ class Skill1(ActiveSkill):
     cd = 6
     mp = [20, 210]
     uuid = "38805520deffc10fac2e8f881ab7682b"
+    hasVP = False
+    hasUP = True
 
-    data0 = [0, 1620, 1785, 1950, 2111, 2278, 2443, 2606, 2771, 2936, 3099, 3266, 3429, 3596, 3757, 3922, 4089, 4250, 4417, 4580, 4745, 4910, 5075, 5239, 5403, 5568, 5732, 5896, 6061, 6225, 6389, 6555, 6718, 6885, 7047, 7213, 7378, 7540, 7706, 7869, 8034, 8197, 8364, 8527, 8692, 8857, 9024, 9185, 9350, 9515, 9678, 9843, 10008, 10173, 10336, 10503, 10664, 10831, 10996, 11157, 11324, 11487, 11654, 11817, 11982, 12147, 12310, 12475, 12641, 12803, 12969]# noqa: E501
+    # 多段攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 3
+    # 多段攻击次数 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 连接剑术技能时攻击力合并计算比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
 
 
-# 幻鬼 : 一闪 원귀 : 일섬
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/66a9967e677651d0def34c475795ccde?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill2(ActiveSkill):
+# 幻鬼 : 一闪
+# swordman_male/ghostblade/66a9967e677651d0def34c475795ccde
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/66a9967e677651d0def34c475795ccde
+class Skill21(ActiveSkill):
+    """
+    幻鬼快速向前方突进， 攻击路径上的敌人。\n
+    施放剑术技能过程中使用该技能时， 可以无施放动作立即出现幻鬼攻击敌人。\n
+    在决斗场中， 无法在[格挡]过程中使用。
+    """
     name = "幻鬼 : 一闪"
     learnLv = 20
     masterLv = 60
@@ -56,15 +115,26 @@ class Skill2(ActiveSkill):
     cd = 6
     mp = [32, 336]
     uuid = "66a9967e677651d0def34c475795ccde"
+    hasVP = False
+    hasUP = True
 
-    data0 = [0, 5418, 5967, 6518, 7067, 7616, 8167, 8716, 9267, 9816, 10365, 10916, 11465, 12016, 12565, 13114, 13665, 14214, 14763, 15312, 15861, 16412, 16961, 17512, 18061, 18610, 19161, 19710, 20261, 20810, 21359, 21910, 22459, 23010, 23559, 24108, 24659, 25208, 25758, 26308, 26857, 27406, 27955, 28504, 29055, 29604, 30155, 30704, 31253, 31804, 32353, 32904, 33454, 34005, 34554, 35103, 35654, 36203, 36754, 37303, 37852, 38403, 38952, 39503, 40050, 40599, 41150, 41699, 42248, 42799, 43348]# noqa: E501
-    hit0 = 1 #TODO
+    # 一闪攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # [范围信息]
+    # 幻鬼突进距离 : {value1}px
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
 
-
-
-# 幻鬼步 귀혼환보
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/b69d38bcddd41b3566c6d5cf78d060bb?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill3(ActiveSkill):
+# 幻鬼步
+# swordman_male/ghostblade/b69d38bcddd41b3566c6d5cf78d060bb
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/b69d38bcddd41b3566c6d5cf78d060bb
+class Skill22(ActiveSkill):
+    """
+    剑影专属步法。 在幻鬼分离状态下使用该技能， 剑影可以快速移动到幻鬼身边。\n
+    移动过程中剑影处于无敌状态， 到达后也在一定时间内适用无敌判定。\n
+    每使用1次幻鬼分离技能， 只能使用一次该技能。\n
+    在决斗场中存在冷却时间， 且移动后不适用无敌判定。
+    """
     name = "幻鬼步"
     learnLv = 20
     masterLv = 1
@@ -73,13 +143,20 @@ class Skill3(ActiveSkill):
     rangeLv = 1
     mp = [336, 336]
     uuid = "b69d38bcddd41b3566c6d5cf78d060bb"
+    hasVP = False
+    hasUP = False
 
-    damage = False
+    # 无敌时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
 
-
-# 剑影太刀精通 검귀의 도 마스터리
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/030663e99462f628b4c9f813e1406c4e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill4(PassiveSkill):
+# 剑影太刀精通
+# swordman_male/ghostblade/030663e99462f628b4c9f813e1406c4e
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/030663e99462f628b4c9f813e1406c4e
+class Skill23(PassiveSkill):
+    """
+    增加剑影的物理攻击力， 使用太刀系武器时， 增加命中率。\n
+    同时， 太刀武器的物理攻击力 (包含强化、 增幅所增加的数值) 提升至与魔法攻击力相同。
+    """
     name = "剑影太刀精通"
     learnLv = 20
     masterLv = 10
@@ -87,40 +164,65 @@ class Skill4(PassiveSkill):
     position = 1
     rangeLv = 3
     uuid = "030663e99462f628b4c9f813e1406c4e"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]# noqa: E501
-    associate = [{"type":"*skillRation","data":data0}]
+    # 物理攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 命中率增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    associate = [{"data":data0}]
 
-# 幻鬼 : 连斩 원귀 : 연참
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/150aa05b9ee8b9c7c04a25f3e425900c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill5(ActiveSkill):
-    name = "幻鬼 : 连斩"
+# 幻鬼 : 连击
+# swordman_male/ghostblade/150aa05b9ee8b9c7c04a25f3e425900c
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/150aa05b9ee8b9c7c04a25f3e425900c
+class Skill25(ActiveSkill):
+    """
+    幻鬼快速连续斩击前方敌人， 造成物理伤害。\n
+    施放剑术技能过程中使用该技能时， 可以无施放动作立即出现幻鬼攻击敌人。\n
+    在决斗场中， 无法在[格挡]过程中使用。
+    """
+    name = "幻鬼 : 连击"
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 6
+    position = 0 #TODO
     rangeLv = 2
     cd = 8
     mp = [60, 600]
     uuid = "150aa05b9ee8b9c7c04a25f3e425900c"
+    hasVP = False
+    hasUP = True
 
-    data0 = [0, 1355, 1491, 1630, 1768, 1904, 2042, 2181, 2317, 2455, 2594, 2729, 2868, 3004, 3143, 3281, 3417, 3556, 3691, 3830, 3968, 4106, 4243, 4381, 4519, 4655, 4794, 4930, 5069, 5205, 5343, 5483, 5617, 5756, 5892, 6032, 6169, 6307, 6445, 6581, 6718, 6856, 6994, 7132, 7271, 7405, 7543, 7682, 7818, 7958, 8094, 8233, 8369, 8505, 8645, 8781, 8920, 9058, 9195, 9331, 9469, 9607, 9744, 9884, 10020, 10159, 10294, 10431, 10571, 10707, 10846]# noqa: E501
-    hit0 = 1 #TODO
+    # 第一次斩击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 第二次斩击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    # 第三次斩击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
+    # 第四次斩击攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    hit3 = 1
+    # [范围信息]
+    # 连续斩击范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
 
-    data1 = [0, 1807, 1991, 2173, 2358, 2540, 2723, 2905, 3092, 3274, 3458, 3640, 3825, 4007, 4191, 4374, 4558, 4741, 4925, 5107, 5290, 5474, 5659, 5841, 6025, 6208, 6392, 6574, 6758, 6941, 7126, 7308, 7492, 7676, 7859, 8041, 8225, 8410, 8594, 8775, 8959, 9141, 9326, 9508, 9693, 9875, 10061, 10243, 10426, 10608, 10793, 10975, 11161, 11342, 11528, 11710, 11893, 12075, 12260, 12444, 12628, 12810, 12995, 13177, 13360, 13542, 13724, 13911, 14095, 14277, 14459]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 2259, 2489, 2717, 2948, 3176, 3403, 3635, 3862, 4094, 4321, 4549, 4780, 5008, 5238, 5467, 5697, 5928, 6156, 6385, 6615, 6844, 7072, 7303, 7531, 7759, 7990, 8218, 8449, 8677, 8905, 9136, 9364, 9593, 9823, 10052, 10280, 10511, 10741, 10970, 11200, 11427, 11659, 11886, 12116, 12345, 12573, 12804, 13032, 13260, 13491, 13719, 13949, 14178, 14408, 14637, 14865, 15096, 15326, 15555, 15783, 16014, 16242, 16471, 16701, 16929, 17160, 17388, 17615, 17847, 18074]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 3614, 3983, 4349, 4716, 5081, 5450, 5816, 6183, 6548, 6917, 7281, 7650, 8016, 8381, 8748, 9114, 9483, 9848, 10215, 10581, 10950, 11315, 11682, 12050, 12417, 12782, 13150, 13517, 13884, 14249, 14617, 14984, 15351, 15717, 16085, 16451, 16818, 17184, 17551, 17918, 18284, 18651, 19018, 19385, 19751, 20120, 20485, 20852, 21218, 21587, 21952, 22319, 22685, 23054, 23419, 23786, 24154, 24521, 24886, 25254, 25621, 25988, 26353, 26719, 27088, 27453, 27821, 28188, 28555, 28920]# noqa: E501
-    hit3 = 1 #TODO
-
-
-
-# 鬼连牙 연아
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/89c505581267af77c6d58dc49b710550?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill6(ActiveSkill):
+# 鬼连牙
+# swordman_male/ghostblade/89c505581267af77c6d58dc49b710550
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/89c505581267af77c6d58dc49b710550
+class Skill26(ActiveSkill):
+    """
+    将灵魂之力聚集到剑上， 然后强力刺击敌人。\n
+     被击中的敌人进入僵直状态， 并被拉到剑影前方。\n
+     可以推开霸体状态的敌人， 攻击倒地或浮空的敌人时， 强制将敌人拉到面前。\n
+     在[鬼步]准备姿势下按技能键， 发动特殊功能。\n
+    [特殊功能]\n
+     [鬼步]的终结动作变更为[鬼连牙]终结动作， 将所有命中的敌人拉到前方并额外适用[鬼连牙]的攻击力。\n
+    在决斗场中， 无法拉起浮空或倒地的敌人。
+    """
     name = "鬼连牙"
     learnLv = 25
     masterLv = 60
@@ -130,14 +232,21 @@ class Skill6(ActiveSkill):
     cd = 8
     mp = [46, 483]
     uuid = "89c505581267af77c6d58dc49b710550"
+    hasVP = False
+    hasUP = True
 
-    data0 = [0, 9962, 10974, 11983, 12995, 14003, 15014, 16026, 17036, 18047, 19057, 20067, 21080, 22090, 23101, 24111, 25121, 26134, 27144, 28155, 29165, 30175, 31188, 32198, 33208, 34218, 35227, 36239, 37250, 38260, 39272, 40282, 41295, 42305, 43314, 44326, 45336, 46349, 47359, 48368, 49380, 50390, 51403, 52411, 53421, 54432, 55442, 56452, 57465, 58475, 59486, 60496, 61506, 62519, 63529, 64541, 65550, 66560, 67573, 68583, 69595, 70603, 71613, 72626, 73636, 74645, 75657, 76667, 77680, 78690, 79699]# noqa: E501
-    hit0 = 1 #TODO
+    # 刺击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
 
-
-# 幻鬼之力 청혈투귀
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/a81e5b7defa1819263ed8e86f69fd06f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill7(PassiveSkill):
+# 幻鬼之力
+# swordman_male/ghostblade/a81e5b7defa1819263ed8e86f69fd06f
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/a81e5b7defa1819263ed8e86f69fd06f
+class Skill27(PassiveSkill):
+    """
+    学习后， 增加剑影的攻击速度、 移动速度、 物理暴击率和暴击伤害。\n
+    [青蓝色的血肉上， 似乎已经浸染幻鬼的气息。]
+    """
     name = "幻鬼之力"
     learnLv = 25
     masterLv = 10
@@ -145,30 +254,53 @@ class Skill7(PassiveSkill):
     position = 0
     rangeLv = 3
     uuid = "a81e5b7defa1819263ed8e86f69fd06f"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50]# noqa: E501
-    associate = [{"type":"*skillRation","data":data0}]
+    # 攻击速度增加 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 移动速度增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 物理暴击率增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 暴击伤害增加率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    associate = [{"data":data3}]
 
-
-# 双魂共鸣 귀혼일체
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/89a4529234904fcbb3abe289e281f2fd?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill8(ActiveSkill):
+# 双魂共鸣
+# swordman_male/ghostblade/89a4529234904fcbb3abe289e281f2fd
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/89a4529234904fcbb3abe289e281f2fd
+class Skill28(ActiveSkill):
+    """
+    施放时， 两个灵魂在剑影身体里产生共鸣， 强化身体。\n
+    增加剑影的基本攻击力、 [鬼斩]、 [三段刃]和转职后技能的攻击力。\n
+    [别忘了， 你与我是一体……]
+    """
     name = "双魂共鸣"
     learnLv = 30
     masterLv = 10
     maxLv = 20
-    position = 1
+    position = 0 #TODO
     rangeLv = 3
     cd = 5
-    mp = [271, 2570]
     uuid = "89a4529234904fcbb3abe289e281f2fd"
+    hasVP = False
+    hasUP = False
 
-    damage = False
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 基本攻击和技能攻击增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
 
-
-# 共鸣 : 离魂一闪 합격 : 이혼일섬
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/515b442ffbf61a82371abb645c149a31?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill9(ActiveSkill):
+# 共鸣 : 离魂一闪
+# swordman_male/ghostblade/515b442ffbf61a82371abb645c149a31
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/515b442ffbf61a82371abb645c149a31
+class Skill29(ActiveSkill):
+    """
+    幻鬼快速向前方突进斩击敌人， 然后与剑影交叉斩击直线上的敌人， 造成物理伤害。\n
+    在剑影与幻鬼分离的状态下施放[共鸣 : 离魂一闪]时， 幻鬼中断当前的动作并立即发动交叉斩击， 此时突进斩击的攻击力与交叉共鸣合并计算。\n
+    在决斗场中， 施放时不适用霸体， 在分离状态下使用时攻击力减少。
+    """
     name = "共鸣 : 离魂一闪"
     learnLv = 30
     masterLv = 60
@@ -178,18 +310,28 @@ class Skill9(ActiveSkill):
     cd = 12
     mp = [61, 640]
     uuid = "515b442ffbf61a82371abb645c149a31"
+    hasVP = False
+    hasUP = True
 
-    data0 = [0, 4253, 4687, 5117, 5549, 5981, 6412, 6844, 7276, 7708, 8138, 8571, 9003, 9433, 9867, 10295, 10727, 11162, 11591, 12022, 12453, 12886, 13318, 13748, 14181, 14612, 15043, 15477, 15907, 16339, 16771, 17202, 17634, 18066, 18498, 18928, 19361, 19793, 20223, 20657, 21087, 21519, 21952, 22382, 22814, 23246, 23678, 24109, 24540, 24973, 25403, 25835, 26268, 26699, 27130, 27562, 27994, 28426, 28858, 29289, 29719, 30153, 30585, 31015, 31448, 31878, 32310, 32744, 33172, 33606, 34034]# noqa: E501
-    hit0 = 1 #TODO
+    # 突进斩击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 交叉共鸣攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    # [范围信息]
+    # 幻鬼突进距离 : {value2}px
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
 
-    data1 = [0, 9925, 10934, 11941, 12947, 13955, 14962, 15970, 16978, 17983, 18991, 19997, 21007, 22012, 23018, 24028, 25034, 26041, 27047, 28055, 29063, 30068, 31078, 32084, 33091, 34097, 35105, 36113, 37120, 38126, 39134, 40140, 41150, 42155, 43161, 44169, 45178, 46184, 47190, 48197, 49207, 50211, 51219, 52227, 53232, 54240, 55248, 56256, 57261, 58268, 59277, 60284, 61292, 62298, 63305, 64313, 65317, 66327, 67334, 68340, 69350, 70355, 71363, 72371, 73375, 74384, 75390, 76400, 77404, 78411, 79421]# noqa: E501
-    hit1 = 1 #TODO
-
-
-# 鬼连斩 : 极 귀연참 : 극
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/ebff277c02cc8b54c32635cd0d25f6f3?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill10(ActiveSkill):
-    name = "鬼连斩 : 极"
+# 鬼连击 : 极
+# swordman_male/ghostblade/ebff277c02cc8b54c32635cd0d25f6f3
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/ebff277c02cc8b54c32635cd0d25f6f3
+class Skill30(ActiveSkill):
+    """
+    学习后， 鬼连击的最后一击后追加一次交叉斩击。\n
+    [鬼连击 : 极]的技能等级与[鬼连击]的技能等级同时提升， 攻击范围同时受[鬼连击]范围的影响。
+    """
+    name = "鬼连击 : 极"
     learnLv = 30
     masterLv = 60
     maxLv = 70
@@ -197,17 +339,25 @@ class Skill10(ActiveSkill):
     rangeLv = 2
     type = "passive"
     uuid = "ebff277c02cc8b54c32635cd0d25f6f3"
+    hasVP = False
     hasUP = False
-
-    data0 = [0, 2011, 2217, 2421, 2627, 2829, 3033, 3237, 3441, 3647, 3851, 4056, 4259, 4463, 4667, 4871, 5076, 5280, 5486, 5688, 5892, 6096, 6302, 6506, 6710, 6914, 7118, 7322, 7526, 7732, 7934, 8140, 8344, 8548, 8752, 8956, 9160, 9364, 9569, 9773, 9979, 10181, 10384, 10589, 10793, 10999, 11203, 11409, 11611, 11815, 12019, 12225, 12429, 12633, 12837, 13041, 13245, 13449, 13654, 13858, 14062, 14266, 14470, 14674, 14878, 15084, 15286, 15492, 15696, 15902, 16104]# noqa: E501
+    # 交叉斩击攻击力 : {value0}% x 3
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 3
 
     def getSkillCD(self,mode=None):
-      return self.char.GetSkillByName("鬼连斩").getSkillCD(mode)
+      return self.char.GetSkillByName("鬼连击").getSkillCD(mode)
 
-# 魂破斩 혼백참
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/87a918bb22cfc959a16e0bf939bb6c24?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill11(ActiveSkill):
+# 魂破斩
+# swordman_male/ghostblade/87a918bb22cfc959a16e0bf939bb6c24
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/87a918bb22cfc959a16e0bf939bb6c24
+class Skill31(ActiveSkill):
+    """
+     聚集魂魄的力量下劈前方敌人， 造成巨大物理伤害。\n
+     在[鬼步]准备姿势下按技能键， 发动特殊功能。\n
+    - [特殊功能] -\n
+     [鬼步]的终结动作变更为[魂破斩]终结动作， 并对命中的所有敌人额外适用[魂破斩]的攻击力。
+    """
     name = "魂破斩"
     learnLv = 35
     masterLv = 60
@@ -218,33 +368,49 @@ class Skill11(ActiveSkill):
     cd = 12
     mp = [129, 1083]
     uuid = "87a918bb22cfc959a16e0bf939bb6c24"
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    vps = [
-          {
-            "name": "魂破碎灵",
-            "desc": "范围增加<br/>取消僵直",
-            "explain": "[魂破斩]<br/>攻击范围+25%<br/><br/>[鬼步]和剑术技能攻击后可以强制中断<br/>攻击后可以强制中断并立即施放[鬼步]和剑术技能"
-          },
-          {
-            "name": "冥灵断魂斩",
-            "desc": "初始化[鬼步]的冷却时间",
-            "explain": "[魂破斩]<br/>与[鬼步]连接施放时， 初始化[鬼步]冷却时间<br/>[鬼步]攻击力 -25%"
-          }
-        ]
+    # 下劈攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # [范围信息]
+    # 下斩范围比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
 
-    data0 = [0, 15695, 17286, 18878, 20472, 22064, 23657, 25248, 26838, 28433, 30024, 31617, 33207, 34802, 36395, 37986, 39578, 41171, 42762, 44355, 45947, 47538, 49131, 50726, 52316, 53907, 55500, 57093, 58685, 60276, 61869, 63462, 65055, 66645, 68240, 69830, 71424, 73016, 74607, 76199, 77792, 79386, 80975, 82569, 84161, 85754, 87345, 88938, 90528, 92123, 93716, 95306, 96899, 98492, 100085, 101673, 103268, 104859, 106452, 108045, 109637, 111230, 112821, 114414, 116006, 117597, 119190, 120783, 122376, 123966, 125561]# noqa: E501
-    hit0 = 1 #TODO
+    def vp_1(self):
+        """
+        [魂破斩]\n
+        攻击范围 +25%\n
+        [鬼步]和剑术技能攻击后可以强制中断\n
+        攻击后可以强制中断并立即施放[鬼步]和剑术技能
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [魂破斩]\n
+        与[鬼步]连接施放时， 初始化[鬼步]冷却时间\n
+        与[鬼步]连接施放时， Y轴攻击范围 +20%\n
+        [鬼步]攻击力 -25%
+        """
+        ...
 
     def effect(self, old, new):
         if self.vp == 2:
             self.associate = [{"type":"*skillRation","data":[0] + [-25]*self.maxLv,"skills":["鬼步"]}]
         return super().effect(old, new)
 
-
-
-# 共鸣 : 鬼灵斩 합격 : 월령참
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/aa51c4ddf1659092fa9ed612b9837061?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill12(ActiveSkill):
+# 共鸣 : 鬼灵斩
+# swordman_male/ghostblade/aa51c4ddf1659092fa9ed612b9837061
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/aa51c4ddf1659092fa9ed612b9837061
+class Skill32(ActiveSkill):
+    """
+    与幻鬼一起挥剑， 对大范围内的敌人造成巨大物理伤害。\n
+    在剑影与幻鬼分离的状态下施放[共鸣 : 鬼灵斩]时，  幻鬼中断当前的动作并在原地立即施放鬼灵斩。\n
+    在决斗场中， 施放时不适用霸体， 在分离状态下使用时攻击力减少， 且无法攻击倒地的敌人。
+    """
     name = "共鸣 : 鬼灵斩"
     learnLv = 35
     masterLv = 60
@@ -255,27 +421,45 @@ class Skill12(ActiveSkill):
     cd = 15
     mp = [129, 1083]
     uuid = "aa51c4ddf1659092fa9ed612b9837061"
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    vps = [
-          {
-            "name": "斗鬼月斩",
-            "desc": "变更为剑术系列技能<br/>取消僵直",
-            "explain": "[共鸣：鬼灵斩]<br/>变现为剑术系列技能<br/><br/>施放时不会出现幻鬼<br/>可以强制中断[鬼步]和剑术技能的施放后僵直并施放[共鸣：鬼灵斩]<br/>可以强制中断[共鸣：鬼灵斩]的施放后僵直并施放[鬼步]和剑术技能"
-          },
-          {
-            "name": "黑鬼月斩",
-            "desc": "变更为幻鬼系列技能<br/>施放时间减少<br/>范围增加",
-            "explain": "[共鸣：鬼灵斩]<br/>变更为幻鬼系列技能<br/>施放时幻鬼出现，大范围斩击并击退敌人<br/><br/>攻击范围+25%"
-          }
-        ]
+    # 鬼灵斩攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # [范围信息]
+    # 鬼灵斩范围比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
 
-    data0 = [0, 17834, 19643, 21453, 23264, 25073, 26882, 28692, 30503, 32309, 34119, 35928, 37739, 39546, 41358, 43167, 44976, 46787, 48594, 50405, 52212, 54024, 55833, 57642, 59451, 61260, 63069, 64880, 66689, 68499, 70307, 72119, 73925, 75735, 77546, 79355, 81165, 82974, 84785, 86592, 88401, 90212, 92021, 93830, 95640, 97451, 99258, 101067, 102878, 104687, 106496, 108306, 110115, 111924, 113735, 115544, 117351, 119162, 120971, 122781, 124589, 126401, 128211, 130017, 131828, 133637, 135447, 137255, 139067, 140876, 142683]# noqa: E501
-    hit0 = 1 #TODO
+    def vp_1(self):
+        """
+        [共鸣 : 鬼灵斩]\n
+        变更为剑术系列技能\n
+        施放时不会出现幻鬼\n
+        可以强制中断[鬼步]和剑术技能的施放后僵直， 并施放[共鸣 : 鬼灵斩]\n
+        可以强制中断[共鸣 : 鬼灵斩]的施放后僵直， 并施放[鬼步]和剑术技能
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [共鸣 : 鬼灵斩]\n
+        变更为幻鬼系列技能\n
+        施放时幻鬼出现， 斩击并击退敌人\n
+        攻击范围 +30%
+        """
+        ...
 
-# 幻鬼 : 回天 원귀 : 회천
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/863295a0fc634cf5fcc01e82a735fd6b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill13(ActiveSkill):
+# 幻鬼 : 回天
+# swordman_male/ghostblade/863295a0fc634cf5fcc01e82a735fd6b
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/863295a0fc634cf5fcc01e82a735fd6b
+class Skill33(ActiveSkill):
+    """
+    幻鬼发动回旋斩击， 对周围敌人造成巨大物理伤害。\n
+    施放剑术技能过程中使用该技能时， 可以无施放动作立即出现幻鬼攻击敌人。\n
+    在决斗场中， 无法在[格挡]过程中使用。
+    """
     name = "幻鬼 : 回天"
     learnLv = 40
     masterLv = 60
@@ -286,32 +470,54 @@ class Skill13(ActiveSkill):
     cd = 20
     mp = [170, 1428]
     uuid = "863295a0fc634cf5fcc01e82a735fd6b"
-    vps = [
-          {
-            "name": "回天 : 狂怒",
-            "desc": "追加聚集敌人<br/>可多次发动",
-            "explain": "[幻鬼 : 回天]<br/>幻鬼在前方出现并进行旋转攻击， 生成黑色风暴<br/>黑色风暴对敌人造成多段伤害并吸附至风暴中心<br/>- 旋转斩击、终结斩击攻击力 -75%<br/>-  黑色风暴多段攻击次数 : 20次<br/>- 总攻击力相同<br/><br/>变更为可填充2次的技能<br/>- 每次填充冷却时间 : 10秒<br/>- 单次攻击力 -50% "
-          },
-          {
-            "name": "幻鬼 : 回天",
-            "desc": "施放时间减少<br/>变更为单次攻击",
-            "explain": "[幻鬼 : 回天]<br/>幻鬼出现， 大范围挥剑向前方发射巨大的剑气<br/>- 总攻击力相同 "
-          }
-        ]
-    data0 = [0, 8067, 8882, 9702, 10520, 11339, 12158, 12975, 13794, 14612, 15429, 16250, 17067, 17886, 18704, 19520, 20340, 21158, 21977, 22794, 23615, 24431, 25250, 26067, 26886, 27705, 28524, 29340, 30161, 30977, 31797, 32615, 33434, 34253, 35067, 35888, 36707, 37524, 38343, 39161, 39978, 40799, 41615, 42435, 43253, 44072, 44889, 45707, 46526, 47345, 48162, 48983, 49800, 50616, 51435, 52254, 53073, 53891, 54708, 55526, 56346, 57164, 57983, 58802, 59619, 60437, 61256, 62073, 62894, 63710, 64530]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 12098, 13326, 14555, 15782, 17009, 18236, 19464, 20690, 21918, 23145, 24372, 25599, 26828, 28056, 29283, 30510, 31739, 32966, 34194, 35420, 36648, 37874, 39102, 40329, 41556, 42785, 44013, 45242, 46467, 47694, 48923, 50150, 51377, 52605, 53832, 55061, 56288, 57516, 58742, 59969, 61196, 62423, 63651, 64880, 66107, 67334, 68562, 69791, 71018, 72243, 73472, 74700, 75927, 77154, 78383, 79608, 80837, 82064, 83291, 84518, 85746, 86973, 88200, 89429, 90657, 91883, 93111, 94340, 95568, 96795]# noqa: E501
-    hit1 = 1 #TODO
+    # 回旋斩攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 终结斩击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
 
     def vp_1(self):
+        """
+        [幻鬼 : 回天]\n
+        幻鬼出现在前方并进行旋转攻击， 生成黑色风暴\n
+        黑色风暴会对敌人造成多段伤害并吸附至风暴中心\n
+        - 旋转斩击、 终结斩击攻击力 -75%\n
+        - 黑色风暴多段攻击次数 : 20次\n
+        - 总攻击力相同\n
+        变更为可填充2次的技能\n
+        - 每次填充冷却时间 : 10秒\n
+        - 单次攻击力 -50%
+        """
         self.cd = 10
         self.skillRation *= 0.5
+        ...
 
+    def vp_2(self):
+        """
+        [幻鬼 : 回天]\n
+        幻鬼出现后， 向前方挥剑发射巨大的剑气\n
+        - 总攻击力相同
+        """
+        ...
 
-# 冥灵断魂斩 악귀참수
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/3153ca0e6752a6283412c59c5ec8e002?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill14(ActiveSkill):
+# 冥灵断魂斩
+# swordman_male/ghostblade/3153ca0e6752a6283412c59c5ec8e002
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/3153ca0e6752a6283412c59c5ec8e002
+class Skill34(ActiveSkill):
+    """
+     将灵魂的力量聚集于灵魂刀中， 将身边的敌人向后推并大幅度挥剑， 造成巨大物理伤害。\n
+     在[鬼步]准备姿势下按技能键， 发动特殊功能。\n
+    - [特殊功能] -\n
+     [鬼步]的终结动作变更为[冥灵断魂斩]终结动作， 并对命中的所有敌人额外适用[冥灵断魂斩]的攻击力。
+    """
     name = "冥灵断魂斩"
     learnLv = 45
     masterLv = 60
@@ -322,32 +528,48 @@ class Skill14(ActiveSkill):
     cd = 45
     mp = [299, 2511]
     uuid = "3153ca0e6752a6283412c59c5ec8e002"
-    vps = [
-          {
-            "name": "冥灵断魂斩",
-            "desc": "施放时间减少<br/>取消僵直",
-            "explain": "[冥灵断魂斩]<br/>斩击前僵直 -40%<br/><br/>[鬼步]和剑术技能攻击后可以强制中断<br/>攻击后可以强制中断并立即施放[鬼步]和剑术技能"
-          },
-          {
-            "name": "天锁断魂",
-            "desc": "初始化[鬼步]的冷却时间",
-            "explain": "[冥灵断魂斩]<br/>与[鬼步]连接施放时， 初始化[鬼步]冷却时间<br/>[鬼步]攻击力 -11%"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 48146, 53031, 57914, 62798, 67682, 72566, 77451, 82335, 87219, 92105, 96990, 101871, 106757, 111642, 116528, 121410, 126296, 131180, 136062, 140948, 145833, 150717, 155601, 160487, 165368, 170253, 175137, 180023, 184907, 189792, 194676, 199559, 204444, 209330, 214212, 219098, 223983, 228864, 233750, 238635, 243521, 248403, 253289, 258174, 263057, 267939, 272825, 277709, 282594, 287478, 292361, 297246, 302132, 307016, 311900, 316785, 321671, 326552, 331437, 336323, 341205, 346091, 350976, 355862, 360743, 365628, 370514, 375396, 380280, 385166]# noqa: E501
-    hit0 = 1 #TODO
+    # 断魂斩攻击力 : {value0}%%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # [范围信息]
+    # 断魂斩攻击范围比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+
+    def vp_1(self):
+        """
+        [冥灵断魂斩]\n
+        斩击前僵直 -40%\n
+        可以强制中断[鬼步]和剑术技能的施放后僵直， 并施放[冥灵断魂斩]\n
+        可以强制中断[冥灵断魂斩]的施放后僵直， 并施放[鬼步]和剑术技能
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [冥灵断魂斩]\n
+        与[鬼步]连接施放时， 初始化[鬼步]冷却时间\n
+        与[鬼步]连接施放时， Y轴攻击范围 +20%\n
+        [鬼步]攻击力 -11%
+        """
+        ...
 
     def effect(self, old, new):
         if self.vp == 2:
             self.associate = [{"type":"*skillRation","data":[0] + [-11]*self.maxLv,"skills":["鬼步"]}]
         return super().effect(old, new)
 
-
-
-# 鬼夜 야차라 불리는 자
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/02ac8e048f7bbcfa616e74ac68988872?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill15(PassiveSkill):
+# 鬼夜
+# swordman_male/ghostblade/02ac8e048f7bbcfa616e74ac68988872
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/02ac8e048f7bbcfa616e74ac68988872
+class Skill35(PassiveSkill):
+    """
+    拥有人类外形的冷酷无情的斗鬼， 人们称之为“夜刀神”。\n
+    学习后， 增加夜刀神的基本攻击力、 [鬼斩]、 [三段刃]和转职后技能的攻击力、 物理暴击率。
+    """
     name = "鬼夜"
     learnLv = 48
     masterLv = 40
@@ -355,16 +577,23 @@ class Skill15(PassiveSkill):
     position = 5
     rangeLv = 3
     uuid = "02ac8e048f7bbcfa616e74ac68988872"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 5.5, 7.5, 9.5, 11.5, 13.5, 15.5, 17.5, 19.5, 21.5, 23.5, 25.5, 27.5, 29.5, 31.5, 33.5, 35.5, 37.5, 39.5, 41.5, 43.5, 45.5, 47.5, 49.5, 51.5, 53.5, 55.5, 57.5, 59.5, 61.5, 63.5, 65.5, 67.5, 69.5, 71.5, 73.5, 75.5, 77.5, 79.5, 81.5, 83.5, 85.5, 87.5, 89.5, 91.5, 93.5, 95.5, 97.5, 99.5, 101.5, 103.5]# noqa: E501
-    hit0 = 1 #TODO
+    # 基本攻击力和技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 物理暴击率增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    associate = [{"data":data0}]
 
-    associate = [{"type":"*skillRation","data":data0}]
-
-
-# 冥夜鬼天杀 귀천살(鬼天殺)
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/ca2536eb56df0e812c88c59cabd38be0?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill16(ActiveSkill):
+# 冥夜鬼天杀
+# swordman_male/ghostblade/ca2536eb56df0e812c88c59cabd38be0
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/ca2536eb56df0e812c88c59cabd38be0
+class Skill36(ActiveSkill):
+    """
+    夜刀神凝聚灵魂之力， 周围陷入黑暗， 幻鬼在前方出现。\n
+    然后， 夜刀神和幻鬼交叉斩击敌人， 造成巨大物理伤害。
+    """
     name = "冥夜鬼天杀"
     learnLv = 50
     masterLv = 40
@@ -375,14 +604,21 @@ class Skill16(ActiveSkill):
     cd = 145
     mp = [998, 8383]
     uuid = "ca2536eb56df0e812c88c59cabd38be0"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 22575, 27809, 33044, 38280, 43514, 48748, 53983, 59217, 64452, 69687, 74922, 80156, 85392, 90627, 95861, 101097, 106330, 111565, 116799, 122034, 127269, 132503, 137739, 142974, 148207, 153443, 158677, 163912, 169148, 174382, 179617, 184851, 190086, 195320, 200555, 205790, 211024, 216260, 221496, 226729, 231966, 237200, 242435, 247671, 252904, 258138, 263373, 268608, 273843, 279078]# noqa: E501
+    # 交叉斩击攻击力 : {value0}% x 4
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 4
 
-
-# 幻鬼 : 奈落 원귀 : 격살
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/7f9ffcd296361f1367b8b74e773d5e99?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill17(ActiveSkill):
+# 幻鬼 : 奈落
+# swordman_male/ghostblade/7f9ffcd296361f1367b8b74e773d5e99
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/7f9ffcd296361f1367b8b74e773d5e99
+class Skill37(ActiveSkill):
+    """
+    幻鬼从一定范围内最强的敌人上方下劈。\n
+    施放剑术技能过程中使用该技能时， 可以无施放动作立即出现幻鬼攻击敌人。
+    """
     name = "幻鬼 : 奈落"
     learnLv = 60
     masterLv = 40
@@ -393,34 +629,49 @@ class Skill17(ActiveSkill):
     cd = 20
     mp = [334, 935]
     uuid = "7f9ffcd296361f1367b8b74e773d5e99"
-    vps = [
-          {
-            "name": "幻鬼 : 奈落",
-            "desc": "追加强制控制功能<br/>攻击力/冷却时间减少",
-            "explain": "[幻鬼 : 奈落]<br/>使被怨鬼直接击中的敌人进入强制控制状态， 效果持续3秒<br/><br/>基本冷却时间变更为10秒<br/>- 总攻击力 -50%"
-          },
-          {
-            "name": "役使鬼神",
-            "desc": "范围增加<br/>攻击力和冷却时间增加",
-            "explain": "[幻鬼 : 奈落]<br/>识别敌人范围 + 50%<br/>下劈冲击波范围 + 30%<br/><br/>基本冷却时间变更为40秒<br/>总攻击力 + 100%"
-          }
-        ]
-    data0 = [0, 26316, 28989, 31659, 34329, 36999, 39669, 42338, 45008, 47678, 50349, 53018, 55689, 58361, 61029, 63699, 66369, 69039, 71709, 74379, 77049, 79718, 82388, 85059, 87731, 90399, 93069, 95739, 98411, 101079, 103749, 106421, 109088, 111758, 114429, 117101, 119771, 122441, 125111, 127779, 130449, 133119, 135791, 138459, 141131, 143799, 146469, 149141, 151811, 154481, 157151]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 下劈攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # [范围信息]
+    # 锁定敌人范围 : {value1}px
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
 
     def vp_1(self):
+        """
+        [幻鬼 : 奈落]\n
+        使被幻鬼直接击中的敌人进入强制控制状态， 效果持续3秒\n
+        - 基本冷却时间变更为10秒\n
+        - 总攻击力 -50%
+        """
         self.cd = 10
         self.skillRation *= 0.5
+        ...
 
     def vp_2(self):
+        """
+        [幻鬼 : 奈落]\n
+        识别敌人范围 +50%\n
+        下劈冲击波范围 +30%\n
+        - 基本冷却时间变更为40秒\n
+        总攻击力 +100%
+        """
         self.cd = 40
         self.skillRation *= 2.0
+        ...
 
-
-
-# 共鸣 : 聚渊 합격 : 나락참
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/c1dd8b776fb1dd24c6373c678ef1dd2e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill18(ActiveSkill):
+# 共鸣 : 聚渊
+# swordman_male/ghostblade/c1dd8b776fb1dd24c6373c678ef1dd2e
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/c1dd8b776fb1dd24c6373c678ef1dd2e
+class Skill38(ActiveSkill):
+    """
+    幻鬼向前方移动， 攻击敌人后用封印符强制控制敌人。\n
+    随后， 夜刀神扔出灵魂刀， 吸收鬼气并将敌人聚到一起， 与幻鬼一起发动强力斩击， 造成巨大物理伤害。\n
+    在夜刀神与幻鬼分离的状态下施放[共鸣 : 聚渊]时， 幻鬼中断当前动作并向夜刀神方向移动并攻击敌人。
+    """
     name = "共鸣 : 聚渊"
     learnLv = 70
     masterLv = 40
@@ -431,32 +682,58 @@ class Skill18(ActiveSkill):
     cd = 50
     mp = [686, 1440]
     uuid = "c1dd8b776fb1dd24c6373c678ef1dd2e"
-    vps = [
-          {
-            "name": "聚渊 : 极",
-            "desc": "无敌强化<br/>聚集敌人强化<br/>范围增加",
-            "explain": "[共鸣 : 聚渊]<br/>施放技能时进入无敌状态<br/><br/>灵魂刀吸收范围 + 30%<br/>剑影、 幻鬼终结攻击范围 + 30%<br/>终结攻击后剑影和幻鬼发动追加斩击<br/>- 总攻击力相同"
-          },
-          {
-            "name": "共鸣 : 聚渊",
-            "desc": "施放时间减少<br/>变更为单次攻击",
-            "explain": "[共鸣 : 聚渊]<br/>剑影和幻鬼摆出准备姿势后向前方快速移动， 对敌人发动一闪<br/>合算幻鬼移动斩击、 剑影最后一击、 幻鬼最后一击攻击力<br/>- 总攻击力相同"
-          }
-        ]
-    data0 = [0, 6747, 7433, 8118, 8802, 9486, 10170, 10853, 11540, 12224, 12909, 13595, 14277, 14963, 15648, 16332, 17015, 17702, 18387, 19071, 19755, 20439, 21123, 21810, 22496, 23178, 23862, 24548, 25233, 25916, 26603, 27287, 27969, 28656, 29340, 30024, 30710, 31394, 32078, 32763, 33449, 34131, 34815, 35501, 36188, 36870, 37556, 38240, 38924, 39611, 40295]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 26993, 29730, 32468, 35208, 37947, 40685, 43422, 46161, 48902, 51641, 54375, 57117, 59855, 62594, 65330, 68070, 70809, 73547, 76284, 79023, 81762, 84501, 87237, 89978, 92715, 95454, 98190, 100931, 103670, 106407, 109146, 111884, 114623, 117362, 120099, 122838, 125577, 128316, 131055, 133793, 136532, 139269, 142008, 144749, 147485, 150224, 152961, 155702, 158439, 161177]# noqa: E501
-    hit1 = 1 #TODO
+    # 幻鬼移动斩击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 幻鬼终结攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    # 夜刀神终结攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
+    # [范围信息]
+    # 夜刀神终结下斩范围比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
 
-    data2 = [0, 33741, 37164, 40587, 44012, 47432, 50856, 54279, 57704, 61125, 64548, 67973, 71396, 74819, 78242, 81665, 85086, 88509, 91934, 95357, 98780, 102201, 105626, 109049, 112472, 115895, 119318, 122742, 126164, 129588, 133010, 136434, 139856, 143280, 146705, 150126, 153549, 156971, 160395, 163815, 167240, 170664, 174087, 177510, 180932, 184356, 187779, 191202, 194627, 198048, 201473]# noqa: E501
-    hit2 = 1 #TODO
+    def vp_1(self):
+        """
+        [共鸣 : 聚渊]\n
+        施放技能时进入无敌状态\n
+        灵魂刀吸收范围 +30%\n
+        夜刀神、 幻鬼终结攻击范围 +30%\n
+        终结攻击后夜刀神和幻鬼发动追加斩击\n
+        - 总攻击力相同
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [共鸣 : 聚渊]\n
+        夜刀神和幻鬼摆出准备姿势后向前方快速移动， 对敌人发动一闪\n
+        合算幻鬼移动斩击、 夜刀神终结攻击、 幻鬼终结攻击攻击力\n
+        - 总攻击力相同
+        """
+        ...
 
-
-# 鬼咲 악귀현신
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/481348575c1e141925c836b59c5db3ca?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill19(PassiveSkill):
+# 鬼咲
+# swordman_male/ghostblade/481348575c1e141925c836b59c5db3ca
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/481348575c1e141925c836b59c5db3ca
+class Skill39(PassiveSkill):
+    """
+    夜见罗刹以压倒性的力量压制无数敌人和鬼神。\n
+    学习后， 增加夜见罗刹的基本攻击力、 [鬼斩]、 [三段刃]和转职后技能的攻击力， 强化移动技能， 并增强与幻鬼的灵魂共鸣， 随心所欲地使用幻鬼技能。\n
+    - [移动技能强化] -\n
+    三段刃 : 冷却时间 -1秒\n
+    鬼步 : 冷却时间 -1秒； Y轴攻击范围增加\n
+    - [幻鬼技能强化] -\n
+    基本攻击、 前冲攻击中，可以无施放动作立即连接幻鬼技能。 \n
+    站立状态下， 被攻击时可以使用幻鬼技能和[幻鬼步]。 \n
+    [戴上面具， 化身罗刹。]
+    """
     name = "鬼咲"
     learnLv = 75
     masterLv = 40
@@ -464,18 +741,28 @@ class Skill19(PassiveSkill):
     position = 5
     rangeLv = 3
     uuid = "481348575c1e141925c836b59c5db3ca"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122]# noqa: E501
+    # 基本攻击和技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # [三段刃]、 [鬼步]冷却时间减少量 : 1秒
+    # [鬼步]Y轴攻击范围增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
 
     associate = [
         {"type":"*skillRation","data":data0},
         {"type":"+cd","data":[0] + [-1]*maxLv,"skills":["鬼步"],"ratio":1},
     ]
 
-
-# 幻鬼 : 大回天 원귀 : 신풍
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/5f4c55fe2ebdf0623bd76d4fda872ddc?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill20(ActiveSkill):
+# 幻鬼 : 大回天
+# swordman_male/ghostblade/5f4c55fe2ebdf0623bd76d4fda872ddc
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/5f4c55fe2ebdf0623bd76d4fda872ddc
+class Skill40(ActiveSkill):
+    """
+    幻鬼快速向前方旋转突进， 斩击周围敌人， 造成多段物理伤害； 并且将击中的敌人聚集到X轴上。\n
+    施放剑术技能过程中使用该技能时， 可以无施放动作立即出现幻鬼攻击敌人。
+    """
     name = "幻鬼 : 大回天"
     learnLv = 75
     masterLv = 40
@@ -486,30 +773,53 @@ class Skill20(ActiveSkill):
     cd = 40
     mp = [568, 4402]
     uuid = "5f4c55fe2ebdf0623bd76d4fda872ddc"
-    vps = [
-          {
-            "name": "黑风闪",
-            "desc": "聚集敌人强化<br/>范围增加<br/>施放时间减少",
-            "explain": "[幻鬼 : 大回天]<br/>反方向生成幻鬼， 向剑影吸附敌人<br/>可以吸附霸体状态的敌人<br/><br/>攻击范围 +30%<br/><br/>幻鬼攻击速度 + 50%"
-          },
-          {
-            "name": "黑影岛",
-            "desc": "变更为无法默认使用的技能<br/>剑术攻击时可以自动使用<br/>赋予速度增益效果<br/>可多次发动",
-            "explain": "[幻鬼 : 大回天]<br/>变更为无法普通施放的技能， 通过剑术技能攻击时生成黑影岛， 对敌人追加多段攻击伤害<br/>- 总攻击力相同<br/><br/>适用多段伤害时， 15秒内剑影的攻击速度 + 5% (最多叠加3次)<br/><br/>变更为可填充4次的技能<br/>- 每次填充冷却时间 : 10秒<br/>- 单次攻击力 -75%"
-          }
-        ]
-    data0 = [0, 20968, 23096, 25223, 27349, 29478, 31604, 33731, 35858, 37988, 40114, 42241, 44368, 46494, 48623, 50750, 52878, 55004, 57132, 59259, 61387, 63513, 65641, 67768, 69896, 72023, 74150, 76277, 78406, 80532, 82659, 84786, 86913, 89041, 91168, 93296, 95422, 97550, 99677, 101805, 103931, 106059, 108186, 110315, 112441, 114568, 116695, 118822, 120951, 123078, 125205]# noqa: E501
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 旋转斩击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 3
+    # 旋转斩击多段攻击次数 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # [范围信息]
+    # 回旋斩范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+
+    def vp_1(self):
+        """
+        [幻鬼 : 大回天]\n
+        幻鬼出现在对面， 向剑影方向发起攻击并吸附敌人\n
+        可以吸附霸体状态的敌人\n
+        攻击范围 +30%\n
+        幻鬼攻击速度 +50%
+        """
+        ...
 
     def vp_2(self):
+        """
+        [幻鬼 : 大回天]\n
+        变更为无法普通施放的技能， 剑术技能攻击时生成黑影闪， 对敌人追加多段攻击伤害\n
+        - 总攻击力相同\n
+        适用多段伤害时， 15秒内剑影的攻击速度 +5% (最多叠加3次)\n
+        变更为可填充4次的技能\n
+        - 每次填充冷却时间 : 10秒\n
+        - 单次攻击力 -75%
+        """
         self.cd = 10
         self.skillRation *= 0.25
+        ...
 
-
-
-# 裂魂乱舞 악귀연무
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/95b58ec89893dd9e50da1281ebe57175?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill21(ActiveSkill):
+# 裂魂乱舞
+# swordman_male/ghostblade/95b58ec89893dd9e50da1281ebe57175
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/95b58ec89893dd9e50da1281ebe57175
+class Skill41(ActiveSkill):
+    """
+     连续斩击前方敌人， 然后旋转融合的灵魂刀， 对范围内的敌人造成巨大物理伤害。\n
+     在[鬼步]准备姿势下按技能键， 发动特殊功能。\n
+    - [特殊功能] -\n
+     [鬼步]的终结动作变更为[裂魂乱舞]终结动作， 并对命中的所有敌人额外适用[裂魂乱舞]的攻击力。
+    """
     name = "裂魂乱舞"
     learnLv = 80
     masterLv = 40
@@ -520,38 +830,66 @@ class Skill21(ActiveSkill):
     cd = 45
     mp = [823, 6172]
     uuid = "95b58ec89893dd9e50da1281ebe57175"
-    vps = [
-          {
-            "name": "裂魂乱舞",
-            "desc": "各个斩击攻击分开使用<br/>取消僵直<br/>剑术连击强化",
-            "explain": "[裂魂乱舞]<br/>删除旋转攻击、 最后一击<br/>第1、 2、 3次斩击动作变更<br/>可分别使用各斩击攻击<br/>- 总攻击力相同<br/>- 斩击攻击间可输入时间 : 10秒<br/><br/>剑术技能攻击后可强制中断并施放<br/>攻击后可强制中断并使用剑术技能<br/><br/>连接施放剑术技能时， 该剑术技能施放速度 + 30%"
-          },
-          {
-            "name": "鬼灭一闪",
-            "desc": "施放时间减少<br/>范围增加",
-            "explain": "[裂魂乱舞]<br/>删除第1、 2、 3次斩击攻击<br/>- 旋转斩击攻击力 + 60%<br/>- 终结斩击攻击力 + 72%<br/>- 总攻击力相同<br/><br/>增加旋转攻击时的移动距离<br/><br/>攻击范围 35%"
-          }
-        ]
-    data0 = [0, 4500, 4957, 5413, 5869, 6327, 6782, 7239, 7696, 8152, 8609, 9065, 9522, 9978, 10434, 10891, 11348, 11803, 12260, 12718, 13173, 13630, 14087, 14543, 14999, 15456, 15913, 16369, 16826, 17282, 17739, 18195, 18651, 19109, 19565, 20021, 20478, 20935, 21390, 21847, 22305, 22760, 23217, 23674, 24130, 24586, 25043, 25499, 25956, 26413, 26869]# noqa: E501
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 第一次斩击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 1
-
-    data1 = [0, 13500, 14869, 16239, 17608, 18978, 20348, 21717, 23087, 24457, 25826, 27195, 28564, 29934, 31303, 32674, 34044, 35412, 36782, 38152, 39522, 40891, 42261, 43631, 44999, 46369, 47739, 49108, 50478, 51848, 53218, 54586, 55956, 57326, 58695, 60065, 61435, 62804, 64173, 65543, 66914, 68283, 69653, 71023, 72392, 73762, 75131, 76500, 77870, 79240, 80610]# noqa: E501
+    # 第二次斩击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
     hit1 = 1
-
-    data2 = [0, 18000, 19826, 21651, 23479, 25305, 27130, 28956, 30783, 32608, 34434, 36261, 38087, 39913, 41738, 43564, 45392, 47216, 49044, 50871, 52696, 54522, 56348, 58173, 60001, 61827, 63652, 65479, 67305, 69130, 70956, 72783, 74609, 76435, 78260, 80087, 81914, 83740, 85567, 87393, 89218, 91044, 92871, 94696, 96523, 98349, 100175, 102001, 103826, 105652, 107479]# noqa: E501
+    # 第三次斩击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
     hit2 = 1
-
-    data3 = [0, 11249, 12392, 13532, 14673, 15815, 16956, 18097, 19239, 20380, 21522, 22662, 23804, 24945, 26086, 27229, 28369, 29511, 30652, 31794, 32934, 34076, 35217, 36359, 37500, 38641, 39781, 40923, 42066, 43207, 44348, 45488, 46631, 47771, 48914, 50054, 51196, 52337, 53478, 54619, 55760, 56903, 58044, 59186, 60326, 61467, 62609, 63751, 64892, 66033, 67173]# noqa: E501
+    # 旋转斩击攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
     hit3 = 2
-
-    data4 = [0, 31500, 34696, 37891, 41087, 44283, 47478, 50674, 53870, 57065, 60262, 63458, 66653, 69849, 73044, 76239, 79435, 82630, 85826, 89022, 92217, 95414, 98609, 101805, 105001, 108196, 111392, 114588, 117783, 120979, 124175, 127370, 130567, 133762, 136958, 140154, 143349, 146545, 149741, 152936, 156132, 159326, 162522, 165719, 168914, 172110, 175306, 178501, 181697, 184893, 188088]# noqa: E501
+    # 终结斩击攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
     hit4 = 1
+    # [范围信息]
+    # 连舞攻击范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
 
+    def vp_1(self):
+        """
+        [裂魂乱舞]\n
+        删除旋转攻击、 最后一击\n
+        第1、 2、 3次斩击动作变更\n
+        可以分别施放每次斩击\n
+        - 总攻击力相同\n
+        - 斩击攻击间可输入时间 : 10秒\n
+        可以强制中断剑术技能施放后僵直， 并施放该技能\n
+        可以强制中断施放后僵直， 并施放剑术技能\n
+        连接施放剑术技能时， 该剑术技能施放速度 +30%
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [裂魂乱舞]\n
+        删除第1、 2、 3次斩击攻击\n
+        - 旋转斩击攻击力 +60%\n
+        - 终结斩击攻击力 +72%\n
+        - 总攻击力相同\n
+        增加旋转攻击时的移动距离\n
+        攻击范围 +35%
+        """
+        ...
 
-# 鬼隐 · 夜奈落 참살(慘殺)
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/573723c8c0614f5b1218ca9ff992115b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill22(ActiveSkill):
+# 鬼隐 · 夜奈落
+# swordman_male/ghostblade/573723c8c0614f5b1218ca9ff992115b
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/573723c8c0614f5b1218ca9ff992115b
+class Skill42(ActiveSkill):
+    """
+    施放时， 夜见罗刹和幻鬼爆发鬼气， 让世界笼罩在黑暗之中。 \n
+    然后， 幻鬼从一定范围内最强的敌人上方下劈， 造成巨大物理伤害， 并与夜见罗刹一起连续斩击敌人。\n
+    夜见罗刹与幻鬼攻击时可以强制控制敌人， 发动终结攻击时解除控制。\n
+    在夜见罗刹和幻鬼分离的状态下施放时， 增加索敌范围。\n
+    [永堕黑暗吧！]
+    """
     name = "鬼隐 · 夜奈落"
     learnLv = 85
     masterLv = 40
@@ -562,23 +900,35 @@ class Skill22(ActiveSkill):
     cd = 180
     mp = [2329, 4658]
     uuid = "573723c8c0614f5b1218ca9ff992115b"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 29744, 36640, 43538, 50435, 57332, 64230, 71126, 78024, 84921, 91819, 98715, 105614, 112511, 119407, 126305, 133202, 140099, 146996, 153894, 160791, 167689, 174586, 181484, 188380, 195277, 202175, 209070, 215969, 222866, 229763, 236660, 243558, 250454, 257351, 264249, 271145, 278044, 284941, 291839, 298735, 305633, 312530, 319427, 326325, 333222, 340119, 347016, 353914, 360810, 367708]# noqa: E501
-    hit0 = 1 #TODO
+    # 索敌范围 : {value0}px
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 第一次下劈攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    # 第二次横斩攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
+    # 第三次横斩攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    hit3 = 1
+    # 终结交叉斩击攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    hit4 = 1
 
-    data1 = [0, 29744, 36640, 43538, 50435, 57332, 64230, 71126, 78024, 84921, 91819, 98715, 105614, 112511, 119407, 126305, 133202, 140099, 146996, 153894, 160791, 167689, 174586, 181484, 188380, 195277, 202175, 209070, 215969, 222866, 229763, 236660, 243558, 250454, 257351, 264249, 271145, 278044, 284941, 291839, 298735, 305633, 312530, 319427, 326325, 333222, 340119, 347016, 353914, 360810, 367708]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 29744, 36640, 43538, 50435, 57332, 64230, 71126, 78024, 84921, 91819, 98715, 105614, 112511, 119407, 126305, 133202, 140099, 146996, 153894, 160791, 167689, 174586, 181484, 188380, 195277, 202175, 209070, 215969, 222866, 229763, 236660, 243558, 250454, 257351, 264249, 271145, 278044, 284941, 291839, 298735, 305633, 312530, 319427, 326325, 333222, 340119, 347016, 353914, 360810, 367708]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 109061, 134351, 159642, 184931, 210221, 235511, 260800, 286091, 311380, 336670, 361960, 387249, 412540, 437830, 463119, 488409, 513699, 538987, 564278, 589569, 614858, 640148, 665437, 690727, 716018, 741307, 766597, 791886, 817176, 842466, 867757, 893045, 918335, 943626, 968915, 994206, 1019495, 1044784, 1070075, 1095364, 1120654, 1145944, 1171233, 1196524, 1221814, 1247102, 1272393, 1297683, 1322973, 1348263]# noqa: E501
-    hit3 = 1 #TODO
-
-
-# 睥睨万物 악귀무쌍
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/38c485cc41f46a7959ae4336325aa45c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill23(PassiveSkill):
+# 睥睨万物
+# swordman_male/ghostblade/38c485cc41f46a7959ae4336325aa45c
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/38c485cc41f46a7959ae4336325aa45c
+class Skill43(PassiveSkill):
+    """
+    极诣·剑影达到睥睨万物、 战无不胜的境界。\n
+    增加[鬼斩]、 [三段刃]、 基本攻击力和除[幻鬼 : 连击]之外的转职技能攻击力， 部分技能附加特殊效果。\n
+    [幻鬼步] : 空中、 倒地状态下被攻击时可施放 (适用独立冷却时间)\n
+    [幻鬼 : 连击] : 增加空中范围、 斩击速度， 追加终结斩击\n
+    [我们即是万物的梦魇。]
+    """
     name = "睥睨万物"
     learnLv = 95
     masterLv = 40
@@ -586,14 +936,42 @@ class Skill23(PassiveSkill):
     position = 5
     rangeLv = 3
     uuid = "38c485cc41f46a7959ae4336325aa45c"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
+    # [鬼斩]、 [三段刃]、 基本攻击力和除[幻鬼 : 连击]之外的转职技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # [幻鬼 : 连击]
+    # 追加斩击攻击力 : 总攻击力的 {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 攻击范围增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 斩击速度增加率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [幻鬼步]
+    # 空中、 倒地状态下被攻击时施放冷却时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
 
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"data":data0}]
 
-# 无式·极影剑 무식 : 신귀극참
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/7a3fc9d473e8ffe21dd900ddf228a437?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill24(ActiveSkill):
+# 无式·极影剑
+# swordman_male/ghostblade/7a3fc9d473e8ffe21dd900ddf228a437
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/7a3fc9d473e8ffe21dd900ddf228a437
+class Skill44(ActiveSkill):
+    """
+    极诣·剑影的新剑术。\n
+    根据不同的使用方法， 施展不同系列的剑术攻击敌人。\n
+    普通施放\n
+    [共鸣系列]\n
+    剑影和幻鬼快速连续斩击前方敌人。\n
+    基本攻击和使用剑术技能时施放\n
+    [幻鬼系列]\n
+    幻鬼出现， 快速连续斩击前方敌人。\n
+    [鬼步]姿势下施放\n
+    [剑术系列]\n
+    [鬼步]的终结动作变更为[无式·极影剑]的终结动作， 并对命中的所有敌人额外适用[无式·极影剑]的攻击力。\n
+    [牵绊是一种无用的情感。]
+    """
     name = "无式·极影剑"
     learnLv = 95
     masterLv = 40
@@ -604,23 +982,28 @@ class Skill24(ActiveSkill):
     cd = 60
     mp = [1097, 8229]
     uuid = "7a3fc9d473e8ffe21dd900ddf228a437"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 8361, 9209, 10057, 10906, 11755, 12602, 13452, 14299, 15148, 15997, 16845, 17694, 18540, 19389, 20237, 21086, 21934, 22782, 23631, 24479, 25327, 26175, 27025, 27873, 28721, 29569, 30418, 31265, 32114, 32961, 33811, 34658, 35507, 36354, 37204, 38053, 38900, 39750, 40597, 41446, 42293, 43143, 43990, 44838, 45686, 46535, 47384, 48232, 49080, 49929]# noqa: E501
+    # [共鸣系列]
+    # 剑影鬼连续斩击攻击力 : {value0}% x 5
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 5
-
-    data1 = [0, 8361, 9209, 10057, 10906, 11755, 12602, 13452, 14299, 15148, 15997, 16845, 17694, 18540, 19389, 20237, 21086, 21934, 22782, 23631, 24479, 25327, 26175, 27025, 27873, 28721, 29569, 30418, 31265, 32114, 32961, 33811, 34658, 35507, 36354, 37204, 38053, 38900, 39750, 40597, 41446, 42293, 43143, 43990, 44838, 45686, 46535, 47384, 48232, 49080, 49929]# noqa: E501
+    # 幻鬼连续斩击攻击力 : {value1}% x 5
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
     hit1 = 5
-
-    data2 = [0, 41810, 46050, 50291, 54534, 58774, 63016, 67259, 71500, 75741, 79984, 84225, 88465, 92706, 96949, 101190, 105431, 109674, 113916, 118156, 122399, 126641, 130880, 135122, 139365, 143605, 147847, 152090, 156331, 160572, 164815, 169055, 173296, 177538, 181780, 186021, 190263, 194505, 198747, 202988, 207229, 211471, 215712, 219953, 224196, 228437, 232678, 236921, 241163, 245402, 249644]# noqa: E501
+    # 剑影终结斩击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
     hit2 = 1
-
-    data3 = [0, 41810, 46050, 50291, 54534, 58774, 63016, 67259, 71500, 75741, 79984, 84225, 88465, 92706, 96949, 101190, 105431, 109674, 113916, 118156, 122399, 126641, 130880, 135122, 139365, 143605, 147847, 152090, 156331, 160572, 164815, 169055, 173296, 177538, 181780, 186021, 190263, 194505, 198747, 202988, 207229, 211471, 215712, 219953, 224196, 228437, 232678, 236921, 241163, 245402, 249644]# noqa: E501
-    hit3 = 1 #TODO
-
-    data4 = [0, 14067, 15496, 16924, 18351, 19778, 21204, 22632, 24060, 25488, 26914, 28341, 29768, 31196, 32625, 34051, 35478, 36905, 38333, 39761, 41188, 42614, 44042, 45470, 46897, 48324, 49752, 51179, 52605, 54034, 55460, 56889, 58316, 59742, 61171, 62597, 64025, 65451, 66879, 68307, 69734, 71161, 72588, 74015, 75444, 76871, 78298, 79725, 81151, 82581, 84007]# noqa: E501
+    # 幻鬼终结斩击 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    hit3 = 1
+    # [幻鬼系列]
+    # 幻鬼连续斩击攻击力 : {value4}% x 5
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
     hit4 = 0
-
-    data5 = [0, 70345, 77482, 84619, 91754, 98891, 106028, 113164, 120300, 127437, 134574, 141711, 148847, 155983, 163120, 170257, 177394, 184530, 191667, 198803, 205940, 213076, 220213, 227350, 234487, 241623, 248760, 255897, 263034, 270170, 277307, 284444, 291580, 298716, 305853, 312990, 320127, 327264, 334399, 341535, 348672, 355808, 362945, 370082, 377218, 384355, 391491, 398628, 405765, 412902, 420037]# noqa: E501
+    # 幻鬼终结斩击攻击力 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
     hit5 = 0
 
     mode = ["共鸣", "幻鬼"]
@@ -636,9 +1019,18 @@ class Skill24(ActiveSkill):
             self.hit4 = 0
             self.hit5 = 0
 
-# 灭魂极影剑·止煞 투귀혼연살(鬪鬼魂連殺)
-# https://api.neople.co.kr/df/skills/41f1cdc2ff58bb5fdc287be0db2a8df3/6166762c62f234c5f50c2d2ebc5e48d0?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill25(ActiveSkill):
+# 灭魂极影剑·止煞
+# swordman_male/ghostblade/6166762c62f234c5f50c2d2ebc5e48d0
+# 41f1cdc2ff58bb5fdc287be0db2a8df3/6166762c62f234c5f50c2d2ebc5e48d0
+class Skill45(ActiveSkill):
+    """
+    开启灵魂的世界， 剑影与幻鬼以极快的速度移动， 互相比剑。\n
+    剑影和幻鬼使刀剑横扫的敌人受到多段伤害， 然后双方交汇斩裂灵魂世界和敌人。\n
+    [呵呵呵……我与你总是如此相似。]\n
+    [三次觉醒技能]\n
+    使用三次觉醒技能时， 与关联的技能共享冷却时间。\n
+    关联的技能在冷却中时， 无法使用三次觉醒技能。
+    """
     name = "灭魂极影剑·止煞"
     learnLv = 100
     masterLv = 40
@@ -649,27 +1041,31 @@ class Skill25(ActiveSkill):
     cd = 290
     mp = [3752, 7505]
     uuid = "6166762c62f234c5f50c2d2ebc5e48d0"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 32905, 40536, 48166, 55797, 63427, 71057, 78687, 86317, 93948, 101578, 109207, 116838, 124469, 132099, 139729, 147361, 154990, 162620, 170251, 177882, 185512, 193141, 200773, 208403, 216032, 223663, 231294, 238923, 246554, 254184, 261815, 269445, 277075, 284705, 292336, 299967, 307597, 315226, 322857, 330488, 338118, 345747, 353379, 361008, 368638, 376270, 383900, 391530, 399159, 406791]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 9400, 11581, 13762, 15941, 18121, 20301, 22481, 24662, 26841, 29021, 31202, 33382, 35562, 37742, 39922, 42102, 44283, 46463, 48642, 50823, 53003, 55183, 57363, 59543, 61723, 63903, 66084, 68264, 70443, 72623, 74804, 76984, 79163, 81344, 83524, 85704, 87885, 90064, 92244, 94425, 96605, 98785, 100965, 103145, 105325, 107506, 109686, 111865, 114046, 116226]# noqa: E501
+    # 最初碰撞攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 剑影连续斩击攻击力 : {value1}% x 7
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
     hit1 = 7
-
-    data2 = [0, 32905, 40536, 48166, 55797, 63427, 71057, 78687, 86317, 93948, 101578, 109207, 116838, 124469, 132099, 139729, 147361, 154990, 162620, 170251, 177882, 185512, 193141, 200773, 208403, 216032, 223663, 231294, 238923, 246554, 254184, 261815, 269445, 277075, 284705, 292336, 299967, 307597, 315226, 322857, 330488, 338118, 345747, 353379, 361008, 368638, 376270, 383900, 391530, 399159, 406791]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 28205, 34745, 41285, 47825, 54365, 60905, 67446, 73986, 80527, 87067, 93607, 100148, 106688, 113228, 119769, 126309, 132850, 139390, 145930, 152471, 159011, 165551, 172092, 178630, 185170, 191711, 198251, 204792, 211332, 217871, 224412, 230952, 237492, 244033, 250573, 257113, 263654, 270194, 276735, 283275, 289815, 296356, 302895, 309435, 315976, 322516, 329057, 335597, 342137, 348678]# noqa: E501
+    # 幻鬼横斩攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
+    # 剑影、 幻鬼连续斩击攻击力 : {value3}% x 7
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
     hit3 = 7
+    # 终结攻击碰撞攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    hit4 = 1
+    # 终结剑击攻击力 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    hit5 = 1
+    # 终结爆炸攻击力 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    hit6 = 1
 
-    data4 = [0, 43874, 54047, 64220, 74395, 84570, 94742, 104916, 115091, 125264, 135437, 145611, 155786, 165958, 176132, 186306, 196481, 206654, 216828, 227001, 237176, 247349, 257522, 267696, 277870, 288043, 298217, 308393, 318565, 328739, 338913, 349088, 359260, 369434, 379608, 389780, 399955, 410129, 420302, 430477, 440651, 450824, 460998, 471172, 481345, 491519, 501692, 511866, 522040, 532214, 542387]# noqa: E501
-    hit4 = 1 #TODO
-
-    data5 = [0, 43874, 54047, 64220, 74395, 84570, 94742, 104916, 115091, 125264, 135437, 145611, 155786, 165958, 176132, 186306, 196481, 206654, 216828, 227001, 237176, 247349, 257522, 267696, 277870, 288043, 298217, 308393, 318565, 328739, 338913, 349088, 359260, 369434, 379608, 389780, 399955, 410129, 420302, 430477, 440651, 450824, 460998, 471172, 481345, 491519, 501692, 511866, 522040, 532214, 542387]# noqa: E501
-    hit5 = 1 #TODO
-
-    data6 = [0, 131623, 162143, 192664, 223186, 253708, 284229, 314749, 345270, 375793, 406314, 436834, 467357, 497878, 528399, 558920, 589442, 619963, 650484, 681004, 711527, 742048, 772569, 803089, 833611, 864132, 894654, 925176, 955696, 986217, 1016738, 1047262, 1077782, 1108303, 1138824, 1169346, 1199866, 1230388, 1260909, 1291431, 1321951, 1352472, 1382995, 1413516, 1444036, 1474557, 1505079, 1535601, 1566121, 1596642, 1627165]# noqa: E501
-    hit6 = 1 #TODO
 
 class classChange(Character):
     def __init__(self, equVersion):
@@ -677,6 +1073,10 @@ class classChange(Character):
         self.name = 'ghostblade'
         self.nameCN = '极诣·剑影'
         self.role = 'swordman_male'
+        self.角色 = '鬼剑士(男)'
+        self.职业 = '剑影'
+        self.jobId = '41f1cdc2ff58bb5fdc287be0db2a8df3'
+        self.jobGrowId = '3ff5b661925ac59d1ca290b05ca914cc'
 
         self.武器选项 = ['太刀', '钝器', '巨剑', '短剑']
         self.输出类型选项 = ['物理百分比']
@@ -685,23 +1085,4 @@ class classChange(Character):
         self.防具类型 = '皮甲'
         self.buff = 2.083
 
-        self.角色 = '鬼剑士(男)'
-
-        self.职业 = '剑影'
-
         super().__init__(equVersion, __name__)
-
-    def calc_weapon(self,cur:CharacterEquipInfo):
-        # 太刀精通 魔攻补正物攻
-        if cur.equInfo.itemDetailType == '太刀' and self.GetSkillByName("剑影太刀精通").lv > 0:
-            cur.equInfo.AtkP = cur.equInfo.AtkM
-            # 传世武器强化系数取所有武器的最高的1.12
-            if cur.equInfo.categorize == '传世武器':
-                value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '魔法', 1.12)
-                self.SetStatus(AtkP=value, AtkM=value)
-            else:
-                # 强化计算
-                value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '魔法')
-                self.SetStatus(AtkP=value,AtkM=value)
-        else:
-            super().calc_weapon(cur)

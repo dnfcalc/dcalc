@@ -83,7 +83,7 @@ adv = [
             {'id': 1, 'name': 'glacial_master', 'title': '知源·冰结师', 'open': True, 'class': 'GF.mage_male.glacial_master'},
             {'id': 2, 'name': 'blood_mage', 'title': '知源·血法师', 'open': False},
             {'id': 3, 'name': 'swift_master', 'title': '知源·逐风者', 'open': False},
-            {'id': 4, 'name': 'dimension_walker', 'title': '知源·次元行者', 'open': False},
+            {'id': 4, 'name': 'dimension_walker', 'title': '知源·次元行者', 'open': True, 'class': 'GF.mage_male.dimension_walker'},
         ],
     },
     {
@@ -184,7 +184,7 @@ adv = [
         'children': [
             {'id': 0, 'name': 'hitman', 'title': '苍暮·暗刃', 'open': True, 'class': 'GF.gunblader.hitman'},
             {'id': 1, 'name': 'agent', 'title': '苍暮·特工', 'open': True,'class': 'GF.gunblader.agent'},
-            {'id': 2, 'name': 'trouble_shooter', 'title': '苍暮·战线佣兵', 'open': False},
+            {'id': 2, 'name': 'trouble_shooter', 'title': '苍暮·战线佣兵', 'open': True, 'class': 'GF.gunblader.trouble_shooter'},
             {'id': 3, 'name': 'specialist', 'title': '苍暮·源能专家', 'open': True, 'class': 'GF.gunblader.specialist'},
             {'id': 4, 'name': 'empty', 'title': ''},
         ],
