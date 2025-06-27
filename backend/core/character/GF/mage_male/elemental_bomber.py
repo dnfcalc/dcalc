@@ -3,43 +3,6 @@ from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
 prefix = "mage_male/elemental_bomber/cn/skillDetail"
 
-# 魔法旋风
-# mage_male/elemental_bomber/3c5604bdbb0240b8f130f59ab40509c3
-# a5ccbaf5538981c6ef99b236c0a60b73/3c5604bdbb0240b8f130f59ab40509c3
-class Skill0(ActiveSkill):
-    """
-    向敌人发出无属性旋风并使其浮空。\n
-    转职为次元行者后， 技能类型变为独立攻击力。\n
-    - [转职为猩红法师时附加效果] -\n
-    外形发生变化， 可以吸收猩红气息。\n
-    - [转职为逐风者时附加效果] -\n
-    增加攻击力， 可以按<X>键进行追加操作。
-    """
-    name = "魔法旋风"
-    learnLv = 1
-    masterLv = 10
-    maxLv = 20
-    position = 6 #TODO
-    rangeLv = 3
-    cd = 2
-    uuid = "3c5604bdbb0240b8f130f59ab40509c3"
-    hasVP = False
-    hasUP = False
-
-    # 攻击力 : {value0}%
-    # REMOVE: data0 = [0, 118, 137, 156, 174, 193, 212, 231, 250, 268, 287, 306, 325, 344, 363, 381, 400, 419, 438, 457, 475]# noqa: E501
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
-    # 浮空力比率 : {value1}%
-    # REMOVE: data1 = [0, 131.4, 132.8, 134, 135.4, 136.5, 138, 139.1, 140.5, 141.7, 143.1, 147.7, 152.2, 157.1, 162, 166.5, 171.4, 176.2, 180.8, 185.7, 190.5]# noqa: E501
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
-    # - [转职为猩红法师后] -
-    # 猩红气息吸收率 : {value2}%
-    # REMOVE: data2 = [0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]# noqa: E501
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
-    # - [转职为逐风者后] -
-    # 攻击力增加率 : {value3}%
-    # REMOVE: data3 = [0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]# noqa: E501
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
 
 # 魔法冰球
 # mage_male/elemental_bomber/5dc7008b12a459325b548b0715c6b73c
@@ -64,6 +27,7 @@ class Skill1(ActiveSkill):
     # 攻击力 : {value0}%
     # REMOVE: data0 = [0, 695, 766, 836, 907, 977, 1048, 1118, 1189, 1259, 1330, 1400, 1471, 1541, 1612, 1682, 1753, 1823, 1894, 1964, 2035, 2105, 2176, 2246, 2317, 2387, 2458, 2528, 2599, 2669, 2740, 2810, 2881, 2951, 3022, 3092, 3163, 3233, 3304, 3374, 3445, 3515, 3586, 3656, 3727, 3797, 3868, 3938, 4009, 4079, 4150, 4220, 4291, 4361, 4432, 4502, 4573, 4643, 4714, 4784, 4855, 4925, 4996, 5066, 5137, 5207, 5278, 5348, 5419, 5489, 5560]# noqa: E501
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
     # 冰球大小 : {value1}%
     # REMOVE: data1 = [0, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278, 278]# noqa: E501
     data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
@@ -127,25 +91,6 @@ class Skill3(PassiveSkill):
     # REMOVE: data2 = [0, 6]# noqa: E501
     data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
 
-# 后跳
-# mage_male/elemental_bomber/7822d6d52e10964a6755f142c666b494
-# a5ccbaf5538981c6ef99b236c0a60b73/7822d6d52e10964a6755f142c666b494
-class Skill4(ActiveSkill):
-    """
-    使自身向后方小跳并避开敌人的攻击。
-    """
-    name = "后跳"
-    learnLv = 1
-    masterLv = 1
-    maxLv = 1
-    position = 3 #TODO
-    rangeLv = 1
-    mp = [1, 1]
-    uuid = "7822d6d52e10964a6755f142c666b494"
-    icon = "$common/$uuid"
-    hasVP = False
-    hasUP = False
-
 
 # 基础精通
 # mage_male/elemental_bomber/5a56514f35cf0270ae8d6c65f8fefd78
@@ -175,55 +120,6 @@ class Skill5(PassiveSkill):
     # 跳跃攻击力变化率 : {value2}%
     # REMOVE: data2 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
     data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
-
-# 受身蹲伏
-# mage_male/elemental_bomber/ce26c6b69d02a440a81b552bec94f03b
-# a5ccbaf5538981c6ef99b236c0a60b73/ce26c6b69d02a440a81b552bec94f03b
-class Skill6(ActiveSkill):
-    """
-    使自身在倒地状态下迅速起身并采取蹲伏姿势； 蹲伏状态下， 自身会进入无敌状态， 效果持续一定时间。
-    """
-    name = "受身蹲伏"
-    learnLv = 1
-    masterLv = 10
-    maxLv = 20
-    position = 2 #TODO
-    rangeLv = 1
-    cd = 5
-    mp = [1, 1]
-    uuid = "ce26c6b69d02a440a81b552bec94f03b"
-    icon = "$common/$uuid"
-    hasVP = False
-    hasUP = False
-
-    # 蹲伏姿势最短无敌时间 : {value0}秒
-    # REMOVE: data0 = [0, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3]# noqa: E501
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
-    # 蹲伏姿势最长无敌时间 : {value1}秒
-    # REMOVE: data1 = [0, 3, 4.5, 6, 7.5, 9, 10.5, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5, 30, 31.5]# noqa: E501
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
-    # 起身时霸体时间 : {value2}秒
-    # REMOVE: data2 = [0, 0.3, 0.33, 0.36, 0.4, 0.43, 0.46, 0.5, 0.53, 0.56, 0.6, 0.63, 0.66, 0.7, 0.73, 0.76, 0.8, 0.83, 0.86, 0.9, 0.93]# noqa: E501
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
-
-# 防具精通
-# mage_male/elemental_bomber/892ef624d8bf3d7fc045f84825fd6104
-# a5ccbaf5538981c6ef99b236c0a60b73/892ef624d8bf3d7fc045f84825fd6104
-class Skill7(PassiveSkill):
-    """
-    穿戴防具时， 可以增加各种属性。\n
-    穿戴的防具越多， 效果越强； 可根据转职， 增加不同的属性种类及数值。
-    """
-    name = "防具精通"
-    learnLv = 1
-    masterLv = 1
-    maxLv = 1
-    position = 0 #TODO
-    rangeLv = 1
-    uuid = "892ef624d8bf3d7fc045f84825fd6104"
-    icon = "$common/$uuid"
-    hasVP = False
-    hasUP = False
 
 
 # 擒拿掌
@@ -280,6 +176,8 @@ class Skill9(ActiveSkill):
     # 攻击力增加率 : {value1}%
     # REMOVE: data1 = [0, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]# noqa: E501
     data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    power1 = 0
     # -  [转职为元素爆破师后附加效果]  -
     # 冷却时间减少 : {value2}秒
     # REMOVE: data2 = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]# noqa: E501
@@ -326,31 +224,6 @@ class Skill10(ActiveSkill):
     # REMOVE: data5 = [0, 16906, 18784, 20664, 22542, 24422, 26298, 28178, 30056, 31936, 33814, 35690, 37570, 39448, 41328, 43204, 45086, 46962, 48842, 50720, 52596]# noqa: E501
     data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
 
-# 瞬移
-# mage_male/elemental_bomber/3d8f3d438405d79f8d3ed68072674d1e
-# a5ccbaf5538981c6ef99b236c0a60b73/3d8f3d438405d79f8d3ed68072674d1e
-class Skill11(ActiveSkill):
-    """
-    向指定方向快速移动一定距离。
-    """
-    name = "瞬移"
-    learnLv = 10
-    masterLv = 1
-    maxLv = 1
-    position = 5 #TODO
-    rangeLv = 2
-    cd = 1.5
-    mp = [40, 40]
-    uuid = "3d8f3d438405d79f8d3ed68072674d1e"
-    hasVP = False
-    hasUP = False
-
-    # X轴移动距离 : {value0}px
-    # REMOVE: data0 = [0, 400]# noqa: E501
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
-    # Y轴移动距离 : {value1}px
-    # REMOVE: data1 = [0, 100]# noqa: E501
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
 
 # 旋火盾
 # mage_male/elemental_bomber/8ee0099656df08a0b39225f8a21d514b
@@ -381,60 +254,6 @@ class Skill12(ActiveSkill):
     # 盾牌前进距离 : {value2}px
     # REMOVE: data2 = [0, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450, 450]# noqa: E501
     data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
-
-# 强化 - 后跳
-# mage_male/elemental_bomber/2b340542e776818b78f3212af184bd6b
-# a5ccbaf5538981c6ef99b236c0a60b73/2b340542e776818b78f3212af184bd6b
-class Skill13(PassiveSkill):
-    """
-    施放技能期间、 被击或倒地的状态下， 可以施放无敌状态的[后跳]。\n
-    该能力适用与[后跳]不同的冷却时间， 并且不受冷却时间减少效果的影响。\n
-    根据施放情况的不同(强制中断技能和被敌人攻击)， 进入不同冷却时间。\n
-    无法强制中断觉醒技能和跳跃超过一定高度的技能。
-    """
-    name = "强化 - 后跳"
-    learnLv = 10
-    masterLv = 1
-    maxLv = 1
-    position = 4 #TODO
-    rangeLv = 1
-    cd = 30
-    uuid = "2b340542e776818b78f3212af184bd6b"
-    icon = "$common/$uuid"
-    hasVP = False
-    hasUP = False
-
-    # 强制中断技能时的冷却时间 : {value0}秒
-    # REMOVE: data0 = [0, 40]# noqa: E501
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
-    # 被击或倒地期间施放时的冷却时间 : {value1}秒
-    # REMOVE: data1 = [0, 30]# noqa: E501
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
-
-# 跃翔
-# mage_male/elemental_bomber/1fea5a626f15230237946a11a9d11582
-# a5ccbaf5538981c6ef99b236c0a60b73/1fea5a626f15230237946a11a9d11582
-class Skill14(ActiveSkill):
-    """
-    增加自身20%的跳跃力， 效果持续一定时间。\n
-    效果持续期间内， 再次按技能键可以结束。
-    """
-    name = "跃翔"
-    learnLv = 10
-    masterLv = 1
-    maxLv = 1
-    position = 6 #TODO
-    rangeLv = 3
-    cd = 5
-    mp = [13, 13]
-    uuid = "1fea5a626f15230237946a11a9d11582"
-    icon = "$common/$uuid"
-    hasVP = False
-    hasUP = False
-
-    # 持续时间 : {value0}秒
-    # REMOVE: data0 = [0, 20]# noqa: E501
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
 
 # 属性变换
 # mage_male/elemental_bomber/eb71e1d82d92c7e1d40500a0dcd77aa6
@@ -470,6 +289,8 @@ class Skill15(ActiveSkill):
     # 光属性攻击力 : {value4}%
     # REMOVE: data4 = [0, 694, 855, 1016, 1177, 1338, 1499, 1660, 1820, 1981, 2142, 2303, 2464, 2625, 2786, 2947, 3108, 3269, 3430, 3591, 3752, 3913, 4073, 4234, 4395, 4556, 4717, 4878, 5039, 5200, 5361, 5522, 5683, 5844, 6005, 6166, 6326, 6487, 6648, 6809, 6970, 7131, 7292, 7453, 7614, 7775, 7936, 8097, 8258, 8419, 8579, 8740, 8901, 9062, 9223, 9384, 9545, 9706, 9867, 10028, 10189, 10350, 10511, 10672, 10832, 10993, 11154, 11315, 11476, 11637, 11798]# noqa: E501
     data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+
+    associate = [{"data":data1,"type":"+power1"}]
 
 # 冰魄剑
 # mage_male/elemental_bomber/f2fb27162beb0b87a7cb9af7900e95f2
@@ -534,6 +355,8 @@ class Skill17(ActiveSkill):
     # [属性变换]魔法球攻击力变换率 : {value0}%
     # REMOVE: data0 = [0, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600]# noqa: E501
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    power0 = 0
     # [范围信息]
     # 爆炸大小比率 : {value1}%
     # REMOVE: data1 = [0, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60]# noqa: E501
