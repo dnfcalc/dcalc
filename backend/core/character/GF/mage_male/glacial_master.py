@@ -1,12 +1,119 @@
 #a5ccbaf5538981c6ef99b236c0a60b73
-from core.basic.skill import PassiveSkill, ActiveSkill
+from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
+prefix = "mage_male/glacial_master/cn/skillDetail"
 
 
+# 不死之身
+# mage_male/glacial_master/bb34e8854a93fd250347a1c64119f7ab
+# a5ccbaf5538981c6ef99b236c0a60b73/bb34e8854a93fd250347a1c64119f7ab
+class Skill2(PassiveSkill):
+    """
+    角色死亡后带着少量生命值原地复活， 并且进入自动恢复生命值模式。\n
+    自动恢复生命值模式下， 角色的生命值值可以在一定时间内自动恢复至100%， 但无法借用任何道具或其它途径恢复生命值， 且所受到的伤害还会加剧。\n
+    若在恢复模式下死亡， 则无法再次通过该技能复活。
+    """
+    name = "不死之身"
+    learnLv = 1
+    masterLv = 1
+    maxLv = 1
+    position = 0 #TODO
+    rangeLv = 3
+    uuid = "bb34e8854a93fd250347a1c64119f7ab"
+    hasVP = False
+    hasUP = False
 
-# 冰魄剑 빙백검
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/f2fb27162beb0b87a7cb9af7900e95f2?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill0(ActiveSkill):
+    # 恢复模式下所受伤害增加 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 死亡时立即恢复的生命值量 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 恢复模式持续时间(普通地下城) : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 恢复模式持续时间(亡者峡谷) : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+
+# 黑暗之眼
+# mage_male/glacial_master/6e33d47e6622ce03b6defdd912140270
+# a5ccbaf5538981c6ef99b236c0a60b73/6e33d47e6622ce03b6defdd912140270
+class Skill3(PassiveSkill):
+    """
+    增加魔法师的魔法值最大值； 若魔法值低于一定比率时， 还可增加魔法值恢复速度。
+    """
+    name = "黑暗之眼"
+    learnLv = 1
+    masterLv = 1
+    maxLv = 1
+    position = 0 #TODO
+    rangeLv = 1
+    uuid = "6e33d47e6622ce03b6defdd912140270"
+    hasVP = False
+    hasUP = False
+
+    # 魔法值最大值增加 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 可触发恢复效果时的魔法值比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 魔法值恢复速度增加 : {value2}倍
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+
+# 基础精通
+# mage_male/glacial_master/5a56514f35cf0270ae8d6c65f8fefd78
+# a5ccbaf5538981c6ef99b236c0a60b73/5a56514f35cf0270ae8d6c65f8fefd78
+class Skill5(PassiveSkill):
+    """
+    增加基本攻击、 前冲攻击、 跳跃攻击、 [魔法旋风]的攻击力。\n
+    在决斗场中， 增益/减益技能、 被动技能的技能攻击力增加效果对[基础精通]无影响。
+    """
+    name = "基础精通"
+    learnLv = 1
+    masterLv = 115
+    maxLv = 200
+    position = 0 #TODO
+    rangeLv = 1
+    uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
+    icon = "$common/$uuid"
+    hasVP = False
+    hasUP = False
+
+    # 基本攻击力变化率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 前冲攻击力变化率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 跳跃攻击力变化率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+
+# 瞬移
+# mage_male/glacial_master/3d8f3d438405d79f8d3ed68072674d1e
+# a5ccbaf5538981c6ef99b236c0a60b73/3d8f3d438405d79f8d3ed68072674d1e
+class Skill11(ActiveSkill):
+    """
+    向指定方向快速移动一定距离。
+    """
+    name = "瞬移"
+    learnLv = 10
+    masterLv = 1
+    maxLv = 1
+    position = 0 #TODO
+    rangeLv = 2
+    cd = 1.5
+    mp = [40, 40]
+    uuid = "3d8f3d438405d79f8d3ed68072674d1e"
+    hasVP = False
+    hasUP = False
+
+    # X轴移动距离 : {value0}px
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # Y轴移动距离 : {value1}px
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+
+# 冰魄剑
+# mage_male/glacial_master/f2fb27162beb0b87a7cb9af7900e95f2
+# a5ccbaf5538981c6ef99b236c0a60b73/f2fb27162beb0b87a7cb9af7900e95f2
+class Skill15(ActiveSkill):
+    """
+    生成冰魄剑连续攻击敌人。 第1击和第2击使敌人进入僵直状态， 第3击则可以击退敌人， 并有一定几率使敌人进入减速状态。\n
+    转职成为冰结师时， 才可以强制中断基本攻击动作， 并立即施放该技能。
+    """
     name = "冰魄剑"
     learnLv = 15
     masterLv = 60
@@ -16,31 +123,52 @@ class Skill0(ActiveSkill):
     cd = 5
     mp = [30, 280]
     uuid = "f2fb27162beb0b87a7cb9af7900e95f2"
+    hasVP = False
+    hasUP = True
 
-    data0 = [0, 1821, 2001, 2191, 2382, 2570, 2744, 2936, 3120, 3317, 3504, 3692, 3873, 4054, 4258, 4437, 4629, 4823, 5020, 5202, 5382, 5576, 5754, 5953, 6139, 6326, 6504, 6696, 6887, 7077, 7262, 7444, 7628, 7822, 8014, 8197, 8381, 8571, 8762, 8949, 9134, 9314, 9508, 9702, 9884, 10083, 10261, 10457, 10644, 10832, 11018, 11201, 11393, 11579, 11767, 11953, 12136, 12328, 12515, 12711, 12891, 13083, 13265, 13457, 13644, 13836, 14015, 14209, 14389, 14579, 14773]# noqa: E501
+    # 第1击和第2击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 2
+    # 第3击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    # [减速效果]
+    # 减速几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 减速持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [范围信息]
+    # 攻击范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
 
-    data1 = [0, 2178, 2400, 2628, 2844, 3072, 3300, 3526, 3752, 3983, 4209, 4434, 4653, 4877, 5107, 5330, 5559, 5790, 6011, 6241, 6453, 6679, 6909, 7135, 7366, 7594, 7817, 8044, 8259, 8490, 8716, 8934, 9166, 9381, 9608, 9836, 10057, 10290, 10506, 10730, 10963, 11179, 11412, 11626, 11852, 12097, 12328, 12546, 12772, 12996, 13218, 13442, 13670, 13894, 14127, 14340, 14566, 14800, 15018, 15249, 15470, 15705, 15919, 16143, 16376, 16595, 16825, 17051, 17279, 17496, 17721]# noqa: E501
-    hit1 = 1 #TODO
-
-
-
-# 冰之印 수인체
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/27bade584bb42fef68148d3a0b72bace?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill1(ActiveSkill):
+# 冰之印
+# mage_male/glacial_master/27bade584bb42fef68148d3a0b72bace
+# a5ccbaf5538981c6ef99b236c0a60b73/27bade584bb42fef68148d3a0b72bace
+class Skill16(ActiveSkill):
+    """
+    冰结师特有技能； 可以使基本攻击产生变化， 在跳跃攻击和前冲攻击时生成冰刺。\n
+    学习此技能后， 冰结师的冰冻抗性会达到最大值。\n
+    施放时， 可以开启或关闭冰结师技能所带的冰冻功能。
+    """
     name = "冰之印"
     learnLv = 15
     masterLv = 1
     maxLv = 1
     position = 3
     rangeLv = 1
-    damage = False
     uuid = "27bade584bb42fef68148d3a0b72bace"
+    hasVP = False
+    hasUP = False
 
+    # 学习后， 冰冻抗性 : 100%
 
-# 冰武精通 프로즌웨폰 마스터리
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/d2c6df5105577fb59fb92529a36165a0?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill2(PassiveSkill):
+# 冰武精通
+# mage_male/glacial_master/d2c6df5105577fb59fb92529a36165a0
+# a5ccbaf5538981c6ef99b236c0a60b73/d2c6df5105577fb59fb92529a36165a0
+class Skill17(PassiveSkill):
+    """
+    增加基本攻击和转职技能的攻击力。同时使[寒冰连枪]、 [冰魄旋枪]新增冰冻效果。
+    """
     name = "冰武精通"
     learnLv = 15
     masterLv = 10
@@ -48,14 +176,23 @@ class Skill2(PassiveSkill):
     position = 6
     rangeLv = 2
     uuid = "d2c6df5105577fb59fb92529a36165a0"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]# noqa: E501
+    # 基本攻击力和转职技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     associate = [{"type":"*skillRation","data":data0}]
 
-
-# 寒冰连枪 설화연창
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/ade01c1d6afc8a05055225045e89fe49?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill3(ActiveSkill):
+# 寒冰连枪
+# mage_male/glacial_master/ade01c1d6afc8a05055225045e89fe49
+# a5ccbaf5538981c6ef99b236c0a60b73/ade01c1d6afc8a05055225045e89fe49
+class Skill18(ActiveSkill):
+    """
+    用寒冰凝结成长枪， 并在前冲的同时连续刺击敌人。 在地下城里按后方向键， 可减少前冲距离， 按上/下方向键可以改变移动方向。\n
+    最后一击命中敌人时， 可以强制中断技能， 并连接施放[冰魄旋枪]。\n
+    学习[冰武精通]后， 最后一击会产生冰冻效果。\n
+    霸体状态在决斗场不适用。
+    """
     name = "寒冰连枪"
     learnLv = 20
     masterLv = 60
@@ -65,14 +202,37 @@ class Skill3(ActiveSkill):
     cd = 3
     mp = [20, 210]
     uuid = "ade01c1d6afc8a05055225045e89fe49"
+    hasVP = False
+    hasUP = True
 
-    data0 = [0, 1047, 1154, 1261, 1367, 1476, 1579, 1686, 1792, 1897, 2009, 2115, 2220, 2326, 2433, 2538, 2647, 2751, 2858, 2963, 3070, 3177, 3283, 3390, 3495, 3606, 3709, 3816, 3922, 4027, 4134, 4243, 4349, 4454, 4561, 4665, 4775, 4881, 4986, 5092, 5197, 5307, 5414, 5522, 5625, 5732, 5840, 5945, 6050, 6157, 6264, 6372, 6477, 6582, 6690, 6793, 6905, 7012, 7116, 7222, 7329, 7438, 7543, 7650, 7754, 7861, 7966, 8073, 8179, 8288, 8391]# noqa: E501
+    # 冰枪攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 5
+    # 冰枪多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 前冲距离 : {value2}px
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 按方向键时的前冲距离 : {value3}px
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [冰武精通提升效果]
+    # 冰冻几率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    # 冰冻持续时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    # [范围信息]
+    # 攻击范围比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
 
 
-# 冰霜之径 아이스 로드
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/c9664191611af31142e052dfaef84530?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill4(ActiveSkill):
+# 冰霜之径
+# mage_male/glacial_master/c9664191611af31142e052dfaef84530
+# a5ccbaf5538981c6ef99b236c0a60b73/c9664191611af31142e052dfaef84530
+class Skill20(ActiveSkill):
+    """
+    持续增加自身属性攻击力， 并持续减少敌人的冰冻抗性。\n
+    施放后， 在地面生成冰雾， 增加自身的移动速度并使接触冰雾的敌人进入减速状态。\n
+    跳跃或施放其他技能时无法生成冰雾。
+    """
     name = "冰霜之径"
     learnLv = 25
     masterLv = 10
@@ -81,16 +241,39 @@ class Skill4(ActiveSkill):
     rangeLv = 5
     cd = 5
     mp = [390, 3900]
-    damage = False
     uuid = "c9664191611af31142e052dfaef84530"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]# noqa: E501
+    # [常驻效果]
+    # 属性攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 敌人冰冻抗性减少 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 冰结师附近的有效范围 : {value2}px
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 冰冻抗性减少持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [施放效果]
+    # 移动速度增加 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    # [冰雾减速效果]
+    # 减速几率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    # 减速持续时间 : {value6}秒
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    # 减速移动速度减少 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
     associate = [{"type":"*skillRation","data":data0}]
 
-
-# 冰之领悟 발현
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/ff171dc487807bb9aa28900ca9a46b41?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill5(PassiveSkill):
+# 冰之领悟
+# mage_male/glacial_master/ff171dc487807bb9aa28900ca9a46b41
+# a5ccbaf5538981c6ef99b236c0a60b73/ff171dc487807bb9aa28900ca9a46b41
+class Skill21(PassiveSkill):
+    """
+    领悟黑暗之眼的力量， 增加自身的魔法攻击力、 魔法暴击率、 命中率， 并减少施放技能时的魔法值消耗量。\n
+    在决斗场不会增加魔法暴击率和命中率。
+    """
     name = "冰之领悟"
     learnLv = 25
     masterLv = 10
@@ -98,13 +281,28 @@ class Skill5(PassiveSkill):
     position = 7
     rangeLv = 3
     uuid = "ff171dc487807bb9aa28900ca9a46b41"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32]# noqa: E501
-    associate = [{"type":"*skillRation","data":data0}]
+    # 魔法值减少 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 魔法攻击力增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 魔法暴击率增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 命中率增加 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    associate = [{"type":"$*PAtkM","data":data0}]
 
-# 冰魄旋枪 회전투창
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/547ab2b2bd860d3e37355a9cfbc1077c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill6(ActiveSkill):
+# 冰魄旋枪
+# mage_male/glacial_master/547ab2b2bd860d3e37355a9cfbc1077c
+# a5ccbaf5538981c6ef99b236c0a60b73/547ab2b2bd860d3e37355a9cfbc1077c
+class Skill22(ActiveSkill):
+    """
+    连续抛出寒冰凝结成的长枪， 使其像风车一样快速旋转。 冰枪旋转时， 可以对周围的敌人进行多段攻击。\n
+    投掷动作中命中敌人时， 可以强制中断技能， 并连接施放[寒冰连枪]。\n
+    学习[冰武精通]后， 每次攻击会产生冰冻效果。
+    """
     name = "冰魄旋枪"
     learnLv = 25
     masterLv = 60
@@ -114,14 +312,36 @@ class Skill6(ActiveSkill):
     cd = 7
     mp = [35, 350]
     uuid = "547ab2b2bd860d3e37355a9cfbc1077c"
+    hasVP = False
+    hasUP = True
 
-    data0 = [0, 682, 750, 819, 892, 959, 1028, 1098, 1168, 1234, 1306, 1372, 1445, 1515, 1583, 1652, 1724, 1794, 1860, 1928, 2003, 2067, 2137, 2210, 2276, 2346, 2416, 2484, 2555, 2625, 2689, 2761, 2830, 2904, 2970, 3038, 3111, 3179, 3249, 3315, 3385, 3456, 3524, 3592, 3665, 3733, 3801, 3871, 3942, 4009, 4078, 4151, 4218, 4286, 4359, 4428, 4495, 4566, 4636, 4700, 4772, 4843, 4911, 4979, 5051, 5120, 5188, 5258, 5328, 5398, 5466]# noqa: E501
-    hit0 = 16
+    # 投掷攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 投掷多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # [学习冰凝之魂后]
+    # 大型长枪攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 8
+    # 大型长枪多段攻击次数 : {value3}次
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [冰武精通提升效果]
+    # 冰冻几率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    # 冰冻持续时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    # [范围信息]
+    # 枪大小比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
 
-
-# 破冰飞刃 피어스 오브 아이스
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/2f5d03c7848effbc0a23f4df45d9ca46?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill7(ActiveSkill):
+# 破冰飞刃
+# mage_male/glacial_master/2f5d03c7848effbc0a23f4df45d9ca46
+# a5ccbaf5538981c6ef99b236c0a60b73/2f5d03c7848effbc0a23f4df45d9ca46
+class Skill23(ActiveSkill):
+    """
+    生成带有锋利冰凌的大冰球， 然后双手轮流挥砍， 击出大量破冰碎片对周围敌人造成伤害； 破冰碎片具有穿刺效果。\n
+    在地下城按下C键， 可以中断技能的施放。
+    """
     name = "破冰飞刃"
     learnLv = 30
     masterLv = 60
@@ -131,14 +351,31 @@ class Skill7(ActiveSkill):
     cd = 8
     mp = [60, 546]
     uuid = "2f5d03c7848effbc0a23f4df45d9ca46"
+    hasVP = False
+    hasUP = True
 
-    data0 = [0, 680, 750, 816, 887, 959, 1023, 1093, 1161, 1231, 1300, 1365, 1436, 1508, 1576, 1646, 1715, 1783, 1851, 1919, 1991, 2060, 2128, 2198, 2266, 2334, 2404, 2472, 2543, 2613, 2679, 2751, 2820, 2885, 2955, 3028, 3094, 3164, 3235, 3300, 3369, 3437, 3507, 3578, 3646, 3716, 3786, 3852, 3922, 3992, 4060, 4133, 4199, 4269, 4337, 4405, 4474, 4544, 4612, 4684, 4753, 4818, 4889, 4956, 5025, 5097, 5166, 5234, 5304, 5372, 5440]# noqa: E501
-    hit0 = 24
+    # 碎片数量 : {value0}~{value1}个
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 碎片攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 24
+    # 碎片多段攻击次数上限 : {value3}次
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [范围信息]
+    # 冰碎片大小比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
 
-
-# 冰魄之弓 브로큰 애로우
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/4224f9b0b8c7c903e9a1e0f9d9f6d04d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill8(ActiveSkill):
+# 冰魄之弓
+# mage_male/glacial_master/4224f9b0b8c7c903e9a1e0f9d9f6d04d
+# a5ccbaf5538981c6ef99b236c0a60b73/4224f9b0b8c7c903e9a1e0f9d9f6d04d
+class Skill24(ActiveSkill):
+    """
+    用寒冰凝结成的弯弓向敌人连续发射箭矢。\n
+    发射箭矢时， 若按下跳跃键， 则结束射击。\n
+    敌人身中箭矢的期间， 若再次按下技能键， 则可以发动最后一击； 箭矢消失后则无法发动。\n
+    在决斗场中， 若施放最后一击前被攻击， 则无法发动最后一击， 但不会受到中毒或出血等持续性的异常状态伤害影响。
+    """
     name = "冰魄之弓"
     learnLv = 30
     masterLv = 60
@@ -148,17 +385,32 @@ class Skill8(ActiveSkill):
     cd = 8
     mp = [60, 546]
     uuid = "4224f9b0b8c7c903e9a1e0f9d9f6d04d"
+    hasVP = False
+    hasUP = True
 
-    data0 = [0, 3704, 4083, 4457, 4838, 5212, 5591, 5965, 6341, 6717, 7094, 7470, 7844, 8221, 8599, 8973, 9350, 9726, 10103, 10477, 10854, 11234, 11609, 11985, 12361, 12740, 13110, 13488, 13865, 14239, 14618, 14994, 15370, 15747, 16121, 16500, 16874, 17250, 17629, 18005, 18379, 18756, 19132, 19506, 19885, 20259, 20640, 21014, 21391, 21767, 22142, 22518, 22896, 23266, 23645, 24021, 24398, 24776, 25152, 25529, 25905, 26282, 26656, 27033, 27411, 27786, 28160, 28540, 28912, 29289, 29665]# noqa: E501
+    # 弓箭攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 3
+    # 弓箭发射次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 最后一击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
+    # 可发动最后一击的时间间隔 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [范围信息]
+    # 箭矢锁定范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    # 学习[冰凝之魂]后， 最后一击大小比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
 
-    data1 = [0, 5617, 6188, 6758, 7325, 7896, 8468, 9036, 9607, 10176, 10747, 11317, 11886, 12458, 13025, 13595, 14166, 14737, 15307, 15875, 16448, 17017, 17586, 18154, 18726, 19297, 19870, 20434, 21007, 21575, 22148, 22715, 23287, 23856, 24429, 24995, 25568, 26134, 26707, 27275, 27848, 28416, 28988, 29554, 30126, 30695, 31266, 31834, 32407, 32977, 33550, 34114, 34685, 35255, 35826, 36394, 36966, 37536, 38109, 38672, 39244, 39814, 40385, 40955, 41528, 42097, 42665, 43233, 43804, 44375, 44943]# noqa: E501
-    hit1 = 1
-
-
-# 寒冰之境 공명
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/3829c15bf5f520c13998a3479ba0ce7b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill9(ActiveSkill):
+# 寒冰之境
+# mage_male/glacial_master/3829c15bf5f520c13998a3479ba0ce7b
+# a5ccbaf5538981c6ef99b236c0a60b73/3829c15bf5f520c13998a3479ba0ce7b
+class Skill25(ActiveSkill):
+    """
+    使黑暗之眼与冰结师周围的魔法能量产生共鸣， 增加自身的基本攻击力和技能攻击力。
+    """
     name = "寒冰之境"
     learnLv = 30
     masterLv = 10
@@ -166,15 +418,24 @@ class Skill9(ActiveSkill):
     position = 7
     rangeLv = 3
     cd = 5
-    mp = [357, 2765]
-    damage = False
     uuid = "3829c15bf5f520c13998a3479ba0ce7b"
+    hasVP = False
+    hasUP = False
 
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 基本攻击和技能攻击增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
 
-
-# 水晶剑 크리스탈 블레이드
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/0232c151ef3731c2dede51931a374723?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill10(PassiveSkill):
+# 水晶剑
+# mage_male/glacial_master/0232c151ef3731c2dede51931a374723
+# a5ccbaf5538981c6ef99b236c0a60b73/0232c151ef3731c2dede51931a374723
+class Skill26(PassiveSkill):
+    """
+    移除[冰魄剑]第3击， 第1和第2击强化成[水晶剑]进行攻击。 可以把散落在上/下方的敌人聚到冰结师面前， 第2击还能让敌人进入减速状态。\n
+    [水晶剑]的攻击力与[冰魄剑]的第1/2击的攻击力成比例， 减速效果与[冰魄剑]第3击的减速效果相同。\n
+    最后一击命中敌人时， 可以强制中断技能并施放转职技能。
+    """
     name = "水晶剑"
     learnLv = 30
     masterLv = 1
@@ -182,18 +443,29 @@ class Skill10(PassiveSkill):
     position = 8
     rangeLv = 1
     uuid = "0232c151ef3731c2dede51931a374723"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120]# noqa: E501
+    # [冰魄剑]第1和第2击攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
 
     associate = [
         {"type":"*skillRation","data":data0,"skills":["冰魄剑"]},
         {"type":"+hit1","data":[0] + [-1]*maxLv,"skills":["冰魄剑"],"ratio":1},
         ]
 
-
-# 冰魄锤击 아이스 빅 해머
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/01c3a2fb793d293a25ed8dc7a0d70c1a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill11(ActiveSkill):
+# 冰魄锤击
+# mage_male/glacial_master/01c3a2fb793d293a25ed8dc7a0d70c1a
+# a5ccbaf5538981c6ef99b236c0a60b73/01c3a2fb793d293a25ed8dc7a0d70c1a
+class Skill27(ActiveSkill):
+    """
+    生成巨大的冰锤， 前冲后向下猛烈砸击。 施放过程中， 会根据输入的方向键改变移动形态。\n
+    前方 : 突进到最大距离。\n
+    后方 : 在原地跳跃， 向下砸击。\n
+    未输入 : 锁定前方敌人进行突进。\n
+        施放过程中再次输入技能键时， 不会前冲，在原地使用冰锤砸向地面。\n
+        使用除[千旋冰轮破]、 [冰凌破]、 [千里冰封]外的转职系列技能命中敌人时， 可以强制中断并连接施放[冰魄锤击]， 并且使用[冰魄之弓]、 [旋冰穿刺]、 [极冰绽放]、 [冰舞乱击]、 [冰雪风暴]、 [极冰猎魔斩]时， 可以在结束动作时强制中断。
+    """
     name = "冰魄锤击"
     learnLv = 35
     masterLv = 60
@@ -204,27 +476,48 @@ class Skill11(ActiveSkill):
     cd = 18
     mp = [185, 1526]
     uuid = "01c3a2fb793d293a25ed8dc7a0d70c1a"
-    vps = [
-          {
-            "name": "寒霜波动",
-            "desc": "范围增加<br/>赋予冰冻状态",
-            "explain": "[冰魄锤击]<br/>施放时， 发射大范围寒气冲击波<br/><br/>对命中的敌人赋予冰冻异常状态<br/>- 冰冻几率 : 100%<br/>- 持续时间 : 3秒"
-          },
-          {
-            "name": "急速粉碎",
-            "desc": "施放时间减少<br/>取消僵直",
-            "explain": "[冰魄锤击]<br/>变更为， 在原地使用冰锤砸向地面<br/>- 无法再次按技能键<br/>- 删除施法过程<br/><br/>命中时， 可以强制中断施放后僵直并施放[冰魄剑]"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 23796, 26212, 28626, 31038, 33454, 35868, 38284, 40698, 43113, 45528, 47940, 50355, 52770, 55182, 57597, 60010, 62426, 64839, 67254, 69672, 72086, 74499, 76914, 79328, 81742, 84156, 86570, 88983, 91398, 93813, 96226, 98642, 101058, 103468, 105885, 108302, 110716, 113127, 115542, 117957, 120370, 122786, 125200, 127614, 130028, 132444, 134859, 137271, 139684, 142100, 144513, 146928, 149343, 151760, 154170, 156586, 159002, 161412, 163828, 166245, 168657, 171072, 173487, 175902, 178314, 180729, 183144, 185558, 187972, 190386]# noqa: E501
-    hit0 = 1 #TODO
+    # 最大移动距离 : {value0}px
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 冰锤攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
 
+    def vp_1(self):
+        """
+        [冰魄锤击]\n
+        施放时， 发射大范围寒气冲击波\n
+        对命中的敌人赋予冰冻异常状态\n
+         - 冰冻几率 : 100%\n
+         - 持续时间 : 3秒
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [冰魄锤击]\n
+        固定在原地使用冰锤砸向地面\n
+         - 无法再次按技能键\n
+         - 删除施法过程\n
+        命中时， 可以强制中断施放后僵直并施放[冰魄剑]
+        """
+        ...
 
-# 旋冰穿刺 아이스 크래쉬
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/9cb6f9ed646fa87f9b7680a42ce83d1a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill12(ActiveSkill):
+# 旋冰穿刺
+# mage_male/glacial_master/9cb6f9ed646fa87f9b7680a42ce83d1a
+# a5ccbaf5538981c6ef99b236c0a60b73/9cb6f9ed646fa87f9b7680a42ce83d1a
+class Skill28(ActiveSkill):
+    """
+    用寒冰螺旋包裹自身并向前急速旋转攻击敌人， 可以使范围内的敌人受到多段攻击伤害。\n
+        对无法抓取的敌人不适用控制效果， 不会造成多段攻击伤害， 而是造成单独的1次伤害。\n
+        在地下城施放技能时， 按前方向键可以移动最大距离， 不做任何操作时， 会移动较短的距离。 总伤害量相同， 与移动距离无关， 并且在决斗场总是移动最大距离。
+    """
     name = "旋冰穿刺"
     learnLv = 35
     masterLv = 60
@@ -234,29 +527,58 @@ class Skill12(ActiveSkill):
     cd = 15
     mp = [180, 1512]
     uuid = "9cb6f9ed646fa87f9b7680a42ce83d1a"
-    vps = [
-          {
-            "name": "水晶飓风",
-            "desc": "范围增加<br/>聚集敌人强化<br/>所受伤害减少",
-            "explain": "[旋冰穿刺]<br/>突进时， 寒冰螺旋周围会产生结晶旋风<br/>- 默认移动到最大距离<br/>- 可以吸附强制控制状态的敌人<br/>- 施放过程中所受伤害 -90%"
-          },
-          {
-            "name": "寒钢",
-            "desc": "变更为向前方投掷<br/>施放时间减少<br/>可以在施放特定技能过程中使用",
-            "explain": "[旋冰穿刺]<br/>召唤寒冰螺旋并向前方发射<br/>- 可以穿透命中的敌人<br/>- 对无法抓取的敌人造成1次伤害<br/>- 默认移动到最大距离<br/>- 突进距离上限 + 50%<br/><br/>对命中的敌人赋予冰冻异常状态<br/>- 冰冻几率 : 100%<br/>- 持续时间 : 3秒<br/><br/>[破冰飞刃]<br/>攻击过程中可以施放[旋冰穿刺]"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 1252, 1382, 1508, 1636, 1762, 1890, 2016, 2146, 2276, 2398, 2526, 2654, 2780, 2907, 3034, 3164, 3292, 3417, 3544, 3672, 3800, 3926, 4054, 4182, 4312, 4436, 4563, 4692, 4816, 4944, 5072, 5200, 5324, 5451, 5582, 5709, 5835, 5962, 6092, 6219, 6342, 6471, 6600, 6729, 6854, 6982, 7110, 7236, 7364, 7488, 7617, 7743, 7872, 8000, 8127, 8254, 8379, 8510, 8636, 8763, 8890, 9018, 9147, 9273, 9400, 9526, 9654, 9782, 9908, 10038]# noqa: E501
-    hit0 = 0 #TODO
+    # 突进多段攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 0
+    # 突进多段攻击次数上限 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 对无法抓取的敌人攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
+    # [范围信息]
+    # 按向前方向键时移动距离 : {value3}px
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # 寒冰螺旋大小比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
 
-    data1 = [0, 21328, 23493, 25653, 27819, 29982, 32148, 34310, 36476, 38637, 40802, 42964, 45132, 47295, 49458, 51622, 53787, 55950, 58113, 60276, 62442, 64605, 66770, 68934, 71097, 73263, 75424, 77589, 79752, 81920, 84081, 86247, 88408, 90574, 92736, 94902, 97065, 99228, 101392, 103557, 105718, 107883, 110046, 112212, 114374, 116538, 118701, 120870, 123030, 125196, 127359, 129524, 131686, 133852, 136014, 138177, 140340, 142506, 144670, 146834, 148995, 151160, 153324, 155488, 157654, 159818, 161984, 164146, 166311, 168472, 170637]# noqa: E501
-    hit1 = 1 #TODO
+    def vp_1(self):
+        """
+        [旋冰穿刺]\n
+        突进时， 寒冰螺旋周围会产生结晶旋风\n
+         - 默认移动到最大距离\n
+         - 可以吸附强制控制状态的敌人\n
+         - 施放过程中所受伤害 -90%
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [旋冰穿刺]\n
+        召唤寒冰螺旋并向前方发射\n
+         - 可以穿透命中的敌人\n
+         - 对无法抓取的敌人造成1次伤害\n
+         - 默认移动到最大距离\n
+         - 突进距离上限 +50%\n
+        对命中的敌人赋予冰冻异常状态\n
+         - 冰冻几率 : 100%\n
+         - 持续时间 : 3秒\n
+        [破冰飞刃]\n
+        攻击过程中可以施放[旋冰穿刺]
+        """
+        ...
 
-# 极冰绽放 아이스맨
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/03bb5314ffd41e9458d67ef924fef38f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill13(ActiveSkill):
+# 极冰绽放
+# mage_male/glacial_master/03bb5314ffd41e9458d67ef924fef38f
+# a5ccbaf5538981c6ef99b236c0a60b73/03bb5314ffd41e9458d67ef924fef38f
+class Skill29(ActiveSkill):
+    """
+    在魔法阵内生成冰之结晶， 使阵内敌人进入强制控制状态， 并召唤出多个大冰柱乱击敌人， 最后击碎冰柱给敌人造成冰属性伤害。\n
+    连续按下技能键时， 可以更快地发动强击。
+    """
     name = "极冰绽放"
     learnLv = 40
     masterLv = 60
@@ -267,35 +589,72 @@ class Skill13(ActiveSkill):
     cd = 20
     mp = [160, 1344]
     uuid = "03bb5314ffd41e9458d67ef924fef38f"
-    vps = [
-          {
-            "name": "冰封制动",
-            "desc": "施放时间减少<br/>取消僵直",
-            "explain": "[极冰绽放]<br/>在自身周围生成魔法阵<br/>- 删除指定魔法阵位置的功能<br/>- 缩短魔法阵生成时间<br/>- 无需连按技能键， 始终以最大速度发动<br/><br/>[冰舞乱击]<br/>前冲及乱击速度 +50%<br/><br/>可强制中断施放后僵直并施放转职技能<br/><br/>[冰之技艺]<br/>每次攻击时发射冰枪"
-          },
-          {
-            "name": "雪原追踪者",
-            "desc": "追踪<br/>范围增加<br/>赋予冰冻状态",
-            "explain": "[极冰绽放]<br/>施放时在前方500px内最强的敌人处生成魔法阵<br/>- 攻击范围 50%<br/><br/>使被破碎的冰柱命中的敌人进入冰冻状态<br/>- 冰冻几率 : 100%<br/>- 持续时间 : 3秒<br/><br/>[冰舞乱击]<br/>施放时追踪前方500px内最强的敌人并一同攻击周围的敌人<br/><br/>使被冲击波命中的敌人进入冰冻状态<br/>- 冰冻几率 : 100%<br/>- 持续时间 : 3秒"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 1862, 2046, 2238, 2426, 2616, 2804, 2992, 3182, 3369, 3560, 3748, 3936, 4125, 4312, 4504, 4692, 4880, 5070, 5259, 5445, 5636, 5824, 6014, 6202, 6393, 6580, 6766, 6957, 7146, 7335, 7526, 7712, 7899, 8090, 8278, 8469, 8658, 8847, 9033, 9222, 9412, 9600, 9789, 9980, 10167, 10356, 10544, 10732, 10923, 11112, 11300, 11488, 11676, 11866, 12054, 12246, 12430, 12620, 12810, 12999, 13190, 13377, 13563, 13755, 13942, 14132, 14322, 14510, 14697, 14886]# noqa: E501
-    hit0 = 5  #TODO
-    power0 = 1
-
-    data1 = [0, 8223, 9056, 9890, 10725, 11560, 12392, 13227, 14062, 14895, 15729, 16564, 17398, 18232, 19068, 19900, 20734, 21572, 22402, 23236, 24072, 24908, 25738, 26576, 27408, 28244, 29078, 29910, 30747, 31581, 32414, 33249, 34084, 34917, 35751, 36586, 37420, 38254, 39087, 39922, 40756, 41589, 42424, 43260, 44092, 44928, 45762, 46594, 47428, 48266, 49098, 49930, 50769, 51602, 52434, 53270, 54105, 54939, 55772, 56607, 57441, 58276, 59108, 59944, 60778, 61612, 62446, 63282, 64114, 64948, 65782]# noqa: E501
-    hit1 = 1 #TODO
+    # 控制几率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 乱击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 5
     power1 = 1
+    # 乱击多段攻击次数 : {value2}次
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 最后一击攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    hit3 = 1
+    power3 = 1
+    # 冰柱破碎时的攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    hit4 = 1
+    power4 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
 
-    data2 = [0, 4110, 4528, 4946, 5361, 5778, 6198, 6612, 7030, 7449, 7863, 8280, 8698, 9116, 9534, 9951, 10366, 10784, 11200, 11616, 12038, 12453, 12870, 13287, 13701, 14120, 14540, 14958, 15372, 15789, 16206, 16624, 17040, 17458, 17876, 18294, 18708, 19126, 19545, 19959, 20376, 20796, 21212, 21630, 22047, 22462, 22881, 23296, 23714, 24134, 24549, 24964, 25383, 25797, 26214, 26636, 27052, 27470, 27885, 28300, 28720, 29138, 29554, 29972, 30388, 30804, 31222, 31641, 32058, 32474, 32892]# noqa: E501
-    hit2 = 1 #TODO
-    power2 = 1
+    def vp_1(self):
+        """
+        [极冰绽放]\n
+        在自身周围生成魔法阵\n
+         - 删除指定魔法阵位置的功能\n
+         - 缩短魔法阵生成时间\n
+         - 无需连按技能键， 始终以最大速度发动\n
+        [冰舞乱击]\n
+        前冲及乱击速度 +50%\n
+        可强制中断施放后僵直并施放转职技能\n
+        [冰之技艺]\n
+        每次攻击时发射冰枪
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [极冰绽放]\n
+        施放时在前方500px内最强的敌人处生成魔法阵\n
+         - 攻击范围 +50%\n
+        使被破碎的冰柱命中的敌人进入冰冻状态\n
+         - 冰冻几率 : 100%\n
+         - 持续时间 : 3秒\n
+        [冰舞乱击]\n
+        施放时追踪前方500px内最强的敌人并一同攻击周围的敌人\n
+        使被冲击波命中的敌人进入冰冻状态\n
+         - 冰冻几率 : 100%\n
+         - 持续时间 : 3秒
+        """
+        ...
 
-# 冰雪风暴 블리자드 스톰
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/8f73f243041c2d27739fe7696f02bf9b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill14(ActiveSkill):
+# 冰雪风暴
+# mage_male/glacial_master/8f73f243041c2d27739fe7696f02bf9b
+# a5ccbaf5538981c6ef99b236c0a60b73/8f73f243041c2d27739fe7696f02bf9b
+class Skill30(ActiveSkill):
+    """
+    生成魔法阵并召唤出强威力的寒气风暴； 寒气风暴原地旋转时给予周围敌人多段攻击伤害。 当寒气风暴聚集在一起后会产生爆炸， 并对周围敌人造成更大伤害。\n
+    生成魔法阵和寒气风暴旋转时，周围的敌人会进入冰冻状态。 风暴旋转时魔法阵内的敌人会被聚集到风暴中心。\n
+    在地下城连续按键时可增加风暴旋转速度， 且生成风暴后会进入无敌状态。\n
+    在决斗场中， 只有在生成魔法阵时会冰冻敌人， 寒气风暴不会冰冻敌人。\n
+    在决斗场中， 武器的攻击属性不影响技能的攻击属性。
+    """
     name = "冰雪风暴"
     learnLv = 45
     masterLv = 60
@@ -306,28 +665,57 @@ class Skill14(ActiveSkill):
     cd = 40
     mp = [350, 3080]
     uuid = "8f73f243041c2d27739fe7696f02bf9b"
-    vps = [
-          {
-            "name": "大寒流",
-            "desc": "范围增加<br/>适用最高连击效果",
-            "explain": "[冰雪风暴]<br/>技能施放时立即发动寒气风暴， 并额外生成2个寒气风暴<br/>- 寒气风暴多段攻击次数 : 24次<br/>- 总攻击力相同<br/>- 魔法阵及爆炸范围 + 35%<br/>- 无需连按技能键， 始终以最大速度发动"
-          },
-          {
-            "name": "暴风雪点",
-            "desc": "变更为指定位置技能<br/>攻击时间减少",
-            "explain": "[冰雪风暴]<br/>在指定位置生成魔法阵， 引起寒气爆炸<br/>- 总攻击力相同<br/>- 删除冰冻效果"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 2415, 2660, 2904, 3153, 3394, 3640, 3886, 4128, 4377, 4622, 4866, 5112, 5355, 5601, 5847, 6093, 6334, 6582, 6828, 7071, 7317, 7563, 7806, 8054, 8296, 8540, 8788, 9033, 9278, 9522, 9768, 10014, 10258, 10503, 10748, 10994, 11238, 11482, 11728, 11974, 12220, 12464, 12708, 12957, 13202, 13443, 13690, 13935, 14180, 14426, 14670, 14914, 15162, 15405, 15650, 15896, 16142, 16384, 16630, 16876, 17120, 17367, 17612, 17854, 18102, 18345, 18591, 18837, 19082, 19329]# noqa: E501
-    hit0 = 14
+    # 水柱多段攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 12
+    # 水柱多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 爆炸攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
+    # [冰冻效果]
+    # 冰冻几率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # 冰冻持续时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    # [范围信息]
+    # 魔法阵范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    # 爆炸范围比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
 
-    data1 = [0, 23584, 25978, 28371, 30762, 33158, 35552, 37944, 40336, 42728, 45122, 47516, 49910, 52300, 54693, 57090, 59480, 61874, 64264, 66657, 69051, 71445, 73838, 76230, 78622, 81016, 83409, 85803, 88196, 90586, 92980, 95372, 97764, 100160, 102552, 104944, 107337, 109728, 112125, 114518, 116910, 119302, 121694, 124089, 126480, 128874, 131265, 133659, 136053, 138446, 140840, 143232, 145624, 148017, 150410, 152804, 155196, 157587, 159981, 162372, 164769, 167162, 169552, 171946, 174338, 176734, 179126, 181518, 183910, 186304, 188694]# noqa: E501
-    hit1 = 1
+    def vp_1(self):
+        """
+        [冰雪风暴]\n
+        技能施放时立即发动寒气风暴， 并额外生成2个寒气风暴\n
+         - 寒气风暴多段攻击次数 : 24次\n
+         - 总攻击力相同\n
+         - 魔法阵及爆炸范围 +35%\n
+         - 无需连按技能键， 始终以最大速度发动
+        """
+        ...
 
-# 冰舞乱击 핀포인트 러쉬
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/202edb928046f4fa6dedf6337377efd5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill15(PassiveSkill):
+    def vp_2(self):
+        """
+        [冰雪风暴]\n
+        在指定位置生成魔法阵， 引起寒气爆炸\n
+         - 总攻击力相同\n
+         - 删除冰冻效果
+        """
+        ...
+
+# 冰舞乱击
+# mage_male/glacial_master/202edb928046f4fa6dedf6337377efd5
+# a5ccbaf5538981c6ef99b236c0a60b73/202edb928046f4fa6dedf6337377efd5
+class Skill31(PassiveSkill):
+    """
+    学习后， [极冰绽放]技能向前方快速飞出后压缩冷气， 向抓取的敌人快速施放[冰舞乱击]。 对抓取的敌人进行乱击和强击， 对无法抓取的敌人造成冲击波攻击。 [极冰绽放]的乱击数增加时， 该技能的乱击数也会增加[极冰绽放]乱击数增加量的50%。\n
+    突进时按上/下方向键可以改变突进的方向。
+    """
     name = "冰舞乱击"
     learnLv = 45
     masterLv = 1
@@ -335,27 +723,31 @@ class Skill15(PassiveSkill):
     position = 5
     rangeLv = 1
     uuid = "202edb928046f4fa6dedf6337377efd5"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 195 - 100]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 235 - 100]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 100 - 100]# noqa: E501
-    hit2 = 1 #TODO
+    # 乱打攻击力 : [极冰绽放]乱打攻击力的{value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 强击攻击力 : [极冰绽放]强击攻击力的{value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 冲击波攻击力 : [极冰绽放]倒下的冰柱攻击力的{value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
 
     associate = [
-        {"type":"*power0","data":data0,"skills":["极冰绽放"]},
-        {"type":"+hit0","data":[0,-1],"skills":["极冰绽放"],"ratio":1},
-        {"type":"*power1","data":data1,"skills":["极冰绽放"]},
-        {"type":"+hit2","data":[0,-1],"skills":["极冰绽放"],"ratio":1},
+        {"type":"*power1","data":[i - 100 if i > 0 else i for i in data0],"skills":["极冰绽放"]},
+        {"type":"+hit1","data":[0,-1],"skills":["极冰绽放"],"ratio":1},
+        {"type":"*power3","data":[i - 100 if i > 0 else i for i in data1],"skills":["极冰绽放"]},
+        {"type":"+hit4","data":[0,-1],"skills":["极冰绽放"],"ratio":1},
     ]
 
-
-# 冰封奥义 툰드라의 가호
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/92360eab6e1f378902018eca681ac629?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill16(PassiveSkill):
+# 冰封奥义
+# mage_male/glacial_master/92360eab6e1f378902018eca681ac629
+# a5ccbaf5538981c6ef99b236c0a60b73/92360eab6e1f378902018eca681ac629
+class Skill32(PassiveSkill):
+    """
+    增加基本攻击力和转职技能攻击力。 若敌人在角色周围停留一定时间， 则会进入冰冻状态。\n
+    在决斗场无法冰冻敌人。
+    """
     name = "冰封奥义"
     learnLv = 48
     masterLv = 40
@@ -363,14 +755,32 @@ class Skill16(PassiveSkill):
     position = 6
     rangeLv = 3
     uuid = "92360eab6e1f378902018eca681ac629"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5, 30, 31.5, 33, 34.5, 36, 37.5, 39, 40.5, 42, 43.5, 45, 46.5, 48, 49.5, 51, 52.5, 54, 55.5, 57, 58.5, 60, 61.5, 63, 64.5, 66, 67.5, 69, 70.5, 72, 73.5, 75, 76.5, 78, 79.5, 81, 82.5, 84, 85.5]# noqa: E501
+    # 基本攻击力和转职技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # [冰冻效果]
+    # 冰冻所需时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 冰冻几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 冰冻持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [范围信息]
+    # 冰冻效果范围 : {value4}px
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
     associate = [{"type":"*skillRation","data":data0}]
 
-
-# 千旋冰轮破 빙류환
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/78be08a3f8c834d3b06fa20c6a08c5a5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill17(ActiveSkill):
+# 千旋冰轮破
+# mage_male/glacial_master/78be08a3f8c834d3b06fa20c6a08c5a5
+# a5ccbaf5538981c6ef99b236c0a60b73/78be08a3f8c834d3b06fa20c6a08c5a5
+class Skill33(ActiveSkill):
+    """
+    生成带有利齿的冰轮抛向敌人。 冰轮环绕敌人并对其造成多段攻击伤害， 而后凝聚成大冰轮吸附周围的敌人， 再次对目标进行多段攻击， 最后引发爆破。\n
+    大小冰轮皆按照领主、 精英怪物、 普通怪物的先后顺序进行自动攻击。\n
+    若在施放技能时没有目标， 则冰轮会被立刻收回。
+    """
     name = "千旋冰轮破"
     learnLv = 50
     masterLv = 40
@@ -381,272 +791,425 @@ class Skill17(ActiveSkill):
     cd = 145
     mp = [1200, 10080]
     uuid = "78be08a3f8c834d3b06fa20c6a08c5a5"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 1611, 1986, 2359, 2733, 3108, 3480, 3855, 4228, 4604, 4977, 5350, 5723, 6097, 6472, 6846, 7219, 7594, 7966, 8339, 8716, 9090, 9463, 9837, 10209, 10583, 10960, 11331, 11706, 12079, 12452, 12826, 13202, 13575, 13950, 14321, 14696, 15073, 15445, 15818, 16192, 16565, 16940, 17312, 17688, 18062, 18435, 18808, 19182, 19556, 19932]# noqa: E501
-    # 三级之后 35 3级之前25
+    # 小冰轮攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 35
+    # 小冰轮多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 大冰轮攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 10
+    # 大冰轮多段攻击次数 : {value3}次
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # 最终爆炸攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    hit4 = 1
 
-    data1 = [0, 3423, 4218, 5010, 5813, 6610, 7403, 8200, 8990, 9394, 10154, 10925, 11686, 12449, 13207, 13973, 14734, 15499, 16262, 17026, 17786, 18547, 19313, 20078, 20839, 21605, 22366, 23131, 23892, 24655, 25423, 26184, 26950, 27710, 28474, 29234, 30000, 30761, 31524, 32287, 33053, 33814, 34579, 35340, 36103, 36864, 37627, 38390, 39154, 39922, 40685]# noqa: E501
-    # 9级之后 10 9级之前8
-    hit1 = 10
-
-    data2 = [0, 4801, 5918, 7031, 8144, 9258, 10372, 11486, 12598, 13713, 14826, 15943, 17056, 18169, 19284, 20397, 21511, 22624, 23739, 24854, 25967, 27082, 28195, 29309, 30421, 31536, 32649, 33765, 34877, 35993, 37106, 38218, 39333, 40445, 41561, 42673, 43790, 44905, 46018, 47131, 48244, 49358, 50472, 51586, 52700, 53815, 54928, 56041, 57156, 58268, 59384]# noqa: E501
-    hit2 = 1 #TODO
-
-
-# 冰凌破 아이스 오브
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/bc11d28c04e01923a093d65752c55516?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill18(ActiveSkill):
+# 冰凌破
+# mage_male/glacial_master/bc11d28c04e01923a093d65752c55516
+# a5ccbaf5538981c6ef99b236c0a60b73/bc11d28c04e01923a093d65752c55516
+class Skill34(ActiveSkill):
+    """
+    向前平抛出带有冰凌的冰球。 冰球在移动一定距离后进行扩张并生成大量冰凌攻击敌人， 同时对目标产生吸附效果， 最后引发爆炸。 可以使用方向键控制冰球的平抛方向。
+    """
     name = "冰凌破"
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 5
+    position = 5 #TODO
     rangeLv = 2
     cube = 1
     cd = 30
     mp = [400, 1120]
     uuid = "bc11d28c04e01923a093d65752c55516"
-    vps = [
-          {
-            "name": "苍白之楔",
-            "desc": "追踪<br/>攻击时间减少",
-            "explain": "[冰凌破]<br/>[冰之印]开启后， 追踪并攻击有[冰封奥义]光环的敌人中最强的敌人<br/>- 攻击开始后不再追踪敌人<br/>- 冰球移动速度 + 50%<br/>- 冰棱多段攻击间隔 -15%"
-          },
-          {
-            "name": "冰棘突刺",
-            "desc": "聚集敌人强化<br/>范围增加<br/>赋予冰冻状态",
-            "explain": "[冰凌破]<br/>移动后攻击时，持续将周围敌人吸附至冰球位置<br/>- 冰球大小 + 40%<br/><br/>每次攻击附加冰冻异常状态<br/>- 冰冻几率 : 10%<br/>- 持续时间 : 3秒"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 1792, 1974, 2157, 2336, 2522, 2702, 2884, 3066, 3249, 3430, 3610, 3795, 3974, 4158, 4340, 4522, 4704, 4886, 5068, 5247, 5432, 5614, 5794, 5978, 6159, 6339, 6524, 6705, 6890, 7068, 7250, 7434, 7614, 7797, 7978, 8158, 8343, 8526, 8706, 8888, 9070, 9254, 9434, 9616, 9800, 9980, 10164, 10344, 10526, 10707]# noqa: E501
+    # 冰凌攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 25
+    # 冰凌多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 爆炸攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
+    # [范围信息]
+    # 冰球移动距离 : {value3}px
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # 输入前方向键冰球移动距离 : {value4}px
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    # 输入上方向键冰球移动距离 : {value5}px
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    # 大小比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
 
-    data1 = [0, 8538, 9405, 10275, 11139, 12004, 12873, 13740, 14604, 15470, 16336, 17204, 18069, 18936, 19802, 20668, 21537, 22402, 23266, 24136, 25002, 25868, 26732, 27602, 28467, 29334, 30200, 31066, 31934, 32799, 33666, 34532, 35400, 36264, 37131, 37998, 38862, 39729, 40599, 41464, 42328, 43198, 44064, 44930, 45794, 46664, 47529, 48393, 49260, 50128, 50994]# noqa: E501
-    hit1 = 1 #TODO
+    def vp_1(self):
+        """
+        [冰凌破]\n
+        [冰之印]开启后， 追踪并攻击有[冰封奥义]光环的敌人中最强的敌人\n
+         - 攻击开始后不再追踪敌人\n
+         - 冰球移动速度 +50%\n
+         - 冰棱多段攻击间隔 -15%
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [冰凌破]\n
+        移动后攻击时，持续将周围敌人吸附至冰球位置\n
+         - 冰球大小 +40%\n
+        每次攻击附加冰冻异常状态\n
+         - 冰冻几率 : 10%\n
+         - 持续时间 : 3秒
+        """
+        ...
 
-# 千里冰封 아이스 필드
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/d296043df164385a14cb973c8c7c4d07?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill19(ActiveSkill):
+# 千里冰封
+# mage_male/glacial_master/d296043df164385a14cb973c8c7c4d07
+# a5ccbaf5538981c6ef99b236c0a60b73/d296043df164385a14cb973c8c7c4d07
+class Skill35(ActiveSkill):
+    """
+    在前方地面快速生成冰雾， 同时生出大量冰刺攻击敌人。 受到冰雾或冰刺攻击的敌人， 有一定几率进入冰冻状态。
+    """
     name = "千里冰封"
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 4
+    position = 4 #TODO
     rangeLv = 2
     cube = 2
     cd = 50
     mp = [900, 1820]
     uuid = "d296043df164385a14cb973c8c7c4d07"
-    vps = [
-          {
-            "name": "冰凌花",
-            "desc": "变更为单次攻击<br/>施放时间减少<br/>追加强制控制功能",
-            "explain": "[千里冰封]<br/>同时生成所有冰刺<br/>- 变更为单次攻击<br/>- 总攻击力相同<br/>- 施放速度 + 60%<br/>- 冰刺生成速度 + 25%<br/><br/>[冰之印]开启后， 冰冻效果变更为2秒的强制控制效果"
-          },
-          {
-            "name": "冻土的吐息",
-            "desc": "变更为范围攻击<br/>追踪<br/>赋予速度增益效果",
-            "explain": "[千里冰封]<br/>生成覆盖周围区域的冰雾领域， 对领域内所有敌人持续造成冰刺攻击<br/>- 领域范围 : 2000px<br/>- 领域持续时间 : 30秒<br/>- 攻击次数上限 : 12次<br/>- 自动攻击间隔 : 1秒<br/>- 冰武器系列技能命中时立即触发攻击<br/>- 冰刺攻击力 -75%<br/><br/>冰雾领域生成时， 触发增益效果<br/>- 攻击速度和移动速度 + 10%<br/>- 增益持续时间 : 30秒 (最多叠加1次)"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 25994, 28630, 31269, 33906, 36543, 39182, 41818, 44454, 47092, 49732, 52366, 55005, 57640, 60278, 62914, 65552, 68187, 70827, 73466, 76102, 78740, 81375, 84014, 86648, 89288, 91926, 94560, 97198, 99836, 102472, 105110, 107750, 110386, 113022, 115660, 118296, 120936, 123570, 126208, 128847, 131481, 134120, 136756, 139392, 142030, 144670, 147308, 149943, 152580, 155217]# noqa: E501
+    # 冰刺攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 3
+    # 冰刺多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # [冰冻效果]
+    # 冰冻几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 冰冻持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [范围信息]
+    # 攻击范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
 
+    def vp_1(self):
+        """
+        [千里冰封]\n
+        同时生成所有冰刺\n
+         - 变更为单次攻击\n
+         - 总攻击力相同\n
+         - 施放速度 +60%\n
+         - 冰刺生成速度 +25%\n
+        [冰之印]开启后， 冰冻效果变更为强制控制效果， 效果持续2秒
+        """
+        ...
 
-# 冰之技艺 아이스크래프트
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/1803b6a67047cafb9e289b4f33cc507b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill20(PassiveSkill):
+    def vp_2(self):
+        """
+        [千里冰封]\n
+        生成覆盖周围区域的冰雾领域， 对领域内所有敌人持续造成冰刺攻击\n
+         - 领域范围 : 2000px\n
+         - 领域持续时间 : 30秒\n
+         - 攻击次数上限 : 12次\n
+         - 自动攻击间隔 : 1秒\n
+         - 冰武器系列技能命中时立即触发攻击\n
+         - 冰刺攻击力 -75%\n
+        冰雾领域生成时， 触发增益效果\n
+         - 攻击速度和移动速度 +10%\n
+         - 增益持续时间 : 30秒 (最多叠加1次)
+        """
+        ...
+
+# 冰之技艺
+# mage_male/glacial_master/1803b6a67047cafb9e289b4f33cc507b
+# a5ccbaf5538981c6ef99b236c0a60b73/1803b6a67047cafb9e289b4f33cc507b
+class Skill36(PassiveSkill):
+    """
+    增加基本攻击和转职系列技能的攻击力。\n
+    并且与[冰魄剑]、 [冰魄旋枪]、 [寒冰连枪]、 [冰魄锤击]、 [旋冰穿刺]、 [极冰绽放]、 [碎冰破]、 [极冰猎魔斩]等技能类似的用冰武器攻击敌人的技能命中敌人时， 技能结束时会出现保留原技能部分攻击力的冰枪， 插入被原始技能命中后存活的敌人中最强的敌人。\n
+        如果技能没有命中敌人， 或者敌人全部死亡， 冰枪不会出现， 并且冰枪打偏时会产生爆炸对附近敌人造成伤害。
+    """
     name = "冰之技艺"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 6
+    position = 6 #TODO
     rangeLv = 3
     uuid = "1803b6a67047cafb9e289b4f33cc507b"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116]# noqa: E501
-
-    data1 = [0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]# noqa: E501
+    # 基本攻击和转职系列技能的攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 冰枪攻击力占原技能攻击力百分比 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 冰枪爆炸攻击力占原技能攻击力百分比 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
     associate = [
         {"type":"*skillRation","data":data0},
         {"type":"*skillRation","data":data1,"skills":["冰魄剑", "寒冰连枪", "冰魄旋枪", "旋冰穿刺", "冰魄锤击", "极冰绽放", "碎冰破", "极冰猎魔斩"]}
     ]
 
-
-
-# 碎冰破 샤드 매그넘
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/de3fea2d65c597f4d55c70a02b97fc79?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill21(ActiveSkill):
+# 碎冰破
+# mage_male/glacial_master/de3fea2d65c597f4d55c70a02b97fc79
+# a5ccbaf5538981c6ef99b236c0a60b73/de3fea2d65c597f4d55c70a02b97fc79
+class Skill37(ActiveSkill):
+    """
+    制造冰柱后破坏冰柱， 利用碎片和冲击波攻击敌人。 近距离的敌人会受到碎片和冲击波的全部伤害， 远距离的敌人只会受到冲击波伤害。\n
+    冰柱生成时， 附近的敌人会进入冰冻状态。\n
+    并且[千旋冰轮破]、 [冰凌破]、 [千里冰封]以外的转职技能命中敌人时， 可以强制中断技能并连接施放[碎冰破]。 [冰魄之弓]、 [旋冰穿刺]、 [极冰绽放]、 [冰舞乱击]、 [冰雪风暴]、 [极冰猎魔斩]可以在结束动作时强制中断并施放[碎冰破]。
+    """
     name = "碎冰破"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 8
+    position = 8 #TODO
     rangeLv = 2
     cube = 3
     cd = 40
     mp = [580, 4500]
     uuid = "de3fea2d65c597f4d55c70a02b97fc79"
-    vps = [
-          {
-            "name": "冰山碎",
-            "desc": "范围增加<br/>施放时间减少<br/>取消僵直",
-            "explain": "[碎冰破]<br/>向前方生成多个冰霜结晶<br/>- 增加冰霜碎片攻击范围<br/>- 施放速度 + 50%<br/><br/>命中时， 可以强制中断施放后僵直并施放[冰魄剑]"
-          },
-          {
-            "name": "碎冰拳",
-            "desc": "变更为单次攻击<br/>追踪<br/>攻击力和冷却时间增加",
-            "explain": "[碎冰破]<br/>将寒气凝聚成臂铠引发结晶爆炸， 并生成冲击波<br/>- 总攻击力相同<br/>- 施放时， 追踪并攻击前方500px范围内最强的敌人<br/><br/>基本冷却时间变更为60秒<br/>总攻击力 + 50%"
-          }
-        ]
-    # TODO：变更伤害
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 63240, 69658, 76072, 82488, 88905, 95318, 101736, 108151, 114567, 120983, 127400, 133815, 140230, 146647, 153061, 159478, 165895, 172309, 178725, 185142, 191556, 197973, 204389, 210804, 217221, 223636, 230050, 236468, 242885, 249298, 255714, 262132, 268546, 274963, 281378, 287793, 294211, 300626, 307042, 313457, 319875, 326288, 332705, 339121, 345535, 351952, 358368, 364784, 371200, 377616]# noqa: E501
-    hit0 = 1 #TODO
+    # 寒冰碎片攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 冲击波攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    # [冰冻效果]
+    # 冰冻几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 冰冻时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [范围信息]
+    # 攻击范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
 
-    data1 = [0, 23025, 25360, 27697, 30032, 32370, 34706, 37042, 39377, 41712, 44049, 46386, 48722, 51057, 53394, 55729, 58062, 60402, 62739, 65072, 67408, 69744, 72080, 74417, 76753, 79089, 81425, 83760, 86096, 88433, 90769, 93105, 95441, 97777, 100114, 102450, 104785, 107119, 109456, 111791, 114129, 116464, 118801, 121136, 123473, 125808, 128146, 130482, 132818, 135152, 137488]# noqa: E501
-    hit1 = 1 #TODO
+    def vp_1(self):
+        """
+        [碎冰破]\n
+        向前方生成多个冰霜结晶\n
+         - 增加冰霜碎片攻击范围\n
+         - 施放速度 +50%\n
+        命中时， 可以强制中断施放后僵直并施放[冰魄剑]
+        """
+        ...
 
     def vp_2(self):
+        """
+        [碎冰破]\n
+        将寒气凝聚成臂铠引发结晶爆炸， 并生成冲击波\n
+         - 总攻击力相同\n
+         - 施放时， 追踪并攻击前方500px范围内最强的敌人\n
+         - 基本冷却时间变更为60秒\n
+        总攻击力 +50%
+        """
         self.cd = 60
         self.skillRation *= 1.5
+        ...
 
-
-# 极冰领域 오버프리즈 익스텐션
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/d0cdaca82892e54097f22a1f60817048?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill22(ActiveSkill):
+# 极冰领域
+# mage_male/glacial_master/d0cdaca82892e54097f22a1f60817048
+# a5ccbaf5538981c6ef99b236c0a60b73/d0cdaca82892e54097f22a1f60817048
+class Skill38(ActiveSkill):
+    """
+    凝缩黑暗之眼的冷气后向四周喷发， 对敌人造成伤害并使敌人短时间内进入强制控制状态。 凝缩冷气过程中为无敌状态， 喷发后进入霸体状态。
+    """
     name = "极冰领域"
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 6
+    position = 6 #TODO
     rangeLv = 2
     cube = 5
     cd = 40
     mp = [800, 6000]
     uuid = "d0cdaca82892e54097f22a1f60817048"
-    vps = [
-          {
-            "name": "极冰波",
-            "desc": "取消僵直<br/>无敌强化",
-            "explain": "[极冰领域]<br/>部分转职技能命中后， 可以强制中断并施放[极冰领域]<br/>- 可中断技能列表与[冰魄锤击]相同<br/><br/>放出波动时进入无敌状态"
-          },
-          {
-            "name": "极冰暴",
-            "desc": "可以在其他动作中施放。<br/>可多次发动",
-            "explain": "[极冰领域]<br/>施放转职技能过程中可以无施放动作直接发动<br/>- 觉醒技能除外<br/><br/>变更为可填充2次的技能<br/>- 每次填充冷却时间 : 20秒<br/>- 单次攻击力 -50%"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 71457, 78704, 85953, 93203, 100451, 107700, 114950, 122198, 129447, 136698, 143949, 151195, 158446, 165696, 172943, 180194, 187443, 194690, 201942, 209191, 216440, 223688, 230938, 238187, 245435, 252685, 259934, 267183, 274433, 281682, 288931, 296180, 303429, 310678, 317927, 325176, 332428, 339677, 346926, 354175, 361423, 368673, 375922, 383169, 390420, 397670, 404919, 412168, 419416, 426665]# noqa: E501
-    hit0 = 1 #TODO
+    # 波动攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 控制时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # [范围信息]
+    # 攻击范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+
+    def vp_1(self):
+        """
+        [极冰领域]\n
+        部分转职技能命中后， 可以强制中断并施放[极冰领域]\n
+         - 可中断技能列表与[冰魄锤击]相同\n
+        释放波动时进入无敌状态
+        """
+        ...
 
     def vp_2(self):
-        self.cd = 20
-        self.skillRation *= 0.5
+        """
+        [极冰领域]\n
+        施放转职技能过程中可以无施放动作直接发动\n
+         - 觉醒技能除外\n
+        变更为可填充2次的技能\n
+         - 每次填充冷却时间 : 20秒\n
+         - 单次攻击力 -50%
+        """
+        ...
 
-
-# 永罪冰狱 쥬데카 디 이터널
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/c61f5a010370101402b05b21916c2071?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill23(ActiveSkill):
+# 永罪冰狱
+# mage_male/glacial_master/c61f5a010370101402b05b21916c2071
+# a5ccbaf5538981c6ef99b236c0a60b73/c61f5a010370101402b05b21916c2071
+class Skill39(ActiveSkill):
+    """
+    发射用永恒之冰制造的冰箭攻击敌人， 对命中的敌人造成伤害并制造寒冰监狱， 对附近的敌人造成伤害并禁锢敌人。\n
+    冰块会越来越大， 禁锢附近敌人并造成伤害， 最后爆炸。\n
+    技能命中墙壁或物体也会生成冰块。
+    """
     name = "永罪冰狱"
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 8
+    position = 8 #TODO
     rangeLv = 5
     cube = 10
     cd = 180
     mp = [2500, 5000]
     uuid = "c61f5a010370101402b05b21916c2071"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 73425, 90451, 107478, 124503, 141528, 158558, 175584, 192609, 209635, 226659, 243687, 260713, 277737, 294767, 311793, 328819, 345844, 362869, 379895, 396921, 413947, 430977, 448002, 465028, 482054, 499079, 516105, 533130, 550156, 567186, 584212, 601236, 618262, 635290, 652314, 669340, 686368, 703394, 720420, 737446, 754471, 771498, 788524, 805550, 822577, 839604, 856629, 873655, 890681, 907707]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 48962, 60316, 71670, 83022, 94377, 105730, 117084, 128438, 139792, 151145, 162499, 173854, 185208, 196560, 207913, 219267, 230622, 241976, 253328, 264682, 276037, 287390, 298744, 310097, 321450, 332805, 344159, 355511, 366866, 378219, 389573, 400926, 412279, 423634, 434988, 446343, 457695, 469048, 480402, 491757, 503110, 514464, 525817, 537171, 548526, 559879, 571234, 582586, 593938, 605293]# noqa: E501
+    # 冰箭攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 寒冰监狱伤害 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
     hit1 = 0
-
-    data2 = [0, 32623, 40187, 47752, 55317, 62882, 70447, 78011, 85577, 93141, 100705, 108270, 115836, 123399, 130965, 138528, 146093, 153658, 161223, 168788, 176351, 183916, 191483, 199047, 206612, 214177, 221741, 229306, 236871, 244435, 252002, 259567, 267130, 274695, 282259, 289825, 297390, 304954, 312518, 320085, 327649, 335214, 342779, 350344, 357908, 365471, 373036, 380601, 388167, 395731, 403296]# noqa: E501
+    # 冰块扩张的攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
     hit2 = 2
+    # 爆炸攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    hit3 = 1
 
-    data3 = [0, 49075, 60454, 71835, 83214, 94594, 105975, 117354, 128734, 140113, 151493, 162874, 174253, 185632, 197013, 208392, 219775, 231154, 242533, 253913, 265292, 276672, 288052, 299433, 310812, 322192, 333571, 344950, 356330, 367711, 379092, 390471, 401850, 413230, 424609, 435989, 447370, 458751, 470130, 481510, 492890, 504269, 515650, 527029, 538410, 549789, 561169, 572549, 583928, 595307, 606687]# noqa: E501
-    hit3 = 1 #TODO
-
-
-# 冰凝之魂 프로스트헌트
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/82fc7ec7cfb2b7afa8c125a2d9420a78?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill24(PassiveSkill):
+# 冰凝之魂
+# mage_male/glacial_master/82fc7ec7cfb2b7afa8c125a2d9420a78
+# a5ccbaf5538981c6ef99b236c0a60b73/82fc7ec7cfb2b7afa8c125a2d9420a78
+class Skill40(PassiveSkill):
+    """
+    知源·冰结师专属战斗技巧， 精通冰结魔法的同时， 磨炼操纵魔法武器的体术。 增加基本攻击力和转职技能攻击力， 变更部分技能效果。\n
+    [冰魄旋枪]\n
+    投枪合而为一， 在头顶快速旋转后投掷。 总攻击力与变更前相同； 动作全程附加霸体护甲。\n
+    [冰魄之弓]\n
+    终结攻击动作附加霸体护甲， 增加冲击波范围。 并且， 最后一击对弓箭未命中敌人造成更大伤害。
+    """
     name = "冰凝之魂"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 5
+    position = 5 #TODO
     rangeLv = 3
     uuid = "82fc7ec7cfb2b7afa8c125a2d9420a78"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
+    # 基本攻击力和转职技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # [冰魄之弓]对弓箭未命中敌人的最后一击伤害增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
     associate = [{"type":"*skillRation","data":data0}]
 
-
-# 极冰猎魔斩 글라키에스
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/9f57da5cb3651d81ca7dc9f78be33d01?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill25(ActiveSkill):
+# 极冰猎魔斩
+# mage_male/glacial_master/9f57da5cb3651d81ca7dc9f78be33d01
+# a5ccbaf5538981c6ef99b236c0a60b73/9f57da5cb3651d81ca7dc9f78be33d01
+class Skill41(ActiveSkill):
+    """
+       双手汇聚寒气， 制造两把巨大的冰霜巨剑后， 斩击敌人。
+    """
     name = "极冰猎魔斩"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 7
+    position = 7 #TODO
     rangeLv = 2
     cube = 7
     cd = 60
     mp = [960, 7200]
     uuid = "9f57da5cb3651d81ca7dc9f78be33d01"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 183055, 201626, 220196, 238767, 257339, 275910, 294481, 313052, 331621, 350191, 368763, 387335, 405906, 424475, 443046, 461618, 480190, 498760, 517331, 535900, 554471, 573043, 591615, 610185, 628756, 647325, 665896, 684467, 703039, 721610, 740180, 758752, 777322, 795894, 814465, 833035, 851604, 870175, 888747, 907319, 925890, 944459, 963031, 981602, 1000172, 1018744, 1037314, 1055884, 1074456, 1093027]# noqa: E501
-    hit0 = 1 #TODO
+    # 冰霜巨剑斩击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
 
-
-# 永劫 : 纳斯特隆德 영겁 : 나스트론드
-# https://api.neople.co.kr/df/skills/a5ccbaf5538981c6ef99b236c0a60b73/0e3da11226dd30c2aaef52e36eff7f3f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill26(ActiveSkill):
+# 永劫 : 纳斯特隆德
+# mage_male/glacial_master/0e3da11226dd30c2aaef52e36eff7f3f
+# a5ccbaf5538981c6ef99b236c0a60b73/0e3da11226dd30c2aaef52e36eff7f3f
+class Skill42(ActiveSkill):
+    """
+    以自身武器为媒介， 生成冰霜长矛， 散播寒流， 使周围的敌人进入冻结状态。 然后， 使用冰霜长矛连续攻击， 完全破坏地面， 并引发强烈的冰霜风暴， 将浮在空中的冰霜碎片融合成冰霜巨锤， 发动终结攻击。\n
+    [三次觉醒技能]\n
+    使用三次觉醒技能时， 与关联的技能共享冷却时间。\n
+    若关联的技能还在冷却中， 则无法使用三次觉醒技能。
+    """
     name = "永劫 : 纳斯特隆德"
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 5
+    position = 5 #TODO
     rangeLv = 5
     cube = 15
     cd = 290
     mp = [4027, 8055]
     uuid = "0e3da11226dd30c2aaef52e36eff7f3f"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 6118, 7536, 8952, 10370, 11790, 13208, 14627, 16047, 17464, 18880, 20300, 21719, 23137, 24555, 25974, 27393, 28810, 30230, 31646, 33065, 34485, 35903, 37322, 38740, 40158, 41576, 42996, 44413, 45831, 47250, 48669, 50088, 51505, 52924, 54342, 55760, 57179, 58598, 60017, 61433, 62853, 64271, 65691, 67109, 68526, 69944, 71364, 72781, 74200, 75619]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 61169, 75352, 89537, 103721, 117904, 132088, 146273, 160458, 174643, 188827, 203010, 217194, 231379, 245562, 259747, 273931, 288114, 302298, 316482, 330666, 344852, 359037, 373219, 387404, 401588, 415772, 429956, 444141, 458323, 472508, 486693, 500877, 515061, 529246, 543428, 557613, 571798, 585983, 600166, 614351, 628536, 642719, 656903, 671087, 685271, 699456, 713639, 727823, 742007, 756191]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 42818, 52748, 62675, 72605, 82534, 92462, 102391, 112321, 122248, 132178, 142106, 152035, 161966, 171894, 181822, 191752, 201680, 211609, 221539, 231467, 241396, 251325, 261253, 271182, 281112, 291040, 300969, 310900, 320827, 330757, 340685, 350614, 360543, 370470, 380400, 390330, 400258, 410187, 420116, 430043, 439974, 449904, 459832, 469761, 479690, 489618, 499548, 509476, 519405, 529334]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 42818, 52748, 62675, 72605, 82534, 92462, 102391, 112321, 122248, 132178, 142106, 152035, 161966, 171894, 181822, 191752, 201680, 211609, 221539, 231467, 241396, 251325, 261253, 271182, 281112, 291040, 300969, 310900, 320827, 330757, 340685, 350614, 360543, 370470, 380400, 390330, 400258, 410187, 420116, 430043, 439974, 449904, 459832, 469761, 479690, 489618, 499548, 509476, 519405, 529334]# noqa: E501
-    hit3 = 1 #TODO
-
-    data4 = [0, 91753, 113028, 134306, 155582, 176857, 198133, 219410, 240687, 261963, 283238, 304516, 325792, 347067, 368343, 389620, 410896, 432173, 453450, 474725, 496002, 517278, 538553, 559830, 581105, 602382, 623658, 644935, 666211, 687488, 708763, 730040, 751316, 772592, 793868, 815143, 836421, 857698, 878973, 900250, 921526, 942801, 964078, 985355, 1006630, 1027906, 1049184, 1070460, 1091736, 1113012, 1134288]# noqa: E501
-    hit4 = 1 #TODO
-
-    data5 = [0, 12232, 15070, 17906, 20745, 23581, 26417, 29255, 32093, 34927, 37765, 40601, 43438, 46276, 49112, 51950, 54785, 57622, 60460, 63295, 66133, 68968, 71806, 74643, 77480, 80318, 83155, 85990, 88828, 91664, 94501, 97338, 100174, 103012, 105846, 108685, 111523, 114359, 117195, 120033, 122869, 125707, 128541, 131379, 134218, 137054, 139891, 142726, 145564, 148402, 151237]# noqa: E501
+    # 寒流攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 长矛下劈攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    # 长矛狂舞第1击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
+    # 长矛狂舞第2击攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    hit3 = 1
+    # 地面破坏攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    hit4 = 1
+    # 冰霜风暴多段攻击力 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
     hit5 = 5
+    # 冰霜风暴多段攻击次数 : {value6}次
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    # 巨大冰锤多段攻击力 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    hit7 = 6
+    # 巨大冰锤多段攻击次数 : {value8}次
+    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    # 巨大冰锤爆炸攻击力 : {value9}%
+    data9 = get_data(f'{prefix}/{uuid}', 9, lambda x = None: x)
+    hit9 = 1
 
-    data6 = [0, 20389, 25117, 29844, 34573, 39299, 44029, 48757, 53486, 58214, 62943, 67671, 72398, 77125, 81855, 86583, 91310, 96039, 100765, 105494, 110223, 114950, 119679, 124405, 129134, 133863, 138590, 143318, 148048, 152774, 157502, 162230, 166958, 171688, 176415, 181142, 185870, 190599, 195327, 200055, 204783, 209509, 214239, 218967, 223694, 228423, 233150, 237879, 242607, 247334, 252063]# noqa: E501
-    hit6 = 6
-
-    data7 = [0, 183505, 226059, 268612, 311164, 353717, 396269, 438820, 481375, 523926, 566478, 609030, 651582, 694136, 736688, 779240, 821793, 864346, 906898, 949451, 992003, 1034555, 1077108, 1119660, 1162213, 1204764, 1247317, 1289872, 1332423, 1374974, 1417529, 1460079, 1502633, 1545185, 1587739, 1630289, 1672843, 1715395, 1757949, 1800499, 1843052, 1885606, 1928158, 1970709, 2013263, 2055815, 2098368, 2140921, 2183473, 2226025, 2268577]# noqa: E501
-    hit7 = 1 #TODO
 
 class classChange(Character):
     def __init__(self, equVersion):
@@ -654,6 +1217,10 @@ class classChange(Character):
         self.name = 'glacial_master'
         self.nameCN = '知源·冰结师'
         self.role = 'mage_male'
+        self.角色 = '魔法师(男)'
+        self.职业 = '冰结师'
+        self.jobId = 'a5ccbaf5538981c6ef99b236c0a60b73'
+        self.jobGrowId = '618326026de1a1f1cfba5dbd0b8396e7'
 
         self.武器选项 = ['魔杖', '法杖', '矛', '棍棒']
         self.输出类型选项 = ['魔法百分比']
@@ -661,9 +1228,5 @@ class classChange(Character):
         self.防具精通属性 = ['智力']
         self.防具类型 = '皮甲'
         self.buff = 1.872
-
-        self.角色 = '魔法师(男)'
-
-        self.职业 = '冰结师'
 
         super().__init__(equVersion, __name__)

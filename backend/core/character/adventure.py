@@ -79,10 +79,10 @@ adv = [
         'name': 'mage_male',
         'title': '魔法师(男)',
         'children': [
-            {'id': 0, 'name': 'elemental_bomber', 'title': '知源·元素爆破师', 'open': False},
+            {'id': 0, 'name': 'elemental_bomber', 'title': '知源·元素爆破师', 'open': True, 'class': 'GF.mage_male.elemental_bomber'},
             {'id': 1, 'name': 'glacial_master', 'title': '知源·冰结师', 'open': True, 'class': 'GF.mage_male.glacial_master'},
-            {'id': 2, 'name': 'blood_mage', 'title': '知源·血法师', 'open': False},
-            {'id': 3, 'name': 'swift_master', 'title': '知源·逐风者', 'open': False},
+            {'id': 2, 'name': 'blood_mage', 'title': '知源·血法师', 'open': True, 'class': 'GF.mage_male.blood_mage'},
+            {'id': 3, 'name': 'swift_master', 'title': '知源·逐风者', 'open': True, 'class': 'GF.mage_male.swift_master'},
             {'id': 4, 'name': 'dimension_walker', 'title': '知源·次元行者', 'open': True, 'class': 'GF.mage_male.dimension_walker'},
         ],
     },
