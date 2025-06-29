@@ -1592,11 +1592,4 @@ class classChange(Character):
         self.防具类型 = '扫把'
         self.buff = 1.922
 
-        self.武器选项 = ['魔杖', '法杖', '矛', '棍棒']
-        self.输出类型选项 = ['魔法百分比']
-        self.输出类型 = '魔法百分比'
-        self.防具精通属性 = ['智力']
-        self.防具类型 = '皮甲'
-        self.buff = 1.872
-
         super().__init__(equVersion, __name__)
