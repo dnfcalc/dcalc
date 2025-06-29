@@ -488,6 +488,7 @@ class Skill27(ActiveSkill):
         变更为可填充3次的技能\n
          - 攻击力 -67%
         """
+        self.cd = 6
         self.skillRation *= 1 - 0.67  # noqa: E501
         ...
 

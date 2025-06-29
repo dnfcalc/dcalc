@@ -171,7 +171,7 @@ adv = [
         'title': '魔枪士',
         'children': [
             {'id': 0, 'name': 'vanguard', 'title': '千魂·征战者', 'open': False},
-            {'id': 1, 'name': 'skirmisher', 'title': '千魂·决战者', 'open': False},
+            {'id': 1, 'name': 'skirmisher', 'title': '千魂·决战者', 'open': True, 'class': 'GF.demonic_lancer.skirmisher'},
             {'id': 2, 'name': 'dragoon', 'title': '千魂·狩猎者', 'open': True, 'class': 'GF.demonic_lancer.dragoon'},
             {'id': 3, 'name': 'impaler', 'title': '千魂·暗枪士', 'open': False},
             {'id': 4, 'name': 'empty', 'title': ''},
