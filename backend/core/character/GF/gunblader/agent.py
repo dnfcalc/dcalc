@@ -415,7 +415,7 @@ class Skill20(PassiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
 
     associate = [
-        {"type":"$*PAtkP","data":data1}]
+        {"type":"$*PAtkP","data":data0}]
 
 # 月光挥斩
 # gunblader/agent/4655101518604f874721b3cc249aae10

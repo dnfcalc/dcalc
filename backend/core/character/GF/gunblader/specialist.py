@@ -291,7 +291,7 @@ class Skill17(PassiveSkill):
     # 攻击速度增加 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
 
-    associate = [ {"type":"$*PAtkPM","data":data0}, ]
+    associate = [ {"type":"$*PAtkM","data":data0}, ]
 
 # 镭射源能枪
 # gunblader/specialist/852f8ad797db4dca1405cb3e77198401
