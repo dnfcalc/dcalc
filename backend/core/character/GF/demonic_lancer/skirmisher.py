@@ -318,7 +318,7 @@ class Skill15(ActiveSkill):
     learnLv = 15
     masterLv = 1
     maxLv = 1
-    position = 5
+    position = 6
     rangeLv = 1
     cd = 3
     mp = [10, 10]
