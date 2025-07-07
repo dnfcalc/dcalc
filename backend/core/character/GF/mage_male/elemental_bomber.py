@@ -25,10 +25,10 @@ class Skill1(ActiveSkill):
     hasUP = False
 
     # 攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 冰球大小 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
 # 不死之身
 # mage_male/elemental_bomber/bb34e8854a93fd250347a1c64119f7ab
@@ -50,13 +50,13 @@ class Skill2(PassiveSkill):
     hasUP = False
 
     # 恢复模式下所受伤害增加 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 死亡时立即恢复的生命值量 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 恢复模式持续时间(普通地下城) : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 恢复模式持续时间(亡者峡谷) : {value3}秒
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
 # 黑暗之眼
 # mage_male/elemental_bomber/6e33d47e6622ce03b6defdd912140270
@@ -76,11 +76,11 @@ class Skill3(PassiveSkill):
     hasUP = False
 
     # 魔法值最大值增加 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 可触发恢复效果时的魔法值比率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 魔法值恢复速度增加 : {value2}倍
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
 
 # 基础精通
@@ -103,11 +103,11 @@ class Skill5(PassiveSkill):
     hasUP = False
 
     # 基本攻击力变化率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 前冲攻击力变化率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 跳跃攻击力变化率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
 
 # 魔球连射
@@ -131,15 +131,15 @@ class Skill9(ActiveSkill):
     hasUP = False
 
     # 魔法球数量 : {value0}个
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 攻击力增加率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     data1 = [i+100 if i > 0 else 0 for i in data1]
     hit1 = 5
     power1 = 0
     # -  [转职为元素爆破师后附加效果]  -
     # 冷却时间减少 : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
 # 幽冥火
 # mage_male/elemental_bomber/cfacda0647b9a0f595df2c2aad30c18d
@@ -163,18 +163,18 @@ class Skill10(ActiveSkill):
     hasUP = False
 
     # 持续时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 每个火球增加物理防御力 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 每个火球增加魔法防御力 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 每个火球的攻击力 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # - [虚妄之火效果] -
     # 物理防御力增加 : {value4}
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # 魔法防御力增加 : {value5}
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
 
 # 旋火盾
@@ -198,12 +198,12 @@ class Skill12(ActiveSkill):
     hasUP = False
 
     # 盾牌攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 所受伤害减少率 (远程) : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 盾牌前进距离 : {value2}px
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
 # 属性变换
 # mage_male/elemental_bomber/eb71e1d82d92c7e1d40500a0dcd77aa6
@@ -225,15 +225,15 @@ class Skill15(ActiveSkill):
     hasUP = False
 
     # 持续时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 火属性攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 冰属性攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 暗属性攻击力 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 光属性攻击力 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
     associate = [
         {"data":data1,"type":"+power1","skills":["魔球连射"]},
@@ -261,17 +261,17 @@ class Skill16(ActiveSkill):
     hasUP = True
 
     # 第1击和第2击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 第3击攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # [减速效果]
     # 减速几率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 减速持续时间 : {value3}秒
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # [范围信息]
     # 攻击范围比率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
 # 元素炮
 # mage_male/elemental_bomber/d085127b0edd719782bd618d5688f4a1
@@ -296,13 +296,13 @@ class Skill17(ActiveSkill):
     hasUP = False
 
     # [属性变换]魔法球攻击力变换率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     data0 = [i+100 if i > 0 else 0 for i in data0]
     hit0 = 1
     power0 = 0
     # [范围信息]
     # 爆炸大小比率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
 # 元素融合
 # mage_male/elemental_bomber/1dad88963abdc96b091fcab185a8820d
@@ -323,9 +323,9 @@ class Skill18(PassiveSkill):
     hasUP = False
 
     # 属性抗性增加 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 属性攻击力增加率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     associate = [{"data":data1}]
 
 # 冰晶坠
@@ -349,12 +349,12 @@ class Skill19(ActiveSkill):
     hasUP = True
 
     # 冰柱攻击力 : {value0}% x{value1}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 7
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # [范围信息]
     # 水晶大小比率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
 # 元素之力
 # mage_male/elemental_bomber/b163d099c8cc27fdb6fd3639c2ee6df9
@@ -377,11 +377,11 @@ class Skill20(PassiveSkill):
     hasUP = False
 
     # [元素之力]最大蓄力数量 : {value0}个
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 每个[元素之力]增加的[元素炮]攻击力增加率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 每个[元素之力]增加的[元素炮]大小增加 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     associate = [{"data":[i*5 for i in data1],"skills":["元素炮"]},]
 
 
@@ -405,13 +405,13 @@ class Skill22(ActiveSkill):
     hasUP = True
 
     # 火焰攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 12
     # 火焰攻击次数 : {value1}次 x2
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # [范围信息]
     # 攻击范围比率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
 # 元素环绕
 # mage_male/elemental_bomber/42c82812f86ff6704ae9952a2e6093a4
@@ -435,13 +435,13 @@ class Skill23(ActiveSkill):
     hasUP = False
 
     # 护盾持续时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 物理防御力增加 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 魔法防御力增加 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 属性攻击力增加率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     associate = [{"data":data3}]
 
 # 魔力燃烧
@@ -463,11 +463,11 @@ class Skill24(ActiveSkill):
     hasUP = False
 
     # 攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 魔法值消耗增加 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 持续时间 : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
 # 元素禁断
 # mage_male/elemental_bomber/ca75c965f20a150f99f54155a37400df
@@ -491,9 +491,9 @@ class Skill25(PassiveSkill):
     hasUP = False
 
     # 施放速度增加 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 转职技能冷却时间减少率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     associate = [{"data":data1,"type":"*cdReduce","exceptSkills":['幻魔四重奏', '末日湮灭', '启源·微观宇宙']}]
     # [可强制中断的技能列表]
     # 掌握技能等级1时 : [元素炮]、 [冰晶坠]、 [地炎]
@@ -522,14 +522,14 @@ class Skill26(ActiveSkill):
     hasUP = True
 
     # 电流攻击力 : {value0}% x{value1}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 4
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 电流传导次数 : {value2}次
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # [学习异瞳后]
     # 闪电球体爆炸攻击力 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
 # 暗域扩张
 # mage_male/elemental_bomber/717f1e2104fe4b796f800352fa143ecc
@@ -553,15 +553,15 @@ class Skill27(ActiveSkill):
     hasUP = True
 
     # 暗黑能量攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 失明几率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 失明持续时间 : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # [范围信息]
     # [暗域扩张]范围 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
 # 元素循环
 # mage_male/elemental_bomber/573723c8c0614f5b1218ca9ff992115b
@@ -581,10 +581,10 @@ class Skill28(PassiveSkill):
     hasUP = False
 
     # 基本攻击力和技能攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     associate = [{"data":data0}]
     # 命中率增加量 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
 # 旋炎破
 # mage_male/elemental_bomber/45442bbbe33540b4deeec29437dae70c
@@ -611,18 +611,18 @@ class Skill29(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 前方火环攻击力 : {value0}% x{value1}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 自身中心火环攻击力 : {value2}% x{value3}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 6
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 自身中心火环爆炸攻击力 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     hit4 = 1
     # [范围信息]
     # 攻击范围比率 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
     def vp_1(self):
         """
@@ -668,18 +668,18 @@ class Skill30(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 冰柱攻击力 : {value0}% x{value1}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 14
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 持续时间 : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 冰冻几率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 冰冻持续时间 : {value4}秒
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # [范围信息]
     # 魔法阵大小比率 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
     def vp_1(self):
         """
@@ -729,15 +729,15 @@ class Skill31(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 暗黑球体爆炸攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 减速持续时间 : {value1}秒
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # [范围信息]
     # 吸附范围比率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 爆炸范围比率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
     def vp_1(self):
         """
@@ -781,11 +781,11 @@ class Skill32(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 雷光屏障攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # [范围信息]
     # [雷光屏障]大小比率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
     def vp_1(self):
         """
@@ -828,22 +828,22 @@ class Skill33(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 小魔法球攻击力 : {value0}% x{value1}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 40
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 最后大魔法球碰撞攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
     # 最后大魔法球爆炸攻击力 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 1
     # 最后小魔法球攻击力 : {value4}% x{value5}
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     hit4 = 5
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # [范围信息]
     # 大爆炸范围比率 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
     def vp_1(self):
         """
@@ -882,9 +882,9 @@ class Skill34(PassiveSkill):
     hasUP = False
 
     # 暴击伤害增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 魔法暴击率增加 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     associate = [{"data":data0}]
 
 # 幻魔四重奏
@@ -911,11 +911,11 @@ class Skill35(ActiveSkill):
     hasUP = False
 
     # 爆炸攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 30
     # 爆炸次数 : 4次
     # 最后爆炸次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
 # 元素浓缩球
 # mage_male/elemental_bomber/faf9cd66281078b51be2ee0b0f6c5530
@@ -939,15 +939,15 @@ class Skill36(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 弹落攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 弹落次数 : 1次
     # 爆炸攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
     # [范围信息]
     # 爆炸范围比率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     def vp_1(self):
         """
@@ -992,14 +992,14 @@ class Skill37(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 魔法球攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 爆炸攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
     # [范围信息]
     # 范围比率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     def vp_1(self):
         """
@@ -1049,20 +1049,20 @@ class Skill38(PassiveSkill):
     hasUP = False
 
     # 基本攻击力和技能攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # [技能连接附加效果]
     # 技能魔法值减少 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # [元素炮]魔法球、 爆炸大小变化率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # [地炎]火柱速度变化率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # [冰晶之浴]范围、 冰块大小变化率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # [暗域扩张]范围增加 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # [旋炎破]范围增加 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     associate = [{"data":data0}]
 
 # 元素禁域
@@ -1092,15 +1092,15 @@ class Skill39(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # [元素禁域]持续时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 适用所有属性效果持续时间 : {value1}秒
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # [元素禁域]攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
     # [范围信息]
     # [元素禁域]范围 : {value3}px
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
     def vp_1(self):
         """
@@ -1154,11 +1154,11 @@ class Skill40(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # [聚能魔炮]爆炸攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # [范围信息]
     # 范围比率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
     def vp_1(self):
         """
@@ -1204,14 +1204,14 @@ class Skill41(ActiveSkill):
     hasUP = False
 
     # 元素行星冲撞攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 元素行星多段攻击攻击力 : {value1}% x{value2}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 12
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 元素行星爆炸攻击力 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 1
 
 # 异瞳
@@ -1241,9 +1241,9 @@ class Skill42(PassiveSkill):
     hasUP = False
 
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # [雷光链]雷光球爆炸攻击力 : 总攻击力的{value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     associate = [{"data":data0}]
 
 # 聚魔轰击
@@ -1269,9 +1269,9 @@ class Skill43(ActiveSkill):
     hasUP = False
 
     # 能量释放多段攻击力 : {value0}% x{value1}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 20
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
 # 启源·微观宇宙
 # mage_male/elemental_bomber/d58681f38f393dbfd22ffdb049d97002
@@ -1298,14 +1298,14 @@ class Skill44(ActiveSkill):
     hasUP = False
 
     # 黑暗之眼激活攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 元素能量吸收多段攻击力 : {value1}% x{value2}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 12
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 大爆炸攻击力 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 1
 
 

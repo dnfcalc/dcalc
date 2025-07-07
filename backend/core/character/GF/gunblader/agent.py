@@ -23,10 +23,10 @@ class Skill0(ActiveSkill):
     hasUP = False
 
     # 攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 浮空力比率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
 # 穿透射击
 # gunblader/agent/92360eab6e1f378902018eca681ac629
@@ -50,16 +50,16 @@ class Skill1(ActiveSkill):
     hasUP = False
 
     # 射击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # [转职为暗刃时]
     # 发射次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 射击攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # [范围信息]
     # 子弹发射距离比率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
 
 # 基础精通
@@ -82,11 +82,11 @@ class Skill3(PassiveSkill):
     hasUP = False
 
     # 基本攻击力变化率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 前冲攻击力变化率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 跳跃攻击力变化率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["斩射"]}]
 
@@ -114,10 +114,10 @@ class Skill6(ActiveSkill):
     hasUP = False
 
     # 劈砍攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 冲击波攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
 
 # 瞬击
@@ -141,10 +141,10 @@ class Skill8(ActiveSkill):
     hasUP = False
 
     # 挥舞枪身攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 斩击攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
 
 # 浮空连击
@@ -169,10 +169,10 @@ class Skill9(ActiveSkill):
     hasUP = False
 
     # 下斩攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 上挑攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
 
 # 迅步突袭
@@ -196,7 +196,7 @@ class Skill13(ActiveSkill):
     hasUP = True
 
     # 追加攻击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
 
 # 连续射击
@@ -220,14 +220,14 @@ class Skill14(ActiveSkill):
     hasUP = True
 
     # 第1击和第2击射击攻击力 : {value0}% X 2次
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 2
     # 最后射击攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
     # [范围信息]
     # 攻击范围比率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
 # 特工秘技
 # gunblader/agent/01384bbfc346775d1267fa0bc4ca605f
@@ -249,11 +249,11 @@ class Skill15(PassiveSkill):
     hasUP = False
 
     # 后跳攻击冷却时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 物理暴击率增加量 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 暴击伤害增加率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [ {"type":"*skillRation","data":data2} ]
 
@@ -284,28 +284,28 @@ class Skill16(ActiveSkill):
     hasUP = True
 
     # 护盾生命值 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 护盾持续时间 : {value1}秒
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 护盾爆炸攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2= 1
     # - 发动[源能提炼]时 -
     # 护盾大小和爆炸范围增加 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 护盾持续时间增加 : {value4}秒
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # 护盾生命值增加 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # [源能提炼]叠加数消耗量 : {value6}个
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     # 蓄气动作持续时间上限 : {value7}秒
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7)
     # [范围信息]
     # 护盾大小比率 : {value8}%
-    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    data8 = get_data(f'{prefix}/{uuid}', 8)
     # 爆炸范围比率 : {value9}%
-    data9 = get_data(f'{prefix}/{uuid}', 9, lambda x = None: x)
+    data9 = get_data(f'{prefix}/{uuid}', 9)
 
 # 斩射
 # gunblader/agent/0113c8b1306ca76d208f83f2d093dd62
@@ -329,11 +329,11 @@ class Skill17(ActiveSkill):
     hasUP = True
 
     # 斩击/射击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 2
     # [范围信息]
     # 攻击范围比率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
 # 迅步闪避
 # gunblader/agent/717f1e2104fe4b796f800352fa143ecc
@@ -358,7 +358,7 @@ class Skill18(PassiveSkill):
     hasUP = False
 
     # 发动迅步闪避后无敌时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
 # 双弦斩
 # gunblader/agent/eb71e1d82d92c7e1d40500a0dcd77aa6
@@ -383,14 +383,14 @@ class Skill19(ActiveSkill):
     hasUP = True
 
     # 第1击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 第2击攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
     # [范围信息]
     # 攻击范围比率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
 # 小太刀精通
 # gunblader/agent/dc1ffbe7bfcc6dc2be737951960da9ad
@@ -410,9 +410,9 @@ class Skill20(PassiveSkill):
     hasUP = False
 
     # 物理攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 命中率增加 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [
         {"type":"$*PAtkP","data":data0}]
@@ -438,12 +438,12 @@ class Skill22(ActiveSkill):
     hasUP = True
 
     # 攻击力 : {value0}% X {value1}次
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 2
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # [范围信息]
     # 攻击范围比率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
 # 精准射击
 # gunblader/agent/c9664191611af31142e052dfaef84530
@@ -469,12 +469,12 @@ class Skill23(ActiveSkill):
     hasUP = True
 
     # 攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 穿刺几率 : 100%
     # [范围信息]
     # 攻击范围比率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
 # 追踪目标
 # gunblader/agent/e4c354a89c337310aeb7041d5e742828
@@ -520,9 +520,9 @@ class Skill25(ActiveSkill):
     hasUP = False
 
     # 持续时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 基本攻击力和技能攻击力增加率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
 # 月影秘步
 # gunblader/agent/f2fb27162beb0b87a7cb9af7900e95f2
@@ -553,16 +553,16 @@ class Skill26(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 每次攻击的攻击力 : {value0}% X {value1}次
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 18
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 可发动下一套组合攻击的最大有效时间 : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 可搜索目标的最大范围 : {value3}px
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # [范围信息]
     # 施放攻击范围比率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
     def vp_1(self):
         """
@@ -607,15 +607,15 @@ class Skill27(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 旋转攻击攻击力 : {value0}% X {value1}次
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 3
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 满月斩物理攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
     # [范围信息]
     # 大小比率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
     def vp_1(self):
         """
@@ -662,14 +662,14 @@ class Skill28(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 攻击力 : {value0}% X {value1}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 12
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 射击高度上限 : {value2}px
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # [范围信息]
     # 目标锁定范围 : {value3}px
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
     def vp_1(self):
         """
@@ -719,21 +719,21 @@ class Skill29(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 枪投掷攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 剑刃投掷攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
     # 枪刃多段攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 16
     # 终结攻击攻击力 : {value3}% X {value4}次
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 2
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # [范围信息]
     # 攻击范围比率 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
     def vp_1(self):
         """
@@ -774,9 +774,9 @@ class Skill30(PassiveSkill):
     hasUP = False
 
     # 基本攻击力和技能攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 寻敌范围增加 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [ {"data":data0,"type":"*skillRation"}]
 
@@ -803,7 +803,7 @@ class Skill31(ActiveSkill):
     hasUP = False
 
     # 攻击力 : {value0}% X 2次
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 2
     power0 = 1.1 #以前记录的10%增加
 
@@ -831,11 +831,11 @@ class Skill32(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 每次攻击的攻击力 : {value0}% X 4次
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 4
     # [范围信息]
     # 搜索范围比率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
     def vp_1(self):
         """
@@ -879,20 +879,20 @@ class Skill33(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 新月攻击力 : {value0}% X {value1}次
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 2
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 半月攻击力 : {value2}% X {value3}次
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 2
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 满月攻击力 : {value4}% X {value5}次
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     hit4 = 2
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # [范围信息]
     # 大小比率 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
     def vp_1(self):
         """
@@ -936,11 +936,11 @@ class Skill34(PassiveSkill):
     hasUP = False
 
     # 物理暴击率增加 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 暴击伤害增加率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 迅步突袭冷却时间缩短 : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [
         {"type":"*skillRation","data":data1},
@@ -971,15 +971,15 @@ class Skill35(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 乱舞攻击力 : {value0}% X {value1}次
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 9
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 最后一击攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
     # [范围信息]
     # 攻击范围比率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
     def vp_1(self):
         """
@@ -1027,17 +1027,17 @@ class Skill36(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 多段攻击攻击力 : {value0}% X 9次
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 11
     # [追踪目标]追加射击次数 : 2次
     # 最后射击攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
     # 射击高度上限 : {value2}px
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # [范围信息]
     # 攻击范围比率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
     def vp_1(self):
         """
@@ -1085,15 +1085,15 @@ class Skill37(ActiveSkill):
     hasUP = False
 
     # 剑光多段攻击攻击力 : {value0}% X {value1}次
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 12
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 射击多段攻击攻击力 : {value2}% X {value3}次
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 9
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 最后一击攻击力 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     hit4 = 1
 
 # 无瑕
@@ -1119,7 +1119,7 @@ class Skill38(PassiveSkill):
     hasUP = False
 
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
     associate = [ {"type":"*skillRation","data":data0}]
 
@@ -1146,13 +1146,13 @@ class Skill39(ActiveSkill):
     hasUP = False
 
     # 第1击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 第2击攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
     # 第3击攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
 
 # 月夜 : 终极行动
@@ -1179,11 +1179,11 @@ class Skill40(ActiveSkill):
     hasUP = False
 
     # 多段攻击攻击力 : {value0}% X {value1}次
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 11
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 终结攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
 
 class classChange(Character):

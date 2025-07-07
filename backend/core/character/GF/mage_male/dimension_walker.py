@@ -24,13 +24,13 @@ class Skill2(PassiveSkill):
     hasUP = False
 
     # 恢复模式下所受伤害增加 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 死亡时立即恢复的生命值量 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 恢复模式持续时间(普通地下城) : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 恢复模式持续时间(亡者峡谷) : {value3}秒
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
 # 黑暗之眼
 # mage_male/dimension_walker/6e33d47e6622ce03b6defdd912140270
@@ -50,11 +50,11 @@ class Skill3(PassiveSkill):
     hasUP = False
 
     # 魔法值最大值增加 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 可触发恢复效果时的魔法值比率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 魔法值恢复速度增加 : {value2}倍
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
 # 超然感知
 # mage_male/dimension_walker/d53301bb328baf12a3ae482cc6a565dd
@@ -81,11 +81,11 @@ class Skill4(PassiveSkill):
     hasUP = False
 
     # 边界能量条最大值 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 次元石持有量上限 : {value1}个
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 普通攻击命中时能量条增加量 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
 # 次元边界
 # mage_male/dimension_walker/7e904ea3d2a9faa054604e55120a9268
@@ -109,7 +109,7 @@ class Skill5(ActiveSkill):
     hasUP = False
 
     # 施放时所需次元石数量 : {value0}个
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
 # 次元之乖离扫把精通
 # mage_male/dimension_walker/5152480fdde81362575a488d4cec4af9
@@ -131,9 +131,9 @@ class Skill6(PassiveSkill):
     hasUP = False
 
     # 施放速度增加 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 命中率增加 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
 
 # 基础精通
@@ -156,11 +156,11 @@ class Skill8(PassiveSkill):
     hasUP = False
 
     # 基本攻击力变化率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 前冲攻击力变化率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 跳跃攻击力变化率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["乖离 : 禁忌之奈雅丽"]}]
 
@@ -186,18 +186,18 @@ class Skill13(ActiveSkill):
     hasUP = False
 
     # 持续时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 每个火球增加物理防御力 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 每个火球增加魔法防御力 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 每个火球的攻击力 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # - [虚妄之火效果] -
     # 物理防御力增加 : {value4}
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # 魔法防御力增加 : {value5}
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
 
 # 瞬移
@@ -220,9 +220,9 @@ class Skill14(ActiveSkill):
     hasUP = False
 
     # X轴移动距离 : {value0}px
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # Y轴移动距离 : {value1}px
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
 # 次元 : 坠落
 # mage_male/dimension_walker/4f2e001e9a19eb7bae50ad1840dfb329
@@ -248,29 +248,29 @@ class Skill19(ActiveSkill):
     hasUP = True
 
     # 普通情况下箱子掉落位置 : {value0}px
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 按方向键时箱子掉落位置 : {value1}px
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 边界能量条增加量 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 箱子魔法攻击力 : {value3}
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit0 = 1
     # 箱子冲击波攻击力 : {value4}
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     hit4 = 0
     # 爆炸物箱子出现几率 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # 爆炸物箱子攻击力 : {value6}
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     hit6 = 1
     # 眩晕持续时间 : {value7}秒
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7)
     # [次元边界效果]
     # 次元边界能量条增加量 : {value8}
-    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    data8 = get_data(f'{prefix}/{uuid}', 8)
     # 周围敌人吸附范围 : {value9}px
-    data9 = get_data(f'{prefix}/{uuid}', 9, lambda x = None: x)
+    data9 = get_data(f'{prefix}/{uuid}', 9)
 
     mode = ["箱子","普通"]
 
@@ -302,9 +302,9 @@ class Skill20(PassiveSkill):
     hasUP = False
 
     # 基本攻击和次元系列技能攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 迷雾附着敌人时， 基本攻击和次元系列技能攻击力增加率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     associate = [{"data":data0,"skills":["次元 : 坠落","次元 : 虚影","次元 : 跃迁","次元 : 离子束","次元 : 万花镜","次元 : 粒子风暴","次元 : 时空磁场","次元 : 粒子波","次元 : 思维聚爆","次元 : 奇点","禁断之盛宴","未明·次元崩坏","乖离 : 禁忌之奈雅丽"]}]
 
 # 次元扭曲装置
@@ -327,13 +327,13 @@ class Skill21(PassiveSkill):
     hasUP = False
 
     # 基本攻击力和技能攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 魔法暴击率增加 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 魔法值上限增加率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 施放速度增加 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     associate = [{"data":data0}]
 
 # 次元 : 虚影
@@ -360,16 +360,16 @@ class Skill22(ActiveSkill):
     hasUP = True
 
     # 边界能量条增加量 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 攻击力 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
     # [次元边界效果]
     # 次元边界能量条增加量 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # [范围信息]
     # 一般状态下突进距离比率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
 # 次元 : 跃迁
 # mage_male/dimension_walker/2ba299855fc22192cba4f73db75e9d0e
@@ -393,17 +393,17 @@ class Skill23(ActiveSkill):
     hasUP = True
 
     # 边界能量条增加量 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 后方瞬移距离 : {value1}px
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 次元场攻击力 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
     # 控制时间 : {value3}秒
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # [范围信息]
     # 冲击波大小比率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
     def getSkillCD(self, mode=None):
         self.cd = self.cds[self.lv]
@@ -433,25 +433,25 @@ class Skill24(ActiveSkill):
     hasUP = True
 
     # 召唤时生命值消耗 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 召唤持续时间 : {value1}秒
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 近距离攻击力 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
     # 远程攻击力 : {value3}
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 独立攻击力增加率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # - [转职技能命中时附加效果] -
     # 奈雅丽攻击冷却时间减少率 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # 奈雅丽移动速度增加率 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     # 持续时间 : {value7}秒
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7)
     # 重叠次数上限 : {value8}次
-    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    data8 = get_data(f'{prefix}/{uuid}', 8)
 
     associate = [{"data":data4,"type":"$*PAtkI"}]
 
@@ -504,19 +504,19 @@ class Skill27(ActiveSkill):
     hasUP = True
 
     # 边界能量条增加量 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 激光攻击力 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 6
     # [次元边界效果]
     # 边界能量增加量 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 压缩能量后的激光攻击力 : {value3}
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 0
     # [范围信息]
     # 激光大小比率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
     mode = ["强化","普通"]
 
@@ -547,9 +547,9 @@ class Skill28(ActiveSkill):
     hasUP = False
 
     # 持续时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 基本攻击和技能攻击增加率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
 # 虚妄之火
 # mage_male/dimension_walker/dde3b443bd5e61d90c34e5ee771e2c28
@@ -598,20 +598,20 @@ class Skill30(ActiveSkill):
     hasUP = False
 
     # 生命值消耗 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 在决斗场内， 迷雾附身时间上限 : 5秒
     # [范围信息]
     # 索敌范围 : {value1}px
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # [学习古史记忆后]
     # 索敌距离 : {value2}px
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 索敌宽度 : {value3}px
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 索敌高度 : {value4}px
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # 召回等待时间 : {value5}秒
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
 # 次元 : 万花镜
 # mage_male/dimension_walker/b89c9ab317bc0a443f6497b7cca2f6a8
@@ -640,19 +640,19 @@ class Skill31(ActiveSkill):
     hasUP = True
 
     # 边界能量条增加量 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 乱打攻击力 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 4
     # [次元边界效果]
     # 边界能量增加量 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 下乱打攻击力 : {value3}
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 4
     # [范围信息]
     # 冲击波大小比率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
     mode = ["普通","强化"]
 
@@ -688,12 +688,12 @@ class Skill32(ActiveSkill):
     hasUP = True
 
     # 乱打攻击次数 : {value0}次
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 乱打攻击力 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 15
     # 最终一击攻击力 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
 
 # 次元 : 粒子风暴
@@ -722,25 +722,25 @@ class Skill33(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 边界能量增加量 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 基础施放距离 : {value1}px
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 使用方向键时施放距离 : {value2}px
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 攻击力 : {value3}
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 3
     # [次元边界效果]
     # 边界能量条增加量 : {value4}
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # 爆炸倒计时 : {value5}秒
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # 攻击力 : {value6}
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     hit6 = 1
     # [范围信息]
     # 冲击波大小比率 : {value7}%
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7)
 
     mode = ["普通","强化"]
 
@@ -801,22 +801,22 @@ class Skill34(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 边界能量条增加量 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 攻击力 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 2
     # 次元扭曲持续时间 : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 边界能量条额外增加率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # [次元边界效果]
     # 次元边界能量条增加量 : {value4}
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # 束缚持续时间 : {value5}秒
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # [范围信息]
     # 范围比率 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
     def vp_1(self):
         """
@@ -866,26 +866,26 @@ class Skill35(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 生命值消耗 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 召唤数量 : {value1}只
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 打击攻击力 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 20
     # 每秒持续攻击力 : {value3}
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 6
     # 持续攻击时间 : {value4}秒
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # 减速持续时间 : {value5}秒
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # 生命值恢复量 : {value6}
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     # [范围信息]
     # 突进距离 : {value7}px
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7)
     # 蜂群大小比率 : {value8}%
-    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    data8 = get_data(f'{prefix}/{uuid}', 8)
 
     def vp_1(self):
         """
@@ -934,21 +934,21 @@ class Skill36(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 边界能量条增加量 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 粒子炮攻击力 : {value1}  x {value2}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 10
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # [次元边界效果]
     # 边界能量增加量 : {value3}
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 粒子炮攻击力 : {value4}  x {value5}
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     hit4 = 20
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # [范围信息]
     # 中心范围比率 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
     mode = ["强化","普通"]
 
@@ -1009,22 +1009,22 @@ class Skill37(PassiveSkill):
     hasUP = False
 
     # 不消耗次元石的几率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # [1个波动次数]
     # 魔法暴击率增加 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 暴击伤害增加率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # [2个波动次数]
     # 魔法暴击率增加 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 暴击伤害增加率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # [3个波动次数]
     # 魔法暴击率增加 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # 暴击伤害增加率 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
     associate = [{"data":data6}]
 
@@ -1052,16 +1052,16 @@ class Skill38(ActiveSkill):
     hasUP = False
 
     # 怪物出现时攻击力 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 触须攻击力 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 23
     # 爆炸攻击力 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
     # 次元石获得量 : {value3}个
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
 # 次元 : 思维聚爆
 # mage_male/dimension_walker/e0daa922b19cdc35de879e938361464e
@@ -1088,19 +1088,19 @@ class Skill39(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 边界能量增加量 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 持续攻击力 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 12
     # 最后爆炸攻击力 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
     # [次元边界效果]
     # 边界能量增加量 : {value3}
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # [范围信息]
     # 最后爆炸大小比率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
     mode = ["瞬爆","打满"]
 
@@ -1156,13 +1156,13 @@ class Skill40(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 束缚时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 刺击攻击力 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
     # [范围信息]
     # 刺击距离比率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     def effect(self, old, new):
         if self.vp == 1:
@@ -1221,17 +1221,17 @@ class Skill41(PassiveSkill):
     hasUP = False
 
     # 进入地下城时获得的次元石数量 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 次元石持有量上限增加 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 1个波动次数时攻击力增加量 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 2个波动次数时攻击力增加量 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 3个波动次数时攻击力增加量 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # 转职技能命中敌人时， 奈雅丽攻击速度增加量 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     associate = [{"data":data4}]
 
 # 次元 : 奇点
@@ -1262,31 +1262,31 @@ class Skill42(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 边界能量条增加量 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 被抓取敌人撞击墙壁时冲击波攻击力 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 被抓取敌人撞击地面时的冲击波攻击力 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 撞击地面时冲击波对不可抓取敌人的攻击力 : {value3}
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 异次元水晶对不可抓取敌人的攻击力 : {value4}
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     hit4 = 1
     # 异次元水晶对不可抓取敌人的爆炸攻击力 : {value5}
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     hit5 = 1
     # [次元边界效果]
     # 次元边界能量条增加量 : {value6}
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     # 水晶地带单次攻击力 : {value7}
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7)
     hit7 = 0
     # 水晶地带每次爆炸攻击力 : {value8}
-    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    data8 = get_data(f'{prefix}/{uuid}', 8)
     hit8 = 0
     # [范围信息]
     # 攻击范围比率 : {value9}%
-    data9 = get_data(f'{prefix}/{uuid}', 9, lambda x = None: x)
+    data9 = get_data(f'{prefix}/{uuid}', 9)
 
     mode = ["强化","普通"]
 
@@ -1348,19 +1348,19 @@ class Skill43(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 彼端怪物每次悲鸣时攻击力 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 彼端怪物悲鸣次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # [媒介召唤]
     # 媒介对象受到的伤害 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
     # 彼端怪物每次悲鸣时攻击力 : {value3}
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 25
     # [范围信息]
     # 攻击范围比率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
     def vp_1(self):
         """
@@ -1416,29 +1416,29 @@ class Skill44(ActiveSkill):
     hasUP = False
 
     # 边界能量条增加量 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 奈雅丽迷雾每一击攻击力 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 10
     # 奈雅丽迷雾束缚时间 : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 次元炮击每一击攻击力 : {value3}
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 12
     # [次元边界效果]
     # 边界能量增加量 : {value4}
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # 次元炮击每一击攻击力 : {value5}
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     hit5 = 18
     # 强化的次元炮击每一击攻击力 : {value6}
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     hit6 = 18
     # 最终一击攻击力 : {value7}
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7)
     hit7 = 0
     # 召唤奈雅丽时最终一击攻击力 : {value8}
-    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    data8 = get_data(f'{prefix}/{uuid}', 8)
     hit8 = 1
 
     mode = ["强化全","强化简","普通"]
@@ -1492,9 +1492,9 @@ class Skill45(PassiveSkill):
     hasUP = False
 
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 首次施放[时空壁障]时，波动数增加量 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     associate = [{"data":data0}]
 
 # 乖离 : 边缘之兽
@@ -1523,15 +1523,15 @@ class Skill46(ActiveSkill):
     hasUP = False
 
     # 索敌距离 : {value0}px
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 索敌宽度 : {value1}px
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 索敌高度 : {value2}px
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 生命值消耗 : {value3}
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 突袭攻击力 : {value4}
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     hit4 = 1
 
 # 未明·次元崩坏
@@ -1561,17 +1561,17 @@ class Skill47(ActiveSkill):
     hasUP = False
 
     # 边界能量增加量 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 奈雅丽光线攻击力 : {value1}
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
     # 未知存在攻击力 : {value2}
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
     # 不完整的世界崩坏攻击力 : {value3} x {value4}
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 4
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
 
 class classChange(Character):

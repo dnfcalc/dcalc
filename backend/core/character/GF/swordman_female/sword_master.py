@@ -23,13 +23,13 @@ class Skill0(PassiveSkill):
     hasUP = False
 
     # 触发增益效果所需连击数 : {value0}
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 暴击率增加 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 暴击率增加上限 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 增益效果持续时间 : {value3}秒
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
 
 # 帝国剑术
@@ -94,7 +94,7 @@ class Skill2(PassiveSkill):
     uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
     icon = "$common/$uuid"
 
-    data0 = data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = data0 = get_data(f'{prefix}/{uuid}', 0)
 
     associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["帝国剑术"]}]
 
@@ -119,10 +119,10 @@ class Skill3(ActiveSkill):
     hasUP = True
 
     # 斩击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # [范围信息]
     # 反击范围比率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
 
     def getSkillCD(self,mode=None):
@@ -190,29 +190,29 @@ class Skill6(ActiveSkill):
     hasVP = False
     hasUP = False
     # 火属性效果触发几率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 火属性攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 0
     # 冰属性效果触发几率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 冰属性攻击力 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 0
     # 光属性效果触发几率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # 光属性攻击力 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     hit5 = 1
     # 暗属性效果触发几率 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     # 暗属性攻击力 : {value7}%
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7)
     hit7 = 1
     # 暗属性效果持续时间 : {value8}秒
-    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    data8 = get_data(f'{prefix}/{uuid}', 8)
     # 暗属性效果下， 怪物身上可附加的冥炎上限 : {value9}个
-    data9 = get_data(f'{prefix}/{uuid}', 9, lambda x = None: x)
+    data9 = get_data(f'{prefix}/{uuid}', 9)
 
     mode = ["火", "冰", "光", "暗"]
 
@@ -249,20 +249,20 @@ class Skill8(PassiveSkill):
     uuid = "d2c6df5105577fb59fb92529a36165a0"
 
     # 物理攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # [魔剑降临]冷却时间 : 2秒
     # 重叠[魔剑降临]时技能攻击力增加量 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 副魔剑属性攻击力比率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # [魔剑奥义]攻击力增加率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # [魔剑奥义]冷却时间减少率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # [瞬影三绝斩]异常状态伤害增加率 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # [瞬影三绝斩]异常状态几率增加 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
     associate = [
         {"type":"$*PAtkP","data":data0,"weapon":["短剑"]},
@@ -297,22 +297,22 @@ class Skill9(PassiveSkill):
     hasUP = False
 
     # 物理攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # [帝国剑术]攻击力增加率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # [魔剑降临]攻击力增加率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # [驭剑术]施放次数增加 : {value3}次
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # [驭剑术]恢复时间减少 : {value4}秒
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # [驭剑术]恢复所需连击次数 : {value5}
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # [使用驭剑术时]
     # 强制中断技能时， 技能攻击力增加率 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     # [驭剑术]强制中断技能时， 冷却时间减少率 : {value7}%
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7)
     # [瞬影三绝斩]剑气追加次数 : 1次
     data8 = [0] + [1]*maxLv
 
@@ -349,24 +349,24 @@ class Skill10(PassiveSkill):
     uuid = "c61f5a010370101402b05b21916c2071"
 
     # 武器物理攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # [帝国剑术]巨剑攻击力增加率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # [瞬影三绝斩]霸体持续时间 : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # [破军旋舞斩]、 [恶即斩]、 [帝国剑术]巨剑蓄气时
     # 攻击范围比率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 技能攻击力增加的增益效果持续时间 : {value4}秒
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # 技能攻击力增加率 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # [破军旋舞斩]额外攻击力增加率 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     # [恶即斩]3阶段蓄气时攻击力增加率 : {value7}%
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7)
     # [恶即斩]蓄气后最终一击攻击力增加率 : {value8}%
-    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    data8 = get_data(f'{prefix}/{uuid}', 8)
 
     associate = [
         {"type":"$*PAtkP","data":data0,"weapon":["巨剑"]},
@@ -398,25 +398,25 @@ class Skill11(PassiveSkill):
     uuid = "202edb928046f4fa6dedf6337377efd5"
 
     # 物理攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # [跃空斩]冲击波攻击力增加率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # [穿云破空剑]冲击波范围增加率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # [穿云破空剑]冲击波攻击力增加率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # [幻剑术]冲击波范围 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # [幻剑术]冲击波攻击力增加率 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # [雷鸣千军破]冲击波范围增加率 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     # [雷鸣千军破]攻击力增加率 : {value7}%
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7)
     # 技能攻击力增加率 : {value8}%
-    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    data8 = get_data(f'{prefix}/{uuid}', 8)
     # 技能攻击力增加增益效果持续时间 : {value9}秒
-    data9 = get_data(f'{prefix}/{uuid}', 9, lambda x = None: x)
+    data9 = get_data(f'{prefix}/{uuid}', 9)
     associate = [
         {"type":"$*PAtkP","data":data0,"weapon":["钝器"]},
         {"type":"*power3","data":data3,"skills":["穿云破空剑"],"weapon":["钝器"]},
@@ -445,9 +445,9 @@ class Skill12(ActiveSkill):
     hasUP = False
 
     # 触发几率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 持续时间 : {value1}秒
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
 # 疾影斩
 # swordman_female/sword_master/8f73f243041c2d27739fe7696f02bf9b
@@ -471,13 +471,13 @@ class Skill13(ActiveSkill):
     hasUP = True
 
     # 斩击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 冲刺距离 : {value1}px
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # [范围信息]
     # 斩击范围比率 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
 # 升龙剑
 # swordman_female/sword_master/eb71e1d82d92c7e1d40500a0dcd77aa6
@@ -499,16 +499,16 @@ class Skill15(ActiveSkill):
     hasUP = True
 
     # 突进的多段攻击次数 : {value0}次
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 突进攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 4
     # 上斩攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
     # [范围信息]
     # 攻击范围比率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
 
 # 幻剑术
@@ -528,16 +528,16 @@ class Skill16(ActiveSkill):
     hasUP = True
 
     # 幻影斩击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 6
     # 幻影攻击次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 冲击波攻击力 : {value2}%
-    # data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # data2 = get_data(f'{prefix}/{uuid}', 2)
     data2 = [0, 424, 468, 510, 555, 599, 641, 684, 725, 771, 813, 856, 900, 941, 988, 1032, 1073, 1117, 1162, 1202, 1247, 1291, 1332, 1376, 1420, 1462, 1507, 1549, 1592, 1636, 1678, 1721, 1763, 1808, 1853, 1894, 1940, 1983, 2025, 2069, 2110, 2154, 2199, 2239, 2284, 2329, 2370, 2414, 2459, 2499, 2544, 2584, 2629, 2673, 2714, 2760, 2804, 2845, 2889, 2931, 2979, 3020, 3062, 3105, 3149, 3193, 3237, 3278, 3322, 3366, 3409]# noqa: E501
     # [范围信息]
     # 攻击范围比率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
     def setMode(self, mode):
         weapon = self.char.GetWeaponType()
@@ -564,13 +564,13 @@ class Skill17(ActiveSkill):
     uuid = "8c2379737c5acc935c1731f67f607655"
 
     # 持续时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 暴击伤害增加率 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 暴击率增加 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 敌人僵直时间增加率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
 
 # 穿云破空剑
@@ -594,22 +594,22 @@ class Skill18(ActiveSkill):
     hasUP = True
 
     # 上斩攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 多段斩击次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 多段斩击攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 15
     # 冲击波攻击力 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 1
     # [学习剑心 : 魔剑唤醒后]
     # 魔剑攻击力: {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # [范围信息]
     # 斩击与冲击波范围比率 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
 
 # 魔剑奥义
@@ -633,37 +633,37 @@ class Skill19(ActiveSkill):
     type = "passive"
 
     # 触发几率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 触发间隔时间 : {value1}秒
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 冥炎攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 0
     # 寒冰之枪攻击力 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 0
     # 寒冰之枪飞行距离 : {value4}px
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # 冰冻持续时间 : {value5}秒
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # 冰冻几率 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     # 燃烧之眼攻击力 : {value7}%
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7)
     hit7 = 0
     # 灼伤几率 : {value8}%
-    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    data8 = get_data(f'{prefix}/{uuid}', 8)
     # 灼伤攻击力 : {value9}%
-    data9 = get_data(f'{prefix}/{uuid}', 9, lambda x = None: x)
+    data9 = get_data(f'{prefix}/{uuid}', 9)
     # 灼伤持续时间 : {value10}秒
-    data10 = get_data(f'{prefix}/{uuid}', 10, lambda x = None: x)
+    data10 = get_data(f'{prefix}/{uuid}', 10)
     # 落雷攻击力 : {value11}%
-    data11 = get_data(f'{prefix}/{uuid}', 11, lambda x = None: x)
+    data11 = get_data(f'{prefix}/{uuid}', 11)
     hit11 = 0
     # 失明几率 : {value12}%
-    data12 = get_data(f'{prefix}/{uuid}', 12, lambda x = None: x)
+    data12 = get_data(f'{prefix}/{uuid}', 12)
     # 失明持续时间 : {value13}秒
-    data13 = get_data(f'{prefix}/{uuid}', 13, lambda x = None: x)
+    data13 = get_data(f'{prefix}/{uuid}', 13)
 
     power_sub = 0
 
@@ -704,7 +704,7 @@ class Skill20(PassiveSkill):
     uuid = "1ff42548e611b94781a1ae8f063dd679"
 
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
     associate = [
         {"type":"*skillRation","data":data0},
@@ -735,45 +735,45 @@ class Skill21(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 剑气攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 3
     # 剑气发射次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 剑气攻击射程 : {value2}px
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # [火属性魔剑附加效果]
     # 灼伤几率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 灼伤攻击力 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     hit4 = 1
     # 灼伤持续时间 : {value5}秒
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # [冰属性魔剑附加效果]
     # 冰冻几率 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     # 剑气攻击力 : {value7}%
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7)
     hit7 = 0
     # 冰冻持续时间 : {value8}秒
-    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    data8 = get_data(f'{prefix}/{uuid}', 8)
     # [光属性魔剑附加效果]
     # 感电几率 : {value9}%
-    data9 = get_data(f'{prefix}/{uuid}', 9, lambda x = None: x)
+    data9 = get_data(f'{prefix}/{uuid}', 9)
     # 感电攻击力 : {value10}%
-    data10 = get_data(f'{prefix}/{uuid}', 10, lambda x = None: x)
+    data10 = get_data(f'{prefix}/{uuid}', 10)
     # 感电持续时间 : {value11}秒
-    data11 = get_data(f'{prefix}/{uuid}', 11, lambda x = None: x)
+    data11 = get_data(f'{prefix}/{uuid}', 11)
     # [暗属性魔剑附加效果]
     # 失明几率 : {value12}%
-    data12 = get_data(f'{prefix}/{uuid}', 12, lambda x = None: x)
+    data12 = get_data(f'{prefix}/{uuid}', 12)
     # 失明持续时间 : {value13}秒
-    data13 = get_data(f'{prefix}/{uuid}', 13, lambda x = None: x)
+    data13 = get_data(f'{prefix}/{uuid}', 13)
     # 剑气攻击力 : {value14}% x 3
-    data14 = get_data(f'{prefix}/{uuid}', 14, lambda x = None: x)
+    data14 = get_data(f'{prefix}/{uuid}', 14)
     # [范围信息]
     # 剑气范围比率 : {value15}%
-    data15 = get_data(f'{prefix}/{uuid}', 15, lambda x = None: x)
+    data15 = get_data(f'{prefix}/{uuid}', 15)
 
     mode = ["火/光", "冰/暗"]
 
@@ -832,19 +832,19 @@ class Skill22(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 斩击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 3
     # 多段攻击次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 蓄气时间 : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 蓄气时间(最短) : {value3}秒
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 蓄气时攻击力增加率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # [范围信息]
     # 拔刀范围比率 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
     mode = ["蓄力","普通"]
 
@@ -903,12 +903,12 @@ class Skill23(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 斩击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 2
     # 斩击次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 最后一击爆炸攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
     # [范围信息]
     # 爆炸攻击范围比率 : {value3}%
@@ -971,36 +971,36 @@ class Skill24(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 第1阶段所需蓄气时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 第1阶段斩击次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 第2阶段所需蓄气时间 : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 第2阶段斩击次数 : {value3}次
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 第3阶段所需蓄气时间 : {value4}秒
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # 第3阶段斩击次数 : {value5}次
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # 第1阶段连续斩击攻击力 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     # 第2阶段连续斩击攻击力 : {value7}%
-    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7)
     # 第3阶段连续斩击攻击力 : {value8}%
-    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    data8 = get_data(f'{prefix}/{uuid}', 8)
     hit8 = 15 # 不连按为13
     # 第1阶段终结攻击力 : {value9}%
-    data9 = get_data(f'{prefix}/{uuid}', 9, lambda x = None: x)
+    data9 = get_data(f'{prefix}/{uuid}', 9)
     # 第2阶段终结攻击力 : {value10}%
-    data10 = get_data(f'{prefix}/{uuid}', 10, lambda x = None: x)
+    data10 = get_data(f'{prefix}/{uuid}', 10)
     # 第3阶段终结攻击力 : {value11}%
-    data11 = get_data(f'{prefix}/{uuid}', 11, lambda x = None: x)
+    data11 = get_data(f'{prefix}/{uuid}', 11)
     hit11 = 1
     # 蓄气时间(最短) : {value12}秒
-    data12 = get_data(f'{prefix}/{uuid}', 12, lambda x = None: x)
+    data12 = get_data(f'{prefix}/{uuid}', 12)
     # [范围信息]
     # 斩击范围比率 : {value13}%
-    data13 = get_data(f'{prefix}/{uuid}', 13, lambda x = None: x)
+    data13 = get_data(f'{prefix}/{uuid}', 13)
 
     def vp_1(self):
         """
@@ -1041,18 +1041,18 @@ class Skill25(PassiveSkill):
     uuid = "d0cdaca82892e54097f22a1f60817048"
 
     # 基本攻击力和技能攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 效果叠加次数上限 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 增益效果持续时间 : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 魂标志持续时间 : {value3}秒
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     # 魂标志生成的时间间隔 : {value4}秒
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # [范围信息]
     # 寻敌范围 : {value5}px
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
     # 国服特色被动+3%
     associate = [
@@ -1078,12 +1078,12 @@ class Skill26(ActiveSkill):
     uuid = "0232c151ef3731c2dede51931a374723"
 
     # 斩击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 3
     # 斩击次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 最后一击爆炸攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
 
 
@@ -1111,19 +1111,19 @@ class Skill27(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 刺击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 升空时多段攻击次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 升空时多段攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 8
     # 爆炸攻击力 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 1
     # [范围信息]
     # 爆炸范围比率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
     def vp_1(self):
         """
@@ -1179,16 +1179,16 @@ class Skill28(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 空中斩击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 4
     # 移动次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 爆炸攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
     # [范围信息]
     # 最后一击爆炸范围比率 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
     def vp_1(self):
         """
@@ -1239,26 +1239,26 @@ class Skill29(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 魔力飓风多段攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 40
     # 蓄气时多段攻击次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 发射后多段攻击次数 : {value2}次
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 爆炸攻击力 : {value3}% + [魔剑奥义]攻击力
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 1
     # 每个魔剑堆伤害增加率 : {value4}%
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # 魔剑堆最高存储次数 : {value5}
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     # 火属性效果 : 灼伤
     # 冰属性效果 : 冰冻
     # 光属性效果 : 感电
     # 暗属性效果 : 暗化
     # [范围信息]
     # 魔剑范围比率 : {value6}%
-    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
     magicHit = 5
     magicPower = 0.03
@@ -1340,13 +1340,13 @@ class Skill30(PassiveSkill):
     uuid = "e0daa922b19cdc35de879e938361464e"
 
     # 使用短剑时物理攻击力增加量 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # 使用太刀时物理攻击力增加量 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 使用钝器时物理攻击力增加量 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 使用巨剑时物理攻击力增加量 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
     associate = [
         {"type":"$*PAtkP","data":data0},
@@ -1375,21 +1375,21 @@ class Skill31(ActiveSkill):
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 斩击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 2
     # 斩击次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 爆炸攻击力 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 8
     # 最终爆炸攻击力 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 0
     # 爆炸次数 : {value4}次
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     # [范围信息]
     # 攻击范围比率 : {value5}%
-    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
     mode = ["满","柔化"]
 
@@ -1443,7 +1443,7 @@ class Skill32(ActiveSkill):
     hasUP = False
 
     # 次元斩攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
 
 
@@ -1469,15 +1469,15 @@ class Skill33(ActiveSkill):
     hasUP = False
 
     # 刺击攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
     # 强化版魔剑攻击力 : {value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 4
     # 强化版魔剑多段攻击次数 : {value2}次
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     # 魔力爆炸攻击力 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 1
 
 # 剑心 : 魔剑唤醒
@@ -1502,15 +1502,15 @@ class Skill34(PassiveSkill):
     uuid = "1803b6a67047cafb9e289b4f33cc507b"
 
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     # [升龙剑]
     # 下劈攻击力 : 总攻击力的{value1}%
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # [穿云破空剑]
     # 强化属性魔剑攻击力 : [穿云破空剑]冲击波攻击力的100%
     # [驭剑术]
     # 可以强制中断的次数增加 : {value2}次
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [
         {"type":"*skillRation","data":data0},
@@ -1538,18 +1538,18 @@ class Skill35(ActiveSkill):
     uuid = "9f57da5cb3651d81ca7dc9f78be33d01"
 
     # 强化版魔剑攻击力 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 4
     # 强化版魔剑攻击次数 : {value1}次
-    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     # 下劈冲击波 : {value2}%
-    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
     # 爆炸伤害 : {value3}%
-    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 15
     # 爆炸伤害多段攻击次数 : {value4}次
-    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
 class classChange(Character):
     def __init__(self, equVersion):
