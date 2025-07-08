@@ -4138,6 +4138,7 @@ def equ_238(char: CharacterProperty):
      生成冲锋旗帜，发动以下效果。
     -所受物理/魔法伤害-20%
     """
+    char.SetSkillCD(15,15,0.2)
     pass
 
 
@@ -4152,6 +4153,7 @@ def equ_239(char: CharacterProperty):
     生成冲锋旗帜，发动以下效果。
     -所受物理/魔法伤害-25%
     """
+    char.SetSkillCD(15, 15, 0.3)
     pass
 
 
@@ -4166,6 +4168,7 @@ def equ_240(char: CharacterProperty):
     生成冲锋旗帜，发动以下效果。
     -所受物理/魔法伤害-30%
     """
+    char.SetSkillCD(15, 15, 0.4)
     pass
 
 
@@ -4260,6 +4263,7 @@ def equ_246(char: CharacterProperty):
     -伤害量：113400%
     -冷却时间：40秒
     """
+    char.equ_effect.append(EquEffect(name='墨龙偃月斩', icon='/equipment/skill/61.png', cd=40, data=113400))
     pass
 
 
@@ -4274,6 +4278,7 @@ def equ_247(char: CharacterProperty):
     -伤害量：226800%
     -冷却时间：40秒
     """
+    char.equ_effect.append(EquEffect(name='墨龙偃月斩', icon='/equipment/skill/61.png', cd=40, data=226800))
     pass
 
 
@@ -4288,6 +4293,7 @@ def equ_248(char: CharacterProperty):
     -伤害量：340200%
     -冷却时间：40秒
     """
+    char.equ_effect.append(EquEffect(name='墨龙偃月斩', icon='/equipment/skill/61.png', cd=40, data=340200))
     pass
 
 
@@ -4376,6 +4382,9 @@ def equ_254(char: CharacterProperty):
     -流星伤害量：38250%
     -使敌人进入眩晕状态
     """
+    char.SetSkillCD(1, 100, 0.2)
+    char.SetStatus(SpeedM=0.1, SpeedA=0.1, SpeedR=0.1)
+    char.equ_effect.append(EquEffect(name='星光盛宴', icon='/equipment/icon/weapon/demoniclancer/beamspear/00177.png', cd=30, data=38250))
     pass
 
 
@@ -4395,6 +4404,9 @@ def equ_255(char: CharacterProperty):
     -使敌人进入眩晕状态
     -[强化-后跳]冷却时间-10%
     """
+    char.SetSkillCD(1, 100, 0.2)
+    char.SetStatus(SpeedM=0.125, SpeedA=0.125, SpeedR=0.125)
+    char.equ_effect.append(EquEffect(name='星光盛宴', icon='/equipment/icon/weapon/demoniclancer/beamspear/00178.png', cd=30, data=38250))
     pass
 
 
@@ -4414,6 +4426,10 @@ def equ_256(char: CharacterProperty):
     -使敌人进入眩晕状态
     -[强化-后跳]冷却时间-20%
     """
+    char.SetSkillCD(1, 100, 0.2)
+    char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
+    char.equ_effect.append(EquEffect(name='星光盛宴', icon='/equipment/icon/weapon/demoniclancer/beamspear/00179.png', cd=30, data=38250))
+    # char.equ_effect.append(EquEffect
     pass
 
 
@@ -4514,6 +4530,8 @@ def equ_262(char: CharacterProperty):
     对周围的所有敌人赋予深邃黑暗。
     存在深邃黑暗状态的怪物时，所有速度+5%，效果持续10秒。（最多叠加4次）
     """
+    char.SetStatus(SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
+    char.SetStatus(SpeedM=0.05*4, SpeedA=0.05*4, SpeedR=0.05*4)
     pass
 
 
@@ -4534,6 +4552,9 @@ def equ_263(char: CharacterProperty):
     跳跃状态下攻击时，对已命中的怪物追加暗灭之矛攻击。
     -暗灭之矛伤害量：22800%
     """
+    char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
+    char.SetStatus(SpeedM=0.05*4, SpeedA=0.05*4, SpeedR=0.05*4)
+    char.equ_effect.append(EquEffect(name='暗灭之矛', icon='/equipment/icon/weapon/demoniclancer/javelin/00167.png', cd=20, data=22800))
     pass
 
 
@@ -4557,6 +4578,9 @@ def equ_264(char: CharacterProperty):
     暗灭之矛出现后，6个暗灭之矛追加攻击。
     -暗灭之矛伤害量：1000%
     """
+    char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
+    char.SetStatus(SpeedM=0.05*4, SpeedA=0.05*4, SpeedR=0.05*4)
+    char.equ_effect.append(EquEffect(name='暗灭之矛', icon='/equipment/icon/weapon/demoniclancer/javelin/00184.png', cd=20, data=22800+1000*6))
     pass
 
 

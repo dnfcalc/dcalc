@@ -63,7 +63,7 @@ export default defineComponent({
       const items =
         skillInfo.value?.attribute.optionDesc?.split('\n').filter((item) => !!item) ?? []
       const details = items?.map((a) => {
-        const beforeReplace = a.match(/^(.+?\s*:\s*[^\{]+)(\{value\d+\}.*)$/)
+        const beforeReplace = a.match(/^(.+?)\s*(\{value\d+\}.*)$/);
         if (beforeReplace) {
           a = `${beforeReplace[1]}<span class="skill_info_value">${beforeReplace[2]}</span>`
         }

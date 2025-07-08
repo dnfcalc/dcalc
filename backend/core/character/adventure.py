@@ -147,7 +147,7 @@ adv = [
         'title': '暗夜使者',
         'children': [
             {'id': 0, 'name': 'rogue', 'title': '隐夜·刺客', 'open': True, 'class': 'GF.thief.rogue'},
-            {'id': 1, 'name': 'necro', 'title': '隐夜·死灵术士', 'open': False},
+            {'id': 1, 'name': 'necro', 'title': '隐夜·死灵术士', 'open': True, 'class': 'GF.thief.necro'},
             {'id': 2, 'name': 'kunoichi', 'title': '隐夜·忍者', 'open': False},
             {'id': 3, 'name': 'shadow_dancer', 'title': '隐夜·影舞者', 'open': False},
             {'id': 4, 'name': 'empty', 'title': ''},
