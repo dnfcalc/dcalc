@@ -15,7 +15,6 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@unocss/eslint-plugin": "^66.3.3",
     "@vueuse/core": "^12.8.2",
     "axios": "^1.8.2",
     "hoci": "^0.6.0",
