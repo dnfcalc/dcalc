@@ -6,7 +6,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import RekaResolver from 'reka-ui/resolver'
+// import RekaResolver from 'reka-ui/resolver'
 import UnoCSS from 'unocss/vite'
 import uncomponents from "unplugin-vue-components/vite"
 
@@ -23,10 +23,10 @@ export default defineConfig({
       allowOverrides: true,
       directoryAsNamespace: true
     }),
-    Components({
-      dts: 'src/types/components.d.ts',
-      resolvers: [RekaResolver()],
-    }),
+    // Components({
+    //   dts: 'src/types/components.d.ts',
+    //   resolvers: [RekaResolver()],
+    // }),
     AutoImport({
       imports: ['vue', 'vue-router', '@vueuse/core'],
       include: [
