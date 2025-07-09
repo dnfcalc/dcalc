@@ -1,6 +1,7 @@
 #ddc49e9ad1ff72a00b53c6cff5b1e920
-from core.basic.skill import PassiveSkill, ActiveSkill
+from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
+prefix = "thief/rogue/cn/skillDetail"
 
 class PassiveSkill(PassiveSkill):
     endpower = 1
@@ -30,134 +31,212 @@ class ActiveSkill(ActiveSkill):
             res += hit * power * data * (self.endpower if group == "end" else 1)
         return res
 
-# 翔击 라이징 컷
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/3c5604bdbb0240b8f130f59ab40509c3?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 翔击
+# thief/rogue/3c5604bdbb0240b8f130f59ab40509c3
+# ddc49e9ad1ff72a00b53c6cff5b1e920/3c5604bdbb0240b8f130f59ab40509c3
 class Skill0(ActiveSkill):
+    """
+    向敌人发出向上的切割攻击， 并使敌人浮空。\n
+    在空中也可以使用[翔击]， 且按住技能键的时间越长， [翔击]的跳跃高度就越高。\n
+    可消耗连击点数发动[终结之击]。
+    """
     name = "翔击"
     learnLv = 1
     masterLv = 10
     maxLv = 20
-    position = 5
+    position = 5 #TODO
     rangeLv = 3
     cd = 2
     uuid = "3c5604bdbb0240b8f130f59ab40509c3"
-    data0 = [0, 186, 216, 246, 276, 305, 335, 365, 394, 424, 454, 484, 513, 543, 573, 602, 632, 662, 692, 721, 751]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
 
+    # 攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 浮空力比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # [终结之击]攻击力 : {value2}% X {value3}
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
     data2 = [0, 71, 83, 94, 105, 117, 128, 139, 151, 162, 173, 185, 196, 207, 219, 230, 241, 253, 264, 276, 287]# noqa: E501
     hit2 = 5
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [终结之击]浮空力比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
 
 
-
-# 基础精通 기본기 숙련
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/5a56514f35cf0270ae8d6c65f8fefd78?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 基础精通
+# thief/rogue/5a56514f35cf0270ae8d6c65f8fefd78
+# ddc49e9ad1ff72a00b53c6cff5b1e920/5a56514f35cf0270ae8d6c65f8fefd78
 class Skill3(PassiveSkill):
+    """
+    增加基本攻击、 前冲攻击、 跳跃攻击、 [翔击]的攻击力。\n
+    在决斗场中， 增益/减益技能、 被动技能的技能攻击力增加效果对[基础精通]无影响。
+    """
     name = "基础精通"
     learnLv = 1
     masterLv = 115
     maxLv = 200
-    position = 0
+    position = 1 #TODO
     rangeLv = 1
     uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
     icon = "$common/$uuid"
+    hasVP = False
+    hasUP = False
 
-    data0 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
+    # 基本攻击力变化率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 前冲攻击力变化率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 跳跃攻击力变化率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
 
-# 弧光闪 샤이닝컷
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/0969cd4054d93da07708108c0cc1c4b5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+
+# 弧光闪
+# thief/rogue/0969cd4054d93da07708108c0cc1c4b5
+# ddc49e9ad1ff72a00b53c6cff5b1e920/0969cd4054d93da07708108c0cc1c4b5
 class Skill10(ActiveSkill):
+    """
+    急速冲向前方的敌人并对其进行闪电般的攻击。\n
+    按上下方向键可向Y轴移动； 若急速前冲过程中按跳跃键， 则可停止移动。\n
+    暗星可以连续发动两次[弧光闪]； 可在空中施放[弧光闪]； 可强制中断转职技能， 并施放[弧光闪]； 可消耗连击点数发动可控制左右方向的[终结之击]； 学习[弧光连闪]后， 增加追加攻击的可发动次数。\n
+    转职为影舞者后， 可以强制中断技能并施放[追影步]； 学习[潜行教义]后， 可以再次按技能键发动追加攻击。\n
+    可以利用方向键调整移动方向。
+    """
     name = "弧光闪"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 8
+    position = 5 #TODO
     rangeLv = 2
     cd = 6
     mp = [18, 190]
     uuid = "0969cd4054d93da07708108c0cc1c4b5"
-    data0 = [0, 2026, 2232, 2440, 2647, 2851, 3057, 3259, 3471, 3672, 3879, 4087, 4294, 4500, 4707, 4906, 5114, 5319, 5525, 5732, 5942, 6147, 6353, 6557, 6761, 6970, 7171, 7383, 7589, 7798, 8002, 8201, 8412, 8617, 8825, 9027, 9240, 9440, 9648, 9853, 10062, 10265, 10470, 10678, 10882, 11089, 11297, 11501, 11706, 11912, 12118, 12328, 12527, 12736, 12942, 13146, 13354, 13561, 13765, 13971, 14176, 14384, 14595, 14797, 15006, 15208, 15411, 15621, 15822, 16033, 16237]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
 
+    # 攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # [终结之击]攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
     data1 = [0, 850, 932, 1020, 1108, 1192, 1278, 1363, 1450, 1533, 1622, 1712, 1794, 1882, 1965, 2055, 2135, 2224, 2307, 2395, 2485, 2567, 2655, 2739, 2827, 2910, 2999, 3082, 3169, 3257, 3344, 3429, 3512, 3602, 3686, 3774, 3856, 3946, 4038, 4116, 4206, 4289, 4379, 4457, 4549, 4627, 4719, 4809, 4893, 4983, 5063, 5153, 5236, 5321, 5409, 5494, 5581, 5664, 5755, 5840, 5926, 6010, 6100, 6183, 6270, 6355, 6443, 6530, 6611, 6701, 6783]# noqa: E501
     hit1 = 1 #TODO
     group1 = "end"
+    # 发动速度比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 僵直时间比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
 
-# 碎踝 발목 타격
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/5dc7008b12a459325b548b0715c6b73c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+
+# 碎踝
+# thief/rogue/5dc7008b12a459325b548b0715c6b73c
+# ddc49e9ad1ff72a00b53c6cff5b1e920/5dc7008b12a459325b548b0715c6b73c
 class Skill13(ActiveSkill):
+    """
+    用强力的扫腿踢攻击敌人的脚踝。
+    """
     name = "碎踝"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 7
+    position = 7 #TODO
     rangeLv = 2
     cd = 7
     mp = [15, 168]
     uuid = "5dc7008b12a459325b548b0715c6b73c"
-    data0 = [0, 5882, 6479, 7076, 7673, 8269, 8866, 9463, 10060, 10656, 11253, 11850, 12447, 13044, 13640, 14237, 14834, 15431, 16027, 16624, 17221, 17818, 18414, 19011, 19608, 20205, 20801, 21398, 21995, 22592, 23188, 23785, 24382, 24979, 25576, 26172, 26769, 27366, 27963, 28559, 29156, 29753, 30350, 30946, 31543, 32140, 32737, 33333, 33930, 34527, 35124, 35720, 36317, 36914, 37511, 38108, 38704, 39301, 39898, 40495, 41091, 41688, 42285, 42882, 43478, 44075, 44672, 45269, 45865, 46462, 47059]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
 
-# 疾空踏 다이빙 애로우
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/717f1e2104fe4b796f800352fa143ecc?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    # 攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 减速几率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 减速持续时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 移动速度减少率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # 攻击速度减少率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+
+
+# 疾空踏
+# thief/rogue/717f1e2104fe4b796f800352fa143ecc
+# ddc49e9ad1ff72a00b53c6cff5b1e920/717f1e2104fe4b796f800352fa143ecc
 class Skill16(ActiveSkill):
+    """
+    从空中快速下降并向敌人发出连续踢击。\n
+    连续踢击结束前， 输入Z键可以发动最后一击。\n
+    只能在空中使用， 且在下落过程中有敌人时才能施放连续踢击。\n
+    终结攻击会引发冲击波， 被命中的敌人会被击飞。\n
+    连续踢击过程中连续按下攻击键时， 会增加连续踢击的速度和命中次数。
+    """
     name = "疾空踏"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 4
+    position = 4 #TODO
     rangeLv = 2
     cd = 6.5
     mp = [22, 235]
     uuid = "717f1e2104fe4b796f800352fa143ecc"
-    data0 = [0, 336, 370, 404, 438, 472, 506, 540, 574, 608, 642, 676, 710, 745, 779, 813, 847, 881, 915, 949, 983, 1017, 1051, 1085, 1119, 1153, 1187, 1221, 1256, 1290, 1324, 1358, 1392, 1426, 1460, 1494, 1528, 1562, 1596, 1630, 1664, 1698, 1732, 1766, 1801, 1835, 1869, 1903, 1937, 1971, 2005, 2039, 2073, 2107, 2141, 2175, 2209, 2243, 2277, 2312, 2346, 2380, 2414, 2448, 2482, 2516, 2550, 2584, 2618, 2652, 2686]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = True
 
-    data1 = [0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]# noqa: E501
-    hit1 = 1 #TODO
+    # 连续踢击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 13
+    # 连续踢击次数 : {value1}次~{value2}次
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 最后一击攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    hit3 = 1
+    # 冲击波攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    hit4 = 1
+    # 最后一击浮空力比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    # [范围信息]
+    # 冲击波范围比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
 
-    data2 = [0, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 671, 739, 807, 875, 943, 1011, 1080, 1148, 1216, 1284, 1352, 1420, 1488, 1556, 1624, 1692, 1760, 1828, 1896, 1965, 2033, 2101, 2169, 2237, 2305, 2373, 2441, 2509, 2577, 2645, 2713, 2782, 2850, 2918, 2986, 3054, 3122, 3190, 3258, 3326, 3394, 3462, 3530, 3598, 3667, 3735, 3803, 3871, 3939, 4007, 4075, 4143, 4211, 4279, 4347, 4415, 4483, 4552, 4620, 4688, 4756, 4824, 4892, 4960, 5028, 5096, 5164, 5232, 5300, 5368]# noqa: E501
-    hit3 = 1 #TODO
-
-    data4 = [0, 557, 614, 670, 727, 783, 840, 896, 953, 1009, 1066, 1122, 1179, 1235, 1292, 1348, 1405, 1461, 1518, 1574, 1631, 1687, 1744, 1800, 1857, 1914, 1970, 2027, 2083, 2140, 2196, 2253, 2309, 2366, 2422, 2479, 2535, 2592, 2648, 2705, 2761, 2818, 2874, 2931, 2987, 3044, 3100, 3157, 3213, 3270, 3326, 3383, 3440, 3496, 3553, 3609, 3666, 3722, 3779, 3835, 3892, 3948, 4005, 4061, 4118, 4174, 4231, 4287, 4344, 4400, 4457]# noqa: E501
-    hit4 = 1 #TODO
-
-    data5 = [0, 100, 102, 104, 105, 107, 109, 110, 112, 114, 116, 117, 119, 121, 123, 124, 126, 128, 129, 131, 133, 135, 136, 138, 140, 142, 143, 145, 147, 148, 150, 152, 154, 155, 157, 159, 160, 162, 164, 166, 167, 169, 171, 173, 174, 176, 178, 179, 181, 183, 185, 186, 188, 190, 192, 193, 195, 197, 198, 200, 202, 204, 205, 207, 209, 210, 212, 214, 216, 217, 219]# noqa: E501
-    hit5 = 1 #TODO
-
-    data6 = [0, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171]# noqa: E501
-    hit6 = 1 #TODO
-
-
-# 终结追击 히트엔드
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/cfacda0647b9a0f595df2c2aad30c18d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 终结之击
+# thief/rogue/cfacda0647b9a0f595df2c2aad30c18d
+# ddc49e9ad1ff72a00b53c6cff5b1e920/cfacda0647b9a0f595df2c2aad30c18d
 class Skill19(ActiveSkill):
-    name = "终结追击"
+    """
+    [终结之击]只能在有连击点数的情况下施放， 施放后将消耗所有连击点数并发动追加攻击。\n
+    消耗的连击点数越多， 该技能给予敌人的伤害就越大。
+    """
+    name = "终结之击"
     learnLv = 15
     masterLv = 20
     maxLv = 30
-    position = 6
+    position = 6 #TODO
     rangeLv = 2
     mp = [18, 56]
     uuid = "cfacda0647b9a0f595df2c2aad30c18d"
-    data0 = [0, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101, 103, 105, 107, 109, 111, 113, 115, 117, 119, 121, 123, 125, 127, 129, 131, 133, 135, 137, 139]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
 
-    data1 = [0, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]# noqa: E501
-
-    data2 = [0, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125]# noqa: E501
-
-    data3 = [0, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155, 155]# noqa: E501
-
-    data4 = [0, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195, 195]# noqa: E501
-
-    data5 = [0, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250]# noqa: E501
-
-    data6 = [0, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325, 325]# noqa: E501
-
-    data7 = [0, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425, 425]# noqa: E501
+    # [终结之击]攻击力比率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # - 消耗连击点数后， 攻击力增加比率 -
+    # 1点 : {value1}% 
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 2点 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 3点 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # 4点 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    # 5点 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    # 6点 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    # 7点 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
 
     _maxLayer = 6
 
@@ -188,125 +267,262 @@ class Skill19(ActiveSkill):
             data = [ i - 100 if i > 100 else 0  for i in data]
         super().update_skill_attribute(skill, type, old, new, data, ratio, weapon)
 
-# 诅咒之箭 커스 스피어
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/547ab2b2bd860d3e37355a9cfbc1077c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill20(ActiveSkill):
-    name = "诅咒之箭"
-    learnLv = 15
-    masterLv = 60
-    maxLv = 70
-    position = 10
-    rangeLv = 2
-    cd = 10
-    mp = [22, 235]
-    uuid = "547ab2b2bd860d3e37355a9cfbc1077c"
-    data0 = [0, 927, 1018, 1112, 1207, 1302, 1396, 1489, 1583, 1676, 1773, 1868, 1960, 2055, 2149, 2242, 2336, 2433, 2523, 2620, 2712, 2808, 2900, 2999, 3089, 3184, 3278, 3373, 3465, 3558, 3653, 3749, 3842, 3937, 4029, 4121, 4219, 4315, 4408, 4502, 4595, 4687, 4782, 4877, 4969, 5064, 5158, 5253, 5347, 5442, 5535, 5630, 5724, 5819, 5913, 6004, 6100, 6195, 6287, 6384, 6474, 6567, 6666, 6761, 6853, 6948, 7040, 7133, 7228, 7324, 7417]# noqa: E501
-    hit0 = 5
-
-
-# 弧光连闪 샤인 스파크
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/4b2c90ec226fd40e967875aa5eabefb2?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 弧光连闪
+# thief/rogue/4b2c90ec226fd40e967875aa5eabefb2
+# ddc49e9ad1ff72a00b53c6cff5b1e920/4b2c90ec226fd40e967875aa5eabefb2
 class Skill21(PassiveSkill):
+    """
+    增加[弧光闪]的追加攻击发动次数。
+    """
     name = "弧光连闪"
     learnLv = 15
     masterLv = 1
     maxLv = 10
-    line = 25
-    position = 4
+    position = 5 #TODO
     rangeLv = 2
     uuid = "4b2c90ec226fd40e967875aa5eabefb2"
-    data0 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]# noqa: E501
+    hasVP = False
+    hasUP = False
+
+    # [弧光闪]追加攻击发动次数增加 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     associate = [{"type":"+hit0","data":data0,"ratio":1,"skills":["弧光闪"]}]
 
-
-# 迅影 스위프트
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/1b1cfab062e0768bcc889e33e1f30dbf?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 迅影
+# thief/rogue/1b1cfab062e0768bcc889e33e1f30dbf
+# ddc49e9ad1ff72a00b53c6cff5b1e920/1b1cfab062e0768bcc889e33e1f30dbf
 class Skill22(PassiveSkill):
+    """
+    使暗星的行动变得更加敏捷， 可增加命中率、 回避率、 攻击速度和移动速度。\n
+    强制中断后施放的技能命中敌人时， 可以获得连击点数。\n
+    可通过攻击敌人时收集的攻击点数， 额外获得连击点数； 攻击点数能量条蓄满后， 可自动转换为连击点数。\n
+    学习后， 后跳过程中可以发动基本攻击。
+    """
     name = "迅影"
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 6
+    position = 1 #TODO
     rangeLv = 5
     uuid = "1b1cfab062e0768bcc889e33e1f30dbf"
+    hasVP = False
+    hasUP = False
 
+    # 攻击速度增加 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 移动速度增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 命中率增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 回避率增加 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [每个技能命中敌人时可收集的攻击点数 / 攻击点数收集上限]
+    # 基本攻击 : {value4}P / {value5}P
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    # 前冲攻击 : {value6}P / {value7}P
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    # 跳跃攻击 : {value8}P / {value9}P
+    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    data9 = get_data(f'{prefix}/{uuid}', 9, lambda x = None: x)
+    # [翔击] : {value10}P / {value11}P
+    data10 = get_data(f'{prefix}/{uuid}', 10, lambda x = None: x)
+    data11 = get_data(f'{prefix}/{uuid}', 11, lambda x = None: x)
+    # [弧光闪] : {value12}P / {value13}P
+    data12 = get_data(f'{prefix}/{uuid}', 12, lambda x = None: x)
+    data13 = get_data(f'{prefix}/{uuid}', 13, lambda x = None: x)
+    # [双刃穿刺] : {value14}P / {value15}P
+    data14 = get_data(f'{prefix}/{uuid}', 14, lambda x = None: x)
+    data15 = get_data(f'{prefix}/{uuid}', 15, lambda x = None: x)
+    # [绝心击] : {value16}P / {value17}P
+    data16 = get_data(f'{prefix}/{uuid}', 16, lambda x = None: x)
+    data17 = get_data(f'{prefix}/{uuid}', 17, lambda x = None: x)
+    # [旋舞斩] : {value18}P / {value19}P
+    data18 = get_data(f'{prefix}/{uuid}', 18, lambda x = None: x)
+    data19 = get_data(f'{prefix}/{uuid}', 19, lambda x = None: x)
+    # [旋刃] : {value20}P / {value21}P
+    data20 = get_data(f'{prefix}/{uuid}', 20, lambda x = None: x)
+    data21 = get_data(f'{prefix}/{uuid}', 21, lambda x = None: x)
+    # [剑刃风暴] : {value22}P / {value23}P
+    data22 = get_data(f'{prefix}/{uuid}', 22, lambda x = None: x)
+    data23 = get_data(f'{prefix}/{uuid}', 23, lambda x = None: x)
+    # [雷光刃影] : {value24}P / {value25}P
+    data24 = get_data(f'{prefix}/{uuid}', 24, lambda x = None: x)
+    data25 = get_data(f'{prefix}/{uuid}', 25, lambda x = None: x)
+    # [螺旋穿刺] : {value26}P / {value27}P
+    data26 = get_data(f'{prefix}/{uuid}', 26, lambda x = None: x)
+    data27 = get_data(f'{prefix}/{uuid}', 27, lambda x = None: x)
+    # [疾风乱舞] : {value28}P / {value29}P
+    data28 = get_data(f'{prefix}/{uuid}', 28, lambda x = None: x)
+    data29 = get_data(f'{prefix}/{uuid}', 29, lambda x = None: x)
+    # [绝境瞬狱袭] : {value30}P / {value31}P
+    data30 = get_data(f'{prefix}/{uuid}', 30, lambda x = None: x)
+    data31 = get_data(f'{prefix}/{uuid}', 31, lambda x = None: x)
+    # [旋刃冲击] : {value32}P / {value33}P
+    data32 = get_data(f'{prefix}/{uuid}', 32, lambda x = None: x)
+    data33 = get_data(f'{prefix}/{uuid}', 33, lambda x = None: x)
+    # [陨落螺旋刺] : {value34}P / {value35}P
+    data34 = get_data(f'{prefix}/{uuid}', 34, lambda x = None: x)
+    data35 = get_data(f'{prefix}/{uuid}', 35, lambda x = None: x)
+    # [乱空杀] : {value36}P / {value37}P
+    data36 = get_data(f'{prefix}/{uuid}', 36, lambda x = None: x)
+    data37 = get_data(f'{prefix}/{uuid}', 37, lambda x = None: x)
+    # [月影突袭] : {value38}P / {value39}P
+    data38 = get_data(f'{prefix}/{uuid}', 38, lambda x = None: x)
+    data39 = get_data(f'{prefix}/{uuid}', 39, lambda x = None: x)
+    # [天渊星狱] : {value40}P / {value41}P
+    data40 = get_data(f'{prefix}/{uuid}', 40, lambda x = None: x)
+    data41 = get_data(f'{prefix}/{uuid}', 41, lambda x = None: x)
+    # [幻灭瞬杀] : {value42}P / {value43}P
+    data42 = get_data(f'{prefix}/{uuid}', 42, lambda x = None: x)
+    data43 = get_data(f'{prefix}/{uuid}', 43, lambda x = None: x)
 
-# 绝杀斩 밴디트컷
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/4224f9b0b8c7c903e9a1e0f9d9f6d04d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 绝心击
+# thief/rogue/4224f9b0b8c7c903e9a1e0f9d9f6d04d
+# ddc49e9ad1ff72a00b53c6cff5b1e920/4224f9b0b8c7c903e9a1e0f9d9f6d04d
 class Skill23(ActiveSkill):
+    """
+    快速迈进并向前方敌人进行斩击， 被斩击命中的敌人将受到伤害， 并有一定几率进入眩晕状态。\n
+    斩击后， 可消耗连击点数发动[终结之击]。
+    """
     name = "绝心击"
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 6
+    position = 6 #TODO
     rangeLv = 2
     cd = 7
     mp = [25, 273]
     uuid = "4224f9b0b8c7c903e9a1e0f9d9f6d04d"
-    data0 = [0, 5952, 6554, 7157, 7762, 8367, 8973, 9576, 10175, 10780, 11385, 11990, 12592, 13197, 13801, 14404, 15009, 15613, 16216, 16820, 17427, 18027, 18634, 19237, 19841, 20446, 21053, 21653, 22258, 22860, 23465, 24069, 24674, 25281, 25877, 26481, 27086, 27691, 28297, 28903, 29500, 30105, 30711, 31316, 31923, 32519, 33125, 33730, 34335, 34944, 35549, 36144, 36749, 37358, 37963, 38566, 39166, 39768, 40375, 40977, 41582, 42191, 42789, 43391, 43996, 44601, 45208, 45808, 46413, 47015, 47620]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = True
 
-    data3 = [0, 182, 194, 211, 231, 248, 269, 287, 306, 318, 342, 357, 377, 394, 413, 432, 447, 466, 485, 503, 520, 541, 553, 580, 590, 610, 629, 648, 666, 685, 699, 719, 738, 755, 777, 792, 813, 830, 848, 865, 882, 899, 921, 938, 950, 971, 988, 1012, 1027, 1046, 1068, 1083, 1097, 1117, 1136, 1156, 1171, 1193, 1210, 1226, 1246, 1261, 1282, 1301, 1319, 1336, 1358, 1370, 1391, 1408, 1428]# noqa: E501
+    # 斩击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 眩晕几率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 眩晕持续时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # -  [终结之击]时  -
+    # 踢击攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
     hit3 = 1 #TODO
     group3 = "end"
-
-    data4 = [0, 337, 372, 401, 435, 471, 508, 541, 580, 607, 646, 677, 712, 748, 779, 814, 848, 882, 920, 949, 986, 1017, 1054, 1090, 1125, 1156, 1188, 1226, 1258, 1297, 1326, 1362, 1397, 1428, 1464, 1498, 1532, 1566, 1605, 1635, 1675, 1703, 1737, 1775, 1807, 1845, 1873, 1909, 1947, 1977, 2013, 2045, 2081, 2113, 2152, 2183, 2215, 2253, 2283, 2322, 2355, 2390, 2426, 2455, 2491, 2526, 2560, 2596, 2630, 2662, 2701]# noqa: E501
+    # 切割攻击力 : {value4}% X {value5}
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
     hit4 = 3
     group4 = "end"
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    # [范围信息]
+    # 范围比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
 
-
-# 空跃 에어리얼 점프
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/d085127b0edd719782bd618d5688f4a1?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 空跃
+# thief/rogue/d085127b0edd719782bd618d5688f4a1
+# ddc49e9ad1ff72a00b53c6cff5b1e920/d085127b0edd719782bd618d5688f4a1
 class Skill24(ActiveSkill):
+    """
+    在跳跃中进行再一次跳跃。
+    """
     name = "空跃"
     learnLv = 20
     masterLv = 1
     maxLv = 1
-    position = 10
+    position = 10 #TODO
     rangeLv = 1
     uuid = "d085127b0edd719782bd618d5688f4a1"
+    hasVP = False
+    hasUP = False
 
-# 双刃穿刺 더블 피어스
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/8ee0099656df08a0b39225f8a21d514b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+
+# 双刃穿刺
+# thief/rogue/8ee0099656df08a0b39225f8a21d514b
+# ddc49e9ad1ff72a00b53c6cff5b1e920/8ee0099656df08a0b39225f8a21d514b
 class Skill25(ActiveSkill):
+    """
+    用双手把武器插入敌人身体后， 再用脚踢进行攻击。\n
+    对可抓取的敌人命中刺击时， 进入无敌状态并强控敌人。\n
+    对无法抓取的敌人不适用控制效果。\n
+    可消耗连击点数发动[终结之击]。
+    """
     name = "双刃穿刺"
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 3
+    position = 3 #TODO
     rangeLv = 2
     cd = 7
     mp = [47, 518]
     uuid = "8ee0099656df08a0b39225f8a21d514b"
-    data0 = [0, 1445, 1588, 1736, 1885, 2032, 2174, 2324, 2470, 2616, 2761, 2909, 3058, 3203, 3349, 3494, 3640, 3791, 3932, 4082, 4230, 4372, 4520, 4667, 4818, 4957, 5107, 5256, 5406, 5545, 5695, 5843, 5989, 6134, 6283, 6431, 6576, 6720, 6870, 7014, 7162, 7308, 7453, 7602, 7747, 7893, 8039, 8187, 8337, 8478, 8628, 8772, 8917, 9068, 9212, 9360, 9503, 9653, 9797, 9950, 10090, 10241, 10387, 10533, 10679, 10827, 10975, 11121, 11264, 11414, 11558]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = True
 
-    data1 = [0, 2166, 2383, 2606, 2825, 3043, 3262, 3482, 3709, 3927, 4145, 4367, 4587, 4803, 5025, 5245, 5464, 5687, 5906, 6127, 6344, 6564, 6783, 7004, 7222, 7443, 7664, 7881, 8106, 8322, 8539, 8765, 8983, 9204, 9423, 9644, 9865, 10084, 10302, 10521, 10742, 10963, 11183, 11399, 11625, 11844, 12060, 12283, 12500, 12719, 12940, 13158, 13377, 13603, 13823, 14044, 14265, 14481, 14702, 14919, 15139, 15363, 15581, 15802, 16021, 16240, 16461, 16679, 16896, 17121, 17337]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 2888, 3179, 3478, 3769, 4063, 4355, 4646, 4937, 5236, 5527, 5823, 6113, 6407, 6698, 6996, 7283, 7584, 7874, 8169, 8458, 8755, 9047, 9342, 9634, 9926, 10217, 10513, 10804, 11101, 11393, 11689, 11978, 12272, 12565, 12862, 13155, 13447, 13736, 14034, 14324, 14622, 14912, 15207, 15499, 15795, 16082, 16383, 16674, 16968, 17258, 17554, 17845, 18137, 18433, 18726, 19016, 19314, 19603, 19897, 20189, 20488, 20779, 21073, 21364, 21658, 21950, 22246, 22537, 22834, 23123]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 1297, 1431, 1562, 1697, 1828, 1960, 2093, 2222, 2355, 2484, 2616, 2749, 2882, 3012, 3143, 3276, 3409, 3543, 3675, 3808, 3936, 4068, 4199, 4332, 4463, 4592, 4729, 4860, 4993, 5126, 5260, 5392, 5523, 5656, 5785, 5918, 6050, 6180, 6312, 6445, 6576, 6708, 6837, 6972, 7106, 7239, 7371, 7502, 7631, 7764, 7897, 8031, 8160, 8289, 8422, 8554, 8685, 8823, 8956, 9088, 9219, 9348, 9481, 9614, 9748, 9877, 10008, 10141, 10271, 10404]# noqa: E501
+    # 双手刺击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 第1次踢击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    # 第2次踢击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
+    # [终结之击]攻击力比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
     hit3 = 1 #TODO
     group3 = "end"
+    # 周围敌人的伤害比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    # [范围信息]
+    # 范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
 
-# 匕首精通 단검 마스터리
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/da6e37c1e3f0e8867f70007d89c239ff?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 暗星武器精通
+# thief/rogue/da6e37c1e3f0e8867f70007d89c239ff
+# ddc49e9ad1ff72a00b53c6cff5b1e920/da6e37c1e3f0e8867f70007d89c239ff
 class Skill26(PassiveSkill):
-    name = "匕首精通"
+    """
+       学习后， 增加物理攻击力， 并减少转职技能的冷却时间， 同时增加[终结之击]攻击力。 技能达到15级以上时， 提升每个技能命中敌人时可收集的攻击点数和攻击点数收集上限， 并且在装备匕首和双剑时获得额外效果。\n
+    [装备匕首时]\n
+    使用匕首系武器时， 增加攻击速度、 回避率、 命中率。\n
+    [装备双剑时]\n
+    使用双剑系武器时， 增加敌人的僵直率、 回避率、 命中率。
+    """
+    name = "暗星武器精通"
     learnLv = 20
     masterLv = 20
     maxLv = 30
-    position = 0
+    position = 0 #TODO
     rangeLv = 4
     uuid = "da6e37c1e3f0e8867f70007d89c239ff"
-    data0 = [0, 3.6, 5.3, 7, 8.7, 10.4, 12.1, 13.8, 15.5, 17.2, 18.9, 20.6, 22.3, 24, 25.7, 27.4, 29.1, 30.8, 32.5, 34.2, 35.9, 38.7, 41.5, 44.3, 47.1, 49.9, 52.7, 55.5, 58.3, 61.1, 63.9]# noqa: E501
+    hasVP = False
+    hasUP = False
 
-    data1 = [0, 1, 1.3, 1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4, 4.3, 4.6, 4.9, 5.2, 5.5, 5.8, 6.1, 6.4, 6.7, 7, 7.3, 7.6, 7.9, 8.2, 8.5, 8.8, 9.1, 9.4, 9.7]# noqa: E501
-
-    data2 = [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]# noqa: E501
-
+    # 物理攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 冷却时间减少率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # [终结之击]攻击力增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 每次攻击可收集的攻击点数比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # 每次攻击可收集的攻击点数最大值比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    # [装备匕首时]
+    # 攻击速度增加 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    # 回避率增加 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    # 命中率增加 : {value7}%.
+    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    # [装备双剑时]
+    # 敌人僵直率增加 : {value8}%
+    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
+    # 回避率增加 : {value9}%
+    data9 = get_data(f'{prefix}/{uuid}', 9, lambda x = None: x)
+    # 命中率增加 : {value10}%
+    data10 = get_data(f'{prefix}/{uuid}', 10, lambda x = None: x)
 
     associate = [
         {"type":"$*PAtkP","data":data0},
@@ -314,581 +530,1040 @@ class Skill26(PassiveSkill):
         {"type":"+maxLayer","data":data2,"ratio":1,"skills":["终结追击"]},
     ]
 
-
-# 双剑精通 쌍검 마스터리
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/a6c8f69107f8c4f5d1a0c7a57d000290?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill27(PassiveSkill):
-    name = "双剑精通"
-    learnLv = 20
-    masterLv = 20
-    maxLv = 30
-    position = 1
-    rangeLv = 4
-    uuid = "a6c8f69107f8c4f5d1a0c7a57d000290"
-    data0 = [0, 3.6, 5.3, 7, 8.7, 10.4, 12.1, 13.8, 15.5, 17.2, 18.9, 20.6, 22.3, 24, 25.7, 27.4, 29.1, 30.8, 32.5, 34.2, 35.9, 38.7, 41.5, 44.3, 47.1, 49.9, 52.7, 55.5, 58.3, 61.1, 63.9]# noqa: E501
-    data1 = [0, 22, 23, 25, 26, 27, 28, 29, 31, 32, 33, 34, 36, 37, 38, 39, 40, 42, 43, 44, 45, 46, 48, 49, 50, 51, 52, 54, 55, 56, 57]# noqa: E501
-
-    associate = [
-        {"type":"$*PAtkP","data":data0},
-        {"type":"*endpower","data":data1}
-    ]
-
-    def effect(self, old, new):
-        # 和匕首精通相冲突 如果匕首精通等级大于0 则不生效
-        if self.char.GetSkillByName("匕首精通").lv > 0:
-            return
-        else:
-            super().effect(old, new)
-
-
-# 旋舞斩 소드 댄스
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/c7bf7ccab413009640e65ca6f2f0263a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill28(ActiveSkill):
+# 旋舞斩
+# thief/rogue/c7bf7ccab413009640e65ca6f2f0263a
+# ddc49e9ad1ff72a00b53c6cff5b1e920/c7bf7ccab413009640e65ca6f2f0263a
+class Skill27(ActiveSkill):
+    """
+    在原地快速旋转并攻击周围敌人。\n
+    在地上施放转职技能时， 可强制中断当前进行的技能动作， 并立即施放[旋舞斩]。\n
+    可消耗1点连击点数发动[终结之击]。 [终结之击]发动后若存在连击点数， 则可以继续发动[终结之击]。
+    """
     name = "旋舞斩"
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 8
+    position = 8 #TODO
     rangeLv = 2
     cd = 7
     mp = [25, 273]
     uuid = "c7bf7ccab413009640e65ca6f2f0263a"
-    data0 = [0, 5629, 6203, 6771, 7342, 7910, 8483, 9056, 9625, 10198, 10770, 11341, 11914, 12481, 13054, 13620, 14193, 14768, 15337, 15910, 16478, 17051, 17624, 18192, 18766, 19334, 19905, 20478, 21048, 21621, 22188, 22763, 23338, 23905, 24478, 25046, 25617, 26190, 26760, 27334, 27902, 28475, 29048, 29616, 30189, 30765, 31334, 31907, 32477, 33046, 33619, 34187, 34762, 35336, 35902, 36477, 37045, 37619, 38189, 38760, 39335, 39901, 40474, 41045, 41616, 42186, 42757, 43331, 43901, 44472, 45045]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = True
 
-    data1 = [0, 1127, 1238, 1352, 1467, 1581, 1697, 1809, 1923, 2038, 2152, 2268, 2382, 2497, 2610, 2723, 2839, 2953, 3069, 3177, 3300, 3409, 3521, 3638, 3750, 3869, 3980, 4092, 4208, 4321, 4437, 4549, 4668, 4779, 4894, 5007, 5120, 5238, 5352, 5464, 5578, 5692, 5809, 5919, 6038, 6149, 6266, 6380, 6496, 6610, 6724, 6839, 6951, 7067, 7179, 7291, 7409, 7521, 7636, 7750, 7866, 7980, 8095, 8209, 8322, 8437, 8551, 8667, 8779, 8891, 9008]# noqa: E501
+    # 回旋斩击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # [终结之击]攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
     hit1 = 1 #TODO
     group1 = "end"
+    # [范围信息]
+    # 范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
 
 
-# 旋刃 체인소
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/01384bbfc346775d1267fa0bc4ca605f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill30(ActiveSkill):
+# 旋刃
+# thief/rogue/01384bbfc346775d1267fa0bc4ca605f
+# ddc49e9ad1ff72a00b53c6cff5b1e920/01384bbfc346775d1267fa0bc4ca605f
+class Skill29(ActiveSkill):
+    """
+    旋转刀锋， 以极快速度切割敌人。\n
+    再次输入技能键或Z键， 可以发动第二击和第三击横扫攻击， 第三击横扫后消耗连击点数发动[终结之击]。\n
+    学习[绝命时刻]后， 施放时将以极快的速度一次性发动第一击、 第二击、 第三击横扫攻击。
+    """
     name = "旋刃"
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 7
+    position = 7 #TODO
     rangeLv = 2
     cd = 8
     mp = [45, 469]
     uuid = "01384bbfc346775d1267fa0bc4ca605f"
-    data0 = [0, 619, 685, 748, 809, 874, 932, 1000, 1063, 1127, 1193, 1256, 1318, 1379, 1440, 1510, 1571, 1630, 1695, 1756, 1826, 1889, 1947, 2011, 2077, 2144, 2203, 2266, 2326, 2394, 2457, 2521, 2582, 2649, 2706, 2769, 2836, 2902, 2963, 3026, 3082, 3150, 3215, 3281, 3342, 3400, 3468, 3531, 3597, 3658, 3720, 3786, 3849, 3908, 3975, 4039, 4099, 4163, 4226, 4289, 4354, 4418, 4478, 4542, 4605, 4668, 4735, 4797, 4855, 4923, 4986]# noqa: E501
+    hasVP = False
+    hasUP = True
+
+    # 第1次斩击攻击力 : {value0}% X {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 3
-
-    data2 = [0, 855, 945, 1032, 1117, 1202, 1290, 1379, 1469, 1552, 1639, 1724, 1812, 1902, 1989, 2077, 2162, 2246, 2336, 2423, 2513, 2596, 2683, 2769, 2858, 2948, 3028, 3120, 3208, 3295, 3380, 3468, 3551, 3643, 3730, 3815, 3903, 3990, 4073, 4163, 4252, 4338, 4422, 4512, 4597, 4685, 4774, 4859, 4945, 5035, 5119, 5207, 5292, 5381, 5471, 5559, 5644, 5731, 5817, 5901, 5991, 6079, 6168, 6251, 6339, 6424, 6514, 6603, 6691, 6773, 6863]# noqa: E501
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 第2次斩击攻击力 : {value2}% X {value3}
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
     hit2 = 3
-
-    data4 = [0, 1170, 1287, 1404, 1525, 1642, 1756, 1882, 2003, 2115, 2239, 2353, 2475, 2591, 2712, 2829, 2950, 3069, 3188, 3305, 3420, 3541, 3658, 3777, 3900, 4015, 4136, 4252, 4372, 4491, 4610, 4726, 4848, 4967, 5081, 5204, 5319, 5438, 5559, 5678, 5797, 5914, 6033, 6152, 6270, 6385, 6508, 6625, 6742, 6865, 6980, 7099, 7217, 7339, 7455, 7575, 7693, 7813, 7932, 8046, 8170, 8286, 8405, 8524, 8643, 8760, 8881, 9000, 9117, 9236, 9353]# noqa: E501
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # 第3次斩击攻击力 : {value4}% X {value5}
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
     hit4 = 3
-
-    data6 = [0, 527, 583, 638, 692, 743, 801, 853, 903, 961, 1013, 1068, 1119, 1175, 1229, 1284, 1340, 1389, 1440, 1496, 1550, 1607, 1659, 1714, 1770, 1822, 1873, 1924, 1981, 2035, 2088, 2145, 2196, 2253, 2304, 2358, 2412, 2467, 2523, 2574, 2627, 2681, 2735, 2790, 2842, 2895, 2951, 3004, 3057, 3113, 3167, 3216, 3271, 3327, 3380, 3436, 3488, 3541, 3597, 3647, 3703, 3757, 3810, 3864, 3920, 3971, 4024, 4075, 4133, 4185, 4242]# noqa: E501
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    # [终结之击]攻击力 : {value6}% X {value7}
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
     hit6 = 3
     group6 = "end"
+    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
+    # [范围信息]
+    # 范围比率 : {value8}%
+    data8 = get_data(f'{prefix}/{uuid}', 8, lambda x = None: x)
 
-
-# 疾驰 브레이킹 러시
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/42c82812f86ff6704ae9952a2e6093a4?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill31(ActiveSkill):
+# 疾驰
+# thief/rogue/42c82812f86ff6704ae9952a2e6093a4
+# ddc49e9ad1ff72a00b53c6cff5b1e920/42c82812f86ff6704ae9952a2e6093a4
+class Skill30(ActiveSkill):
+    """
+    用极快的速度向前方冲刺。\n
+    施放技能时， 若按上/下方向键， 则可以控制冲刺方向； 移动时， 进入无敌状态。\n
+    可以强制中断冲刺并立即施放基本攻击、 跳跃以及技能； 可以强制中断当前进行的技能动作， 并立即施放[疾驰]。
+    """
     name = "疾驰"
     learnLv = 30
     masterLv = 1
     maxLv = 1
-    position = 4
+    position = 4 #TODO
     rangeLv = 2
     cd = 5
     mp = [10, 10]
     uuid = "42c82812f86ff6704ae9952a2e6093a4"
+    hasVP = False
+    hasUP = False
 
-# 剑刃风暴 허리케인
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/3829c15bf5f520c13998a3479ba0ce7b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill32(ActiveSkill):
+
+# 剑刃风暴
+# thief/rogue/3829c15bf5f520c13998a3479ba0ce7b
+# ddc49e9ad1ff72a00b53c6cff5b1e920/3829c15bf5f520c13998a3479ba0ce7b
+class Skill31(ActiveSkill):
+    """
+    快速旋转切割周围的敌人。\n
+    旋转时， 可以用方向键控制移动方向， 在空中也可以发动。\n
+    旋转攻击中可以消耗连击点数发动[终结之击]； 发动[终结之击]时， 可以垂直上升并使敌人浮空。\n
+    学习[绝命时刻]后， 增加移动速度和吸附力， 减少多段攻击间隔。
+    """
     name = "剑刃风暴"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 8
+    position = 8 #TODO
     rangeLv = 2
     cd = 10
     mp = [65, 699]
     uuid = "3829c15bf5f520c13998a3479ba0ce7b"
-    data0 = [0, 1137, 1260, 1372, 1488, 1605, 1720, 1836, 1952, 2069, 2183, 2297, 2417, 2531, 2647, 2763, 2876, 2990, 3109, 3225, 3341, 3458, 3573, 3692, 3805, 3919, 4038, 4151, 4270, 4384, 4498, 4617, 4731, 4848, 4966, 5080, 5194, 5311, 5426, 5542, 5663, 5772, 5892, 6004, 6122, 6241, 6353, 6469, 6584, 6696, 6817, 6933, 7048, 7164, 7281, 7395, 7516, 7628, 7742, 7859, 7976, 8087, 8209, 8322, 8437, 8554, 8672, 8787, 8901, 9017, 9132]# noqa: E501
-    hit0 = 10
+    hasVP = False
+    hasUP = True
 
-    data2 = [0, 2283, 2509, 2744, 2980, 3203, 3439, 3672, 3907, 4133, 4369, 4600, 4826, 5061, 5296, 5525, 5758, 5987, 6224, 6448, 6683, 6917, 7147, 7376, 7614, 7842, 8073, 8306, 8537, 8769, 9005, 9233, 9462, 9700, 9928, 10158, 10392, 10623, 10858, 11087, 11319, 11552, 11781, 12014, 12247, 12476, 12708, 12937, 13175, 13403, 13634, 13869, 14095, 14326, 14564, 14790, 15023, 15258, 15492, 15717, 15953, 16182, 16412, 16648, 16879, 17107, 17342, 17571, 17808, 18039, 18268]# noqa: E501
+    # 旋转攻击力 : {value0}% X {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 10
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # [终结之击]攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
     hit2 = 1
     group2 = "end"
+    # 旋转时移动速度 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [范围信息]
+    # 范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
 
-# 侧步 사이드 스텝
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/e49e57b2e8fbeceb0a2c56a0c63fe6c5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill33(ActiveSkill):
+# 侧步
+# thief/rogue/e49e57b2e8fbeceb0a2c56a0c63fe6c5
+# ddc49e9ad1ff72a00b53c6cff5b1e920/e49e57b2e8fbeceb0a2c56a0c63fe6c5
+class Skill32(ActiveSkill):
+    """
+    向Y轴侧跳移动， 按上下方向键可以控制移动方向。 若不按方向键， 则默认向下方移动。\n
+    可以强制中断转职技能并立即施放[侧步]。 施放时可以按攻击键进行跳跃攻击。\n
+    在决斗场中施放[侧步]时无法进行跳跃攻击。
+    """
     name = "侧步"
     learnLv = 30
     masterLv = 1
     maxLv = 1
-    position = 3
+    position = 3 #TODO
     rangeLv = 1
     cd = 1.2
     mp = [3, 3]
     uuid = "e49e57b2e8fbeceb0a2c56a0c63fe6c5"
+    hasVP = False
+    hasUP = False
 
-# 劫掠 셰이크 다운
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/b501ae53638d33a32351904f31cb6aa3?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill34(ActiveSkill):
-    name = "劫掠"
+
+# 暗掠
+# thief/rogue/b501ae53638d33a32351904f31cb6aa3
+# ddc49e9ad1ff72a00b53c6cff5b1e920/b501ae53638d33a32351904f31cb6aa3
+class Skill33(ActiveSkill):
+    """
+    增加暴击伤害， 效果持续一定时间。
+    """
+    name = "暗掠"
     learnLv = 30
     masterLv = 10
     maxLv = 20
-    position = 1
+    position = 1 #TODO
     rangeLv = 2
     cd = 5
-    mp = [357, 2756]
     uuid = "b501ae53638d33a32351904f31cb6aa3"
-    damage = False
-    buff = True
+    hasVP = False
+    hasUP = False
 
-# 螺旋穿刺 버티컬 스파이럴
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/bb34e8854a93fd250347a1c64119f7ab?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill35(ActiveSkill):
+    # 增益效果持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 暴击伤害增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+
+# 螺旋穿刺
+# thief/rogue/bb34e8854a93fd250347a1c64119f7ab
+# ddc49e9ad1ff72a00b53c6cff5b1e920/bb34e8854a93fd250347a1c64119f7ab
+class Skill34(ActiveSkill):
+    """
+    向前移动并使自身急速旋转攻击敌人。\n
+    若在地面上施放该技能， 则以抛物线跳跃并旋转； 若在空中施放该技能， 则水平前进并发动旋转攻击。\n
+    向前移动过程中， 若再次按技能键或<Z>键， 则直接向下进行强力攻击并形成冲击波； 此时， 可以消耗连击点数发动[终结之击]。
+    """
     name = "螺旋穿刺"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 3
+    position = 3 #TODO
     rangeLv = 2
     cube = 1
     cd = 15
     mp = [128, 1072]
     uuid = "bb34e8854a93fd250347a1c64119f7ab"
-    vps = [
-        {"name":"密集螺旋","desc":"攻击力/冷却时间增加<br/>回避率增加<br/>可调整[终结之击]方向"},
-        {"name":"致命螺旋","desc":"范围增加<br/>攻击时不会穿透敌人<br/>向下强击并入[终结之击]"},
-    ]
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 1515, 1671, 1827, 1980, 2133, 2292, 2442, 2598, 2750, 2909, 3062, 3216, 3366, 3524, 3677, 3831, 3984, 4142, 4298, 4449, 4599, 4755, 4914, 5064, 5222, 5373, 5526, 5681, 5838, 5990, 6146, 6297, 6453, 6606, 6759, 6920, 7073, 7227, 7377, 7530, 7691, 7844, 7997, 8153, 8304, 8457, 8609, 8768, 8922, 9075, 9234, 9383, 9534, 9693, 9849, 10001, 10155, 10307, 10460, 10619, 10773, 10926, 11082, 11232, 11388, 11543, 11700, 11852, 12006, 12165]# noqa: E501
+    # 移动距离 : {value0}px
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 旋转攻击力 : {value1}% X {value2}
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
     hit1 = 6
-
-    data3 = [0, 1515, 1671, 1827, 1980, 2133, 2292, 2442, 2598, 2750, 2909, 3062, 3216, 3366, 3524, 3677, 3831, 3984, 4142, 4298, 4449, 4599, 4755, 4914, 5064, 5222, 5373, 5526, 5681, 5838, 5990, 6146, 6297, 6453, 6606, 6759, 6920, 7073, 7227, 7377, 7530, 7691, 7844, 7997, 8153, 8304, 8457, 8609, 8768, 8922, 9075, 9234, 9383, 9534, 9693, 9849, 10001, 10155, 10307, 10460, 10619, 10773, 10926, 11082, 11232, 11388, 11543, 11700, 11852, 12006, 12165]# noqa: E501
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 向下强击攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
     hit3 = 1 #TODO
-
-    # data4 = [0, 5318, 5861, 6398, 6936, 7478, 8016, 8553, 9098, 9636, 10178, 10716, 11258, 11796, 12336, 12878, 13416, 13959, 14498, 15038, 15576, 16118, 16653, 17192, 17732, 18273, 18813, 19353, 19895, 20433, 20969, 21515, 22052, 22592, 23132, 23675, 24215, 24752, 25292, 25832, 26372, 26916, 27446, 27986, 28524, 29069, 29609, 30149, 30690, 31230, 31766, 32307, 32849, 33389, 33932, 34470, 35010, 35544, 36087, 36626, 37166, 37709, 38246, 38783, 39324, 39864, 40404, 40947, 41489, 42021, 42560]# noqa: E501
-    # hit4 = 1 #TODO
-
-    data5 = [0, 3192, 3512, 3842, 4161, 4488, 4809, 5136, 5459, 5783, 6105, 6428, 6755, 7074, 7400, 7727, 8048, 8375, 8699, 9023, 9345, 9669, 9993, 10317, 10640, 10964, 11289, 11612, 11934, 12261, 12582, 12911, 13232, 13557, 13878, 14204, 14526, 14852, 15176, 15498, 15825, 16146, 16469, 16793, 17114, 17445, 17763, 18090, 18408, 18738, 19058, 19382, 19710, 20031, 20354, 20678, 21003, 21327, 21648, 21975, 22298, 22623, 22943, 23273, 23592, 23918, 24245, 24567, 24893, 25212, 25539]# noqa: E501
+    # 冲击波攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    # [终结之击]攻击力 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
     hit5 = 1 #TODO
     group5 = "end"
+    # [范围信息]
+    # 范围比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
 
     def vp_1(self):
+        """
+        [螺旋穿刺]\n
+        基本冷却时间变更为30秒\n
+        - 总攻击力 +100%\n
+        施放过程中回避率 +50%\n
+        可以通过按左、 右方向键调整[终结之击]发动方向
+        """
         self.cd = 30
         self.skillRation *= 2
+        ...
 
+    def vp_2(self):
+        """
+        [螺旋穿刺]\n
+        攻击范围及移动距离 +60%\n
+        地面施放时， 会跳跃后发动技能\n
+        旋转攻击强化\n
+        - 不穿透敌人\n
+        - 多段攻击次数 +200%\n
+        - 多段攻击间隔 -67%\n
+        [终结之击]变更\n
+        - 旋转攻击中再次按技能键无法发动下劈\n
+        - 旋转攻击中可以发动[终结之击]\n
+        - [终结之击]变更为下劈攻击\n
+        - 下劈攻击及下劈冲击波攻击力合算至[终结之击]\n
+        总攻击力相同
+        """
+        ...
 
-# 雷光刃影 라이트닝 애로우
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/e4c354a89c337310aeb7041d5e742828?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill36(ActiveSkill):
+# 雷光刃影
+# thief/rogue/e4c354a89c337310aeb7041d5e742828
+# ddc49e9ad1ff72a00b53c6cff5b1e920/e4c354a89c337310aeb7041d5e742828
+class Skill35(ActiveSkill):
+    """
+    抓取敌人后， 对其进行连续地突刺攻击， 最后再向下猛踢敌人。\n
+    向下猛踢碰到地面时， 生成冲击波； 抓取成功时， 进入无敌状态， 并使敌人进入强制控制状态。\n
+    攻击无法抓取的敌人时， 将直接进行向下猛踢， 增加向下猛踢攻击力且不会控制敌人。 向下猛踢后， 可消耗连击点数发动[终结之击]。\n
+    在决斗场中[终结之击]无法使敌人浮空。
+    """
     name = "雷光刃影"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 4
+    position = 4 #TODO
     rangeLv = 2
     cube = 1
     cd = 15
     mp = [91, 763]
     uuid = "e4c354a89c337310aeb7041d5e742828"
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    vps = [
-        {"name":"雷光一闪","desc":"固定以无法抓取的形态发动<br/>施放时间减少<br/>强化[月轮舞]速度增益"},
-        {"name":"不屈","desc":"增加聚集敌人效果<br/>范围增加<br/>攻击失败补偿"},
-    ]
-
-    data0 = [0, 1601, 1766, 1925, 2090, 2250, 2415, 2577, 2739, 2904, 3066, 3230, 3390, 3554, 3714, 3879, 4041, 4205, 4367, 4530, 4691, 4856, 5018, 5181, 5342, 5505, 5666, 5828, 5993, 6155, 6320, 6482, 6647, 6809, 6972, 7131, 7295, 7455, 7622, 7782, 7944, 8106, 8270, 8432, 8595, 8757, 8921, 9081, 9245, 9407, 9569, 9734, 9896, 10059, 10218, 10386, 10547, 10710, 10872, 11036, 11198, 11361, 11523, 11687, 11849, 12012, 12173, 12336, 12498, 12662, 12824]# noqa: E501
+    # 突刺攻击力 : {value0}% X {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 0
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 踢击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 0
+    # 踢击攻击力  (无法抓取的敌人) : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    hit3 = 1
+    # 踢击冲击波攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    hit4 = 1
+    # [终结之击]攻击力 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    hit5 = 1
+    group5 = "end"
+    # [范围信息]
+    # 范围比率 (除踢击冲击波) : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    # 踢击冲击波范围比率 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
 
-    data1 = [0, 4808, 5297, 5786, 6270, 6759, 7248, 7737, 8222, 8712, 9198, 9687, 10175, 10664, 11153, 11640, 12126, 12615, 13101, 13590, 14078, 14565, 15057, 15543, 16032, 16518, 17007, 17495, 17979, 18468, 18959, 19446, 19934, 20421, 20910, 21396, 21885, 22373, 22865, 23349, 23837, 24324, 24812, 25299, 25788, 26273, 26763, 27252, 27741, 28227, 28716, 29202, 29694, 30177, 30666, 31157, 31643, 32132, 32619, 33108, 33594, 34080, 34571, 35060, 35546, 36035, 36522, 37010, 37499, 37986, 38472]# noqa: E501
-    hit1 = 0
+    def vp_1(self):
+        """
+        [雷光刃影]\n
+        固定以对无法抓取目标的形态发动\n
+        - 踢击攻击下落速度 +40%\n
+        [月轮舞]\n
+        使用[雷光刃影]的[终结之击]时， 攻击速度和移动速度增加量增加20%， 效果持续15秒
+        """
+        ...
 
-    data2 = [0, 9615, 10595, 11571, 12543, 13518, 14499, 15473, 16449, 17424, 18401, 19377, 20351, 21327, 22304, 23280, 24255, 25230, 26208, 27180, 28158, 29133, 30111, 31086, 32061, 33036, 34013, 34989, 35964, 36939, 37917, 38891, 39867, 40842, 41823, 42797, 43770, 44745, 45723, 46700, 47675, 48653, 49626, 50601, 51578, 52553, 53529, 54506, 55484, 56459, 57431, 58409, 59384, 60360, 61335, 62315, 63288, 64263, 65238, 66215, 67191, 68165, 69140, 70119, 71094, 72069, 73044, 74024, 74996, 75971, 76947]# noqa: E501
-    hit2 = 1 #TODO
+    def vp_2(self):
+        """
+        [雷光刃影]\n
+        吸附周围敌人并抓取\n
+        攻击范围 +25%\n
+        抓取失败时冷却时间变更为2秒
+        """
+        ...
 
-    data3 = [0, 6413, 7062, 7710, 8363, 9012, 9665, 10316, 10967, 11615, 12266, 12917, 13569, 14219, 14868, 15519, 16169, 16818, 17474, 18120, 18773, 19422, 20073, 20724, 21375, 22025, 22673, 23325, 23975, 24624, 25278, 25929, 26579, 27230, 27881, 28529, 29184, 29831, 30480, 31131, 31782, 32433, 33083, 33737, 34386, 35034, 35687, 36335, 36984, 37638, 38289, 38939, 39588, 40241, 40889, 41541, 42192, 42843, 43493, 44144, 44792, 45444, 46097, 46745, 47394, 48045, 48695, 49349, 49998, 50651, 51300]# noqa: E501
-    hit3 = 1 #TODO
-
-    data4 = [0, 3203, 3530, 3855, 4179, 4506, 4833, 5159, 5483, 5808, 6135, 6459, 6782, 7107, 7434, 7758, 8084, 8409, 8735, 9062, 9386, 9711, 10035, 10361, 10686, 11012, 11337, 11661, 11988, 12312, 12639, 12966, 13289, 13613, 13940, 14265, 14589, 14916, 15240, 15564, 15891, 16215, 16538, 16866, 17192, 17519, 17843, 18168, 18495, 18816, 19142, 19467, 19794, 20117, 20442, 20771, 21096, 21422, 21747, 22071, 22397, 22722, 23048, 23375, 23697, 24020, 24345, 24672, 24998, 25323, 25647]# noqa: E501
-    hit4 = 1 #TODO
-    group4 = "end"
-
-# 疾风乱舞 소닉 어설트
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/1dad88963abdc96b091fcab185a8820d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill37(ActiveSkill):
+# 疾风乱舞
+# thief/rogue/1dad88963abdc96b091fcab185a8820d
+# ddc49e9ad1ff72a00b53c6cff5b1e920/1dad88963abdc96b091fcab185a8820d
+class Skill36(ActiveSkill):
+    """
+    快速接近前方敌人， 并对该敌人进行狂风般的乱舞攻击。\n
+    突进过程中， 按上下方向键可以调整移动方向， 成功抓住后进入无敌状态并强控敌人。\n
+    乱舞攻击时， 若按跳跃键， 则会向周围的其他敌人瞬移， 并对其进行乱舞攻击。此时， 会在之前乱舞攻击过的敌人身上留下一个分身； 分身会在一定时间内持续攻击该敌人后消失。\n
+    后踢后， 可消耗连击点数发动[终结之击]。\n
+    在决斗场中， 强制中断基本攻击和技能动作发动时， 无法沿Y轴移动。
+    """
     name = "疾风乱舞"
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 6
+    position = 6 #TODO
     rangeLv = 2
     cube = 1
     cd = 25
     mp = [164, 1376]
     uuid = "1dad88963abdc96b091fcab185a8820d"
-    vps = [
-        {"name":"疾风奔袭","desc":"追踪<br/>范围增加"},
-        {"name":"超音速","desc":"无敌强化<br/>抓取时变更为范围攻击"},
-    ]
-    data0 = [0, 1524, 1674, 1830, 1986, 2139, 2295, 2451, 2604, 2756, 2916, 3066, 3221, 3377, 3530, 3686, 3842, 3996, 4148, 4301, 4457, 4613, 4766, 4922, 5078, 5232, 5384, 5538, 5693, 5847, 6002, 6158, 6314, 6467, 6618, 6776, 6930, 7083, 7238, 7395, 7550, 7703, 7857, 8010, 8163, 8319, 8477, 8628, 8784, 8940, 9092, 9248, 9401, 9557, 9713, 9867, 10019, 10176, 10328, 10482, 10637, 10794, 10946, 11102, 11259, 11411, 11565, 11718, 11874, 12030, 12185]# noqa: E501
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 乱舞攻击力 : {value0}% X {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 11
-
-    data1 = [0, 1514, 1670, 1826, 1979, 2133, 2283, 2436, 2594, 2745, 2900, 3054, 3206, 3359, 3515, 3668, 3824, 3975, 4130, 4283, 4437, 4593, 4748, 4899, 5055, 5211, 5363, 5517, 5670, 5823, 5978, 6132, 6285, 6438, 6593, 6746, 6899, 7052, 7209, 7361, 7517, 7670, 7823, 7974, 8132, 8283, 8438, 8591, 8745, 8897, 9053, 9209, 9363, 9516, 9671, 9825, 9977, 10131, 10286, 10437, 10593, 10749, 10902, 11055, 11208, 11361, 11516, 11670, 11825, 11975, 12129]# noqa: E501
-    hit1 = 4
-
-    data3 = [0, 2726, 3002, 3278, 3552, 3828, 4106, 4385, 4656, 4938, 5216, 5489, 5766, 6044, 6321, 6594, 6873, 7152, 7425, 7703, 7979, 8255, 8529, 8807, 9086, 9362, 9638, 9914, 10191, 10469, 10742, 11022, 11298, 11576, 11850, 12128, 12404, 12677, 12954, 13229, 13511, 13787, 14064, 14339, 14615, 14892, 15170, 15446, 15722, 15998, 16274, 16553, 16827, 17105, 17379, 17655, 17934, 18210, 18488, 18762, 19040, 19316, 19593, 19871, 20147, 20423, 20700, 20976, 21251, 21528, 21810]# noqa: E501
-    hit3 = 1 #TODO
-
-    data4 = [0, 5108, 5627, 6143, 6663, 7179, 7697, 8217, 8736, 9254, 9770, 10287, 10806, 11325, 11843, 12362, 12879, 13397, 13916, 14433, 14952, 15467, 15990, 16505, 17027, 17541, 18063, 18578, 19095, 19619, 20133, 20654, 21170, 21689, 22206, 22725, 23243, 23763, 24279, 24798, 25316, 25835, 26352, 26868, 27390, 27908, 28427, 28943, 29459, 29979, 30495, 31014, 31533, 32054, 32570, 33087, 33606, 34125, 34643, 35162, 35679, 36200, 36713, 37235, 37751, 38268, 38787, 39306, 39828, 40343, 40862]# noqa: E501
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 分身攻击力 : {value2}% X {value3}
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 4
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # 最后一击攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
     hit4 = 1
-    group4 = "end"
+    # [终结之击]攻击力 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    hit5 = 1
+    group5 = "end"
+    # 瞬移距离上限 : {value6}px
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
+    # [范围信息]
+    # 范围比率 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7, lambda x = None: x)
 
+    def vp_1(self):
+        """
+        [疾风乱舞]\n
+        移动功能强化\n
+        施放时追踪最近的敌人\n
+        - 突进距离上限 +50%\n
+        - 瞬移范围 +100%
+        """
+        ...
 
-# 死亡风暴 데스 허리케인
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/c77a417c43de80c4ce32c1ed405d174a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill38(ActiveSkill):
+    def vp_2(self):
+        """
+        [疾风乱舞]\n
+        突进过程中， 进入无敌状态\n
+        抓取成功时， 为600px范围内的所有敌人赋予与暗星的攻击相同的瞬移分身\n
+        无法通过跳跃键瞬移
+        """
+        ...
+
+# 死亡风暴
+# thief/rogue/c77a417c43de80c4ce32c1ed405d174a
+# ddc49e9ad1ff72a00b53c6cff5b1e920/c77a417c43de80c4ce32c1ed405d174a
+class Skill37(PassiveSkill):
+    """
+    施放[剑刃风暴]时， 由风暴中心向外呈环形投掷匕首。
+    """
     name = "死亡风暴"
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 8
+    position = 8 #TODO
     rangeLv = 3
-    cd = 12
-    type = "passive"
     uuid = "c77a417c43de80c4ce32c1ed405d174a"
+    hasVP = True
+    hasUP = False
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    vps = [
-        {"name":"二次伤害","desc":"追踪<br/>攻击点数获取量增加<br/>合并[剑刃风暴]攻击力"},
-        {"name":"剑刃飓风","desc":"变更为发动飓风的技能<br/>范围增加<br/>飓风移动速度增加<br/>强化聚集敌人效果"},
-    ]
-
-    data0 = [0, 686, 795, 904, 1014, 1123, 1232, 1342, 1451, 1560, 1670, 1779, 1888, 1998, 2107, 2216, 2326, 2435, 2544, 2654, 2763, 2872, 2982, 3091, 3200, 3310, 3419, 3528, 3638, 3747, 3856, 3966, 4075, 4184, 4294, 4403, 4512, 4622, 4731, 4840, 4950, 5059, 5168, 5278, 5387, 5496, 5606, 5715, 5824, 5934, 6043, 6152, 6262, 6371, 6480, 6590, 6699, 6808, 6918, 7027, 7136, 7245, 7355, 7464, 7573, 7683, 7792, 7901, 8011, 8120, 8229]# noqa: E501
+    # 匕首攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 30
+    # 投掷匕首数量 : {value1}个
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
 
     def getSkillCD(self,mode=None) -> float:
         return self.char.GetSkillByName("剑刃风暴").getSkillCD(mode)
 
+    def vp_1(self):
+        """
+        [死亡风暴]\n
+        向600px范围内最强敌人投掷匕首\n
+        匕首发射数 -33%\n
+        - 总攻击力相同\n
+        [剑刃风暴]\n
+        每次攻击获得的连击点数 +100%\n
+        施放[终结之击]时， 剩余旋转攻击力合算至[终结之击]攻击力\n
+        - 学习[陨落风暴]后， 合算[陨落螺旋刺]的旋转攻击力
+        """
+        ...
 
-# 绝境瞬狱袭 엑셀 스트라이크
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/128b9ddef2262f40723deae4407bdb42?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill39(ActiveSkill):
+    def vp_2(self):
+        """
+        [死亡风暴]\n
+        不再投掷匕首， 而是在风暴内部生成刀刃飓风\n
+        - 刀刃飓风多段攻击次数 : 10次\n
+        - 总攻击力相同\n
+        [剑刃风暴]\n
+        - 攻击范围及移动距离 +30%\n
+        聚集敌人功能强化\n
+        - 吸附力 +200%\n
+        - 可以吸附霸体状态的敌人
+        """
+        ...
+
+# 绝境瞬狱袭
+# thief/rogue/128b9ddef2262f40723deae4407bdb42
+# ddc49e9ad1ff72a00b53c6cff5b1e920/128b9ddef2262f40723deae4407bdb42
+class Skill38(ActiveSkill):
+    """
+    前冲突击使敌人浮空， 然后发动连续攻击。\n
+    前冲和连续攻击过程中， 自身进入无敌状态， 前冲攻击没有命中敌人时， 不会发动连续攻击。\n
+    可以在地上和空中发动， 第3击后可消耗连击点数发动[终结之击]。\n
+    在决斗场中， 无法在空中发动。
+    """
     name = "绝境瞬狱袭"
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 5
+    position = 5 #TODO
     rangeLv = 2
     cube = 2
     cd = 45
     mp = [311, 2612]
     uuid = "128b9ddef2262f40723deae4407bdb42"
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    vps = [
-        {"name":"绝对打击","desc":"范围增加<br/>移动功能强化<br/>施放时间减少"},
-        {"name":"超绝瞬狱袭","desc":"变更为可填充2次的技能<br/>赋予命中率增加效果<br/>获得最高连击点数"},
-    ]
-
-    data0 = [0, 4229, 4656, 5088, 5516, 5942, 6374, 6801, 7230, 7661, 8093, 8520, 8946, 9375, 9806, 10235, 10662, 11093, 11522, 11949, 12378, 12810, 13238, 13668, 14097, 14522, 14955, 15383, 15813, 16239, 16670, 17099, 17529, 17960, 18386, 18816, 19242, 19673, 20102, 20531, 20960, 21392, 21816, 22248, 22677, 23102, 23535, 23966, 24393, 24821, 25251, 25679, 26109, 26538, 26966, 27395, 27827, 28254, 28679, 29112, 29538, 29972, 30396, 30830, 31257, 31685, 32115, 32544, 32972, 33401, 33833]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 6341, 6987, 7626, 8274, 8916, 9560, 10202, 10850, 11490, 12135, 12776, 13418, 14064, 14708, 15353, 15996, 16638, 17282, 17927, 18567, 19214, 19854, 20499, 21146, 21788, 22431, 23075, 23718, 24363, 25005, 25647, 26291, 26937, 27578, 28224, 28869, 29508, 30155, 30798, 31439, 32084, 32727, 33368, 34014, 34659, 35304, 35945, 36593, 37235, 37877, 38519, 39164, 39804, 40451, 41096, 41736, 42381, 43028, 43665, 44310, 44957, 45596, 46241, 46884, 47528, 48173, 48818, 49458, 50103, 50748]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 8457, 9314, 10172, 11033, 11889, 12746, 13608, 14463, 15321, 16182, 17037, 17894, 18750, 19611, 20469, 21327, 22187, 23045, 23900, 24762, 25620, 26474, 27335, 28193, 29051, 29907, 30770, 31623, 32483, 33342, 34200, 35054, 35915, 36771, 37631, 38489, 39347, 40206, 41063, 41924, 42780, 43637, 44495, 45354, 46211, 47072, 47927, 48786, 49643, 50504, 51363, 52215, 53075, 53934, 54791, 55652, 56510, 57365, 58227, 59084, 59942, 60795, 61659, 62514, 63372, 64235, 65088, 65946, 66807, 67665]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 10569, 11645, 12717, 13788, 14859, 15935, 17006, 18081, 19152, 20226, 21297, 22370, 23441, 24515, 25589, 26660, 27731, 28808, 29877, 30953, 32022, 33096, 34169, 35240, 36314, 37388, 38459, 39531, 40602, 41676, 42747, 43823, 44895, 45969, 47040, 48110, 49184, 50258, 51327, 52404, 53475, 54548, 55619, 56688, 57762, 58836, 59910, 60984, 62057, 63126, 64199, 65271, 66345, 67418, 68490, 69563, 70635, 71706, 72780, 73851, 74928, 75998, 77073, 78144, 79215, 80288, 81362, 82431, 83507, 84576]# noqa: E501
-    hit3 = 1 #TODO
-
-    data4 = [0, 5918, 6521, 7118, 7721, 8322, 8921, 9522, 10125, 10724, 11325, 11927, 12525, 13125, 13728, 14327, 14927, 15525, 16131, 16733, 17334, 17933, 18534, 19136, 19734, 20334, 20933, 21536, 22137, 22736, 23339, 23940, 24539, 25142, 25743, 26342, 26942, 27540, 28142, 28745, 29342, 29943, 30545, 31143, 31745, 32349, 32949, 33551, 34146, 34748, 35351, 35954, 36552, 37154, 37755, 38354, 38955, 39560, 40158, 40760, 41357, 41958, 42560, 43158, 43760, 44361, 44960, 45561, 46163, 46761, 47364]# noqa: E501
-    hit4 = 1 #TODO
+    # 前冲突击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 第1击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    # 第2击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
+    # 第3击攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    hit3 = 1
+    # [终结之击]攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    hit4 = 1
     group4 = "end"
+    # [范围信息]
+    # 范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
 
-# 月弧 문아크
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/de3fea2d65c597f4d55c70a02b97fc79?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill40(PassiveSkill):
+    def vp_1(self):
+        """
+        [绝境瞬狱袭]\n
+        移动功能强化\n
+        - 前冲攻击范围 +60%\n
+        - 前冲攻击时可以Y轴移动\n
+        施放速度 +20%
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [绝境瞬狱袭]\n
+        变更为可填充2次的技能\n
+        - 首次施放后10秒内可以施放第二次\n
+        - 删除第2击、 第3击攻击\n
+        - 前冲、 第1击攻击后发动[终结之击]\n
+        - 发动[终结之击]时命中率增加20%， 效果持续10秒\n
+        - 包括[终结之击]在内的所有攻击可以获得最大连击点数\n
+        - 总攻击力相同
+        """
+        ...
+
+# 月弧
+# thief/rogue/de3fea2d65c597f4d55c70a02b97fc79
+# ddc49e9ad1ff72a00b53c6cff5b1e920/de3fea2d65c597f4d55c70a02b97fc79
+class Skill39(PassiveSkill):
+    """
+    获得连击点数时， 增加命中率、 回避率、 物理暴击率和暴击伤害， 效果持续一定时间。
+    """
     name = "月弧"
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 6
+    position = 6 #TODO
     rangeLv = 3
     uuid = "de3fea2d65c597f4d55c70a02b97fc79"
+    hasVP = False
+    hasUP = False
 
-    data1 = [0, 11.5, 13.5, 15.5, 17.5, 19.5, 21.5, 23.5, 25.5, 27.5, 29.5, 31.5, 33.5, 35.5, 37.5, 39.5, 41.5, 43.5, 45.5, 47.5, 49.5, 51.5, 53.5, 55.5, 57.5, 59.5, 61.5, 63.5, 65.5, 67.5, 69.5, 71.5, 73.5, 75.5, 77.5, 79.5, 81.5, 83.5, 85.5, 87.5, 89.5, 91.5, 93.5, 95.5, 97.5, 99.5, 101.5, 103.5, 105.5, 107.5, 109.5]# noqa: E501
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 暴击伤害增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 物理暴击率增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 回避率增加 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # 命中率增加 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+
     associate = [{"data":data1}]
 
-
-# 月轮舞 실버스트림
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/c61f5a010370101402b05b21916c2071?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill41(ActiveSkill):
+# 月轮舞
+# thief/rogue/c61f5a010370101402b05b21916c2071
+# ddc49e9ad1ff72a00b53c6cff5b1e920/c61f5a010370101402b05b21916c2071
+class Skill40(ActiveSkill):
+    """
+    施放[月轮舞]后， 会进入月舞模式并持续一定时间。 在月舞模式下， 增加攻击范围， 且基本攻击、 前冲攻击和跳跃攻击变成多段攻击； 获得连击点数时， 增加攻击速度和移动速度。\n
+    在月舞模式下， 基本攻击、 跳跃攻击和前冲攻击不受[基础精通]的影响。 增加攻击速度和移动速度的增益效果可以重叠一定次数。\n
+    施放技能动作中， 进入无敌状态； 可以在空中施放。
+    """
     name = "月轮舞"
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 5
+    position = 5 #TODO
     rangeLv = 5
     cube = 7
     cd = 145
     mp = [850, 7000]
     uuid = "c61f5a010370101402b05b21916c2071"
+    hasVP = False
+    hasUP = False
     damage = False
     bind = False
 
-# 月舞终结 스트림 클로저
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/dec8961c485edb02036ba00c789010f0?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill42(ActiveSkill):
+    # 月舞模式持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 普通/跳跃/前冲攻击次数增加 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 效果重叠次数上限 : {value2}次
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 每次重叠攻击速度增加 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # 每次重叠移动速度增加 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+
+# 月舞终结
+# thief/rogue/dec8961c485edb02036ba00c789010f0
+# ddc49e9ad1ff72a00b53c6cff5b1e920/dec8961c485edb02036ba00c789010f0
+class Skill41(ActiveSkill):
+    """
+    可以在[月轮舞]增益状态下施放， 施放时发动强力连续斩击。\n
+    共发动4次斩击， 1~3次斩击命中时， 分身进行突进攻击后发动终结斩击。\n
+    被1~3段斩击命中的敌人会被强制控制并吸附过来， 并且可以在空中发动。\n
+    学习后， 技能等级补正为与[月轮舞]相同。
+    """
     name = "月舞终结"
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    line = 60
-    position = 5
+    position = 5 #TODO
     rangeLv = 5
     cd = 145
     mp = [850, 7000]
     uuid = "dec8961c485edb02036ba00c789010f0"
-    data0 = [0, 13774, 16967, 20162, 23356, 26550, 29747, 32940, 36132, 39326, 42522, 45716, 48910, 52105, 55300, 58493, 61686, 64882, 68074, 71270, 74466, 77659, 80851, 84046, 87241, 90436, 93629, 96823, 100020, 103212, 106406, 109602, 112795, 115990, 119186, 122378, 125570, 128765, 131961, 135155, 138349, 141542, 144738, 147932, 151126, 154321, 157515, 160709, 163902, 167097, 170291]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
 
-    data1 = [0, 15742, 19391, 23042, 26692, 30343, 33996, 37646, 41294, 44944, 48597, 52246, 55898, 59549, 63200, 66850, 70498, 74151, 77799, 81451, 85104, 88753, 92402, 96052, 99704, 103355, 107005, 110655, 114308, 117957, 121606, 125259, 128908, 132560, 136212, 139861, 143509, 147160, 150813, 154462, 158113, 161762, 165414, 169065, 172715, 176366, 180017, 183667, 187317, 190968, 194618]# noqa: E501
-    hit1 = 1 #TODO
+    # 第1次斩击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 1
+    # 第2次斩击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    # 第3次斩击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
+    # 分身突进攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    hit3 = 1
+    # 最后斩击攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
+    hit4 = 1
 
-    data2 = [0, 17709, 21815, 25923, 30029, 34136, 38246, 42351, 46455, 50562, 54671, 58777, 62885, 66992, 71100, 75206, 79311, 83420, 87524, 91633, 95742, 99847, 103952, 108059, 112167, 116275, 120380, 124487, 128597, 132701, 136807, 140917, 145022, 149130, 153239, 157343, 161447, 165555, 169664, 173770, 177877, 181983, 186091, 190198, 194305, 198412, 202519, 206626, 210731, 214839, 218946]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 19677, 24239, 28803, 33365, 37929, 42495, 47057, 51617, 56180, 60746, 65308, 69872, 74436, 79000, 83562, 88123, 92689, 97249, 101814, 106380, 110941, 115502, 120065, 124630, 129194, 133756, 138319, 142885, 147446, 152008, 156574, 161135, 165700, 170265, 174826, 179386, 183950, 188516, 193078, 197641, 202203, 206768, 211331, 215894, 220458, 225021, 229584, 234146, 238710, 243273]# noqa: E501
-    hit3 = 1 #TODO
-
-    data4 = [0, 31483, 38782, 46085, 53384, 60686, 67992, 75291, 82587, 89888, 97194, 104493, 111795, 119098, 126400, 133699, 140997, 148302, 155598, 162902, 170208, 177506, 184803, 192104, 199408, 206710, 214010, 221310, 228616, 235914, 243213, 250518, 257816, 265120, 272424, 279722, 287018, 294320, 301626, 308925, 316226, 323525, 330829, 338130, 345430, 352733, 360034, 367334, 374634, 381936, 389237]# noqa: E501
-    hit4 = 1 #TODO
-
-
-# 旋刃冲击 체인소 러시
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/6a1d1f08a6572be420bb3a256c44c015?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill43(ActiveSkill):
+# 旋刃冲击
+# thief/rogue/6a1d1f08a6572be420bb3a256c44c015
+# ddc49e9ad1ff72a00b53c6cff5b1e920/6a1d1f08a6572be420bb3a256c44c015
+class Skill42(ActiveSkill):
+    """
+    向前方投掷2个旋转刀刃。\n
+    旋转刀刃在一定时间内聚拢敌人， 造成多段伤害。\n
+    投掷出的旋转刀刃在触碰到敌人时停止移动， 若没有触碰到敌人， 则会移动至最大距离。\n
+    旋转刀刃持续期间， 可消耗连击点数发动[终结之击]。 发动[终结之击]时， 快速移动到第一次投掷的旋转刀刃的位置， 对敌人造成多段伤害。 多次施放技能后发动[终结之击]时， 移动到存在的旋转刀刃中最先投掷的刀锋位置。\n
+    在持续时间内， 即使发动[终结之击]， 旋转刀刃也不会消失。
+    """
     name = "旋刃冲击"
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 7
+    position = 7 #TODO
     rangeLv = 2
     cube = 2
     cd = 30
     mp = [400, 1120]
     uuid = "6a1d1f08a6572be420bb3a256c44c015"
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    vps = [
-        {"name":"穿刺之刃","desc":"[双刃穿刺]攻击时自动施放<br/>施放时间减少<br/>范围增加"},
-        {"name":"旋转闪光","desc":"范围增加<br/>攻击点数获取量增加"},
-    ]
-    data0 = [0, 1181, 1301, 1419, 1541, 1658, 1779, 1899, 2019, 2139, 2258, 2378, 2498, 2619, 2738, 2856, 2976, 3098, 3216, 3336, 3458, 3578, 3698, 3816, 3938, 4055, 4175, 4295, 4416, 4535, 4655, 4773, 4896, 5012, 5133, 5253, 5375, 5493, 5613, 5732, 5853, 5973, 6092, 6213, 6332, 6453, 6570, 6692, 6810, 6935, 7052]# noqa: E501
+    # 旋转刀刃攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 30
-
-    data4 = [0, 1322, 1457, 1590, 1725, 1856, 1995, 2127, 2259, 2396, 2528, 2663, 2795, 2934, 3068, 3203, 3336, 3467, 3602, 3737, 3872, 4005, 4142, 4274, 4409, 4542, 4676, 4811, 4944, 5079, 5211, 5346, 5481, 5615, 5750, 5885, 6020, 6152, 6288, 6420, 6554, 6689, 6822, 6957, 7092, 7226, 7359, 7493, 7628, 7767, 7901]# noqa: E501
+    # 旋转刀刃持续时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 旋转刀刃多段攻击间隔 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 旋转刀刃投掷距离上限 : {value3}px
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    # [终结之击]攻击力 : {value4}% X {value5}
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
     hit4 = 5
     group4 = "end"
+    data5 = get_data(f'{prefix}/{uuid}', 5, lambda x = None: x)
+    # [范围信息]
+    # 范围比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
 
+    def vp_1(self):
+        """
+        [旋刃冲击]\n
+        [双刃穿刺]命中时自动施放[旋刃冲击]， 并适用以下效果\n
+        - 可施放[旋刃冲击]时发动\n
+        - [双刃穿刺]的第2、 3次攻击生成旋转刀刃\n
+        - 旋转刀刃不吸附敌人\n
+        [终结之击]攻击强化\n
+        - 施放速度 +80%\n
+        - 多段攻击次数 -80%\n
+        - 总攻击力相同\n
+        [双刃穿刺]\n
+        攻击范围 +25%
+        """
+        ...
 
-# 陨落螺旋刺 어슬랜트 스파이럴
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/38612d8f2561edc2eb68d5057a837bfa?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill44(ActiveSkill):
+    def vp_2(self):
+        """
+        [旋刃冲击]\n
+        范围 +70%\n
+        旋转刀刃强化\n
+        - 每次攻击获得的连击点数 +100%\n
+        - 可获得的连击点数上限 +1100%\n
+        - 持续时间 +100%\n
+        - 总攻击力相同\n
+        [终结之击]攻击时， 获得最大连击点数
+        """
+        ...
+
+# 陨落螺旋刺
+# thief/rogue/38612d8f2561edc2eb68d5057a837bfa
+# ddc49e9ad1ff72a00b53c6cff5b1e920/38612d8f2561edc2eb68d5057a837bfa
+class Skill43(ActiveSkill):
+    """
+    跳跃后， 以极快的速度旋转并冲向地面， 落地时生成冲击波。\n
+    在地面发动时， 可以使用方向键调整落地位置； 在空中发动时， 立即向地面发动旋转攻击。\n
+    可消耗连击点数发动[终结之击]。
+    """
     name = "陨落螺旋刺"
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 3
+    position = 3 #TODO
     rangeLv = 2
     cube = 3
     cd = 50
     mp = [800, 1680]
     uuid = "38612d8f2561edc2eb68d5057a837bfa"
-    vps = [
-        {"name":"凝聚风暴","desc":"施放[剑刃风暴]时自动发动"},
-        {"name":"陨星","desc":"范围增加<br/>施放时间减少"},
-    ]
-    data0 = [0, 5244, 5775, 6306, 6839, 7368, 7905, 8438, 8964, 9500, 10032, 10562, 11096, 11627, 12156, 12689, 13223, 13754, 14285, 14819, 15351, 15881, 16415, 16946, 17477, 18011, 18543, 19071, 19605, 20139, 20667, 21203, 21737, 22265, 22799, 23333, 23861, 24393, 24923, 25458, 25989, 26520, 27053, 27587, 28118, 28652, 29184, 29712, 30246, 30779, 31310]# noqa: E501
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 旋转攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 3
-
-    data1 = [0, 36704, 40430, 44154, 47877, 51600, 55325, 59049, 62771, 66497, 70221, 73946, 77669, 81392, 85115, 88841, 92562, 96290, 100013, 103736, 107459, 111183, 114906, 118632, 122354, 126081, 129804, 133530, 137250, 140976, 144699, 148424, 152145, 155873, 159596, 163322, 167043, 170768, 174491, 178211, 181941, 185666, 189387, 193109, 196835, 200558, 204282, 208002, 211731, 215456, 219182]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 10487, 11552, 12612, 13679, 14744, 15806, 16869, 17936, 18998, 20061, 21126, 22191, 23252, 24318, 25379, 26448, 27512, 28572, 29640, 30699, 31764, 32834, 33893, 34958, 36024, 37085, 38148, 39215, 40278, 41343, 42407, 43467, 44535, 45599, 46662, 47723, 48791, 49850, 50916, 51984, 53045, 54110, 55170, 56237, 57305, 58364, 59432, 60495, 61556, 62625]# noqa: E501
+    # 冲击波攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    # [终结之击]攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
     hit2 = 1
-    group2 = "end"
+    # [范围信息]
+    # 范围比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
 
+    def vp_1(self):
+        """
+        [陨落螺旋刺]\n
+        处于可以施放状态下施放[剑刃风暴]时， 自动发动[陨落螺旋刺]， 并适用以下效果\n
+        - 删除冲击波攻击\n
+        - 旋转攻击多段攻击次数上限 +7\n
+        - [剑刃风暴]旋转攻击时， 附加[陨落螺旋刺]旋转攻击力\n
+        - [剑刃风暴]终结之击攻击时， 附加[陨落螺旋刺]终结之击攻击力\n
+        - 以施放[剑刃风暴]终结之击时消耗的连击点数为标准， 适用[陨落螺旋刺]终结之击攻击力\n
+        - 总攻击力相同
+        """
+        ...
 
-# 极限追击 히트 블리드
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/0c3a468aee1f7ce06bf91eb3319518c1?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill45(PassiveSkill):
+    def vp_2(self):
+        """
+        [陨落螺旋刺]\n
+        攻击范围 +40%\n
+        降落速度 +300%\n
+        - 增加落地后可发动[终结之击]的时间\n
+        - 地面施放时跳跃高度 +50%\n
+        删除旋转攻击\n
+        - 每次攻击获得的连击点数 +300%\n
+        - 总攻击力相同
+        """
+        ...
+
+# 极限追击
+# thief/rogue/0c3a468aee1f7ce06bf91eb3319518c1
+# ddc49e9ad1ff72a00b53c6cff5b1e920/0c3a468aee1f7ce06bf91eb3319518c1
+class Skill44(PassiveSkill):
+    """
+    将身体能力强化到极致， 增加物理攻击力和连击点数上限， 并可以强制中断技能后施放。\n
+    强制中断技能的功能可以在已学的技能栏中， 通过鼠标右击进行开启/关闭切换。
+    """
     name = "极限追击"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 5
+    position = 5 #TODO
     rangeLv = 3
     uuid = "0c3a468aee1f7ce06bf91eb3319518c1"
-    data0 = [0, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108]# noqa: E501
+    hasVP = False
+    hasUP = False
+
+    # 物理攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # 连击点数上限增加量 : {value1}个
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
     associate = [{"data":data0,"type":"$*PAtkP"}]
 
-# 乱空杀 엑조틱 램펀트
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/5cac3411ccef1af333953e0ded5e942d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill46(ActiveSkill):
+# 乱空杀
+# thief/rogue/5cac3411ccef1af333953e0ded5e942d
+# ddc49e9ad1ff72a00b53c6cff5b1e920/5cac3411ccef1af333953e0ded5e942d
+class Skill45(ActiveSkill):
+    """
+    以极快的速度掠过敌人进行攻击。\n
+    下劈后， 可以通1过消耗连击点数使用[终结之击]。
+    """
     name = "乱空杀"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 7
+    position = 7 #TODO
     rangeLv = 3
     cube = 3
     cd = 30
     mp = [580, 4500]
     uuid = "5cac3411ccef1af333953e0ded5e942d"
-    vps = [
-        {"name":"鬼空杀","desc":"可以在其他动作中施放<br/>攻击时间/冷却时间减少"},
-        {"name":"狂暴序列","desc":"范围增加<br/>施放时间减少"},
-    ]
-    data0 = [0, 4187, 4852, 5522, 6189, 6856, 7525, 8191, 8860, 9527, 10195, 10860, 11531, 12198, 12865, 13535, 14201, 14869, 15533, 16201, 16868, 17537, 18203, 18872, 19539, 20207, 20877, 21542, 22210, 22878, 23546, 24212, 24881, 25550, 26216, 26885, 27550, 28219, 28888, 29555, 30222, 30890, 31557, 32224, 32892, 33560, 34228, 34894, 35562, 36230, 36897]# noqa: E501
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 连续斩击攻击力 : {value0}% X {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 6
-
-    data2 = [0, 16748, 19417, 22092, 24761, 27430, 30100, 32769, 35442, 38112, 40782, 43452, 46120, 48793, 51463, 54132, 56805, 59476, 62144, 64814, 67485, 70156, 72827, 75498, 78167, 80837, 83506, 86177, 88848, 91518, 94187, 96857, 99528, 102199, 104868, 107540, 110212, 112879, 115550, 118220, 120893, 123562, 126232, 128902, 131574, 134244, 136913, 139584, 142254, 144925, 147596]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 8372, 9710, 11045, 12380, 13715, 15047, 16384, 17721, 19054, 20391, 21726, 23060, 24396, 25730, 27067, 28402, 29738, 31070, 32405, 33741, 35078, 36411, 37747, 39083, 40418, 41754, 43089, 44424, 45760, 47095, 48427, 49762, 51097, 52435, 53768, 55104, 56439, 57775, 59109, 60446, 61780, 63116, 64450, 65785, 67120, 68456, 69792, 71127, 72462, 73797]# noqa: E501
-    hit3 = 1 #TODO
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 向下斩击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
+    # [终结之击]攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+    hit3 = 1
     group3 = "end"
+    # [范围信息]
+    # 范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
 
     def vp_1(self):
+        """
+        [乱空杀]\n
+        施放以下技能过程中发动时， 由分身施放\n
+        - 适用技能 : [疾驰]、 [旋刃]、 [疾风乱舞]、 [月影突袭]\n
+        - 分身施放时， 无法获得[乱空杀]的连击点数， 按最大连击点数适用[终结之击]攻击力\n
+        - 基本冷却时间变更为24.9秒\n
+        - 总攻击力 -17%
+        """
         self.cd = 24.9
         self.skillRation *= 1 - 0.17
+        ...
 
+    def vp_2(self):
+        """
+        [乱空杀]\n
+        攻击范围 +45%\n
+        快速地攻击前后方\n
+        - 连续斩击多段攻击次数 -50%\n
+        - 每次攻击获得的连击点数 +67%\n
+        - 总攻击力相同
+        """
+        ...
 
-# 月影突袭 디스트리뷰션
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/e1daab884dd07fc9e70d08b83d1790eb?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill47(ActiveSkill):
+# 月影突袭
+# thief/rogue/e1daab884dd07fc9e70d08b83d1790eb
+# ddc49e9ad1ff72a00b53c6cff5b1e920/e1daab884dd07fc9e70d08b83d1790eb
+class Skill46(ActiveSkill):
+    """
+    向前方突进， 用肉眼看不见的速度多次斩击。\n
+    斩击可以将敌人聚集到中央。 多段斩击后， 可消耗连击点数发动[终结之击]。
+    """
     name = "月影突袭"
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 4
+    position = 4 #TODO
     rangeLv = 2
     cube = 5
     cd = 50
     mp = [800, 6000]
     uuid = "e1daab884dd07fc9e70d08b83d1790eb"
-    vps = [
-        {"name":"急速斩击","desc":"可以在空中施放<br/>施放时间减少<br/>附加混乱效果"},
-        {"name":"虐杀","desc":"范围增加<br/>强化聚集敌人效果<br/>可以多次发动"},
-    ]
-    data0 = [0, 6453, 7111, 7766, 8419, 9075, 9728, 10384, 11041, 11694, 12349, 13006, 13660, 14312, 14967, 15625, 16280, 16934, 17589, 18244, 18899, 19556, 20211, 20863, 21519, 22173, 22829, 23482, 24140, 24795, 25451, 26104, 26758, 27412, 28069, 28725, 29379, 30035, 30687, 31342, 31998, 32652, 33308, 33963, 34618, 35272, 35929, 36583, 37239, 37893, 38547]# noqa: E501
-    hit0 = 10
+    hasVP = True
+    hasUP = True
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data2 = [0, 12910, 14221, 15530, 16841, 18151, 19460, 20770, 22082, 23391, 24700, 26009, 27320, 28630, 29938, 31250, 32562, 33869, 35180, 36489, 37801, 39111, 40418, 41729, 43036, 44349, 45657, 46968, 48281, 49588, 50898, 52209, 53520, 54828, 56140, 57448, 58755, 60068, 61378, 62688, 63995, 65308, 66618, 67927, 69238, 70548, 71858, 73166, 74477, 75787, 77097]# noqa: E501
+    # 多段斩击攻击力 : {value0}% X {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 10
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # [终结之击]攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
     hit2 = 1 #TODO
     group2 = "end"
+    # [范围信息]
+    # 范围比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
+
+    def vp_1(self):
+        """
+        [月影突袭]\n
+        可以在空中施放\n
+        多段攻击强化\n
+        - 施放速度 +25%\n
+        - 使敌人进入混乱异常状态， 效果持续3秒\n
+        [终结之击]攻击强化\n
+        - 施放速度 +25%\n
+        - 多段攻击后可以立即发动
+        """
+        ...
 
     def vp_2(self):
+        """
+        [月影突袭]\n
+        攻击范围 +35%\n
+        多段攻击可以吸附霸体和无法抓取类型的敌人\n
+        变更为可填充2次的技能\n
+        - 每次填充冷却时间 : 25秒\n
+        - 单次攻击力 -50%
+        """
         self.cd = 25
         self.skillRation *= 1 - 0.5
+        ...
 
-# 天渊星狱 노바 램넌트
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/002cbdd9bfd0f0b970451ae8d48d029e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill48(ActiveSkill):
+# 天渊星狱
+# thief/rogue/002cbdd9bfd0f0b970451ae8d48d029e
+# ddc49e9ad1ff72a00b53c6cff5b1e920/002cbdd9bfd0f0b970451ae8d48d029e
+class Skill47(ActiveSkill):
+    """
+    化为一束星光快速造成多段攻击， 随后从空中坠下引起爆炸。\n
+       吸附多段攻击命中的敌人， 可以在空中施放。\n
+    对无法抓取的敌人不适用控制效果。\n
+    从空中坠下后， 可消耗连击点数发动[终结之击]。
+    """
     name = "天渊星狱"
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 6
+    position = 6 #TODO
     rangeLv = 5
     cube = 10
     cd = 180
     mp = [2500, 8000]
     uuid = "002cbdd9bfd0f0b970451ae8d48d029e"
-    data0 = [0, 539, 664, 789, 914, 1039, 1164, 1290, 1414, 1540, 1664, 1790, 1916, 2040, 2165, 2291, 2416, 2541, 2666, 2791, 2917, 3040, 3166, 3294, 3416, 3541, 3666, 3792, 3918, 4041, 4167, 4293, 4417, 4541, 4667, 4793, 4917, 5042, 5169, 5293, 5421, 5542, 5668, 5794, 5916, 6044, 6168, 6294, 6418, 6546, 6670]# noqa: E501
+    hasVP = False
+    hasUP = False
+
+    # 星光多段攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 7
-
-    data1 = [0, 124644, 153548, 182452, 211356, 240257, 269160, 298064, 326968, 355870, 384773, 413679, 442583, 471483, 500388, 529292, 558194, 587098, 616004, 644906, 673810, 702710, 731613, 760519, 789420, 818324, 847230, 876130, 905036, 933938, 962842, 991746, 1020648, 1049552, 1078456, 1107358, 1136260, 1165163, 1194069, 1222973, 1251875, 1280780, 1309683, 1338583, 1367488, 1396394, 1425296, 1454200, 1483102, 1512004, 1540909]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 25899, 31906, 37912, 43916, 49922, 55927, 61933, 67940, 73947, 79952, 85959, 91964, 97969, 103977, 109981, 115987, 121994, 128001, 134005, 140009, 146018, 152024, 158027, 164035, 170039, 176046, 182053, 188059, 194065, 200070, 206076, 212083, 218090, 224096, 230098, 236104, 242111, 248117, 254123, 260129, 266134, 272141, 278148, 284152, 290160, 296165, 302171, 308177, 314182, 320188]# noqa: E501
-    hit2 = 1 #TODO
+    # 爆炸攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    hit1 = 1
+    # [终结之击]攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
     group2 = "end"
 
-
-# 幻灭瞬杀 베니싱 일루젼
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/9376d04c476cd41d60ed1974ca69ab95?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill49(ActiveSkill):
+# 幻灭瞬杀
+# thief/rogue/9376d04c476cd41d60ed1974ca69ab95
+# ddc49e9ad1ff72a00b53c6cff5b1e920/9376d04c476cd41d60ed1974ca69ab95
+class Skill48(ActiveSkill):
+    """
+    瞬间释放超越身体极限的力量， 向前方突进。 突进时， 隐夜·暗星如残影攻击般快速攻击敌人。\n
+    前方范围内存在敌人时才能施放该技能， 可以在地上和空中发动。\n
+    突进后， 可以消耗连击点数发动[终结之击]。 
+    """
     name = "幻灭瞬杀"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 7
+    position = 7 #TODO
     rangeLv = 2
     cube = 7
     cd = 60
     mp = [960, 7200]
     uuid = "9376d04c476cd41d60ed1974ca69ab95"
-    data0 = [0, 20894, 23013, 25133, 27254, 29373, 31492, 33614, 35731, 37851, 39973, 42092, 44211, 46331, 48452, 50570, 52690, 54811, 56928, 59050, 61170, 63290, 65409, 67528, 69650, 71768, 73888, 76009, 78128, 80247, 82368, 84487, 86606, 88728, 90846, 92965, 95086, 97205, 99324, 101445, 103565, 105685, 107806, 109925, 112044, 114165, 116283, 118404, 120524, 122643, 124763]# noqa: E501
+    hasVP = False
+    hasUP = False
+
+    # 突进残影攻击力 : {value0}% X {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
     hit0 = 5
-    data2 = [0, 20894, 23013, 25133, 27254, 29373, 31492, 33614, 35731, 37851, 39973, 42092, 44211, 46331, 48452, 50570, 52690, 54811, 56928, 59050, 61170, 63290, 65409, 67528, 69650, 71768, 73888, 76009, 78128, 80247, 82368, 84487, 86606, 88728, 90846, 92965, 95086, 97205, 99324, 101445, 103565, 105685, 107806, 109925, 112044, 114165, 116283, 118404, 120524, 122643, 124763]# noqa: E501
-    hit2 = 1 #TODO
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # [终结之击]攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
     group2 = "end"
 
-
-# 绝命时刻 모멘트 패닉
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/5536486eaf9b13c9a8283447cb5e77ab?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill50(PassiveSkill):
+# 绝命时刻
+# thief/rogue/5536486eaf9b13c9a8283447cb5e77ab
+# ddc49e9ad1ff72a00b53c6cff5b1e920/5536486eaf9b13c9a8283447cb5e77ab
+class Skill49(PassiveSkill):
+    """
+    激发超越身体极限的力量， 获得强大的攻击力和敌人无法感知的行动速度。\n
+    学习后， 增加基本攻击力和转职技能攻击力， [旋刃]和[剑刃风暴]技能附加特殊效果。\n
+    [旋刃]\n
+    以极快的速度发动第1击、第2击和第3击。\n
+    [剑刃风暴]\n
+    增加移动速度和吸附力。
+    """
     name = "绝命时刻"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 5
+    position = 5 #TODO
     rangeLv = 3
     uuid = "5536486eaf9b13c9a8283447cb5e77ab"
-    data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
+    hasVP = False
+    hasUP = False
+
+    # 基本攻击力和转职技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    # [剑刃风暴]
+    # 移动速度增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # 吸附力增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    # 多段攻击间隔减少率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3, lambda x = None: x)
     associate = [{"data":data0}]
 
-
-# 影·万古星辰 아데스 팬텀
-# https://api.neople.co.kr/df/skills/ddc49e9ad1ff72a00b53c6cff5b1e920/ef9d26746effee9199b54541f01b8752?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill51(ActiveSkill):
+# 影·万古星辰
+# thief/rogue/ef9d26746effee9199b54541f01b8752
+# ddc49e9ad1ff72a00b53c6cff5b1e920/ef9d26746effee9199b54541f01b8752
+class Skill50(ActiveSkill):
+    """
+    集中精神后， 暂时突破身体的极限， 将力量强化到极致。 然后， 凝聚星辰能量， 如光速般移动。\n
+    移动时， 隐夜·暗星以极快的速度对范围内最强的敌人进行多次旋转斩击。\n
+    可以在地上和空中施放， 施放时， 连击点数累积到上限。\n
+    可以在旋转斩击后， 消耗连击点数发动[终结之击]。\n
+    [三次觉醒技能]\n
+    使用三次觉醒技能时， 与关联的技能共享冷却时间。\n
+    若关联的技能还在冷却中， 则无法使用三次觉醒技能。
+    """
     name = "影·万古星辰"
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 4
+    position = 5 #TODO
     rangeLv = 5
     cube = 15
     cd = 290
     mp = [4028, 9667]
     uuid = "ef9d26746effee9199b54541f01b8752"
-    data0 = [0, 26099, 32152, 38205, 44257, 50311, 56362, 62413, 68467, 74519, 80571, 86624, 92675, 98729, 104782, 110833, 116886, 122939, 128990, 135043, 141095, 147146, 153201, 159252, 165304, 171357, 177409, 183462, 189513, 195566, 201619, 207671, 213724, 219777, 225828, 231880, 237934, 243985, 250038, 256091, 262142, 268194, 274248, 280300, 286353, 292404, 298457, 304510, 310562, 316614, 322665]# noqa: E501
-    hit0 = 13
+    hasVP = False
+    hasUP = False
 
-    data2 = [0, 67861, 83599, 99333, 115071, 130806, 146543, 162277, 178015, 193750, 209486, 225222, 240960, 256696, 272431, 288167, 303904, 319639, 335375, 351113, 366850, 382585, 398320, 414057, 429792, 445529, 461265, 477002, 492738, 508474, 524210, 539945, 555682, 571418, 587154, 602889, 618627, 634364, 650098, 665835, 681571, 697307, 713042, 728780, 744515, 760252, 775987, 791724, 807459, 823196, 838933]# noqa: E501
-    hit2 = 1 #TODO
+    # 旋转斩击攻击力 : {value0}% X {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
+    hit0 = 13
+    data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
+    # [终结之击]攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2, lambda x = None: x)
+    hit2 = 1
     group2 = "end"
+
 
 class classChange(Character):
     def __init__(self, equVersion):
+
         self.name = 'rogue'
         self.nameCN = '隐夜·刺客'
         self.role = 'thief'
+        self.角色 = '暗夜使者'
+        self.职业 = '刺客'
+        self.jobId = 'ddc49e9ad1ff72a00b53c6cff5b1e920'
+        self.jobGrowId = '37495b941da3b1661bc900e68ef3b2c6'
 
         self.武器选项 = ['匕首', '双剑', '手杖']
         self.输出类型选项 = ['物理百分比']
         self.输出类型 = '物理百分比'
         self.防具精通属性 = ['力量']
-        self.防具类型 = '布甲'
+        self.防具类型 = '皮甲'
         self.buff = 1.84
-
-        self.角色 = '暗夜使者'
-
-        self.职业 = '刺客'
 
         super().__init__(equVersion, __name__)
