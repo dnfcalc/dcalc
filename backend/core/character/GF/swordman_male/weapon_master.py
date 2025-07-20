@@ -1846,9 +1846,9 @@ class Skill33(ActiveSkill):
     data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 14
     data3 = get_data(f'{prefix}/{uuid}', 3)
-    hit3 = 2
     # 最后爆炸攻击力 : {value4}% X {value5}
     data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 2
     data5 = get_data(f'{prefix}/{uuid}', 5)
     # - [穿云刺]落剑数 -
     # 基本攻击、 前冲攻击、 跳跃攻击、 [上挑]、 [银光落刃]、 [三段刃]、 [逆转反击] : 1把

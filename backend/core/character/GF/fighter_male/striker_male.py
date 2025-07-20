@@ -478,7 +478,7 @@ class Skill25(ActiveSkill):
     associate = [
         {"data":data0,"type":"*cdReduce", 'exceptSkills': ['双重释放', '烈焰焚步', '极武霸皇踢', '焚火逐日拳']},
         {"type":"*skillRation","data":data1},
-        {"type":"+lv","data":[0] + [i for i in range(0,masterLv + 1)],"skills":["烈焰焚步"]},# noqa: E501
+        {"type":"+lv","data":[0] + [i for i in range(0,masterLv + 1)],"skills":["双重释放"],"ratio":1},# noqa: E501
     ]
 
 
