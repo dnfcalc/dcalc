@@ -1864,7 +1864,7 @@ class Skill33(ActiveSkill):
         if mode == "终结":
             self.hit1 = 0
         if mode == "穿云剑":
-            self.hit2 = self.hit3 = 0
+            self.hit2 = self.hit4 = 0
 
 # 无形剑意
 # swordman_male/weapon_master/7ec521d063d2190e1fcc5bd229af9bcf
