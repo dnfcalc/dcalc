@@ -1091,7 +1091,7 @@ class Skill33(ActiveSkill):
         """
         self.setMode("灼伤")
         self.cd = 45*(1-0.15)*0.2
-        self.skillRation *= 0.2 
+        self.skillRation *= 0.2
         #冷却和伤害变为原技能灼伤状态的20%
 
 # 幻爆天使之翼
