@@ -1113,6 +1113,13 @@ def enchant_2105(char: CharacterProperty):
     pass
 
 
+@register
+def enchant_2106(char: CharacterProperty):
+    # DCALC_REMOVE: enchant_2106
+    # 技攻(3%)|增益量(1%)|四维(65)
+    char.SetStatus(四维=65, 技攻=0.03, 增益量P=0.01)
+    pass
+
 # endregion
 # region 皮肤
 
