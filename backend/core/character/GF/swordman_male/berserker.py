@@ -262,7 +262,7 @@ class Skill25(ActiveSkill):
 
     associate = [
         {"data": data4, "type": '*skillRation'},
-        {'data': data5, 'type': '*cdReduce', 'exceptSkills': ['魔狱血刹', '血魔 · 弑天', '血魔极道 : 灭世"']}
+        {'data': data5, 'type': '*cdReduce', 'exceptSkills': ['魔狱血刹', '血魔 · 弑天', '血魔极道 : 灭世']}
     ]
 
 # 死亡抗拒
