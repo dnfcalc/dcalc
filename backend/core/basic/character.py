@@ -714,11 +714,12 @@ class Character(CharacterProperty):
         if weapon.weaponFusion == 1:
             self.SetStatus(SkillAttack = 0.07 + adaptation * 0.01)
         if weapon.weaponFusion == 2:
-            self.SetStatus(SkillAttack = 0.01 + adaptation * 0.01)
-            self.SetSkillCD(1, 100, 0.1)
-        if weapon.weaponFusion == 3:
             self.SetStatus(SkillAttack = 0.055 + adaptation * 0.01)
             self.SetStatus(SpeedA = 0.2,SpeedM = 0.2,SpeedR = 0.2)
+        if weapon.weaponFusion == 3:
+            self.SetStatus(SkillAttack = 0.01 + adaptation * 0.01)
+            self.SetSkillCD(1, 100, 0.1)
+            self.SetStatus(EquEffectRatio = 0.05)
 
     def calc_avatar(self, avatar: dict):
         """计算时装效果"""
