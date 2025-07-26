@@ -630,7 +630,7 @@ class Skill38(PassiveSkill):
         {"data":[i * 3 for i in self.data3],"skills":["伏虎霸王拳"]}
     ]
         if self.vp == 2:
-            self.associate.append({"data":[0] + [-100]*self.maxLv,"skills":["伏虎霸王拳"],"type":"*cdRatio"})
+            self.associate.append({"data":[0] + [-200]*self.maxLv,"skills":["伏虎霸王拳"],"type":"*cdRatio"})
             self.associate.append({"type":"*skillRation","data":[0] + [200]*self.maxLv,"skills":["伏虎霸王拳"]})
         return super().effect(old, new)
 

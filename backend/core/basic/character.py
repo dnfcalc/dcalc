@@ -371,7 +371,6 @@ class Character(CharacterProperty):
         skillType = 'all' if type == -1 else ('active' if type == 1 else 'passive')
         for skill in self.skills:
             if min <= skill.learnLv <= max:
-
                 if (skillType == 'all' or skill.type == skillType) and skill.lv > 0 and skill.name not in exceptSkills:
                     skill.lv += lv
 

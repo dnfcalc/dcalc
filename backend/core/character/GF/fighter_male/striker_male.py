@@ -478,7 +478,6 @@ class Skill25(ActiveSkill):
     associate = [
         {"data":data0,"type":"*cdReduce", 'exceptSkills': ['双重释放', '烈焰焚步', '极武霸皇踢', '焚火逐日拳']},
         {"type":"*skillRation","data":data1},
-        {"type":"+lv","data":[0] + [i for i in range(0,masterLv + 1)],"skills":["双重释放"],"ratio":1},# noqa: E501
     ]
 
 
@@ -503,14 +502,11 @@ class Skill26(ActiveSkill):
     @property
     def lv(self):
         """技能等级"""
-        return self._lv
+        return self.char.GetSkillByName("烈焰焚步").lv
 
     @lv.setter
     def lv(self, value):
-        value = int(min(50, value))
-        if self._lv != value:
-            self.effect(self._lv, value)
-            self._lv = value
+        ...
 
 
 # 飞燕旋风 비연선풍
