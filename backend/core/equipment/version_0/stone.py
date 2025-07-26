@@ -1138,10 +1138,12 @@ def stone_121(char: CharacterProperty):
     # DCALC_REMOVE: stone_121 - 欲望：灵魂映照之花
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所有速度 +4%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07, SpeedA=0.04, SpeedM=0.04, SpeedR=0.04)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1150,10 +1152,12 @@ def stone_122(char: CharacterProperty):
     # DCALC_REMOVE: stone_122 - 欲望：灵魂高洁之姿
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所有速度 +4%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07, SpeedA=0.04, SpeedM=0.04, SpeedR=0.04)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1162,10 +1166,12 @@ def stone_123(char: CharacterProperty):
     # DCALC_REMOVE: stone_123 - 欲望：灵魂相伴之顾
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所有速度 +4%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07, SpeedA=0.04, SpeedM=0.04, SpeedR=0.04)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1174,10 +1180,12 @@ def stone_124(char: CharacterProperty):
     # DCALC_REMOVE: stone_124 - 欲望：灵魂流连之盼
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所有速度 +4%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07, SpeedA=0.04, SpeedM=0.04, SpeedR=0.04)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1186,10 +1194,12 @@ def stone_125(char: CharacterProperty):
     # DCALC_REMOVE: stone_125 - 欲望：灵魂浸润之雅
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所有速度 +4%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07, SpeedA=0.04, SpeedM=0.04, SpeedR=0.04)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1198,10 +1208,12 @@ def stone_126(char: CharacterProperty):
     # DCALC_REMOVE: stone_126 - 欲望：枯萎凋零之魂
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所有速度 +8%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1210,10 +1222,12 @@ def stone_127(char: CharacterProperty):
     # DCALC_REMOVE: stone_127 - 欲望：颓然堕尘之魄
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所有速度 +8%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1222,10 +1236,12 @@ def stone_128(char: CharacterProperty):
     # DCALC_REMOVE: stone_128 - 欲望：无法挽留之离
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所有速度 +8%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1234,10 +1250,12 @@ def stone_129(char: CharacterProperty):
     # DCALC_REMOVE: stone_129 - 欲望：失神迷离之散
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所有速度 +8%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1246,10 +1264,12 @@ def stone_130(char: CharacterProperty):
     # DCALC_REMOVE: stone_130 - 欲望：神恩永断之绝
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所有速度 +8%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11, SpeedA=0.08, SpeedM=0.08, SpeedR=0.08)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1262,10 +1282,12 @@ def stone_131(char: CharacterProperty):
     # DCALC_REMOVE: stone_131 - 背叛：隐情揭露
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 技能范围 +4%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1274,10 +1296,12 @@ def stone_132(char: CharacterProperty):
     # DCALC_REMOVE: stone_132 - 背叛：欲望蔓延
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 技能范围 +4%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1286,10 +1310,12 @@ def stone_133(char: CharacterProperty):
     # DCALC_REMOVE: stone_133 - 背叛：信任崩坏
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 技能范围 +4%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1298,10 +1324,12 @@ def stone_134(char: CharacterProperty):
     # DCALC_REMOVE: stone_134 - 背叛：噩梦难逃
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 技能范围 +4%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1310,10 +1338,12 @@ def stone_135(char: CharacterProperty):
     # DCALC_REMOVE: stone_135 - 背叛：迷途彷徨
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 技能范围 +4%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1322,10 +1352,12 @@ def stone_136(char: CharacterProperty):
     # DCALC_REMOVE: stone_136 - 背叛：指向凡人的愤怒
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 技能范围 +8%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1334,10 +1366,12 @@ def stone_137(char: CharacterProperty):
     # DCALC_REMOVE: stone_137 - 背叛：堕落邪神的欲望
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 技能范围 +8%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1346,10 +1380,12 @@ def stone_138(char: CharacterProperty):
     # DCALC_REMOVE: stone_138 - 背叛：毁信导致的悲剧
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 技能范围 +8%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1358,10 +1394,12 @@ def stone_139(char: CharacterProperty):
     # DCALC_REMOVE: stone_139 - 背叛：永世沉沦的噩梦
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 技能范围 +8%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1370,10 +1408,12 @@ def stone_140(char: CharacterProperty):
     # DCALC_REMOVE: stone_140 - 背叛：最后一舞的缠绵
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 技能范围 +8%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1386,10 +1426,12 @@ def stone_141(char: CharacterProperty):
     # DCALC_REMOVE: stone_141 - 容辉：丰饶的过往
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所受物理/魔法伤害 -3%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1398,10 +1440,12 @@ def stone_142(char: CharacterProperty):
     # DCALC_REMOVE: stone_142 - 容辉：从容的过往
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所受物理/魔法伤害 -3%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1410,10 +1454,12 @@ def stone_143(char: CharacterProperty):
     # DCALC_REMOVE: stone_143 - 容辉：光明的过往
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所受物理/魔法伤害 -3%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1422,10 +1468,12 @@ def stone_144(char: CharacterProperty):
     # DCALC_REMOVE: stone_144 - 容辉：慈爱的过往
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所受物理/魔法伤害 -3%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1434,10 +1482,12 @@ def stone_145(char: CharacterProperty):
     # DCALC_REMOVE: stone_145 - 容辉：美丽的过往
     # 技能伤害 +7%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所受物理/魔法伤害 -3%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.07)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1446,11 +1496,13 @@ def stone_146(char: CharacterProperty):
     # DCALC_REMOVE: stone_146 - 容辉：支离破碎的丰饶
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所受物理/魔法伤害 -3%
-    # 伤害型异常状态抗性 +4%
+    # 伤害型异常状态抗性 -4%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1459,11 +1511,13 @@ def stone_147(char: CharacterProperty):
     # DCALC_REMOVE: stone_147 - 容辉：患得患失的偏执
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所受物理/魔法伤害 -3%
-    # 伤害型异常状态抗性 +4%
+    # 伤害型异常状态抗性 -4%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1472,11 +1526,13 @@ def stone_148(char: CharacterProperty):
     # DCALC_REMOVE: stone_148 - 容辉：愤怒引来的黑暗
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所受物理/魔法伤害 -3%
-    # 伤害型异常状态抗性 +4%
+    # 伤害型异常状态抗性 -4%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1485,11 +1541,13 @@ def stone_149(char: CharacterProperty):
     # DCALC_REMOVE: stone_149 - 容辉：心怀憎恶的诅咒
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所受物理/魔法伤害 -3%
-    # 伤害型异常状态抗性 +4%
+    # 伤害型异常状态抗性 -4%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -1498,11 +1556,13 @@ def stone_150(char: CharacterProperty):
     # DCALC_REMOVE: stone_150 - 容辉：金玉其外的优雅
     # 技能伤害 +11%
     # 技能冷却时间 -4%（觉醒时间除外）
+    # 特效伤害 +2%
     # 所受物理/魔法伤害 -3%
-    # 伤害型异常状态抗性 +4%
+    # 伤害型异常状态抗性 -4%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.11)
     char.SetSkillCD(1, 100, 0.04)
+    char.SetStatus(EquEffectRatio=0.02)
     pass
 
 
@@ -3045,9 +3105,11 @@ def stone_309(char: CharacterProperty):
     # DCALC_REMOVE: stone_309 - 创造：变化的空间
     # 技能伤害 +4%
     # 技能冷却时间 -20%(觉醒技能除外)
+    # 特效伤害 +10%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.04)
     char.SetSkillCD(cd=0.2)
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -3056,9 +3118,11 @@ def stone_310(char: CharacterProperty):
     # DCALC_REMOVE: stone_310 - 创造：错乱的空间
     # 技能伤害 +8.5%
     # 技能冷却时间 -20%(觉醒技能除外)
+    # 特效伤害 +10%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.085)
     char.SetSkillCD(cd=0.2)
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -3066,11 +3130,13 @@ def stone_310(char: CharacterProperty):
 def stone_311(char: CharacterProperty):
     # DCALC_REMOVE: stone_311 - 创造：快进的时间
     # 技能伤害 +3.5%
+    # 特效伤害 +11%
     # 释放技能时，有10%的几率初始化已使用技能的冷却时间。（觉醒技能除外）
     # - 相同技能间存在10秒冷却时间
     # 释放冷却时间超过1秒的技能时，有1%的几率使1个技能的冷却时间初始化。（辅助职业除外）
     # rarity: 神器
     char.SetStatus(SkillAttack=0.035)
+    char.SetStatus(EquEffectRatio=0.11)
     pass
 
 
@@ -3078,11 +3144,13 @@ def stone_311(char: CharacterProperty):
 def stone_312(char: CharacterProperty):
     # DCALC_REMOVE: stone_312 - 创造：扭曲的时间
     # 技能伤害 +8%
+    # 特效伤害 +11%
     # 释放技能时，有10%的几率初始化已使用技能的冷却时间。（觉醒技能除外）
     # - 相同技能间存在10秒冷却时间
     # 释放冷却时间超过1秒的技能时，有1%的几率使1个技能的冷却时间初始化。（辅助职业除外）
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.08)
+    char.SetStatus(EquEffectRatio=0.11)
     pass
 
 
@@ -3096,10 +3164,10 @@ def stone_313(char: CharacterProperty):
     # 技能伤害 +4.5%
     # 气候之力引发灾害攻击敌人。
     # - 灾害伤害量：453600%
-    # - 冷却时间：40秒
+    # - 冷却时间：25秒
     # rarity: 神器
     char.SetStatus(SkillAttack=0.045)
-    char.equ_effect.append(EquEffect(name='无知：时降雷霆', data=453600, cd=40, icon='/equipment/icon/amalgamationstone/00375.png'))
+    char.equ_effect.append(EquEffect(name='无知：时降雷霆', data=453600, cd=25, icon='/equipment/icon/amalgamationstone/00375.png'))
     pass
 
 
@@ -3109,10 +3177,10 @@ def stone_314(char: CharacterProperty):
     # 技能伤害 +9%
     # 气候之力引发灾害攻击敌人。
     # - 灾害伤害量：453600%
-    # - 冷却时间：40秒
+    # - 冷却时间：25秒
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.09)
-    char.equ_effect.append(EquEffect(name='无知：灾祸无常', data=453600, cd=40, icon='/equipment/icon/amalgamationstone/00378.png'))
+    char.equ_effect.append(EquEffect(name='无知：灾祸无常', data=453600, cd=25, icon='/equipment/icon/amalgamationstone/00378.png'))
     pass
 
 
@@ -3187,10 +3255,12 @@ def stone_319(char: CharacterProperty):
 def stone_320(char: CharacterProperty):
     # DCALC_REMOVE: stone_320 - 设计：初型辅助模块 35
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 35级主动技能攻击力 +7%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.125)
     char.SetSkillRation(35,35,0.07)
+    char.SetStatus(EquEffectRatio=0.01)
     pass
 
 
@@ -3198,10 +3268,12 @@ def stone_320(char: CharacterProperty):
 def stone_321(char: CharacterProperty):
     # DCALC_REMOVE: stone_321 - 设计：初型辅助模块 40
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 40级主动技能攻击力 +7%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.125)
     char.SetSkillRation(40,40,0.07)
+    char.SetStatus(EquEffectRatio=0.01)
     pass
 
 
@@ -3209,10 +3281,12 @@ def stone_321(char: CharacterProperty):
 def stone_322(char: CharacterProperty):
     # DCALC_REMOVE: stone_322 - 设计：初型辅助模块 45
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 45级主动技能攻击力 +7%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.125)
     char.SetSkillRation(45,45,0.07)
+    char.SetStatus(EquEffectRatio=0.01)
     pass
 
 
@@ -3220,10 +3294,12 @@ def stone_322(char: CharacterProperty):
 def stone_323(char: CharacterProperty):
     # DCALC_REMOVE: stone_323 - 设计：初型辅助模块 60
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 60级主动技能攻击力 +7%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.125)
     char.SetSkillRation(60,60,0.07)
+    char.SetStatus(EquEffectRatio=0.01)
     pass
 
 
@@ -3231,10 +3307,12 @@ def stone_323(char: CharacterProperty):
 def stone_324(char: CharacterProperty):
     # DCALC_REMOVE: stone_324 - 设计：初型辅助模块 70
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 70级主动技能攻击力 +7%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.125)
     char.SetSkillRation(70,70,0.07)
+    char.SetStatus(EquEffectRatio=0.01)
     pass
 
 
@@ -3242,10 +3320,12 @@ def stone_324(char: CharacterProperty):
 def stone_325(char: CharacterProperty):
     # DCALC_REMOVE: stone_325 - 设计：初型辅助模块 75
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 75级主动技能攻击力 +7%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.125)
     char.SetSkillRation(75,75,0.07)
+    char.SetStatus(EquEffectRatio=0.01)
     pass
 
 
@@ -3253,10 +3333,12 @@ def stone_325(char: CharacterProperty):
 def stone_326(char: CharacterProperty):
     # DCALC_REMOVE: stone_326 - 设计：初型辅助模块 80
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 80级主动技能攻击力 +7%
     # rarity: 神器
     char.SetStatus(SkillAttack=0.125)
     char.SetSkillRation(80,80,0.07)
+    char.SetStatus(EquEffectRatio=0.01)
     pass
 
 
@@ -3274,11 +3356,13 @@ def stone_327(char: CharacterProperty):
 def stone_328(char: CharacterProperty):
     # DCALC_REMOVE: stone_328 - 设计：初型辅助模块 35
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 35级主动技能攻击力 +12%
     # 35级技能范围 +12%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.17)
     char.SetSkillRation(35,35,0.12)
+    char.SetStatus(EquEffectRatio=0.015)
     pass
 
 
@@ -3286,11 +3370,13 @@ def stone_328(char: CharacterProperty):
 def stone_329(char: CharacterProperty):
     # DCALC_REMOVE: stone_329 - 设计：初型辅助模块 40
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 40级主动技能攻击力 +12%
     # 40级技能范围 +12%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.17)
     char.SetSkillRation(40,40,0.12)
+    char.SetStatus(EquEffectRatio=0.015)
     pass
 
 
@@ -3298,11 +3384,13 @@ def stone_329(char: CharacterProperty):
 def stone_330(char: CharacterProperty):
     # DCALC_REMOVE: stone_330 - 设计：初型辅助模块 45
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 45级主动技能攻击力 +12%
     # 45级技能范围 +12%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.17)
     char.SetSkillRation(45,45,0.12)
+    char.SetStatus(EquEffectRatio=0.015)
     pass
 
 
@@ -3310,22 +3398,26 @@ def stone_330(char: CharacterProperty):
 def stone_331(char: CharacterProperty):
     # DCALC_REMOVE: stone_331 - 设计：初型辅助模块 60
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 60级主动技能攻击力 +12%
     # 60级技能范围 +12%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.17)
     char.SetSkillRation(60,60,0.12)
+    char.SetStatus(EquEffectRatio=0.015)
 
 
 @register
 def stone_332(char: CharacterProperty):
     # DCALC_REMOVE: stone_332 - 设计：初型辅助模块 70
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 70级主动技能攻击力 +12%
     # 70级技能范围 +12%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.17)
     char.SetSkillRation(70,70,0.12)
+    char.SetStatus(EquEffectRatio=0.015)
     pass
 
 
@@ -3333,11 +3425,13 @@ def stone_332(char: CharacterProperty):
 def stone_333(char: CharacterProperty):
     # DCALC_REMOVE: stone_333 - 设计：初型辅助模块 75
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 75级主动技能攻击力 +12%
     # 75级技能范围 +12%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.17)
     char.SetSkillRation(75,75,0.12)
+    char.SetStatus(EquEffectRatio=0.015)
     pass
 
 
@@ -3345,11 +3439,13 @@ def stone_333(char: CharacterProperty):
 def stone_334(char: CharacterProperty):
     # DCALC_REMOVE: stone_334 - 设计：初型辅助模块 80
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 80级主动技能攻击力 +12%
     # 80级技能范围 +12%
     # rarity: 史诗
     char.SetStatus(SkillAttack=0.17)
     char.SetSkillRation(80,80,0.12)
+    char.SetStatus(EquEffectRatio=0.015)
     pass
 
 
@@ -3366,6 +3462,7 @@ def stone_335(char: CharacterProperty):
 def stone_336(char: CharacterProperty):
     # DCALC_REMOVE: stone_336 - 设计：初型附加模块 35
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 35级主动技能攻击力 +7%
     # rarity: 神器
     stone_320(char)
@@ -3376,6 +3473,7 @@ def stone_336(char: CharacterProperty):
 def stone_337(char: CharacterProperty):
     # DCALC_REMOVE: stone_337 - 设计：初型附加模块 40
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 40级主动技能攻击力 +7%
     # rarity: 神器
     stone_321(char)
@@ -3386,6 +3484,7 @@ def stone_337(char: CharacterProperty):
 def stone_338(char: CharacterProperty):
     # DCALC_REMOVE: stone_338 - 设计：初型附加模块 45
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 45级主动技能攻击力 +7%
     # rarity: 神器
     stone_322(char)
@@ -3396,6 +3495,7 @@ def stone_338(char: CharacterProperty):
 def stone_339(char: CharacterProperty):
     # DCALC_REMOVE: stone_339 - 设计：初型附加模块 60
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 60级主动技能攻击力 +7%
     # rarity: 神器
     stone_323(char)
@@ -3406,6 +3506,7 @@ def stone_339(char: CharacterProperty):
 def stone_340(char: CharacterProperty):
     # DCALC_REMOVE: stone_340 - 设计：初型附加模块 70
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 70级主动技能攻击力 +7%
     # rarity: 神器
     stone_324(char)
@@ -3416,6 +3517,7 @@ def stone_340(char: CharacterProperty):
 def stone_341(char: CharacterProperty):
     # DCALC_REMOVE: stone_341 - 设计：初型附加模块 75
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 75级主动技能攻击力 +7%
     # rarity: 神器
     stone_325(char)
@@ -3426,6 +3528,7 @@ def stone_341(char: CharacterProperty):
 def stone_342(char: CharacterProperty):
     # DCALC_REMOVE: stone_342 - 设计：初型附加模块 80
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 80级主动技能攻击力 +7%
     # rarity: 神器
     stone_326(char)
@@ -3446,6 +3549,7 @@ def stone_343(char: CharacterProperty):
 def stone_344(char: CharacterProperty):
     # DCALC_REMOVE: stone_344 - 设计：初型附加模块 35
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 35级主动技能攻击力 +12%
     # 35级技能范围 +12%
     # rarity: 史诗
@@ -3457,6 +3561,7 @@ def stone_344(char: CharacterProperty):
 def stone_345(char: CharacterProperty):
     # DCALC_REMOVE: stone_345 - 设计：初型附加模块 40
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 40级主动技能攻击力 +12%
     # 40级技能范围 +12%
     # rarity: 史诗
@@ -3468,6 +3573,7 @@ def stone_345(char: CharacterProperty):
 def stone_346(char: CharacterProperty):
     # DCALC_REMOVE: stone_346 - 设计：初型附加模块 45
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 45级主动技能攻击力 +12%
     # 45级技能范围 +12%
     # rarity: 史诗
@@ -3479,6 +3585,7 @@ def stone_346(char: CharacterProperty):
 def stone_347(char: CharacterProperty):
     # DCALC_REMOVE: stone_347 - 设计：初型附加模块 60
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 60级主动技能攻击力 +12%
     # 60级技能范围 +12%
     # rarity: 史诗
@@ -3490,6 +3597,7 @@ def stone_347(char: CharacterProperty):
 def stone_348(char: CharacterProperty):
     # DCALC_REMOVE: stone_348 - 设计：初型附加模块 70
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 70级主动技能攻击力 +12%
     # 70级技能范围 +12%
     # rarity: 史诗
@@ -3501,6 +3609,7 @@ def stone_348(char: CharacterProperty):
 def stone_349(char: CharacterProperty):
     # DCALC_REMOVE: stone_349 - 设计：初型附加模块 75
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 75级主动技能攻击力 +12%
     # 75级技能范围 +12%
     # rarity: 史诗
@@ -3512,6 +3621,7 @@ def stone_349(char: CharacterProperty):
 def stone_350(char: CharacterProperty):
     # DCALC_REMOVE: stone_350 - 设计：初型附加模块 80
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 80级主动技能攻击力 +12%
     # 80级技能范围 +12%
     # rarity: 史诗
@@ -3532,6 +3642,7 @@ def stone_351(char: CharacterProperty):
 def stone_352(char: CharacterProperty):
     # DCALC_REMOVE: stone_352 - 设计：初型信号模块 35
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 35级主动技能攻击力 +7%
     # rarity: 神器
     stone_320(char)
@@ -3542,6 +3653,7 @@ def stone_352(char: CharacterProperty):
 def stone_353(char: CharacterProperty):
     # DCALC_REMOVE: stone_353 - 设计：初型信号模块 40
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 40级主动技能攻击力 +7%
     # rarity: 神器
     stone_321(char)
@@ -3552,6 +3664,7 @@ def stone_353(char: CharacterProperty):
 def stone_354(char: CharacterProperty):
     # DCALC_REMOVE: stone_354 - 设计：初型信号模块 45
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 45级主动技能攻击力 +7%
     # rarity: 神器
     stone_322(char)
@@ -3562,6 +3675,7 @@ def stone_354(char: CharacterProperty):
 def stone_355(char: CharacterProperty):
     # DCALC_REMOVE: stone_355 - 设计：初型信号模块 60
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 60级主动技能攻击力 +7%
     # rarity: 神器
     stone_323(char)
@@ -3572,6 +3686,7 @@ def stone_355(char: CharacterProperty):
 def stone_356(char: CharacterProperty):
     # DCALC_REMOVE: stone_356 - 设计：初型信号模块 70
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 70级主动技能攻击力 +7%
     # rarity: 神器
     stone_324(char)
@@ -3582,6 +3697,7 @@ def stone_356(char: CharacterProperty):
 def stone_357(char: CharacterProperty):
     # DCALC_REMOVE: stone_357 - 设计：初型信号模块 75
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 75级主动技能攻击力 +7%
     # rarity: 神器
     stone_325(char)
@@ -3592,6 +3708,7 @@ def stone_357(char: CharacterProperty):
 def stone_358(char: CharacterProperty):
     # DCALC_REMOVE: stone_358 - 设计：初型信号模块 80
     # 技能伤害 +12.5%
+    # 特效伤害 +1%
     # 80级主动技能攻击力 +7%
     # rarity: 神器
     stone_326(char)
@@ -3612,6 +3729,7 @@ def stone_359(char: CharacterProperty):
 def stone_360(char: CharacterProperty):
     # DCALC_REMOVE: stone_360 - 设计：初型信号模块 35
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 35级主动技能攻击力 +12%
     # 35级技能范围 +12%
     # rarity: 史诗
@@ -3623,6 +3741,7 @@ def stone_360(char: CharacterProperty):
 def stone_361(char: CharacterProperty):
     # DCALC_REMOVE: stone_361 - 设计：初型信号模块 40
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 40级主动技能攻击力 +12%
     # 40级技能范围 +12%
     # rarity: 史诗
@@ -3634,6 +3753,7 @@ def stone_361(char: CharacterProperty):
 def stone_362(char: CharacterProperty):
     # DCALC_REMOVE: stone_362 - 设计：初型信号模块 45
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 45级主动技能攻击力 +12%
     # 45级技能范围 +12%
     # rarity: 史诗
@@ -3645,6 +3765,7 @@ def stone_362(char: CharacterProperty):
 def stone_363(char: CharacterProperty):
     # DCALC_REMOVE: stone_363 - 设计：初型信号模块 60
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 60级主动技能攻击力 +12%
     # 60级技能范围 +12%
     # rarity: 史诗
@@ -3656,6 +3777,7 @@ def stone_363(char: CharacterProperty):
 def stone_364(char: CharacterProperty):
     # DCALC_REMOVE: stone_364 - 设计：初型信号模块 70
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 70级主动技能攻击力 +12%
     # 70级技能范围 +12%
     # rarity: 史诗
@@ -3667,6 +3789,7 @@ def stone_364(char: CharacterProperty):
 def stone_365(char: CharacterProperty):
     # DCALC_REMOVE: stone_365 - 设计：初型信号模块 75
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 75级主动技能攻击力 +12%
     # 75级技能范围 +12%
     # rarity: 史诗
@@ -3678,6 +3801,7 @@ def stone_365(char: CharacterProperty):
 def stone_366(char: CharacterProperty):
     # DCALC_REMOVE: stone_366 - 设计：初型信号模块 80
     # 技能伤害 +17%
+    # 特效伤害 +1.5%
     # 80级主动技能攻击力 +12%
     # 80级技能范围 +12%
     # rarity: 史诗

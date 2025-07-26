@@ -526,7 +526,7 @@ class Skill26(PassiveSkill):
 
     associate = [
         {"type":"$*PAtkP","data":data0},
-        {"type":"$*cdReduce","data":data1,"exceptSkills":[]},
+        {"type":"*cdReduce","data":data1,"exceptSkills":[]},
         {"type":"+maxLayer","data":data2,"ratio":1,"skills":["终结追击"]},
     ]
 

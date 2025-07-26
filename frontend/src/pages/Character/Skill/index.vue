@@ -28,7 +28,7 @@
           ></SkillTree>
         </div>
         <div v-if="tab === 1" class="flex flex-col overflow-y-hidden h-full">
-          <div class="item-head" 角色等级>技能进化</div>
+          <div class="item-head" 角色等级>技能突破</div>
           <SkillUP
             class="flex-1"
             :skills="infoStore.skills"
@@ -36,7 +36,7 @@
             v-model:bindAwake="configStore.config.bindAwake"
             :buffer="infoStore.infos?.buffer"
           ></SkillUP>
-          <div class="item-head" 角色等级>技能突破</div>
+          <div class="item-head" 角色等级>技能进化</div>
           <div class="flex-1 overflow-y-auto w-full">
             <SkillVP
               :skills="infoStore.skills"

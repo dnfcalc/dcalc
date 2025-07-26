@@ -26,6 +26,7 @@ export default defineComponent({
 
     const currentUsedVP = computed(() => {
       return Object.keys(lvInfo.value)
+        .filter((a) => skills.value.find((skill) => skill.id.toString() === a))
         .map((a) => lvInfo.value[a].vp)
         .filter((a) => !!a && a > 0).length
     })

@@ -67,10 +67,10 @@ def equ_6(char: CharacterProperty):
     # 攻击时，无影之剑辉追踪敌人并贯穿进行攻击。
     # - 无影之剑射出数量：1个
     # - 追踪的敌人数量上限：2名
-    # - 无影之剑总伤害量：32400%
+    # - 无影之剑总伤害量：49200%
     # - 冷却时间15秒
     # rarity: 传说
-    char.equ_effect.append(EquEffect(name='无影之剑', icon='/equipment/icon/weapon/swordman/sswd/00227.png', cd=15, data=32400))
+    char.equ_effect.append(EquEffect(name='无影之剑', icon='/equipment/icon/weapon/swordman/sswd/00227.png', cd=15, data=49200))
     pass
 
 
@@ -82,10 +82,10 @@ def equ_7(char: CharacterProperty):
     # 攻击时，无影之剑辉追踪敌人并贯穿进行攻击。
     # - 无影之剑射出数量：3个
     # - 追踪的敌人数量上限：4名
-    # - 无影之剑总伤害量：48600%
+    # - 无影之剑总伤害量：73800%
     # - 冷却时间15秒
     # rarity: 史诗
-    char.equ_effect.append(EquEffect(name='无影之剑', icon='/equipment/icon/weapon/swordman/sswd/00228.png', cd=15, data=48600))
+    char.equ_effect.append(EquEffect(name='无影之剑', icon='/equipment/icon/weapon/swordman/sswd/00228.png', cd=15, data=73800))
     pass
 
 
@@ -97,10 +97,10 @@ def equ_8(char: CharacterProperty):
     # 攻击时，无影之剑辉追踪敌人并贯穿进行攻击。
     # - 无影之剑射出数量：4个
     # - 追踪的敌人数量上限：6名
-    # - 无影之剑总伤害量：64800%
+    # - 无影之剑总伤害量：98400%
     # - 冷却时间10秒
     # rarity: 太初
-    char.equ_effect.append(EquEffect(name='无影之剑', icon='/equipment/icon/weapon/swordman/sswd/00229.png', cd=10, data=64800))
+    char.equ_effect.append(EquEffect(name='无影之剑', icon='/equipment/icon/weapon/swordman/sswd/00229.png', cd=10, data=98400))
     pass
 
 
@@ -179,10 +179,11 @@ def equ_14(char: CharacterProperty):
     # DCALC_REMOVE: equ_14 - 凡作 - 金印刀
     # [寒光掠影][装备主动技能]
     # 同样的技能，凡作只能发出平凡的一击。
-    # - 寒光掠影伤害量：113400%
-    # - 冷却时间40秒
+    # - 可取消技能释放（觉醒技能除外）
+    # - 寒光掠影伤害量：202000%
+    # - 冷却时间60秒
     # rarity: 传说
-    char.equ_effect.append(EquEffect(name='寒光掠影', icon='/equipment/skill/4.png', cd=40, data=113400))
+    char.equ_effect.append(EquEffect(name='寒光掠影', icon='/equipment/skill/4.png', cd=60, data=202000))
     pass
 
 
@@ -191,10 +192,11 @@ def equ_15(char: CharacterProperty):
     # DCALC_REMOVE: equ_15 - 名作 - 金印锐刀
     # [寒光掠影][装备主动技能]
     # 蕴含锐利剑意的一击，难掩名作之风采。
-    # - 寒光掠影伤害量：226800%
-    # - 冷却时间40秒
+    # - 可取消技能释放（觉醒技能除外）
+    # - 寒光掠影伤害量：404000%
+    # - 冷却时间60秒
     # rarity: 史诗
-    char.equ_effect.append(EquEffect(name='寒光掠影', icon='/equipment/skill/4.png', cd=40, data=226800))
+    char.equ_effect.append(EquEffect(name='寒光掠影', icon='/equipment/skill/4.png', cd=60, data=404000))
     pass
 
 
@@ -203,10 +205,11 @@ def equ_16(char: CharacterProperty):
     # DCALC_REMOVE: equ_16 - 杰作 - 金印绝刀
     # [寒光掠影][装备主动技能]
     # 剑意三千境，一招足以制胜。
-    # - 寒光掠影伤害量：340200%
-    # - 冷却时间40秒
+    # - 可取消技能释放（觉醒技能除外）
+    # - 寒光掠影伤害量：606000%
+    # - 冷却时间60秒
     # rarity: 太初
-    char.equ_effect.append(EquEffect(name='寒光掠影', icon='/equipment/skill/4.png', cd=40, data=340200))
+    char.equ_effect.append(EquEffect(name='寒光掠影', icon='/equipment/skill/4.png', cd=60, data=606000))
     pass
 
 
@@ -274,10 +277,12 @@ def equ_21(char: CharacterProperty):
 def equ_22(char: CharacterProperty):
     # DCALC_REMOVE: equ_22 - 梁月的钝剑 : 形
     # 技能冷却时间20%减少（觉醒技能除外）
+    # 特效伤害 +10%
     # 所有速度 +10%
     # rarity: 传说
     char.SetSkillCD(1, 100, 0.2, [50, 85, 100])
     char.SetStatus(SpeedM=0.1, SpeedA=0.1, SpeedR=0.1)
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -285,6 +290,7 @@ def equ_22(char: CharacterProperty):
 def equ_23(char: CharacterProperty):
     # DCALC_REMOVE: equ_23 - 梁月的钝剑 : 意
     # 技能冷却时间20%减少（觉醒技能除外）
+    # 特效伤害 +10%
     # 所有速度 +12.5%
     # [合一]
     # 基本攻击时， 生成可移动攻击的分身。（冷却时间7秒）
@@ -294,6 +300,7 @@ def equ_23(char: CharacterProperty):
     char.SetSkillCD(1, 100, 0.2, [50, 85, 100])
     char.SetStatus(SpeedM=0.125, SpeedA=0.125, SpeedR=0.125)
     char.SetSkillCDRecover(1, 100, 0.03, [50, 85, 100])
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -301,6 +308,7 @@ def equ_23(char: CharacterProperty):
 def equ_24(char: CharacterProperty):
     # DCALC_REMOVE: equ_24 - 梁月的钝剑 : 神
     # 技能冷却时间20%减少（觉醒技能除外）
+    # 特效伤害 +10%
     # 所有速度 +15%
     # [合一]
     # 基本攻击时， 生成可移动攻击的分身。（冷却时间3秒）
@@ -310,6 +318,7 @@ def equ_24(char: CharacterProperty):
     char.SetSkillCD(1, 100, 0.2, [50, 85, 100])
     char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
     char.SetSkillCDRecover(1, 100, 0.03, [50, 85, 100])
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -593,11 +602,13 @@ def equ_45(char: CharacterProperty):
 def equ_46(char: CharacterProperty):
     # DCALC_REMOVE: equ_46 - 念气之星点
     # 技能冷却时间20%减少（觉醒技能除外）
+    # 特效伤害 +10%
     # 光属性攻击
     # 魔法防御力 +7000
     # 光属性抗性 +20
     # rarity: 传说
     char.SetSkillCD(cd=0.2)
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -605,12 +616,14 @@ def equ_46(char: CharacterProperty):
 def equ_47(char: CharacterProperty):
     # DCALC_REMOVE: equ_47 - 念气之星群
     # 技能冷却时间20%减少（觉醒技能除外）
+    # 特效伤害 +10%
     # 光属性攻击
     # 魔法防御力 +7000
     # 光属性抗性 +20
     # 施放[念兽：龙虎啸]时，变更技能特效。
     # rarity: 史诗
     char.SetSkillCD(cd=0.2)
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -618,6 +631,7 @@ def equ_47(char: CharacterProperty):
 def equ_48(char: CharacterProperty):
     # DCALC_REMOVE: equ_48 - 念气之星河
     # 技能冷却时间20%减少（觉醒技能除外）
+    # 特效伤害 +10%
     # 光属性攻击
     # 魔法防御力 +7000
     # 光属性抗性 +20
@@ -625,6 +639,7 @@ def equ_48(char: CharacterProperty):
     # 召唤念气星体。
     # rarity: 太初
     char.SetSkillCD(cd=0.2)
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -710,10 +725,10 @@ def equ_55(char: CharacterProperty):
     # 所受物理/魔法伤害 -30%
     # 攻击敌人时，使敌人发生绯红爆炸。（冷却时间10秒）
     # [绯红爆炸]
-    # - 对爆炸范围内的敌人造成72000%伤害
+    # - 对爆炸范围内的敌人造成127500%伤害
     # - 爆炸发生时，如果生命值不足80%，则恢复20%的生命值。（冷却时间30秒）
     # rarity: 史诗
-    char.equ_effect.append(EquEffect(name='绯红爆炸', icon='/equipment/icon/weapon/fighter/gauntlet/00246.png', cd=10, data=72000))
+    char.equ_effect.append(EquEffect(name='绯红爆炸', icon='/equipment/icon/weapon/fighter/gauntlet/00246.png', cd=10, data=127500))
     pass
 
 
@@ -724,11 +739,11 @@ def equ_56(char: CharacterProperty):
     # 所受物理/魔法伤害 -35%
     # 攻击敌人时，使敌人发生绯红爆炸。（冷却时间10秒）
     # [绯红爆炸]
-    # - 对爆炸范围内的敌人造成72000%伤害
+    # - 对爆炸范围内的敌人造成127500%伤害
     # - 绯红爆炸范围 +50%
     # - 爆炸发生时，如果生命值不足80%，则恢复40%的生命值。（冷却时间30秒）
     # rarity: 太初
-    char.equ_effect.append(EquEffect(name='绯红爆炸', icon='/equipment/icon/weapon/fighter/gauntlet/00247.png', cd=10, data=72000))
+    char.equ_effect.append(EquEffect(name='绯红爆炸', icon='/equipment/icon/weapon/fighter/gauntlet/00247.png', cd=10, data=127500))
     pass
 
 
@@ -780,11 +795,11 @@ def equ_62(char: CharacterProperty):
     # 暗属性抗性 +20
     # [悲伤魔珠][装备主动技能]
     # 生成蕴含沉痛悲伤的魔珠。
-    # - 悲伤魔珠伤害量：15300%
+    # - 悲伤魔珠伤害量：4500%
     # - 冷却时间：30秒
     # rarity: 传说
     char.SetStatus(SpeedM=0.1, SpeedA=0.1, SpeedR=0.1)
-    char.equ_effect.append(EquEffect(name='悲伤魔珠', icon='/equipment/skill/38.png', cd=30, data=15300))
+    char.equ_effect.append(EquEffect(name='悲伤魔珠', icon='/equipment/skill/38.png', cd=30, data=4500))
     pass
 
 
@@ -797,11 +812,11 @@ def equ_63(char: CharacterProperty):
     # 暗属性抗性 +20
     # [悲伤魔珠][装备主动技能]
     # 生成蕴含沉痛悲伤的魔珠。
-    # - 悲伤魔珠伤害量：15300%
+    # - 悲伤魔珠伤害量：4500%
     # - 冷却时间：15秒
     # rarity: 史诗
     char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
-    char.equ_effect.append(EquEffect(name='悲伤魔珠', icon='/equipment/skill/38.png', cd=15, data=15300))
+    char.equ_effect.append(EquEffect(name='悲伤魔珠', icon='/equipment/skill/38.png', cd=15, data=4500))
     pass
 
 
@@ -812,6 +827,10 @@ def equ_64(char: CharacterProperty):
     # 暗属性攻击
     # 所有速度 +25%
     # 暗属性抗性 +20
+    # [永恒怨望]
+    # 攻击时召唤贪婪之怨魂，造成伤害。
+    # - 怨魂伤害量：23250%
+    # - 冷却时间：5秒
     # [悲伤魔珠][装备主动技能]
     # 生成蕴含沉痛悲伤的魔珠。
     # - 悲伤魔珠伤害量：15300%
@@ -821,7 +840,8 @@ def equ_64(char: CharacterProperty):
     # - 所受物理/魔法伤害 -10%
     # rarity: 太初
     char.SetStatus(SpeedM=0.25, SpeedA=0.25, SpeedR=0.25)
-    char.equ_effect.append(EquEffect(name='悲伤魔珠', icon='/equipment/skill/38.png', cd=10, data=15300))
+    char.equ_effect.append(EquEffect(name='悲伤魔珠', icon='/equipment/skill/38.png', cd=10, data=4500))
+    char.equ_effect.append(EquEffect(name='永恒怨望', icon='/equipment/icon/weapon/fighter/claw/00237.png', cd=5, data=23250))
     pass
 
 
@@ -904,10 +924,10 @@ def equ_71(char: CharacterProperty):
     # DCALC_REMOVE: equ_71 - 贝兹伯爵的英勇之拳
     # 需要[拳套掌握]技能
     # 技能范围 +25%
-    # 攻击敌人时，对该敌人产生冲击波。（冷却时间0.2秒）
-    # - 冲击波伤害量：2400%
+    # 攻击敌人时，对该敌人产生冲击波。（冷却时间1秒）
+    # - 冲击波伤害量：7140%
     # rarity: 史诗
-    char.equ_effect.append(EquEffect(name='冲击波', icon='/equipment/icon/weapon/fighter/bglove/00208.png', cd=0.2, data=2400))
+    char.equ_effect.append(EquEffect(name='冲击波', icon='/equipment/icon/weapon/fighter/bglove/00208.png', cd=1, data=7140))
     pass
 
 
@@ -916,14 +936,11 @@ def equ_72(char: CharacterProperty):
     # DCALC_REMOVE: equ_72 - 贝兹女王的辉煌之拳
     # 需要[拳套掌握]技能
     # 技能范围 +30%
-    # 攻击敌人时，对该敌人产生冲击波。（冷却时间0.2秒）
-    # - 冲击波伤害量：2400%
+    # 攻击敌人时，对该敌人产生冲击波。（冷却时间1秒）
+    # - 冲击波伤害量：7140%
     # - 冲击波范围 +50%
-    # - 冲击波施放4次后，下次冲击波变为强化冲击波。
-    # - 强化冲击波伤害量：4800%
     # rarity: 太初
-    char.equ_effect.append(EquEffect(name='冲击波', icon='/equipment/icon/weapon/fighter/bglove/00209.png', cd=0.2, data=2400))
-    char.equ_effect.append(EquEffect(name='强化冲击波', icon='/equipment/icon/weapon/fighter/bglove/00209', cd=1, data=4800))
+    char.equ_effect.append(EquEffect(name='冲击波', icon='/equipment/icon/weapon/fighter/bglove/00209.png', cd=1, data=7140))
     pass
 
 
@@ -1221,7 +1238,7 @@ def equ_93(char: CharacterProperty):
 def equ_94(char: CharacterProperty):
     # DCALC_REMOVE: equ_94 - 冰封的火焰之躯
     # 攻击时放置冰弩，持续30秒。（冷却时间30秒）
-    # - 每次攻击伤害量：7200%
+    # - 每次攻击伤害量：7650%
     # - 冰弩攻击敌人时，使敌人进入冰冻状态，效果持续5秒。
     # [模式切换][装备主动技能]
     # 切换所有弩箭的模式。
@@ -1229,7 +1246,7 @@ def equ_94(char: CharacterProperty):
     # - 静止模式：中止攻击
     # - 冷却时间1秒
     # rarity: 传说
-    char.equ_effect.append(EquEffect(name='冰封的火焰之躯', icon='/equipment/skill/26.png', cd=1, data=7200))
+    char.equ_effect.append(EquEffect(name='冰封的火焰之躯', icon='/equipment/skill/26.png', cd=1, data=7650))
     pass
 
 
@@ -1237,18 +1254,18 @@ def equ_94(char: CharacterProperty):
 def equ_95(char: CharacterProperty):
     # DCALC_REMOVE: equ_95 - 燃烧的霜冻之躯
     # 攻击时放置冰弩，持续30秒。（冷却时间30秒）
-    # - 每次攻击伤害量：7200%
+    # - 每次攻击伤害量：7650%
     # - 冰弩攻击敌人时，使敌人进入冰冻状态，效果持续5秒。
     # 攻击时放置火弩，持续30秒。（冷却时间30秒）
-    # - 每次攻击伤害量：7200%
+    # - 每次攻击伤害量：7650%
     # [模式切换][装备主动技能]
     # 切换所有弩箭的模式。
     # - 射击模式：攻击敌人
     # - 静止模式：中止攻击
     # - 冷却时间1秒
     # rarity: 史诗
-    char.equ_effect.append(EquEffect(name='冰弩', icon='/equipment/skill/26.png', cd=1, data=7200))
-    char.equ_effect.append(EquEffect(name='火弩', icon='/equipment/skill/26.png', cd=1, data=7200))
+    char.equ_effect.append(EquEffect(name='冰弩', icon='/equipment/skill/26.png', cd=1, data=7650))
+    char.equ_effect.append(EquEffect(name='火弩', icon='/equipment/skill/26.png', cd=1, data=7650))
     pass
 
 
@@ -1256,21 +1273,21 @@ def equ_95(char: CharacterProperty):
 def equ_96(char: CharacterProperty):
     # DCALC_REMOVE: equ_96 - 冰火的淬炼之躯
     # 攻击时放置冰弩，持续30秒。（冷却时间30秒）
-    # - 每次攻击伤害量：7200%
+    # - 每次攻击伤害量：7650%
     # - 冰弩攻击敌人时，使敌人进入冰冻状态，效果持续5秒。
     # 攻击时放置火弩，持续30秒。（冷却时间30秒）
-    # - 每次攻击伤害量：7200%
+    # - 每次攻击伤害量：7650%
     # 攻击时，对敌人降下箭雨。（冷却时间20秒）
-    # - 箭雨伤害量：45600%
+    # - 箭雨伤害量：102000%
     # [模式切换][装备主动技能]
     # 切换所有弩箭的模式。
     # - 射击模式：攻击敌人
     # - 静止模式：中止攻击
     # - 冷却时间1秒
     # rarity: 太初
-    char.equ_effect.append(EquEffect(name='冰弩', icon='/equipment/skill/26.png', cd=1, data=7200))
-    char.equ_effect.append(EquEffect(name='火弩', icon='/equipment/skill/26.png', cd=1, data=7200))
-    char.equ_effect.append(EquEffect(name='箭雨', icon='/equipment/skill/26.png', cd=20, data=45600))
+    char.equ_effect.append(EquEffect(name='冰弩', icon='/equipment/skill/26.png', cd=1, data=7650))
+    char.equ_effect.append(EquEffect(name='火弩', icon='/equipment/skill/26.png', cd=1, data=7650))
+    char.equ_effect.append(EquEffect(name='箭雨', icon='/equipment/skill/26.png', cd=20, data=102000))
     pass
 
 
@@ -1337,6 +1354,7 @@ def equ_102(char: CharacterProperty):
     # [火花]
     # 进入地下城时，使自身燃烧。
     # - 消耗无色小晶块的技能攻击力 +25%
+    # - 特效伤害 +19.5%
     # rarity: 传说
     for skill in char.skills:
         if skill.learnLv == 45 and skill.damage:
@@ -1348,6 +1366,7 @@ def equ_102(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(cd=0.2)
+    char.SetStatus(EquEffectRatio=0.195)
     pass
 
 
@@ -1360,6 +1379,7 @@ def equ_103(char: CharacterProperty):
     # 进入地下城时，使自身燃烧。
     # - 消耗无色小晶块的技能攻击力 +25%
     # - 不消耗无色小晶块的技能攻击力 +10%
+    # - 特效伤害 +23.5%
     # rarity: 史诗
     for skill in char.skills:
         if skill.learnLv == 45 and skill.damage:
@@ -1373,6 +1393,7 @@ def equ_103(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(cd=0.2)
+    char.SetStatus(EquEffectRatio=0.235)
     pass
 
 
@@ -1387,6 +1408,7 @@ def equ_104(char: CharacterProperty):
     # - 不消耗无色小晶块的技能攻击力 +25%
     # - 攻击时，燃烧敌人并造成伤害（冷却时间0.2秒）
     # *燃烧伤害量：480%
+    # - 特效伤害 +29.5%
     # rarity: 太初
     for skill in char.skills:
         if skill.learnLv == 45 and skill.damage:
@@ -1401,6 +1423,7 @@ def equ_104(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(cd=0.2)
+    char.SetStatus(EquEffectRatio=0.295)
     pass
 
 
@@ -1465,6 +1488,7 @@ def equ_110(char: CharacterProperty):
     # [斗志机器人]
     # 进入地下城时，斗志机器人跟随角色并提供增益。
     # - 技能冷却时间 -20%（觉醒技能除外）
+    # - 特效伤害 +10%
     # rarity: 传说
     char.SetSkillCD(1, 100, 0.2)
     if char.buffer:
@@ -1472,6 +1496,7 @@ def equ_110(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -1481,14 +1506,16 @@ def equ_111(char: CharacterProperty):
     # [斗志机器人]
     # 进入地下城时，斗志机器人跟随角色并提供增益。
     # - 技能冷却时间 -20%（觉醒技能除外）
+    # - 特效伤害 +10%
     # [自动爆炸]
     # 每10秒自动对敌人引发爆炸。
-    # - 自动爆炸总伤害量：47647%
+    # - 自动爆炸总伤害量：63750%
     # [自动爆炸开关][装备主动技能]
     # 关闭自动爆炸，再次使用时开启。（冷却10秒）
     # rarity: 史诗
     char.SetSkillCD(1, 100, 0.2)
-    char.equ_effect.append(EquEffect(name='自动爆炸', icon='/equipment/skill/33.png', cd=10, data=47647))
+    char.equ_effect.append(EquEffect(name='自动爆炸', icon='/equipment/skill/33.png', cd=10, data=63750))
+    char.SetStatus(EquEffectRatio=0.1)
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
@@ -1503,14 +1530,16 @@ def equ_112(char: CharacterProperty):
     # [斗志机器人]
     # 进入地下城时，斗志机器人跟随角色并提供增益。
     # - 技能冷却时间 -20%（觉醒技能除外）
+    # - 特效伤害 +10%
     # [自动爆炸]
     # 每10秒自动对敌人引发爆炸。
-    # - 自动爆炸总伤害量：95294%
+    # - 自动爆炸总伤害量：127500%
     # [自动爆炸开关][装备主动技能]
     # 关闭自动爆炸，再次使用时开启。（冷却10秒）
     # rarity: 太初
     char.SetSkillCD(1, 100, 0.2)
-    char.equ_effect.append(EquEffect(name='自动爆炸', icon='/equipment/skill/33.png', cd=10, data=95294))
+    char.equ_effect.append(EquEffect(name='自动爆炸', icon='/equipment/skill/33.png', cd=10, data=127500))
+    char.SetStatus(EquEffectRatio=0.1)
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
@@ -1579,10 +1608,11 @@ def equ_118(char: CharacterProperty):
     # DCALC_REMOVE: equ_118 - 少年乌尔班的创意
     # 技能范围 +20%
     # [发射巨炮][装备主动技能]
-    # - 巨炮伤害量：113400%
-    # - 冷却时间：40秒
+    # - 巨炮伤害量：202000%
+    # - 冷却时间：60秒
+    # - 可取消技能释放（觉醒技能除外）
     # rarity: 传说
-    char.equ_effect.append(EquEffect(name='发射巨炮', icon='/equipment/skill/41.png', cd=40, data=113400))
+    char.equ_effect.append(EquEffect(name='发射巨炮', icon='/equipment/skill/41.png', cd=60, data=202000))
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
@@ -1597,10 +1627,11 @@ def equ_119(char: CharacterProperty):
     # 技能范围 +25%
     # [发射巨炮][装备主动技能]
     # 发射高效改良巨炮。
-    # - 巨炮伤害量：226800%
-    # - 冷却时间：40秒
+    # - 巨炮伤害量：404000%
+    # - 冷却时间：60秒
+    # - 可取消技能释放（觉醒技能除外）
     # rarity: 史诗
-    char.equ_effect.append(EquEffect(name='发射巨炮', icon='/equipment/skill/41.png', cd=40, data=226800))
+    char.equ_effect.append(EquEffect(name='发射巨炮', icon='/equipment/skill/41.png', cd=60, data=404000))
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
@@ -1615,10 +1646,11 @@ def equ_120(char: CharacterProperty):
     # 技能范围 +30%
     # [发射巨炮][装备主动技能]
     # 发射乌尔班的杰作巨炮。
-    # - 巨炮伤害量：340200%
-    # - 冷却时间：40秒
+    # - 巨炮伤害量：606000%
+    # - 冷却时间：60秒
+    # - 可取消技能释放（觉醒技能除外）
     # rarity: 太初
-    char.equ_effect.append(EquEffect(name='发射巨炮', icon='/equipment/skill/41.png', cd=40, data=340200))
+    char.equ_effect.append(EquEffect(name='发射巨炮', icon='/equipment/skill/41.png', cd=60, data=606000))
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
@@ -1682,6 +1714,7 @@ def equ_126(char: CharacterProperty):
     # DCALC_REMOVE: equ_126 - 尘封的知识
     # 每存在1个冷却中的技能，技能冷却时间恢复速度 +6%（最多叠加5次，觉醒技能除外）
     # - 最大叠加时，技能范围 +10%
+    # - 特效伤害 +12%
     # rarity: 传说
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -1689,6 +1722,7 @@ def equ_126(char: CharacterProperty):
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
     char.SetSkillCDRecover(cd=0.06 * 5)
+    char.SetStatus(EquEffectRatio=0.12)
     pass
 
 
@@ -1697,6 +1731,7 @@ def equ_127(char: CharacterProperty):
     # DCALC_REMOVE: equ_127 - 禁忌的知识
     # 每存在1个冷却中的技能，技能冷却时间恢复速度 +6%（最多叠加5次，觉醒技能除外）
     # - 最大叠加时，技能范围 +12%
+    # - 特效伤害 +12%
     # rarity: 史诗
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -1704,6 +1739,7 @@ def equ_127(char: CharacterProperty):
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
     char.SetSkillCDRecover(cd=0.06 * 5)
+    char.SetStatus(EquEffectRatio=0.12)
     pass
 
 
@@ -1712,6 +1748,7 @@ def equ_128(char: CharacterProperty):
     # DCALC_REMOVE: equ_128 - 解禁的知识
     # 每存在1个冷却中的技能，技能冷却时间恢复速度 +6%（最多叠加5次，觉醒技能除外）
     # - 最大叠加时，技能范围 +15%
+    # - 特效伤害 +12%
     # rarity: 太初
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -1719,6 +1756,7 @@ def equ_128(char: CharacterProperty):
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
     char.SetSkillCDRecover(cd=0.06 * 5)
+    char.SetStatus(EquEffectRatio=0.12)
     pass
 
 
@@ -1780,7 +1818,7 @@ def equ_134(char: CharacterProperty):
     # 施放技能时， 生成3只羊。
     # - 最多4只
     # 攻击时，消耗1只羊，施放羊袭。（冷却时间0.5秒）
-    # - 羊袭伤害量：3600%
+    # - 羊袭伤害量：3850%
     # 被击时，消耗1只羊， 生成最大生命值10%数值的保护罩，效果持续2秒。（冷却时间2秒）
     # rarity: 传说
     if char.buffer:
@@ -1788,7 +1826,7 @@ def equ_134(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1, 100, 0.2)
-    char.equ_effect.append(EquEffect(name='羊袭', icon='/equipment/icon/weapon/mage/rod/00282.png', cd=0.5, data=3600))
+    char.equ_effect.append(EquEffect(name='羊袭', icon='/equipment/icon/weapon/mage/rod/00282.png', cd=0.5, data=3850))
     pass
 
 
@@ -1800,7 +1838,7 @@ def equ_135(char: CharacterProperty):
     # - 每1只羊可使所受物理/魔法伤害 -2%
     # - 最多6只
     # 攻击时，消耗1只羊，施放羊袭。（冷却时间0.5秒）
-    # - 羊袭伤害量：6000%
+    # - 羊袭伤害量：6400%
     # 被击时，消耗1只羊， 生成最大生命值15%数值的保护罩，效果持续2秒。（冷却时间2秒）
     # rarity: 史诗
     if char.buffer:
@@ -1808,7 +1846,7 @@ def equ_135(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1, 100, 0.2)
-    char.equ_effect.append(EquEffect(name='羊袭', icon='/equipment/icon/weapon/mage/rod/00283.png', cd=0.5, data=6000))
+    char.equ_effect.append(EquEffect(name='羊袭', icon='/equipment/icon/weapon/mage/rod/00283.png', cd=0.5, data=6400))
     pass
 
 
@@ -1820,7 +1858,7 @@ def equ_136(char: CharacterProperty):
     # - 每1只羊可使所受物理/魔法伤害 -2%
     # - 最多9只
     # 攻击时，消耗1只羊，施放绵羊云。（冷却时间2秒）
-    # - 羊袭伤害量：33600%
+    # - 羊袭伤害量：35700%
     # 被击时，消耗1只羊， 生成最大生命值20%数值的保护罩，效果持续2秒。（冷却时间2秒）
     # rarity: 太初
     if char.buffer:
@@ -1828,7 +1866,7 @@ def equ_136(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1, 100, 0.2)
-    char.equ_effect.append(EquEffect(name='绵羊云', icon='/equipment/icon/weapon/mage/rod/00284.png', cd=2, data=33600))
+    char.equ_effect.append(EquEffect(name='绵羊云', icon='/equipment/icon/weapon/mage/rod/00284.png', cd=2, data=35700))
     pass
 
 
@@ -1895,10 +1933,10 @@ def equ_142(char: CharacterProperty):
     # [投掷硬币][装备主动技能]
     # - 消耗1个幸运硬币，按照指定的几率发动以下两种效果中的一种，效果持续30秒。（冷却时间3秒）
     # - 快乐（50%）
-    # *所有速度 +30%
-    # *生命值/魔法值恢复10%
+    # * 所有速度 +30%
+    # * 生命值/魔法值恢复10%
     # - 悲伤（50%）
-    # *所有速度 +10%
+    # * 所有速度 +10%
     # （快乐、悲伤的所有速度效果仅适用于最高值）
     # rarity: 传说
     if char.buffer:
@@ -1912,16 +1950,14 @@ def equ_142(char: CharacterProperty):
 @register
 def equ_143(char: CharacterProperty):
     # DCALC_REMOVE: equ_143 - 卡匹迪恩 : 莫追悔
+    # 所有速度 +10%
     # 进入地下城时，获得1个幸运硬币。
     # 每20秒获得1个幸运硬币。（最多叠加10次）
     # [投掷硬币][装备主动技能]
-    # - 消耗1个幸运硬币，按照指定的几率发动以下两种效果中的一种，效果持续30秒。（冷却时间3秒）
+    # - 消耗1个幸运硬币，按照指定的几率发动以下效果，效果持续30秒。（冷却时间3秒）
     # - 快乐（70%）
-    # *所有速度 +30%
-    # *生命值/魔法值恢复10%
-    # - 悲伤（30%）
-    # *所有速度 +10%
-    # （快乐、悲伤的所有速度效果仅适用于最高值）
+    # * 所有速度 +20%
+    # * 生命值/魔法值恢复10%
     # rarity: 史诗
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -1935,19 +1971,17 @@ def equ_143(char: CharacterProperty):
 @register
 def equ_144(char: CharacterProperty):
     # DCALC_REMOVE: equ_144 - 哈库纳玛塔塔 : 莫烦忧
+    # 所有速度+30%
     # 进入地下城时，获得1个幸运硬币。
     # 每10秒获得1个硬币。（最多叠加10次）
     # [投掷硬币][装备主动技能]
-    # - 消耗1个硬币，按照指定的几率发动以下两种效果中的一种，效果持续30秒。（冷却时间3秒）
+    # - 消耗1个硬币，按照指定的几率发动以下两种效果中的一种。（冷却时间3秒）
     # - 心情好到炸裂（70%）
-    # *所有速度 +30%
     # 生命值/魔法值恢复20%
-    # *效果发动时，生产攻击附近敌人的闪电
-    # -闪电伤害量：14400%
+    # * 效果发动时，生产攻击附近敌人的闪电
+    # - 闪电伤害量：1000%
     # - 快乐（30%）
-    # *所有速度 +30%
-    # *生命值/魔法值恢复10%
-    # （快乐、悲伤的所有速度效果仅适用于最高值）
+    # * 生命值/魔法值恢复10%
     # rarity: 太初
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -1955,7 +1989,7 @@ def equ_144(char: CharacterProperty):
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1, 100, 0.2)
     char.SetStatus(SpeedA=0.3, SpeedM=0.3, SpeedR=0.3)
-    char.equ_effect.append(EquEffect(name='闪电', icon='/equipment/skill/35.png', cd=3, data=14400))
+    char.equ_effect.append(EquEffect(name='闪电', icon='/equipment/skill/35.png', cd=3, data=1000))
     pass
 
 
@@ -2034,15 +2068,16 @@ def equ_150(char: CharacterProperty):
     # DCALC_REMOVE: equ_150 - 终结者
     # [绝对零度][装备主动技能]
     # 挥舞冰霜之矛进行攻击。
-    # - 绝对零度伤害量：113400%
-    # - 冷却时间40秒
+    # - 绝对零度伤害量：202000%
+    # - 冷却时间60秒
+    # - 可取消技能释放（觉醒技能除外）
     # rarity: 传说
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1, 100, 0.2)
-    char.equ_effect.append(EquEffect(name='绝对零度', icon='/equipment/skill/31.png', cd=40, data=113400))
+    char.equ_effect.append(EquEffect(name='绝对零度', icon='/equipment/skill/31.png', cd=60, data=202000))
     pass
 
 
@@ -2051,15 +2086,16 @@ def equ_151(char: CharacterProperty):
     # DCALC_REMOVE: equ_151 - 凛冬终结者
     # [绝对零度][装备主动技能]
     # 挥舞寒意刺骨的冰冻之矛进行攻击。
-    # - 绝对零度伤害量：226800%
-    # - 冷却时间40秒
+    # - 绝对零度伤害量：404000%
+    # - 冷却时间60秒
+    # - 可取消技能释放（觉醒技能除外）
     # rarity: 史诗
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1, 100, 0.2)
-    char.equ_effect.append(EquEffect(name='绝对零度', icon='/equipment/skill/31.png', cd=40, data=226800))
+    char.equ_effect.append(EquEffect(name='绝对零度', icon='/equipment/skill/31.png', cd=60, data=404000))
     pass
 
 
@@ -2068,15 +2104,16 @@ def equ_152(char: CharacterProperty):
     # DCALC_REMOVE: equ_152 - 绝对零度终结者
     # [绝对零度][装备主动技能]
     # 挥洒冰封万物的凛冽寒气歼灭攻击。
-    # - 绝对零度伤害量：340200%
-    # - 冷却时间40秒
+    # - 绝对零度伤害量：606000%
+    # - 冷却时间60秒
+    # - 可取消技能释放（觉醒技能除外）
     # rarity: 太初
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1, 100, 0.2)
-    char.equ_effect.append(EquEffect(name='绝对零度', icon='/equipment/skill/31.png', cd=40, data=340200))
+    char.equ_effect.append(EquEffect(name='绝对零度', icon='/equipment/skill/31.png', cd=60, data=606000))
     pass
 
 
@@ -2180,6 +2217,7 @@ def equ_159(char: CharacterProperty):
     # 进入地下城时，生成暗黑花园，发动以下效果。
     # - 每秒魔法值减少1%
     # - 攻击时魔法值恢复1.5%（冷却时间1秒）
+    # 该效果不会降魔法值降低至7%以下
     # 技能范围 +25%
     # rarity: 史诗
     if char.buffer:
@@ -2198,6 +2236,7 @@ def equ_160(char: CharacterProperty):
     # 进入地下城时，生成暗黑花园，发动以下效果。
     # - 每秒魔法值减少1%
     # - 攻击时魔法值恢复2%（冷却时间1秒）
+    # 该效果不会降魔法值降低至10%以下
     # 技能范围 +30%
     # rarity: 太初
     if char.buffer:
@@ -2288,7 +2327,7 @@ def equ_166(char: CharacterProperty):
     # 获得最大生命值10%数值的[填充型保护罩]。
     # [神之惩罚][装备主动技能]
     # - 在前方生成1道落雷
-    # - 落雷伤害量：30600%
+    # - 落雷伤害量：76500%
     # - 冷却时间：30秒
     # rarity: 传说
     if char.buffer:
@@ -2296,6 +2335,7 @@ def equ_166(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1, 100, 0.2)
+    char.equ_effect.append(EquEffect(name='神之惩罚', icon='/equipment/skill/42.png', cd=30, data=76500))
     pass
 
 
@@ -2305,7 +2345,7 @@ def equ_167(char: CharacterProperty):
     # 获得最大生命值15%数值的[填充型保护罩]。
     # [神之惩罚][装备主动技能]
     # - 在前方生成2道落雷
-    # - 落雷伤害量：30600%
+    # - 落雷伤害量：76500%
     # - 冷却时间：30秒
     # rarity: 史诗
     if char.buffer:
@@ -2313,6 +2353,7 @@ def equ_167(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1, 100, 0.2)
+    char.equ_effect.append(EquEffect(name='神之惩罚', icon='/equipment/skill/42.png', cd=30, data=76500*2))
     pass
 
 
@@ -2322,7 +2363,7 @@ def equ_168(char: CharacterProperty):
     # 获得最大生命值20%数值的[填充型保护罩]。
     # [神之惩罚][装备主动技能]
     # - 在前方生成3道落雷
-    # - 落雷伤害量：30600%
+    # - 落雷伤害量：76500%
     # - 冷却时间：30秒
     # rarity: 太初
     if char.buffer:
@@ -2330,6 +2371,7 @@ def equ_168(char: CharacterProperty):
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1, 100, 0.2)
+    char.equ_effect.append(EquEffect(name='神之惩罚', icon='/equipment/skill/42.png', cd=30, data=76500*3))
     pass
 
 
@@ -2410,7 +2452,7 @@ def equ_174(char: CharacterProperty):
     # 进献灵魂，获得以下效果。
     # - 魔法值限制为50%
     # - 施放技能时，通过额外消耗技能所需魔法值的200%，增加该技能10%的技能攻击力
-    # *如果剩余魔法值不足以额外消耗，则不会发动
+    # * 如果剩余魔法值不足以额外消耗，则不会发动
     # - 攻击时，恢复1%的魔法值（冷却时间1秒）
     # rarity: 传说
     if char.buffer:
@@ -2428,7 +2470,7 @@ def equ_175(char: CharacterProperty):
     # 交易灵魂，获得以下效果。
     # - 魔法值限制为50%
     # - 施放技能时，通过额外消耗技能所需魔法值的300%，增加该技能13%的技能攻击力
-    # *如果剩余魔法值不足以额外消耗，则不会发动
+    # * 如果剩余魔法值不足以额外消耗，则不会发动
     # - 攻击时，使敌人发生灵魂爆炸，恢复10%的魔法值（冷却时间6秒）
     # rarity: 史诗
     if char.buffer:
@@ -2445,7 +2487,7 @@ def equ_176(char: CharacterProperty):
     # [灵魂支配]
     # 支配灵魂，获得以下效果。
     # - 施放技能时，通过额外消耗技能所需魔法值的400%，增加该技能15%的技能攻击力
-    # *如果剩余魔法值不足以额外消耗，则不会发动
+    # * 如果剩余魔法值不足以额外消耗，则不会发动
     # - 每6秒吸收敌人的灵魂，恢复15%的魔法值
     # rarity: 太初
     if char.buffer:
@@ -2530,11 +2572,11 @@ def equ_181(char: CharacterProperty):
 def equ_182(char: CharacterProperty):
     # DCALC_REMOVE: equ_182 - 彗星念珠
     # 施放技能后，有15%的几率掉落流星。
-    # - 流星伤害量：15000%
+    # - 流星伤害量：25500%
     # - 冷却时间：10秒
     # 所有速度 +15%
     # rarity: 传说
-    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00196.png', cd=10, data=15000))
+    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00196.png', cd=10, data=25500))
     char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -2548,11 +2590,11 @@ def equ_182(char: CharacterProperty):
 def equ_183(char: CharacterProperty):
     # DCALC_REMOVE: equ_183 - 飞星念珠
     # 施放技能后，有25%的几率掉落流星。
-    # - 流星伤害量：15000%
+    # - 流星伤害量：25500%
     # - 冷却时间：5秒
     # 所有速度 +20%
     # rarity: 史诗
-    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00197.png', cd=5, data=15000))
+    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00197.png', cd=5, data=25500))
     char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -2566,11 +2608,11 @@ def equ_183(char: CharacterProperty):
 def equ_184(char: CharacterProperty):
     # DCALC_REMOVE: equ_184 - 流星念珠
     # 施放技能后，掉落蕴含宇宙力量的流星，效果持续5秒。
-    # - 流星伤害量：135000%
+    # - 流星伤害量：204000%
     # - 冷却时间：20秒
     # 所有速度 +30%
     # rarity: 太初
-    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00198.png', cd=20, data=340200))
+    char.equ_effect.append(EquEffect(name='流星念珠', icon='/equipment/icon/weapon/priest/rosary/00198.png', cd=20, data=204000))
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
@@ -2650,10 +2692,11 @@ def equ_190(char: CharacterProperty):
     # 技能范围 +20%
     # [行星破坏][装备主动技能]
     # 给战斧赋予摧毁大地的破坏之力并掷出。
-    # - 行星破坏伤害量：113400%
-    # - 冷却时间：40秒
+    # - 行星破坏伤害量：202000%
+    # - 冷却时间：60秒
+    # - 可取消技能释放（觉醒技能除外）
     # rarity: 传说
-    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=40, data=340200))
+    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=60, data=202000))
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
@@ -2668,10 +2711,11 @@ def equ_191(char: CharacterProperty):
     # 技能范围 +25%
     # [行星破坏][装备主动技能]
     # 给战斧赋予粉碎行星的破坏之力并掷出。
-    # - 行星破坏伤害量：226800%
-    # - 冷却时间：40秒
+    # - 行星破坏伤害量：404000%
+    # - 冷却时间：60秒
+    # - 可取消技能释放（觉醒技能除外）
     # rarity: 史诗
-    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=40, data=340200))
+    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=60, data=404000))
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
@@ -2686,10 +2730,11 @@ def equ_192(char: CharacterProperty):
     # 技能范围 +30%
     # [行星破坏][装备主动技能]
     # 掷出拥有灭亡的根源之力的战斧。
-    # - 行星破坏伤害量：340200%
-    # - 冷却时间：40秒
+    # - 行星破坏伤害量：606000%
+    # - 冷却时间：60秒
+    # - 可取消技能释放（觉醒技能除外）
     # rarity: 太初
-    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=40, data=340200))
+    char.equ_effect.append(EquEffect(name='行星破坏', icon='/equipment/skill/40.png', cd=60, data=606000))
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
@@ -2762,17 +2807,19 @@ def equ_197(char: CharacterProperty):
 def equ_198(char: CharacterProperty):
     # DCALC_REMOVE: equ_198 - 天道之亲和
     # 技能冷却时间20%减少（觉醒技能除外）
+    # 特效伤害 +10%
     # [威严怒击]
-    # 攻击时，向前方施放怒击。（冷却时间1秒）
-    # - 怒击伤害量：6000%
+    # 攻击时，向前方施放怒击。（冷却时间3秒）
+    # - 怒击伤害量：15300%
     # rarity: 传说
     char.SetSkillCD(1, 100, 0.2)
-    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00280.png', cd=1, data=6000))
+    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00280.png', cd=3, data=15300))
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -2780,21 +2827,23 @@ def equ_198(char: CharacterProperty):
 def equ_199(char: CharacterProperty):
     # DCALC_REMOVE: equ_199 - 天道之慈悲
     # 技能冷却时间20%减少（觉醒技能除外）
+    # 特效伤害 +10%
     # [威严怒击]
-    # 攻击时，向前方施放怒击。（冷却时间1秒）
-    # - 怒击伤害量：6000%
+    # 攻击时，向前方施放怒击。（冷却时间3秒）
+    # - 怒击伤害量：15300%
     # [威严猛击]
     # 施放技能时，向前方施放猛烈的连击。（冷却时间5秒）
-    # - 猛烈连击伤害量：32400%
+    # - 猛烈连击伤害量：23000%
     # rarity: 史诗
-    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00281.png', cd=1, data=6000))
-    char.equ_effect.append(EquEffect(name='威严猛击', icon='/equipment/icon/weapon/priest/totem/00281.png', cd=5, data=32400))
+    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00281.png', cd=3, data=15300))
+    char.equ_effect.append(EquEffect(name='威严猛击', icon='/equipment/icon/weapon/priest/totem/00281.png', cd=5, data=23000))
     char.SetSkillCD(1, 100, 0.2)
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -2802,25 +2851,27 @@ def equ_199(char: CharacterProperty):
 def equ_200(char: CharacterProperty):
     # DCALC_REMOVE: equ_200 - 天道之威严
     # 技能冷却时间20%减少（觉醒技能除外）
+    # 特效伤害 +10%
     # [威严怒击]
-    # 攻击时，向前方施放怒击。（冷却时间1秒）
-    # - 怒击伤害量：6000%
+    # 攻击时，向前方施放怒击。（冷却时间3秒）
+    # - 怒击伤害量：15300%
     # [威严猛击]
     # 施放技能时，向前方施放猛烈的连击。（冷却时间5秒）
-    # - 猛烈连击伤害量：32400%
+    # - 猛烈连击伤害量：23000%
     # [威严痛击]
-    # 施放无色小晶块技能时，发动威严痛击。（冷却时间10秒）
-    # - 威严痛击伤害量：90000%
+    # 施放无色小晶块技能时，发动威严痛击。（冷却时间20秒）
+    # - 威严痛击伤害量：102000%
     # rarity: 太初
-    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=1, data=6000))
-    char.equ_effect.append(EquEffect(name='威严猛击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=5, data=32400))
-    char.equ_effect.append(EquEffect(name='威严痛击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=5, data=90000))
+    char.equ_effect.append(EquEffect(name='威严怒击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=3, data=15300))
+    char.equ_effect.append(EquEffect(name='威严猛击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=5, data=23000))
+    char.equ_effect.append(EquEffect(name='威严痛击', icon='/equipment/icon/weapon/priest/totem/00282.png', cd=20, data=102000))
     char.SetSkillCD(1, 100, 0.2)
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
         char.AwakeSkill.lv += 4
         char.SetStatus(SkillAttack=0.123)
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -2998,9 +3049,11 @@ def equ_214(char: CharacterProperty):
     # - 地狱火伤害量：9360%
     # 每存在1个冷却中的技能，技能冷却时间恢复速度 +6%（觉醒技能除外；最多叠加5次）
     # - 叠加达上限时，技能范围 +10%
+    # - 特效伤害 +12%
     # rarity: 传说
     char.SetSkillCDRecover(1, 100, 0.3)
     char.equ_effect.append(EquEffect(name='永劫地狱火', icon='/equipment/icon/weapon/thief/twinswd/00246.png', cd=1, data=9360))
+    char.SetStatus(EquEffectRatio=0.12)
     pass
 
 
@@ -3014,9 +3067,11 @@ def equ_215(char: CharacterProperty):
     # - 10秒内未释放地狱火时，地狱火层数 -1
     # 每存在1个冷却中的技能，技能冷却时间恢复速度 +6%（觉醒技能除外；最多叠加5次）
     # - 叠加达上限时，技能范围 +12%
+    # - 特效伤害 +12%
     # rarity: 史诗
     char.SetSkillCDRecover(1, 100, 0.3)
     char.equ_effect.append(EquEffect(name='永劫地狱火', icon='/equipment/icon/weapon/thief/twinswd/00247.png', cd=1, data=10400 * 1.2))
+    char.SetStatus(EquEffectRatio=0.12)
     pass
 
 
@@ -3031,10 +3086,12 @@ def equ_216(char: CharacterProperty):
     # - 烈炎狱火伤害量：15600%
     # 每存在1个冷却中的技能，技能冷却时间恢复速度 +6%（觉醒技能除外；最多叠加5次）
     # - 叠加达上限时，技能范围 +15%
+    # - 特效伤害 +12%
     # rarity: 太初
     char.SetSkillCDRecover(1, 100, 0.3)
     char.equ_effect.append(EquEffect(name='永劫地狱火', icon='/equipment/icon/weapon/thief/twinswd/00248.png', cd=1, data=12480))
     char.equ_effect.append(EquEffect(name='覆灭地狱火', icon='/equipment/icon/weapon/thief/twinswd/00248.png', cd=5, data=15600))
+    char.SetStatus(EquEffectRatio=0.12)
     pass
 
 
@@ -3107,9 +3164,9 @@ def equ_221(char: CharacterProperty):
 def equ_222(char: CharacterProperty):
     # DCALC_REMOVE: equ_222 - 畏惧之主宰
     # 攻击时，被恐惧压制的敌人受到伤害。（冷却时间0.2秒）
-    # *[恐惧]攻击力：1920%
+    # * [恐惧]攻击力：2000%
     # rarity: 传说
-    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00269.png', cd=0.2, data=1920))
+    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00269.png', cd=0.2, data=2000))
     pass
 
 
@@ -3117,13 +3174,13 @@ def equ_222(char: CharacterProperty):
 def equ_223(char: CharacterProperty):
     # DCALC_REMOVE: equ_223 - 恐惧之主宰
     # 攻击时，被恐惧压制的敌人受到伤害。（冷却时间0.2秒）
-    # *[恐惧]攻击力：1920%
+    # * [恐惧]攻击力：2000%
     # [残暴的恐惧][装备主动技能]
     # 给最强大的敌人烙下恐惧之烙印。
     # - 技能伤害 +5%，效果持续10秒
     # - 冷却时间20秒
     # rarity: 史诗
-    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00270.png', cd=0.2, data=1920))
+    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00270.png', cd=0.2, data=2000))
     if char.equ_options.get('5', 0) == 0:
         char.SetStatus(SkillAttack=0.05)
     elif char.equ_options.get('5', 0) == 2:
@@ -3135,16 +3192,16 @@ def equ_223(char: CharacterProperty):
 def equ_224(char: CharacterProperty):
     # DCALC_REMOVE: equ_224 - 恐怖之主宰
     # 攻击时，被恐惧压制的敌人受到伤害。（冷却时间0.2秒）
-    # *[恐惧]攻击力：1920%
+    # * [恐惧]攻击力：2000%
     # [无尽的恐惧][装备主动技能]
     # 给最强大的敌人施放降灵术。
     # - 技能伤害 +10%，效果持续10秒
     # - 持续时间结束时，落下冥河之钥
-    # *冥河之钥伤害量：22800%
+    # * 冥河之钥伤害量：51000%
     # - 冷却时间20秒
     # rarity: 太初
-    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00271.png', cd=0.2, data=1920))
-    char.equ_effect.append(EquEffect(name='冥河之钥', icon='/equipment/skill/55.png', cd=20, data=22800))
+    char.equ_effect.append(EquEffect(name='恐惧', icon='/equipment/icon/weapon/thief/wand/00271.png', cd=0.2, data=2000))
+    char.equ_effect.append(EquEffect(name='冥河之钥', icon='/equipment/skill/55.png', cd=20, data=51000))
     if char.equ_options.get('5', 0) == 0:
         char.SetStatus(SkillAttack=0.1)
     elif char.equ_options.get('5', 0) == 2:
@@ -3410,10 +3467,11 @@ def equ_246(char: CharacterProperty):
     # DCALC_REMOVE: equ_246 - 墨龙偃月刀
     # [墨龙偃月斩][装备主动技能]
     # 强力斩击前方的敌人，击倒对方。
-    # - 伤害量：113400%
-    # - 冷却时间：40秒
+    # - 伤害量：202000%
+    # - 冷却时间：60秒
+    # - 可取消技能释放（觉醒技能除外）
     # rarity: 传说
-    char.equ_effect.append(EquEffect(name='墨龙偃月斩', icon='/equipment/skill/61.png', cd=40, data=113400))
+    char.equ_effect.append(EquEffect(name='墨龙偃月斩', icon='/equipment/skill/61.png', cd=60, data=202000))
     pass
 
 
@@ -3422,10 +3480,11 @@ def equ_247(char: CharacterProperty):
     # DCALC_REMOVE: equ_247 - 精 · 墨龙偃月刀
     # [墨龙偃月斩][装备主动技能]
     # 强力斩击前方的敌人，击倒对方。
-    # - 伤害量：226800%
-    # - 冷却时间：40秒
+    # - 伤害量：404000%
+    # - 冷却时间：60秒
+    # - 可取消技能释放（觉醒技能除外）
     # rarity: 史诗
-    char.equ_effect.append(EquEffect(name='墨龙偃月斩', icon='/equipment/skill/61.png', cd=40, data=226800))
+    char.equ_effect.append(EquEffect(name='墨龙偃月斩', icon='/equipment/skill/61.png', cd=60, data=404000))
     pass
 
 
@@ -3434,10 +3493,11 @@ def equ_248(char: CharacterProperty):
     # DCALC_REMOVE: equ_248 - 真 · 墨龙偃月刀
     # [墨龙偃月斩][装备主动技能]
     # 强力斩击前方的敌人，击倒对方。
-    # - 伤害量：340200%
-    # - 冷却时间：40秒
+    # - 伤害量：606000%
+    # - 冷却时间：60秒
+    # - 可取消技能释放（觉醒技能除外）
     # rarity: 太初
-    char.equ_effect.append(EquEffect(name='墨龙偃月斩', icon='/equipment/skill/61.png', cd=40, data=340200))
+    char.equ_effect.append(EquEffect(name='墨龙偃月斩', icon='/equipment/skill/61.png', cd=60, data=606000))
     pass
 
 
@@ -3501,15 +3561,17 @@ def equ_254(char: CharacterProperty):
     # DCALC_REMOVE: equ_254 - 将星 : 流陨星光
     # 技能冷却时间20%减少（觉醒技能除外）
     # 所有速度 +10%
+    # 特效伤害 +10%
     # [星光盛宴]
     # 生成星之气息。（冷却时间30秒）
     # 生成星之气息后施放[后跳]技能时，消耗星之气息在随机位置进行流星攻击。
-    # - 流星伤害量：38250%
+    # - 流星伤害量：76500%
     # - 使敌人进入眩晕状态
     # rarity: 传说
     char.SetSkillCD(1, 100, 0.2)
     char.SetStatus(SpeedM=0.1, SpeedA=0.1, SpeedR=0.1)
-    char.equ_effect.append(EquEffect(name='星光盛宴', icon='/equipment/icon/weapon/demoniclancer/beamspear/00177.png', cd=30, data=38250))
+    char.equ_effect.append(EquEffect(name='星光盛宴', icon='/equipment/icon/weapon/demoniclancer/beamspear/00177.png', cd=30, data=76500))
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -3518,16 +3580,18 @@ def equ_255(char: CharacterProperty):
     # DCALC_REMOVE: equ_255 - 将星 : 流陨星雨
     # 技能冷却时间20%减少（觉醒技能除外）
     # 所有速度 +12.5%
+    # 特效伤害 +10%
     # [星光盛宴]
     # 生成星之气息。（冷却时间30秒）
     # 生成星之气息后施放[后跳]技能时，消耗星之气息在随机位置进行流星攻击。
-    # - 流星伤害量：38250%
+    # - 流星伤害量：76500%
     # - 使敌人进入眩晕状态
     # - [强化 -后跳]冷却时间 -10%
     # rarity: 史诗
     char.SetSkillCD(1, 100, 0.2)
     char.SetStatus(SpeedM=0.125, SpeedA=0.125, SpeedR=0.125)
-    char.equ_effect.append(EquEffect(name='星光盛宴', icon='/equipment/icon/weapon/demoniclancer/beamspear/00178.png', cd=30, data=38250))
+    char.equ_effect.append(EquEffect(name='星光盛宴', icon='/equipment/icon/weapon/demoniclancer/beamspear/00178.png', cd=30, data=76500))
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -3536,17 +3600,18 @@ def equ_256(char: CharacterProperty):
     # DCALC_REMOVE: equ_256 - 将星 : 流陨星河
     # 技能冷却时间20%减少（觉醒技能除外）
     # 所有速度 +15%
+    # 特效伤害 +10%
     # [星光盛宴]
     # 生成星之气息。（冷却时间30秒）
     # 生成星之气息后施放[后跳]技能时，消耗星之气息在随机位置进行流星攻击。
-    # - 流星伤害量：38250%
+    # - 流星伤害量：76500%
     # - 使敌人进入眩晕状态
     # - [强化 -后跳]冷却时间 -20%
     # rarity: 太初
     char.SetSkillCD(1, 100, 0.2)
     char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
-    char.equ_effect.append(EquEffect(name='星光盛宴', icon='/equipment/icon/weapon/demoniclancer/beamspear/00179.png', cd=30, data=38250))
-    # char.equ_effect.append(EquEffect
+    char.equ_effect.append(EquEffect(name='星光盛宴', icon='/equipment/icon/weapon/demoniclancer/beamspear/00179.png', cd=30, data=76500))
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -3643,11 +3708,11 @@ def equ_263(char: CharacterProperty):
     # [吞噬一切之暗]
     # 生产暗灭之矛气息。（冷却时间20秒）
     # 跳跃状态下攻击时，对已命中的怪物追加暗灭之矛攻击。
-    # - 暗灭之矛伤害量：22800%
+    # - 暗灭之矛伤害量：54000%
     # rarity: 史诗
     char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
     char.SetStatus(SpeedM=0.05*4, SpeedA=0.05*4, SpeedR=0.05*4)
-    char.equ_effect.append(EquEffect(name='暗灭之矛', icon='/equipment/icon/weapon/demoniclancer/javelin/00167.png', cd=20, data=22800))
+    char.equ_effect.append(EquEffect(name='暗灭之矛', icon='/equipment/icon/weapon/demoniclancer/javelin/00167.png', cd=20, data=54000))
     pass
 
 
@@ -3661,13 +3726,13 @@ def equ_264(char: CharacterProperty):
     # [吞噬一切之暗]
     # 生产暗灭之矛气息。（冷却时间20秒）
     # 跳跃状态下攻击时，对已命中的怪物追加暗灭之矛攻击。
-    # - 暗灭之矛伤害量：22800%
+    # - 暗灭之矛伤害量：51000%
     # 暗灭之矛出现后，6个暗灭之矛追加攻击。
     # - 暗灭之矛伤害量：1000%
     # rarity: 太初
     char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
     char.SetStatus(SpeedM=0.05*4, SpeedA=0.05*4, SpeedR=0.05*4)
-    char.equ_effect.append(EquEffect(name='暗灭之矛', icon='/equipment/icon/weapon/demoniclancer/javelin/00184.png', cd=20, data=22800+1000*6))
+    char.equ_effect.append(EquEffect(name='暗灭之矛', icon='/equipment/icon/weapon/demoniclancer/javelin/00184.png', cd=20, data=51000+1000*6))
     pass
 
 
@@ -3821,11 +3886,11 @@ def equ_278(char: CharacterProperty):
     # DCALC_REMOVE: equ_278 - 新月夜天刀
     # [满月]
     # 使用消耗无色小晶块的技能时，召唤攻击敌人的月影。
-    # - 月影攻击力：82050%
+    # - 月影攻击力：133500%
     # - 冷却时间：20秒
     # 所有速度 +15%
     # rarity: 传说
-    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00194.png', cd=20, data=82050))
+    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00194.png', cd=20, data=133500))
     char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
     pass
 
@@ -3835,11 +3900,11 @@ def equ_279(char: CharacterProperty):
     # DCALC_REMOVE: equ_279 - 弦月夜天刀
     # [满月]
     # 使用消耗无色小晶块的技能时，召唤攻击敌人的月影。
-    # - 月影攻击力：164100%
+    # - 月影攻击力：267000%
     # - 冷却时间：20秒
     # 所有速度 +20%
     # rarity: 史诗
-    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00195.png', cd=20, data=164100))
+    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00195.png', cd=20, data=267000))
     char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     pass
 
@@ -3849,12 +3914,12 @@ def equ_280(char: CharacterProperty):
     # DCALC_REMOVE: equ_280 - 满月 : 辉光夜天刀
     # [满月]
     # 使用消耗无色小晶块的技能时，召唤攻击敌人的月影。
-    # - 月影攻击力：218800%
+    # - 月影攻击力：355000%
     # - 冷却时间：20秒
     # 施放[电光飞掠]和[集结·暮光之翼]时，增加夜空中的星星闪烁效果。
     # 所有速度 +30%
     # rarity: 太初
-    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00196.png', cd=20, data=218800))
+    char.equ_effect.append(EquEffect(name='满月', icon='/equipment/icon/weapon/gunblader/lblade/00196.png', cd=20, data=355000))
     char.SetStatus(SpeedM=0.3, SpeedA=0.3, SpeedR=0.3)
     pass
 
@@ -3923,16 +3988,17 @@ def equ_285(char: CharacterProperty):
 def equ_286(char: CharacterProperty):
     # DCALC_REMOVE: equ_286 - 爆裂之锯
     # 技能冷却时间20%减少（觉醒技能除外）
-    # [躁狂]
-    # 进入地下城时，[躁狂]层数 +10
-    # - 最多叠加10层
-    # 每秒[躁狂]层数 +1
-    # [戮影之舞][装备主动技能]
-    # 消耗6层[躁狂]，攻击前方敌人。
-    # - 戮影之舞伤害量：12600%
+    # 特效伤害 +10%
+    # [狂戮掠夺][装备主动技能]
+    # 意识陷入狂暴状态，狂戮掠夺敌人的生命力。
+    # - 可以强制中断角色技能并施放该装备的主动技能（觉醒技能除外）
+    # - [狂戮掠夺]伤害量：2550%
+    # - [狂戮掠夺]恢复量：最大生命值的1%
+    # - 冷却时间：10秒
     # rarity: 传说
     char.SetSkillCD(cd=0.2)
-    char.equ_effect.append(EquEffect(name='戮影之舞', icon='/equipment/skill/43.png', cd=6, data=12600))
+    char.equ_effect.append(EquEffect(name='狂戮掠夺', icon='/equipment/skill/43.png', cd=10, data=2550))
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -3940,17 +4006,17 @@ def equ_286(char: CharacterProperty):
 def equ_287(char: CharacterProperty):
     # DCALC_REMOVE: equ_287 - 凶残之锯
     # 技能冷却时间20%减少（觉醒技能除外）
-    # [躁狂]
-    # 进入地下城时，[躁狂]层数 +10
-    # - 最多叠加10层
-    # 每秒[躁狂]层数 +1
-    # 释放技能时，[躁狂]层数 +1（冷却时间5秒）
-    # [戮影之舞][装备主动技能]
-    # 消耗5层[躁狂]，攻击前方敌人。
-    # - 戮影之舞伤害量：12600%
+    # 特效伤害 +10%
+    # [狂戮掠夺][装备主动技能]
+    # 意识陷入狂暴状态，狂戮掠夺敌人的生命力。
+    # - 可以强制中断角色技能并施放该装备的主动技能（觉醒技能除外）
+    # - [狂戮掠夺]伤害量：2550%
+    # - [狂戮掠夺]恢复量：最大生命值的2%
+    # - 冷却时间：5秒
     # rarity: 史诗
     char.SetSkillCD(cd=0.2)
-    char.equ_effect.append(EquEffect(name='戮影之舞', icon='/equipment/skill/43.png', cd=4.17, data=12600))
+    char.equ_effect.append(EquEffect(name='戮影之舞', icon='/equipment/skill/43.png', cd=5, data=2550))
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -3958,17 +4024,17 @@ def equ_287(char: CharacterProperty):
 def equ_288(char: CharacterProperty):
     # DCALC_REMOVE: equ_288 - 惊魂之锯
     # 技能冷却时间20%减少（觉醒技能除外）
-    # [躁狂]
-    # 进入地下城时，[躁狂]层数 +12
-    # - 最多叠加12层
-    # 每秒[躁狂]层数 +1
-    # 释放技能时，[躁狂]层数 +2（冷却时间5秒）
-    # [戮影之舞][装备主动技能]
-    # 消耗4层[躁狂]，攻击前方敌人。
-    # - 戮影之舞伤害量：12600%
+    # 特效伤害 +10%
+    # [狂戮掠夺][装备主动技能]
+    # 意识陷入狂暴状态，狂戮掠夺敌人的生命力。
+    # - 可以强制中断角色技能并施放该装备的主动技能（觉醒技能除外）
+    # - [狂戮掠夺]伤害量：2550%
+    # - [狂戮掠夺]恢复量：最大生命值的3%
+    # - 冷却时间：2秒
     # rarity: 太初
     char.SetSkillCD(cd=0.2)
-    char.equ_effect.append(EquEffect(name='戮影之舞', icon='/equipment/skill/43.png', cd=2.85, data=12600))
+    char.equ_effect.append(EquEffect(name='戮影之舞', icon='/equipment/skill/43.png', cd=2, data=2550))
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -4030,10 +4096,11 @@ def equ_294(char: CharacterProperty):
     # - 各目标适用冷却时间40秒
     # 根据对附着核心源动力的敌人造成的攻击次数，追加攻击。
     # - 每攻击5次，发动能量冲击
-    # 能量冲击伤害量2835%
+    # 能量冲击伤害量4500%
     # - 攻击100次后，解除核心源动力
+    # 若0.2秒内未进行攻击，则下次攻击时追加1次攻击次数（最多叠加5层）
     # rarity: 传说
-    char.equ_effect.append(EquEffect(name='超频源力[5次]', icon='/equipment/icon/weapon/gunblader/coreswd/00163.png', cd=40, data=2835))
+    char.equ_effect.append(EquEffect(name='超频源力[5次]', icon='/equipment/icon/weapon/gunblader/coreswd/00163.png', cd=40, data=4500))
     pass
 
 
@@ -4045,13 +4112,14 @@ def equ_295(char: CharacterProperty):
     # - 各目标适用冷却时间40秒
     # 根据对附着核心源动力的敌人造成的攻击次数，追加攻击。
     # - 每攻击5次：发动能量冲击
-    # 能量冲击伤害量2835%
+    # 能量冲击伤害量4500%
     # - 每攻击20次：发动能量爆发
-    # 能量爆发伤害量：22680%
+    # 能量爆发伤害量：35000%
     # - 攻击100次后，解除核心源动力
+    # 若0.2秒内未进行攻击，则下次攻击时追加1次攻击次数（最多叠加5层）
     # rarity: 史诗
-    char.equ_effect.append(EquEffect(name='超频源力[5次]', icon='/equipment/icon/weapon/gunblader/coreswd/00164.png', cd=40, data=2835))
-    char.equ_effect.append(EquEffect(name='超频源力[20次]', icon='/equipment/icon/weapon/gunblader/coreswd/00164.png', cd=40, data=22680))
+    char.equ_effect.append(EquEffect(name='超频源力[5次]', icon='/equipment/icon/weapon/gunblader/coreswd/00164.png', cd=40, data=4500))
+    char.equ_effect.append(EquEffect(name='超频源力[20次]', icon='/equipment/icon/weapon/gunblader/coreswd/00164.png', cd=40, data=35000))
     pass
 
 
@@ -4063,15 +4131,16 @@ def equ_296(char: CharacterProperty):
     # - 各目标适用冷却时间40秒
     # 根据对附着核心源动力的敌人造成的攻击次数，追加攻击。
     # - 每攻击5次：发动能量冲击
-    # 能量冲击伤害量2835%
+    # 能量冲击伤害量4500%
     # - 每攻击20次：发动能量爆发
-    # 能量爆发伤害量：22680%
+    # 能量爆发伤害量：35000%
     # - 每攻击100次：发动核心爆发
-    # 核心爆发伤害量：170100%
+    # 核心爆发伤害量：265000%
+    # 若0.2秒内未进行攻击，则下次攻击时追加1次攻击次数（最多叠加5层）
     # rarity: 太初
     char.equ_effect.append(EquEffect(name='超频源力[5次]', icon='/equipment/icon/weapon/gunblader/coreswd/00165.png', cd=40, data=2835))
     char.equ_effect.append(EquEffect(name='超频源力[20次]', icon='/equipment/icon/weapon/gunblader/coreswd/00165.png', cd=40, data=22680))
-    char.equ_effect.append(EquEffect(name='超频源力[100次]', icon='/equipment/icon/weapon/gunblader/coreswd/00165.png', cd=40, data=170100))
+    char.equ_effect.append(EquEffect(name='超频源力[100次]', icon='/equipment/icon/weapon/gunblader/coreswd/00165.png', cd=40, data=265000))
     pass
 
 
@@ -4136,7 +4205,9 @@ def equ_302(char: CharacterProperty):
     # - 技能伤害 +12.3%
     # [迷雾之路]
     # - 技能冷却时间 -20%
+    # - 特效伤害 +10%
     # rarity: 传说
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -4151,7 +4222,9 @@ def equ_303(char: CharacterProperty):
     # - 技能伤害 +12.3%
     # [迷雾之路]
     # - 技能冷却时间 -20%
+    # - 特效伤害 +10%
     # rarity: 史诗
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -4166,7 +4239,9 @@ def equ_304(char: CharacterProperty):
     # - 技能伤害 +12.3%
     # [迷雾之路]
     # - 技能冷却时间 -20%
+    # - 特效伤害 +10%
     # rarity: 太初
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -4230,9 +4305,11 @@ def equ_310(char: CharacterProperty):
     # - 冷却时间300秒
     # [活力旋律]
     # - 技能冷却时间 -20%
+    # - 特效伤害 +10%
     # [华彩乐章]
     # - 技能伤害 +12.3%
     # rarity: 传说
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -4246,9 +4323,11 @@ def equ_311(char: CharacterProperty):
     # - 冷却时间300秒
     # [活力旋律]
     # - 技能冷却时间 -20%
+    # - 特效伤害 +10%
     # [华彩乐章]
     # - 技能伤害 +12.3%
     # rarity: 史诗
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -4262,9 +4341,11 @@ def equ_312(char: CharacterProperty):
     # - 冷却时间300秒
     # [活力旋律]
     # - 技能冷却时间 -20%
+    # - 特效伤害 +10%
     # [华彩乐章]
     # - 技能伤害 +12.3%
     # rarity: 太初
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -4345,7 +4426,9 @@ def equ_318(char: CharacterProperty):
     # - 技能伤害 +12.3%
     # [帕伊卡巡逻]
     # - 技能冷却时间 -20%
+    # - 特效伤害 +10%
     # rarity: 传说
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -4361,7 +4444,9 @@ def equ_319(char: CharacterProperty):
     # - 技能伤害 +12.3%
     # [帕伊卡巡逻]
     # - 技能冷却时间 -20%
+    # - 特效伤害 +10%
     # rarity: 史诗
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -4376,7 +4461,9 @@ def equ_320(char: CharacterProperty):
     # - 技能伤害 +12.3%
     # [帕伊卡巡逻]
     # - 技能冷却时间 -20%
+    # - 特效伤害 +10%
     # rarity: 太初
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -4467,7 +4554,9 @@ def equ_326(char: CharacterProperty):
     # - 技能伤害 +12.3%
     # [危险感知]
     # - 技能冷却时间 -20%
+    # - 特效伤害 +10%
     # rarity: 传说
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -4483,13 +4572,16 @@ def equ_327(char: CharacterProperty):
     # - 技能伤害 +12.3%
     # [危险感知]
     # - 技能冷却时间 -20%
+    # - 特效伤害 +10%
     # rarity: 史诗
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
 @register
 def equ_328(char: CharacterProperty):
     # DCALC_REMOVE: equ_328 - 妖语黄昏
+    # 需要[超越两界]技能
     # [全神贯注][装备主动技能]
     # 进入地下城时，[弱点捕捉]自动生效。
     # 使用时，[危险感知]生效。
@@ -4498,7 +4590,9 @@ def equ_328(char: CharacterProperty):
     # - 技能伤害 +12.3%
     # [危险感知]
     # - 技能冷却时间 -20%
+    # - 特效伤害 +10%
     # rarity: 太初
+    char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -4569,10 +4663,10 @@ def equ_334(char: CharacterProperty):
     # DCALC_REMOVE: equ_334 - 起始之勉项链
     # 所有属性强化 +40
     # rarity: 稀有
-    char.AddElementDB('光', 40)
-    char.AddElementDB('火', 40)
-    char.AddElementDB('冰', 40)
-    char.AddElementDB('暗', 40)
+    char.AddElementDB('光', 40, 1)
+    char.AddElementDB('火', 40, 1)
+    char.AddElementDB('冰', 40, 1)
+    char.AddElementDB('暗', 40, 1)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
@@ -4584,10 +4678,10 @@ def equ_335(char: CharacterProperty):
     # DCALC_REMOVE: equ_335 - 起始之鸣手镯
     # 所有属性强化 +50
     # rarity: 稀有
-    char.AddElementDB('光', 50)
-    char.AddElementDB('火', 50)
-    char.AddElementDB('冰', 50)
-    char.AddElementDB('暗', 50)
+    char.AddElementDB('光', 50, 1)
+    char.AddElementDB('火', 50, 1)
+    char.AddElementDB('冰', 50, 1)
+    char.AddElementDB('暗', 50, 1)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
@@ -4599,10 +4693,10 @@ def equ_336(char: CharacterProperty):
     # DCALC_REMOVE: equ_336 - 起始之瞬戒指
     # 所有属性强化 +40
     # rarity: 稀有
-    char.AddElementDB('光', 40)
-    char.AddElementDB('火', 40)
-    char.AddElementDB('冰', 40)
-    char.AddElementDB('暗', 40)
+    char.AddElementDB('光', 40, 1)
+    char.AddElementDB('火', 40, 1)
+    char.AddElementDB('冰', 40, 1)
+    char.AddElementDB('暗', 40, 1)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
@@ -4718,33 +4812,39 @@ def equ_345(char: CharacterProperty):
 @register
 def equ_346(char: CharacterProperty):
     # DCALC_REMOVE: equ_346 - 通宝 - 萌生的不安气息头肩
+    # 攻击速度+17% 施放速度+17%
     # 攻击时，生成雾珠，聚集100px范围内敌人。（冷却10秒）
     # rarity: 神器
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
+    char.SetStatus(SpeedA=0.17, SpeedR=0.17)
     pass
 
 
 @register
 def equ_347(char: CharacterProperty):
     # DCALC_REMOVE: equ_347 - 通宝 - 滋生的不祥气息头肩
+    # 攻击速度+20% 施放速度+20%
     # 攻击时，生成雾珠，聚集200px范围内敌人。（冷却10秒）
     # rarity: 传说
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
+    char.SetStatus(SpeedA=0.2, SpeedR=0.2)
     pass
 
 
 @register
 def equ_348(char: CharacterProperty):
     # DCALC_REMOVE: equ_348 - 通宝 - 蔓生之妖气头肩
+    # 攻击速度+20% 施放速度+20%
     # 攻击时，生成雾珠，聚集400px范围内敌人。（冷却10秒）
     # rarity: 史诗
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
+    char.SetStatus(SpeedA=0.2, SpeedR=0.2)
     pass
 
 
@@ -4822,7 +4922,7 @@ def equ_354(char: CharacterProperty):
     # 移动速度 +29%
     # 所有速度 +50%
     # rarity: 史诗
-    char.SetStatus(SpeedM=0.29)
+    char.SetStatus(SpeedM=0.29 )
     char.SetStatus(SpeedM=0.5)
     char.SetStatus(SpeedA=0.5)
     char.SetStatus(SpeedR=0.5)
@@ -4840,10 +4940,10 @@ def equ_355(char: CharacterProperty):
     # - 按照装备、消耗品、恢复技能提供的生命值恢复量的10%，恢复保护罩
     # - 持续恢复的技能除外
     # rarity: 神器
-    char.AddElementDB('光', 40)
-    char.AddElementDB('火', 40)
-    char.AddElementDB('冰', 40)
-    char.AddElementDB('暗', 40)
+    char.AddElementDB('光', 40, 1)
+    char.AddElementDB('火', 40, 1)
+    char.AddElementDB('冰', 40, 1)
+    char.AddElementDB('暗', 40, 1)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
@@ -4858,10 +4958,10 @@ def equ_356(char: CharacterProperty):
     # - 按照装备、消耗品、恢复技能提供的生命值恢复量的30%，恢复保护罩
     # - 持续恢复的技能除外
     # rarity: 传说
-    char.AddElementDB('光', 40)
-    char.AddElementDB('火', 40)
-    char.AddElementDB('冰', 40)
-    char.AddElementDB('暗', 40)
+    char.AddElementDB('光', 40, 1)
+    char.AddElementDB('火', 40, 1)
+    char.AddElementDB('冰', 40, 1)
+    char.AddElementDB('暗', 40, 1)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
@@ -4876,10 +4976,10 @@ def equ_357(char: CharacterProperty):
     # - 按照装备、消耗品、恢复技能提供的生命值恢复量的50%，恢复保护罩
     # - 持续恢复的技能除外
     # rarity: 史诗
-    char.AddElementDB('光', 40)
-    char.AddElementDB('火', 40)
-    char.AddElementDB('冰', 40)
-    char.AddElementDB('暗', 40)
+    char.AddElementDB('光', 40, 1)
+    char.AddElementDB('火', 40, 1)
+    char.AddElementDB('冰', 40, 1)
+    char.AddElementDB('暗', 40, 1)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
@@ -4892,10 +4992,10 @@ def equ_358(char: CharacterProperty):
     # 所有属性强化 +50
     # 特效伤害 +3%
     # rarity: 神器
-    char.AddElementDB('光', 50)
-    char.AddElementDB('火', 50)
-    char.AddElementDB('冰', 50)
-    char.AddElementDB('暗', 50)
+    char.AddElementDB('光', 50, 1)
+    char.AddElementDB('火', 50, 1)
+    char.AddElementDB('冰', 50, 1)
+    char.AddElementDB('暗', 50, 1)
     char.SetStatus(EquEffectRatio=0.03)
     if char.buffer:
         char.BuffSkill.lv += 1
@@ -4909,10 +5009,10 @@ def equ_359(char: CharacterProperty):
     # 所有属性强化 +50
     # 特效伤害 +6%
     # rarity: 传说
-    char.AddElementDB('光', 50)
-    char.AddElementDB('火', 50)
-    char.AddElementDB('冰', 50)
-    char.AddElementDB('暗', 50)
+    char.AddElementDB('光', 50, 1)
+    char.AddElementDB('火', 50, 1)
+    char.AddElementDB('冰', 50, 1)
+    char.AddElementDB('暗', 50, 1)
     char.SetStatus(EquEffectRatio=0.06)
     if char.buffer:
         char.BuffSkill.lv += 1
@@ -4926,10 +5026,10 @@ def equ_360(char: CharacterProperty):
     # 所有属性强化 +50
     # 特效伤害 +10%
     # rarity: 史诗
-    char.AddElementDB('光', 50)
-    char.AddElementDB('火', 50)
-    char.AddElementDB('冰', 50)
-    char.AddElementDB('暗', 50)
+    char.AddElementDB('光', 50, 1)
+    char.AddElementDB('火', 50, 1)
+    char.AddElementDB('冰', 50, 1)
+    char.AddElementDB('暗', 50, 1)
     char.SetStatus(EquEffectRatio=0.1)
     if char.buffer:
         char.BuffSkill.lv += 1
@@ -4943,10 +5043,10 @@ def equ_361(char: CharacterProperty):
     # 所有属性强化 +40
     # [受身蹲伏]的蹲伏姿势时，无敌时间上限 +0.3秒
     # rarity: 神器
-    char.AddElementDB('光', 40)
-    char.AddElementDB('火', 40)
-    char.AddElementDB('冰', 40)
-    char.AddElementDB('暗', 40)
+    char.AddElementDB('光', 40, 1)
+    char.AddElementDB('火', 40, 1)
+    char.AddElementDB('冰', 40, 1)
+    char.AddElementDB('暗', 40, 1)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
@@ -4959,10 +5059,10 @@ def equ_362(char: CharacterProperty):
     # 所有属性强化 +40
     # [受身蹲伏]的蹲伏姿势时，无敌时间上限 +0.5秒
     # rarity: 传说
-    char.AddElementDB('光', 40)
-    char.AddElementDB('火', 40)
-    char.AddElementDB('冰', 40)
-    char.AddElementDB('暗', 40)
+    char.AddElementDB('光', 40, 1)
+    char.AddElementDB('火', 40, 1)
+    char.AddElementDB('冰', 40, 1)
+    char.AddElementDB('暗', 40, 1)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
@@ -4975,10 +5075,10 @@ def equ_363(char: CharacterProperty):
     # 所有属性强化 +40
     # [受身蹲伏]的蹲伏姿势时，无敌时间上限 +1秒
     # rarity: 史诗
-    char.AddElementDB('光', 40)
-    char.AddElementDB('火', 40)
-    char.AddElementDB('冰', 40)
-    char.AddElementDB('暗', 40)
+    char.AddElementDB('光', 40, 1)
+    char.AddElementDB('火', 40, 1)
+    char.AddElementDB('冰', 40, 1)
+    char.AddElementDB('暗', 40, 1)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
@@ -5025,11 +5125,13 @@ def equ_366(char: CharacterProperty):
 def equ_367(char: CharacterProperty):
     # DCALC_REMOVE: equ_367 - 通宝 - 唤醒自我的咆哮
     # 技能冷却时间25%减少（觉醒技能除外）
+    # 特效伤害 +7%
     # rarity: 神器
     char.SetSkillCD(1, 100, 0.25)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 2
+    char.SetStatus(EquEffectRatio=0.07)
     pass
 
 
@@ -5037,11 +5139,13 @@ def equ_367(char: CharacterProperty):
 def equ_368(char: CharacterProperty):
     # DCALC_REMOVE: equ_368 - 通宝 - 淹没自我的咆哮
     # 技能冷却时间25%减少（觉醒技能除外）
+    # 特效伤害 +7%
     # rarity: 传说
     char.SetSkillCD(1, 100, 0.25)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 2
+    char.SetStatus(EquEffectRatio=0.07)
     pass
 
 
@@ -5049,11 +5153,13 @@ def equ_368(char: CharacterProperty):
 def equ_369(char: CharacterProperty):
     # DCALC_REMOVE: equ_369 - 通宝 - 混淆自我的咆哮
     # 技能冷却时间25%减少（觉醒技能除外）
+    # 特效伤害 +7%
     # rarity: 史诗
     char.SetSkillCD(1, 100, 0.25)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 2
+    char.SetStatus(EquEffectRatio=0.07)
     pass
 
 
@@ -5278,10 +5384,10 @@ def equ_388(char: CharacterProperty):
     # DCALC_REMOVE: equ_388 - 浅淡的潜影项链 - 绯
     # 所有属性强化 +40
     # rarity: 神器
-    char.AddElementDB('光', 40)
-    char.AddElementDB('火', 40)
-    char.AddElementDB('冰', 40)
-    char.AddElementDB('暗', 40)
+    char.AddElementDB('光', 40, 1)
+    char.AddElementDB('火', 40, 1)
+    char.AddElementDB('冰', 40, 1)
+    char.AddElementDB('暗', 40, 1)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
@@ -5338,10 +5444,10 @@ def equ_394(char: CharacterProperty):
     # DCALC_REMOVE: equ_394 - 浅淡的潜影手镯 - 火
     # 所有属性强化 +50
     # rarity: 神器
-    char.AddElementDB('光', 50)
-    char.AddElementDB('火', 50)
-    char.AddElementDB('冰', 50)
-    char.AddElementDB('暗', 50)
+    char.AddElementDB('光', 50, 1)
+    char.AddElementDB('火', 50, 1)
+    char.AddElementDB('冰', 50, 1)
+    char.AddElementDB('暗', 50, 1)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
@@ -5398,10 +5504,10 @@ def equ_400(char: CharacterProperty):
     # DCALC_REMOVE: equ_400 - 浅淡的潜影戒指 - 毒
     # 所有属性强化 +40
     # rarity: 神器
-    char.AddElementDB('光', 40)
-    char.AddElementDB('火', 40)
-    char.AddElementDB('冰', 40)
-    char.AddElementDB('暗', 40)
+    char.AddElementDB('光', 40, 1)
+    char.AddElementDB('火', 40, 1)
+    char.AddElementDB('冰', 40, 1)
+    char.AddElementDB('暗', 40, 1)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
@@ -9986,8 +10092,8 @@ def equ_2000(char: CharacterProperty):
     # [地震波]
     # 精度达到25%时，[地震波]属性生效。
     # 攻击时，生成地震冲击波，攻击周围所有敌人。（冷却时间30秒）
-    # - 伤害量：45900%
-    # - 精度每提升25%，伤害量增加45900%，范围增加50%（最大75%）
+    # - 伤害量：68850%
+    # - 精度每提升25%，伤害量增加68850%，范围增加50%（最大75%）
     # [膜拜]
     # 精度达到100%时，在城镇中使用普通聊天输入“膜拜”时，出现特效。（冷却时间600秒）
     # rarity: 太初
@@ -10023,6 +10129,7 @@ def equ_2001(char: CharacterProperty):
     # 精度100%时，技能伤害+10%，增益量4650
     # 技能冷却时间-4%（觉醒技能除外）
     # 精度每提升25%，技能冷却时间-4%（最多叠加4次；觉醒技能除外）
+    # 特效伤害 +10%
     # [不稳定性]
     # 展现神之权能，以1~11秒的时间间隔，每次有1%的几率初始化所有技能冷却时间
     # *仅当2个以上技能处于冷却时间时适用
@@ -10042,6 +10149,7 @@ def equ_2001(char: CharacterProperty):
     char.SetStatus(SkillAttack=skillAttack / 100, Buffer=buffer)
     char.SetSkillCD(cd=0.04)
     cd = (point // 25) * 0.04
+    char.SetStatus(EquEffectRatio=0.10)
     if cd > 0:
         char.SetSkillCD(cd=cd)
     if char.buffer:

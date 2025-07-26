@@ -983,7 +983,7 @@ class Skill32(ActiveSkill):
 
     # 集束长枪的攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
-    hit0 = 20*2
+    hit0 = 20
     #  集束长枪的发射数量 : {value1}个
     data1 = get_data(f'{prefix}/{uuid}', 1)
     # 最多发射次数 : {value2}次

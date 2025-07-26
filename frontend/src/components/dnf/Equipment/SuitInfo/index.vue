@@ -34,10 +34,9 @@
       <!-- 装备属性 -->
       <div class="divide"></div>
       <div
-        class="flex flex-col items-start my-1px"
-        style="white-space: pre-wrap; line-height: 15px"
+        class="flex flex-col items-start my-1px whitespace-pre-wrap leading-15px"
       >
-        <div class="text-#DED29A" v-html="detail"></div>
+        <div class="text-#DED29A py-4px whitespace-pre-wrap" v-html="detail"></div>
       </div>
     </div>
   </div>
@@ -76,5 +75,6 @@ const detail = computed(() =>
 <style lang="scss" scoped>
 .divide {
   border-top: 1px solid rgba(243, 244, 246, 0.3);
+  margin: 2px 0;
 }
 </style>

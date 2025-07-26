@@ -131,7 +131,7 @@ class Character(CharacterProperty):
     """装备效果列表"""
     equ_options: dict[str, int] = {}
     """装备选项列表"""
-    EquEffectRatio = 1
+    EquEffectRatio = 1.0
     """装备效果倍率"""
     max_point = 0
     """套装效果点数"""
@@ -252,19 +252,7 @@ class Character(CharacterProperty):
         三攻=0,
         技攻=0,
         全属强=0,
-        火强=0,
-        冰强=0,
-        光强=0,
-        暗强=0,
         全属抗=0,
-        火属性抗性=0,
-        冰属性抗性=0,
-        光属性抗性=0,
-        暗属性抗性=0,
-        火属性攻击=False,
-        冰属性攻击=False,
-        光属性攻击=False,
-        暗属性攻击=False,
         移动速度=0,
         攻击速度=0,
         施放速度=0,
@@ -313,6 +301,18 @@ class Character(CharacterProperty):
                 'Spirit',
                 'Vitality',
                 'EquEffectRatio',
+                '火强',
+                '冰强',
+                '光强',
+                '暗强',
+                '火属性抗性',
+                '冰属性抗性',
+                '光属性抗性',
+                '暗属性抗性',
+                '火属性攻击',
+                '冰属性攻击',
+                '光属性攻击',
+                '暗属性攻击',
             ],
             Any,
         ],
@@ -330,8 +330,8 @@ class Character(CharacterProperty):
         self.PAtkI *= kwargs.get('PAtkI', 1.0)
         for elem in ['火', '冰', '光', '暗']:
             self.ElementA[elem] = kwargs.get(f'{elem}属性攻击', False) or kwargs.get('ElementA', {}).get(elem, False) or self.ElementA[elem]
-            self.ElementDB[elem] += kwargs.get(f'{elem}强', 0) + kwargs.get('ElementDB', {}).get(elem, 0) + kwargs.get('全属强', 0)
-            self.ElementR[elem] += kwargs.get(f'{elem}抗', 0) + kwargs.get('ElementR', {}).get(elem, 0) + kwargs.get('全属抗', 0)
+            self.ElementDB[elem] += kwargs.get(f'{elem}强', 0) + kwargs.get('ElementDB', {}).get(elem, 0) + 全属强
+            self.ElementR[elem] += kwargs.get(f'{elem}抗', 0) + kwargs.get('ElementR', {}).get(elem, 0) + 全属抗
         self.CriticalM += kwargs.get('CriticalM', 0) + 魔暴
         self.CriticalP += kwargs.get('CriticalP', 0) + 物暴
         self.SkillAttack *= (1 + 技攻) * (1 + kwargs.get('SkillAttack', 0))
@@ -346,7 +346,7 @@ class Character(CharacterProperty):
         self.AttackP += 攻击强化P + kwargs.get('AttackP', 0.0)
         self.Buffer += 增益量 + kwargs.get('Buffer', 0)
         self.BufferP += 增益量P + kwargs.get('BufferP', 0)
-        self.EquEffectRatio *= 1 + kwargs.get('EquEffectRatio', 0.0)
+        self.EquEffectRatio += kwargs.get('EquEffectRatio', 0.0)
         pass
 
     def AddElementDB(self, element: str, value: float, type: int = 0) -> None:

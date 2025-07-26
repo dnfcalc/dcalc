@@ -117,7 +117,7 @@ export default defineComponent({
                               {renderList(skills(index).value, (item) => (
                                 <>
                                   <CalcOption value={item.id.toString()}>
-                                    <img src={getImageURL(item.icon)} alt={item.name} />
+                                    <img class="mt-2px" src={getImageURL(item.icon)} alt={item.name} />
                                   </CalcOption>
                                 </>
                               ))}
@@ -133,7 +133,7 @@ export default defineComponent({
                               {renderList(skills(index).value, (item) => (
                                 <>
                                   <CalcOption value={item.id.toString()}>
-                                    <img src={getImageURL(item.icon)} alt={item.name} />
+                                    <img class="mt-2px" src={getImageURL(item.icon)} alt={item.name} />
                                   </CalcOption>
                                 </>
                               ))}
