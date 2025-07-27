@@ -168,7 +168,7 @@ class Skill3(PassiveSkill):
     def effect(self, old, new):
         weapon = self.char.GetWeaponType()
         if weapon[0] != "光剑":
-            return
+            return None
         data = self.data0
         if weapon[1] == "传世武器":
             data = self.data16
@@ -268,7 +268,7 @@ class Skill5(PassiveSkill):
     def effect(self, old, new):
         weapon = self.char.GetWeaponType()
         if weapon[0] != "短剑":
-            return
+            return None
         data = self.data0
         if weapon[1] == "传世武器":
             data = self.data13
@@ -337,7 +337,7 @@ class Skill6(ActiveSkill):
     def effect(self, old, new):
         weapon = self.char.GetWeaponType()
         if weapon[0] != "太刀":
-            return
+            return None
         data = self.data0
         if weapon[1] == "传世武器":
             data = self.data10
@@ -409,7 +409,7 @@ class Skill7(PassiveSkill):
     def effect(self, old, new):
         weapon = self.char.GetWeaponType()
         if weapon[0] != "巨剑":
-            return
+            return None
         data = self.data0
         if weapon[1] == "传世武器":
             data = self.data9
@@ -472,7 +472,7 @@ class Skill8(PassiveSkill):
     def effect(self, old, new):
         weapon = self.char.GetWeaponType()
         if weapon[0] != "钝器":
-            return
+            return None
         data = self.data0
         if weapon[1] == "传世武器":
             data = self.data9
