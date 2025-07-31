@@ -25,6 +25,7 @@ class SuitData(Base):
     Buffer = Column(Float)
     imageUrl = Column(Text)
     value = Column(Text)
+    bufferValue = Column(Text)
     fame = Column(Integer)
 
 

@@ -33,11 +33,17 @@
       </div>
       <!-- 装备属性 -->
       <div class="divide"></div>
-      <div
-        class="flex flex-col items-start my-1px whitespace-pre-wrap leading-15px"
-      >
+      <div class="flex flex-col items-start my-1px whitespace-pre-wrap leading-15px">
         <div class="text-#DED29A py-4px whitespace-pre-wrap" v-html="detail"></div>
       </div>
+
+      <template v-if="bufferDetail">
+        <div class="divide"></div>
+        <div class="flex flex-col items-start my-1px whitespace-pre-wrap leading-15px">
+          <div class="text-#A48B2E mb-10px pt-4px">辅助职业专属属性</div>
+          <div class="text-#DED29A pb-10px whitespace-pre-wrap" v-html="bufferDetail"></div>
+        </div>
+      </template>
     </div>
   </div>
 
@@ -70,6 +76,14 @@ const mainAttr = computed(() => {
 const detail = computed(() =>
   props.suit?.value.replace(/\[([^\[\]技能]+?)\]/g, '<span style="color:#3d9147">[$1]</span>'),
 )
+
+const bufferDetail = computed(() => {
+  const detail = props.suit?.bufferValue
+  if (!detail || detail == '-') return undefined
+  return props.suit?.bufferValue.replace(
+    /\[(?![^\]]*技能)[^\[\]]+\]/g, match => `<span style="color:#3d9147">${match}</span>`
+  )
+})
 </script>
 
 <style lang="scss" scoped>

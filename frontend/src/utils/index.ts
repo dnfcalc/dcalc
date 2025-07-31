@@ -320,7 +320,7 @@ export function formatAttr(type: string, value: number) {
     case 'AtkI':
       return `独立攻击力 ${value}`
     case 'SkillAttack':
-      return `技能伤害 +${(value * 100).toFixed(2)}%`
+      return `技能伤害 增加 ${(value * 100).toFixed(2)}%`
     case 'Attack':
       return `攻击强化 +${value.toFixed(1)}%`
     case 'Buffer':

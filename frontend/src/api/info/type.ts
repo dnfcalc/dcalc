@@ -106,6 +106,7 @@ export interface ISuit {
   SkillAttack: number
   Buffer: number
   value: string
+  bufferValue: string
 }
 
 export interface IEnchantingInfo {
