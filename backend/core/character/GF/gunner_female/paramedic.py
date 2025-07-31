@@ -389,7 +389,7 @@ class Skill22(ActiveBufferSkill):
     """
     name = "军械强化"
     learnLv = 30
-    masterLv = 30
+    masterLv = 10
     maxLv = 40
     position = 0 #TODO
     rangeLv = 3

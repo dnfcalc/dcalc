@@ -1144,6 +1144,11 @@ def equ_86(char: CharacterProperty):
     # - 发动权威光谱效果
     # rarity: 传说
     char.SetStatus(SpeedA=0.1, SpeedM=0.1, SpeedR=0.1)
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1157,6 +1162,11 @@ def equ_87(char: CharacterProperty):
     # - 发动权威光谱效果
     # rarity: 史诗
     char.SetStatus(SpeedA=0.15, SpeedM=0.15, SpeedR=0.15)
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1171,6 +1181,11 @@ def equ_88(char: CharacterProperty):
     # - 发动权威光谱效果
     # rarity: 太初
     char.SetStatus(SpeedA=0.2, SpeedM=0.2, SpeedR=0.2)
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1247,6 +1262,11 @@ def equ_94(char: CharacterProperty):
     # - 冷却时间1秒
     # rarity: 传说
     char.equ_effect.append(EquEffect(name='冰封的火焰之躯', icon='/equipment/skill/26.png', cd=1, data=7650))
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1266,6 +1286,11 @@ def equ_95(char: CharacterProperty):
     # rarity: 史诗
     char.equ_effect.append(EquEffect(name='冰弩', icon='/equipment/skill/26.png', cd=1, data=7650))
     char.equ_effect.append(EquEffect(name='火弩', icon='/equipment/skill/26.png', cd=1, data=7650))
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
@@ -1288,6 +1313,11 @@ def equ_96(char: CharacterProperty):
     char.equ_effect.append(EquEffect(name='冰弩', icon='/equipment/skill/26.png', cd=1, data=7650))
     char.equ_effect.append(EquEffect(name='火弩', icon='/equipment/skill/26.png', cd=1, data=7650))
     char.equ_effect.append(EquEffect(name='箭雨', icon='/equipment/skill/26.png', cd=20, data=102000))
+    if char.buffer:
+        char.AddSkillLv(1, 100, 2)
+        char.BuffSkill.lv += 3
+        char.AwakeSkill.lv += 4
+        char.SetSkillCD(cd=0.2)
     pass
 
 
