@@ -107,7 +107,7 @@ export default defineComponent({
               //   <div class="min-h-10px">{item}</div>
               // ) :
               (
-                <div class="min-h-10px" style="text-indent:20px;">
+                <div class="min-h-10px" style="white-space:pre-wrap;">
                   {item}
                 </div>
               ),
