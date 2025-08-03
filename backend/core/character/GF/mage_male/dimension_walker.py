@@ -944,7 +944,7 @@ class Skill36(ActiveSkill):
     data3 = get_data(f'{prefix}/{uuid}', 3)
     # 粒子炮攻击力 : {value4}  x {value5}
     data4 = get_data(f'{prefix}/{uuid}', 4)
-    hit4 = 20
+    hit4 = 0
     data5 = get_data(f'{prefix}/{uuid}', 5)
     # [范围信息]
     # 中心范围比率 : {value6}%
@@ -958,7 +958,7 @@ class Skill36(ActiveSkill):
             self.hit4 = 0
         elif mode == "普通":
             self.hit1 = 0
-            self.hit4 = 1
+            self.hit4 = 10
 
 
     def vp_1(self):
