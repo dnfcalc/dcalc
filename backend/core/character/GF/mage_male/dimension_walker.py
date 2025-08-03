@@ -1192,6 +1192,10 @@ class Skill40(ActiveSkill):
         """
         ...
 
+    def effect(self, old, new):
+        if self.vp == 1:
+            self.associate = [{"type":"*skillRation","data":[0] + [-14]*self.maxLv,"skills":["乖离 : 魅魔之舞"]}]
+        return super().effect(old, new)
 # 混沌源能石
 # mage_male/dimension_walker/5c45f69c9ebc7a784e994369d2cc3c66
 # a5ccbaf5538981c6ef99b236c0a60b73/5c45f69c9ebc7a784e994369d2cc3c66
@@ -1292,7 +1296,7 @@ class Skill42(ActiveSkill):
 
     def setMode(self, mode):
         if mode == "强化":
-            self.hit7 = self.hit8 = 1
+            self.hit7 = self.hit8 = 4
             self.hit4 = self.hit5 = 0
         elif mode == "普通":
             self.hit7 = self.hit8 = 0
