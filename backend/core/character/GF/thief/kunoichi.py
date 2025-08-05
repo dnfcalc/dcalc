@@ -1832,11 +1832,11 @@ class classChange(Character):
         self.jobId = 'ddc49e9ad1ff72a00b53c6cff5b1e920'
         self.jobGrowId = 'a9a4ef4552d46e39cf6c874a51126410'
 
-        self.武器选项 = [] # TODO
-        self.输出类型选项 = [] # TODO
-        self.输出类型 = '' # TODO
-        self.防具精通属性 = [''] # TODO
-        self.防具类型 = ''
-        self.buff = ... # TODO
+        self.武器选项 = ['苦无','匕首', '双剑', '手杖'] # TODO
+        self.输出类型选项 = ["魔法百分比"] # TODO
+        self.输出类型 = '魔法百分比' # TODO
+        self.防具精通属性 = ['智力'] # TODO
+        self.防具类型 = '布甲'
+        self.buff = 2.123
 
         super().__init__(equVersion, __name__)
