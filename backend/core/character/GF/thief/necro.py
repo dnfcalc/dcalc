@@ -57,7 +57,7 @@ class Skill9(ActiveSkill):
     mp = [15, 161]
     uuid = "ade01c1d6afc8a05055225045e89fe49"
     hasVP = False
-    hasUP = False
+    hasUP = True
 
     # 多段攻击次数上限 : {value0}次
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -183,7 +183,7 @@ class Skill20(ActiveSkill):
     mp = [30, 420]
     uuid = "1fadde0eece18649caddbca7bd58cc2f"
     hasVP = False
-    hasUP = False
+    hasUP = True
 
     # 持续时间 : {value0}秒
     data0 = get_data(f'{prefix}/{uuid}', 0)

@@ -153,6 +153,7 @@ export default defineComponent({
 
     onMounted(() => {
       watchEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         ;(skillInfo.value?.evolution?.length ?? 0) == 0 && (curTab.value = 0)
       })
     })
