@@ -230,6 +230,7 @@ class Skill11(ActiveBufferSkill):
 
     # 力智
     STRINT = [0, 154, 164, 176, 186, 197, 206, 216, 227, 237, 249, 259, 269, 280, 290, 302, 311, 321, 332, 342, 353, 363, 374, 385, 395, 406, 415, 425, 437, 447, 458, 468, 478, 489, 500, 511, 520, 530, 541, 551, 563]# noqa: E501
+
 # 圣光烬盾 세인트 월
 # https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/5dc7008b12a459325b548b0715c6b73c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
 class Skill12(ActiveSkill):
