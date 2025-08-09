@@ -1296,10 +1296,13 @@ class Skill44(ActiveSkill):
     data0 = get_data(f'{prefix}/{uuid}', 0)
     # 召唤时， 爆炸攻击力 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
     # 火焰吐息攻击力 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 10
     # 毒雾攻击力 : {value3}%
     data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 23
     # 毒雾多段攻击次数 : {value4}次
     data4 = get_data(f'{prefix}/{uuid}', 4)
     # 结印时毒雾多段攻击次数 : {value5}次
@@ -1396,8 +1399,10 @@ class Skill46(ActiveSkill):
 
     # 天照登场和消失时冲击波攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 2
     # 光焰弹攻击力 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 8
     # 光焰弹基本发射数量 : {value2}个
     data2 = get_data(f'{prefix}/{uuid}', 2)
     # [临兵斗]结印时攻击力增加率 : {value3}%
@@ -1407,6 +1412,8 @@ class Skill46(ActiveSkill):
     # [范围信息]
     # 锁定敌人范围 : {value5}px
     data5 = get_data(f'{prefix}/{uuid}', 5)
+
+    associate = [{"data":data4,"skills":["天照"]}]
 
     mode = ["普通","六道"]
 
@@ -1495,6 +1502,18 @@ class Skill47(ActiveSkill):
     data13 = get_data(f'{prefix}/{uuid}', 13)
     # 装备草雉剑后， 斩击命中时， [忍法 ： 六道轮回]攻击力累积量 : {value14}%
     data14 = get_data(f'{prefix}/{uuid}', 14)
+
+    mode = ["终结","平x","跳x"]
+
+    def setMode(self, mode):
+        if mode == "终结":
+            self.hit2 = 1
+            self.hit3 = 3
+        elif mode == "平x":
+            self.hit4 = 1
+            self.hit5 = 1
+        elif mode == "跳x":
+            self.hit6 = 2
 
 # 三元刹
 # thief/kunoichi/2ff50c35efcf0f287c4c418c8454da48

@@ -798,6 +798,7 @@ class Skill36(ActiveSkill):
     data2 = get_data(f'{prefix}/{uuid}', 2)
     # 攻击力 : {value3}%
     data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 9
     # 诅咒几率 : {value4}%
     data4 = get_data(f'{prefix}/{uuid}', 4)
     # 诅咒持续时间 : {value5}秒
