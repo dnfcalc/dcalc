@@ -154,6 +154,7 @@ class Skill18(ActiveSkill):
     masterLv = 60
     maxLv = 70
     position = 5 #TODO
+    line = 10
     rangeLv = 2
     cd = 7
     mp = [28, 308]
