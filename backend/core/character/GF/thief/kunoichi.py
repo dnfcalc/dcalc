@@ -1189,14 +1189,17 @@ class Skill42(ActiveSkill):
 
     # 风魔手里剑攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 15
     # 风魔手里剑多段攻击次数 : {value1}
     data1 = get_data(f'{prefix}/{uuid}', 1)
     # 巨型风魔手里剑攻击力 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 10
     # 巨型风魔手里剑多段攻击次数 : {value3}
     data3 = get_data(f'{prefix}/{uuid}', 3)
     # 巨型风魔手里剑爆炸攻击力 : {value4}%
     data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 1
     # - [忍术精通追加效果] -
     # 达成‘临’、 ‘兵’、 ‘斗’结印时爆炸范围 : {value5}%
     data5 = get_data(f'{prefix}/{uuid}', 5)
