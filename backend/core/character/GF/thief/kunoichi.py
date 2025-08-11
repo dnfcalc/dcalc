@@ -1518,6 +1518,10 @@ class Skill47(ActiveSkill):
         elif mode == "跳x":
             self.hit6 = 2
 
+    def getSkillCD(self, mode=None):
+        if mode == "平x" or mode == "跳x":
+            return 1.0
+        return super().getSkillCD(mode)
 # 三元刹
 # thief/kunoichi/2ff50c35efcf0f287c4c418c8454da48
 # ddc49e9ad1ff72a00b53c6cff5b1e920/2ff50c35efcf0f287c4c418c8454da48

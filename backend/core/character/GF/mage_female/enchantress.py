@@ -1721,7 +1721,7 @@ class classChange(Character):
         self.jobId = '3909d0b188e9c95311399f776e331da5'
         self.jobGrowId = '92da05ec93fb43406e193ffb9a2a629b'
 
-        self.武器选项 = ['扫把'] # TODO
+        self.武器选项 = ['扫把','魔杖', '法杖', '矛', '棍棒'] # TODO
         self.输出类型选项 = ["魔法固伤"] # TODO
         self.输出类型 = '魔法固伤' # TODO
         self.防具精通属性 = ['智力'] # TODO
