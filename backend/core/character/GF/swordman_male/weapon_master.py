@@ -1299,6 +1299,7 @@ class Skill24(ActiveSkill):
         elif weapon[0] == "钝器":
             # 不会产生剑气 变成冲击波
             self.hit15 = self.hit19 = 1
+            self.power19 += 1
             self.hit2 = self.hit18 = 0
         pass
 
