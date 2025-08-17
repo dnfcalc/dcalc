@@ -1278,8 +1278,8 @@ class Skill24(ActiveSkill):
 
     # 75被动钝器冲击波部分
     data19 = data15
-    power19 = 0
-    hit19 = 1
+    power19 = 1
+    hit19 = 0
 
     def setMode(self, mode=None):
         weapon = self.char.GetWeaponType()
@@ -1299,7 +1299,6 @@ class Skill24(ActiveSkill):
         elif weapon[0] == "钝器":
             # 不会产生剑气 变成冲击波
             self.hit15 = self.hit19 = 1
-            self.power19 += 1
             self.hit2 = self.hit18 = 0
         pass
 
