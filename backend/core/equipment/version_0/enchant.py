@@ -722,10 +722,11 @@ def enchant_1103(char: CharacterProperty):
 def enchant_1104(char: CharacterProperty):
     # DCALC_REMOVE: enchant_1104
     # 四维(100)|全属强(25)
-    char.AddElementDB('火', 40)
-    char.AddElementDB('冰', 40)
-    char.AddElementDB('光', 40)
-    char.AddElementDB('暗', 40)
+    char.AddElementDB('火', 25)
+    char.AddElementDB('冰', 25)
+    char.AddElementDB('光', 25)
+    char.AddElementDB('暗', 25)
+    char.SetStatus(四维=100)
     pass
 
 @register

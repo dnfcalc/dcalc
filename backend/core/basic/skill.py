@@ -27,6 +27,8 @@ def get_data(prefix: str, key: int | str, func = lambda x: x):
                 data = [0 if x is None or x == "-" else x for x in data]
             elif key == "vps":
                 data = [ {"name":x["name"],"desc":x["desc"]} for x in skill_data.get("evolution",[])]
+            elif key == "custom":
+                data = skill_data.get("custom",1.0)
         except Exception as e:
             print(f"get skill {prefix}/{key} data error",e)
             data = None
@@ -107,6 +109,8 @@ class Skill:
     """是否有技能强化"""
     upType: Literal['damage', 'buff', 'heal'] = 'damage'
     vps: list = []
+    custom: float = 1.0
+    """国服特色加强"""
 
     def __init__(self, char):
         self.char = char
@@ -256,7 +260,7 @@ class ActiveSkill(Skill):
         basic.setVP()
         date = basic.getSkillData(self.lv)
         cd = basic.getSkillCD(mode)
-        return date * basic.skillRation, basic.skillDamage, cd
+        return date * basic.skillRation * basic.custom, basic.skillDamage, cd
 
     def setMode(self, mode: str):
         pass

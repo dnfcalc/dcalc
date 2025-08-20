@@ -849,6 +849,7 @@ class Skill37(ActiveSkill):
     hasVP = True
     hasUP = True
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # [鬼神领域]
     # 持续时间 : {value0}秒
