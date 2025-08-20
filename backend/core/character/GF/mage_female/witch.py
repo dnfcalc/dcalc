@@ -381,6 +381,8 @@ class Skill23(PassiveSkill):
     # [改良魔法星弹]探索范围增加率 : {value10}%
     data10 = get_data(f'{prefix}/{uuid}', 10)
 
+    associate = [{"data":data0}]
+
 # 扫把掌握
 # mage_female/witch/5152480fdde81362575a488d4cec4af9
 # 3909d0b188e9c95311399f776e331da5/5152480fdde81362575a488d4cec4af9
@@ -1488,7 +1490,7 @@ class Skill43(PassiveSkill):
     # 魔法暴击率增加量 : {value5}%
     data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    associate = [{"data":data5}]
+    associate = [{"data":data4}]
 
 # 技艺融合
 # mage_female/witch/3fb8395ae3b81bd608e0c4223a8eb534
@@ -1946,7 +1948,7 @@ class Skill50(ActiveSkill):
         - 绿色糖果 : 每秒恢复2%的生命值和魔法值
         """
         ...
-    
+
 # 乌洛波洛斯之环
 # mage_female/witch/0f638da961acf7958ac6070b7aaed013
 # 3909d0b188e9c95311399f776e331da5/0f638da961acf7958ac6070b7aaed013
