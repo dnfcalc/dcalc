@@ -1,601 +1,1203 @@
 #a7a059ebe9e6054c0644b40ef316d6e9
-from core.basic.skill import PassiveSkill, ActiveSkill
+from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
+prefix = "fighter_female/grappler_female/cn/skillDetail"
 
-# 上勾拳 무즈 어퍼
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/eb71e1d82d92c7e1d40500a0dcd77aa6?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 上勾拳
+# fighter_female/grappler_female/eb71e1d82d92c7e1d40500a0dcd77aa6
+# a7a059ebe9e6054c0644b40ef316d6e9/eb71e1d82d92c7e1d40500a0dcd77aa6
 class Skill0(ActiveSkill):
+    """
+        向敌人发出上勾拳并使其浮空， 施放的瞬间有霸体判定。\n
+        转职为柔道家后， 技能类型变为独立攻击力。
+    """
     name = "上勾拳"
     learnLv = 1
     masterLv = 10
     maxLv = 20
-    position = 3 #TODO
+    position = 3
     rangeLv = 3
     cd = 2
     uuid = "eb71e1d82d92c7e1d40500a0dcd77aa6"
-    data0 = [0, 175, 203, 231, 259, 287, 315, 343, 371, 399, 427, 455, 482, 510, 538, 566, 594, 622, 650, 678, 706]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 浮空攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 浮空力比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 发动速度增加量 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    data1 = [0, 131.4, 132.9, 134, 135.4, 136.6, 138, 139.1, 140.6, 141.7, 143.1, 147.7, 152.3, 157.1, 162, 166.6, 171.4, 176.3, 180.9, 185.7, 190.6]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 175, 203, 231, 259, 287, 315, 343, 371, 399, 427, 455, 482, 510, 538, 566, 594, 622, 650, 678, 706]# noqa: E501
-    hit3 = 1 #TODO
-
-
-# 前踢 해머 킥
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/fc7a3f4c2852c832a2f20af63d5d212f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 前踢
+# fighter_female/grappler_female/fc7a3f4c2852c832a2f20af63d5d212f
+# a7a059ebe9e6054c0644b40ef316d6e9/fc7a3f4c2852c832a2f20af63d5d212f
 class Skill1(ActiveSkill):
+    """
+        向敌人发出强威力的踢腿， 可以踢飞敌人。
+    """
     name = "前踢"
     learnLv = 1
     masterLv = 60
     maxLv = 70
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cd = 3
     mp = [10, 112]
     uuid = "fc7a3f4c2852c832a2f20af63d5d212f"
-    data0 = [0, 2448, 2698, 2945, 3193, 3441, 3691, 3938, 4186, 4439, 4686, 4934, 5182, 5432, 5678, 5928, 6175, 6423, 6676, 6923, 7171, 7418, 7669, 7916, 8164, 8414, 8662, 8910, 9158, 9408, 9658, 9906, 10155, 10401, 10653, 10899, 11147, 11394, 11644, 11895, 12142, 12392, 12638, 12888, 13136, 13383, 13629, 13881, 14129, 14376, 14626, 14875, 15124, 15372, 15620, 15870, 16118, 16366, 16613, 16861, 17111, 17361, 17607, 17857, 18107, 18354, 18604, 18850, 19100, 19350, 19596]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 踢击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 击飞力比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    data1 = [0, 100, 101.8, 103.5, 105.3, 107, 108.5, 110.3, 112, 113.8, 115.5, 117.3, 119, 120.8, 122.5, 124.3, 125.8, 127.5, 129.3, 131, 132.8, 134.5, 136.3, 138, 139.8, 141.5, 143, 144.8, 146.5, 148.3, 150, 151.8, 153.5, 155.3, 157, 158.5, 160.3, 162, 163.8, 165.5, 167.3, 169, 170.8, 172.5, 174.3, 175.8, 177.5, 179.3, 181, 182.8, 184.5, 186.3, 188, 189.8, 191.5, 193, 194.8, 196.5, 198.3, 200, 201.8, 203.5, 205.3, 207, 208.5, 210.3, 212, 213.8, 215.5, 217.3, 219]# noqa: E501
-    hit1 = 1 #TODO
 
 
-# 下段踢 로킥
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/4655101518604f874721b3cc249aae10?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 下段踢
+# fighter_female/grappler_female/4655101518604f874721b3cc249aae10
+# a7a059ebe9e6054c0644b40ef316d6e9/4655101518604f874721b3cc249aae10
 class Skill6(ActiveSkill):
+    """
+        格斗家特有的快速下段踢。\n
+        命中时引发冲击波， 对周围敌人造成伤害。
+    """
     name = "下段踢"
     learnLv = 5
     masterLv = 60
     maxLv = 70
-    position = 2 #TODO
+    position = 2
     rangeLv = 2
     cd = 2
     mp = [10, 112]
     uuid = "4655101518604f874721b3cc249aae10"
-    data0 = [0, 2349, 2589, 2825, 3067, 3307, 3545, 3783, 4019, 4259, 4498, 4735, 4976, 5216, 5454, 5690, 5926, 6166, 6406, 6642, 6883, 7123, 7361, 7599, 7839, 8075, 8315, 8553, 8792, 9032, 9270, 9506, 9746, 9982, 10222, 10462, 10700, 10940, 11178, 11416, 11655, 11892, 12131, 12371, 12609, 12849, 13088, 13323, 13563, 13801, 14039, 14278, 14516, 14756, 14996, 15232, 15472, 15710, 15948, 16191, 16425, 16665, 16905, 17139, 17379, 17619, 17857, 18098, 18333, 18573, 18812]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 下段踢攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 冲击波攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 发动速度增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [范围信息]
+    # 冲击波大小比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-    data1 = [0, 1882, 2071, 2263, 2453, 2644, 2834, 3024, 3213, 3405, 3599, 3789, 3980, 4172, 4362, 4551, 4745, 4933, 5122, 5313, 5506, 5698, 5887, 6081, 6270, 6460, 6652, 6843, 7030, 7225, 7415, 7606, 7796, 7988, 8179, 8367, 8561, 8750, 8939, 9136, 9323, 9515, 9705, 9897, 10086, 10277, 10469, 10659, 10848, 11043, 11232, 11422, 11614, 11805, 11995, 12184, 12378, 12566, 12757, 12952, 13139, 13331, 13522, 13714, 13903, 14095, 14285, 14476, 14671, 14860, 15050]# noqa: E501
-    hit1 = 1 #TODO
 
-    data2 = [0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]# noqa: E501
-    hit3 = 1 #TODO
-
-
-
-# 背摔 수플렉스
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/cfacda0647b9a0f595df2c2aad30c18d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 背摔
+# fighter_female/grappler_female/cfacda0647b9a0f595df2c2aad30c18d
+# a7a059ebe9e6054c0644b40ef316d6e9/cfacda0647b9a0f595df2c2aad30c18d
 class Skill8(ActiveSkill):
+    """
+        抓住前方敌人并猛力把其倒摔向背后地面。\n
+        施放[背摔]时有无敌判定， 把敌人摔到地面的瞬间生成冲击波， 可以对周围的敌人造成伤害。\n
+        可以抓取霸体和防御状态的敌人， 但对无法抓取的敌人不适用抓取和控制效果。\n
+        转职为柔道家后， 技能类型变为独立攻击力， 并根据抓取的敌人大小， 增加冲击波大小， 冲击波攻击力与抓取的敌人攻击力相同。\n
+        此外， 因受抓轰炮效果， 可以攻击无法抓取的敌人， 这时可以大幅击退敌人进行攻击。
+    """
     name = "背摔"
     learnLv = 5
     masterLv = 60
     maxLv = 70
-    position = 6 #TODO
+    position = 6
     rangeLv = 2
     cd = 5
     mp = [20, 168]
     uuid = "cfacda0647b9a0f595df2c2aad30c18d"
-    data0 = [0, 5103, 5634, 6147, 6654, 7171, 7698, 8214, 8724, 9245, 9767, 10280, 10792, 11314, 11832, 12361, 12878, 13388, 13903, 14426, 14950, 15455, 15980, 16497, 17020, 17532, 18051, 18567, 19093, 19611, 20116, 20643, 21158, 21677, 22187, 22712, 23231, 23758, 24259, 24779, 25299, 25821, 26328, 26850, 27375, 27892, 28417, 28924, 29442, 29957, 30484, 30996, 31506, 32037, 32553, 33057, 33577, 34102, 34621, 35149, 35658, 36171, 36689, 37213, 37728, 38240, 38769, 39285, 39794, 40321, 40834]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
+    # 冲击波攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [范围信息]
+    # 冲击波大小比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 学习[雷霆背摔]后， 闪电大小比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
+# 蹲伏
+# fighter_female/grappler_female/9dda3f4a849dba1a288dd65e116860f2
+# a7a059ebe9e6054c0644b40ef316d6e9/9dda3f4a849dba1a288dd65e116860f2
+class Skill9(ActiveSkill):
+    """
+        蹲下并避开敌人的上段判定式攻击。\n
+        若在前冲中使用此技能， 可以边向前滑行边蹲下。\n
+        蹲下时进入无敌状态， 起身的瞬间也会进入无敌状态。\n
+        [蹲伏]姿势中按攻击键， 可以用肩尖撞击敌人； 经过一定时间或按跳跃键可以中断蹲伏状态。
+    """
+    name = "蹲伏"
+    learnLv = 10
+    masterLv = 1
+    maxLv = 11
+    position = 0 #TODO
+    rangeLv = 1
+    cd = 3
+    mp = [3, 4]
+    uuid = "9dda3f4a849dba1a288dd65e116860f2"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 姿势持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 肩撞攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-# 钢筋铁骨 철금강
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/c9664191611af31142e052dfaef84530?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 钢筋铁骨
+# fighter_female/grappler_female/c9664191611af31142e052dfaef84530
+# a7a059ebe9e6054c0644b40ef316d6e9/c9664191611af31142e052dfaef84530
 class Skill10(PassiveSkill):
+    """
+        使自身的身体强悍如钢铁， 并增加一定的物防和体力。\n
+        被攻击时， 有一定几率进入霸体状态。
+    """
     name = "钢筋铁骨"
     learnLv = 10
     masterLv = 50
     maxLv = 60
-    position = 5 #TODO
+    position = 5
     rangeLv = 3
     uuid = "c9664191611af31142e052dfaef84530"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 物理防御力增加量 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 体力增加量 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 霸体状态发动几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-# 抛沙 헬터 스켈터
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/8f73f243041c2d27739fe7696f02bf9b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 抛沙
+# fighter_female/grappler_female/8f73f243041c2d27739fe7696f02bf9b
+# a7a059ebe9e6054c0644b40ef316d6e9/8f73f243041c2d27739fe7696f02bf9b
 class Skill11(ActiveSkill):
+    """
+        卑鄙地抛出沙子攻击敌人。\n
+        攻击时， 有一定几率使敌人进入失明状态。\n
+        转职为街霸后， 可中断基本攻击使用
+    """
     name = "抛沙"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cd = 3
     mp = [15, 154]
     uuid = "8f73f243041c2d27739fe7696f02bf9b"
-    data0 = [0, 1394, 1535, 1677, 1818, 1960, 2101, 2243, 2384, 2525, 2667, 2808, 2950, 3091, 3233, 3374, 3515, 3657, 3798, 3940, 4081, 4222, 4364, 4505, 4647, 4788, 4930, 5071, 5212, 5354, 5495, 5637, 5778, 5920, 6061, 6202, 6344, 6485, 6627, 6768, 6910, 7051, 7192, 7334, 7475, 7617, 7758, 7899, 8041, 8182, 8324, 8465, 8607, 8748, 8889, 9031, 9172, 9314, 9455, 9597, 9738, 9879, 10021, 10162, 10304, 10445, 10586, 10728, 10869, 11011, 11152]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 沙尘攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # [失明效果]
+    # 失明几率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 失明持续时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 视野减少率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 命中率减少率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [发动涂毒时附加中毒攻击力]
+    # 沙尘命中时中毒攻击力 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # [范围信息]
+    # 沙尘大小比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
-
-# 鹰踏 공중 밟기
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/78bd107acd474518b606be1e4fd38239?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 鹰踏
+# fighter_female/grappler_female/78bd107acd474518b606be1e4fd38239
+# a7a059ebe9e6054c0644b40ef316d6e9/78bd107acd474518b606be1e4fd38239
 class Skill12(ActiveSkill):
+    """
+        在空中跳跃着踩踏敌人并给予敌人一定伤害。\n
+    可以连续对敌人进行一定次数的踩踏， 技能的冷却时间从最后一次踩踏结束落地时开始计算。
+    """
     name = "鹰踏"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cd = 7
     mp = [10, 97]
     uuid = "78bd107acd474518b606be1e4fd38239"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 踩踏攻击力 : {value0}%
+    # data0 = get_data(f'{prefix}/{uuid}', 0)
     data0 = [0, 605, 667, 728, 789, 851, 912, 974, 1035, 1096, 1158, 1219, 1281, 1342, 1403, 1465, 1526, 1588, 1649, 1710, 1772, 1833, 1895, 1956, 2017, 2079, 2140, 2202, 2263, 2324, 2386, 2447, 2509, 2570, 2631, 2693, 2754, 2816, 2877, 2938, 3000, 3061, 3123, 3184, 3245, 3307, 3368, 3430, 3491, 3552, 3614, 3675, 3737, 3798, 3859, 3921, 3982, 4044, 4105, 4166, 4228, 4289, 4351, 4412, 4473, 4535, 4596, 4658, 4719, 4780, 4842]# noqa: E501
-    hit0 = 1 #TODO
+    hit0 = 1
+    # 踩踏次数上限 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 最后踩踏攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
 
-
-    data2 = [0, 2034, 2241, 2447, 2654, 2860, 3066, 3273, 3479, 3686, 3892, 4098, 4305, 4511, 4718, 4924, 5130, 5337, 5543, 5750, 5956, 6162, 6369, 6575, 6782, 6988, 7194, 7401, 7607, 7814, 8020, 8226, 8433, 8639, 8845, 9052, 9258, 9465, 9671, 9877, 10084, 10290, 10497, 10703, 10909, 11116, 11322, 11529, 11735, 11941, 12148, 12354, 12561, 12767, 12973, 13180, 13386, 13593, 13799, 14005, 14212, 14418, 14625, 14831, 15037, 15244, 15450, 15657, 15863, 16069, 16276]# noqa: E501
-    hit2 = 1 #TODO
-
-
-# 疾风追击 호신연격
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/dcb31a63ef58954f44ff2070c42a9a98?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 疾风追击
+# fighter_female/grappler_female/dcb31a63ef58954f44ff2070c42a9a98
+# a7a059ebe9e6054c0644b40ef316d6e9/dcb31a63ef58954f44ff2070c42a9a98
 class Skill13(ActiveSkill):
+    """
+        如同老虎一样发动快速的连续攻击。\n
+        学习后， 前冲攻击不会使敌人倒地。\n
+        前冲攻击后， 按攻击键或技能键， 可以进行追击， 但每一击会消耗自身一定量的魔法值。\n
+        学习[疾风连击]后可再追加第3、 第4次攻击。
+    """
     name = "疾风追击"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 9 #TODO
+    position = 9
     rangeLv = 2
     cd = 2
     mp = [8, 67]
     uuid = "dcb31a63ef58954f44ff2070c42a9a98"
-    data0 = [0, 558, 614, 671, 728, 784, 841, 897, 954, 1011, 1067, 1124, 1180, 1237, 1294, 1350, 1407, 1463, 1520, 1577, 1633, 1690, 1746, 1803, 1860, 1916, 1973, 2029, 2086, 2143, 2199, 2256, 2312, 2369, 2426, 2482, 2539, 2595, 2652, 2709, 2765, 2822, 2878, 2935, 2992, 3048, 3105, 3161, 3218, 3275, 3331, 3388, 3444, 3501, 3558, 3614, 3671, 3727, 3784, 3841, 3897, 3954, 4010, 4067, 4124, 4180, 4237, 4293, 4350, 4407, 4463]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 第1击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 第2击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 第3击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # 第4击攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
 
-    data1 = [0, 620, 683, 746, 809, 872, 935, 998, 1061, 1124, 1186, 1249, 1312, 1375, 1438, 1501, 1564, 1627, 1690, 1753, 1816, 1879, 1942, 2004, 2067, 2130, 2193, 2256, 2319, 2382, 2445, 2508, 2571, 2634, 2697, 2759, 2822, 2885, 2948, 3011, 3074, 3137, 3200, 3263, 3326, 3389, 3452, 3514, 3577, 3640, 3703, 3766, 3829, 3892, 3955, 4018, 4081, 4144, 4207, 4270, 4332, 4395, 4458, 4521, 4584, 4647, 4710, 4773, 4836, 4899, 4962]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 682, 751, 821, 890, 959, 1028, 1097, 1167, 1236, 1305, 1374, 1443, 1513, 1582, 1651, 1720, 1790, 1859, 1928, 1997, 2066, 2136, 2205, 2274, 2343, 2412, 2482, 2551, 2620, 2689, 2758, 2828, 2897, 2966, 3035, 3104, 3174, 3243, 3312, 3381, 3451, 3520, 3589, 3658, 3727, 3797, 3866, 3935, 4004, 4073, 4143, 4212, 4281, 4350, 4419, 4489, 4558, 4627, 4696, 4765, 4835, 4904, 4973, 5042, 5111, 5181, 5250, 5319, 5388, 5458]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 744, 820, 895, 970, 1046, 1121, 1197, 1272, 1348, 1423, 1499, 1574, 1650, 1725, 1801, 1876, 1952, 2027, 2103, 2178, 2254, 2329, 2405, 2480, 2556, 2631, 2707, 2782, 2857, 2933, 3008, 3084, 3159, 3235, 3310, 3386, 3461, 3537, 3612, 3688, 3763, 3839, 3914, 3990, 4065, 4141, 4216, 4292, 4367, 4443, 4518, 4594, 4669, 4744, 4820, 4895, 4971, 5046, 5122, 5197, 5273, 5348, 5424, 5499, 5575, 5650, 5726, 5801, 5877, 5952]# noqa: E501
-    hit3 = 1 #TODO
-
-
-# 金刚碎 금강쇄
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/4f2e001e9a19eb7bae50ad1840dfb329?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 金刚碎
+# fighter_female/grappler_female/4f2e001e9a19eb7bae50ad1840dfb329
+# a7a059ebe9e6054c0644b40ef316d6e9/4f2e001e9a19eb7bae50ad1840dfb329
 class Skill14(ActiveSkill):
+    """
+        向前方小跳后用拳猛击地面， 引发冲击波使敌人受到伤害并倒地。\n
+        施放时， 可以用上下方向键控制攻击地点。\n
+        在决斗场中， 浮空力和施放后僵直时间根据技能等级发生变化。\n
+        转职为柔道家后， 可以强制中断基本攻击并立即施放[金刚碎]， 并且还可以中断[金刚碎]并立即施放[霹雳肘击]。
+    """
     name = "金刚碎"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 1 #TODO
+    position = 1
     rangeLv = 2
     cd = 5
     mp = [20, 238]
     uuid = "4f2e001e9a19eb7bae50ad1840dfb329"
-    data0 = [0, 5313, 5851, 6389, 6931, 7468, 8009, 8546, 9083, 9627, 10166, 10702, 11244, 11781, 12320, 12859, 13396, 13938, 14479, 15014, 15552, 16097, 16633, 17172, 17709, 18253, 18790, 19326, 19866, 20407, 20946, 21483, 22025, 22564, 23101, 23639, 24179, 24721, 25257, 25798, 26338, 26875, 27416, 27953, 28490, 29034, 29570, 30109, 30649, 31190, 31725, 32268, 32803, 33347, 33884, 34423, 34962, 35506, 36040, 36579, 37118, 37660, 38197, 38735, 39275, 39817, 40353, 40894, 41432, 41975, 42510]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 浮空力比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 施放后的僵直时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [范围信息]
+    # 攻击范围比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-
-# 摔技强化 강렬한 테이크 다운
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/ff171dc487807bb9aa28900ca9a46b41?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 摔技强化
+# fighter_female/grappler_female/ff171dc487807bb9aa28900ca9a46b41
+# a7a059ebe9e6054c0644b40ef316d6e9/ff171dc487807bb9aa28900ca9a46b41
 class Skill18(PassiveSkill):
+    """
+        增加基本攻击力和技能攻击力。\n
+        使用[背摔]、 [抛投]、 [霹雳肘击]、 [空绞锤]、 [螺旋彗星落]、 [地狱摇篮]、 [裂石破天]、 [末日风暴]、 [死亡摇篮]、 [末日摇篮]技能时， 可以增加冲击波和攻击范围。
+    """
     name = "摔技强化"
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 7 #TODO
+    position = 7
     rangeLv = 3
     uuid = "ff171dc487807bb9aa28900ca9a46b41"
-    data0 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本攻击力和技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 周围攻击范围比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+
     associate = [{"data":data0}]
 
-
-# 抛投 로플링
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/c27418ae613c647527200a7ca17d97fd?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 抛投
+# fighter_female/grappler_female/c27418ae613c647527200a7ca17d97fd
+# a7a059ebe9e6054c0644b40ef316d6e9/c27418ae613c647527200a7ca17d97fd
 class Skill19(ActiveSkill):
+    """
+        抓取敌人并向前方抛摔。\n
+        抓取敌人后， 再次按技能键或抓取时间结束就可以抛摔敌人。 抛摔敌人时会进入无敌状态， 此时可以通过方向键指定抛摔方向。\n
+        被抛摔的敌人撞到墙壁或地面时会产生冲击波， 对周围敌人也造成伤害。 根据抓取的敌人大小增加冲击波大小， 撞到墙壁落地时不会再出现冲击波。\n
+        抓轰炮发动后， 与敌人力量制衡一定时间后强力推开造成伤害。\n
+        在决斗场中， 技能等级越高， 抓取持续时间越长。
+    """
     name = "抛投"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cd = 8.5
     mp = [30, 336]
     uuid = "c27418ae613c647527200a7ca17d97fd"
-
-    data1 = [0, 11533, 12711, 13875, 15045, 16215, 17389, 18559, 19732, 20895, 22073, 23239, 24414, 25582, 26750, 27924, 29089, 30263, 31433, 32603, 33776, 34945, 36115, 37286, 38457, 39625, 40795, 41970, 43134, 44309, 45475, 46650, 47819, 48987, 50165, 51330, 52496, 53672, 54842, 56012, 57183, 58347, 59526, 60692, 61868, 63036, 64211, 65377, 66547, 67720, 68886, 70059, 71232, 72396, 73571, 74741, 75914, 77083, 78249, 79422, 80592, 81763, 82931, 84102, 85274, 86447, 87615, 88786, 89957, 91129, 92293]# noqa: E501
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 抓取时间上限 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 撞到地面时的冲撞攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
+    # 撞到墙壁时的冲撞攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [范围信息]
+    # 冲击波大小比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-
-# 暴力抓取 반드시 잡는다!
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/92360eab6e1f378902018eca681ac629?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 暴力抓取
+# fighter_female/grappler_female/92360eab6e1f378902018eca681ac629
+# a7a059ebe9e6054c0644b40ef316d6e9/92360eab6e1f378902018eca681ac629
 class Skill20(ActiveSkill):
+    """
+        使[背摔]、 [抛投]、 [霹雳肘击]、 [空绞锤]、 [螺旋彗星落]、 [地狱摇篮]、 [裂石破天]、 [末日风暴]、 [死亡摇篮]、 [末日摇篮]、 [风暴之舞]、 [苍宇彗星落]、 [送葬舞步]的技能抓取动作出现霸体判定， 并且抓取命中率变成100%， 同时还增加基本攻击和抓取类技能的攻击力， 效果持续一定时间。
+    """
     name = "暴力抓取"
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 4 #TODO
+    position = 4
     rangeLv = 3
     cd = 5
-    mp = [126, 975]
     uuid = "92360eab6e1f378902018eca681ac629"
-    damage = False
-    buff = True
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 基本攻击和抓取技能攻击力增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-
-# 滑行抓取 슬라이딩 그랩
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/1fadde0eece18649caddbca7bd58cc2f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 滑行抓取
+# fighter_female/grappler_female/1fadde0eece18649caddbca7bd58cc2f
+# a7a059ebe9e6054c0644b40ef316d6e9/1fadde0eece18649caddbca7bd58cc2f
 class Skill21(PassiveSkill):
+    """
+        在前冲状态下使用[背摔]、 [抛投]、 [空绞锤]、 [地狱摇篮]、 [末日风暴]、 [死亡摇篮]、 [苍宇彗星落]、 [送葬舞步]技能时， 可以滑行抓取敌人。\n
+        滑行抓取敌人时， 可以用方向键进行上下滑行； 技能等级越高， 滑行速度越快。
+    """
     name = "滑行抓取"
     learnLv = 15
     masterLv = 1
     maxLv = 11
-    position = 2 #TODO
+    position = 2
     rangeLv = 3
     uuid = "1fadde0eece18649caddbca7bd58cc2f"
-    data0 = [0, 400, 433.1, 466.9, 500, 533.1, 566.9, 600, 633.1, 666.9, 700, 733.1]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 滑行速度 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
-
-# 抓轰炮 그랩 캐넌
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/d2c6df5105577fb59fb92529a36165a0?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 抓轰炮
+# fighter_female/grappler_female/d2c6df5105577fb59fb92529a36165a0
+# a7a059ebe9e6054c0644b40ef316d6e9/d2c6df5105577fb59fb92529a36165a0
 class Skill22(PassiveSkill):
+    """
+        学习后， 对无法抓取或固定型敌人进行抓取时， 发动抓轰炮效果， 给予敌人强力伤害。 抓轰炮攻击时会产生冲击波， 对周围敌人造成伤害。\n
+    [发动抓轰炮效果的技能]\n
+    [背摔]、 [抛投]、 [空绞锤]、 [霹雳肘击]、 [螺旋彗星落]、 [地狱摇篮]、 [死亡摇篮]、 [末日摇篮]\n
+        抓轰炮的攻击力相当于各技能的抓起攻击力总和。
+    """
     name = "抓轰炮"
     learnLv = 15
     masterLv = 1
     maxLv = 1
-    position = 1 #TODO
+    position = 1
     rangeLv = 1
     uuid = "d2c6df5105577fb59fb92529a36165a0"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-# 强力抱摔 파워 슬램
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/2f5d03c7848effbc0a23f4df45d9ca46?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 强力抱摔
+# fighter_female/grappler_female/2f5d03c7848effbc0a23f4df45d9ca46
+# a7a059ebe9e6054c0644b40ef316d6e9/2f5d03c7848effbc0a23f4df45d9ca46
 class Skill23(PassiveSkill):
+    """
+        强化柔道家的基本攻击和抓取技能， 增加攻击力和对敌人造成致命一击的概率。\n
+    攻击力增加的技能 : [背摔]、 [抛投]、 [霹雳肘击]、 [空绞锤]、 [螺旋彗星落]、 [地狱摇篮]、 [裂石破天]、 [末日风暴]、 [死亡摇篮]、 [末日摇篮]、 [风暴之舞]、 [苍宇彗星落]、 [送葬舞步]、 [女皇时代·辉煌舞台]。
+    """
     name = "强力抱摔"
     learnLv = 20
     masterLv = 1
     maxLv = 11
-    position = 6 #TODO
+    position = 6
     rangeLv = 5
     uuid = "2f5d03c7848effbc0a23f4df45d9ca46"
-    data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本攻击和抓取技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 物理暴击率增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [{"data":data0,"skills":["背摔","抛投","霹雳肘击","空绞锤","螺旋彗星落","地狱摇篮","裂石破天","末日风暴","死亡摇篮","末日摇篮","风暴之舞","苍宇彗星落","送葬舞步","女皇时代·辉煌舞台"]}]# noqa: E501
 
-
-# 折颈 넥 스냅
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/ecc23c980ea71450c0ad0c3fd232f329?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 折颈
+# fighter_female/grappler_female/ecc23c980ea71450c0ad0c3fd232f329
+# a7a059ebe9e6054c0644b40ef316d6e9/ecc23c980ea71450c0ad0c3fd232f329
 class Skill24(ActiveSkill):
+    """
+        可以强制被自身击中的敌人转身， 并短暂的强制控制转身后的敌人。\n
+        无法使固定型敌人转身。\n
+        在决斗场中， 命中时使敌人浮空并强控敌人。
+    """
     name = "折颈"
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cd = 7.7
     mp = [30, 336]
     uuid = "ecc23c980ea71450c0ad0c3fd232f329"
-    data0 = [0, 12208, 13442, 14686, 15922, 17155, 18399, 19633, 20874, 22114, 23353, 24587, 25832, 27066, 28308, 29544, 30784, 32026, 33257, 34496, 35736, 36975, 38216, 39454, 40691, 41936, 43166, 44407, 45645, 46886, 48122, 49361, 50595, 51833, 53076, 54313, 55549, 56794, 58030, 59272, 60505, 61747, 62985, 64224, 65460, 66696, 67937, 69171, 70416, 71652, 72893, 74132, 75370, 76611, 77850, 79081, 80327, 81561, 82797, 84040, 85275, 86516, 87752, 88990, 90233, 91469, 92708, 93951, 95186, 96421, 97668]# noqa: E501
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
+    # 敌人强制控制时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [各类型敌人的强制控制时间比率]
+    # 稀有/领主/人形护甲 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-# 疾风连击 호포
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/8572675ec6a1f50b6eff6a867376c2de?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 疾风连击
+# fighter_female/grappler_female/8572675ec6a1f50b6eff6a867376c2de
+# a7a059ebe9e6054c0644b40ef316d6e9/8572675ec6a1f50b6eff6a867376c2de
 class Skill25(PassiveSkill):
+    """
+        施放[疾风追击]时， 可以向敌人发出第3、 4击。
+    """
     name = "疾风连击"
     learnLv = 20
     masterLv = 1
     maxLv = 1
-    position = 9 #TODO
+    position = 9
     rangeLv = 1
     uuid = "8572675ec6a1f50b6eff6a867376c2de"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-# 无情抓取 체인 커넥션
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/7ec521d063d2190e1fcc5bd229af9bcf?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 无情抓取
+# fighter_female/grappler_female/7ec521d063d2190e1fcc5bd229af9bcf
+# a7a059ebe9e6054c0644b40ef316d6e9/7ec521d063d2190e1fcc5bd229af9bcf
 class Skill26(ActiveSkill):
+    """
+        [抓轰炮]施放过程中可以使用的技能。 攻击成功时， 使敌人进入控制状态， 并且可以连接使用[折颈]、 [霹雳冲击]或其他抓取类技能。\n
+        在地面或空中施放时， 拥有不同的攻击姿态。\n
+    [地面施放时]\n
+     - 暴力拦截 : 使用肩膀大力冲撞敌人。\n
+    [空中施放时]\n
+     - 抓取空翻 : 抓取敌人后， 施展强力的空翻踢。\n
+     - 暴力关节 : 空翻后， 在一段时间内追加按下技能键时， 快速地从空中向下拳击。\n
+        拥有特有的重复等待时间， 并且拥有最大可使用次数。\n
+        消耗最大可使用次数后， 一段时间后会自动恢复。
+    """
     name = "无情抓取"
     learnLv = 20
     masterLv = 1
     maxLv = 1
-    position = 1 #TODO
+    position = 1
     rangeLv = 2
     mp = [30, 30]
     uuid = "7ec521d063d2190e1fcc5bd229af9bcf"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # [无情抓取]最大储存次数 : {value0}次
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # [无情抓取]恢复所需时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    damage = False
 
-
-# 野蛮冲撞 숄더 태클
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/0232c151ef3731c2dede51931a374723?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 野蛮冲撞
+# fighter_female/grappler_female/0232c151ef3731c2dede51931a374723
+# a7a059ebe9e6054c0644b40ef316d6e9/0232c151ef3731c2dede51931a374723
 class Skill28(ActiveSkill):
+    """
+        向前滑行的同时用肩部猛力撞击敌人。\n
+        命中敌人后， 可以立即连接除[蹲伏]和[空中抓取]之外的转职技能。\n
+        长按技能键可蓄气， 蓄气后可以向敌人发出更快更威力的撞击， 达最大蓄气时有霸体判定。\n
+        若前冲时使用， 则可以边向前滑行边蓄气。
+    """
     name = "野蛮冲撞"
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cd = 8
     mp = [50, 420]
     uuid = "0232c151ef3731c2dede51931a374723"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 蓄气时间上限 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
 
-    data1 = [0, 15050, 16578, 18107, 19635, 21163, 22688, 24213, 25741, 27270, 28796, 30326, 31853, 33376, 34904, 36431, 37959, 39484, 41011, 42537, 44064, 45592, 47121, 48649, 50172, 51702, 53225, 54754, 56280, 57812, 59335, 60862, 62390, 63917, 65443, 66968, 68496, 70021, 71558, 73085, 74611, 76140, 77666, 79189, 80718, 82244, 83774, 85298, 86828, 88352, 89879, 91406, 92934, 94461, 95984, 97517, 99037, 100565, 102097, 103620, 105147, 106673, 108203, 109727, 111253, 112780, 114310, 115835, 117366, 118891, 120416]# noqa: E501
-    hit1 = 1 #TODO
-
-
-# 旋风腿 질풍각
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/202edb928046f4fa6dedf6337377efd5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 旋风腿
+# fighter_female/grappler_female/202edb928046f4fa6dedf6337377efd5
+# a7a059ebe9e6054c0644b40ef316d6e9/202edb928046f4fa6dedf6337377efd5
 class Skill29(ActiveSkill):
+    """
+        快速旋转身体向前移动并用连续的扫腿攻击周围的敌人； 可以在地面或空中使用， 最后的扫腿还可以击倒敌人。\n
+        施放后， 可以按上/下方向键改变移动方向， 或按跳跃键中断技能。\n
+        转职成为散打时， 可以强制中断基本攻击动作， 并立即施放该技能。
+    """
     name = "旋风腿"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 9 #TODO
+    position = 9
     rangeLv = 2
     cd = 8
     mp = [50, 420]
     uuid = "202edb928046f4fa6dedf6337377efd5"
-    data0 = [0, 2391, 2632, 2876, 3120, 3360, 3602, 3847, 4088, 4330, 4573, 4816, 5056, 5301, 5544, 5784, 6031, 6274, 6516, 6757, 7000, 7244, 7487, 7728, 7970, 8213, 8458, 8698, 8940, 9184, 9424, 9668, 9912, 10154, 10394, 10640, 10882, 11122, 11367, 11608, 11852, 12095, 12336, 12578, 12826, 13066, 13308, 13552, 13796, 14036, 14280, 14522, 14762, 15008, 15250, 15492, 15735, 15978, 16220, 16460, 16704, 16946, 17189, 17432, 17674, 17916, 18160, 18402, 18644, 18888, 19128]# noqa: E501
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 回旋踢攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 4
+    # 攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-
-# 空绞锤 에어슈타이너
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/1721e94897e9961d5c98130a13392f17?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 空绞锤
+# fighter_female/grappler_female/1721e94897e9961d5c98130a13392f17
+# a7a059ebe9e6054c0644b40ef316d6e9/1721e94897e9961d5c98130a13392f17
 class Skill30(ActiveSkill):
+    """
+        在空中用双腿夹住敌人并砸向地面。\n
+        冲击波的范围随敌人的体型增加。 抓取失败时， 剩余冷却时间变更为1秒。\n
+        发动[抓轰炮]时， 踢中敌人后向上跳起造成伤害。\n
+        决斗场中无法在[后跳]中施放。
+    """
     name = "空绞锤"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 8 #TODO
+    position = 8
     rangeLv = 2
     cd = 7
     mp = [50, 420]
     uuid = "1721e94897e9961d5c98130a13392f17"
-    data0 = [0, 14401, 15862, 17323, 18784, 20245, 21706, 23167, 24628, 26088, 27549, 29010, 30471, 31932, 33393, 34854, 36315, 37776, 39237, 40698, 42159, 43620, 45081, 46542, 48003, 49464, 50925, 52386, 53847, 55308, 56769, 58230, 59690, 61151, 62612, 64073, 65534, 66995, 68456, 69917, 71378, 72839, 74300, 75761, 77222, 78683, 80144, 81605, 83066, 84527, 85988, 87449, 88910, 90371, 91832, 93292, 94753, 96214, 97675, 99136, 100597, 102058, 103519, 104980, 106441, 107902, 109363, 110824, 112285, 113746, 115207]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 抓取失败时剩余技能冷却时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [范围信息]
+    # 冲击波大小比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-
-
-# 霹雳肘击 브레이킹 엘보
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/b8f4966608e4ebb3cc80ba4eac3649bb?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 霹雳肘击
+# fighter_female/grappler_female/b8f4966608e4ebb3cc80ba4eac3649bb
+# a7a059ebe9e6054c0644b40ef316d6e9/b8f4966608e4ebb3cc80ba4eac3649bb
 class Skill31(ActiveSkill):
+    """
+        抓起倒地的敌人， 并用强劲的肘击攻击该敌人使其受到巨大伤害， 同时还会生成冲击波使周围的敌人受到一定的伤害。\n
+        抓轰炮发动后， 用肘击对敌人造成大伤害。\n
+        施放后僵直时间较长。
+    """
     name = "霹雳肘击"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 6 #TODO
+    position = 6
     rangeLv = 2
     cd = 12
     mp = [50, 420]
     uuid = "b8f4966608e4ebb3cc80ba4eac3649bb"
-    # 有问题
-    data0 = [0, 19560, 21548, 23525, 25515, 27494, 29487, 31467, 33454, 35433, 37422, 39406, 41390, 43374, 45358, 47347, 49331, 51315, 53298, 55284, 57265, 59255, 61236, 63221, 65205, 67187, 69175, 71160, 73144, 75126, 77110, 79098, 81078, 83067, 85046, 87037, 89019, 91004, 92987, 94971, 96958, 98942, 100929, 102910, 104899, 106877, 108868, 110852, 112836, 114820, 116799, 118789, 120773, 122755, 124743, 126723, 128716, 130693, 132682, 134662, 136649, 138632, 140617, 142606, 144583, 146572, 148555, 150545, 152526, 154513, 156492]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # [范围信息]
+    # 冲击波扩大率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-
-# 螺旋彗星落 스파이어
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/d085127b0edd719782bd618d5688f4a1?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 螺旋彗星落
+# fighter_female/grappler_female/d085127b0edd719782bd618d5688f4a1
+# a7a059ebe9e6054c0644b40ef316d6e9/d085127b0edd719782bd618d5688f4a1
 class Skill32(ActiveSkill):
+    """
+        旋转一圈， 并抓取一定范围内的所有敌人向空中跳跃， 然后再将敌人用力砸向地面使其受到极大伤害。\n
+        跳跃时可以按方向键改变方向； 砸到地面时产生的冲击波会对周围被冲击波命中的敌人造成伤害； 根据抓取的敌人大小， 增加冲击波大小。\n
+        长按技能键， 跳跃高度会随着持续时间增加， 可以跳得更高。\n
+        抓轰炮发动后， 在旋转中强控敌人后强力推开敌人。
+    """
     name = "螺旋彗星落"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cube = 1
     cd = 20
     mp = [150, 1260]
     uuid = "d085127b0edd719782bd618d5688f4a1"
-    data0 = [0, 31451, 34643, 37833, 41025, 44213, 47409, 50597, 53790, 56981, 60171, 63365, 66552, 69744, 72938, 76130, 79319, 82512, 85703, 88890, 92084, 95276, 98463, 101657, 104843, 108038, 111228, 114420, 117608, 120803, 123993, 127188, 130374, 133566, 136763, 139947, 143139, 146330, 149519, 152712, 155903, 159095, 162285, 165479, 168669, 171858, 175046, 178238, 181427, 184620, 187812, 191000, 194193, 197388, 200579, 203769, 206961, 210143, 213338, 216530, 219722, 222911, 226104, 229296, 232493, 235680, 238872, 242063, 245252, 248445, 251631]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
+    # 攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # [范围信息]
+    # 冲击波大小比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-# 格斗专精 그래플링 테크닉
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/d429147c372b549c3dadcabcba50787f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_1(self):
+        """
+        [螺旋彗星落]\n
+        抓取、 冲击波范围 +50%\n
+        跳跃及下砸速度 +30%\n
+        跳跃中移动速度 +30%
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [螺旋彗星落]\n
+        抓取成功时， 旋转后开始立即攻击\n
+         - 删除长按技能键功能\n
+         - 滑行抓取过程中成功抓取敌人时， 会靠近敌人后停止移动并立即开始攻击\n
+        发动[抓轰炮]时， 恢复1次[无情抓取]使用次数
+        """
+        ...
+
+# 格斗专精
+# fighter_female/grappler_female/d429147c372b549c3dadcabcba50787f
+# a7a059ebe9e6054c0644b40ef316d6e9/d429147c372b549c3dadcabcba50787f
 class Skill33(PassiveSkill):
+    """
+        学习技能后， [金刚碎]、 [折颈]、 [野蛮冲撞]、 [霹雳冲击]、 [旋风轰击]可以获得以下技能效果。\n
+    - [强力抱摔]\n
+    - [暴力抓取]\n
+    - [抓取奥义]\n
+    - [极手奥义]\n
+        以下技能连续抓取敌人时变得更加有利。\n
+    [背摔] : 攻击中可以强制中断并施放[霹雳肘击]。\n
+    [霹雳肘击] : 减少把敌人击飞的力量和攻击后的延迟。\n
+    [空绞锤] : 被向下捶击击倒的敌人更久地躺在地上。
+    """
     name = "格斗专精"
     learnLv = 35
     masterLv = 1
     maxLv = 1
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     uuid = "d429147c372b549c3dadcabcba50787f"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-# 霹雳冲击 조인트 스매쉬
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/ac21c02567f04a92b54dd85c091d1e5a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 霹雳冲击
+# fighter_female/grappler_female/ac21c02567f04a92b54dd85c091d1e5a
+# a7a059ebe9e6054c0644b40ef316d6e9/ac21c02567f04a92b54dd85c091d1e5a
 class Skill34(ActiveSkill):
+    """
+        用肘部攻击前方敌人， 然后旋转跳起， 用膝盖撞击敌人。\n
+        攻击成功时， 产生强力冲击波， 对周围敌人造成伤害。 直接命中的敌人不受冲击波伤害。\n
+        肘部攻击和膝盖撞击前， 按向前方向键， 可以增加前进距离。\n
+        肘部攻击成功时， 角色停止移动； 膝盖撞击成功时， 可以强制中断释放后僵直并立即连接可在空中施放的技能。\n
+    [可以强制中断的技能]\n
+    [旋风腿]、 [野蛮冲撞]、 [空绞锤]、 [裂石破天]、 [旋风轰击]、 [死亡摇篮] (随机应变)、 [风暴之舞]、 [苍宇彗星落] (随机应变)、 [送葬舞步]、 [女皇时代·辉煌舞台]
+    """
     name = "霹雳冲击"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 6 #TODO
+    position = 6
     rangeLv = 2
     cube = 1
     cd = 20
     mp = [150, 1260]
     uuid = "ac21c02567f04a92b54dd85c091d1e5a"
-    data0 = [0, 9149, 10077, 11007, 11933, 12864, 13788, 14720, 15645, 16577, 17501, 18432, 19361, 20289, 21212, 22145, 23069, 24003, 24921, 25857, 26784, 27714, 28643, 29570, 30494, 31425, 32354, 33278, 34206, 35138, 36065, 36999, 37920, 38850, 39777, 40709, 41631, 42563, 43493, 44423, 45347, 46275, 47201, 48132, 49058, 49989, 50916, 51848, 52775, 53703, 54627, 55557, 56487, 57419, 58341, 59271, 60197, 61130, 62057, 62984, 63911, 64841, 65769, 66696, 67628, 68552, 69483, 70409, 71337, 72266, 73196]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 20858, 22976, 25095, 27210, 29324, 31439, 33558, 35675, 37791, 39908, 42024, 44141, 46257, 48374, 50487, 52607, 54722, 56840, 58959, 61077, 63191, 65306, 67416, 69534, 71652, 73770, 75885, 78003, 80121, 82238, 84353, 86474, 88586, 90699, 92816, 94937, 97052, 99168, 101283, 103398, 105522, 107633, 109748, 111867, 113984, 116097, 118215, 120332, 122451, 124566, 126680, 128796, 130917, 133032, 135150, 137268, 139377, 141492, 143609, 145724, 147846, 149961, 152075, 154196, 156314, 158429, 160547, 162654, 164772, 166896]# noqa: E501
-    hit1 = 1 #TODO
+    # 肘击攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 膝撞攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
+    def vp_1(self):
+        """
+        [霹雳冲击]\n
+        向前方一定范围内最强敌人的位置突进\n
+         - 寻敌范围内不存在敌人时， 无法使用技能\n
+        被肘击命中的敌人会进入强制控制状态1.5秒
+        """
+        ...
 
-# 地狱摇篮 수플렉스 싸이클론
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/7e904ea3d2a9faa054604e55120a9268?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_2(self):
+        """
+        [霹雳冲击]\n
+        肘击后不再跳跃， 旋转身体后进行强力踢击\n
+         - 强力踢击命中时， 可以强制中断施放后僵直， 并施放可以在地面施放的转职技能\n
+        直接攻击的Y轴攻击范围 +20%\n
+        冲击波Y轴攻击范围 +70%
+        """
+        ...
+
+# 地狱摇篮
+# fighter_female/grappler_female/7e904ea3d2a9faa054604e55120a9268
+# a7a059ebe9e6054c0644b40ef316d6e9/7e904ea3d2a9faa054604e55120a9268
 class Skill35(ActiveSkill):
+    """
+        抓住敌人发动数次[背摔]造成伤害后， 跳跃踢出强力的最后一击。\n
+        通过[背摔]旋转途中， 可按方向键移动， 最后一击动作途中可取消施放后僵直后发动空中技能， 并根据抓取的敌人大小， 增加冲击波大小。\n
+        抓轰炮发动时， 进行冲撞及旋转攻击后发动相当于所有[背摔]旋转攻击力的最后一击。 抓取动作中按技能键时， 立即发动最后一击。\n
+    [可以强制中断的技能]\n
+    [旋风腿]、 [野蛮冲撞]、 [空绞锤]、 [裂石破天]、 [旋风轰击]、 [死亡摇篮] (随机应变)、 [风暴之舞]、 [苍宇彗星落] (随机应变)、 [送葬舞步]、 [女皇时代·辉煌舞台]
+    """
     name = "地狱摇篮"
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cube = 1
     cd = 30
     mp = [220, 1988]
     uuid = "7e904ea3d2a9faa054604e55120a9268"
-    data0 = [0, 6767, 7452, 8144, 8831, 9518, 10199, 10886, 11573, 12261, 12947, 13634, 14316, 15003, 15690, 16379, 17069, 17753, 18440, 19121, 19809, 20493, 21186, 21875, 22559, 23247, 23930, 24618, 25305, 25995, 26679, 27366, 28053, 28739, 29427, 30113, 30797, 31482, 32166, 32853, 33546, 34232, 34917, 35601, 36290, 36975, 37668, 38354, 39039, 39726, 40412, 41099, 41783, 42471, 43155, 43845, 44526, 45216, 45900, 46590, 47277, 47963, 48648, 49334, 50022, 50714, 51398, 52086, 52767, 53454, 54140]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # [背摔]旋转攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 5
+    # 旋转次数 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 旋转中移动速度增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 最后一击攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
+    # [范围信息]
+    # 冲击波扩大率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
-    data3 = [0, 14919, 16434, 17948, 19457, 20976, 22490, 23999, 25517, 27029, 28539, 30056, 31569, 33084, 34596, 36111, 37629, 39134, 40653, 42167, 43686, 45195, 46701, 48222, 49736, 51248, 52764, 54273, 55790, 57302, 58817, 60332, 61841, 63356, 64871, 66389, 67899, 69411, 70926, 72434, 73956, 75468, 76982, 78494, 80009, 81527, 83036, 84548, 86064, 87578, 89094, 90605, 92115, 93632, 95145, 96662, 98172, 99687, 101198, 102713, 104232, 105747, 107252, 108768, 110286, 111797, 113312, 114825, 116336, 117854, 119366]# noqa: E501
-    hit3 = 1 #TODO
+    def vp_1(self):
+        """
+        [地狱摇篮]\n
+        抓取失败时剩余冷却时间变更为4秒\n
+        旋转速度 +30%\n
+        旋转中移动速度 +100%\n
+        发动[抓轰炮]时施放最后一击\n
+        旋转、 最后一击冲击波范围 +30%
+        """
+        ...
 
-# 裂石破天 와일드 캐넌 스파이크
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/d53301bb328baf12a3ae482cc6a565dd?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_2(self):
+        """
+        [地狱摇篮]\n
+        变更为可以在空中施放\n
+        可以强制中断转职技能的施放后僵直并施放[地狱摇篮]
+        """
+        ...
+
+# 裂石破天
+# fighter_female/grappler_female/d53301bb328baf12a3ae482cc6a565dd
+# a7a059ebe9e6054c0644b40ef316d6e9/d53301bb328baf12a3ae482cc6a565dd
 class Skill36(ActiveSkill):
+    """
+        快速从空中下坠并抓取一名敌人， 用力砸向地面。 拖行一段距离时， 使敌人受到多段攻击伤害； 最后巨岩会爆炸， 对敌人造成巨大的伤害。\n
+        根据抓取的敌人大小， 增加攻击范围， 落地前或落地时， 输入向后或下方向键， 可以大幅减少下降角度和抓取敌人后的移动距离。\n
+        无法抓取的敌人无法向前拖行， 但可以强制控制攻击范围内的敌人。 爆炸结束后， 解除强制控制并造成伤害。 这时地面多段攻击力会相加到最后爆炸攻击力。\n
+    [随机应变]\n
+        学习后， 抓取判定消失， 用力锤击地面击起岩石， 对范围内敌人造成大量伤害。 落地前或落地时， 输入向后或下方向键， 可以减少下降角度。
+    """
     name = "裂石破天"
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 8 #TODO
+    position = 8
     rangeLv = 2
     cube = 2
     cd = 45
     mp = [360, 3024]
     uuid = "d53301bb328baf12a3ae482cc6a565dd"
-    data0 = [0, 9000, 9906, 10821, 11735, 12650, 13559, 14474, 15383, 16302, 17211, 18120, 19034, 19953, 20862, 21777, 22691, 23598, 24518, 25425, 26348, 27254, 28169, 29081, 29993, 30902, 31820, 32727, 33651, 34554, 35469, 36380, 37293, 38204, 39123, 40034, 40958, 41861, 42774, 43686, 44603, 45506, 46428, 47337, 48248, 49163, 50075, 50988, 51905, 52812, 53730, 54638, 55553, 56466, 57375, 58292, 59205, 60117, 61034, 61938, 62855, 63767, 64682, 65591, 66510, 67421, 68333, 69239, 70154, 71070, 71984]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 地面冲撞冲击波攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-
-    data1 = [0, 2994, 3300, 3603, 3908, 4208, 4515, 4820, 5121, 5423, 5733, 6032, 6333, 6641, 6944, 7247, 7550, 7854, 8157, 8462, 8768, 9065, 9378, 9680, 9987, 10287, 10592, 10895, 11202, 11502, 11808, 12108, 12414, 12717, 13026, 13323, 13629, 13929, 14238, 14540, 14847, 15150, 15453, 15758, 16065, 16362, 16664, 16974, 17273, 17577, 17883, 18191, 18489, 18795, 19097, 19398, 19706, 20010, 20315, 20621, 20924, 21231, 21528, 21834, 22137, 22445, 22745, 23049, 23352, 23655, 23961]# noqa: E501
+    # 地面多段攻击力 : {value1} x {value2}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 3
-
-    data2 = [0, 11921, 13127, 14340, 15548, 16757, 17964, 19179, 20390, 21597, 22803, 24012, 25221, 26432, 27642, 28853, 30056, 31263, 32475, 33689, 34898, 36107, 37320, 38528, 39735, 40943, 42156, 43367, 44574, 45777, 46994, 48197, 49409, 50616, 51830, 53030, 54248, 55455, 56669, 57872, 59084, 60294, 61500, 62709, 63926, 65135, 66341, 67554, 68762, 69974, 71177, 72386, 73593, 74804, 76016, 77228, 78434, 79641, 80850, 82065, 83276, 84482, 85688, 86900, 88110, 89319, 90530, 91740, 92945, 94149, 95367]# noqa: E501
-    hit2 = 1
-
-    data3 = [0, 32150, 35414, 38673, 41939, 45198, 48456, 51723, 54978, 58241, 61508, 64767, 68027, 71295, 74556, 77811, 81078, 84330, 87591, 90860, 94122, 97386, 100644, 103902, 107172, 110433, 113693, 116955, 120213, 123476, 126741, 129998, 133262, 136526, 139785, 143046, 146310, 149571, 152832, 156093, 159350, 162617, 165876, 169137, 172400, 175659, 178919, 182190, 185448, 188709, 191973, 195231, 198497, 201762, 205016, 208278, 211545, 214808, 218063, 221330, 224588, 227852, 231111, 234372, 237636, 240897, 244155, 247419, 250680, 253941, 257208]# noqa: E501
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 最后岩石生成攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 1
-
-    # 随机应变 1.65已经在面板上体现了
-    data4 = [0, 57636, 63482, 69342, 75180, 81039, 86877, 92715, 98574, 104424, 110261, 116123, 121965, 127805, 133658, 139496, 145350, 151211, 157053, 162911, 168746, 174588, 180438, 186297, 192140, 197988, 203831, 209672, 215529, 221372, 227225, 233075, 238920, 244763, 250614, 256464, 262304, 268157, 274008, 279855, 285698, 291537, 297393, 303246, 309099, 314943, 320786, 326619, 332475, 338328, 344187, 350030, 355863, 361724, 367566, 373422, 379263, 385107, 390965, 396812, 402650, 408507, 414351, 420192, 426048, 431891, 437741, 443588, 449430, 455277, 461136]# noqa: E501
-    hit4 = 0
+    # 最后岩石爆炸攻击力 : {value4}
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 1
+    # [随机应变]
+    # 攻击力 : {value5}
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    hit5 = 0
+    # [范围信息]
+    # 攻击范围比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
     useAdapt = 0
 
     def setMode(self, mode = None):
         if self.useAdapt:
-            self.hit4 = 1
-            self.hit0 = self.hit1 = self.hit2 = self.hit3 = 0
+            self.hit5 = 1
+            self.hit0 = self.hit1 = self.hit3 = self.hit4 = 0
 
+    def vp_1(self):
+        """
+        [裂石破天]\n
+        变更为可填充2次的技能\n
+         - 每次填充冷却时间 : 22.5秒\n
+         - 单次攻击力 -50%\n
+        [普通]\n
+        最初生成岩石后角色可以移动\n
+        最后一击岩石生成数量 +2\n
+        [随机应变]\n
+        施放时立即发动[极手奥义]效果\n
+        攻击范围 +50%
+        """
+        ...
+        self.cd = 22.5
+        self.skillRation *= 1 - 0.5
 
-# 抓取奥义 옷깃 잡기
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/b163d099c8cc27fdb6fd3639c2ee6df9?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_2(self):
+        """
+        [裂石破天]\n
+        - 基本冷却时间变更为67.5秒\n
+        总攻击力 +50%\n
+        [普通]\n
+        无论是否抓取成功， 技能施放技能时进入无敌状态\n
+        [随机应变]\n
+        技能施放技能时进入无敌状态
+        """
+        ...
+        self.cd = 67.5
+        self.skillRation *= 1 + 0.5
+
+# 抓取奥义
+# fighter_female/grappler_female/b163d099c8cc27fdb6fd3639c2ee6df9
+# a7a059ebe9e6054c0644b40ef316d6e9/b163d099c8cc27fdb6fd3639c2ee6df9
 class Skill37(PassiveSkill):
+    """
+        将抓取动作提升到极致， 增加暴风眼的基本攻击、 抓取类技能的攻击力、 物理暴击率、 命中率和抓取时的回避率。
+    """
     name = "抓取奥义"
     learnLv = 48
     masterLv = 30
     maxLv = 40
-    position = 4 #TODO
+    position = 4
     rangeLv = 3
     uuid = "b163d099c8cc27fdb6fd3639c2ee6df9"
-    data0 = [0, 10.5, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5, 30, 31.5, 33, 34.5, 36, 37.5, 39, 40.5, 42, 43.5, 45, 46.5, 48, 49.5, 51, 52.5, 54, 55.5, 57, 58.5, 60, 61.5, 63, 64.5, 66, 67.5, 69]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本攻击和抓取技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 物理暴击率增加量 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 命中率增加量 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 抓取准备动作时回避率增加 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+
     associate = [{"data":data0}]
 
-# 末日风暴 기간틱 타이푼
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/d296043df164385a14cb973c8c7c4d07?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 末日风暴
+# fighter_female/grappler_female/d296043df164385a14cb973c8c7c4d07
+# a7a059ebe9e6054c0644b40ef316d6e9/d296043df164385a14cb973c8c7c4d07
 class Skill38(ActiveSkill):
+    """
+        抓取一名敌人后快速旋转并在自身周围生成一个巨大风暴， 风暴周围的敌人也会卷进来， 并受到持续伤害。\n
+        随后， 暴风眼跃入空中， 以强力终结一拳下砸敌人并产生冲击波， 对敌人造成巨大伤害。\n
+        抓取敌人后， 可以用方向键移动， 并吸附周围的敌人。 无法抓取的敌人无法移动， 抓取对象为建筑型时， 角色也无法移动， 但增加吸附周围敌人的范围。\n
+        旋转中连按<X>键时， 增加旋转速度、 减少多段攻击间隔； 按技能键或<Z>键时， 立即发动最后一击。
+    """
     name = "末日风暴"
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 7 #TODO
+    position = 7
     rangeLv = 5
     cube = 5
     cd = 140
     mp = [900, 7559]
     uuid = "d296043df164385a14cb973c8c7c4d07"
-    data0 = [0, 3471, 4277, 5079, 5882, 6690, 7495, 8299, 9102, 9909, 10712, 11518, 12321, 13126, 13936, 14736, 15541, 16347, 17149, 17953, 18762, 19565, 20367, 21171, 21978, 22785, 23587, 24391, 25197, 26003, 26809, 27612, 28416, 29221, 30025, 30828, 31637, 32439, 33244, 34050, 34852, 35660, 36463, 37267, 38073, 38879, 39682, 40486, 41292, 42099, 42902]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 风暴攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 13
+    # 回旋持续时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 风暴多段攻击间隔 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 最后一击攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
+    # 最后一击冲击波范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
-    data3 = [0, 54039, 66568, 79095, 91633, 104164, 116691, 129222, 141751, 154286, 166815, 179344, 191874, 204406, 216939, 229467, 241999, 254531, 267060, 279589, 292121, 304650, 317183, 329711, 342243, 354775, 367303, 379840, 392367, 404899, 417426, 429960, 442489, 455021, 467549, 480083, 492613, 505143, 517671, 530204, 542737, 555265, 567798, 580327, 592860, 605392, 617921, 630451, 642981, 655514, 668043]# noqa: E501
-    data3 = [int(i * 1.1 )if index > 8 else i for index, i in enumerate(data3)]
-
-
-# 旋风轰击 스피닝 스플래시
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/7f80b887a09e88e2c4728c898bd73654?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 旋风轰击
+# fighter_female/grappler_female/7f80b887a09e88e2c4728c898bd73654
+# a7a059ebe9e6054c0644b40ef316d6e9/7f80b887a09e88e2c4728c898bd73654
 class Skill39(ActiveSkill):
+    """
+        猛踏地面， 跃起旋转后快速下冲， 引发强力冲击波， 对范围内敌人造成伤害。\n
+        下降前按前方向键可朝前方突进。\n
+        引发冲击波后可以强制中断施放后僵直并施放转职系列技能， 此时按住后方向键可向后施放技能。\n
+        空中也可施放技能， 此时立即开始旋转。
+    """
     name = "旋风轰击"
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cube = 1
     cd = 25
     mp = [292, 988]
     uuid = "7f80b887a09e88e2c4728c898bd73654"
-    data0 = [0, 48240, 53133, 57972, 62921, 67869, 72689, 77582, 82566, 87423, 92336, 97247, 102104, 106979, 111909, 116784, 121715, 126590, 131501, 136376, 141288, 146163, 151056, 155949, 160806, 165773, 170630, 175523, 180453, 185402, 190221, 195096, 200063, 204884, 209795, 214707, 219600, 224475, 229406, 234281, 239138, 244085, 249015, 253854, 258747, 263678, 268553, 273446, 278303, 283305, 288144]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
+    # 冲击波攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
+    def vp_1(self):
+        """
+        [旋风轰击]\n
+        变更为可填充2次的技能\n
+         - 每次填充冷却时间 : 12.5秒\n
+         - 单次攻击力 -50%\n
+        冲击波范围 +30%
+        """
+        self.cd = 12.5
+        self.skillRation *= 1 - 0.5
+        ...
 
-# 死亡摇篮 싸이클론 어택
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/c5a2956d8ed3af1746ed2f76ca971a09?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_2(self):
+        """
+        [旋风轰击]\n
+        技能施放技能时进入无敌状态\n
+        被冲击波命中的敌人会进入眩晕状态3秒
+        """
+        ...
+
+# 死亡摇篮
+# fighter_female/grappler_female/c5a2956d8ed3af1746ed2f76ca971a09
+# a7a059ebe9e6054c0644b40ef316d6e9/c5a2956d8ed3af1746ed2f76ca971a09
 class Skill40(ActiveSkill):
+    """
+        抓取敌人， 跳跃后砸向地面并开始旋转， 然后吸附所有旋转移动路径上的敌人， 用强力的跳跃踢技对敌人造成巨大伤害。\n
+        旋转时可以用方向键控制左右移动方向， 按下方向键可以在原地旋转并发动最后一击。\n
+        根据抓取的敌人大小， 增加冲击波大小， 最后一击动作途中可取消施放后僵直， 发动空中技能。\n
+        抓轰炮发动时， 进行冲撞及旋转攻击后， 发动相当于所有旋转攻击力总和的最后一击。\n
+    [可以强制中断的技能]\n
+    [旋风腿]、 [野蛮冲撞]、 [空绞锤]、 [裂石破天]、 [旋风轰击]、 [风暴之舞]、 [苍宇彗星落] (随机应变)、 [送葬舞步]、 [女皇时代·辉煌舞台]\n
+    [随机应变]\n
+        学习后， 抓取判定消失， 旋转并腾空跳起攻击敌人。 按下方向键可以在原地发动攻击力。 可以在空中使用。
+    """
     name = "死亡摇篮"
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cube = 2
     cd = 50
     mp = [840, 1764]
     uuid = "c5a2956d8ed3af1746ed2f76ca971a09"
-    data0 = [0, 4647, 5127, 5600, 6065, 6542, 7014, 7481, 7961, 8429, 8895, 9374, 9846, 10317, 10788, 11261, 11732, 12207, 12678, 13142, 13623, 14094, 14564, 15039, 15509, 15983, 16457, 16929, 17397, 17867, 18342, 18813, 19286, 19757, 20234, 20703, 21174, 21647, 22118, 22590, 23063, 23538, 24006, 24477, 24951, 25422, 25893, 26364, 26838, 27311, 27783]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 92898, 102318, 111747, 121170, 130593, 140015, 149445, 158868, 168291, 177713, 187146, 196566, 205989, 215412, 224843, 234266, 243687, 253109, 262541, 271964, 281384, 290807, 300236, 309660, 319083, 328505, 337937, 347361, 356784, 366209, 375633, 385053, 394479, 403902, 413333, 422753, 432179, 441602, 451029, 460449, 469871, 479297, 488730, 498150, 507576, 516999, 526424, 535847, 545268, 554696]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 91458, 100736, 110013, 119300, 128571, 137853, 147134, 156405, 165680, 174975, 184244, 193526, 202805, 212081, 221360, 230646, 239922, 249198, 258479, 267746, 277032, 286320, 295590, 304868, 314150, 323423, 332702, 341988, 351270, 360546, 369827, 379098, 388374, 397659, 406937, 416207, 425495, 434769, 444047, 453326, 462603, 471879, 481175, 490442, 499713, 509004, 518280, 527549, 536843, 546114]# noqa: E501
+    # 翻转攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 最后一击攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # [学习随机应变后]
+    # 旋转攻击攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 0
+    # [范围信息]
+    # 冲击波大小比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
     useAdapt = 0
 
     def setMode(self, mode = None):
-        if self.useAdapt:
+        if self.useAdapt and not self.vp == 1:
             self.hit2 = 1
             self.hit0 = self.hit1 = 0
 
-# 极手奥义 체인 그랩
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/5892d1fa4462e561ac8f8d2c74892b0a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_1(self):
+        """
+        [死亡摇篮]\n
+        不再受[随机应变]的影响\n
+        删除抓取动作， 施放时立即在原地旋转并吸附周围的敌人\n
+         - 删除翻转攻击力\n
+         - 总攻击力相同\n
+         - 方向键输入功能无效
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [死亡摇篮]\n
+        [普通]\n
+        通过[滑行抓取]施放时， 向前方一定范围内最强敌人的位置突进\n
+        最后一击攻击后再次按技能键时， 快速落地\n
+        [随机应变]\n
+        追踪并下踢前方范围内最强的敌人\n
+        施放时立即发动[极手奥义]效果\n
+        攻击后再次按技能键时快速落地
+        """
+        ...
+
+# 极手奥义
+# fighter_female/grappler_female/5892d1fa4462e561ac8f8d2c74892b0a
+# a7a059ebe9e6054c0644b40ef316d6e9/5892d1fa4462e561ac8f8d2c74892b0a
 class Skill41(PassiveSkill):
+    """
+        抓取成功时， 可增加基本攻击力和抓取技能的攻击力， 该效果持续一定时间。\n
+    [效果适用技能]\n
+    [背摔]、 [抛投]、 [霹雳肘击]、 [空绞锤]、 [螺旋彗星落]、 [裂石破天]、 [末日风暴]、 [死亡摇篮]、 [末日摇篮]、 [风暴之舞]、 [苍宇彗星落]、 [送葬舞步]、 [女皇时代·辉煌舞台]
+    """
     name = "极手奥义"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 3 #TODO
+    position = 3
     rangeLv = 3
     uuid = "5892d1fa4462e561ac8f8d2c74892b0a"
-    data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 增益效果持续时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 效果叠加次数上限 : {value2}次
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     associate = [{"data":data0}]
 
-
-# 末日摇篮 자이언트 스윙
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/fc458e449ee00b01dbf88d09aae65462?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 末日摇篮
+# fighter_female/grappler_female/fc458e449ee00b01dbf88d09aae65462
+# a7a059ebe9e6054c0644b40ef316d6e9/fc458e449ee00b01dbf88d09aae65462
 class Skill42(ActiveSkill):
+    """
+        向前方旋转并抓取敌人， 然后继续旋转并造成伤害， 最后将敌人摔到地上， 产生冲击波。\n
+        扔出敌人之前若按向下方向键， 则原地扔出敌人； 若按向前方向键， 则能将敌人扔得更远。\n
+        攻击可抓取敌人时， 旋转过程中按方向键可立即扔出敌人， 冲击波范围根据敌人体型增加。\n
+        发动[抓轰炮]时， 第一次攻击时会强控敌人， 旋转一圈后施放合计所有旋转攻击力的最后一击。\n
+    [随机应变]\n
+        学习后， 抓取判定删除， 旋转攻击并吸附周围敌人， 然后发动最后一击。
+    """
     name = "末日摇篮"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cube = 3
     cd = 40
     mp = [580, 4500]
     uuid = "fc458e449ee00b01dbf88d09aae65462"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 12686, 13972, 15255, 16541, 17829, 19116, 20401, 21687, 22975, 24266, 25552, 26837, 28125, 29410, 30694, 31981, 33270, 34559, 35845, 37130, 38416, 39705, 40990, 42274, 43562, 44849, 46138, 47426, 48709, 49998, 51284, 52570, 53856, 55143, 56434, 57718, 59005, 60291, 61578, 62863, 64150, 65435, 66727, 68013, 69299, 70583, 71871, 73157, 74443, 75728]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 12686, 13972, 15255, 16541, 17829, 19116, 20401, 21687, 22975, 24266, 25552, 26837, 28125, 29410, 30694, 31981, 33270, 34559, 35845, 37130, 38416, 39705, 40990, 42274, 43562, 44849, 46138, 47426, 48709, 49998, 51284, 52570, 53856, 55143, 56434, 57718, 59005, 60291, 61578, 62863, 64150, 65435, 66727, 68013, 69299, 70583, 71871, 73157, 74443, 75728]# noqa: E501
+    # 首次旋转攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 额外旋转攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 5
-
-    data3 = [0, 19462, 21436, 23406, 25382, 27357, 29328, 31304, 33280, 35251, 37226, 39201, 41176, 43149, 45125, 47095, 49068, 51046, 53020, 54995, 56967, 58943, 60919, 62889, 64864, 66840, 68815, 70788, 72761, 74737, 76709, 78680, 80663, 82632, 84609, 86579, 88555, 90531, 92504, 94480, 96452, 98426, 100401, 102374, 104353, 106322, 108298, 110277, 112247, 114220, 116192]# noqa: E501
-    hit3 = 1 #TODO
-
-    data4 = [0, 18494, 20369, 22245, 24123, 26002, 27876, 29753, 31629, 33505, 35380, 37257, 39132, 41010, 42889, 44762, 46639, 48517, 50390, 52268, 54146, 56025, 57896, 59771, 61652, 63524, 65403, 67280, 69155, 71031, 72909, 74785, 76658, 78537, 80413, 82289, 84165, 86042, 87919, 89792, 91673, 93547, 95425, 97300, 99175, 101053, 102928, 104806, 106681, 108558, 110433]# noqa: E501
+    # 额外旋转次数 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 最后冲击波攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
+    # [随机应变]
+    # 旋转攻击力 : {value4}
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     hit4 = 0
-
-    data5 = [0, 73982, 81482, 88987, 96497, 103999, 111502, 119011, 126516, 134018, 141522, 149033, 156537, 164037, 171547, 179055, 186554, 194067, 201568, 209072, 216583, 224083, 231588, 239091, 246603, 254105, 261609, 269119, 276622, 284124, 291634, 299136, 306642, 314154, 321657, 329156, 336659, 344171, 351677, 359178, 366689, 374194, 381692, 389203, 396706, 404210, 411720, 419224, 426729, 434228, 441739]# noqa: E501
+    # 最后冲击波攻击力 : {value5}
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     hit5 = 0
+    # [范围信息]
+    # 最后冲击波大小比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
     useAdapt = 0
 
@@ -604,66 +1206,156 @@ class Skill42(ActiveSkill):
             self.hit4 = self.hit5 = 1
             self.hit0 = self.hit1 = self.hit3 = 0
 
-# 随机应变 턴 힐
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/2a0a39184de92acf1c1375e00b77404c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_1(self):
+        """
+        [末日摇篮]\n
+        [普通]\n
+        旋转攻击范围 +30%\n
+        在冲击波生成位置生成旋风， 吸附周围的敌人并进行多段攻击， 持续1.5秒\n
+         - 旋风多段攻击次数 : 15次\n
+         - 总攻击力相同\n
+        固定向柔道家的前方投掷敌人\n
+        [随机应变]\n
+        生成持续1.5秒的旋风， 吸附周围的敌人并进行多段攻击\n
+         - 删除旋转攻击和终结冲击波攻击\n
+         - 旋风多段攻击次数 : 15次\n
+         - 总攻击力相同
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [末日摇篮]\n
+        旋转途中可以预输入[螺旋彗星落]， 在最后一击时出现莱茜或露西， 进行协同攻击\n
+        - 莱茜或露西的攻击力与[螺旋彗星落]攻击力相同\n
+        [普通]\n
+        露西在空中出现， 施放[螺旋飞扑]\n
+        发动[抓轰炮]时， 莱茜在柔道家的对面施放[碎骨飞身踢]\n
+        [随机应变]\n
+        露西或莱茜在空中出现， 施放[终极飞身踢]\n
+        使被[终极飞身踢]命中的敌人进入强制控制状态， 效果持续3秒
+        """
+        ...
+
+# 随机应变
+# fighter_female/grappler_female/2a0a39184de92acf1c1375e00b77404c
+# a7a059ebe9e6054c0644b40ef316d6e9/2a0a39184de92acf1c1375e00b77404c
 class Skill43(PassiveSkill):
+    """
+        精通抓取技的风暴女皇可以根据敌人的状态控制自己的技能。\n
+        学习该技能后， 部分抓取技能变更为攻击技能。\n
+        即使变更为攻击技能， 转职和觉醒被动效果依然生效。\n
+    变更的技能 : [裂石破天]、 [死亡摇篮]、 [末日摇篮]、 [苍宇彗星落]
+    """
     name = "随机应变"
     learnLv = 75
     masterLv = 1
     maxLv = 1
-    position = 10 #TODO
+    position = 10
     rangeLv = 3
     uuid = "2a0a39184de92acf1c1375e00b77404c"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     associate = [
         {"type":"+useAdapt","skills":["裂石破天","死亡摇篮","末日摇篮","苍宇彗星落"],"data":[0,100]}
     ]
 
 
-# 风暴之舞 토르베지노
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/1812a1ece67bb37b6b44b54766450064?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 风暴之舞
+# fighter_female/grappler_female/1812a1ece67bb37b6b44b54766450064
+# a7a059ebe9e6054c0644b40ef316d6e9/1812a1ece67bb37b6b44b54766450064
 class Skill44(ActiveSkill):
+    """
+        围绕敌人高速旋转并攻击其关节， 在一段时间后对敌人造成大量伤害。\n
+        可以在空中使用。
+    """
     name = "风暴之舞"
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cube = 5
     cd = 45
     mp = [800, 6000]
     uuid = "1812a1ece67bb37b6b44b54766450064"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 12672, 13960, 15241, 16531, 17813, 19098, 20384, 21674, 22959, 24242, 25530, 26809, 28101, 29381, 30666, 31951, 33238, 34525, 35808, 37093, 38379, 39667, 40949, 42235, 43525, 44805, 46096, 47378, 48666, 49949, 51237, 52521, 53808, 55094, 56375, 57665, 58947, 60231, 61516, 62806, 64088, 65375, 66662, 67942, 69232, 70514, 71803, 73091, 74373, 75659]# noqa: E501
+    # 旋绕速度 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 爆炸攻击力 : {value1} x {value2}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 6
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 最后爆炸攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
+    # [范围信息]
+    # 冲击波大小比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
-    data3 = [0, 35220, 38787, 42365, 45935, 49507, 53077, 56658, 60229, 63801, 67375, 70944, 74519, 78091, 81663, 85232, 88810, 92380, 95952, 99529, 103099, 106673, 110244, 113820, 117387, 120961, 124535, 128109, 131679, 135254, 138829, 142402, 145974, 149545, 153117, 156689, 160262, 163832, 167406, 170979, 174551, 178124, 181704, 185272, 188847, 192419, 195993, 199562, 203131, 206709, 210283]# noqa: E501
-    hit3 = 1 #TODO
+    def vp_1(self):
+        """
+        [风暴之舞]\n
+        向前方一定范围内最强敌人的位置突进\n
+         - 寻敌范围内不存在敌人时， 无法施放技能\n
+        抓住敌人后立即引发爆炸， 且爆炸发生间隔减少\n
+         - 爆炸次数 +6次\n
+         - 总攻击力相同\n
+        爆炸结束后， 被抓取的敌人进入强制控制状态1秒
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [风暴之舞]\n
+        返回施放技能的方向， 通过金臂勾产生强烈的冲击波后， 落地到与敌人相近的位置\n
+         - 冲击波为单次攻击\n
+         - 总攻击力相同
+        """
+        ...
 
-# 苍宇彗星落 허리케인 슈퍼 플렉스
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/d89f26862e348a801b30bb9fd7125db5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 苍宇彗星落
+# fighter_female/grappler_female/d89f26862e348a801b30bb9fd7125db5
+# a7a059ebe9e6054c0644b40ef316d6e9/d89f26862e348a801b30bb9fd7125db5
 class Skill45(ActiveSkill):
+    """
+        抓取敌人并使用暴力上勾拳将其打向高空， 然后高高跃起， 抱住敌人一起疾速旋转后将其用力砸向地面使其受到极大伤害。\n
+        上勾拳以后连续按下技能键， 可以更快地把敌人砸向地面。\n
+        对无法抓取敌人施放时， 直接发动最后一击。\n
+    - [随机应变] -\n
+        学习后抓取判定消失， 跳起强力下砸攻击敌人。 在空中也可以施放。
+    """
     name = "苍宇彗星落"
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 4 #TODO
+    position = 0 #TODO
     rangeLv = 5
     cube = 10
     cd = 180
     mp = [2500, 5000]
     uuid = "d89f26862e348a801b30bb9fd7125db5"
-    data0 = [0, 30281, 37301, 44324, 51344, 58368, 65390, 72416, 79433, 86453, 93477, 100501, 107521, 114544, 121565, 128588, 135606, 142632, 149652, 156675, 163696, 170718, 177738, 184763, 191784, 198806, 205829, 212845, 219869, 226893, 233916, 240935, 247958, 254982, 262001, 269022, 276048, 283071, 290090, 297111, 304132, 311154, 318179, 325200, 332222, 339242, 346264, 353284, 360309, 367331, 374354]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 186325, 229531, 272737, 315943, 359149, 402356, 445562, 488767, 531973, 575179, 618386, 661590, 704800, 748004, 791212, 834414, 877621, 920829, 964033, 1007238, 1050444, 1093652, 1136857, 1180065, 1223270, 1266478, 1309682, 1352888, 1396093, 1439300, 1482503, 1525713, 1568918, 1612122, 1655328, 1698536, 1741742, 1784946, 1828152, 1871359, 1914567, 1957771, 2000978, 2044185, 2087386, 2130595, 2173803, 2217007, 2260214, 2303421]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 22102, 27227, 32353, 37482, 42608, 47733, 52858, 57981, 63105, 68234, 73360, 78481, 83606, 88736, 93862, 98988, 104112, 109239, 114362, 119490, 124613, 129738, 134863, 139992, 145117, 150242, 155367, 160494, 165616, 170743, 175870, 180994, 186119, 191245, 196370, 201497, 206621, 211749, 216872, 221999, 227123, 232247, 237373, 242500, 247626, 252752, 257877, 263003, 268125, 273252]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 暴力上勾拳攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 砸向地面的攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # [随机应变]
+    # 踢击攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 0
-
-    data3 = [0, 198977, 245112, 291248, 337392, 383530, 429672, 475806, 521946, 568087, 614224, 660369, 706504, 752644, 798782, 844921, 891062, 937200, 983337, 1029480, 1075618, 1121759, 1167898, 1214036, 1260176, 1306317, 1352458, 1398594, 1444732, 1490873, 1537011, 1583149, 1629292, 1675428, 1721568, 1767705, 1813846, 1859988, 1906122, 1952266, 1998404, 2044540, 2090681, 2136822, 2182963, 2229099, 2275236, 2321379, 2367518, 2413656, 2459797]# noqa: E501
+    # 下砸攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 0
 
     useAdapt = 0
@@ -673,74 +1365,127 @@ class Skill45(ActiveSkill):
             self.hit2 = self.hit3 = 1
             self.hit0 = self.hit1  = 0
 
-
-# 送葬舞步 샤이닝 윙즈 플랩
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/ab6fc3303df03b58911967dfca2b5d07?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 送葬舞步
+# fighter_female/grappler_female/ab6fc3303df03b58911967dfca2b5d07
+# a7a059ebe9e6054c0644b40ef316d6e9/ab6fc3303df03b58911967dfca2b5d07
 class Skill46(ActiveSkill):
+    """
+        光芒之翼莱茜&露西组合的招牌动作。\n
+        柔道家将敌人过肩摔后， 莱茜和露西交替攻击， 对敌人发动终结攻击。\n
+        根据抓取敌人的状态变更技能效果。\n
+        跳跃过程中也可以使用该技能。\n
+    [可抓取]\n
+        柔道家将敌人过肩摔后， 莱茜突进后用金臂勾将敌人击飞到空中， 然后露西快速抓取浮空的敌人后使出翻滚打桩摔。\n
+        每次攻击时会产生冲击波， 对周围敌人造成相同伤害。\n
+        过肩摔时， 可以按上方键将莱茜的金臂勾变更为飞身踢， 远远踢飞敌人。\n
+    [抓轰炮]\n
+        柔道家旋转攻击敌人， 莱茜突进后使出金臂勾， 然后露西对敌人使出飞身压。
+    """
     name = "送葬舞步"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cube = 7
     cd = 60
     mp = [960, 7200]
     uuid = "ab6fc3303df03b58911967dfca2b5d07"
-    data0 = [0, 20428, 22497, 24571, 26644, 28715, 30789, 32862, 34933, 37005, 39077, 41148, 43222, 45293, 47365, 49437, 51509, 53582, 55655, 57727, 59798, 61872, 63944, 66016, 68089, 70160, 72233, 74304, 76376, 78448, 80519, 82593, 84666, 86738, 88811, 90881, 92955, 95028, 97100, 99172, 101245, 103317, 105391, 107461, 109535, 111606, 113678, 115751, 117821, 119896, 121967]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 柔道家攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 莱茜攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 露西攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
 
-    data1 = [0, 91914, 101243, 110568, 119891, 129218, 138541, 147867, 157193, 166517, 175842, 185170, 194493, 203818, 213146, 222468, 231794, 241120, 250444, 259768, 269093, 278421, 287747, 297070, 306395, 315718, 325045, 334370, 343694, 353020, 362348, 371672, 380997, 390322, 399645, 408971, 418294, 427621, 436947, 446271, 455597, 464922, 474247, 483570, 492895, 502222, 511548, 520874, 530197, 539523, 548849]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 91914, 101243, 110568, 119891, 129218, 138541, 147867, 157193, 166517, 175842, 185170, 194493, 203818, 213146, 222468, 231794, 241120, 250444, 259768, 269093, 278421, 287747, 297070, 306395, 315718, 325045, 334370, 343694, 353020, 362348, 371672, 380997, 390322, 399645, 408971, 418294, 427621, 436947, 446271, 455597, 464922, 474247, 483570, 492895, 502222, 511548, 520874, 530197, 539523, 548849]# noqa: E501
-    hit2 = 1 #TODO
-
-
-# 光芒之翼 스테이블 : 디 얼티밋
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/0c3a468aee1f7ce06bf91eb3319518c1?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 光芒之翼
+# fighter_female/grappler_female/0c3a468aee1f7ce06bf91eb3319518c1
+# a7a059ebe9e6054c0644b40ef316d6e9/0c3a468aee1f7ce06bf91eb3319518c1
 class Skill47(PassiveSkill):
+    """
+        战斗舞台的女皇——归元·柔道家与她的弟子莱茜&露西姐妹组成的终极组合。\n
+        她们为观众展现更加华丽和超凡的战斗。\n
+        增加除[背摔]以外的基本攻击和转职技能攻击力， 部分技能附加额外效果。\n
+    [背摔]\n
+        可抓取敌人 : 莱茜向倒地的敌人使出月面宙反， 造成额外伤害后弹回。\n
+        无法抓取敌人 : 露西向命中的敌人使出飞身踢， 造成额外伤害后延长控制时间。\n
+    [野蛮冲撞]\n
+        不论是否蓄气， 抓取时均发动霸体护甲， 在空中时也可以使用该技能。\n
+        空中施放时， 沿斜线落下， 向敌人踢击， 攻击后可以立即中断并使用空中抓取技能。\n
+        准备动作时按方向键可以调整落下角度。
+    """
     name = "光芒之翼"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 3
     uuid = "0c3a468aee1f7ce06bf91eb3319518c1"
-    data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 除[背摔]以外的基本攻击力和转职技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # [背摔]
+    # 莱茜月面宙反攻击力 : [背摔]攻击力的{value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 露西飞身踢攻击力 : [背摔]攻击力的{value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     associate = [{"data":data0}]
 
-
-# 女皇时代·辉煌舞台 피날레 오브 더 퀸
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/c91a62dc0a18360acf5031ac0ebf09f5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 女皇时代·辉煌舞台
+# fighter_female/grappler_female/c91a62dc0a18360acf5031ac0ebf09f5
+# a7a059ebe9e6054c0644b40ef316d6e9/c91a62dc0a18360acf5031ac0ebf09f5
 class Skill48(ActiveSkill):
+    """
+        身在战斗舞台上的女皇使出最后的终结技。\n
+        施放时， 向地面发动致命捶击， 产生冲击波， 强制控制命中的敌人， 然后隐藏踪迹。\n
+        随后莱茜&露西向最强的敌人发动双人飞身踢， U.F.E特设舞台出现。\n
+        然后， 幕后女皇登场， 发动终极金臂勾， 对敌人造成巨大伤害。\n
+        终结攻击时， 敌人的控制状态解除。\n
+        跳跃过程中也可以施放该技能。\n
+    [三次觉醒技能]\n
+        使用三次觉醒技能时， 与关联的技能共享冷却时间。\n
+        若关联的技能还在冷却中， 则无法使用三次觉醒技能。
+    """
     name = "女皇时代·辉煌舞台"
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 0 #TODO
     rangeLv = 5
     cube = 15
     cd = 290
     mp = [4025, 8055]
     uuid = "c91a62dc0a18360acf5031ac0ebf09f5"
-    data0 = [0, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 63583, 78328, 93070, 107816, 122558, 137300, 152047, 166789, 181534, 196277, 211020, 225767, 240510, 255254, 269998, 284741, 299487, 314229, 328973, 343716, 358459, 373207, 387948, 402693, 417438, 432180, 446923, 461670, 476413, 491156, 505900, 520643, 535387, 550130, 564877, 579618, 594363, 609109, 623850, 638597, 653340, 668084, 682828, 697571, 712314, 727058, 741801, 756548, 771291, 786034]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 127167, 156653, 186143, 215629, 245115, 274604, 304094, 333583, 363069, 392556, 422045, 451531, 481022, 510505, 539995, 569485, 598972, 628459, 657945, 687435, 716922, 746412, 775899, 805385, 834873, 864363, 893848, 923338, 952826, 982313, 1011801, 1041286, 1070776, 1100264, 1129754, 1159240, 1188727, 1218216, 1247704, 1277192, 1306676, 1336167, 1365656, 1395144, 1424630, 1454117, 1483606, 1513094, 1542583, 1572070]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 127167, 156653, 186143, 215629, 245115, 274604, 304094, 333583, 363069, 392556, 422045, 451531, 481022, 510505, 539995, 569485, 598972, 628459, 657945, 687435, 716922, 746412, 775899, 805385, 834873, 864363, 893848, 923338, 952826, 982313, 1011801, 1041286, 1070776, 1100264, 1129754, 1159240, 1188727, 1218216, 1247704, 1277192, 1306676, 1336167, 1365656, 1395144, 1424630, 1454117, 1483606, 1513094, 1542583, 1572070]# noqa: E501
-    hit3 = 1 #TODO
-
-    data4 = [0, 127167, 156653, 186143, 215629, 245115, 274604, 304094, 333583, 363069, 392556, 422045, 451531, 481022, 510505, 539995, 569485, 598972, 628459, 657945, 687435, 716922, 746412, 775899, 805385, 834873, 864363, 893848, 923338, 952826, 982313, 1011801, 1041286, 1070776, 1100264, 1129754, 1159240, 1188727, 1218216, 1247704, 1277192, 1306676, 1336167, 1365656, 1395144, 1424630, 1454117, 1483606, 1513094, 1542583, 1572070]# noqa: E501
-    hit4 = 1 #TODO
-
-    data5 = [0, 31792, 39163, 46536, 53908, 61279, 68651, 76022, 83395, 90768, 98139, 105510, 112881, 120255, 127627, 134998, 142370, 149741, 157113, 164488, 171860, 179231, 186602, 193975, 201345, 208720, 216091, 223462, 230834, 238205, 245579, 252951, 260322, 267694, 275066, 282437, 289809, 297181, 304552, 311925, 319299, 326669, 334041, 341416, 348785, 356157, 363530, 370900, 378272, 385645, 393016]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 莱茜&露西搜寻敌人范围 : {value0}px
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 第一次冲击波攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 莱茜&露西双人飞身踢攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # 金臂勾攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
+    # 金臂勾冲击波攻击力 : {value4}
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 1
+    # 终结爆炸攻击力 : {value5} x {value6}
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     hit5 = 6
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+
 
 class classChange(Character):
     def __init__(self, equVersion):
@@ -748,16 +1493,16 @@ class classChange(Character):
         self.name = 'grappler_female'
         self.nameCN = '归元·柔道家'
         self.role = 'fighter_female'
+        self.角色 = '格斗家(女)'
+        self.职业 = '柔道家'
+        self.jobId = 'a7a059ebe9e6054c0644b40ef316d6e9'
+        self.jobGrowId = 'c9b492038ee3ca8d27d7004cf58d59f3'
 
         self.武器选项 = ['手套', '臂铠','爪','东方棍']
         self.输出类型选项 = ['物理固伤']
         self.输出类型 = '物理固伤'
         self.防具精通属性 = ['力量']
         self.防具类型 = '轻甲'
-        self.buff = 2.215
-
-        self.角色 = '格斗家(女)'
-
-        self.职业 = '柔道家'
+        self.buff =  2.215
 
         super().__init__(equVersion, __name__)
