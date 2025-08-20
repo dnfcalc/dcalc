@@ -453,10 +453,13 @@ class Skill25(PassiveSkill):
     def setMode(self, mode):
         if mode == '失败':
             self.hit0 = 1
+            self.hit1 = self.hit2 = 0
         elif mode == '成功':
             self.hit1 = 1
+            self.hit0 = self.hit2 = 0
         elif mode == '大成功':
             self.hit2 = 1
+            self.hit0 = self.hit1 = 0
 
 # 改良魔法星弹
 # mage_female/witch/7cf17936a039b418660424125dc968d7
@@ -742,14 +745,17 @@ class Skill33(ActiveSkill):
     def setMode(self, mode):
         if mode == '失败':
             self.hit4 = 36
+            self.hit1 = self.hit5 = self.hit6 = 0
             ...
         elif mode == '成功':
             self.hit5 = 36
+            self.hit1 = self.hit4 = self.hit6 = 0
             ...
         elif mode == '大成功':
             # 测试为6 描述为5
             self.hit1 = 6
             self.hit6 = 36
+            self.hit4 = self.hit5 = 0
             ...
 
 # 熔岩药瓶
@@ -823,10 +829,12 @@ class Skill34(ActiveSkill):
     def setMode(self, mode):
         if mode == '失败':
             self.hit4 = 1
+            self.hit1 = self.hit2 = 0
             ...
         elif mode == '大成功':
             self.hit1 = 6
             self.hit2 = 11
+            self.hit4 = 0
             ...
 
 # 苍蝇拍 : 魔法禁锢
@@ -948,9 +956,11 @@ class Skill37(ActiveSkill):
         if mode == "地面":
             self.hit0 = 8
             self.hit2 = 1
+            self.hit3 = self.hit5 = 0
         elif mode == "空中":
             self.hit3 = 2
             self.hit5 = 1
+            self.hit0 = self.hit2 = 0
 
     def vp_1(self):
         """
@@ -1128,10 +1138,13 @@ class Skill39(ActiveSkill):
     def setMode(self, mode):
         if mode == "失败":
             self.hit0 = 1
+            self.hit1 = self.hit2 = 0
         elif mode == "成功":
             self.hit1 = 1
+            self.hit0 = self.hit2 = 0
         elif mode == "大成功":
             self.hit2 = 1
+            self.hit0 = self.hit1 = 0
 
     def vp_1(self):
         """
@@ -1230,11 +1243,14 @@ class Skill40(ActiveSkill):
     def setMode(self, mode):
         if mode == "失败":
             self.hit6 = 13
+            self.hit8 = self.hit15 = self.hit17 = 0
         elif mode == "成功":
             self.hit8 = 28
+            self.hit6 = self.hit15 = self.hit17 = 0
         elif mode == "大成功":
             self.hit15 = 48
             self.hit17 = 1
+            self.hit6 = self.hit8 = 0
 
     def vp_1(self):
         """
@@ -1357,10 +1373,12 @@ class Skill42(ActiveSkill):
         if mode == "失败":
             self.hit2 = 9
             self.hit4 = 1
+            self.hit8 = self.hit9 = self.hit11 = 0
         elif mode == "大成功":
             self.hit8 = 1
             self.hit9 = 47
             self.hit11 = 3
+            self.hit2 = self.hit4 = 0
 
     def vp_1(self):
         """
@@ -2020,7 +2038,7 @@ class Skill54(ActiveSkill):
     hit4 = 1
     # 终结爆炸攻击力 : {value5}
     data5 = get_data(f'{prefix}/{uuid}', 5)
-    hit5 = 1
+    hit5 = 4
     # 终结爆炸多段攻击次数 : {value6}次
     data6 = get_data(f'{prefix}/{uuid}', 6)
 

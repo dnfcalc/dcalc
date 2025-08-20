@@ -900,6 +900,7 @@ class Skill39(ActiveSkill):
         if mode == "抓取":
             self.hit0 = 6
             self.hit2 = self.hit3 = 1
+            self.hit4 = 0
         elif mode == "不可抓取":
             self.hit0 = 3
             self.hit2 = self.hit3 = 0
