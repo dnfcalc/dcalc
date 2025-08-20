@@ -106,7 +106,7 @@ class Skill12(ActiveSkill):
     maxLv = 20
     position = 8 #TODO
     rangeLv = 3
-    cd = [30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11]
+    cds = [0, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11]
     mp = [20, 70]
     uuid = "0969cd4054d93da07708108c0cc1c4b5"
     hasVP = False
@@ -130,6 +130,10 @@ class Skill12(ActiveSkill):
     data7 = get_data(f'{prefix}/{uuid}', 7)
     # 增加召唤兽智力 : {value8}
     data8 = get_data(f'{prefix}/{uuid}', 8)
+
+    def getSkillCD(self, mode=None):
+        self.cd = self.cds[self.lv]
+        return super().getSkillCD(mode)
 
 # 冰霜雪人
 # mage_female/witch/4224f9b0b8c7c903e9a1e0f9d9f6d04d
@@ -231,7 +235,7 @@ class Skill19(ActiveSkill):
     maxLv = 20
     position = 1 #TODO
     rangeLv = 3
-    cd = [20, 19.5, 19.1, 18.6, 18.1, 17.6, 17.2, 16.7, 16.2, 15.7, 15.3, 14.8, 14.3, 13.8, 13.4, 12.9, 12.4, 11.9, 11.5, 11]
+    cds = [0, 20, 19.5, 19.1, 18.6, 18.1, 17.6, 17.2, 16.7, 16.2, 15.7, 15.3, 14.8, 14.3, 13.8, 13.4, 12.9, 12.4, 11.9, 11.5, 11]
     mp = [30, 126]
     uuid = "9bff7f2559e003766fee2853dca00631"
     hasVP = False
@@ -258,6 +262,10 @@ class Skill19(ActiveSkill):
     # [范围信息]
     # 减益效果范围 : {value9}px
     data9 = get_data(f'{prefix}/{uuid}', 9)
+
+    def getSkillCD(self, mode=None):
+        self.cd = self.cds[self.lv]
+        return super().getSkillCD(mode)
 
 # 远古魔法书
 # mage_female/witch/01384bbfc346775d1267fa0bc4ca605f

@@ -77,30 +77,36 @@ def jade_12(char: CharacterProperty = {}, value=0):
 
 @register
 def jade_13(char: CharacterProperty = {}, value=0):
-    char.BuffSkill.STRINTPLUS += value
-    char.SetStatus(BufferP=value/1000)
+    if char.buffer:
+        char.BuffSkill.STRINTPLUS += value
+        char.SetStatus(BufferP=value/1000)
 
 @register
 def jade_14(char: CharacterProperty = {}, value=0):
-    char.BuffSkill.STRINTRatio *= 1 + value/100
-    char.SetStatus(BufferP=value/200)
+    if char.buffer:
+        char.BuffSkill.STRINTRatio *= 1 + value/100
+        char.SetStatus(BufferP=value/200)
 
 @register
 def jade_15(char: CharacterProperty = {}, value=0):
-    char.BuffSkill.ATKPLUS += value
-    char.SetStatus(BufferP=value/200)
+    if char.buffer:
+        char.BuffSkill.ATKPLUS += value
+        char.SetStatus(BufferP=value/200)
 
 @register
 def jade_16(char: CharacterProperty = {}, value=0):
-    char.BuffSkill.ATKRatio *= 1 + value/100
-    char.SetStatus(BufferP=value/200)
+    if char.buffer:
+        char.BuffSkill.ATKRatio *= 1 + value/100
+        char.SetStatus(BufferP=value/200)
 
 @register
 def jade_17(char: CharacterProperty = {}, value=0):
-    char.AwakeSkill.STRINTPLUS += value
-    char.SetStatus(BufferP=value/4000)
+    if char.buffer:
+        char.AwakeSkill.STRINTPLUS += value
+        char.SetStatus(BufferP=value/4000)
 
 @register
 def jade_18(char: CharacterProperty = {}, value=0):
-    char.AwakeSkill.STRINTRatio *= 1 + value/100
-    char.SetStatus(BufferP=value/200)
+    if char.buffer:
+        char.AwakeSkill.STRINTRatio *= 1 + value/100
+        char.SetStatus(BufferP=value/200)
