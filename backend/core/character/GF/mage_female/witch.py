@@ -448,18 +448,24 @@ class Skill25(PassiveSkill):
     # 大成功率 : {value5}%
     data5 = get_data(f'{prefix}/{uuid}', 5)
 
+    powerSuccess = 1.0
+    powerFail = 1.0
+
     mode = ['失败', '成功', '大成功']
 
     def setMode(self, mode):
         if mode == '失败':
             self.hit0 = 1
             self.hit1 = self.hit2 = 0
+            self.skillRation *= self.powerFail
         elif mode == '成功':
             self.hit1 = 1
             self.hit0 = self.hit2 = 0
+            self.skillRation *= self.powerSuccess
         elif mode == '大成功':
             self.hit2 = 1
             self.hit0 = self.hit1 = 0
+            self.skillRation *= self.powerSuccess
 
 # 改良魔法星弹
 # mage_female/witch/7cf17936a039b418660424125dc968d7
@@ -508,6 +514,11 @@ class Skill26(ActiveSkill):
     # 攻击后移动距离 : {value9}px
     data9 = get_data(f'{prefix}/{uuid}', 9)
 
+    powerSuccess = 1.0
+    powerFail = 1.0
+
+    def setMode(self, mode):
+        self.skillRation *= self.powerSuccess
 
 
 # 魔法秀
@@ -740,22 +751,28 @@ class Skill33(ActiveSkill):
     # 乌云大小比率 : {value11}%
     data11 = get_data(f'{prefix}/{uuid}', 11)
 
+    powerSuccess = 1.0
+    powerFail = 1.0
+
     mode = ['失败','成功','大成功']
 
     def setMode(self, mode):
         if mode == '失败':
             self.hit4 = 36
             self.hit1 = self.hit5 = self.hit6 = 0
+            self.skillRation *= self.powerFail
             ...
         elif mode == '成功':
             self.hit5 = 36
             self.hit1 = self.hit4 = self.hit6 = 0
+            self.skillRation *= self.powerSuccess
             ...
         elif mode == '大成功':
             # 测试为6 描述为5
             self.hit1 = 6
             self.hit6 = 36
             self.hit4 = self.hit5 = 0
+            self.skillRation *= self.powerSuccess
             ...
 
 # 熔岩药瓶
@@ -826,15 +843,20 @@ class Skill34(ActiveSkill):
 
     mode = ['失败','成功','大成功']
 
+    powerSuccess = 1.0
+    powerFail = 1.0
+
     def setMode(self, mode):
         if mode == '失败':
             self.hit4 = 1
             self.hit1 = self.hit2 = 0
+            self.skillRation *= self.powerFail
             ...
         elif mode == '大成功':
             self.hit1 = 6
             self.hit2 = 11
             self.hit4 = 0
+            self.skillRation *= self.powerSuccess
             ...
 
 # 苍蝇拍 : 魔法禁锢
@@ -887,11 +909,10 @@ class Skill36(PassiveSkill):
     data3 = get_data(f'{prefix}/{uuid}', 3)
 
     associate = [
-        {"data":data1,"type":"+power4","skills":["熔岩药瓶"]},
-        {"data":data2,"type":"+power6","skills":["暴炎加热炉"]},
-        {"data":data3,"type":"+power2","skills":["冰霜钻孔车"]},
-        {"data":data3,"type":"+power4","skills":["冰霜钻孔车"]}
-        ]
+        {"data":data1,"type":"+powerFail","skills":["熔岩药瓶"]},
+        {"data":data2,"type":"+powerFail","skills":["暴炎加热炉"]},
+        {"data":data3,"type":"+powerFail","skills":["冰霜钻孔车"]},
+    ]
 
 # 旋转扫把
 # mage_female/witch/2c9d9a36c8401bddff6cdb80fab8dc24
@@ -1054,13 +1075,18 @@ class Skill38(ActiveSkill):
 
     mode = ["设置型","乘骑型"]
 
+    powerSuccess = 1.0
+    powerFail = 1.0
+
     def setMode(self, mode):
         if mode == "设置型":
             self.hit6 = self.hit13 = 14
             self.hit10 = 1
+            self.skillRation *= self.powerSuccess
         elif mode == "乘骑型":
             self.hit6 = self.hit13 = 22
             self.hit10 = 1
+            self.skillRation *= self.powerSuccess
 
     def vp_1(self):
         """
@@ -1135,16 +1161,22 @@ class Skill39(ActiveSkill):
 
     mode = ["失败", "成功", "大成功"]
 
+    powerSuccess = 1.0
+    powerFail = 1.0
+
     def setMode(self, mode):
         if mode == "失败":
             self.hit0 = 1
             self.hit1 = self.hit2 = 0
+            self.skillRation *= self.powerFail
         elif mode == "成功":
             self.hit1 = 1
             self.hit0 = self.hit2 = 0
+            self.skillRation *= self.powerSuccess
         elif mode == "大成功":
             self.hit2 = 1
             self.hit0 = self.hit1 = 0
+            self.skillRation *= self.powerSuccess
 
     def vp_1(self):
         """
@@ -1240,17 +1272,23 @@ class Skill40(ActiveSkill):
 
     mode = ["失败", "成功", "大成功"]
 
+    powerSuccess = 1.0
+    powerFail = 1.0
+
     def setMode(self, mode):
         if mode == "失败":
             self.hit6 = 13
             self.hit8 = self.hit15 = self.hit17 = 0
+            self.skillRation *= self.powerFail
         elif mode == "成功":
             self.hit8 = 28
             self.hit6 = self.hit15 = self.hit17 = 0
+            self.skillRation *= self.powerSuccess
         elif mode == "大成功":
             self.hit15 = 48
             self.hit17 = 1
             self.hit6 = self.hit8 = 0
+            self.skillRation *= self.powerSuccess
 
     def vp_1(self):
         """
@@ -1369,16 +1407,21 @@ class Skill42(ActiveSkill):
 
     mode = ["失败","大成功"]
 
+    powerSuccess = 1.0
+    powerFail = 1.0
+
     def setMode(self, mode):
         if mode == "失败":
             self.hit2 = 9
             self.hit4 = 1
             self.hit8 = self.hit9 = self.hit11 = 0
+            self.skillRation *= self.powerFail
         elif mode == "大成功":
             self.hit8 = 1
             self.hit9 = 47
             self.hit11 = 3
             self.hit2 = self.hit4 = 0
+            self.skillRation *= self.powerSuccess
 
     def vp_1(self):
         """
@@ -1624,6 +1667,12 @@ class Skill46(ActiveSkill):
     # 攻击范围比率 : {value14}%
     data14 = get_data(f'{prefix}/{uuid}', 14)
 
+    powerSuccess = 1.0
+    powerFail = 1.0
+
+    def setMode(self, mode):
+        self.skillRation *= self.powerSuccess
+
     def vp_1(self):
         """
         [光电兔]\n
@@ -1775,7 +1824,10 @@ class Skill48(PassiveSkill):
     # [冰霜钻孔车]攻击力增加率 : {value8}%
     data8 = get_data(f'{prefix}/{uuid}', 8)
 
-    associate = [{"data":data0,"skills":['魔道酸雨云', '电鳗碰撞机', '反重力装置', '熔岩药瓶', '暴炎加热炉']},{"data":data7},{"data":data8,"skills":['冰霜钻孔车']}]
+    associate = [
+        {"data":data0,"type":"+powerSuccess","skills":['改良舒露露','改良魔法星弹','魔道酸雨云', '电鳗碰撞机', '反重力装置', '熔岩药瓶', '暴炎加热炉']},
+        {"data":data8,"skills":['冰霜钻孔车']}
+    ]
 
 class Skill49(PassiveSkill):
     """
@@ -1798,11 +1850,8 @@ class Skill49(PassiveSkill):
 
     associate = [
         {"data":data0,"skills":['变异苍蝇拍', '超级苍蝇拍', '改良舒露露', '改良魔法星弹', '暗影斗篷', '技艺融合','超级棒棒糖', '光电兔', '雪人刨冰', '乌洛波洛斯之环', '糖果大作战精怪乐园', '糖果大作战捣蛋杰克']},
-        {"data":data1,"type":"+power4","skills":["熔岩药瓶"]},
-        {"data":data1,"type":"+power6","skills":["暴炎加热炉"]},
-        {"data":data1,"type":"+power2","skills":["冰霜钻孔车"]},
-        {"data":data1,"type":"+power4","skills":["冰霜钻孔车"]}
-        ]
+        {"data":data1,"type":"+powerFail","skills":['熔岩药瓶', '暴炎加热炉', '冰霜钻孔车']}
+    ]
 
     @property
     def lv(self):
