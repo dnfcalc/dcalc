@@ -914,7 +914,7 @@ class Skill36(ActiveSkill):
 # 死亡风暴
 # thief/rogue/c77a417c43de80c4ce32c1ed405d174a
 # ddc49e9ad1ff72a00b53c6cff5b1e920/c77a417c43de80c4ce32c1ed405d174a
-class Skill37(PassiveSkill):
+class Skill37(ActiveSkill):
     """
     施放[剑刃风暴]时， 由风暴中心向外呈环形投掷匕首。
     """
@@ -923,6 +923,7 @@ class Skill37(PassiveSkill):
     masterLv = 60
     maxLv = 70
     position = 8 #TODO
+    type = "passive"
     rangeLv = 3
     uuid = "c77a417c43de80c4ce32c1ed405d174a"
     hasVP = True
