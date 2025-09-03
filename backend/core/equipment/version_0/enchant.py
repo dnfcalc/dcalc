@@ -289,6 +289,24 @@ def enchant_308(char: CharacterProperty):
     # 三攻(36)|技攻(3%)
     char.SetStatus(三攻=36, 技攻=0.03)
     pass
+
+
+@register
+def enchant_309(char: CharacterProperty):
+    # DCALC_REMOVE: enchant_309
+    # 三攻(36)|技攻(7%)|暴击率(3%)
+    char.SetStatus(三攻=36, 技攻=0.07)
+    pass
+
+@register
+def enchant_310(char: CharacterProperty):
+    # DCALC_REMOVE: enchant_310
+    # 四维(75)|增益量(2%)|Lv1~50主动+1
+    char.SetStatus(四维=75)
+    char.AddSkillLv(1, 50, 1, 1)
+    if char.buffer:
+        char.SetStatus(增益量P=0.02)
+    pass
 # endregion
 # region 武器
 
