@@ -1,738 +1,1499 @@
 #944b9aab492c15a8474f96947ceeb9e4
-from core.basic.skill import PassiveSkill, ActiveSkill
+from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
+prefix = "gunner_female/ranger_female/cn/skillDetail"
 
-# 后撩踢 마릴린 로즈
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/717f1e2104fe4b796f800352fa143ecc?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 后撩踢
+# gunner_female/ranger_female/717f1e2104fe4b796f800352fa143ecc
+# 944b9aab492c15a8474f96947ceeb9e4/717f1e2104fe4b796f800352fa143ecc
 class Skill0(ActiveSkill):
+    """
+        向敌人发出强威力的后撩踢并使其浮空。\n
+        发动的瞬间存在霸体判定。\n
+        转职为弹药专家或协战师后， 技能类型变为独立攻击力。
+    """
     name = "后撩踢"
     learnLv = 1
     masterLv = 10
     maxLv = 20
-    position = 5 #TODO
+    position = 5
     rangeLv = 3
     cd = 2
     uuid = "717f1e2104fe4b796f800352fa143ecc"
-    data0 = [0, 0, 2, 4, 7, 9, 11, 13, 16, 18, 20, 22, 24, 27, 29, 31, 33, 36, 38, 40, 42]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 发动速度增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 浮空力比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 踢击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
 
-    data1 = [0, 131.4, 132.9, 134, 135.4, 136.6, 138, 139.1, 140.6, 141.7, 143.1, 147.7, 152.3, 157.1, 162, 166.6, 171.4, 176.3, 180.9, 185.7, 190.6]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 160, 186, 211, 237, 262, 288, 313, 339, 364, 390, 415, 441, 466, 492, 517, 543, 568, 594, 619, 645]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 160, 186, 211, 237, 262, 288, 313, 339, 364, 390, 415, 441, 466, 492, 517, 543, 568, 594, 619, 645]# noqa: E501
-    hit3 = 1 #TODO
-
-
-# 浮空弹 라이징샷
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/128b9ddef2262f40723deae4407bdb42?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 浮空弹
+# gunner_female/ranger_female/128b9ddef2262f40723deae4407bdb42
+# 944b9aab492c15a8474f96947ceeb9e4/128b9ddef2262f40723deae4407bdb42
 class Skill1(ActiveSkill):
+    """
+        向敌人发射1发子弹并使其浮空。\n
+        转职为协战师后， 技能类型变为独立攻击力。
+    """
     name = "浮空弹"
     learnLv = 1
     masterLv = 60
     maxLv = 70
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cd = 3.6
     mp = [6, 140]
     uuid = "128b9ddef2262f40723deae4407bdb42"
-    data0 = [0, 1039, 1144, 1250, 1355, 1460, 1566, 1671, 1777, 1882, 1987, 2093, 2198, 2304, 2409, 2514, 2620, 2725, 2830, 2936, 3041, 3147, 3252, 3357, 3463, 3568, 3674, 3779, 3884, 3990, 4095, 4201, 4306, 4411, 4517, 4622, 4727, 4833, 4938, 5044, 5149, 5254, 5360, 5465, 5571, 5676, 5781, 5887, 5992, 6098, 6203, 6308, 6414, 6519, 6624, 6730, 6835, 6941, 7046, 7151, 7257, 7362, 7468, 7573, 7678, 7784, 7889, 7995, 8100, 8205, 8311]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 子弹攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 浮空力比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-
-# 双枪极舞刃 건블레이드
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/7cf17936a039b418660424125dc968d7?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 双枪极舞刃
+# gunner_female/ranger_female/7cf17936a039b418660424125dc968d7
+# 944b9aab492c15a8474f96947ceeb9e4/7cf17936a039b418660424125dc968d7
 class Skill2(PassiveSkill):
+    """
+        在左轮枪枪口下方装备枪刃， 施展天界皇宫独有的枪斗术。\n
+        枪刃的攻击力受基本攻击力的影响。\n
+    - [双枪极舞刃的特有技能] -\n
+    - [飞旋射击]\n
+        向前方跳跃并攻击沿途的敌人。\n
+    (地面状态下) 连续按C\n
+        银光飞刃 : \n
+    跳跃状态下快速向地面俯冲并斩击敌人。\n
+    (跳跃状态下) Z\n
+    - [枪刃冲击]\n
+        前冲滑铲状态下起身斩击敌人。\n
+    (前冲状态下) Z\n
+    - [翻腾攻击]\n
+        枪刃冲击及上旋踢状态下向上飞踢敌人。\n
+    (枪刃冲击及[上旋踢]动作中) Z\n
+        在决斗场中特有技能的攻击力和效果均有下调。
+    """
     name = "双枪极舞刃"
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 8 #TODO
+    position = 8
     rangeLv = 2
     uuid = "7cf17936a039b418660424125dc968d7"
-    data0 = [0, 228]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 飞旋射击攻击力比率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 银光飞刃攻击力比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 枪刃冲击攻击力比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 翻腾攻击攻击力比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 银光飞刃冷却时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 飞旋射击冷却时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 枪刃冲击冷却时间 : {value6}秒
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # 翻腾攻击冷却时间 : {value7}秒
+    data7 = get_data(f'{prefix}/{uuid}', 7)
 
-    data1 = [0, 228]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 228]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 274]# noqa: E501
-    hit3 = 1 #TODO
-
-    data4 = [0, 2]# noqa: E501
-    hit4 = 1 #TODO
-
-    data5 = [0, 1]# noqa: E501
-    hit5 = 1 #TODO
-
-    data6 = [0, 1]# noqa: E501
-    hit6 = 1 #TODO
-
-    data7 = [0, 1.5]# noqa: E501
-    hit7 = 1 #TODO
-
-
-# 银弹 은탄
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/a6c8f69107f8c4f5d1a0c7a57d000290?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 银弹
+# gunner_female/ranger_female/a6c8f69107f8c4f5d1a0c7a57d000290
+# 944b9aab492c15a8474f96947ceeb9e4/a6c8f69107f8c4f5d1a0c7a57d000290
 class Skill9(ActiveSkill):
+    """
+        使一定数量子弹的属性变成光属性， 且命中敌人时附加光属性伤害。\n
+        攻击不死族、 恶魔、 精灵类怪物时， 可以大幅度增加伤害值。
+    """
     name = "银弹"
     learnLv = 5
     masterLv = 20
     maxLv = 30
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cd = 16
     mp = [60, 560]
     uuid = "a6c8f69107f8c4f5d1a0c7a57d000290"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 银弹装弹数 : {value0}发
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 附加攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 不死族、 恶魔、 精灵时的附加攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    data1 = [0, 175, 199, 223, 247, 270, 294, 320, 343, 367, 391, 415, 439, 462, 488, 512, 536, 559, 583, 607, 631, 656, 680, 704, 728, 751, 775, 801, 825, 848, 872]# noqa: E501
-    hit1 = 1 #TODO
-
-
-
-# 上旋踢 탑스핀
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/0969cd4054d93da07708108c0cc1c4b5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 上旋踢
+# gunner_female/ranger_female/0969cd4054d93da07708108c0cc1c4b5
+# 944b9aab492c15a8474f96947ceeb9e4/0969cd4054d93da07708108c0cc1c4b5
 class Skill11(ActiveSkill):
+    """
+        向周围的敌人发出炫丽的上旋踢攻击。\n
+        前冲攻击或者倒地后， 可以边发动上旋踢边站立。\n
+        若学习了[花式枪术]， 施放时可以移动。\n
+        转职为协战师后， 技能类型变为独立攻击力。
+    """
     name = "上旋踢"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cd = 4.5
     mp = [25, 210]
     uuid = "0969cd4054d93da07708108c0cc1c4b5"
-
-    data2 = [0, 2728, 3006, 3284, 3562, 3835, 4116, 4393, 4672, 4952, 5228, 5505, 5780, 6059, 6336, 6611, 6888, 7171, 7449, 7723, 8002, 8277, 8556, 8835, 9110, 9386, 9666, 9947, 10220, 10496, 10776, 11055, 11330, 11606, 11886, 12167, 12442, 12721, 12996, 13272, 13552, 13831, 14103, 14380, 14664, 14941, 15217, 15492, 15774, 16048, 16327, 16604, 16878, 17162, 17439, 17716, 17988, 18270, 18547, 18822, 19100, 19382, 19659, 19932, 20213, 20492, 20766, 21043, 21323, 21604, 21877]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 发动速度增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 踢击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 2
+    # [范围信息]
+    # 攻击范围比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-
-# 钉刺射 스프리건
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/4655101518604f874721b3cc249aae10?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 钉刺射
+# gunner_female/ranger_female/4655101518604f874721b3cc249aae10
+# 944b9aab492c15a8474f96947ceeb9e4/4655101518604f874721b3cc249aae10
 class Skill12(ActiveSkill):
+    """
+        用滑铲攻击前方敌人， 使其浮空， 并对该敌人进行追射。\n
+        前方敌人倒下时， 会对周围的敌人造成伤害。\n
+        可以抓取霸体和防御状态的敌人， 但对无法抓取的敌人不适用抓取和控制效果。\n
+        转职为协战师时， 技能类型变为独立攻击力； 仅射击2次。
+    """
     name = "钉刺射"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 0
     rangeLv = 2
     cd = 6
     mp = [30, 252]
     uuid = "4655101518604f874721b3cc249aae10"
-
-    data1 = [0, 439, 483, 528, 572, 617, 661, 706, 750, 795, 839, 884, 928, 973, 1017, 1062, 1106, 1151, 1195, 1240, 1284, 1329, 1373, 1418, 1462, 1507, 1551, 1596, 1640, 1685, 1729, 1774, 1818, 1863, 1907, 1952, 1996, 2041, 2085, 2130, 2174, 2219, 2263, 2308, 2352, 2397, 2441, 2486, 2530, 2575, 2619, 2664, 2708, 2753, 2798, 2842, 2887, 2931, 2976, 3020, 3065, 3109, 3154, 3198, 3243, 3287, 3332, 3376, 3421, 3465, 3510]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 发射子弹数 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 射击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 7
-
-    data2 = [0, 919, 1012, 1105, 1198, 1292, 1385, 1478, 1571, 1665, 1758, 1851, 1944, 2037, 2131, 2224, 2317, 2410, 2503, 2597, 2690, 2783, 2876, 2970, 3063, 3156, 3249, 3342, 3436, 3529, 3622, 3715, 3808, 3902, 3995, 4088, 4181, 4275, 4368, 4461, 4554, 4647, 4741, 4834, 4927, 5020, 5113, 5207, 5300, 5393, 5486, 5580, 5673, 5766, 5859, 5952, 6046, 6139, 6232, 6325, 6419, 6512, 6605, 6698, 6791, 6885, 6978, 7071, 7164, 7257, 7351]# noqa: E501
+    # 冲击波攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 0
 
-
-# BBQ 바베~큐
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/8c2379737c5acc935c1731f67f607655?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 炙烤
+# gunner_female/ranger_female/8c2379737c5acc935c1731f67f607655
+# 944b9aab492c15a8474f96947ceeb9e4/8c2379737c5acc935c1731f67f607655
 class Skill13(ActiveSkill):
-    name = "BBQ"
+    """
+        先向1名敌人发出强威力的后撩踢使其浮空， 然后再用格林机枪对其进行猛烈追射， 使敌人受到一定伤害。\n
+        后撩踢的攻击力与当前已学的[后撩踢]攻击力相同。\n
+        对无法抓取的敌人不适用控制效果， 只能造成后撩踢的攻击伤害。
+    """
+    name = "炙烤"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cd = 8
     mp = [30, 322]
     uuid = "8c2379737c5acc935c1731f67f607655"
-    data0 = [0, 542, 596, 651, 707, 761, 818, 873, 926, 983, 1037, 1091, 1149, 1203, 1260, 1314, 1368, 1425, 1477, 1533, 1590, 1644, 1698, 1756, 1809, 1863, 1921, 1975, 2030, 2086, 2140, 2194, 2252, 2307, 2359, 2418, 2471, 2524, 2582, 2636, 2691, 2748, 2801, 2856, 2913, 2967, 3021, 3080, 3133, 3186, 3243, 3297, 3351, 3407, 3463, 3517, 3573, 3629, 3682, 3738, 3794, 3848, 3905, 3960, 4012, 4069, 4123, 4178, 4235, 4290, 4344]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 12
+    # 发射次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-
-# 浮空铲 고각도 슬라이딩
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/dcd536f1674630f01fc9667bb202b851?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 浮空铲
+# gunner_female/ranger_female/dcd536f1674630f01fc9667bb202b851
+# 944b9aab492c15a8474f96947ceeb9e4/dcd536f1674630f01fc9667bb202b851
 class Skill14(ActiveSkill):
+    """
+        使滑铲(前冲攻击)命中的敌人浮空。
+    """
     name = "浮空铲"
     learnLv = 10
     masterLv = 1
     maxLv = 1
-    position = 6 #TODO
+    position = 6
     rangeLv = 3
     cd = 8
     mp = [22, 22]
     uuid = "dcd536f1674630f01fc9667bb202b851"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 浮空力比率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
     damage = False
 
 
-# 烟尘弹 더스트 샷
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/0dbdeaf846356f8b9380f8fbb8e97377?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 烟尘弹
+# gunner_female/ranger_female/0dbdeaf846356f8b9380f8fbb8e97377
+# 944b9aab492c15a8474f96947ceeb9e4/0dbdeaf846356f8b9380f8fbb8e97377
 class Skill17(ActiveSkill):
+    """
+        向敌人脚下的地面快速连续射击， 溅起尘土， 对敌人造成伤害。 
+    """
     name = "烟尘弹"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 1 #TODO
+    position = 1
     rangeLv = 2
     cd = 6
     mp = [30, 322]
     uuid = "0dbdeaf846356f8b9380f8fbb8e97377"
-    data0 = [0, 1056, 1163, 1270, 1375, 1484, 1593, 1698, 1807, 1912, 2020, 2128, 2234, 2344, 2453, 2558, 2662, 2768, 2876, 2984, 3092, 3201, 3308, 3414, 3521, 3631, 3737, 3845, 3954, 4060, 4167, 4274, 4381, 4488, 4597, 4704, 4808, 4915, 5024, 5129, 5236, 5346, 5452, 5559, 5668, 5773, 5880, 5986, 6098, 6205, 6310, 6419, 6526, 6632, 6739, 6849, 6955, 7060, 7167, 7274, 7380, 7488, 7597, 7703, 7812, 7919, 8024, 8131, 8240, 8349, 8456]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 连续射击攻击力 : {value0}% x {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 6
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [范围信息]
+    # 范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-
-# 致命射击 헤드샷
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/eb71e1d82d92c7e1d40500a0dcd77aa6?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 溃灭射击
+# gunner_female/ranger_female/eb71e1d82d92c7e1d40500a0dcd77aa6
+# 944b9aab492c15a8474f96947ceeb9e4/eb71e1d82d92c7e1d40500a0dcd77aa6
 class Skill18(ActiveSkill):
+    """
+        向敌人发射一颗精准的强威力子弹， 有极高的暴击率和穿刺力。
+    """
     name = "溃灭射击"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cd = 6.2
     mp = [60, 560]
     uuid = "eb71e1d82d92c7e1d40500a0dcd77aa6"
-
-    data0 = [0, 4452, 4903, 5357, 5806, 6261, 6708, 7160, 7614, 8065, 8517, 8969, 9420, 9874, 10322, 10778, 11225, 11679, 12130, 12582, 13034, 13488, 13937, 14389, 14841, 15297, 15742, 16196, 16648, 17099, 17551, 18005, 18454, 18906, 19360, 19814, 20259, 20714, 21165, 21616, 22066, 22522, 22972, 23423, 23876, 24329, 24776, 25231, 25682, 26134, 26583, 27038, 27489, 27941, 28393, 28842, 29294, 29748, 30200, 30651, 31107, 31555, 32006, 32458, 32914, 33359, 33813, 34267, 34717, 35168, 35624]# noqa: E501
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 子弹攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 2
-
+    # 暴击增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 穿刺力增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [范围信息]
+    # 子弹速度比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     associate = [{"type":"+dataplus0","data":data0,"skills":["心灵反击","溃灭回射"],"ratio":1}]# noqa: E501
 
-
-# 刺踢 니들 소배트
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/c9664191611af31142e052dfaef84530?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 刺踢
+# gunner_female/ranger_female/c9664191611af31142e052dfaef84530
+# 944b9aab492c15a8474f96947ceeb9e4/c9664191611af31142e052dfaef84530
 class Skill19(ActiveSkill):
+    """
+        向前方敌人发出肉眼无法看清的快踢攻击。\n
+        可以击退敌人并有一定几率使其进入眩晕状态。\n
+        转职为协战师后， 技能类型变为独立攻击力。
+    """
     name = "刺踢"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cd = 4.4
     mp = [20, 224]
     uuid = "c9664191611af31142e052dfaef84530"
-    data0 = [0, 6504, 7160, 7825, 8480, 9141, 9806, 10458, 11123, 11781, 12439, 13102, 13763, 14430, 15082, 15740, 16405, 17063, 17726, 18384, 19040, 19705, 20363, 21026, 21680, 22341, 23004, 23661, 24325, 24983, 25650, 26306, 26964, 27628, 28286, 28949, 29606, 30265, 30926, 31586, 32246, 32909, 33561, 34228, 34886, 35544, 36203, 36863, 37521, 38182, 38845, 39505, 40161, 40822, 41483, 42141, 42803, 43462, 44120, 44781, 45443, 46099, 46762, 47423, 48083, 48742, 49400, 50065, 50725, 51382, 52046]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 踢击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 发动速度增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 击退时间比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 眩晕几率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 眩晕持续时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [范围信息]
+    # 攻击范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-# M-3喷火器 M-3 화염방사기
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/8f73f243041c2d27739fe7696f02bf9b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# M-3喷火器
+# gunner_female/ranger_female/8f73f243041c2d27739fe7696f02bf9b
+# 944b9aab492c15a8474f96947ceeb9e4/8f73f243041c2d27739fe7696f02bf9b
 class Skill20(ActiveSkill):
+    """
+        用M-3喷火器向敌人喷射火焰， 使敌人受到火属性伤害。 可以不受障碍物的影响进行攻击和多段打击。\n
+        按住攻击键的期间， 会持续喷射火焰到持续时间结束， 放开攻击键时， 火焰也会停止。 喷射后有与喷射时间成比例的延迟。\n
+        技能等级越高， 被攻击对象的僵直时间就越长。
+    """
     name = "M-3喷火器"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 9 #TODO
+    position = 9
     rangeLv = 2
     cd = 7
     mp = [45, 392]
     uuid = "8f73f243041c2d27739fe7696f02bf9b"
-    data2 = [0, 493, 544, 597, 645, 692, 747, 793, 845, 896, 942, 995, 1044, 1095, 1146, 1199, 1248, 1296, 1350, 1396, 1445, 1498, 1546, 1597, 1648, 1694, 1746, 1801, 1850, 1899, 1950, 2000, 2047, 2102, 2149, 2199, 2251, 2297, 2352, 2401, 2450, 2503, 2552, 2603, 2651, 2703, 2751, 2800, 2855, 2901, 2950, 3004, 3052, 3103, 3156, 3203, 3254, 3302, 3355, 3404, 3453, 3504, 3553, 3606, 3654, 3705, 3754, 3805, 3858, 3905, 3956]# noqa: E501
-    hit2 = 8
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 喷火持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 喷火攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 喷火攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 15
+    # 敌人僵直时间增加率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 移动速度比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
-
-# 左轮奥义 리볼버 강화
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/d085127b0edd719782bd618d5688f4a1?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 左轮奥义
+# gunner_female/ranger_female/d085127b0edd719782bd618d5688f4a1
+# 944b9aab492c15a8474f96947ceeb9e4/d085127b0edd719782bd618d5688f4a1
 class Skill21(PassiveSkill):
+    """
+        增加物理攻击力， 改装升级左轮枪的膛线、 弹仓和弹夹， 增加左轮枪的装弹数、 连射速度、 贯穿力、 暴击率、 攻击速度和移动速度， 并减少填装时间。
+    """
     name = "左轮奥义"
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 1 #TODO
+    position = 1
     rangeLv = 3
     uuid = "d085127b0edd719782bd618d5688f4a1"
-    data0 = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 物理攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 填装数增加 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 连射速度增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 贯穿率增加 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 暴击率增加 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 攻击速度增加 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 移动速度增加 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # 填装速度增加 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7)
 
     associate = [{"type":"$*PAtkP","data":data0}]
 
-
-# 空中射击 공중사격
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/bb34e8854a93fd250347a1c64119f7ab?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 空中射击
+# gunner_female/ranger_female/bb34e8854a93fd250347a1c64119f7ab
+# 944b9aab492c15a8474f96947ceeb9e4/bb34e8854a93fd250347a1c64119f7ab
 class Skill22(ActiveSkill):
+    """
+        增加跳跃攻击的空中停留时间以及跳跃射击的攻击力和射击次数上限， 效果持续一定时间。
+    """
     name = "空中射击"
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 8 #TODO
+    position = 8
     rangeLv = 3
     cd = 40
     mp = [40, 168]
     uuid = "bb34e8854a93fd250347a1c64119f7ab"
-
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     damage = False
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 空中射击攻击力增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 增加发射子弹数上限 : 左轮枪{value2}发、 自动手枪{value3}发、 步枪{value4}发、 手炮{value5}发、 手弩{value6}发
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
-# G-14手雷 G-14 파열류탄
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/de3fea2d65c597f4d55c70a02b97fc79?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# G-14手雷
+# gunner_female/ranger_female/de3fea2d65c597f4d55c70a02b97fc79
+# 944b9aab492c15a8474f96947ceeb9e4/de3fea2d65c597f4d55c70a02b97fc79
 class Skill23(ActiveSkill):
+    """
+        向前方投掷G-14手雷， 使一定范围内的所有敌人受到伤害。\n
+        G-14手雷有最大填装数和填装冷却时间， 按上、 下方向键后施放技能时， 可以调整投掷位置。 转职成为弹药专家时， 可以强制中断基本攻击动作， 投掷G-14手雷。
+    """
     name = "G-14手雷"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cd = 2
     mp = [20, 160]
     uuid = "de3fea2d65c597f4d55c70a02b97fc79"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 最大填装数 : {value0}发
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 地面投掷时的冷却时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 空中投掷时的冷却时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 爆炸范围 : {value4}px
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
-    data1 = [0, 751, 830, 904, 981, 1057, 1132, 1210, 1287, 1362, 1438, 1516, 1591, 1668, 1746, 1819, 1897, 1972, 2049, 2127, 2202, 2278, 2355, 2429, 2508, 2584, 2659, 2735, 2814, 2888, 2965, 3041, 3116, 3194, 3271, 3346, 3422, 3500, 3575, 3652, 3732, 3806, 3883, 3961, 4034, 4112, 4189, 4264, 4342, 4418, 4493, 4570, 4648, 4723, 4799, 4876, 4950, 5029, 5105, 5180, 5256, 5335, 5409, 5486, 5562, 5637, 5715, 5792, 5867, 5943, 6021]# noqa: E501
-    hit1 = 1 #TODO
-
-
-# 远程格挡 건가드
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/2f5d03c7848effbc0a23f4df45d9ca46?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 远程格挡
+# gunner_female/ranger_female/2f5d03c7848effbc0a23f4df45d9ca46
+# 944b9aab492c15a8474f96947ceeb9e4/2f5d03c7848effbc0a23f4df45d9ca46
 class Skill24(ActiveSkill):
+    """
+        利用枪械进行格挡， 可以减少所受敌人远程攻击的伤害。 有一定几率可以抵挡全部伤害。
+    """
     name = "远程格挡"
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 6 #TODO
+    position = 6
     rangeLv = 3
-    cds = [0, 5, 4.8, 4.5, 4.3, 4, 3.8, 3.5, 3.3, 3, 2.8, 2.5, 2.3, 2, 1.8, 1.5, 1.3, 1, 0.8, 0.5, 0.3]
+    cd = [0, 5, 4.8, 4.5, 4.3, 4, 3.8, 3.5, 3.3, 3, 2.8, 2.5, 2.3, 2, 1.8, 1.5, 1.3, 1, 0.8, 0.5, 0.3]
     mp = [25, 235]
     uuid = "2f5d03c7848effbc0a23f4df45d9ca46"
-
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     damage = False
+    # 所受伤害减少率 (物理) : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 所受伤害减少率 (魔法) : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 所受伤害完全吸收几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     def getSkillCD(self,mode=None):
         self.cd = self.cds[self.lv]
         return super().getSkillCD(mode)
 
-
-# 花式枪术 스타일리쉬
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/d429147c372b549c3dadcabcba50787f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 花式枪术
+# gunner_female/ranger_female/d429147c372b549c3dadcabcba50787f
+# 944b9aab492c15a8474f96947ceeb9e4/d429147c372b549c3dadcabcba50787f
 class Skill25(PassiveSkill):
+    """
+        掌握该技能后， 施放[上旋踢]时可以移动， 并且施放技能过程中可以强制中断后连接其他技能。\n
+        技能强制中断有次数限制， 经过一定时间后次数限制会恢复。\n
+        强制中断[上旋踢]后施放[刺踢]时， 不消耗限制次数。\n
+        强制中断[刺踢]后施放[浮空弹]、 [溃灭射击]时， 不消耗限制次数。\n
+        在决斗场中， 技能可强制中断次数为0。
+    """
     name = "花式枪术"
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 1 #TODO
+    position = 1
     rangeLv = 3
     uuid = "d429147c372b549c3dadcabcba50787f"
-
-    data2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 可强制中断次数上限 : {value0}次
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 可强制中断次数恢复所需时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 基本攻击力和技能攻击力增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 攻击速度和移动速度增加 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 增益效果持续时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # X轴每秒移动距离 : {value5}px
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # Y轴每秒移动距离 : {value6}px
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     associate = [{"data":data2}]
 
 
 
-# 快速拔枪 패스티스트 건
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/45442bbbe33540b4deeec29437dae70c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 快速拔枪
+# gunner_female/ranger_female/45442bbbe33540b4deeec29437dae70c
+# 944b9aab492c15a8474f96947ceeb9e4/45442bbbe33540b4deeec29437dae70c
 class Skill27(PassiveSkill):
+    """
+        快速拔枪攻击敌人， 发动后可以增加攻击速度和普通射击的攻击力。 转职为漫游枪手后增加精通等级。
+    """
     name = "快速拔枪"
     learnLv = 25
     masterLv = 10
     maxLv = 20
-    position = 7 #TODO
+    position = 7
     rangeLv = 3
     uuid = "45442bbbe33540b4deeec29437dae70c"
-
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     damage = False
+    # 拔枪速度增加 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 普通射击的攻击力增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 攻击速度增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-# 复仇反击 리벤저
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/5dc7008b12a459325b548b0715c6b73c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 心灵反击
+# gunner_female/ranger_female/5dc7008b12a459325b548b0715c6b73c
+# 944b9aab492c15a8474f96947ceeb9e4/5dc7008b12a459325b548b0715c6b73c
 class Skill28(ActiveSkill):
+    """
+        被击时， 在一定时间内按技能键就会进行反击， 使敌人进入眩晕状态。 按住技能键时， 准备动作可以维持一定时间。\n
+        [心灵反击]的攻击力相当于已掌握的[溃灭射击]攻击力。\n
+        倒地、 被抓取、 无法行动等状态下， 将无法进行反击。\n
+        可以中断[心灵反击]的施放并连接[溃灭射击]、 [枪舞]技能。\n
+        在决斗场中无法眩晕敌人， 但是可以解除敌人的霸体状态， 且远距离击退敌人。 决斗场中也无法维持准备动作， 且无法中断[心灵反击]的施放。
+    """
     name = "心灵反击"
     learnLv = 25
     masterLv = 1
     maxLv = 1
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cd = 4
     mp = [252, 252]
     uuid = "5dc7008b12a459325b548b0715c6b73c"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 被攻击后发动时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 眩晕几率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 眩晕持续时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [溃灭射击]攻击力变换率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 准备动作持续时间上限 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [决斗场]
+    # 解除敌人霸体状态的几率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
     dataplus0 = 0
     hitplus0 = 2
     powerplus0 = 1.7
 
-
-# 锁链截击 체인 스내치
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/e1daab884dd07fc9e70d08b83d1790eb?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 锁链截击
+# gunner_female/ranger_female/e1daab884dd07fc9e70d08b83d1790eb
+# 944b9aab492c15a8474f96947ceeb9e4/e1daab884dd07fc9e70d08b83d1790eb
 class Skill29(ActiveSkill):
+    """
+        使枪刃往垂直方向旋转， 并聚集周围的敌人。\n
+    施放技能时， 若再次输入技能快捷键， 则可以将敌人推开； 若此时第二次输入技能键， 则可以将推开的敌人吸附到身边。
+    """
     name = "锁链截击"
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 1 #TODO
+    position = 1
     rangeLv = 3
     cd = 5
     mp = [50, 420]
     uuid = "e1daab884dd07fc9e70d08b83d1790eb"
-    data0 = [0, 1148, 1331, 1516, 1697, 1882, 2062, 2246, 2429, 2611, 2796, 2980, 3162, 3344, 3529, 3711, 3893, 4078, 4260, 4446, 4627, 4811, 4993, 5176, 5358, 5542, 5727, 5908, 6093, 6276, 6460, 6640, 6824, 7007, 7191, 7375, 7556, 7742, 7925, 8104, 8289, 8473, 8656, 8838, 9024, 9206, 9391, 9573, 9753, 9938, 10120, 10304, 10487, 10671, 10854, 11035, 11218, 11402, 11587, 11767, 11953, 12136, 12320, 12502, 12684, 12867, 13049, 13234, 13416, 13602, 13784]# noqa: E501
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 第1击多段攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 5
+    # 第1击多段攻击间隔 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 第2击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # 第3击攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
+    # [范围信息]
+    # 范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
-    data2 = [0, 1722, 1998, 2273, 2547, 2820, 3096, 3371, 3645, 3918, 4196, 4469, 4745, 5020, 5294, 5568, 5843, 6117, 6392, 6669, 6943, 7216, 7492, 7766, 8041, 8315, 8587, 8864, 9138, 9415, 9688, 9962, 10236, 10511, 10785, 11060, 11337, 11611, 11885, 12160, 12434, 12709, 12985, 13257, 13532, 13809, 14083, 14358, 14634, 14906, 15181, 15456, 15730, 16007, 16283, 16555, 16830, 17104, 17379, 17654, 17926, 18202, 18479, 18753, 19028, 19304, 19576, 19851, 20126, 20400, 20675]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 1722, 1998, 2273, 2547, 2820, 3096, 3371, 3645, 3918, 4196, 4469, 4745, 5020, 5294, 5568, 5843, 6117, 6392, 6669, 6943, 7216, 7492, 7766, 8041, 8315, 8587, 8864, 9138, 9415, 9688, 9962, 10236, 10511, 10785, 11060, 11337, 11611, 11885, 12160, 12434, 12709, 12985, 13257, 13532, 13809, 14083, 14358, 14634, 14906, 15181, 15456, 15730, 16007, 16283, 16555, 16830, 17104, 17379, 17654, 17926, 18202, 18479, 18753, 19028, 19304, 19576, 19851, 20126, 20400, 20675]# noqa: E501
-    hit3 = 1 #TODO
-
-
-# 致命回射 웨스턴 파이어
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/3d8f3d438405d79f8d3ed68072674d1e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 溃灭回射
+# gunner_female/ranger_female/3d8f3d438405d79f8d3ed68072674d1e
+# 944b9aab492c15a8474f96947ceeb9e4/3d8f3d438405d79f8d3ed68072674d1e
 class Skill30(ActiveSkill):
+    """
+        快速向后方敌人施放[溃灭射击]。\n
+     并增加该技能的伤害； 魔法值与当前的[溃灭射击]相同。
+    """
     name = "溃灭回射"
     learnLv = 30
     masterLv = 1
     maxLv = 1
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cd = 12.5
     uuid = "3d8f3d438405d79f8d3ed68072674d1e"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # [溃灭射击]攻击力强化比率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
     dataplus0 = 0
     hitplus0 = 2
     powerplus0 = 1.2
 
-
-# 音速劫击 소닉 스파이크
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/27bade584bb42fef68148d3a0b72bace?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 音速劫击
+# gunner_female/ranger_female/27bade584bb42fef68148d3a0b72bace
+# 944b9aab492c15a8474f96947ceeb9e4/27bade584bb42fef68148d3a0b72bace
 class Skill31(ActiveSkill):
+    """
+        向斜上方跳跃用膝盖攻击敌人。\n
+        [上旋踢]命中敌人时再次按攻击键， 可以发动[音速劫击]。\n
+        被[音速劫击]命中的敌人， 会受到多段攻击伤害并向前飞出。
+    """
     name = "音速劫击"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 2 #TODO
+    position = 2
     rangeLv = 2
     cd = 4.4
     mp = [50, 420]
     uuid = "27bade584bb42fef68148d3a0b72bace"
-    data0 = [0, 3135, 3454, 3772, 4092, 4408, 4728, 5046, 5365, 5680, 6001, 6321, 6638, 6958, 7276, 7592, 7914, 8230, 8548, 8864, 9183, 9506, 9821, 10139, 10458, 10776, 11096, 11410, 11732, 12050, 12368, 12687, 13005, 13323, 13644, 13959, 14278, 14596, 14914, 15234, 15546, 15871, 16192, 16507, 16827, 17141, 17461, 17779, 18095, 18416, 18732, 19054, 19375, 19689, 20007, 20327, 20645, 20963, 21281, 21600, 21916, 22238, 22556, 22874, 23193, 23508, 23826, 24147, 24463, 24783, 25097]# noqa: E501
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 音速劫击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 3
+    # 攻击次数上限 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [范围信息]
+    # 范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-
-# 死亡左轮 데스 바이 리볼버
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/bc11d28c04e01923a093d65752c55516?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 死亡左轮
+# gunner_female/ranger_female/bc11d28c04e01923a093d65752c55516
+# 944b9aab492c15a8474f96947ceeb9e4/bc11d28c04e01923a093d65752c55516
 class Skill32(ActiveSkill):
+    """
+        增加暴击伤害， 效果持续一定时间。 装备左轮枪系列武器时， 增加所有攻击的暴击率。
+    """
     name = "死亡左轮"
     learnLv = 30
     masterLv = 10
     maxLv = 20
-    position = 6 #TODO
+    position = 6
     rangeLv = 3
     cd = 5
-    mp = [357, 2765]
     uuid = "bc11d28c04e01923a093d65752c55516"
-
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     buff = True
-    damage = False
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 物理暴击伤害增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 物理暴击率增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-
-# 枪舞 권총의 춤
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/cfacda0647b9a0f595df2c2aad30c18d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 枪舞
+# gunner_female/ranger_female/cfacda0647b9a0f595df2c2aad30c18d
+# 944b9aab492c15a8474f96947ceeb9e4/cfacda0647b9a0f595df2c2aad30c18d
 class Skill33(ActiveSkill):
+    """
+        向周围的敌人发出乱射， 挥舞枪刃攻击敌人。\n
+        若施放后连续按攻击键或技能快捷键， 则可以更快地发射子弹； 若按跳跃键， 则可以中断该技能。
+    """
     name = "枪舞"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cube = 1
     cd = 17.6
     mp = [150, 1260]
     uuid = "cfacda0647b9a0f595df2c2aad30c18d"
-    data0 = [0, 628, 694, 758, 822, 885, 951, 1014, 1077, 1142, 1206, 1269, 1334, 1398, 1464, 1527, 1588, 1654, 1719, 1782, 1846, 1911, 1974, 2040, 2102, 2164, 2230, 2294, 2361, 2422, 2486, 2552, 2616, 2678, 2742, 2805, 2871, 2936, 2998, 3060, 3126, 3190, 3255, 3318, 3382, 3447, 3510, 3578, 3640, 3702, 3766, 3831, 3898, 3962, 4024, 4090, 4154, 4218, 4284, 4346, 4408, 4473, 4539, 4604, 4665, 4730, 4796, 4860, 4922, 4984, 5050]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 射击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 20
+    # 射击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 枪刃攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 9
+    # 枪刃攻击次数 : {value3}次
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 攻击范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
-    data3 = [0, 1120, 1234, 1350, 1464, 1575, 1692, 1803, 1918, 2031, 2145, 2259, 2374, 2486, 2601, 2718, 2826, 2940, 3056, 3170, 3282, 3399, 3510, 3627, 3741, 3850, 3966, 4082, 4200, 4308, 4425, 4539, 4648, 4766, 4881, 4994, 5106, 5220, 5334, 5448, 5562, 5674, 5790, 5906, 6016, 6132, 6246, 6358, 6471, 6586, 6699, 6814, 6927, 7042, 7155, 7270, 7383, 7496, 7611, 7725, 7838, 7952, 8067, 8178, 8294, 8406, 8523, 8632, 8750, 8862, 8978]# noqa: E501
-    hit3 = 9
+    def vp_1(self):
+        """
+        [枪舞]\n
+        以最快速度攻击， 删除乱射\n
+        - 总攻击力相同\n
+        - 删除连续按键效果\n
+        - 删除枪刃的击倒判定\n
+        - [枪舞]攻击判定变更为体术系列\n
+        - 枪刃攻击次数 +100%\n
+        - 使枪刃命中的敌人移动到前方175px的位置\n
+        [枪舞]攻击速度 +20%\n
+        [枪舞]攻击范围 +30%
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [枪舞]\n
+        施放[枪舞]时所受伤害 -70%\n
+        施放[枪舞]时， 发动[远程格挡]效果\n
+        - 每次成功用[枪舞]抵挡远程攻击时， 恢复1次[花式枪术]的使用次数 (最多3次)\n
+        [枪舞]射击次数减少7次， 枪刃攻击次数减少3次\n
+        - 总攻击力相同
+        """
+        ...
 
-# 移动射击 이동사격
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/9cb6f9ed646fa87f9b7680a42ce83d1a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 移动射击
+# gunner_female/ranger_female/9cb6f9ed646fa87f9b7680a42ce83d1a
+# 944b9aab492c15a8474f96947ceeb9e4/9cb6f9ed646fa87f9b7680a42ce83d1a
 class Skill34(ActiveSkill):
+    """
+        施放后使自身进入移动射击模式。\n
+        在此状态下按攻击键或技能键可以进行移动射击， 按方向键则可以移动。\n
+        若按跳跃键， 则可以中断移动射击模式。 此外， 还可以用<Z>改变射击方向。\n
+        在地下城中， 可以使子弹破裂， 造成大范围的伤害。\n
+        在决斗场中， 移动射击时不会进入霸体状态。
+    """
     name = "移动射击"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cube = 1
     cd = 24.3
     mp = [200, 1680]
     uuid = "9cb6f9ed646fa87f9b7680a42ce83d1a"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 713, 785, 857, 930, 1002, 1075, 1146, 1220, 1291, 1364, 1436, 1510, 1580, 1654, 1728, 1799, 1872, 1944, 2017, 2088, 2160, 2232, 2306, 2377, 2450, 2523, 2596, 2667, 2740, 2813, 2887, 2955, 3029, 3102, 3173, 3246, 3320, 3392, 3464, 3538, 3609, 3683, 3752, 3825, 3898, 3970, 4042, 4116, 4188, 4261, 4333, 4406, 4480, 4548, 4621, 4695, 4767, 4839, 4913, 4984, 5056, 5130, 5200, 5274, 5346, 5417, 5491, 5564, 5635, 5708]# noqa: E501
+    # 移动速度增加 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 射击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 45
+    # 持续时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 射击发射数 : {value3}发
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 破裂子弹范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
+    def vp_1(self):
+        """
+        [移动射击]\n
+        将子弹转化为爆破弹， 增加攻击范围\n
+        - 发射次数 +50%\n
+        - 总攻击力相同\n
+        - 攻击范围 +30%\n
+        施放过程中攻击速度 +30%、 移动速度 +50%\n
+        切换地下城房间时， 保留技能效果
+        """
+        ...
 
-# 多重射击 멀티 헤드샷
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/669f1428193f61f9d92c743b72438c4d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_2(self):
+        """
+        [移动射击]\n
+        减少发射次数， 移动射击过程中所受伤害减少\n
+        - 发射次数 -40%\n
+        - 总攻击力相同\n
+        攻击范围 +20%\n
+        移动射击施放过程中所受伤害 -50%
+        """
+        ...
+
+# 多重射击
+# gunner_female/ranger_female/669f1428193f61f9d92c743b72438c4d
+# 944b9aab492c15a8474f96947ceeb9e4/669f1428193f61f9d92c743b72438c4d
 class Skill35(ActiveSkill):
+    """
+        向一定范围内的敌人连续射击， 使命中的敌人受到极大伤害。\n
+        每次发射可以用方向键控制发射方向， 并给该方向的多个敌人造成伤害。
+    """
     name = "多重射击"
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cube = 1
     cd = 19.8
     mp = [150, 1260]
     uuid = "669f1428193f61f9d92c743b72438c4d"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 5526, 6086, 6644, 7209, 7767, 8330, 8889, 9448, 10010, 10568, 11133, 11692, 12249, 12813, 13374, 13935, 14494, 15052, 15615, 16176, 16738, 17298, 17859, 18418, 18980, 19544, 20100, 20662, 21222, 21783, 22347, 22904, 23464, 24027, 24586, 25149, 25707, 26266, 26830, 27388, 27951, 28510, 29072, 29634, 30190, 30754, 31314, 31874, 32438, 32994, 33555, 34119, 34677, 35238, 35800, 36362, 36920, 37478, 38043, 38602, 39164, 39724, 40284, 40844, 41406, 41968, 42526, 43088, 43647, 44208]# noqa: E501
+    # 发射次数 : {value0}次
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 射击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 5
+    # 敌人僵直时间比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [范围信息]
+    # 锁定范围 : {value3}px
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
+    def vp_1(self):
+        """
+        [多重射击]\n
+        按技能键时， 自动向范围内最强敌人所在方向射击， 并对范围内所有敌人造成伤害\n
+         - 删除输入方向键功能\n
+        可以分多次射击\n
+         - 首次射击后20秒内可以追加射击\n
+        与其他技能连接施放时不会消耗[花式枪术]的使用次数\n
+        射击过程中可以接住[双鹰回旋]\n
+        攻击范围 +40%
+        """
+        ...
 
-# 双鹰回旋 더블 건호크
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/1fadde0eece18649caddbca7bd58cc2f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_2(self):
+        """
+        [多重射击]\n
+        射击时最多可以输入两个方向键进行射击\n
+        - 输入两个方向键时， 同时射击两个方向\n
+        - 射击攻击次数 -2次\n
+        - 总攻击力相同
+        """
+        ...
+
+# 双鹰回旋
+# gunner_female/ranger_female/1fadde0eece18649caddbca7bd58cc2f
+# 944b9aab492c15a8474f96947ceeb9e4/1fadde0eece18649caddbca7bd58cc2f
 class Skill36(ActiveSkill):
+    """
+        旋转并向前方敌人投掷漫游枪手专用手枪， 手枪会自动发射子弹并对周围敌人造成伤害。\n
+        在一定距离内， 投掷的手枪会自动飞回， 这时漫游枪手抓取手枪成功后可以再次投掷。\n
+        可抓取飞回的手枪的状态 : [站立时； 移动/前冲时； 普通攻击时； 站立状态下受到伤害时]\n
+        在地下城中， 将枪刃附在手枪上， 可以将更大范围内的敌人拖到射击中心。\n
+        在决斗场中抓取手枪后， 不会进入霸体状态。
+    """
     name = "双鹰回旋"
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cube = 2
     cd = 44.5
     mp = [360, 3024]
     uuid = "1fadde0eece18649caddbca7bd58cc2f"
-    data0 = [0, 1008, 1108, 1212, 1314, 1416, 1520, 1620, 1722, 1827, 1928, 2031, 2132, 2235, 2338, 2439, 2541, 2646, 2750, 2852, 2950, 3056, 3158, 3261, 3360, 3466, 3567, 3666, 3772, 3874, 3978, 4078, 4178, 4286, 4386, 4490, 4590, 4695, 4797, 4898, 5000, 5103, 5205, 5307, 5409, 5512, 5614, 5715, 5818, 5922, 6024, 6124, 6226, 6332, 6434, 6536, 6636, 6742, 6843, 6944, 7047, 7149, 7254, 7354, 7455, 7560, 7660, 7764, 7866, 7970, 8072]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 第1次鹰枪攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 14
-
-    data1 = [0, 1029, 1132, 1238, 1342, 1449, 1551, 1656, 1764, 1866, 1970, 2074, 2178, 2286, 2388, 2494, 2596, 2703, 2808, 2913, 3016, 3120, 3224, 3332, 3434, 3540, 3642, 3748, 3855, 3958, 4062, 4167, 4270, 4376, 4479, 4586, 4688, 4796, 4899, 5004, 5109, 5211, 5316, 5421, 5526, 5628, 5733, 5838, 5944, 6050, 6153, 6256, 6363, 6466, 6572, 6675, 6780, 6885, 6990, 7095, 7198, 7304, 7410, 7512, 7618, 7720, 7826, 7932, 8036, 8139, 8246]# noqa: E501
+    # 第2次鹰枪攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 18
-
-    data2 = [0, 1092, 1203, 1314, 1425, 1536, 1646, 1758, 1869, 1980, 2092, 2202, 2312, 2424, 2532, 2643, 2756, 2865, 2976, 3088, 3200, 3312, 3422, 3531, 3642, 3753, 3864, 3978, 4089, 4197, 4310, 4420, 4532, 4642, 4750, 4862, 4974, 5085, 5196, 5307, 5416, 5528, 5640, 5751, 5860, 5973, 6084, 6194, 6306, 6417, 6528, 6638, 6748, 6861, 6969, 7082, 7191, 7304, 7413, 7524, 7636, 7744, 7856, 7970, 8080, 8190, 8302, 8412, 8523, 8634, 8745]# noqa: E501
+    # 第3次鹰枪攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 32
+    # [范围信息]
+    # 鹰枪大小比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
+    def vp_1(self):
+        """
+        [双鹰回旋]\n
+        投掷次数 -1次\n
+        - 从第2次攻击开始投掷\n
+        - 手枪持续时间 +30%\n
+        - 多段攻击间隔 -20%\n
+        - 总攻击力相同\n
+        [双鹰回旋]手枪大小 +25%\n
+        [双鹰回旋]吸附范围 +25%\n
+        再次投掷手枪时， 可施放体术系列技能并自动投掷\n
+        - 消耗1次[花式枪术]的使用次数\n
+        - [后撩踢]、 [上旋踢]、 [刺踢]、 [锁链截击]、 [音速劫击]、 [回闪劫击]、 [死亡锁链]投掷时、 [锁链切割]、 [毁灭风暴]、 [盛放·绯红花园]
+        """
+        ...
 
-# 隐匿切割 베일드 컷
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/fc458e449ee00b01dbf88d09aae65462?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_2(self):
+        """
+        [双鹰回旋]\n
+        施放时， 最多投掷3次鹰枪\n
+        - 向前方600px内最强敌人投掷\n
+        - 范围内没有追踪目标时， 会根据方向键输入的方向进行投掷\n
+        第3次鹰枪的部分功能变更\n
+        - 投掷范围增加\n
+        - 造成两次伤害后不会返回\n
+        - 总攻击力相同\n
+        鹰枪自动回收， 无需回收动作\n
+        - 回收后5秒内可再次投掷\n
+        再次投掷鹰枪时， 可通过施放体术系列技能进行投掷\n
+        - 消耗1次[花式枪术]使用次数\n
+        - [后撩踢]、 [上旋踢]、 [刺踢]、 [锁链截击]、 [音速劫击]、 [回闪劫击]、 [死亡锁链]投掷时、 [锁链切割]、 [毁灭风暴]、 [盛放·绯红花园]
+        """
+        ...
+
+# 隐匿切割
+# gunner_female/ranger_female/fc458e449ee00b01dbf88d09aae65462
+# 944b9aab492c15a8474f96947ceeb9e4/fc458e449ee00b01dbf88d09aae65462
 class Skill37(PassiveSkill):
+    """
+        增加基本攻击和射击技能攻击力。 使用部分体术系技能时， 施加额外的斩击使敌人进入出血状态。\n
+    [增加射击攻击力的技能]\n
+    - [浮空弹]、 [钉刺射]、 [烟尘弹]、 [溃灭射击]、 [溃灭回射]、 [心灵反击]、 [锁链截击] (射击)、 [音速劫击]、  [枪舞]、 [移动射击]、 [多重射击]、 [双鹰回旋]、 [压制射击]、 [死亡锁链]、 [血舞祭]、 [毁灭风暴] (射击)、 [盛放·绯红花园] (射击)\n
+    [发动隐匿切割的技能]\n
+    - [后撩踢]、 [浮空铲]、 [上旋踢]、 [刺踢]、 [锁链截击] (体术)、 [音速劫击] (体术)、 [绯红盛宴]、 [回闪劫击]、 [死亡锁链]、 [锁链切割]、 [毁灭风暴] (射击)、 [盛放·绯红花园] (射击)
+    """
     name = "隐匿切割"
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 2 #TODO
+    position = 2
     rangeLv = 3
     uuid = "fc458e449ee00b01dbf88d09aae65462"
-    data0 = [0, 8.5, 10.5, 12.5, 14.5, 16.5, 18.5, 20.5, 22.5, 24.5, 26.5, 28.5, 30.5, 32.5, 34.5, 36.5, 38.5, 40.5, 42.5, 44.5, 46.5, 48.5, 50.5, 52.5, 54.5, 56.5, 58.5, 60.5, 62.5, 64.5, 66.5, 68.5, 70.5, 72.5, 74.5, 76.5, 78.5, 80.5, 82.5, 84.5, 86.5, 88.5, 90.5, 92.5, 94.5, 96.5, 98.5, 100.5, 102.5, 104.5, 106.5]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本攻击力和射击技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 发动[隐匿切割]时追加攻击力比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 出血几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 出血持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 出血攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     associate = [{"data":data0}]
 
-# 血腥狂欢 블러디 카니발
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/374f53e8989ef04a8506c8ec99d9ecdc?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 绯红盛宴
+# gunner_female/ranger_female/374f53e8989ef04a8506c8ec99d9ecdc
+# 944b9aab492c15a8474f96947ceeb9e4/374f53e8989ef04a8506c8ec99d9ecdc
 class Skill38(ActiveSkill):
-    name = "血腥狂欢"
+    """
+        使用枪刃向前方发动刀刃攻击。\n
+        按向前方向键， 可以增加最后一击前近距离。
+    """
+    name = "绯红盛宴"
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 6 #TODO
+    position = 6
     rangeLv = 5
     cube = 5
     cd = 145
     mp = [1000, 8400]
     uuid = "374f53e8989ef04a8506c8ec99d9ecdc"
-    data0 = [0, 3114, 3836, 4557, 5278, 6001, 6724, 7444, 8167, 8888, 9611, 10334, 11056, 11776, 12499, 13221, 13942, 14666, 15386, 16110, 16830, 17553, 18277, 19000, 19722, 20441, 21164, 21888, 22610, 23331, 24052, 24774, 25498, 26218, 26941, 27664, 28385, 29108, 29828, 30551, 31274, 31995, 32718, 33440, 34162, 34885, 35605, 36328, 37050, 37772, 38495]# noqa: E501
-    hit0 = 24
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 向前斩击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 25
+    # 向前斩击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 最后一击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
 
-    data4 = [0, 9236, 11377, 13520, 15661, 17803, 19944, 22086, 24227, 26371, 28514, 30653, 32795, 34937, 37081, 39221, 41364, 43504, 45646, 47788, 49933, 52074, 54215, 56355, 58497, 60639, 62783, 64923, 67065, 69207, 71348, 73491, 75634, 77775, 79915, 82058, 84200, 86341, 88485, 90623, 92766, 94910, 97051, 99192, 101334, 103476, 105617, 107760, 109902, 112043, 114185]# noqa: E501
-    hit4 = 1 #TODO
-
-
-# 鲜血劫击 블러디 스파이크
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/7f80b887a09e88e2c4728c898bd73654?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 回闪劫击
+# gunner_female/ranger_female/7f80b887a09e88e2c4728c898bd73654
+# 944b9aab492c15a8474f96947ceeb9e4/7f80b887a09e88e2c4728c898bd73654
 class Skill39(ActiveSkill):
-    name = "鲜血劫击"
+    """
+        枪刃指向前方， 向斜上方跳跃攻击敌人。\n
+        若跳跃过程中再次按技能快捷键， 则施放[新月斩击]攻击敌人后落地。\n
+        在空中和[上旋踢]施放过程中也可以发动该技能。
+    """
+    name = "回闪劫击"
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cube = 2
     cd = 25
     mp = [400, 1120]
     uuid = "7f80b887a09e88e2c4728c898bd73654"
-    data0 = [0, 19142, 21086, 23026, 24969, 26912, 28851, 30794, 32734, 34678, 36621, 38565, 40503, 42448, 44390, 46332, 48272, 50217, 52160, 54098, 56043, 57984, 59926, 61869, 63812, 65750, 67696, 69638, 71577, 73524, 75462, 77404, 79346, 81290, 83230, 85174, 87116, 89056, 91000, 92943, 94886, 96825, 98768, 100708, 102652, 104592, 106539, 108480, 110420, 112360, 114306]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 21448, 23624, 25797, 27972, 30150, 32325, 34503, 36676, 38853, 41028, 43208, 45381, 47560, 49732, 51908, 54082, 56260, 58436, 60614, 62788, 64965, 67143, 69315, 71492, 73665, 75843, 78018, 80196, 82370, 84546, 86722, 88899, 91074, 93252, 95427, 97599, 99777, 101952, 104128, 106305, 108482, 110661, 112833, 115008, 117186, 119361, 121536, 123711, 125889, 128062]# noqa: E501
-    hit1 = 1 #TODO
+    # 上升攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # [新月斩击]攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # [范围信息]
+    # 范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
+    def vp_1(self):
+        """
+        [回闪劫击]\n
+        施放时向前方突进\n
+        - 无法在空中施放\n
+        - 移除新月斩击\n
+        变更为可填充2次的技能\n
+        - 每次填充冷却时间 : 12.5秒\n
+        - 每次攻击力 -50%\n
+        在施放鲜血之跃过程中按反方向键并施放技能时， 可以消耗花式枪术进行逆向连接施放
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [回闪劫击]\n
+        固定连接新月斩击\n
+        - 施放时进入无敌状态\n
+        - 删除追加输入功能\n
+        施放时， 10秒内攻击速度、 移动速度和回避率 +10%
+        """
+        ...
 
-# 压制射击 제압 사격
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/0fbb8de70002ad34f046c94c2cb3e863?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 压制射击
+# gunner_female/ranger_female/0fbb8de70002ad34f046c94c2cb3e863
+# 944b9aab492c15a8474f96947ceeb9e4/0fbb8de70002ad34f046c94c2cb3e863
 class Skill40(ActiveSkill):
+    """
+        向前方发射子弹。\n
+    按攻击键或技能快捷键时， 可用更快的速度发射子弹。\n
+        射击时，  按跳跃键可以强制中断技能。
+    """
     name = "压制射击"
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cube = 3
     cd = 50
     mp = [800, 1680]
     uuid = "0fbb8de70002ad34f046c94c2cb3e863"
-    data0 = [0, 3772, 4154, 4534, 4920, 5300, 5690, 6074, 6454, 6838, 7221, 7604, 7984, 8368, 8750, 9135, 9514, 9898, 10280, 10664, 11050, 11432, 11816, 12198, 12579, 12963, 13346, 13728, 14110, 14492, 14876, 15258, 15639, 16024, 16404, 16792, 17175, 17558, 17940, 18324, 18705, 19088, 19470, 19854, 20236, 20619, 21006, 21387, 21770, 22152, 22536]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 前方乱射攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 20
+    # 前方乱射攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 最后射击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-    data1 = [0, 8390, 9236, 10089, 10936, 11792, 12640, 13491, 14340, 15194, 16042, 16894, 17742, 18597, 19444, 20295, 21152, 21999, 22850, 23697, 24554, 25404, 26252, 27106, 27956, 28806, 29658, 30508, 31360, 32210, 33060, 33914, 34761, 35614, 36462, 37316, 38164, 39016, 39867, 40718, 41566, 42420, 43270, 44121, 44972, 45824, 46672, 47524, 48375, 49227, 50078]# noqa: E501
-    hit1 = 1 #TODO
+    def vp_1(self):
+        """
+        [压制射击]\n
+        射击时舞动枪刃发动10次追加攻击\n
+        - 基本冷却时间变更为65秒\n
+        - 总攻击力 +30%\n
+        - 使枪刃命中的敌人移动到前方150px的位置
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [压制射击]\n
+        固定以最快速度进行乱射攻击\n
+        - 删除连续按键效果\n
+        - 删除最后射击\n
+        - 总攻击力相同
+        """
+        ...
 
-
-# 枪刃改良 쏘우 블레이드
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/b501ae53638d33a32351904f31cb6aa3?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 枪刃改良
+# gunner_female/ranger_female/b501ae53638d33a32351904f31cb6aa3
+# 944b9aab492c15a8474f96947ceeb9e4/b501ae53638d33a32351904f31cb6aa3
 class Skill41(PassiveSkill):
+    """
+        在枪刃上附上锯齿， 给予敌人更加致命的打击。\n
+        学习该技能后， 增加出血状态的持续时间， 并增加基本攻击力和技能攻击力。
+    """
     name = "枪刃改良"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 2 #TODO
+    position = 2
     rangeLv = 3
     uuid = "b501ae53638d33a32351904f31cb6aa3"
-    data0 = [0, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本攻击力和技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 出血持续时间增加 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     associate = [{"data":data0}]
 
-
-# 死亡锁链 킬 포인트
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/8ec9da6f808889b63adf2680fbf1f331?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 死亡锁链
+# gunner_female/ranger_female/8ec9da6f808889b63adf2680fbf1f331
+# 944b9aab492c15a8474f96947ceeb9e4/8ec9da6f808889b63adf2680fbf1f331
 class Skill42(ActiveSkill):
+    """
+        向前方投掷锁链枪刃， 将击中的敌人锁住。\n
+        技能持续时间内， 再次按技能键， 可以快速射击锁住的敌人中最强的敌人。\n
+        若持续时间内没有再次按技能键， 则不发动射击。
+    """
     name = "死亡锁链"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 6 #TODO
+    position = 6
     rangeLv = 3
     cube = 3
     cd = 40
     mp = [580, 4500]
     uuid = "8ec9da6f808889b63adf2680fbf1f331"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data2 = [0, 8853, 10265, 11677, 13087, 14499, 15912, 17323, 18735, 20147, 21561, 22969, 24381, 25792, 27204, 28616, 30028, 31438, 32850, 34261, 35674, 37086, 38499, 39910, 41319, 42730, 44142, 45553, 46966, 48379, 49792, 51202, 52613, 54026, 55437, 56849, 58258, 59671, 61081, 62493, 63905, 65318, 66728, 68140, 69553, 70963, 72375, 73787, 75198, 76610, 78020]# noqa: E501
+    # 投掷锁链枪刃数量上限 : {value0}个
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 锁住敌人的持续时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 快速射击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 5
+    # 快速射击多段攻击次数 : {value3}次
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 最终射击攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 1
+    # 无法锁住的敌人移动速度减少率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # [范围信息]
+    # 投掷距离比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
-    data3 = [0, 26564, 30800, 35033, 39269, 43503, 47739, 51970, 56205, 60439, 64676, 68912, 73144, 77381, 81614, 85851, 90083, 94320, 98556, 102790, 107024, 111257, 115495, 119729, 123962, 128197, 132433, 136669, 140901, 145137, 149372, 153608, 157839, 162076, 166313, 170547, 174782, 179013, 183250, 187485, 191719, 195954, 200189, 204424, 208659, 212893, 217129, 221363, 225598, 229833, 234067]# noqa: E501
-    hit3 = 1 #TODO
+    def vp_1(self):
+        """
+        [死亡锁链]\n
+        投掷枪刃的同时进行射击\n
+        - 投掷范围内存在敌人时才能施放\n
+        - 枪刃无关射击， 禁锢敌人\n
+        - 枪刃禁锢敌人时间 -1秒\n
+        - 枪刃固定敌人过程中， 再次按技能键时， 解除枪刃\n
+        枪刃投掷数量上限 +4个\n
+        投掷范围 +30%
+        """
+        ...
 
-# 锁链切割 체인 디바이더
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/0c262dac3ec41ff79e359ada9c7a7faf?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_2(self):
+        """
+        [死亡锁链]\n
+        将枪刃拿在手中向前突进攻击\n
+        - 突进施放过程中进入无敌状态\n
+        - 突进命中时给敌人附着枪刃\n
+        - 突进时按向前方向键可以增加突进距离\n
+        - 枪刃禁锢敌人时间 +3秒\n
+        突进施放过程中按相反方向键并施放技能时， 可以消耗[花式枪术]反方向连接施放\n
+        可以对附着枪刃的目标发动原[死亡锁链]的射击\n
+        - 射击过程中进入无敌状态
+        """
+        ...
+
+# 锁链切割
+# gunner_female/ranger_female/0c262dac3ec41ff79e359ada9c7a7faf
+# 944b9aab492c15a8474f96947ceeb9e4/0c262dac3ec41ff79e359ada9c7a7faf
 class Skill43(ActiveSkill):
+    """
+        向前方大范围挥舞2次枪刃， 将敌人拉过来之后再次强力挥割敌人。
+    """
     name = "锁链切割"
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 1 #TODO
+    position = 1
     rangeLv = 2
     cube = 5
     cd = 45
     mp = [800, 8000]
     uuid = "0c262dac3ec41ff79e359ada9c7a7faf"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 26240, 28903, 31567, 34227, 36890, 39550, 42213, 44877, 47537, 50199, 52863, 55524, 58188, 60851, 63509, 66173, 68835, 71497, 74161, 76821, 79485, 82147, 84809, 87469, 90133, 92795, 95458, 98121, 100782, 103444, 106106, 108769, 111429, 114092, 116754, 119418, 122078, 124741, 127405, 130066, 132728, 135390, 138052, 140715, 143377, 146040, 148701, 151363, 154026, 156688]# noqa: E501
+    # 第1击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-
-    data1 = [0, 26240, 28903, 31567, 34227, 36890, 39550, 42213, 44877, 47537, 50199, 52863, 55524, 58188, 60851, 63509, 66173, 68835, 71497, 74161, 76821, 79485, 82147, 84809, 87469, 90133, 92795, 95458, 98121, 100782, 103444, 106106, 108769, 111429, 114092, 116754, 119418, 122078, 124741, 127405, 130066, 132728, 135390, 138052, 140715, 143377, 146040, 148701, 151363, 154026, 156688]# noqa: E501
+    # 第2击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
-
-    data2 = [0, 34987, 38538, 42088, 45636, 49187, 52736, 56286, 59834, 63385, 66935, 70483, 74032, 77583, 81131, 84682, 88232, 91783, 95329, 98880, 102429, 105979, 109529, 113079, 116627, 120178, 123725, 127276, 130826, 134376, 137927, 141474, 145025, 148575, 152126, 155672, 159223, 162773, 166322, 169871, 173422, 176971, 180521, 184070, 187620, 191169, 194719, 198268, 201817, 205367, 208917]# noqa: E501
+    # 第3击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
+    # [范围信息]
+    # 范围比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
+    def vp_1(self):
+        """
+        [锁链切割]\n
+        每次挥动锁链时， 生成刀刃风暴， 攻击更大范围\n
+        变更为可填充2次的技能\n
+        - 每次填充冷却时间 : 22.5秒\n
+        - 单次攻击力 -50%\n
+        命中时， 将敌人吸附至前方150px位置
+        """
+        self.cd = 22.5
+        self.skillRation *= 1 - 0.5
+        ...
 
-# 血舞祭 블러드 앤 체인
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/3af805da8505fe6234a95b535610f064?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_2(self):
+        """
+        [锁链切割]\n
+        施放技能时， 发动锁链切割终结攻击\n
+        终结攻击命中时， 在对方身上留下10秒的玫瑰印记\n
+        - 玫瑰印记会随着漫游枪手的攻击成长， 达到最大阶段时爆炸\n
+        - 每10次攻击会强化至下一阶段 (最多3阶段)\n
+        - 爆炸时仅对附着的目标造成爆炸伤害\n
+        - 总攻击力相同\n
+        - 爆炸时恢复[花式枪术]使用次数最大值\n
+        (每次施放仅发动1次)
+        """
+        ...
+
+# 血舞祭
+# gunner_female/ranger_female/3af805da8505fe6234a95b535610f064
+# 944b9aab492c15a8474f96947ceeb9e4/3af805da8505fe6234a95b535610f064
 class Skill44(ActiveSkill):
+    """
+        向周围投掷多把枪刃向前突进， 同时将大范围的敌人聚集到一起给予毁灭性的强力射击。
+    """
     name = "血舞祭"
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 5
     cube = 10
     cd = 180
     mp = [2500, 8000]
     uuid = "3af805da8505fe6234a95b535610f064"
-    data0 = [0, 187882, 231453, 275018, 318586, 362154, 405721, 449291, 492858, 536426, 579992, 623561, 667127, 710697, 754263, 797830, 841398, 884965, 928535, 972103, 1015670, 1059237, 1102802, 1146371, 1189939, 1233508, 1277074, 1320643, 1364209, 1407778, 1451345, 1494911, 1538480, 1582047, 1625615, 1669183, 1712751, 1756318, 1799887, 1843454, 1887021, 1930589, 1974157, 2017724, 2061292, 2104860, 2148428, 2191995, 2235564, 2279130, 2322698]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 射击攻击力 : {value0}% 
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
 
-
-# 锁链意志 체인 인라이튼
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/6166762c62f234c5f50c2d2ebc5e48d0?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 锁链意志
+# gunner_female/ranger_female/6166762c62f234c5f50c2d2ebc5e48d0
+# 944b9aab492c15a8474f96947ceeb9e4/6166762c62f234c5f50c2d2ebc5e48d0
 class Skill45(PassiveSkill):
+    """
+        进一步强化体术和射击术， 增加基本攻击力和除[音速劫击]以外的转职技能攻击力， 并增加[花式枪术]可强制中断次数上限。\n
+        更有效率地运用射击与体术相结合的连接攻击， [锁链截击]和[音速劫击]获得附加效果。\n
+    [锁链截击]\n
+        删除第1击多段攻击； 施放时， 第2击和第3击攻击后， 向前方射击。\n
+        射击攻击力以[锁链截击]第1击多段攻击力的一定比率适用。\n
+    [音速劫击]\n
+        突进攻击时不跳到空中， 突进攻击后回头射击。\n
+        射击攻击力以[音速劫击]物理攻击力的一定比率适用。
+    """
     name = "锁链意志"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 3
     uuid = "6166762c62f234c5f50c2d2ebc5e48d0"
-    data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本攻击力和转职技能攻击力增加率 ([音速劫击]除外) : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # [锁链截击]
+    # 射击攻击力 : [锁链截击]第1击多段攻击力的{value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [音速劫击]
+    # 射击攻击力 : [音速劫击]攻击力的{value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [花式枪术]
+    # 可强制中断次数上限增加量 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     associate = [{"data":data0}]
 
-
-# 毁灭风暴 루이네이션 에어리어
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/d59c9840f65381bde8487757f1753c71?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 毁灭风暴
+# gunner_female/ranger_female/d59c9840f65381bde8487757f1753c71
+# 944b9aab492c15a8474f96947ceeb9e4/d59c9840f65381bde8487757f1753c71
 class Skill46(ActiveSkill):
+    """
+        连接枪刃斩击和射击， 对周围敌人造成强力伤害。\n
+        使用枪刃大范围快速斩击4次后， 第5次斩击的同时， 发动强力终结射击。 终结射击时， 枪刃和锁链散成碎片， 对周围额外造成伤害。\n
+        施放过程中， 连按攻击键或技能快捷键， 可以加快斩击速度。\n
+        斩击过程中， 按跳跃键可以中断攻击。
+    """
     name = "毁灭风暴"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cube = 7
     cd = 60
     mp = [960, 9600]
     uuid = "d59c9840f65381bde8487757f1753c71"
-    data0 = [0, 6448, 7103, 7758, 8412, 9066, 9722, 10374, 11029, 11683, 12338, 12991, 13648, 14302, 14955, 15610, 16265, 16917, 17573, 18228, 18882, 19536, 20189, 20843, 21497, 22153, 22806, 23461, 24116, 24768, 25423, 26080, 26734, 27387, 28042, 28697, 29349, 30004, 30659, 31313, 31967, 32621, 33275, 33931, 34586, 35238, 35892, 36547, 37201, 37857, 38512]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 第1次斩击攻击力 : {value0}% X {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 3
-
-    data2 = [0, 6636, 7310, 7984, 8657, 9330, 10005, 10676, 11350, 12024, 12698, 13370, 14045, 14718, 15390, 16064, 16738, 17409, 18085, 18759, 19432, 20105, 20777, 21450, 22123, 22798, 23471, 24145, 24819, 25490, 26164, 26839, 27512, 28184, 28859, 29533, 30204, 30878, 31552, 32225, 32898, 33571, 34244, 34920, 35594, 36265, 36938, 37612, 38284, 38959, 39633]# noqa: E501
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 第2次斩击攻击力 : {value2}% X {value3}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 3
-
-    data4 = [0, 6823, 7517, 8210, 8902, 9594, 10289, 10978, 11672, 12364, 13057, 13748, 14443, 15135, 15826, 16519, 17212, 17902, 18596, 19290, 19982, 20674, 21365, 22057, 22749, 23444, 24135, 24828, 25521, 26211, 26904, 27599, 28291, 28982, 29675, 30368, 31058, 31752, 32445, 33137, 33829, 34521, 35214, 35908, 36601, 37291, 37983, 38676, 39368, 40062, 40755]# noqa: E501
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 第3次斩击攻击力 : {value4}% X {value5}
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     hit4 = 3
-
-    data6 = [0, 7011, 7724, 8436, 9147, 9858, 10572, 11281, 11993, 12704, 13416, 14127, 14840, 15551, 16261, 16974, 17686, 18395, 19108, 19821, 20532, 21243, 21953, 22664, 23376, 24089, 24799, 25511, 26224, 26933, 27645, 28358, 29070, 29780, 30492, 31204, 31913, 32626, 33338, 34049, 34760, 35472, 36183, 36896, 37608, 38317, 39029, 39741, 40451, 41164, 41877]# noqa: E501
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 第4次斩击攻击力 : {value6}% X {value7}
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     hit6 = 3
-
-    data8 = [0, 7199, 7930, 8662, 9392, 10122, 10855, 11583, 12314, 13044, 13776, 14505, 15238, 15968, 16697, 17428, 18160, 18888, 19620, 20352, 21082, 21812, 22541, 23271, 24002, 24734, 25463, 26195, 26926, 27654, 28385, 29118, 29848, 30577, 31309, 32040, 32768, 33500, 34231, 34961, 35691, 36422, 37152, 37884, 38616, 39344, 40074, 40805, 41535, 42267, 42999]# noqa: E501
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    # 第5次斩击攻击力 : {value8}% X {value9}
+    data8 = get_data(f'{prefix}/{uuid}', 8)
     hit8 = 3
-
-    data10 = [0, 51190, 56382, 61578, 66770, 71963, 77155, 82349, 87544, 92736, 97930, 103123, 108314, 113509, 118703, 123896, 129088, 134282, 139475, 144668, 149863, 155055, 160248, 165442, 170637, 175828, 181021, 186216, 191407, 196600, 201796, 206988, 212181, 217375, 222567, 227761, 232954, 238148, 243340, 248534, 253729, 258920, 264114, 269307, 274500, 279693, 284888, 290081, 295273, 300467, 305660]# noqa: E501
-    hit10 = 1 #TODO
-
-    data11 = [0, 3411, 3757, 4105, 4451, 4798, 5144, 5490, 5836, 6181, 6528, 6874, 7220, 7567, 7915, 8259, 8606, 8952, 9298, 9645, 9990, 10338, 10684, 11029, 11376, 11721, 12068, 12414, 12760, 13106, 13451, 13799, 14145, 14491, 14837, 15184, 15529, 15875, 16221, 16567, 16916, 17261, 17607, 17954, 18299, 18646, 18991, 19338, 19684, 20030, 20377]# noqa: E501
+    data9 = get_data(f'{prefix}/{uuid}', 9)
+    # 终结射击攻击力 : {value10}%
+    data10 = get_data(f'{prefix}/{uuid}', 10)
+    hit10 = 1
+    # 枪刃和锁链碎片攻击力 : {value11}% X {value12}
+    data11 = get_data(f'{prefix}/{uuid}', 11)
     hit11 = 5
+    data12 = get_data(f'{prefix}/{uuid}', 12)
 
-
-# 盛放·绯红花园 크림슨 가든
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/bbc15561bec24f9c1e79e23d715b1dd2?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 盛放·绯红花园
+# gunner_female/ranger_female/bbc15561bec24f9c1e79e23d715b1dd2
+# 944b9aab492c15a8474f96947ceeb9e4/bbc15561bec24f9c1e79e23d715b1dd2
 class Skill47(ActiveSkill):
+    """
+        施放时， 向四面八方投掷枪刃， 用锁链编织成绯红花园， 歼灭所有敌人。\n
+        绯红花园完成后， 发动体术和射击连接攻击， 在强大的攻击下， 固定的锁链开始断裂。\n
+        连接攻击过程中， 枪刃结合点变得不稳定， 此时切断所有锁链， 使用枪刃发动终结斩击。\n
+        施放[盛放·绯红花园]过程中， 无法使用[花式枪术]强制中断。\n
+    [三次觉醒技能]\n
+        使用三次觉醒技能时， 与关联的技能共享冷却时间。\n
+        若关联的技能还在冷却中， 则无法使用三次觉醒技能。
+    """
     name = "盛放·绯红花园"
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 5
     cube = 15
     cd = 290
     mp = [4028, 9667]
     uuid = "bbc15561bec24f9c1e79e23d715b1dd2"
-    data0 = [0, 5677, 6995, 8310, 9626, 10944, 12261, 13578, 14893, 16210, 17527, 18845, 20161, 21475, 22794, 24110, 25428, 26743, 28061, 29377, 30693, 32010, 33328, 34643, 35961, 37276, 38595, 39910, 41227, 42544, 43859, 45177, 46493, 47810, 49127, 50445, 51759, 53076, 54394, 55711, 57027, 58343, 59660, 60976, 62293, 63611, 64926, 66243, 67560, 68876, 70193]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 锁链编织攻击力 : {value0}% X {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 5
-
-    data2 = [0, 7097, 8743, 10388, 12034, 13681, 15325, 16972, 18616, 20263, 21910, 23554, 25201, 26847, 28492, 30138, 31784, 33429, 35076, 36721, 38367, 40012, 41659, 43304, 44950, 46596, 48242, 49886, 51535, 53178, 54824, 56473, 58117, 59763, 61410, 63055, 64700, 66348, 67992, 69638, 71284, 72930, 74576, 76221, 77867, 79512, 81158, 82805, 84449, 86096, 87743]# noqa: E501
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 枪刃乱舞攻击力 : {value2}% X {value3}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 6
-
-    data4 = [0, 12166, 14988, 17809, 20630, 23453, 26275, 29094, 31915, 34738, 37560, 40381, 43202, 46022, 48844, 51665, 54487, 57309, 60130, 62951, 65773, 68594, 71416, 74238, 77058, 79880, 82702, 85524, 88343, 91166, 93986, 96809, 99629, 102452, 105273, 108093, 110914, 113737, 116558, 119381, 122201, 125022, 127844, 130665, 133486, 136308, 139130, 141951, 144772, 147594, 150415]# noqa: E501
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 射击攻击力 : {value4}% X {value5}
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     hit4 = 7
-
-    data6 = [0, 7097, 8743, 10388, 12034, 13681, 15325, 16972, 18616, 20263, 21910, 23554, 25201, 26847, 28492, 30138, 31784, 33429, 35076, 36721, 38367, 40012, 41659, 43304, 44950, 46596, 48242, 49886, 51535, 53178, 54824, 56473, 58117, 59763, 61410, 63055, 64700, 66348, 67992, 69638, 71284, 72930, 74576, 76221, 77867, 79512, 81158, 82805, 84449, 86096, 87743]# noqa: E501
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 枪刃发射攻击力 : {value6}% X {value7}
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     hit6 = 6
-
-    data8 = [0, 10919, 13451, 15983, 18515, 21047, 23577, 26111, 28643, 31174, 33707, 36238, 38771, 41304, 43835, 46365, 48898, 51430, 53963, 56495, 59026, 61558, 64092, 66624, 69157, 71686, 74218, 76750, 79284, 81816, 84346, 86879, 89411, 91945, 94477, 97006, 99539, 102071, 104603, 107133, 109667, 112199, 114731, 117263, 119796, 122328, 124859, 127391, 129924, 132455, 134986]# noqa: E501
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    # 枪刃旋转攻击力 : {value8}% X {value9}
+    data8 = get_data(f'{prefix}/{uuid}', 8)
     hit8 = 13
-
-    data10 = [0, 66243, 81605, 96965, 112326, 127687, 143050, 158409, 173768, 189130, 204490, 219853, 235213, 250574, 265934, 281296, 296657, 312018, 327379, 342741, 358102, 373461, 388822, 404182, 419544, 434905, 450266, 465627, 480988, 496349, 511709, 527070, 542432, 557794, 573154, 588515, 603875, 619237, 634597, 649957, 665318, 680681, 696040, 711401, 726762, 742123, 757485, 772846, 788206, 803568, 818928]# noqa: E501
+    data9 = get_data(f'{prefix}/{uuid}', 9)
+    # 终结斩击攻击力 : {value10}% X {value11}
+    data10 = get_data(f'{prefix}/{uuid}', 10)
     hit10 = 3
-
-    data12 = [0, 4730, 5828, 6924, 8022, 9120, 10217, 11314, 12410, 13509, 14605, 15702, 16799, 17897, 18995, 20092, 21188, 22285, 23385, 24479, 25577, 26674, 27771, 28871, 29967, 31065, 32162, 33257, 34356, 35453, 36550, 37648, 38745, 39842, 40940, 42036, 43132, 44231, 45328, 46424, 47522, 48619, 49716, 50814, 51911, 53009, 54106, 55202, 56300, 57397, 58494]# noqa: E501
+    data11 = get_data(f'{prefix}/{uuid}', 11)
+    # 锁链碎片攻击力 : {value12}% X {value13}
+    data12 = get_data(f'{prefix}/{uuid}', 12)
     hit12 = 6
+    data13 = get_data(f'{prefix}/{uuid}', 13)
+
 
 class classChange(Character):
     def __init__(self, equVersion):
+
         self.name = 'ranger_female'
         self.nameCN = '重霄·漫游枪手'
         self.role = 'gunner_female'
+        self.角色 = '神枪手(女)'
+        self.职业 = '漫游枪手'
+        self.jobId = '944b9aab492c15a8474f96947ceeb9e4'
+        self.jobGrowId = '37495b941da3b1661bc900e68ef3b2c6'
 
         self.武器选项 = ['手弩', '步枪','左轮枪','自动手枪','手炮']
         self.输出类型选项 = ['物理百分比']
@@ -740,9 +1501,5 @@ class classChange(Character):
         self.防具精通属性 = ['力量']
         self.防具类型 = '皮甲'
         self.buff = 2.335
-
-        self.角色 = '神枪手(女)'
-
-        self.职业 = '漫游枪手'
 
         super().__init__(equVersion, __name__)
