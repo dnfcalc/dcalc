@@ -21,6 +21,7 @@ class Skill3(PassiveSkill):
     icon = "$common/$uuid"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力变化率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
@@ -48,6 +49,7 @@ class Skill10(ActiveSkill):
     uuid = "51a08fd0c90f0a5276cd552047fac93d"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 魔法枪多段攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
@@ -79,6 +81,7 @@ class Skill15(PassiveSkill):
     uuid = "d53301bb328baf12a3ae482cc6a565dd"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 属性攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
@@ -149,6 +152,7 @@ class Skill16(PassiveSkill):
     uuid = "7e904ea3d2a9faa054604e55120a9268"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
 
 # 双重投射
@@ -174,6 +178,7 @@ class Skill17(ActiveSkill):
     uuid = "dbf8b30c7057032af0d68fcfa289fdae"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # [黑雷系列]
     # 投掷攻击力 : {value0}%
@@ -210,6 +215,7 @@ class Skill18(ActiveSkill):
     uuid = "5152480fdde81362575a488d4cec4af9"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # [暗蚀系列]
     # 爆炸攻击力 : {value0}%
@@ -243,6 +249,7 @@ class Skill19(ActiveSkill):
     uuid = "2391a27457b5a8c6fa4b4670a91bdd11"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # [黑雷系列]
     # 投掷攻击力 : {value0}%
@@ -271,6 +278,7 @@ class Skill20(PassiveSkill):
     uuid = "5892d1fa4462e561ac8f8d2c74892b0a"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 暗矛魔法攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
@@ -295,6 +303,7 @@ class Skill21(PassiveSkill):
     uuid = "fc1262c19f3d0477ee8eda47b8db8696"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 物理/魔法暴击率增加 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
@@ -316,6 +325,7 @@ class Skill22(ActiveSkill):
     uuid = "fc458e449ee00b01dbf88d09aae65462"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 持续时间 : {value0}秒
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
@@ -350,6 +360,7 @@ class Skill23(ActiveSkill):
     uuid = "1812a1ece67bb37b6b44b54766450064"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # [黑雷系列]
     # 魔枪贯穿攻击力 : {value0}%
@@ -384,6 +395,7 @@ class Skill24(ActiveSkill):
     uuid = "d89f26862e348a801b30bb9fd7125db5"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # [暗蚀系列]
     # 黑暗之枪攻击力 : {value0}%
@@ -417,6 +429,7 @@ class Skill25(ActiveSkill):
     uuid = "2ba299855fc22192cba4f73db75e9d0e"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     #  [暗蚀 + 黑雷系列]
     # 黑暗之枪爆炸攻击力 : {value0}%
@@ -453,6 +466,7 @@ class Skill26(ActiveSkill):
     uuid = "ac21c02567f04a92b54dd85c091d1e5a"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # [黑雷系列]
     # 投掷魔枪攻击力 : {value0}%
@@ -480,6 +494,7 @@ class Skill27(PassiveSkill):
     uuid = "f1fdc6c2482ecc510a2a9f04201ba125"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
@@ -515,6 +530,7 @@ class Skill28(ActiveSkill):
     uuid = "2c9d9a36c8401bddff6cdb80fab8dc24"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # [黑雷系列]
@@ -580,6 +596,7 @@ class Skill29(ActiveSkill):
     uuid = "b89c9ab317bc0a443f6497b7cca2f6a8"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # [黑雷系列]
@@ -640,6 +657,7 @@ class Skill30(ActiveSkill):
     uuid = "7cf17936a039b418660424125dc968d7"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # [黑雷系列]
@@ -701,6 +719,7 @@ class Skill31(ActiveSkill):
     uuid = "7f80b887a09e88e2c4728c898bd73654"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # [黑雷系列]
@@ -757,6 +776,7 @@ class Skill32(PassiveSkill):
     uuid = "e5c09f9132a48dc1d695968592cc5878"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力和技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
@@ -788,6 +808,7 @@ class Skill33(ActiveSkill):
     uuid = "e0daa922b19cdc35de879e938361464e"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # [暗蚀 + 黑雷系列]
     # 黑暗之枪攻击力 : {value0}%
@@ -822,6 +843,7 @@ class Skill34(ActiveSkill):
     uuid = "0fbb8de70002ad34f046c94c2cb3e863"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # [暗蚀系列]
@@ -886,6 +908,7 @@ class Skill35(ActiveSkill):
     uuid = "c5a2956d8ed3af1746ed2f76ca971a09"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # [黑雷系列]
@@ -950,6 +973,7 @@ class Skill36(PassiveSkill):
     uuid = "d429147c372b549c3dadcabcba50787f"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力和技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
@@ -990,6 +1014,7 @@ class Skill37(ActiveSkill):
     uuid = "7ec521d063d2190e1fcc5bd229af9bcf"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # [暗蚀 + 黑雷系列]
@@ -1051,6 +1076,7 @@ class Skill38(ActiveSkill):
     uuid = "0113c8b1306ca76d208f83f2d093dd62"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     #  [暗蚀 + 黑雷系列]
@@ -1120,6 +1146,7 @@ class Skill39(ActiveSkill):
     uuid = "8b08f9504167a9c0f3a1d29d71b7943e"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     #  [暗蚀 + 黑雷系列]
     # 黑暗气息攻击力 : {value0}%
@@ -1150,6 +1177,7 @@ class Skill40(PassiveSkill):
     uuid = "dde3b443bd5e61d90c34e5ee771e2c28"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
@@ -1182,6 +1210,7 @@ class Skill41(ActiveSkill):
     uuid = "527cdc3ecca985e18ef819d456532b26"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # [黑雷系列]
     # 贯穿攻击力 : {value0}%
@@ -1224,6 +1253,7 @@ class Skill42(ActiveSkill):
     uuid = "e788de1a4498c99fcc790302c4d41fed"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     #  [暗蚀 + 黑雷系列]
     # 暗蚀之枪攻击力 : {value0}%

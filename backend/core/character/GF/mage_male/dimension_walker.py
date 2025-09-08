@@ -22,6 +22,7 @@ class Skill2(PassiveSkill):
     uuid = "bb34e8854a93fd250347a1c64119f7ab"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 恢复模式下所受伤害增加 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -48,6 +49,7 @@ class Skill3(PassiveSkill):
     uuid = "6e33d47e6622ce03b6defdd912140270"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 魔法值最大值增加 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -79,6 +81,7 @@ class Skill4(PassiveSkill):
     uuid = "d53301bb328baf12a3ae482cc6a565dd"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 边界能量条最大值 : {value0}
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -107,6 +110,7 @@ class Skill5(ActiveSkill):
     uuid = "7e904ea3d2a9faa054604e55120a9268"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 施放时所需次元石数量 : {value0}个
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -129,6 +133,7 @@ class Skill6(PassiveSkill):
     uuid = "5152480fdde81362575a488d4cec4af9"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 施放速度增加 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -154,6 +159,7 @@ class Skill8(PassiveSkill):
     icon = "$common/$uuid"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力变化率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -184,6 +190,7 @@ class Skill13(ActiveSkill):
     uuid = "cfacda0647b9a0f595df2c2aad30c18d"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 持续时间 : {value0}秒
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -218,6 +225,7 @@ class Skill14(ActiveSkill):
     uuid = "3d8f3d438405d79f8d3ed68072674d1e"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # X轴移动距离 : {value0}px
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -246,6 +254,7 @@ class Skill19(ActiveSkill):
     uuid = "4f2e001e9a19eb7bae50ad1840dfb329"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 普通情况下箱子掉落位置 : {value0}px
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -300,6 +309,7 @@ class Skill20(PassiveSkill):
     uuid = "dbf8b30c7057032af0d68fcfa289fdae"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击和次元系列技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -325,6 +335,7 @@ class Skill21(PassiveSkill):
     uuid = "fc458e449ee00b01dbf88d09aae65462"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力和技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -358,6 +369,7 @@ class Skill22(ActiveSkill):
     uuid = "1812a1ece67bb37b6b44b54766450064"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 边界能量条增加量 : {value0}
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -391,6 +403,7 @@ class Skill23(ActiveSkill):
     uuid = "2ba299855fc22192cba4f73db75e9d0e"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 边界能量条增加量 : {value0}
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -431,6 +444,7 @@ class Skill24(ActiveSkill):
     uuid = "7f80b887a09e88e2c4728c898bd73654"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 召唤时生命值消耗 : {value0}
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -478,6 +492,7 @@ class Skill25(ActiveSkill):
     uuid = "e5c09f9132a48dc1d695968592cc5878"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 角色每10秒魔法值恢复量增加 : 1%
 
@@ -502,6 +517,7 @@ class Skill27(ActiveSkill):
     uuid = "d89f26862e348a801b30bb9fd7125db5"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 边界能量条增加量 : {value0}
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -545,6 +561,7 @@ class Skill28(ActiveSkill):
     uuid = "2c9d9a36c8401bddff6cdb80fab8dc24"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 持续时间 : {value0}秒
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -570,6 +587,7 @@ class Skill29(PassiveSkill):
     uuid = "dde3b443bd5e61d90c34e5ee771e2c28"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
 
 # 乖离 : 迷雾
@@ -596,6 +614,7 @@ class Skill30(ActiveSkill):
     uuid = "5892d1fa4462e561ac8f8d2c74892b0a"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 生命值消耗 : {value0}
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -638,6 +657,7 @@ class Skill31(ActiveSkill):
     uuid = "b89c9ab317bc0a443f6497b7cca2f6a8"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 边界能量条增加量 : {value0}
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -686,6 +706,7 @@ class Skill32(ActiveSkill):
     uuid = "0fbb8de70002ad34f046c94c2cb3e863"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 乱打攻击次数 : {value0}次
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -719,6 +740,7 @@ class Skill33(ActiveSkill):
     uuid = "7cf17936a039b418660424125dc968d7"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 边界能量增加量 : {value0}
@@ -798,6 +820,7 @@ class Skill34(ActiveSkill):
     uuid = "3fb8395ae3b81bd608e0c4223a8eb534"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 边界能量条增加量 : {value0}
@@ -863,6 +886,7 @@ class Skill35(ActiveSkill):
     uuid = "c5a2956d8ed3af1746ed2f76ca971a09"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 生命值消耗 : {value0}
@@ -931,6 +955,7 @@ class Skill36(ActiveSkill):
     uuid = "e0a072e8cef2d77893aad5f68aeed56a"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 边界能量条增加量 : {value0}
@@ -1007,6 +1032,7 @@ class Skill37(PassiveSkill):
     uuid = "2a0a39184de92acf1c1375e00b77404c"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 不消耗次元石的几率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -1050,6 +1076,7 @@ class Skill38(ActiveSkill):
     uuid = "9dc8438e4572d39243c97da31c113acc"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 怪物出现时攻击力 : {value0}
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -1085,6 +1112,7 @@ class Skill39(ActiveSkill):
     uuid = "e0daa922b19cdc35de879e938361464e"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 边界能量增加量 : {value0}
@@ -1153,6 +1181,7 @@ class Skill40(ActiveSkill):
     uuid = "5806440d21e7546d50007a5ba11f8024"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 束缚时间 : {value0}秒
@@ -1223,6 +1252,7 @@ class Skill41(PassiveSkill):
     uuid = "5c45f69c9ebc7a784e994369d2cc3c66"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 进入地下城时获得的次元石数量 : {value0}
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -1263,6 +1293,7 @@ class Skill42(ActiveSkill):
     uuid = "4402c6977bf5c9b0d2febe14dc81de6c"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 边界能量条增加量 : {value0}
@@ -1349,6 +1380,7 @@ class Skill43(ActiveSkill):
     uuid = "96bd070daacc6c1b81d9f24e6d77f48a"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 彼端怪物每次悲鸣时攻击力 : {value0}
@@ -1418,6 +1450,7 @@ class Skill44(ActiveSkill):
     uuid = "c9a29f5c3509b90a96d5ca9b70dc9c85"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 边界能量条增加量 : {value0}
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -1494,6 +1527,7 @@ class Skill45(PassiveSkill):
     uuid = "ae7608b87b6e965c6bdd0b3ef4e6d63e"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -1525,6 +1559,7 @@ class Skill46(ActiveSkill):
     uuid = "626cfc24770b72b5d7a24c24cda3768b"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 索敌距离 : {value0}px
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -1563,6 +1598,7 @@ class Skill47(ActiveSkill):
     uuid = "7a96c262533919beee21b5a666062880"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 边界能量增加量 : {value0}
     data0 = get_data(f'{prefix}/{uuid}', 0)

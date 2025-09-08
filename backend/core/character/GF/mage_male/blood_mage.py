@@ -25,6 +25,7 @@ class Skill0(ActiveSkill):
     uuid = "3c5604bdbb0240b8f130f59ab40509c3"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 攻击力 : {value0}%
     # REMOVE: data0 = [0, 118, 137, 156, 174, 193, 212, 231, 250, 268, 287, 306, 325, 344, 363, 381, 400, 419, 438, 457, 475]# noqa: E501
@@ -61,6 +62,7 @@ class Skill1(ActiveSkill):
     uuid = "5dc7008b12a459325b548b0715c6b73c"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 攻击力 : {value0}%
     # REMOVE: data0 = [0, 695, 766, 836, 907, 977, 1048, 1118, 1189, 1259, 1330, 1400, 1471, 1541, 1612, 1682, 1753, 1823, 1894, 1964, 2035, 2105, 2176, 2246, 2317, 2387, 2458, 2528, 2599, 2669, 2740, 2810, 2881, 2951, 3022, 3092, 3163, 3233, 3304, 3374, 3445, 3515, 3586, 3656, 3727, 3797, 3868, 3938, 4009, 4079, 4150, 4220, 4291, 4361, 4432, 4502, 4573, 4643, 4714, 4784, 4855, 4925, 4996, 5066, 5137, 5207, 5278, 5348, 5419, 5489, 5560]# noqa: E501
@@ -88,6 +90,7 @@ class Skill2(PassiveSkill):
     uuid = "bb34e8854a93fd250347a1c64119f7ab"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 恢复模式下所受伤害增加 : {value0}%
     # REMOVE: data0 = [0, 50]# noqa: E501
@@ -118,6 +121,7 @@ class Skill3(PassiveSkill):
     uuid = "6e33d47e6622ce03b6defdd912140270"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 魔法值最大值增加 : {value0}%
     # REMOVE: data0 = [0, 6]# noqa: E501
@@ -149,6 +153,7 @@ class Skill4(ActiveSkill):
     uuid = "ac21c02567f04a92b54dd85c091d1e5a"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 移动距离上限 : {value0}px
     # REMOVE: data0 = [0, 400]# noqa: E501
@@ -176,6 +181,7 @@ class Skill6(PassiveSkill):
     icon = "$common/$uuid"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力变化率 : {value0}%
     # REMOVE: data0 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
@@ -208,6 +214,7 @@ class Skill11(ActiveSkill):
     uuid = "cfacda0647b9a0f595df2c2aad30c18d"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 持续时间 : {value0}秒
     # REMOVE: data0 = [0, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4, 170.4]# noqa: E501
@@ -247,6 +254,7 @@ class Skill16(ActiveSkill):
     uuid = "d429147c372b549c3dadcabcba50787f"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 多段攻击力 : {value0}%
     # REMOVE: data0 = [0, 587, 647, 706, 766, 825, 885, 944, 1004, 1063, 1123, 1183, 1242, 1302, 1361, 1421, 1480, 1540, 1599, 1659, 1718, 1778, 1838, 1897, 1957, 2016, 2076, 2135, 2195, 2254, 2314, 2374, 2433, 2493, 2552, 2612, 2671, 2731, 2790, 2850, 2909, 2969, 3029, 3088, 3148, 3207, 3267, 3326, 3386, 3445, 3505, 3565, 3624, 3684, 3743, 3803, 3862, 3922, 3981, 4041, 4100, 4160, 4220, 4279, 4339, 4398, 4458, 4517, 4577, 4636, 4696]# noqa: E501
@@ -282,6 +290,7 @@ class Skill17(PassiveSkill):
     uuid = "0113c8b1306ca76d208f83f2d093dd62"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # [学习技能时效果]
     # 命中率增加 : {value0}%
@@ -327,6 +336,7 @@ class Skill18(PassiveSkill):
     uuid = "8b08f9504167a9c0f3a1d29d71b7943e"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 第1击猩红气息吸收量 : {value0}%
     # REMOVE: data0 = [0, 1]# noqa: E501
@@ -366,6 +376,7 @@ class Skill19(ActiveSkill):
     uuid = "ab6fc3303df03b58911967dfca2b5d07"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 猩红气息消耗量 : {value0}%
     # REMOVE: data0 = [0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]# noqa: E501
@@ -397,6 +408,7 @@ class Skill20(ActiveSkill):
     uuid = "002cbdd9bfd0f0b970451ae8d48d029e"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 猩红气息消耗量 : {value0}%
     # REMOVE: data0 = [0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]# noqa: E501
@@ -436,6 +448,7 @@ class Skill22(PassiveSkill):
     uuid = "95b58ec89893dd9e50da1281ebe57175"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力和技能攻击力增加率 : {value0}%
     # REMOVE: data0 = [0, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]# noqa: E501
@@ -460,6 +473,7 @@ class Skill23(ActiveSkill):
     uuid = "c91a62dc0a18360acf5031ac0ebf09f5"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 多段攻击力 : {value0}%
     # REMOVE: data0 = [0, 237, 261, 285, 309, 333, 357, 381, 405, 429, 453, 477, 501, 526, 550, 574, 598, 622, 646, 670, 694, 718, 742, 766, 790, 814, 838, 862, 886, 910, 934, 958, 982, 1006, 1030, 1054, 1079, 1103, 1127, 1151, 1175, 1199, 1223, 1247, 1271, 1295, 1319, 1343, 1367, 1391, 1415, 1439, 1463, 1487, 1511, 1535, 1559, 1583, 1607, 1632, 1656, 1680, 1704, 1728, 1752, 1776, 1800, 1824, 1848, 1872, 1896]# noqa: E501
@@ -497,6 +511,7 @@ class Skill24(ActiveSkill):
     uuid = "0c3a468aee1f7ce06bf91eb3319518c1"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 猩红气息消耗量 : {value0}%
     # REMOVE: data0 = [0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]# noqa: E501
@@ -530,6 +545,7 @@ class Skill25(ActiveSkill):
     uuid = "5cac3411ccef1af333953e0ded5e942d"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 增益效果持续时间 : {value0}秒
     # REMOVE: data0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]# noqa: E501
@@ -557,6 +573,7 @@ class Skill26(ActiveSkill):
     uuid = "85f7c810ad503790e8626439fe936d56"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 物理攻击力 : {value0}%
     # REMOVE: data0 = [0, 956, 1053, 1150, 1246, 1343, 1440, 1537, 1634, 1731, 1828, 1925, 2022, 2119, 2216, 2313, 2410, 2507, 2604, 2701, 2798, 2895, 2991, 3088, 3185, 3282, 3379, 3476, 3573, 3670, 3767, 3864, 3961, 4058, 4155, 4252, 4349, 4446, 4543, 4640, 4737, 4833, 4930, 5027, 5124, 5221, 5318, 5415, 5512, 5609, 5706, 5803, 5900, 5997, 6094, 6191, 6288, 6385, 6482, 6579, 6675, 6772, 6869, 6966, 7063, 7160, 7257, 7354, 7451, 7548, 7645]# noqa: E501
@@ -598,6 +615,7 @@ class Skill27(ActiveSkill):
     uuid = "31823197cc0b04d4c5dcf8f928d9220c"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 猩红气息消耗量 : {value0}%
     # REMOVE: data0 = [0, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]# noqa: E501
@@ -629,6 +647,7 @@ class Skill28(ActiveSkill):
     uuid = "dac8d8207618150c162e4c6f9e168527"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 猩红气息消耗量 : {value0}%
@@ -692,6 +711,7 @@ class Skill29(ActiveSkill):
     uuid = "8e358ecf99ac9df31a6132aeafe378a9"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 多段攻击力 : {value0}%
@@ -757,6 +777,7 @@ class Skill30(ActiveSkill):
     uuid = "78b86e64fbb74c1db1b71c50a5ac21cd"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 猩红气息消耗量 : {value0}%
@@ -826,6 +847,7 @@ class Skill31(PassiveSkill):
     uuid = "f4a561e272cc434a4905b3aa0c0de090"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力和技能攻击力增加率 : {value0}%
     # REMOVE: data0 = [0, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5, 30, 31.5, 33, 34.5, 36, 37.5, 39, 40.5, 42, 43.5, 45, 46.5, 48, 49.5, 51, 52.5, 54, 55.5, 57, 58.5, 60, 61.5, 63, 64.5, 66, 67.5, 69, 70.5, 72, 73.5, 75, 76.5, 78, 79.5, 81, 82.5, 84, 85.5]# noqa: E501
@@ -851,6 +873,7 @@ class Skill32(ActiveSkill):
     uuid = "0e409ac3e1c1f3976b3ef2bfe4c13069"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 猩红气息消耗量 : {value0}%
     # REMOVE: data0 = [0, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]# noqa: E501
@@ -891,6 +914,7 @@ class Skill33(ActiveSkill):
     uuid = "2e2b7efe778656690f9c8cb6e47c3932"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 多段攻击力 : {value0}%
@@ -952,6 +976,7 @@ class Skill34(ActiveSkill):
     uuid = "902a016f6978f13740f237e4740a5646"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 猩红气息消耗量 : {value0}%
@@ -1009,6 +1034,7 @@ class Skill35(ActiveSkill):
     uuid = "4c5271b0ecce120d7fc113f377fae76f"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 撕咬攻击力 : {value0}%
@@ -1066,6 +1092,7 @@ class Skill36(PassiveSkill):
     uuid = "370586038cf40378f20d338d507a780c"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 暴击伤害增加率 : {value0}%
     # REMOVE: data0 = [0, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122]# noqa: E501
@@ -1096,6 +1123,7 @@ class Skill37(ActiveSkill):
     uuid = "dd32a9825ec1af42a91f2223be6658e5"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 猩红气息消耗量 : {value0}%
@@ -1151,6 +1179,7 @@ class Skill38(ActiveSkill):
     uuid = "fa3ee243b36699e9d3fc34328adf6417"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 猩红气息消耗量 : {value0}%
     # REMOVE: data0 = [0, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60]# noqa: E501
@@ -1191,6 +1220,7 @@ class Skill39(PassiveSkill):
     uuid = "3cb633d00f8f6ee088682c9171020d26"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本、 技能攻击力增加率 : {value0}%
     # REMOVE: data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
@@ -1225,6 +1255,7 @@ class Skill40(ActiveSkill):
     uuid = "6d7c9a15c08cc41d70125083e869e1a1"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 猩红气息消耗量 : {value0}%
     # REMOVE: data0 = [0, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70]# noqa: E501
@@ -1256,6 +1287,7 @@ class Skill41(ActiveSkill):
     uuid = "1ff42548e611b94781a1ae8f063dd679"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 猩红气息帷幕攻击力 : {value0}%
     # REMOVE: data0 = [0, 68076, 83862, 99647, 115433, 131219, 147004, 162790, 178576, 194362, 210147, 225933, 241719, 257504, 273290, 289076, 304862, 320647, 336433, 352219, 368005, 383790, 399576, 415362, 431147, 446933, 462719, 478505, 494290, 510076, 525862, 541647, 557433, 573219, 589005, 604790, 620576, 636362, 652147, 667933, 683719, 699505, 715290, 731076, 746862, 762647, 778433, 794219, 810005, 825790, 841576]# noqa: E501

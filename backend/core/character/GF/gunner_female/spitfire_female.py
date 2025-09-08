@@ -1,27 +1,169 @@
-# 944b9aab492c15a8474f96947ceeb9e4
-from core.basic.skill import PassiveSkill, ActiveSkill, characterLv
+#944b9aab492c15a8474f96947ceeb9e4
+from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
+prefix = "gunner_female/spitfire_female/cn/skillDetail"
 
-# 基础精通 기본기 숙련
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/5a56514f35cf0270ae8d6c65f8fefd78?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill0(ActiveSkill):
-    name = '基础精通'
-    uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
+
+# 跃翔
+# gunner_female/spitfire_female/1fea5a626f15230237946a11a9d11582
+# 944b9aab492c15a8474f96947ceeb9e4/1fea5a626f15230237946a11a9d11582
+class Skill16(ActiveSkill):
+    """
+        增加自身20%的跳跃力， 效果持续一定时间。\n
+        效果持续期间内， 再次按技能键可以结束。
+    """
+    name = "跃翔"
+    learnLv = 10
+    masterLv = 1
+    maxLv = 1
+    position = 0 #TODO
+    rangeLv = 3
+    cd = 5
+    mp = [13, 13]
+    uuid = "1fea5a626f15230237946a11a9d11582"
     icon = "$common/$uuid"
-    learnLv = 1
-    masterLv = characterLv
-    maxLv = 200
-    position = 0
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+
+
+# 特性弹
+# gunner_female/spitfire_female/9dda3f4a849dba1a288dd65e116860f2
+# 944b9aab492c15a8474f96947ceeb9e4/9dda3f4a849dba1a288dd65e116860f2
+class Skill18(ActiveSkill):
+    """
+        可以在[超负荷装填]状态下使用， 使[超负荷装填]造成的属性效果以特性的形式体现， 使命中对象进入异常状态。\n
+    [火属性] : 灼伤\n
+    [冰属性] : 冰冻\n
+    [光属性] : 感电\n
+    [无属性] : 眩晕\n
+        无法和[贯穿弹]、 [爆裂弹]同时使用。\n
+        该技能即时受装备的影响。\n
+        在决斗场中， 适用单独的持续时间； 灼伤异常状态触发几率变更为100%。
+    """
+    name = "特性弹"
+    learnLv = 15
+    masterLv = 10
+    maxLv = 20
+    position = 4
+    rangeLv = 3
+    cd = 5
+    mp = [126, 975]
+    uuid = "9dda3f4a849dba1a288dd65e116860f2"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 异常状态发动率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 灼伤持续时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 灼伤攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 冰冻持续时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 感电持续时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 感电攻击力 : {value6}
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # 眩晕持续时间 : {value7}秒
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    # 增益效果持续时间 : {value8}秒
+    data8 = get_data(f'{prefix}/{uuid}', 8)
+
+
+# 单兵推进器
+# gunner_female/spitfire_female/4224f9b0b8c7c903e9a1e0f9d9f6d04d
+# 944b9aab492c15a8474f96947ceeb9e4/4224f9b0b8c7c903e9a1e0f9d9f6d04d
+class Skill21(PassiveSkill):
+    """
+        弹药专家在跳跃状态下， 可利用装备在腰部的单兵推进器控制空中动作。 可在空中自由移动或使用技能， 且增加有子弹效果的射击攻击力和射击技能攻击力。\n
+    - [射击技能] -\n
+    [交叉射击]、 [聚合弹]、 [凝固汽油弹]、 [超真空弹 : 切利]。\n
+        可以强制中断基本攻击并跳跃。 空中射击技能冷却时间变更为5秒， 持续时间无限制并且变更为立即施放技能。\n
+        学习后， 增加[空中射击]等级。\n
+    - [可在空中使用的动作] -\n
+    - 垂直上升 : 在跳跃状态下垂直向上移动。\n
+    (跳跃状态下) + C\n
+    - 水平移动 : 在跳跃状态下左/右水平移动。\n
+    (跳跃状态下) ←或→ + C\n
+    - 迅速降落 : 在跳跃状态下快速落地。\n
+    (跳跃状态下) + 空格键\n
+    - 姿态恢复 : 在跳跃状态下被敌人攻击时， 可从被击状态恢复到正常的跳跃状态。\n
+    (被攻击中) + C\n
+    - 施放技能 : 可以在空中施放技能。
+    """
+    name = "单兵推进器"
+    learnLv = 15
+    masterLv = 10
+    maxLv = 20
+    position = 8
     rangeLv = 1
-    damage = False
-    type = 'passive'
+    uuid = "4224f9b0b8c7c903e9a1e0f9d9f6d04d"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 子弹效果攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 射击技能攻击力增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 每次跳跃时使用次数上限 : {value2}次
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 跳跃状态下位移动作冷却时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 高速落地消耗使用次数 : {value4}次
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 姿态恢复消耗使用次数 : {value5}次
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 后跳使用时， 消耗使用次数 : {value6}
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
+    associate = [
+        {'data': data0, 'skills': ['交叉射击', '聚合弹', '凝固汽油弹', '超真空弹：切利']},
+        {'data': data1, 'skills': ['爆裂弹']}
+    ]
 
-    data0 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
+# 空中射击
+# gunner_female/spitfire_female/bb34e8854a93fd250347a1c64119f7ab
+# 944b9aab492c15a8474f96947ceeb9e4/bb34e8854a93fd250347a1c64119f7ab
+class Skill22(ActiveSkill):
+    """
+        增加跳跃攻击的空中停留时间以及跳跃射击的攻击力和射击次数上限， 效果持续一定时间。
+    """
+    name = "空中射击"
+    learnLv = 15
+    masterLv = 10
+    maxLv = 20
+    position = 8
+    rangeLv = 3
+    cd = 40
+    mp = [40, 168]
+    uuid = "bb34e8854a93fd250347a1c64119f7ab"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 空中射击攻击力增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 增加发射子弹数上限 : 左轮枪{value2}发、 自动手枪{value3}发、 步枪{value4}发、 手炮{value5}发、 手弩{value6}发
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
-# G-14手雷 G-14 파열류탄
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/de3fea2d65c597f4d55c70a02b97fc79?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill1(ActiveSkill):
+# G-14手雷
+# gunner_female/spitfire_female/de3fea2d65c597f4d55c70a02b97fc79
+# 944b9aab492c15a8474f96947ceeb9e4/de3fea2d65c597f4d55c70a02b97fc79
+class Skill23(ActiveSkill):
+    """
+        向前方投掷G-14手雷， 使一定范围内的所有敌人受到伤害。\n
+        G-14手雷有最大填装数和填装冷却时间， 按上、 下方向键后施放技能时， 可以调整投掷位置。 转职成为弹药专家时， 可以强制中断基本攻击动作， 投掷G-14手雷。
+    """
     name = "G-14手雷"
     learnLv = 15
     masterLv = 60
@@ -31,9 +173,21 @@ class Skill1(ActiveSkill):
     cd = 2
     mp = [20, 160]
     uuid = "de3fea2d65c597f4d55c70a02b97fc79"
-
-    data0 = [0, 751, 830, 904, 981, 1057, 1132, 1210, 1287, 1362, 1438, 1516, 1591, 1668, 1746, 1819, 1897, 1972, 2049, 2127, 2202, 2278, 2355, 2429, 2508, 2584, 2659, 2735, 2814, 2888, 2965, 3041, 3116, 3194, 3271, 3346, 3422, 3500, 3575, 3652, 3732, 3806, 3883, 3961, 4034, 4112, 4189, 4264, 4342, 4418, 4493, 4570, 4648, 4723, 4799, 4876, 4950, 5029, 5105, 5180, 5256, 5335, 5409, 5486, 5562, 5637, 5715, 5792, 5867, 5943, 6021]# noqa: E501
-    hit0 = 1
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 最大填装数 : {value0}发
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 地面投掷时的冷却时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 空中投掷时的冷却时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 爆炸范围 : {value4}px
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
     mode = ['普通','强化']
 
@@ -44,104 +198,193 @@ class Skill1(ActiveSkill):
             self.skillRation *= 1.3
             return
 
-# 单兵推进器 니트로 모터
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/4224f9b0b8c7c903e9a1e0f9d9f6d04d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill2(PassiveSkill):
-    name = '单兵推进器'
+# 超负荷装填
+# gunner_female/spitfire_female/c47b66efd27845ef14954928ea2f95c8
+# 944b9aab492c15a8474f96947ceeb9e4/c47b66efd27845ef14954928ea2f95c8
+class Skill24(ActiveSkill):
+    """
+        在子弹中填装特殊弹药， 增加基本攻击力和技能攻击力。
+    """
+    name = "超负荷装填"
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 8
-    rangeLv = 1
-    uuid = "4224f9b0b8c7c903e9a1e0f9d9f6d04d"
+    position = 3
+    rangeLv = 3
+    cd = 5
+    uuid = "c47b66efd27845ef14954928ea2f95c8"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本攻击力和技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    data0 = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]
-    data1 = [0, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
-
-    associate = [
-        {'data': data0, 'skills': ['交叉射击', '聚合弹', '凝固汽油弹', '超真空弹：切利']},
-        {'data': data1, 'skills': ['爆裂弹']}
-    ]
-
-# 兵器研究 병기 숙련
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/bae12a6dc7d22a5cf149673e88ddda28?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill3(PassiveSkill):
-    name = '兵器研究'
+# 弹药改良
+# gunner_female/spitfire_female/3829c15bf5f520c13998a3479ba0ce7b
+# 944b9aab492c15a8474f96947ceeb9e4/3829c15bf5f520c13998a3479ba0ce7b
+class Skill25(PassiveSkill):
+    """
+        学习技能后， 增加自身和队伍中其他神枪手的射击穿刺力和敌人的僵直时间。 转职为弹药专家后， 增加暴击率、 暴击伤害， 施放[超负荷装填]的状态下， 增加基本攻击力和技能攻击力。\n
+        如在[超负荷装填]中选择无属性， 增加基本攻击的弹速。
+    """
+    name = "弹药改良"
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 0
-    rangeLv = 3
-    uuid = "bae12a6dc7d22a5cf149673e88ddda28"
-
-    data0 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30]  # noqa: E501
-    data1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-    associate = [
-        {'data': data0, 'type': '$*PAtkI'},
-        {'data': data1, 'type': '*cdReduce', 'exceptSkills': ['EMP磁暴','决战之日','终解·制空霸权']}
-        ]
-
-    # def precondition(self):
-    #     weapon = self.char.charEquipInfo['武器'].equInfo
-    #     if weapon is not None and (weapon.itemDetailType == '手弩' or weapon.itemDetailType == '步枪' or weapon.categorize == '传世武器'):
-    #         return True
-    #     return False
-
-# 弹药改良 강화탄
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/3829c15bf5f520c13998a3479ba0ce7b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill4(PassiveSkill):
-    name = '弹药改良'
-    learnLv = 20
-    masterLv = 10  # todo
-    maxLv = 20
-    position = 1  # todo
+    position = 1
     rangeLv = 3
     uuid = "3829c15bf5f520c13998a3479ba0ce7b"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 敌人僵直时间增加 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 穿刺率增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 选择无属性时的基本攻击弹速增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 基本攻击力和技能攻击力增加率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 暴击攻击力增加率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 暴击率增加 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    data0 = [0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]  # noqa: E501
-    data1 = [0, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]  # noqa: E501
     associate = [
-        {'data': data0, 'type': '*skillRation'},
-        {'data': data1, 'type': '*skillRation'}
+        {'data': data3, 'type': '*skillRation'},
+        {'data': data4, 'type': '*skillRation'}
     ]
 
-# 手雷精通 유탄 마스터리
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/0113c8b1306ca76d208f83f2d093dd62?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill5(PassiveSkill):
-    name = '手雷精通'
+# 手雷精通
+# gunner_female/spitfire_female/0113c8b1306ca76d208f83f2d093dd62
+# 944b9aab492c15a8474f96947ceeb9e4/0113c8b1306ca76d208f83f2d093dd62
+class Skill26(PassiveSkill):
+    """
+        增加[G-14手雷]、 [G-35L感电手雷]、 [G-18C冰冻手雷]的攻击力。
+    """
+    name = "手雷精通"
     learnLv = 20
     masterLv = 10
     maxLv = 20
     position = 6
     rangeLv = 3
     uuid = "0113c8b1306ca76d208f83f2d093dd62"
-
-    data0 = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]  # noqa: E501
-    # data1 = [0] + [(1+1+1.2)/3] * 20
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
     associate = [
         {'type': '*skillRation', 'data': data0, 'skills': ['G-14手雷','G-35L感电手雷','G-18C冰冻手雷']},
     ]
 
-# M18阔剑地雷 M18 클레이모어
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/2ff50c35efcf0f287c4c418c8454da48?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill6(ActiveSkill):
+
+# 兵器研究
+# gunner_female/spitfire_female/bae12a6dc7d22a5cf149673e88ddda28
+# 944b9aab492c15a8474f96947ceeb9e4/bae12a6dc7d22a5cf149673e88ddda28
+class Skill28(PassiveSkill):
+    """
+        学习后， 增加物理、 魔法、 独立攻击力， 减少转职后技能的冷却时间。 装备步枪、 手弩时， 增加攻击速度、 技能施放速度和填装速度； 增加集弹率和空中射击的后坐力。
+    """
+    name = "兵器研究"
+    learnLv = 20
+    masterLv = 10
+    maxLv = 20
+    position = 0
+    rangeLv = 3
+    uuid = "bae12a6dc7d22a5cf149673e88ddda28"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击速度增加 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 施放速度增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 物理、 魔法攻击力增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 独立攻击力增加率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 转职后技能冷却时间减少率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # (冷却时间减少效果不适用于一次、 二次、 三次觉醒技能)
+    # 填装速度增加 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+
+    associate = [
+        {'data': data3, 'type': '$*PAtkI'},
+        {'data': data4, 'type': '*cdReduce', 'exceptSkills': ['EMP磁暴','决战之日','终解·制空霸权']}
+        ]
+
+# M18阔剑地雷
+# gunner_female/spitfire_female/2ff50c35efcf0f287c4c418c8454da48
+# 944b9aab492c15a8474f96947ceeb9e4/2ff50c35efcf0f287c4c418c8454da48
+class Skill29(ActiveSkill):
+    """
+        设置M18阔剑地雷。\n
+        阔剑地雷能感知范围内的敌人， 然后爆炸使敌人受到伤害。\n
+        爆炸能使敌人进入眩晕状态， 并将其击退。\n
+        在决斗场中无法手动引爆阔剑地雷。 经过一定时间后， 阔剑地雷自动爆炸， 爆炸前追加僵直时间。
+    """
     name = "M18阔剑地雷"
     learnLv = 20
-    masterLv = 60 #todo
+    masterLv = 60
     maxLv = 70
-    position = 8 #todo
+    position = 8
     rangeLv = 2
     cd = 6
     mp = [70, 588]
     uuid = "2ff50c35efcf0f287c4c418c8454da48"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 多段攻击次数 : {value0}次
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 多段攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 3
+    # 眩晕几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 眩晕持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 阔剑地雷持续时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [范围信息]
+    # 索敌及爆炸范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    data0 = [0, 2094, 2307, 2519, 2732, 2944, 3157, 3368, 3580, 3793, 4009, 4221, 4434, 4646, 4859, 5071, 5284, 5496, 5709, 5921, 6132, 6344, 6557, 6769, 6982, 7198, 7410, 7623, 7835, 8048, 8260, 8473, 8685, 8896, 9109, 9321, 9534, 9746, 9959, 10171, 10384, 10600, 10812, 11025, 11237, 11450, 11660, 11873, 12085, 12298, 12510, 12723, 12935, 13148, 13360, 13573, 13789, 14001, 14212, 14425, 14637, 14850, 15062, 15275, 15487, 15700, 15912, 16125, 16337, 16550, 16762]# noqa: E501
-    hit0 = 3
+# 快速拔枪
+# gunner_female/spitfire_female/45442bbbe33540b4deeec29437dae70c
+# 944b9aab492c15a8474f96947ceeb9e4/45442bbbe33540b4deeec29437dae70c
+class Skill30(PassiveSkill):
+    """
+        快速拔枪攻击敌人， 发动后可以增加攻击速度和普通射击的攻击力。 转职为漫游枪手后增加精通等级。
+    """
+    name = "快速拔枪"
+    learnLv = 25
+    masterLv = 10
+    maxLv = 20
+    position = 9
+    rangeLv = 3
+    uuid = "45442bbbe33540b4deeec29437dae70c"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 拔枪速度增加 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 普通射击的攻击力增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 攻击速度增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-# 交叉射击 교차 사격
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/78be08a3f8c834d3b06fa20c6a08c5a5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill7(ActiveSkill):
+# 交叉射击
+# gunner_female/spitfire_female/78be08a3f8c834d3b06fa20c6a08c5a5
+# 944b9aab492c15a8474f96947ceeb9e4/78be08a3f8c834d3b06fa20c6a08c5a5
+class Skill31(ActiveSkill):
+    """
+        双手交叉向前方进行大范围射击， 使敌人受到多段攻击伤害。\n
+        可以在[超负荷装填]状态下使用， 射击属性为在[超负荷装填]中选择的属性。
+    """
     name = "交叉射击"
     learnLv = 25
     masterLv = 60
@@ -151,28 +394,58 @@ class Skill7(ActiveSkill):
     cd = 8
     mp = [70, 588]
     uuid = "78be08a3f8c834d3b06fa20c6a08c5a5"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 多段攻击次数 : {value0}次
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 3
+    # 对象僵直时间比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [范围信息]
+    # 射击范围比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-    data0 = [0, 3692, 4065, 4439, 4814, 5188, 5564, 5938, 6310, 6686, 7062, 7436, 7812, 8186, 8558, 8934, 9308, 9683, 10059, 10433, 10805, 11181, 11555, 11931, 12306, 12680, 13053, 13428, 13802, 14178, 14552, 14928, 15300, 15676, 16050, 16425, 16799, 17175, 17547, 17921, 18297, 18673, 19047, 19423, 19795, 20169, 20545, 20920, 21294, 21670, 22042, 22416, 22792, 23166, 23542, 23917, 24290, 24664, 25039, 25413, 25789, 26163, 26535, 26911, 27287, 27661, 28036, 28410, 28783, 29158, 29532]# noqa: E501
-    hit0 = 3
-
-# G-35L感电手雷 G-35L 섬광류탄
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/c61f5a010370101402b05b21916c2071?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill8(ActiveSkill):
+# G-35L感电手雷
+# gunner_female/spitfire_female/c61f5a010370101402b05b21916c2071
+# 944b9aab492c15a8474f96947ceeb9e4/c61f5a010370101402b05b21916c2071
+class Skill32(ActiveSkill):
+    """
+        向前方投掷G-35L感电手雷， 使一定范围内的所有敌人受到伤害， 并使敌人进入感电状态。\n
+        G-35L感电手雷有最大填装数和填装冷却时间， 按上、 下方向键后施放技能时， 可以调整投掷位置。\n
+        在决斗场中， 不适用感电效果。 
+    """
     name = "G-35L感电手雷"
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 5 #todo
+    position = 5
     rangeLv = 2
     cd = 3
     mp = [40, 350]
     uuid = "c61f5a010370101402b05b21916c2071"
-
-    data0 = [0, 1622, 1787, 1952, 2111, 2278, 2443, 2608, 2773, 2936, 3103, 3266, 3431, 3597, 3760, 3927, 4087, 4253, 4417, 4583, 4746, 4911, 5075, 5241, 5408, 5571, 5736, 5899, 6064, 6227, 6392, 6555, 6722, 6885, 7052, 7217, 7380, 7546, 7710, 7876, 8039, 8203, 8366, 8531, 8696, 8860, 9027, 9190, 9355, 9520, 9685, 9848, 10015, 10175, 10341, 10504, 10671, 10836, 10999, 11166, 11329, 11495, 11659, 11824, 11990, 12152, 12315, 12480, 12646, 12810, 12976]# noqa: E501
-    hit0 = 1
-
-    data1 = [0, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150]# noqa: E501
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 最大填装数 : {value0}发
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
+    # 感电攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # 感电持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 地面投掷时的冷却时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 空中投掷时的冷却时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # [范围信息]
+    # 爆炸范围 : {value6}px
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
     mode = ['普通','强化']
 
@@ -182,11 +455,16 @@ class Skill8(ActiveSkill):
         if mode == '强化':
             self.skillRation *= 1.3
             return
-
-
-# 爆裂弹 폭발탄
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/3c5604bdbb0240b8f130f59ab40509c3?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill9(ActiveSkill):
+# 爆裂弹
+# gunner_female/spitfire_female/3c5604bdbb0240b8f130f59ab40509c3
+# 944b9aab492c15a8474f96947ceeb9e4/3c5604bdbb0240b8f130f59ab40509c3
+class Skill33(ActiveSkill):
+    """
+        在弹头中插入爆炸型弹芯， 基本射击第一发子弹射出后爆炸。\n
+        可以在[超负荷装填]状态下使用， 射击属性为[超负荷装填]中选择的属性， 无法与[特性弹]、 [贯穿弹]同时施放。\n
+        该技能即时受装备的影响。\n
+        在决斗场中适用单独的持续时间。
+    """
     name = "爆裂弹"
     learnLv = 30
     masterLv = 10
@@ -196,10 +474,15 @@ class Skill9(ActiveSkill):
     cd = 5
     mp = [357, 2765]
     uuid = "3c5604bdbb0240b8f130f59ab40509c3"
+    hasVP = False
     hasUP = False
-
-    data0 = [0, 1034, 1200, 1364, 1528, 1693, 1857, 2021, 2187, 2352, 2516, 2682, 2846, 3010, 3175, 3339, 3505, 3671, 3835, 4000, 4164]# noqa: E501
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 爆炸攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
+    # 子弹增益效果持续时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [范围信息]
 
     def getSkillCD(self,mode=None):
         if self.char.charEquipInfo['武器'].equInfo is None:
@@ -208,9 +491,55 @@ class Skill9(ActiveSkill):
             return 0.115
         return 0.14
 
-# G-18C冰冻手雷 G-18C 빙결류탄
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/202edb928046f4fa6dedf6337377efd5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill10(ActiveSkill):
+# 贯穿弹
+# gunner_female/spitfire_female/d0cdaca82892e54097f22a1f60817048
+# 944b9aab492c15a8474f96947ceeb9e4/d0cdaca82892e54097f22a1f60817048
+class Skill34(ActiveSkill):
+    """
+        给弹头套上穿透力极强的器械装置， 提升基本射击的攻击力、 穿刺力、 射程和子弹速度。\n
+        可以在[超负荷装填]状态下使用， 射击属性为[超负荷装填]中选择的属性， 无法与[特性弹]、 [爆裂弹]同时施放。\n
+        该技能即时受装备的影响。\n
+        在决斗场中适用单独的持续时间。
+    """
+    name = "贯穿弹"
+    learnLv = 30
+    masterLv = 10
+    maxLv = 20
+    position = 2
+    rangeLv = 3
+    cd = 5
+    mp = [357, 2765]
+    uuid = "d0cdaca82892e54097f22a1f60817048"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 贯穿力增加值 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 射程增加值 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 子弹速度增加值 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 子弹增益效果持续时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+
+    def getSkillCD(self,mode=None):
+        if self.char.charEquipInfo['武器'].equInfo is None:
+            return 0.14
+        if self.char.charEquipInfo['武器'].equInfo.itemDetailType == '手弩':
+            return 0.115
+        return 0.14
+
+# G-18C冰冻手雷
+# gunner_female/spitfire_female/202edb928046f4fa6dedf6337377efd5
+# 944b9aab492c15a8474f96947ceeb9e4/202edb928046f4fa6dedf6337377efd5
+class Skill35(ActiveSkill):
+    """
+        向前方投掷G-18C冰冻手雷， 使一定范围内的所有敌人受到伤害， 并使敌人进入冰冻状态。\n
+        G-18C冰冻手雷有最大填装数和填装冷却时间， 按上、 下方向键后施放技能时， 可以调整投掷位置。
+    """
     name = "G-18C冰冻手雷"
     learnLv = 30
     masterLv = 60
@@ -220,9 +549,25 @@ class Skill10(ActiveSkill):
     cd = 4
     mp = [70, 560]
     uuid = "202edb928046f4fa6dedf6337377efd5"
-
-    data0 = [0, 1996, 2196, 2400, 2603, 2803, 3009, 3208, 3414, 3616, 3817, 4021, 4221, 4423, 4629, 4830, 5034, 5234, 5437, 5642, 5841, 6047, 6248, 6450, 6652, 6854, 7060, 7259, 7463, 7665, 7868, 8070, 8272, 8475, 8675, 8881, 9083, 9285, 9488, 9688, 9892, 10096, 10299, 10501, 10702, 10906, 11108, 11310, 11514, 11713, 11919, 12121, 12322, 12526, 12726, 12932, 13134, 13335, 13539, 13739, 13943, 14147, 14346, 14552, 14753, 14957, 15159, 15360, 15565, 15764, 15968]# noqa: E501
-    hit0 = 1
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 最大填装数 : {value0}发
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 冰冻几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 冰冻持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 地面投掷时的冷却时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 空中投掷时的冷却时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # [范围信息]
+    # 爆炸范围 : {value6}px
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
     mode = ['普通','强化']
 
@@ -233,9 +578,16 @@ class Skill10(ActiveSkill):
             self.skillRation *= 1.3
             return
 
-# C4飞弹 C4
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/a2d943797daca862a6f321aca6ac9bfa?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill11(ActiveSkill):
+# C4飞弹
+# gunner_female/spitfire_female/a2d943797daca862a6f321aca6ac9bfa
+# 944b9aab492c15a8474f96947ceeb9e4/a2d943797daca862a6f321aca6ac9bfa
+class Skill36(ActiveSkill):
+    """
+        向前方投掷搭载爆炸物C4的飞弹。\n
+        飞盘在飞行轨迹上的敌人之间反弹， 并在每个被击中的敌人身上安装C4， 使其进入减速状态。\n
+        C4安装完成后， 持续时间结束或再次按技能键， 则C4爆炸。\n
+        在决斗场中， 即使经过一定时间C4也不会自动爆炸。
+    """
     name = "C4飞弹"
     learnLv = 35
     masterLv = 60
@@ -245,26 +597,51 @@ class Skill11(ActiveSkill):
     cd = 20
     mp = [150, 1232]
     uuid = "a2d943797daca862a6f321aca6ac9bfa"
-    vps = [
-          {
-            "name": "快速泯灭",
-            "desc": "追踪<br/>施放时间减少",
-            "explain": "[C4原始型压缩炮]<br/>C4安装后立即爆炸<br/><br/>投掷时， 飞弹自动追踪第一个目标<br/>- Y轴追踪范围 : 200px"
-          },
-          {
-            "name": "战术号角",
-            "desc": "取消僵直<br/>可多次发动",
-            "explain": "[C4原始型压缩炮]<br/>可以强制中断射击技能施放后僵直并施放该技能。<br/><br/>变更为可填充2次的技能<br/>- 每次填充冷却时间 : 10秒<br/>- 单次攻击力 -50%"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 21240, 23396, 25550, 27705, 29861, 32015, 34170, 36324, 38480, 40635, 42789, 44945, 47099, 49254, 51411, 53564, 55719, 57873, 60029, 62186, 64338, 66495, 68648, 70803, 72960, 75113, 77270, 79422, 81579, 83735, 85887, 88044, 90197, 92354, 94509, 96663, 98819, 100971, 103128, 105284, 107438, 109593, 111746, 113903, 116058, 118212, 120368, 122522, 124677, 126833, 128987, 131142, 133296, 135452, 137607, 139761, 141917, 144071, 146226, 148382, 150536, 152691, 154845, 157001, 159156, 161310, 163466, 165620, 167775, 169932]# noqa: E501
-    hit0 = 1
+    # C4持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # C4可安装个数上限 : {value1}个
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 爆炸攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # 减速几率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 攻击速度减少率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 移动速度减少率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
+    def vp_1(self):
+        """
+        [C4飞弹]\n
+        C4安装后立即爆炸\n
+        投掷时， 飞弹自动追踪第一个目标\n
+         - Y轴追踪范围 : 200px
+        """
+        ...
 
-# 聚合弹 버스터 샷
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/3fb8395ae3b81bd608e0c4223a8eb534?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill12(ActiveSkill):
+    def vp_2(self):
+        """
+        [C4飞弹]\n
+        投掷C4时， 不消耗单兵推进器使用次数\n
+        空中投掷C4时， 恢复1次单兵推进器使用次数\n
+        空中额外输入成功引爆时， 恢复1次单兵推进器使用次数
+        """
+        ...
+
+# 聚合弹
+# gunner_female/spitfire_female/3fb8395ae3b81bd608e0c4223a8eb534
+# 944b9aab492c15a8474f96947ceeb9e4/3fb8395ae3b81bd608e0c4223a8eb534
+class Skill37(ActiveSkill):
+    """
+        对前方进行小范围集中射击， 使敌人受到伤害。\n
+        可以在[超负荷装填]状态下使用， 射击属性为[超负荷装填]中选择的属性。
+    """
     name = "聚合弹"
     learnLv = 35
     masterLv = 60
@@ -274,26 +651,42 @@ class Skill12(ActiveSkill):
     cd = 18
     mp = [150, 1232]
     uuid = "3fb8395ae3b81bd608e0c4223a8eb534"
-    vps = [
-          {
-            "name": "断箭",
-            "desc": "可以在其他动作中施放。<br/>追踪",
-            "explain": "[聚合弹]<br/>对1000px范围内最强的敌人进行炮击<br/>- 可在其他动作过程中施放"
-          },
-          {
-            "name": "伪装射击",
-            "desc": "赋予无敌状态",
-            "explain": "[聚合弹]<br/>射击前展开伪装屏障<br/>- 射击及射击后动作进入无敌状态"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 24425, 26904, 29382, 31860, 34337, 36818, 39294, 41772, 44252, 46730, 49208, 51684, 54165, 56642, 59120, 61598, 64077, 66555, 69032, 71510, 73989, 76467, 78944, 81422, 83903, 86379, 88857, 91334, 93815, 96291, 98769, 101247, 103727, 106205, 108681, 111159, 113639, 116117, 118595, 121071, 123552, 126029, 128507, 130986, 133464, 135942, 138419, 140900, 143376, 145854, 148331, 150812, 153288, 155766, 158244, 160724, 163202, 165678, 168156, 170636, 173114, 175592, 178068, 180549, 183026, 185504, 187982, 190461, 192939, 195416]# noqa: E501
+    # 攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
 
+    def vp_1(self):
+        """
+        [聚合弹]\n
+        空中施放时，向正下方地面发射爆炸的火属性特殊弹药\n
+         - 攻击大范围敌人\n
+         - 被击中的敌人会被推向爆炸的外围
+        """
+        ...
 
-# 凝固汽油弹 네이팜 탄
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/1803b6a67047cafb9e289b4f33cc507b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill13(ActiveSkill):
+    def vp_2(self):
+        """
+        [聚合弹]\n
+        空中施放时， 不消耗单兵推进器使用次数\n
+        投放光学伪装并急速俯冲向地面， 随后在地面进行射击\n
+         - 在落向地面的过程及落下后进入无敌状态
+        """
+        ...
+
+# 地狱烈炎
+# gunner_female/spitfire_female/1803b6a67047cafb9e289b4f33cc507b
+# 944b9aab492c15a8474f96947ceeb9e4/1803b6a67047cafb9e289b4f33cc507b
+class Skill38(ActiveSkill):
+    """
+        向地面发射凝固汽油弹， 引发爆炸， 生成属性地带， 对敌人造成多段攻击伤害。\n
+        可以在[超负荷装填]状态下使用， 爆炸和地带属性为[超负荷装填]中选择的属性。\n
+        在决斗场中， 不发动霸体护甲。
+    """
     name = "凝固汽油弹"
     learnLv = 40
     masterLv = 60
@@ -304,28 +697,56 @@ class Skill13(ActiveSkill):
     cd = 20
     mp = [200, 1812]
     uuid = "1803b6a67047cafb9e289b4f33cc507b"
-    vps = [
-          {
-            "name": "超巨型爆弹",
-            "desc": "攻击时间减少",
-            "explain": "[凝固汽油弹]<br/>删除地面攻击<br/>地面攻击力合算至爆炸攻击力<br/><br/>攻击范围 +30%"
-          },
-          {
-            "name": "熔岩爆弹",
-            "desc": "范围增加",
-            "explain": "[凝固汽油弹]<br/>发射子弹生成巨大的火属性地带<br/>- 删除爆炸攻击<br/>- 爆炸攻击力合算至地面攻击力<br/>- 地面攻击力 + 50%<br/>- 地面攻击次数 -5次<br/>- 地面攻击持续时间 -1秒<br/>- 攻击范围大幅增加"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 24704, 27209, 29712, 32217, 34727, 37232, 39737, 42245, 44751, 47256, 49761, 52266, 54776, 57281, 59786, 62292, 64800, 67304, 69809, 72317, 74822, 77328, 79833, 82340, 84845, 87353, 89859, 92364, 94869, 97377, 99881, 102389, 104894, 107399, 109908, 112413, 114917, 117428, 119933, 122436, 124941, 127446, 129956, 132461, 134966, 137472, 139980, 142485, 144990, 147494, 150005, 152508, 155013, 157521, 160026, 162533, 165041, 167546, 170049, 172557, 175062, 177569, 180074, 182582, 185088, 187593, 190098, 192603, 195110, 197618]# noqa: E501
+    # 爆炸攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-    data1 = [0, 129, 137, 152, 162, 177, 188, 203, 213, 228, 239, 252, 267, 278, 293, 303, 318, 329, 344, 353, 368, 380, 393, 408, 419, 434, 444, 458, 468, 483, 497, 509, 522, 534, 551, 560, 573, 584, 599, 612, 624, 638, 650, 663, 674, 689, 702, 714, 728, 740, 753, 765, 776, 789, 801, 818, 830, 843, 855, 869, 881, 891, 905, 917, 933, 944, 959, 971, 984, 995, 1007]# noqa: E501
-    hit1 = 15
+    # 属性地带持续时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 属性地带多段攻击间隔 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 属性地带攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 15
+    # [范围信息]
+    # 爆炸范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
+    def vp_1(self):
+        """
+        [凝固汽油弹]\n
+        删除地面攻击\n
+        地面攻击力合算至爆炸攻击力\n
+        攻击范围 +30%
+        """
+        ...
 
-# 镭射狙击 록 온 서포트
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/845e0ce3235e19f60cc82a082d072cba?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill14(ActiveSkill):
+    def vp_2(self):
+        """
+        [凝固汽油弹]\n
+        发射子弹生成巨大的火属性地带\n
+         - 删除爆炸攻击\n
+         - 爆炸攻击力合算至地面攻击力\n
+         - 地面攻击力 +50%\n
+         - 地面攻击次数 -5次\n
+         - 地面攻击持续时间 -1秒\n
+         - 攻击范围大幅增加
+        """
+        ...
+
+# 镭射狙击
+# gunner_female/spitfire_female/845e0ce3235e19f60cc82a082d072cba
+# 944b9aab492c15a8474f96947ceeb9e4/845e0ce3235e19f60cc82a082d072cba
+class Skill39(ActiveSkill):
+    """
+        投掷激光信号弹， 锁定追踪范围内的敌人， 诱导支援攻击。\n
+        支援攻击将对被锁定对象发动一定次数的攻击， 而且可使其进入眩晕状态。\n
+        在决斗场中施放时， 霸体不生效， 而且减少探索范围、 无法使敌人眩晕。
+    """
     name = "镭射狙击"
     learnLv = 45
     masterLv = 60
@@ -336,27 +757,53 @@ class Skill14(ActiveSkill):
     cd = 45
     mp = [400, 3360]
     uuid = "845e0ce3235e19f60cc82a082d072cba"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    vps = [
-          {
-            "name": "无情狙击",
-            "desc": "赋予无敌状态",
-            "explain": "[镭射狙击]<br/>用支援炮击替代支援攻击<br/>- 攻击范围 10%<br/>支援炮击过程中从空中补给强袭装甲<br/>- 获得强袭装甲时， 进入无敌状态， 效果持续2秒"
-          },
-          {
-            "name": "自动瞄准",
-            "desc": "可以在其他动作中施放",
-            "explain": "[镭射狙击]<br/>施放技能时， 进入自动瞄准状态， 效果持续10秒<br/>- 可以在所有动作过程中施放<br/>- 向被施放者的技能攻击命中的敌人进行狙击<br/>- 每个技能可发动1次<br/>- 多个敌人同时被命中时， 攻击最强敌人<br/>- 最多发动5次， 每次射击之间的冷却时间为0.5秒"
-          }
-        ]
-
-    data0 = [0, 8405, 9257, 10109, 10962, 11816, 12669, 13520, 14373, 15227, 16079, 16935, 17786, 18639, 19493, 20345, 21198, 22050, 22902, 23756, 24609, 25460, 26313, 27167, 28020, 28871, 29724, 30578, 31430, 32283, 33135, 33987, 34841, 35694, 36545, 37398, 38252, 39105, 39957, 40809, 41663, 42515, 43368, 44220, 45075, 45929, 46781, 47634, 48485, 49338, 50192, 51045, 51899, 52749, 53603, 54456, 55308, 56160, 57014, 57866, 58719, 59573, 60423, 61277, 62130, 62984, 63834, 64688, 65541, 66393, 67247]# noqa: E501
+    # 攻击力 : {value0} X {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 5
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 眩晕几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 眩晕持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 狙击范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
+    def vp_1(self):
+        """
+        [镭射狙击]\n
+        用支援炮击替代支援攻击\n
+         - 攻击范围 +10%\n
+        支援炮击过程中从空中补给强袭装甲\n
+         - 获得强袭装甲时， 进入无敌状态， 效果持续2秒
+        """
+        ...
 
-# 弹药强化 병기강화
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/b89c9ab317bc0a443f6497b7cca2f6a8?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill15(PassiveSkill):
+    def vp_2(self):
+        """
+        [镭射狙击]\n
+        施放技能时， 进入自动瞄准状态， 效果持续10秒\n
+         - 可以在所有动作过程中施放\n
+         - 向被施放者的技能攻击命中的敌人进行狙击\n
+         - 每个技能可发动1次\n
+         - 多个敌人同时被命中时， 攻击最强敌人\n
+         - 最多发动5次， 每次射击之间的冷却时间为0.5秒
+        """
+        ...
+
+# 弹药强化
+# gunner_female/spitfire_female/b89c9ab317bc0a443f6497b7cca2f6a8
+# 944b9aab492c15a8474f96947ceeb9e4/b89c9ab317bc0a443f6497b7cca2f6a8
+class Skill40(PassiveSkill):
+    """
+        强化弹药， 自身所有攻击都能使敌人进入过电流状态。\n
+        过电流状态下的敌人受到伤害时， 会额外受到所受伤害一定比例的伤害。
+    """
     name = "弹药强化"
     learnLv = 48
     masterLv = 40
@@ -364,16 +811,22 @@ class Skill15(PassiveSkill):
     position = 4
     rangeLv = 3
     uuid = "b89c9ab317bc0a443f6497b7cca2f6a8"
-
-    data0 = [0, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5, 30, 31.5, 33, 34.5, 36, 37.5, 39, 40.5, 42, 43.5, 45, 46.5, 48, 49.5, 51, 52.5, 54, 55.5, 57, 58.5, 60, 61.5, 63, 64.5, 66, 67.5, 69, 70.5, 72, 73.5, 75, 76.5, 78, 79.5, 81, 82.5, 84, 85.5]# noqa: E501
-    data1 = [0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]# noqa: E501
-
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 额外伤害比率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 过电流持续时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     associate = [{'type': '*skillRation', 'data': data0}]
 
-
-# EMP磁暴 EMP 스톰
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/2c9d9a36c8401bddff6cdb80fab8dc24?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill16(ActiveSkill):
+# EMP磁暴
+# gunner_female/spitfire_female/2c9d9a36c8401bddff6cdb80fab8dc24
+# 944b9aab492c15a8474f96947ceeb9e4/2c9d9a36c8401bddff6cdb80fab8dc24
+class Skill41(ActiveSkill):
+    """
+        在前方设置EMP机动装置。 机动装置落下时， 形成冲击波和电磁场， 使敌人受到伤害并强控敌人， 发动多段攻击和电磁波攻击后爆炸。
+    """
     name = "EMP磁暴"
     learnLv = 50
     masterLv = 40
@@ -384,20 +837,30 @@ class Skill16(ActiveSkill):
     cd = 145
     mp = [880, 7392]
     uuid = "2c9d9a36c8401bddff6cdb80fab8dc24"
-
-    data0 = [0, 21013, 25886, 30758, 35632, 40504, 45376, 50249, 55123, 59995, 64867, 69741, 74613, 79486, 84358, 89232, 94104, 98977, 103851, 108723, 113595, 118467, 123341, 128214, 133086, 137958, 142832, 147704, 152577, 157451, 162323, 167195, 172068, 176942, 181814, 186686, 191560, 196432, 201305, 206177, 211051, 215923, 220796, 225670, 230542, 235414, 240286, 245160, 250033, 254905, 259777]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 机动装置落下攻击 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-    data1 = [0, 21013, 25886, 30758, 35632, 40504, 45376, 50249, 55123, 59995, 64867, 69741, 74613, 79486, 84358, 89232, 94104, 98977, 103851, 108723, 113595, 118467, 123341, 128214, 133086, 137958, 142832, 147704, 152577, 157451, 162323, 167195, 172068, 176942, 181814, 186686, 191560, 196432, 201305, 206177, 211051, 215923, 220796, 225670, 230542, 235414, 240286, 245160, 250033, 254905, 259777]# noqa: E501
+    # 电磁场攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
-    data2 = [0, 1049, 1293, 1537, 1781, 2025, 2268, 2512, 2754, 2998, 3242, 3486, 3730, 3974, 4218, 4462, 4704, 4948, 5191, 5435, 5679, 5923, 6167, 6409, 6653, 6897, 7141, 7385, 7628, 7872, 8114, 8358, 8602, 8846, 9090, 9334, 9578, 9822, 10064, 10308, 10551, 10795, 11039, 11283, 11527, 11769, 12013, 12257, 12501, 12745, 12988]# noqa: E501
+    # 电磁波多段攻击力 : {value2} X {value3}次
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 20
-    data3 = [0, 21013, 25886, 30758, 35632, 40504, 45376, 50249, 55123, 59995, 64867, 69741, 74613, 79486, 84358, 89232, 94104, 98977, 103851, 108723, 113595, 118467, 123341, 128214, 133086, 137958, 142832, 147704, 152577, 157451, 162323, 167195, 172068, 176942, 181814, 186686, 191560, 196432, 201305, 206177, 211051, 215923, 220796, 225670, 230542, 235414, 240286, 245160, 250033, 254905, 259777]# noqa: E501
-    hit3 = 1
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 机动装置爆炸攻击力 : {value4}
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 1
 
-
-# G-61重力手雷 G-61 중력류탄
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/e0daa922b19cdc35de879e938361464e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill17(ActiveSkill):
+# G-61重力手雷
+# gunner_female/spitfire_female/e0daa922b19cdc35de879e938361464e
+# 944b9aab492c15a8474f96947ceeb9e4/e0daa922b19cdc35de879e938361464e
+class Skill42(ActiveSkill):
+    """
+        向前方投掷重力手雷， 将范围内的敌人聚集到一处后爆炸， 对敌人造成伤害。
+    """
     name = "G-61重力手雷"
     learnLv = 60
     masterLv = 40
@@ -408,28 +871,55 @@ class Skill17(ActiveSkill):
     cd = 20
     mp = [400, 1120]
     uuid = "e0daa922b19cdc35de879e938361464e"
-    vps = [
-          {
-            "name": "超重力挤压",
-            "desc": "范围增加<br/>攻击时间减少",
-            "explain": "[G-61重力手雷]<br/>重力场持续时间 -50%<br/><br/>重力场大小 +30%<br/><br/>吸附力 +150%"
-          },
-          {
-            "name": "空间粉碎",
-            "desc": "增加立即爆炸功能",
-            "explain": "[G-61重力手雷]<br/>删除多段攻击力<br/>多段攻击力合算至终结攻击力<br/><br/>重力场持续时间 +100%<br/><br/>可通过额外输入立即爆炸"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 518, 572, 624, 678, 728, 780, 834, 888, 941, 993, 1046, 1097, 1151, 1202, 1256, 1308, 1362, 1416, 1466, 1518, 1572, 1625, 1679, 1730, 1781, 1835, 1889, 1941, 1994, 2046, 2100, 2151, 2202, 2256, 2309, 2363, 2417, 2469, 2519, 2573, 2625, 2679, 2733, 2784, 2835, 2889, 2942, 2994, 3047, 3101]# noqa: E501
-    hit0 = 29
-    data1 = [0, 15578, 17159, 18741, 20321, 21903, 23483, 25065, 26643, 28224, 29805, 31386, 32964, 34547, 36126, 37709, 39290, 40871, 42452, 44030, 45612, 47192, 48774, 50352, 51933, 53514, 55095, 56675, 58257, 59835, 61418, 62999, 64580, 66161, 67739, 69321, 70901, 72483, 74063, 75645, 77222, 78804, 80384, 81966, 83546, 85128, 86708, 88287, 89870, 91449, 93032]# noqa: E501
-    hit1 = 1
+    # 重力场持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 重力场多段攻击间隔 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 重力场多段攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 29
+    # 重力场爆炸攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
+    # [范围信息]
+    # 重力场范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 爆炸范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
+    def vp_1(self):
+        """
+        [G-61重力手雷]\n
+        重力场持续时间 -50%\n
+        重力场大小 +30%\n
+        吸附力 +150%
+        """
+        ...
 
-# 超真空弹 : 切利 초진공탄 : 첼리
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/1bf9711f3f15865e38d7dce51c6b5a8c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill18(ActiveSkill):
+    def vp_2(self):
+        """
+        [G-61重力手雷]\n
+        删除多段攻击力\n
+        多段攻击力合算至终结攻击力\n
+        重力场持续时间 +100%\n
+        可通过额外输入立即爆炸
+        """
+        ...
+
+# 超真空弹 : 切利
+# gunner_female/spitfire_female/1bf9711f3f15865e38d7dce51c6b5a8c
+# 944b9aab492c15a8474f96947ceeb9e4/1bf9711f3f15865e38d7dce51c6b5a8c
+class Skill43(ActiveSkill):
+    """
+        发射超真空弹， 在命中的敌人脚下生成真空洞。 真空洞吸附周围敌人并持续造成伤害， 此时按下技能键或持续时间结束后， 瞬间吸收周围热量并爆炸造成伤害。\n
+        真空洞附近弹药专家投掷的G-14手雷、 G-35L感电手雷、 G-18C冰冻手雷将移动到真空洞中心， 并产生爆炸。\n
+        若超真空弹未命中， 则在地面放置真空洞； 若敌人踩中真空洞， 则附着在敌人脚下。
+    """
     name = "超真空弹 : 切利"
     learnLv = 70
     masterLv = 40
@@ -440,30 +930,56 @@ class Skill18(ActiveSkill):
     cd = 30
     mp = [800, 1680]
     uuid = "1bf9711f3f15865e38d7dce51c6b5a8c"
-    vps = [
-          {
-            "name": "超能弹流",
-            "desc": "手雷吸收功能强化",
-            "explain": "[超真空弹 : 切利]<br/>手雷吸收功能强化<br/>- 手雷靠近真空洞时被吸收<br/>- 被吸收的手雷在真空洞爆炸时一起爆炸<br/><br/>真空洞和爆炸范围 + 30%"
-          },
-          {
-            "name": "气流爆弹",
-            "desc": "强化单兵推进器性能",
-            "explain": "[超真空弹 : 切利]<br/>接触地面时立即引发气流爆炸<br/>气流爆炸范围500px内将产生喷射气流<br/>- 处于喷射气流范围内时， 单兵推进器的移动间隔冷却时间缩短<br/>- 空中施放后僵直减少<br/>- 掉落移动速度 + 50%<br/>- 喷射气流持续5秒"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 246, 272, 296, 320, 347, 372, 396, 420, 447, 473, 497, 521, 546, 573, 597, 623, 647, 671, 698, 723, 747, 771, 798, 824, 848, 872, 897, 924, 948, 972, 998, 1022, 1049, 1074, 1098, 1122, 1148, 1175, 1199, 1223, 1248, 1275, 1299, 1323, 1349, 1373, 1400, 1424, 1449, 1473]# noqa: E501
+    # 真空攻击力 : {value0} X {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 20
-    data1 = [0, 987, 1088, 1188, 1287, 1388, 1488, 1589, 1689, 1790, 1890, 1989, 2090, 2190, 2291, 2391, 2492, 2591, 2691, 2792, 2892, 2993, 3093, 3194, 3291, 3392, 3492, 3593, 3695, 3795, 3893, 3993, 4094, 4194, 4295, 4395, 4494, 4595, 4695, 4796, 4896, 4997, 5097, 5196, 5297, 5397, 5498, 5598, 5699, 5798, 5898]# noqa: E501
-    hit1 = 5
-    data2 = [0, 39519, 43530, 47537, 51548, 55557, 59565, 63575, 67584, 71594, 75602, 79611, 83622, 87632, 91640, 95649, 99659, 103668, 107676, 111686, 115697, 119706, 123714, 127724, 131733, 135741, 139751, 143760, 147771, 151778, 155789, 159798, 163808, 167816, 171825, 175835, 179846, 183852, 187863, 191873, 195882, 199890, 203900, 207909, 211917, 215927, 219938, 223947, 227955, 231965, 235974]# noqa: E501
-    hit2 = 1
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 真空热量吸收攻击力 : {value2} X {value3}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 5
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 真空爆炸攻击力 : {value4}
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 1
+    # [范围信息]
+    # 真空洞范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
+    def vp_1(self):
+        """
+        [超真空弹 : 切利]\n
+        手雷吸收功能强化\n
+         - 手雷靠近真空洞时被吸收\n
+         - 被吸收的手雷在真空洞爆炸时一起爆炸\n
+        真空洞和爆炸范围 +40%
+        """
+        ...
 
-# 制空掌握 증명의 열쇠
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/f45301a5590cccefbe0becf2f8d029f5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill19(PassiveSkill):
+    def vp_2(self):
+        """
+        [超真空弹 : 切利]\n
+        接触地面时立即引发气流爆炸\n
+        气流爆炸范围500px内将产生喷射气流\n
+         - 处于喷射气流范围内时， 单兵推进器的移动间隔冷却时间缩短\n
+         - 空中施放后僵直减少\n
+         - 下落移动速度 +50%\n
+         - 喷射气流持续5秒
+        """
+        ...
+
+# 制空掌握
+# gunner_female/spitfire_female/f45301a5590cccefbe0becf2f8d029f5
+# 944b9aab492c15a8474f96947ceeb9e4/f45301a5590cccefbe0becf2f8d029f5
+class Skill44(PassiveSkill):
+    """
+        芙蕾雅独一无二的战斗技术。\n
+        通过制空， 可更加容易发现敌人的破绽， 使基本攻击力和技能造成更高的伤害。
+    """
     name = "制空掌握"
     learnLv = 75
     masterLv = 40
@@ -471,14 +987,22 @@ class Skill19(PassiveSkill):
     position = 1
     rangeLv = 3
     uuid = "f45301a5590cccefbe0becf2f8d029f5"
-
-    data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本攻击力和技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
     associate = [{'type': '*skillRation', 'data': data0}]
 
-# 开火 오픈 파이어
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/9ceb0c55f40f1fc0fe0fcc65c8fee3a0?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill20(ActiveSkill):
+# 开火
+# gunner_female/spitfire_female/9ceb0c55f40f1fc0fe0fcc65c8fee3a0
+# 944b9aab492c15a8474f96947ceeb9e4/9ceb0c55f40f1fc0fe0fcc65c8fee3a0
+class Skill45(ActiveSkill):
+    """
+        跳到空中， 将持有的所有手雷一次性扔向前方。\n
+        在空中也可以施放。
+    """
     name = "开火"
     learnLv = 75
     masterLv = 40
@@ -489,26 +1013,45 @@ class Skill20(ActiveSkill):
     cd = 45
     mp = [160, 1600]
     uuid = "9ceb0c55f40f1fc0fe0fcc65c8fee3a0"
-    vps = [
-          {
-            "name": "全面倾泻",
-            "desc": "批量投掷手雷",
-            "explain": "[开火]<br/>施放技能时， 投掷所有手雷<br/>- 消耗的手雷适用各自的攻击力"
-          },
-          {
-            "name": "爆裂之星",
-            "desc": "所受伤害减少",
-            "explain": "[开火]<br/>施放技能时跳跃进入[全面轰炸]状态<br/>- 轰炸持续1秒<br/>- 轰炸过程中， 可以在自己脚下进行轰炸<br/>- 可以利用方向键在X、 Y轴自由移动<br/>- 轰炸状态下所受伤害 -70%"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 14086, 15516, 16944, 18372, 19802, 21230, 22660, 24090, 25518, 26948, 28378, 29806, 31236, 32665, 34094, 35523, 36953, 38381, 39810, 41238, 42668, 44097, 45526, 46955, 48384, 49813, 51243, 52671, 54101, 55531, 56959, 58389, 59819, 61246, 62675, 64104, 65533, 66963, 68391, 69821, 71251, 72679, 74109, 75537, 76967, 78396, 79825, 81255, 82684, 84111]# noqa: E501
-    hit0 = 6
+    # 爆炸攻击力 : {value0} X {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit1 = 6
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [范围信息]
+    # 爆炸范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
+    def vp_1(self):
+        """
+        [开火]\n
+        施放技能时， 投掷所有手雷\n
+         - 消耗的手雷适用各自的攻击力
+        """
+        ...
 
-# 光子霰雷发射器 포토빌라이저
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/3736fe00a26b0086c23db9a4426a5641?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill21(ActiveSkill):
+    def vp_2(self):
+        """
+        [开火]\n
+        施放技能时跳跃进入[全面轰炸]状态\n
+         - 轰炸持续1秒\n
+         - 轰炸过程中， 可以在自己脚下进行轰炸\n
+         - 可以利用方向键在X、 Y轴自由移动\n
+         - 轰炸状态下所受伤害 -70%
+        """
+        ...
+
+# 光子霰雷发射器
+# gunner_female/spitfire_female/3736fe00a26b0086c23db9a4426a5641
+# 944b9aab492c15a8474f96947ceeb9e4/3736fe00a26b0086c23db9a4426a5641
+class Skill46(ActiveSkill):
+    """
+        跳跃至空中投掷多枚光子手雷， 并向地面发射具有强力磁性的弹药。 悬浮在空中的光子手雷移动到落地的位置后， 引发爆炸并造成伤害。
+    """
     name = "光子霰雷发射器"
     learnLv = 80
     masterLv = 40
@@ -519,34 +1062,53 @@ class Skill21(ActiveSkill):
     cd = 45
     mp = [800, 6000]
     uuid = "3736fe00a26b0086c23db9a4426a5641"
-    vps = [
-          {
-            "name": "磁力压缩",
-            "desc": "攻击力和冷却时间增加",
-            "explain": "[光子霰雷发射器]<br/>投掷更多的光子手雷<br/>- 光子手雷爆炸攻击次数变更为1次<br/>- 攻击范围 20%<br/>- 基本冷却时间变更为67.5秒<br/>- 攻击力 +50%"
-          },
-          {
-            "name": "波动冲击",
-            "desc": "变更为手雷技能<br/>可多次发动",
-            "explain": "[光子霰雷发射器]<br/>直接投掷光子手雷<br/>- 空中投掷及地上投掷适用冷却时间<br/>- 变更为可填充3次的技能<br/>- 每次填充冷却时间 : 13.5秒<br/>- 单次攻击力 -66%"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 12572, 13850, 15124, 16400, 17675, 18952, 20227, 21502, 22778, 24053, 25330, 26605, 27881, 29156, 30432, 31708, 32983, 34259, 35533, 36809, 38085, 39362, 40636, 41912, 43187, 44464, 45739, 47014, 48290, 49565, 50842, 52117, 53393, 54668, 55945, 57220, 58496, 59771, 61045, 62323, 63597, 64873, 66148, 67425, 68700, 69976, 71251, 72526, 73803, 75078]# noqa: E501
+    # 光子手雷爆炸攻击力 : {value0} X {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 8
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [范围信息]
+    # 爆炸范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     def vp_1(self):
+        """
+        [光子霰雷发射器]\n
+        投掷更多的光子手雷\n
+         - 光子手雷爆炸攻击次数变更为1次\n
+         - 攻击范围 +20%\n
+         - 基本冷却时间变更为67.5秒\n
+         - 攻击力 +50%
+        """
         self.cd = 67.5
         self.skillRation *= 1.5
+        ...
 
     def vp_2(self):
+        """
+        [光子霰雷发射器]\n
+        直接投掷光子手雷\n
+         - 适用空中投掷及地上投掷冷却时间\n
+         - 变更为可填充3次的技能\n
+         - 每次填充冷却时间 : 15秒\n
+         - 单次攻击力 -66%
+        """
         self.cd = 15
         self.skillRation /= 3
+        ...
 
-
-# 决战之日 디-데이
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/13a759aad5bb7fb7f08fae8f88c1cdbb?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill22(ActiveSkill):
+# 决战之日
+# gunner_female/spitfire_female/13a759aad5bb7fb7f08fae8f88c1cdbb
+# 944b9aab492c15a8474f96947ceeb9e4/13a759aad5bb7fb7f08fae8f88c1cdbb
+class Skill47(ActiveSkill):
+    """
+        向前方投掷一颗信号弹， 随后炮兵部队和战争女神机动队会集中火力支援信号弹指定的位置。\n
+        可在空中投掷。
+    """
     name = "决战之日"
     learnLv = 85
     masterLv = 40
@@ -557,14 +1119,23 @@ class Skill22(ActiveSkill):
     cd = 180
     mp = [2500, 8000]
     uuid = "13a759aad5bb7fb7f08fae8f88c1cdbb"
-
-    data0 = [0, 5644, 6954, 8263, 9573, 10881, 12190, 13500, 14808, 16117, 17427, 18736, 20044, 21354, 22664, 23973, 25281, 26591, 27900, 29208, 30518, 31827, 33137, 34445, 35754, 37064, 38373, 39681, 40991, 42301, 43608, 44918, 46228, 47537, 48845, 50155, 51464, 52772, 54082, 55391, 56701, 58009, 59318, 60628, 61938, 63245, 64555, 65865, 67172, 68482, 69792]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击力 : {value0} X {value1}次
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 40
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-
-# 单兵推进器-02X 니트로 모터-02X
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/34e1bda921012f6018709f1c1a12b04d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill23(PassiveSkill):
+# 单兵推进器-02X
+# gunner_female/spitfire_female/34e1bda921012f6018709f1c1a12b04d
+# 944b9aab492c15a8474f96947ceeb9e4/34e1bda921012f6018709f1c1a12b04d
+class Skill48(PassiveSkill):
+    """
+        重霄·弹药专家获得凝结天界技术的单兵推进器-02X， 以更高的机动力轰炸敌人， [单兵推进器]空中动作使用次数增加1次， 增加基本攻击力和转职技能攻击力， 部分技能获得附加效果。\n
+    [M18阔剑地雷] : 投掷包含弹头的圆盘型M18阔剑地雷， 坠落至地面的阔剑地雷探测到敌人时自动爆炸， 再次按技能键则可以立即引爆。 减少爆炸时的击退距离。\n
+    [手雷精通] : 提升技能攻击力增加率， [G-14手雷]、 [G-35L感电手雷]、 [G-18C冰冻手雷]中同系列的手雷投掷两次时， 强化下一次投掷的同系列手雷， 造成更高伤害。
+    """
     name = "单兵推进器-02X"
     learnLv = 95
     masterLv = 40
@@ -572,17 +1143,30 @@ class Skill23(PassiveSkill):
     position = 5
     rangeLv = 3
     uuid = "34e1bda921012f6018709f1c1a12b04d"
-
-    data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
-    data1 = [0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]# noqa: E501
-    data2 = [0, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120, 120]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本攻击和转职技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # [手雷精通]附加攻击力增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 强化手雷攻击力 : 手雷攻击力的{value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [{'type': '*skillRation', 'data': data0}]
 
-
-# 空袭战略 스탠바이-레디
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/c591d1827cfbe224031c704e21d07932?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill24(ActiveSkill):
+# 空袭战略
+# gunner_female/spitfire_female/c591d1827cfbe224031c704e21d07932
+# 944b9aab492c15a8474f96947ceeb9e4/c591d1827cfbe224031c704e21d07932
+class Skill49(ActiveSkill):
+    """
+        装备单兵推进器-02X的身体部件， 为空中轰炸做准备。 在地面或特定高度以下使用时， 跳跃并飞至空中发动轰炸； 空中使用时， 在当前高度开始轰炸。\n
+        在一段时间内， 不减少单兵推进器的使用次数， 可以悬浮在空中， 使用可在空中施放的技能。\n
+        此时， 在单兵推进器-02X身体部件的作用下， 施放技能时后坐力消失。 删除[G-14手雷]、 [G-35L感电手雷]、 [G-18C冰冻手雷]的空中投掷冷却时间， 弹药数量不会降到1以下， 长按技能键时自动投掷手雷。\n
+        再次按技能键或持续时间结束时， 投掷过载的单兵推进器-02X身体部件， 引发强大的终结爆炸。\n
+        [空袭战略]持续期间， 施放[终解·制空霸权]技能时， 立即向地面投掷过载的单兵推进器-02X身体部件， 对敌人造成伤害。\n
+        [空袭战略]悬浮期间，  可以按C键向前方冲刺， 但无法使用迅速降落(SPACE)的动作。 
+    """
     name = "空袭战略"
     learnLv = 95
     masterLv = 40
@@ -593,14 +1177,27 @@ class Skill24(ActiveSkill):
     cd = 30
     mp = [400, 3000]
     uuid = "c591d1827cfbe224031c704e21d07932"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # [空袭战略]持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 终结爆炸攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
 
-    data0 = [0, 95173, 104828, 114483, 124139, 133794, 143449, 153104, 162760, 172415, 182070, 191726, 201380, 211036, 220691, 230347, 240001, 249657, 259313, 268967, 278623, 288278, 297933, 307588, 317244, 326899, 336554, 346210, 355865, 365520, 375175, 384831, 394486, 404141, 413796, 423452, 433107, 442762, 452418, 462072, 471728, 481383, 491038, 500693, 510349, 520004, 529659, 539315, 548970, 558625, 568280]# noqa: E501
-    hit0 = 1
-
-
-# 终解·制空霸权 데피니트 솔루션
-# https://api.neople.co.kr/df/skills/944b9aab492c15a8474f96947ceeb9e4/8ad90fd01b5844edd692fff54d9f74e7?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill25(ActiveSkill):
+# 终解·制空霸权
+# gunner_female/spitfire_female/8ad90fd01b5844edd692fff54d9f74e7
+# 944b9aab492c15a8474f96947ceeb9e4/8ad90fd01b5844edd692fff54d9f74e7
+class Skill50(ActiveSkill):
+    """
+        快速升到空中， 装备单兵推进器-02X。 然后飞向战场， 装备飞翼元件， 开始第1次轰炸， 对敌人造成伤害。\n
+        第1次轰炸后， 装备单兵推进器-02X附加元件并开启全部武装， 执行终结轰炸， 然后返回地面。\n
+        [单兵推进器]有使用次数时， 可以在空中施放。\n
+    [三次觉醒技能]\n
+        使用三次觉醒技能时， 与关联的技能共享冷却时间。\n
+        若关联的技能还在冷却中， 则无法使用三次觉醒技能。
+    """
     name = "终解·制空霸权"
     learnLv = 100
     masterLv = 40
@@ -611,19 +1208,29 @@ class Skill25(ActiveSkill):
     cd = 290
     mp = [4028, 8056]
     uuid = "8ad90fd01b5844edd692fff54d9f74e7"
-
-    data0 = [0, 28558, 35180, 41802, 48424, 55046, 61670, 68292, 74914, 81536, 88157, 94781, 101403, 108025, 114647, 121269, 127891, 134515, 141137, 147759, 154380, 161002, 167624, 174248, 180870, 187492, 194114, 200736, 207360, 213982, 220604, 227225, 233847, 240469, 247093, 253715, 260337, 266959, 273581, 280203, 286827, 293448, 300070, 306692, 313314, 319936, 326560, 333182, 339804, 346426, 353048]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 第1次轰炸攻击力 : {value0} x {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 7
-    data1 = [0, 93290, 114923, 136555, 158188, 179822, 201454, 223087, 244719, 266352, 287984, 309618, 331251, 352883, 374515, 396148, 417780, 439414, 461047, 482679, 504312, 525944, 547578, 569211, 590843, 612475, 634108, 655740, 677374, 699007, 720639, 742272, 763904, 785537, 807171, 828803, 850436, 872068, 893700, 915334, 936967, 958599, 980232, 1001864, 1023497, 1045131, 1066763, 1088396, 1110028, 1131660, 1153293]# noqa: E501
-    hit1 = 5
-
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 终结轰炸攻击力 : {value2} x {value3}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 5
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
 
 class classChange(Character):
     def __init__(self, equVersion):
+
         self.name = 'spitfire_female'
         self.nameCN = '重霄·弹药专家'
         self.role = 'gunner_female'
+        self.角色 = '神枪手(女)'
+        self.职业 = '弹药专家'
+        self.jobId = '944b9aab492c15a8474f96947ceeb9e4'
+        self.jobGrowId = 'c9b492038ee3ca8d27d7004cf58d59f3'
 
         self.武器选项 = ['手弩', '步枪','左轮枪','自动手枪','手炮']
         self.输出类型选项 = ['物理固伤','魔法固伤']
@@ -632,11 +1239,4 @@ class classChange(Character):
         self.防具类型 = '皮甲'
         self.buff = 1.911
 
-        self.角色 = '神枪手(女)'
-
-        self.职业 = '弹药专家'
-
         super().__init__(equVersion, __name__)
-
-    def set_skill_info(self, info, rune_except=[], clothes_pants=[]):
-        super().set_skill_info(info, rune_except=['爆裂弹'], clothes_pants=['远古记忆'])

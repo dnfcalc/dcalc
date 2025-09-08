@@ -23,6 +23,7 @@ class Skill1(ActiveSkill):
     uuid = "5dc7008b12a459325b548b0715c6b73c"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -48,6 +49,7 @@ class Skill2(PassiveSkill):
     uuid = "bb34e8854a93fd250347a1c64119f7ab"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 恢复模式下所受伤害增加 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -74,6 +76,7 @@ class Skill3(PassiveSkill):
     uuid = "6e33d47e6622ce03b6defdd912140270"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 魔法值最大值增加 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -101,6 +104,7 @@ class Skill5(PassiveSkill):
     icon = "$common/$uuid"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力变化率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -129,6 +133,7 @@ class Skill9(ActiveSkill):
     uuid = "a5fa08f5d509e6ff2ebc68856a470b5a"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 魔法球数量 : {value0}个
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -161,6 +166,7 @@ class Skill10(ActiveSkill):
     uuid = "cfacda0647b9a0f595df2c2aad30c18d"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 持续时间 : {value0}秒
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -196,6 +202,7 @@ class Skill12(ActiveSkill):
     uuid = "8ee0099656df08a0b39225f8a21d514b"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 盾牌攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -223,6 +230,7 @@ class Skill15(ActiveSkill):
     uuid = "eb71e1d82d92c7e1d40500a0dcd77aa6"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 持续时间 : {value0}秒
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -259,6 +267,7 @@ class Skill16(ActiveSkill):
     uuid = "f2fb27162beb0b87a7cb9af7900e95f2"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 第1击和第2击攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -294,6 +303,7 @@ class Skill17(ActiveSkill):
     uuid = "d085127b0edd719782bd618d5688f4a1"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # [属性变换]魔法球攻击力变换率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -321,6 +331,7 @@ class Skill18(PassiveSkill):
     uuid = "1dad88963abdc96b091fcab185a8820d"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 属性抗性增加 : {value0}
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -347,6 +358,7 @@ class Skill19(ActiveSkill):
     uuid = "0969cd4054d93da07708108c0cc1c4b5"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 冰柱攻击力 : {value0}% x{value1}
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -375,6 +387,7 @@ class Skill20(PassiveSkill):
     uuid = "b163d099c8cc27fdb6fd3639c2ee6df9"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # [元素之力]最大蓄力数量 : {value0}个
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -403,6 +416,7 @@ class Skill22(ActiveSkill):
     uuid = "4655101518604f874721b3cc249aae10"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 火焰攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -433,6 +447,7 @@ class Skill23(ActiveSkill):
     uuid = "42c82812f86ff6704ae9952a2e6093a4"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 护盾持续时间 : {value0}秒
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -461,6 +476,7 @@ class Skill24(ActiveSkill):
     uuid = "9bff7f2559e003766fee2853dca00631"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -489,6 +505,7 @@ class Skill25(PassiveSkill):
     uuid = "ca75c965f20a150f99f54155a37400df"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 施放速度增加 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -520,6 +537,7 @@ class Skill26(ActiveSkill):
     uuid = "9dda3f4a849dba1a288dd65e116860f2"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 电流攻击力 : {value0}% x{value1}
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -551,6 +569,7 @@ class Skill27(ActiveSkill):
     uuid = "717f1e2104fe4b796f800352fa143ecc"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 暗黑能量攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -579,6 +598,7 @@ class Skill28(PassiveSkill):
     uuid = "573723c8c0614f5b1218ca9ff992115b"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力和技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -608,6 +628,7 @@ class Skill29(ActiveSkill):
     uuid = "45442bbbe33540b4deeec29437dae70c"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 前方火环攻击力 : {value0}% x{value1}
@@ -665,6 +686,7 @@ class Skill30(ActiveSkill):
     uuid = "8c2379737c5acc935c1731f67f607655"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 冰柱攻击力 : {value0}% x{value1}
@@ -726,6 +748,7 @@ class Skill31(ActiveSkill):
     uuid = "506e7ed77d517419a6e1c437a2cedb17"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 暗黑球体爆炸攻击力 : {value0}%
@@ -778,6 +801,7 @@ class Skill32(ActiveSkill):
     uuid = "da6e37c1e3f0e8867f70007d89c239ff"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 雷光屏障攻击力 : {value0}%
@@ -825,6 +849,7 @@ class Skill33(ActiveSkill):
     uuid = "a6c8f69107f8c4f5d1a0c7a57d000290"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 小魔法球攻击力 : {value0}% x{value1}
@@ -880,6 +905,7 @@ class Skill34(PassiveSkill):
     uuid = "1fadde0eece18649caddbca7bd58cc2f"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 暴击伤害增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -909,6 +935,7 @@ class Skill35(ActiveSkill):
     uuid = "c27418ae613c647527200a7ca17d97fd"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 爆炸攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -936,6 +963,7 @@ class Skill36(ActiveSkill):
     uuid = "faf9cd66281078b51be2ee0b0f6c5530"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 弹落攻击力 : {value0}%
@@ -989,6 +1017,7 @@ class Skill37(ActiveSkill):
     uuid = "1721e94897e9961d5c98130a13392f17"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 魔法球攻击力 : {value0}%
@@ -1047,6 +1076,7 @@ class Skill38(PassiveSkill):
     uuid = "51a08fd0c90f0a5276cd552047fac93d"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力和技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -1089,6 +1119,7 @@ class Skill39(ActiveSkill):
     uuid = "f0cc2c950f3bdf4103c75fa496bcac34"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # [元素禁域]持续时间 : {value0}秒
@@ -1151,6 +1182,7 @@ class Skill40(ActiveSkill):
     uuid = "28b583c75a49103a1d8aabf799c000a4"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # [聚能魔炮]爆炸攻击力 : {value0}%
@@ -1202,6 +1234,7 @@ class Skill41(ActiveSkill):
     uuid = "147d005ac868e0de52b1f255eea35d62"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 元素行星冲撞攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -1239,6 +1272,7 @@ class Skill42(PassiveSkill):
     uuid = "b8257acad8c7c379aba91ee63c0bd015"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -1267,6 +1301,7 @@ class Skill43(ActiveSkill):
     uuid = "9767a375672d9519f6c1c5dff19b7c15"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 能量释放多段攻击力 : {value0}% x{value1}
     data0 = get_data(f'{prefix}/{uuid}', 0)
@@ -1296,6 +1331,7 @@ class Skill44(ActiveSkill):
     uuid = "d58681f38f393dbfd22ffdb049d97002"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 黑暗之眼激活攻击力 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
