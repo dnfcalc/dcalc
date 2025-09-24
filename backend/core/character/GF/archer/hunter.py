@@ -3,10 +3,37 @@ from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
 prefix = "archer/hunter/cn/skillDetail"
 
+class HunterActiveSkill(ActiveSkill):
+
+    normalRation = 0
+    markRation = 0
+    # 标记消耗，大于0为消耗，小于0为生成
+    def getSkillData(self, lv: int = 0):
+        res = 0
+        keys = [key.replace('data', '') for key in dir(self) if key.startswith('data') and not key.startswith('dataplus')]
+        for i in keys:
+            data = getattr(self, f'data{i}', [])
+            plus = getattr(self, f'plus{i}', 0)
+            hit = getattr(self, f'hit{i}', 0)
+            if len(data) == 0 or hit == 0:
+                continue
+            if lv < len(data):
+                hit = getattr(self, f'hit{i}', 0)
+                power = getattr(self, f'power{i}', 1)
+                cost = getattr(self, f'cost{i}', 0)
+                res += hit * power * (data[lv] + plus) * ((1 + self.normalRation) if cost <= 0 else (1 + self.markRation * cost))
+        keys = [key.replace('dataplus', '') for key in dir(self) if key.startswith('dataplus')]
+        for i in keys:
+            data = getattr(self, f'dataplus{i}', 0)
+            hit = getattr(self, f'hitplus{i}', 1)
+            power = getattr(self, f'powerplus{i}', 1)
+            res += hit * power * data
+        return res
+
 # 凌跃一击
 # archer/hunter/0969cd4054d93da07708108c0cc1c4b5
 # b9cb48777665de22c006fabaf9a560b3/0969cd4054d93da07708108c0cc1c4b5
-class Skill0(ActiveSkill):
+class Skill0(HunterActiveSkill):
     """
         该技能可在地面和空中施放。\n
         向后微微跃起， 并根据武器的不同， 向地面发射不同的投射物， 使敌人浮空。\n
@@ -22,6 +49,7 @@ class Skill0(ActiveSkill):
     uuid = "0969cd4054d93da07708108c0cc1c4b5"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 箭矢攻击力 : {value0}%
     # REMOVE: data0 = [0, 24, 28, 32, 35, 39, 43, 47, 51, 55, 58, 62, 66, 70, 74, 78, 81, 85, 89, 93, 97]# noqa: E501
@@ -72,6 +100,7 @@ class Skill1(PassiveSkill):
     uuid = "8510294202d0e042dd29a2422fc6770d"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 定位敌人范围 : 左右{value0}px
     # REMOVE: data0 = [0, 1000]# noqa: E501
@@ -99,17 +128,18 @@ class Skill2(PassiveSkill):
     uuid = "b3659936a9a74c4ed6f7faf07cca1f9e"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 转职技能冷却时间减少 : {value0}%
     # REMOVE: data0 = [0, 10]# noqa: E501
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
     associate = [ {"data":data0,"type":"*cdReduce", 'exceptSkills': ['联合作战：围猎', '完美瞄准', '联合作战：最终一役']} ]
-    
+
 # 帕伊卡 : 奇袭
 # archer/hunter/38612d8f2561edc2eb68d5057a837bfa
 # b9cb48777665de22c006fabaf9a560b3/38612d8f2561edc2eb68d5057a837bfa
-class Skill3(ActiveSkill):
+class Skill3(HunterActiveSkill):
     """
         帕伊卡前冲一小段距离， 用身体撞击敌人后快速返回。\n
         被击中的敌人有一定几率进入眩晕状态。\n
@@ -126,6 +156,7 @@ class Skill3(ActiveSkill):
     uuid = "38612d8f2561edc2eb68d5057a837bfa"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 身体撞击攻击力 : {value0}%
     # REMOVE: data0 = [0, 3009, 3314, 3620, 3925, 4230, 4535, 4841, 5146, 5451, 5756, 6062, 6367, 6672, 6977, 7283, 7588, 7893, 8198, 8504, 8809, 9114, 9419, 9725, 10030, 10335, 10641, 10946, 11251, 11556, 11862, 12167, 12472, 12777, 13083, 13388, 13693, 13998, 14304, 14609, 14914, 15219, 15525, 15830, 16135, 16440, 16746, 17051, 17356, 17662, 17967, 18272, 18577, 18883, 19188, 19493, 19798, 20104, 20409, 20714, 21019, 21325, 21630, 21935, 22240, 22546, 22851, 23156, 23461, 23767, 24072]# noqa: E501
@@ -143,7 +174,7 @@ class Skill3(ActiveSkill):
 # 迅猛速射
 # archer/hunter/6a1d1f08a6572be420bb3a256c44c015
 # b9cb48777665de22c006fabaf9a560b3/6a1d1f08a6572be420bb3a256c44c015
-class Skill4(ActiveSkill):
+class Skill4(HunterActiveSkill):
     """
         向前方快速发射多枚小型弩箭。 发射时按跳跃键可以提前结束技能。
     """
@@ -158,6 +189,7 @@ class Skill4(ActiveSkill):
     uuid = "6a1d1f08a6572be420bb3a256c44c015"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 小型弩箭攻击力 : {value0}%
     # REMOVE: data0 = [0, 641, 706, 771, 836, 901, 966, 1031, 1096, 1161, 1226, 1291, 1356, 1421, 1486, 1551, 1616, 1681, 1746, 1812, 1877, 1942, 2007, 2072, 2137, 2202, 2267, 2332, 2397, 2462, 2527, 2592, 2657, 2722, 2787, 2852, 2917, 2982, 3047, 3112, 3177, 3242, 3307, 3372, 3437, 3502, 3567, 3632, 3697, 3762, 3827, 3892, 3957, 4023, 4088, 4153, 4218, 4283, 4348, 4413, 4478, 4543, 4608, 4673, 4738, 4803, 4868, 4933, 4998, 5063, 5128]# noqa: E501
@@ -171,26 +203,6 @@ class Skill4(ActiveSkill):
     # 弩箭最大移动距离 : {value2}px
     # REMOVE: data2 = [0, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500]# noqa: E501
     data2 = get_data(f'{prefix}/{uuid}', 2)
-
-# 后跳
-# archer/hunter/7822d6d52e10964a6755f142c666b494
-# b9cb48777665de22c006fabaf9a560b3/7822d6d52e10964a6755f142c666b494
-class Skill5(ActiveSkill):
-    """
-        使自身向后方小跳并避开敌人的攻击。
-    """
-    name = "后跳"
-    learnLv = 1
-    masterLv = 1
-    maxLv = 1
-    position = 3 #TODO
-    rangeLv = 1
-    mp = [1, 1]
-    uuid = "7822d6d52e10964a6755f142c666b494"
-    icon = "$common/$uuid"
-    hasVP = False
-    hasUP = False
-
 
 # 基础精通
 # archer/hunter/5a56514f35cf0270ae8d6c65f8fefd78
@@ -210,6 +222,7 @@ class Skill6(PassiveSkill):
     icon = "$common/$uuid"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力变化率 : {value0}%
     # REMOVE: data0 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
@@ -223,60 +236,11 @@ class Skill6(PassiveSkill):
 
     associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["急速扳机"]}]
 
-# 受身蹲伏
-# archer/hunter/ce26c6b69d02a440a81b552bec94f03b
-# b9cb48777665de22c006fabaf9a560b3/ce26c6b69d02a440a81b552bec94f03b
-class Skill7(ActiveSkill):
-    """
-        使自身在倒地状态下迅速起身并采取蹲伏姿势； 蹲伏状态下， 自身会进入无敌状态， 效果持续一定时间。
-    """
-    name = "受身蹲伏"
-    learnLv = 1
-    masterLv = 10
-    maxLv = 20
-    position = 2 #TODO
-    rangeLv = 1
-    cd = 5
-    mp = [1, 1]
-    uuid = "ce26c6b69d02a440a81b552bec94f03b"
-    icon = "$common/$uuid"
-    hasVP = False
-    hasUP = False
-
-    # 蹲伏姿势最短无敌时间 : {value0}秒
-    # REMOVE: data0 = [0, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3]# noqa: E501
-    data0 = get_data(f'{prefix}/{uuid}', 0)
-    # 蹲伏姿势最长无敌时间 : {value1}秒
-    # REMOVE: data1 = [0, 3, 4.5, 6, 7.5, 9, 10.5, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5, 30, 31.5]# noqa: E501
-    data1 = get_data(f'{prefix}/{uuid}', 1)
-    # 起身时霸体时间 : {value2}秒
-    # REMOVE: data2 = [0, 0.3, 0.33, 0.36, 0.4, 0.43, 0.46, 0.5, 0.53, 0.56, 0.6, 0.63, 0.66, 0.7, 0.73, 0.76, 0.8, 0.83, 0.86, 0.9, 0.93]# noqa: E501
-    data2 = get_data(f'{prefix}/{uuid}', 2)
-
-# 防具精通
-# archer/hunter/892ef624d8bf3d7fc045f84825fd6104
-# b9cb48777665de22c006fabaf9a560b3/892ef624d8bf3d7fc045f84825fd6104
-class Skill8(PassiveSkill):
-    """
-        穿戴防具时， 可以增加各种属性。\n
-        穿戴的防具越多， 效果越强； 可根据转职， 增加不同的属性种类及数值。
-    """
-    name = "防具精通"
-    learnLv = 1
-    masterLv = 1
-    maxLv = 1
-    position = 0 #TODO
-    rangeLv = 1
-    uuid = "892ef624d8bf3d7fc045f84825fd6104"
-    icon = "$common/$uuid"
-    hasVP = False
-    hasUP = False
-
 
 # 全力挥击
 # archer/hunter/4655101518604f874721b3cc249aae10
 # b9cb48777665de22c006fabaf9a560b3/4655101518604f874721b3cc249aae10
-class Skill9(ActiveSkill):
+class Skill9(HunterActiveSkill):
     """
         用力挥舞弓， 击打周围的敌人， 并向前推出。\n
     转职为猎人时， 再次按技能键会立即发射一枚爆炸箭矢， 造成额外伤害。\n
@@ -293,6 +257,7 @@ class Skill9(ActiveSkill):
     uuid = "4655101518604f874721b3cc249aae10"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 击打攻击力 : {value0}%
     # REMOVE: data0 = [0, 1601, 1763, 1926, 2088, 2251, 2413, 2576, 2738, 2900, 3063, 3225, 3388, 3550, 3712, 3875, 4037, 4200, 4362, 4525, 4687, 4849, 5012, 5174, 5337, 5499, 5662, 5824, 5986, 6149, 6311, 6474, 6636, 6798, 6961, 7123, 7286, 7448, 7611, 7773, 7935, 8098, 8260, 8423, 8585, 8747, 8910, 9072, 9235, 9397, 9560, 9722, 9884, 10047, 10209, 10372, 10534, 10697, 10859, 11021, 11184, 11346, 11509, 11671, 11833, 11996, 12158, 12321, 12483, 12646, 12808]# noqa: E501
@@ -313,7 +278,7 @@ class Skill9(ActiveSkill):
 # 推进装置
 # archer/hunter/a2d943797daca862a6f321aca6ac9bfa
 # b9cb48777665de22c006fabaf9a560b3/a2d943797daca862a6f321aca6ac9bfa
-class Skill10(ActiveSkill):
+class Skill10(HunterActiveSkill):
     """
         从特制的鞋子中喷射迷雾， 推进自身前冲一段距离。\n
         按方向键时， 可朝指定方向前进。 再次按技能键可连续追加前冲。\n
@@ -332,13 +297,14 @@ class Skill10(ActiveSkill):
     uuid = "a2d943797daca862a6f321aca6ac9bfa"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 单次移动距离 : 180px
 
 # 引爆发射
 # archer/hunter/c7bf7ccab413009640e65ca6f2f0263a
 # b9cb48777665de22c006fabaf9a560b3/c7bf7ccab413009640e65ca6f2f0263a
-class Skill11(ActiveSkill):
+class Skill11(HunterActiveSkill):
     """
         装填一枚爆炸型大型弩箭， 向前方发射。\n
         弩箭触碰敌人会发生爆炸， 并对周围敌人造成伤害。
@@ -354,6 +320,7 @@ class Skill11(ActiveSkill):
     uuid = "c7bf7ccab413009640e65ca6f2f0263a"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 弩箭爆炸攻击力 : {value0}%
     # REMOVE: data0 = [0, 3692, 4067, 4441, 4816, 5190, 5565, 5939, 6314, 6688, 7063, 7438, 7812, 8187, 8561, 8936, 9310, 9685, 10059, 10434, 10808, 11183, 11558, 11932, 12307, 12681, 13056, 13430, 13805, 14179, 14554, 14929, 15303, 15678, 16052, 16427, 16801, 17176, 17550, 17925, 18299, 18674, 19049, 19423, 19798, 20172, 20547, 20921, 21296, 21670, 22045, 22420, 22794, 23169, 23543, 23918, 24292, 24667, 25041, 25416, 25790, 26165, 26540, 26914, 27289, 27663, 28038, 28412, 28787, 29161, 29536]# noqa: E501
@@ -372,7 +339,7 @@ class Skill11(ActiveSkill):
 # 翻月翔击
 # archer/hunter/c9664191611af31142e052dfaef84530
 # b9cb48777665de22c006fabaf9a560b3/c9664191611af31142e052dfaef84530
-class Skill12(ActiveSkill):
+class Skill12(HunterActiveSkill):
     """
         前冲并踢飞命中的敌人。\n
         踢击仅对一名敌人造成伤害， 冲击波可以对除该敌人外附近的敌人造成伤害。\n
@@ -393,6 +360,7 @@ class Skill12(ActiveSkill):
     uuid = "c9664191611af31142e052dfaef84530"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 踢击攻击力 : {value0}%
     # REMOVE: data0 = [0, 5384, 5930, 6476, 7023, 7569, 8115, 8661, 9207, 9754, 10300, 10846, 11392, 11938, 12485, 13031, 13577, 14123, 14669, 15216, 15762, 16308, 16854, 17400, 17947, 18493, 19039, 19585, 20131, 20678, 21224, 21770, 22316, 22862, 23409, 23955, 24501, 25047, 25594, 26140, 26686, 27232, 27778, 28325, 28871, 29417, 29963, 30509, 31056, 31602, 32148, 32694, 33240, 33787, 34333, 34879, 35425, 35971, 36518, 37064, 37610, 38156, 38702, 39249, 39795, 40341, 40887, 41433, 41980, 42526, 43072]# noqa: E501
@@ -402,59 +370,6 @@ class Skill12(ActiveSkill):
     # REMOVE: data1 = [0, 4306, 4743, 5180, 5617, 6054, 6490, 6927, 7364, 7801, 8238, 8675, 9112, 9548, 9985, 10422, 10859, 11296, 11733, 12169, 12606, 13043, 13480, 13917, 14354, 14791, 15227, 15664, 16101, 16538, 16975, 17412, 17849, 18285, 18722, 19159, 19596, 20033, 20470, 20907, 21343, 21780, 22217, 22654, 23091, 23528, 23965, 24401, 24838, 25275, 25712, 26149, 26586, 27022, 27459, 27896, 28333, 28770, 29207, 29644, 30080, 30517, 30954, 31391, 31828, 32265, 32702, 33138, 33575, 34012, 34449]# noqa: E501
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-# 强化 - 后跳
-# archer/hunter/2b340542e776818b78f3212af184bd6b
-# b9cb48777665de22c006fabaf9a560b3/2b340542e776818b78f3212af184bd6b
-class Skill13(PassiveSkill):
-    """
-    施放技能期间、 被击或倒地的状态下， 可以施放无敌状态的[后跳]。\n
-    该能力适用与[后跳]不同的冷却时间， 并且不受冷却时间减少效果的影响。\n
-    根据施放情况的不同(强制中断技能和被敌人攻击)， 进入不同冷却时间。\n
-    无法强制中断觉醒技能和跳跃超过一定高度的技能。
-    """
-    name = "强化 - 后跳"
-    learnLv = 10
-    masterLv = 1
-    maxLv = 1
-    position = 4 #TODO
-    rangeLv = 1
-    cd = 30
-    uuid = "2b340542e776818b78f3212af184bd6b"
-    icon = "$common/$uuid"
-    hasVP = False
-    hasUP = False
-
-    # 强制中断技能时的冷却时间 : {value0}秒
-    # REMOVE: data0 = [0, 40]# noqa: E501
-    data0 = get_data(f'{prefix}/{uuid}', 0)
-    # 被击或倒地期间施放时的冷却时间 : {value1}秒
-    # REMOVE: data1 = [0, 30]# noqa: E501
-    data1 = get_data(f'{prefix}/{uuid}', 1)
-
-# 跃翔
-# archer/hunter/1fea5a626f15230237946a11a9d11582
-# b9cb48777665de22c006fabaf9a560b3/1fea5a626f15230237946a11a9d11582
-class Skill14(ActiveSkill):
-    """
-        增加自身20%的跳跃力， 效果持续一定时间。\n
-        效果持续期间内， 再次按技能键可以结束。
-    """
-    name = "跃翔"
-    learnLv = 10
-    masterLv = 1
-    maxLv = 1
-    position = 6 #TODO
-    rangeLv = 3
-    cd = 5
-    mp = [13, 13]
-    uuid = "1fea5a626f15230237946a11a9d11582"
-    icon = "$common/$uuid"
-    hasVP = False
-    hasUP = False
-
-    # 持续时间 : {value0}秒
-    # REMOVE: data0 = [0, 20]# noqa: E501
-    data0 = get_data(f'{prefix}/{uuid}', 0)
 
 # 猎物识别
 # archer/hunter/1b1cfab062e0768bcc889e33e1f30dbf
@@ -478,6 +393,7 @@ class Skill15(PassiveSkill):
     uuid = "1b1cfab062e0768bcc889e33e1f30dbf"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 除收割技能外基本/技能攻击力增加率 : {value0}%
     # REMOVE: data0 = [0, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45]# noqa: E501
@@ -495,10 +411,12 @@ class Skill15(PassiveSkill):
     # REMOVE: data4 = [0, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]# noqa: E501
     data4 = get_data(f'{prefix}/{uuid}', 4)
 
+    associate = [{"data":data0,"type":"+normalRation"},{"data":data1,"type":"+markRation"}]
+
 # 帕伊卡 : 刃羽
 # archer/hunter/c77a417c43de80c4ce32c1ed405d174a
 # b9cb48777665de22c006fabaf9a560b3/c77a417c43de80c4ce32c1ed405d174a
-class Skill16(ActiveSkill):
+class Skill16(HunterActiveSkill):
     """
         帕伊卡挥舞翅膀， 将翅膀辅助装置上的多枚弩箭发射到前方。\n
         无论猎人当前处于什么状态都可施放该技能， 但无法和其他“帕伊卡”和“联合作战”系列技能同时使用。
@@ -514,6 +432,7 @@ class Skill16(ActiveSkill):
     uuid = "c77a417c43de80c4ce32c1ed405d174a"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 弩箭多段攻击力 : {value0}% x{value1}
     # REMOVE: data0 = [0, 1200, 1322, 1443, 1565, 1687, 1809, 1930, 2052, 2174, 2296, 2417, 2539, 2661, 2783, 2904, 3026, 3148, 3270, 3391, 3513, 3635, 3757, 3878, 4000, 4122, 4243, 4365, 4487, 4609, 4730, 4852, 4974, 5096, 5217, 5339, 5461, 5583, 5704, 5826, 5948, 6070, 6191, 6313, 6435, 6557, 6678, 6800, 6922, 7043, 7165, 7287, 7409, 7530, 7652, 7774, 7896, 8017, 8139, 8261, 8383, 8504, 8626, 8748, 8870, 8991, 9113, 9235, 9357, 9478, 9600]# noqa: E501
@@ -530,7 +449,7 @@ class Skill16(ActiveSkill):
 # 炽热喷涌
 # archer/hunter/ecc23c980ea71450c0ad0c3fd232f329
 # b9cb48777665de22c006fabaf9a560b3/ecc23c980ea71450c0ad0c3fd232f329
-class Skill17(ActiveSkill):
+class Skill17(HunterActiveSkill):
     """
     [标记技能]\n
         向后跳跃， 向地面发射内置多枚小型弩箭的榴弹型大型弩箭。\n
@@ -548,6 +467,7 @@ class Skill17(ActiveSkill):
     uuid = "ecc23c980ea71450c0ad0c3fd232f329"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 榴弹爆炸多段攻击力(标记) : {value0}% x{value1}
     # REMOVE: data0 = [0, 1248, 1375, 1501, 1628, 1754, 1881, 2008, 2134, 2261, 2387, 2514, 2641, 2767, 2894, 3021, 3147, 3274, 3400, 3527, 3654, 3780, 3907, 4033, 4160, 4287, 4413, 4540, 4666, 4793, 4920, 5046, 5173, 5299, 5426, 5553, 5679, 5806, 5933, 6059, 6186, 6312, 6439, 6566, 6692, 6819, 6945, 7072, 7199, 7325, 7452, 7578, 7705, 7832, 7958, 8085, 8211, 8338, 8465, 8591, 8718, 8845, 8971, 9098, 9224, 9351, 9478, 9604, 9731, 9857, 9984]# noqa: E501
@@ -564,7 +484,7 @@ class Skill17(ActiveSkill):
 # 急速扳机
 # archer/hunter/0b8db1e10b3abbd24d38564e708675d5
 # b9cb48777665de22c006fabaf9a560b3/0b8db1e10b3abbd24d38564e708675d5
-class Skill18(ActiveSkill):
+class Skill18(HunterActiveSkill):
     """
         向前方快速发射一定数量的小型弩箭和爆炸型弩箭。\n
         技能受[基础精通]影响。
@@ -580,6 +500,7 @@ class Skill18(ActiveSkill):
     uuid = "0b8db1e10b3abbd24d38564e708675d5"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 小型弩箭攻击力 : {value0}%
     # REMOVE: data0 = [0, 337]# noqa: E501
@@ -607,7 +528,7 @@ class Skill18(ActiveSkill):
 # 高压喷射
 # archer/hunter/852f8ad797db4dca1405cb3e77198401
 # b9cb48777665de22c006fabaf9a560b3/852f8ad797db4dca1405cb3e77198401
-class Skill19(ActiveSkill):
+class Skill19(HunterActiveSkill):
     """
         使用强攻弩的炮口将近距离敌人挑起后， 喷射高压迷雾击飞敌人。\n
         对无法抓取的敌人不适用控制效果。\n
@@ -624,6 +545,7 @@ class Skill19(ActiveSkill):
     uuid = "852f8ad797db4dca1405cb3e77198401"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 挑起攻击力 : {value0}%
     # REMOVE: data0 = [0, 1682, 1853, 2023, 2194, 2365, 2535, 2706, 2876, 3047, 3218, 3388, 3559, 3730, 3900, 4071, 4242, 4412, 4583, 4753, 4924, 5095, 5265, 5436, 5607, 5777, 5948, 6119, 6289, 6460, 6630, 6801, 6972, 7142, 7313, 7484, 7654, 7825, 7996, 8166, 8337, 8508, 8678, 8849, 9019, 9190, 9361, 9531, 9702, 9873, 10043, 10214, 10385, 10555, 10726, 10896, 11067, 11238, 11408, 11579, 11750, 11920, 12091, 12262, 12432, 12603, 12773, 12944, 13115, 13285, 13456]# noqa: E501
@@ -654,6 +576,7 @@ class Skill20(PassiveSkill):
     uuid = "fc1262c19f3d0477ee8eda47b8db8696"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 物理/魔法暴击率增加 : {value0}%
     # REMOVE: data0 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]# noqa: E501
@@ -676,6 +599,7 @@ class Skill21(PassiveSkill):
     uuid = "dcb31a63ef58954f44ff2070c42a9a98"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 物理攻击力增加率 : {value0}%
     # REMOVE: data0 = [0, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45]# noqa: E501
@@ -692,7 +616,7 @@ class Skill21(PassiveSkill):
 # 重型穿甲箭
 # archer/hunter/8572675ec6a1f50b6eff6a867376c2de
 # b9cb48777665de22c006fabaf9a560b3/8572675ec6a1f50b6eff6a867376c2de
-class Skill22(ActiveSkill):
+class Skill22(HunterActiveSkill):
     """
     [收割技能]\n
         装填一枚大型弩箭， 弩箭附带沉重而锐利的贯穿型箭头， 向前方发射。\n
@@ -709,6 +633,7 @@ class Skill22(ActiveSkill):
     uuid = "8572675ec6a1f50b6eff6a867376c2de"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 贯穿型弩箭攻击力(收割) : {value0}%
     # REMOVE: data0 = [0, 6732, 7415, 8098, 8781, 9464, 10147, 10830, 11513, 12196, 12879, 13562, 14245, 14927, 15610, 16293, 16976, 17659, 18342, 19025, 19708, 20391, 21074, 21757, 22440, 23123, 23806, 24489, 25172, 25855, 26538, 27221, 27904, 28587, 29270, 29953, 30635, 31318, 32001, 32684, 33367, 34050, 34733, 35416, 36099, 36782, 37465, 38148, 38831, 39514, 40197, 40880, 41563, 42246, 42929, 43612, 44295, 44978, 45661, 46343, 47026, 47709, 48392, 49075, 49758, 50441, 51124, 51807, 52490, 53173, 53856]# noqa: E501
@@ -727,7 +652,7 @@ class Skill22(ActiveSkill):
 # 狩猎开始
 # archer/hunter/4f2e001e9a19eb7bae50ad1840dfb329
 # b9cb48777665de22c006fabaf9a560b3/4f2e001e9a19eb7bae50ad1840dfb329
-class Skill23(ActiveSkill):
+class Skill23(HunterActiveSkill):
     """
         装上小型弩箭弹匣， 提起战意。\n
         增加基本攻击和转职技能的攻击力和移动速度。\n
@@ -743,6 +668,7 @@ class Skill23(ActiveSkill):
     uuid = "4f2e001e9a19eb7bae50ad1840dfb329"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 持续时间 : {value0}秒
     # REMOVE: data0 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]# noqa: E501
@@ -757,7 +683,7 @@ class Skill23(ActiveSkill):
 # 帕伊卡 : 迷惑之舞
 # archer/hunter/b8f4966608e4ebb3cc80ba4eac3649bb
 # b9cb48777665de22c006fabaf9a560b3/b8f4966608e4ebb3cc80ba4eac3649bb
-class Skill24(ActiveSkill):
+class Skill24(HunterActiveSkill):
     """
         帕伊卡快速穿梭战场攻击敌人， 同时辅助装置喷射特制迷雾， 在战场上形成迷雾区域。\n
         迷雾区域内部的敌人会进入失明状态。\n
@@ -774,6 +700,7 @@ class Skill24(ActiveSkill):
     uuid = "b8f4966608e4ebb3cc80ba4eac3649bb"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 高速移动攻击力 : {value0}% x{value1}
     # REMOVE: data0 = [0, 1901, 2094, 2287, 2480, 2672, 2865, 3058, 3251, 3444, 3637, 3830, 4022, 4215, 4408, 4601, 4794, 4987, 5180, 5372, 5565, 5758, 5951, 6144, 6337, 6530, 6722, 6915, 7108, 7301, 7494, 7687, 7880, 8072, 8265, 8458, 8651, 8844, 9037, 9229, 9422, 9615, 9808, 10001, 10194, 10387, 10579, 10772, 10965, 11158, 11351, 11544, 11737, 11929, 12122, 12315, 12508, 12701, 12894, 13087, 13279, 13472, 13665, 13858, 14051, 14244, 14437, 14629, 14822, 15015, 15208]# noqa: E501
@@ -800,7 +727,7 @@ class Skill24(ActiveSkill):
 # 霰弹之箭
 # archer/hunter/d53301bb328baf12a3ae482cc6a565dd
 # b9cb48777665de22c006fabaf9a560b3/d53301bb328baf12a3ae482cc6a565dd
-class Skill25(ActiveSkill):
+class Skill25(HunterActiveSkill):
     """
     [标记技能]\n
         压缩迷雾后释放， 多发小型弩箭如同霰弹枪一样爆发射出。
@@ -816,6 +743,7 @@ class Skill25(ActiveSkill):
     uuid = "d53301bb328baf12a3ae482cc6a565dd"
     hasVP = False
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 霰弹枪多段攻击力(标记) : {value0}% x{value1}
     # REMOVE: data0 = [0, 2373, 2614, 2854, 3095, 3336, 3577, 3817, 4058, 4299, 4540, 4780, 5021, 5262, 5503, 5743, 5984, 6225, 6466, 6706, 6947, 7188, 7429, 7669, 7910, 8151, 8391, 8632, 8873, 9114, 9354, 9595, 9836, 10077, 10317, 10558, 10799, 11040, 11280, 11521, 11762, 12003, 12243, 12484, 12725, 12966, 13206, 13447, 13688, 13928, 14169, 14410, 14651, 14891, 15132, 15373, 15614, 15854, 16095, 16336, 16577, 16817, 17058, 17299, 17540, 17780, 18021, 18262, 18503, 18743, 18984]# noqa: E501
@@ -846,6 +774,7 @@ class Skill26(PassiveSkill):
     uuid = "7e904ea3d2a9faa054604e55120a9268"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # [重型穿甲箭]攻击力增加率 : {value0}%
     # REMOVE: data0 = [0, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]# noqa: E501
@@ -858,7 +787,7 @@ class Skill26(PassiveSkill):
 # 光爆箭
 # archer/hunter/dbf8b30c7057032af0d68fcfa289fdae
 # b9cb48777665de22c006fabaf9a560b3/dbf8b30c7057032af0d68fcfa289fdae
-class Skill27(ActiveSkill):
+class Skill27(HunterActiveSkill):
     """
     [收割技能]\n
         装填可以短时间造成多次爆炸的爆炸型大型弩箭， 向前方发射。\n
@@ -876,6 +805,7 @@ class Skill27(ActiveSkill):
     uuid = "dbf8b30c7057032af0d68fcfa289fdae"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 弩箭爆炸多段攻击力(收割) : {value0}% x{value1}
@@ -925,7 +855,7 @@ class Skill27(ActiveSkill):
 # 帕伊卡 : 困兽之网
 # archer/hunter/5152480fdde81362575a488d4cec4af9
 # b9cb48777665de22c006fabaf9a560b3/5152480fdde81362575a488d4cec4af9
-class Skill28(ActiveSkill):
+class Skill28(HunterActiveSkill):
     """
         帕伊卡发射背部辅助装置上的罗网弹， 罗网弹呈抛物线下落， 在下落过程中爆炸并展开罗网。\n
         被罗网捕获的敌人会进入束缚状态， 并且罗网在地面保持展开状态一段时间。\n
@@ -946,6 +876,7 @@ class Skill28(ActiveSkill):
     uuid = "5152480fdde81362575a488d4cec4af9"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 罗网攻击力 : {value0}%
@@ -987,7 +918,7 @@ class Skill28(ActiveSkill):
 # 箭雨
 # archer/hunter/2391a27457b5a8c6fa4b4670a91bdd11
 # b9cb48777665de22c006fabaf9a560b3/2391a27457b5a8c6fa4b4670a91bdd11
-class Skill29(ActiveSkill):
+class Skill29(HunterActiveSkill):
     """
     [标记技能]\n
         向天空发射装有大量小型弩箭的机械装置。 发射的装置会在到达一定高度时展开， 滞空一段时间后向地面如同下雨一样倾泻小型弩箭。
@@ -1004,6 +935,7 @@ class Skill29(ActiveSkill):
     uuid = "2391a27457b5a8c6fa4b4670a91bdd11"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 小型弩箭多段攻击力(标记) : {value0}%
@@ -1044,7 +976,7 @@ class Skill29(ActiveSkill):
 # 三弓弩箭
 # archer/hunter/5892d1fa4462e561ac8f8d2c74892b0a
 # b9cb48777665de22c006fabaf9a560b3/5892d1fa4462e561ac8f8d2c74892b0a
-class Skill30(ActiveSkill):
+class Skill30(HunterActiveSkill):
     """
     [标记+收割技能]\n
         射出两发强化迷雾反应性的特制弩箭后， 发射强大的爆炸型弩箭。\n
@@ -1064,6 +996,7 @@ class Skill30(ActiveSkill):
     uuid = "5892d1fa4462e561ac8f8d2c74892b0a"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 第一发特制弩箭攻击力(标记) : {value0}%
@@ -1139,6 +1072,7 @@ class Skill31(PassiveSkill):
     uuid = "fc458e449ee00b01dbf88d09aae65462"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # [狩猎之瞳]探索范围增加 : {value0}px
     # REMOVE: data0 = [0, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500]# noqa: E501
@@ -1155,7 +1089,7 @@ class Skill31(PassiveSkill):
 # 联合作战 : 围猎
 # archer/hunter/1812a1ece67bb37b6b44b54766450064
 # b9cb48777665de22c006fabaf9a560b3/1812a1ece67bb37b6b44b54766450064
-class Skill32(ActiveSkill):
+class Skill32(HunterActiveSkill):
     """
     [标记+收割技能]\n
         与帕伊卡展开配合进行狩猎。\n
@@ -1174,6 +1108,7 @@ class Skill32(ActiveSkill):
     uuid = "1812a1ece67bb37b6b44b54766450064"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 小型弩箭多段攻击力(标记) : {value0}%
     # REMOVE: data0 = [0, 845, 1041, 1236, 1432, 1628, 1824, 2020, 2216, 2412, 2607, 2803, 2999, 3195, 3391, 3587, 3783, 3978, 4174, 4370, 4566, 4762, 4958, 5154, 5350, 5545, 5741, 5937, 6133, 6329, 6525, 6721, 6916, 7112, 7308, 7504, 7700, 7896, 8092, 8287, 8483, 8679, 8875, 9071, 9267, 9463, 9658, 9854, 10050, 10246, 10442]# noqa: E501
@@ -1193,7 +1128,7 @@ class Skill32(ActiveSkill):
 # 联合作战 : 空中轰炸
 # archer/hunter/d89f26862e348a801b30bb9fd7125db5
 # b9cb48777665de22c006fabaf9a560b3/d89f26862e348a801b30bb9fd7125db5
-class Skill33(ActiveSkill):
+class Skill33(HunterActiveSkill):
     """
     [标记+收割技能]\n
         与帕伊卡一起在空中轰炸敌人。\n
@@ -1214,6 +1149,7 @@ class Skill33(ActiveSkill):
     uuid = "d89f26862e348a801b30bb9fd7125db5"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 飞行模式持续时间上限 : {value0}秒
@@ -1278,7 +1214,7 @@ class Skill33(ActiveSkill):
 # 帕伊卡 : 翼之刀锋
 # archer/hunter/2ba299855fc22192cba4f73db75e9d0e
 # b9cb48777665de22c006fabaf9a560b3/2ba299855fc22192cba4f73db75e9d0e
-class Skill34(ActiveSkill):
+class Skill34(HunterActiveSkill):
     """
         帕伊卡在空中旋转一圈， 随后以肉眼看不见的速度冲向敌人。\n
         无论猎人当前处于什么状态都可施放该技能， 但无法和其他“帕伊卡”和“联合作战”系列技能同时使用。
@@ -1295,6 +1231,7 @@ class Skill34(ActiveSkill):
     uuid = "2ba299855fc22192cba4f73db75e9d0e"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 突进攻击力 : {value0}%
@@ -1351,6 +1288,7 @@ class Skill35(PassiveSkill):
     uuid = "2c9d9a36c8401bddff6cdb80fab8dc24"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     # REMOVE: data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
@@ -1361,7 +1299,7 @@ class Skill35(PassiveSkill):
 # 终结穿刺
 # archer/hunter/b89c9ab317bc0a443f6497b7cca2f6a8
 # b9cb48777665de22c006fabaf9a560b3/b89c9ab317bc0a443f6497b7cca2f6a8
-class Skill36(ActiveSkill):
+class Skill36(HunterActiveSkill):
     """
     [收割技能]\n
         装填钻头型弩箭， 向前方发射。\n
@@ -1380,6 +1318,7 @@ class Skill36(ActiveSkill):
     uuid = "b89c9ab317bc0a443f6497b7cca2f6a8"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 弩箭命中攻击力(收割) : {value0}%
@@ -1431,7 +1370,7 @@ class Skill36(ActiveSkill):
 # 帕伊卡 : 索敌集束弹
 # archer/hunter/7cf17936a039b418660424125dc968d7
 # b9cb48777665de22c006fabaf9a560b3/7cf17936a039b418660424125dc968d7
-class Skill37(ActiveSkill):
+class Skill37(HunterActiveSkill):
     """
     [标记技能]\n
         帕伊卡以超近距离追踪一定范围内的最强的一个敌人， 并植入大量的小型弩箭。\n
@@ -1453,6 +1392,7 @@ class Skill37(ActiveSkill):
     uuid = "7cf17936a039b418660424125dc968d7"
     hasVP = True
     hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
     # 追踪小型弩箭攻击力(标记) : {value0}% x{value1}
@@ -1503,7 +1443,7 @@ class Skill37(ActiveSkill):
 # 完美瞄准
 # archer/hunter/7f80b887a09e88e2c4728c898bd73654
 # b9cb48777665de22c006fabaf9a560b3/7f80b887a09e88e2c4728c898bd73654
-class Skill38(ActiveSkill):
+class Skill38(HunterActiveSkill):
     """
     [收割技能]\n
         向天空发射一枚爆炸型弩箭， 之后稍稍后退， 瞄准落下的第一枚弩箭发射第二枚弩箭。\n
@@ -1522,6 +1462,7 @@ class Skill38(ActiveSkill):
     uuid = "7f80b887a09e88e2c4728c898bd73654"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 爆炸攻击力(收割) : {value0}%
     # REMOVE: data0 = [0, 204228, 251585, 298942, 346300, 393657, 441014, 488371, 535729, 583086, 630443, 677800, 725157, 772515, 819872, 867229, 914586, 961943, 1009301, 1056658, 1104015, 1151372, 1198730, 1246087, 1293444, 1340801, 1388158, 1435516, 1482873, 1530230, 1577587, 1624945, 1672302, 1719659, 1767016, 1814373, 1861731, 1909088, 1956445, 2003802, 2051159, 2098517, 2145874, 2193231, 2240588, 2287946, 2335303, 2382660, 2430017, 2477374, 2524732]# noqa: E501
@@ -1552,6 +1493,7 @@ class Skill39(PassiveSkill):
     uuid = "e5c09f9132a48dc1d695968592cc5878"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     # REMOVE: data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
@@ -1562,7 +1504,7 @@ class Skill39(PassiveSkill):
 # 联合作战 : 扭转战局
 # archer/hunter/e0daa922b19cdc35de879e938361464e
 # b9cb48777665de22c006fabaf9a560b3/e0daa922b19cdc35de879e938361464e
-class Skill40(ActiveSkill):
+class Skill40(HunterActiveSkill):
     """
     [收割技能]\n
         采取紧急战术扭转危机。\n
@@ -1580,6 +1522,7 @@ class Skill40(ActiveSkill):
     uuid = "e0daa922b19cdc35de879e938361464e"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 帕伊卡小型弩箭攻击力 : {value0}%
     # REMOVE: data0 = [0, 1514, 1668, 1821, 1975, 2128, 2282, 2436, 2589, 2743, 2897, 3050, 3204, 3357, 3511, 3665, 3818, 3972, 4125, 4279, 4433, 4586, 4740, 4893, 5047, 5201, 5354, 5508, 5661, 5815, 5969, 6122, 6276, 6429, 6583, 6737, 6890, 7044, 7197, 7351, 7505, 7658, 7812, 7965, 8119, 8273, 8426, 8580, 8733, 8887, 9041]# noqa: E501
@@ -1598,7 +1541,7 @@ class Skill40(ActiveSkill):
 # 联合作战 : 最终一役
 # archer/hunter/0fbb8de70002ad34f046c94c2cb3e863
 # b9cb48777665de22c006fabaf9a560b3/0fbb8de70002ad34f046c94c2cb3e863
-class Skill41(ActiveSkill):
+class Skill41(HunterActiveSkill):
     """
     [标记+收割技能]\n
         帕伊卡开启辅助装置， 用迷雾覆盖周围大片区域， 随后聆风·猎人与帕伊卡一起腾空而起， 装填足以摧毁整座悬浮岛的超大型特殊弩箭向地面发射， 将战场夷为平地。\n
@@ -1618,6 +1561,7 @@ class Skill41(ActiveSkill):
     uuid = "0fbb8de70002ad34f046c94c2cb3e863"
     hasVP = False
     hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     # 小型弩箭多段攻击力(标记) : {value0}% x{value1}
     # REMOVE: data0 = [0, 3206, 3949, 4692, 5436, 6179, 6922, 7666, 8409, 9152, 9896, 10639, 11382, 12126, 12869, 13612, 14356, 15099, 15842, 16586, 17329, 18072, 18816, 19559, 20302, 21046, 21789, 22532, 23276, 24019, 24762, 25506, 26249, 26992, 27736, 28479, 29222, 29966, 30709, 31452, 32196, 32939, 33682, 34426, 35169, 35912, 36656, 37399, 38142, 38886, 39629]# noqa: E501
