@@ -21,7 +21,6 @@ class Skill16(ActiveSkill):
     cd = 5
     mp = [13, 13]
     uuid = "1fea5a626f15230237946a11a9d11582"
-    icon = "$common/$uuid"
     hasVP = False
     hasUP = False
     custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501

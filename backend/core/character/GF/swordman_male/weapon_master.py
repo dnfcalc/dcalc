@@ -59,7 +59,6 @@ class Skill1(PassiveSkill):
     damage = False
     type = "passive"
     uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
-    icon = "$common/$uuid"
     # 基本攻击力变化率 : {value0}%
     data0 = get_data(f"{prefix}/{uuid}", 0)
     associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["里 · 鬼剑术","空之连刃"]}]

@@ -48,6 +48,7 @@ class Skill2(ActiveBufferSkill):
     buffer = True
     uuid = "0969cd4054d93da07708108c0cc1c4b5"
     hasUP = True
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     upType = "heal"
 
     data0 = [0, 468, 1170, 1824, 2433, 3135, 3743, 4444, 5052, 5707, 6363, 7018, 7672, 8328, 8983, 9637, 10292, 10948, 11603, 12257, 12912, 13568, 14222, 14877, 15533, 16140, 16842, 17451, 18105, 18807, 19929, 21099, 21894, 22738, 23531, 24375, 25216, 26059, 26901, 27742, 28586, 29427, 30223, 31064, 31907, 32749, 33590, 34434, 35275, 36117, 36912, 37755, 38597, 39438, 40282, 41123, 41965, 42808, 43603, 44445, 45286, 46130, 46971, 47813, 48656, 49497, 50293, 51134, 51978, 52819, 53661]# noqa: E501
@@ -160,6 +161,7 @@ class Skill8(ActiveSkill):
     mp = [35, 392]
     uuid = "ade01c1d6afc8a05055225045e89fe49"
     hasUP = False
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     data0 = [0, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300]# noqa: E501
     hit0 = 1 #TODO
@@ -206,6 +208,7 @@ class Skill10(ActiveBufferSkill):
     buffer = True
     uuid = "547ab2b2bd860d3e37355a9cfbc1077c"
     hasUP = True
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     data0 = [0, 19695, 22833, 25973, 29113, 32252, 35392, 38532, 41670, 44810, 47950, 51090, 54230, 57368, 60508, 63648, 66788, 69928, 73066, 76206, 79346, 82486, 85626, 88766, 91904, 95044, 98184, 101323, 104463, 107602, 110741, 113881, 117021, 120161, 123299, 126439, 129579, 132719, 135859, 138999, 142137, 145277, 148417, 151557, 154697, 157835, 160975, 164115, 167255, 170394, 173533, 176673, 179812, 182952, 186092, 189230, 192370, 195510, 198650, 201790, 204930]# noqa: E501
     hit0 = 1 #TODO
@@ -290,6 +293,7 @@ class Skill14(ActiveBufferSkill):
     uuid = "506e7ed77d517419a6e1c437a2cedb17"
     hasVP = True
     hasUP = True
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     vps = [
           {
             "name": "圣音协奏",
@@ -409,6 +413,7 @@ class Skill18(ActiveSkill):
     mp = [200, 1680]
     uuid = "a6c8f69107f8c4f5d1a0c7a57d000290"
     hasUP = False
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     hasVP = False
 
     def getSkillCD(self,mode=None):
@@ -465,6 +470,7 @@ class Skill20(ActiveBufferSkill):
     mp = [350, 2940]
     uuid = "03bb5314ffd41e9458d67ef924fef38f"
     hasUP = True
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     upType = "heal"
 
 
@@ -567,6 +573,7 @@ class Skill24(ActiveBufferSkill):
     mp = [860, 1500]
     uuid = "04883563896fe1adac7505c6146b5f59"
     hasUP = True
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     hasVP = True
     vps = [
           {

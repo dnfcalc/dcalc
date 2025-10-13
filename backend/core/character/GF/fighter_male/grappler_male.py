@@ -1,5 +1,5 @@
 #ca0f0e0e9e1d55b5f9955b03d9dd213c
-from core.basic.skill import PassiveSkill, ActiveSkill
+from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
 
 # 后踢 올려차기
@@ -356,6 +356,7 @@ class Skill31(ActiveSkill):
     mp = [50, 420]
     uuid = "202edb928046f4fa6dedf6337377efd5"
     hasUP = False
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     data0 = [0, 1449, 1597, 1742, 1888, 2036, 2182, 2329, 2477, 2624, 2770, 2333, 2453, 2567, 2687, 2802, 2921, 3037, 3156, 3274, 3390, 2923, 3022, 3121, 3215, 3314, 3415, 3513, 3610, 3705, 3805, 3346, 3431, 3514, 3598, 3681, 3762, 3845, 3931, 4015, 4098, 3661, 3732, 3809, 3880, 3953, 4029, 4100, 4174, 4248, 4322, 3907, 3972, 4039, 4106, 4167, 4235, 4299, 4364, 4429, 4495, 4106, 4163, 4221, 4282, 4340, 4396, 4456, 4514, 4577, 4634]# noqa: E501
     hit0 = 1 #TODO

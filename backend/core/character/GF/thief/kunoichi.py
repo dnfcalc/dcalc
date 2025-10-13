@@ -80,7 +80,6 @@ class Skill4(PassiveSkill):
     position = 1 #TODO
     rangeLv = 1
     uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
-    icon = "$common/$uuid"
     hasVP = False
     hasUP = False
     custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501

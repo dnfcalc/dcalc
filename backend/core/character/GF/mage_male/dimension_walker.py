@@ -156,7 +156,6 @@ class Skill8(PassiveSkill):
     position = 1 #TODO
     rangeLv = 1
     uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
-    icon = "$common/$uuid"
     hasVP = False
     hasUP = False
     custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
@@ -315,7 +314,9 @@ class Skill20(PassiveSkill):
     data0 = get_data(f'{prefix}/{uuid}', 0)
     # 迷雾附着敌人时， 基本攻击和次元系列技能攻击力增加率 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
-    associate = [{"data":data0,"skills":["次元 : 坠落","次元 : 虚影","次元 : 跃迁","次元 : 离子束","次元 : 万花镜","次元 : 粒子风暴","次元 : 时空磁场","次元 : 粒子波","次元 : 思维聚爆","次元 : 奇点","禁断之盛宴","未明·次元崩坏","乖离 : 禁忌之奈雅丽"]}]
+    associate = [
+        {"data":data1,"skills":["次元 : 坠落","次元 : 虚影","次元 : 跃迁","次元 : 离子束","次元 : 万花镜","次元 : 粒子风暴","次元 : 时空磁场","次元 : 粒子波","次元 : 思维聚爆","次元 : 奇点","禁断之盛宴","未明·次元崩坏","乖离 : 禁忌之奈雅丽"]},
+                 ]
 
 # 次元扭曲装置
 # mage_male/dimension_walker/fc458e449ee00b01dbf88d09aae65462

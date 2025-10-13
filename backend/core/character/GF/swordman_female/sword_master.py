@@ -94,7 +94,6 @@ class Skill2(PassiveSkill):
     position = 1
     rangeLv = 1
     uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
-    icon = "$common/$uuid"
 
     data0 = data0 = get_data(f'{prefix}/{uuid}', 0)
 

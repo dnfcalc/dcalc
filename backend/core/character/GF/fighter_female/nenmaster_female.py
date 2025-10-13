@@ -1,11 +1,15 @@
 #a7a059ebe9e6054c0644b40ef316d6e9
-from core.basic.skill import PassiveSkill, ActiveSkill
+from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
+prefix = "fighter_female/nenmaster_female/cn/skillDetail"
 
-
-# 光之亲和 빛의 친화
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/da6e37c1e3f0e8867f70007d89c239ff?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill0(PassiveSkill):
+# 光之亲和
+# fighter_female/nenmaster_female/da6e37c1e3f0e8867f70007d89c239ff
+# a7a059ebe9e6054c0644b40ef316d6e9/da6e37c1e3f0e8867f70007d89c239ff
+class Skill1(PassiveSkill):
+    """
+        强化对光的亲和力， 可以增加自身的光属性抗性， 但暗属性抗性将减少。
+    """
     name = "光之亲和"
     learnLv = 1
     masterLv = 1
@@ -13,17 +17,21 @@ class Skill0(PassiveSkill):
     position = 0 #TODO
     rangeLv = 1
     uuid = "da6e37c1e3f0e8867f70007d89c239ff"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 光属性抗性增加 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 暗属性抗性减少 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    data0 = [0, 20]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, -10]# noqa: E501
-    hit1 = 1 #TODO
-
-
-# 念气感知 넨으로 느낀다
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/27bade584bb42fef68148d3a0b72bace?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill1(PassiveSkill):
+# 念气感知
+# fighter_female/nenmaster_female/27bade584bb42fef68148d3a0b72bace
+# a7a059ebe9e6054c0644b40ef316d6e9/27bade584bb42fef68148d3a0b72bace
+class Skill2(PassiveSkill):
+    """
+        增加[念气波]感电几率， 用念气侦察敌人的位置， 提高失明抗性。
+    """
     name = "念气感知"
     learnLv = 1
     masterLv = 1
@@ -31,13 +39,22 @@ class Skill1(PassiveSkill):
     position = 0 #TODO
     rangeLv = 1
     uuid = "27bade584bb42fef68148d3a0b72bace"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 失明抗性增加 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 念气波感电几率 : 当前感电几率的3倍
 
-    data0 = [0, 50]# noqa: E501
-    hit0 = 1 #TODO
 
-# 基础精通 기본기 숙련
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/5a56514f35cf0270ae8d6c65f8fefd78?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill2(PassiveSkill):
+# 基础精通
+# fighter_female/nenmaster_female/5a56514f35cf0270ae8d6c65f8fefd78
+# a7a059ebe9e6054c0644b40ef316d6e9/5a56514f35cf0270ae8d6c65f8fefd78
+class Skill5(PassiveSkill):
+    """
+        增加基本攻击、 前冲攻击、 跳跃攻击、 [上勾拳]的攻击力。\n
+        在决斗场中， 增益/减益技能、 被动技能的技能攻击力增加效果对[基础精通]无影响。
+    """
     name = "基础精通"
     learnLv = 1
     masterLv = 115
@@ -45,14 +62,27 @@ class Skill2(PassiveSkill):
     position = 0 #TODO
     rangeLv = 1
     uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
-    icon = "$common/$uuid"
-    data0 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
-
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本攻击力变化率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 前冲攻击力变化率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 跳跃攻击力变化率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["念兽 : 龙虎啸"]}]
 
-# 分身 분신
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/f2fb27162beb0b87a7cb9af7900e95f2?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill3(ActiveSkill):
+# 分身
+# fighter_female/nenmaster_female/f2fb27162beb0b87a7cb9af7900e95f2
+# a7a059ebe9e6054c0644b40ef316d6e9/f2fb27162beb0b87a7cb9af7900e95f2
+class Skill9(ActiveSkill):
+    """
+        生成分身扰乱敌人的攻击或阻挡子弹。\n
+        经过一定时间或受一定伤害后， 生成的分身就会消失。\n
+        转职为气功师后， 分身仿照施放者的样子。\n
+        在决斗场中，转职为气功师后， 增加分身的持续时间。
+    """
     name = "分身"
     learnLv = 5
     masterLv = 10
@@ -62,30 +92,58 @@ class Skill3(ActiveSkill):
     cd = 7
     mp = [6, 84]
     uuid = "f2fb27162beb0b87a7cb9af7900e95f2"
-
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 分身生成数 : {value0}
+    hit = get_data(f'{prefix}/{uuid}', 0)
     data0 = [0] + [1] * maxLv
-    hit = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]# noqa: E501
+    # 分身持续时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 气功师分身持续时间 : 5秒
 
-    def skillInfo(self, mode: str | None = None):
-        self.hit0 = self.hit[self.lv]
-        return super().skillInfo(mode)
 
-# 念气波 넨탄
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/01c3a2fb793d293a25ed8dc7a0d70c1a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill4(ActiveSkill):
+# 念气波
+# fighter_female/nenmaster_female/01c3a2fb793d293a25ed8dc7a0d70c1a
+# a7a059ebe9e6054c0644b40ef316d6e9/01c3a2fb793d293a25ed8dc7a0d70c1a
+class Skill20(ActiveSkill):
+    """
+        使念气实体化后向前方敌人发射。\n
+        念气波对周围敌人具有诱导性， 在命中时爆炸， 对附近的敌人造成光属性伤害并进入感电状态。\n
+        转职为气功师后， 可以强制中断基本攻击动作施放， 并大幅度减少冷却时间。
+    """
     name = "念气波"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 2 #TODO
+    position = 2
     rangeLv = 2
-    cd = 4
+    cd = 1
     mp = [15, 154]
     uuid = "01c3a2fb793d293a25ed8dc7a0d70c1a"
-
-    data0 = [0, 2151, 2370, 2590, 2807, 3028, 3239, 3462, 3681, 3890, 4114, 4329, 4548, 4766, 4987, 5206, 5422, 5643, 5862, 6071, 6289, 6506, 6727, 6945, 7164, 7380, 7601, 7815, 8038, 8254, 8472, 8687, 8907, 9121, 9342, 9561, 9779, 9996, 10216, 10438, 10651, 10865, 11084, 11302, 11521, 11744, 11962, 12176, 12393, 12609, 12827, 13046, 13266, 13487, 13699, 13918, 14138, 14354, 14573, 14794, 15010, 15224, 15443, 15663, 15880, 16098, 16315, 16533, 16751, 16968, 17187]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
     power0 = 1
+    # 诱导性比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 感电几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 感电持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 感电攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [转职为气功师后]
+    # 念气波冷却时间减少率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # [范围信息]
+    # 念气波大小比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # 射程距离 : {value7}px
+    data7 = get_data(f'{prefix}/{uuid}', 7)
 
     mode = ["蓄力","普通"]
 
@@ -96,519 +154,1098 @@ class Skill4(ActiveSkill):
             self.cd = 1
             self.power0 = 1
 
-
-# 光之兵刃 카이
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/a6c8f69107f8c4f5d1a0c7a57d000290?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill5(ActiveSkill):
+# 光之兵刃
+# fighter_female/nenmaster_female/a6c8f69107f8c4f5d1a0c7a57d000290
+# a7a059ebe9e6054c0644b40ef316d6e9/a6c8f69107f8c4f5d1a0c7a57d000290
+class Skill21(ActiveSkill):
+    """
+        使自身和一定范围内所有队员的武器属性变成光属性， 并增加自身的基本攻击力、 技能攻击力和属性攻击力， 效果持续一定时间。
+    """
     name = "光之兵刃"
     learnLv = 15
     masterLv = 10
     maxLv = 20
-    position = 5 #TODO
+    position = 5
     rangeLv = 3
     cd = 5
-    mp = [126, 1195]
     uuid = "a6c8f69107f8c4f5d1a0c7a57d000290"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 施放范围 : {value0}px
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 持续时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 基本攻击力和技能攻击力增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 属性攻击力增加率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-    damage = False
-
-# 气玉弹 기옥탄
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/3fb8395ae3b81bd608e0c4223a8eb534?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill6(ActiveSkill):
+# 气玉弹
+# fighter_female/nenmaster_female/3fb8395ae3b81bd608e0c4223a8eb534
+# a7a059ebe9e6054c0644b40ef316d6e9/3fb8395ae3b81bd608e0c4223a8eb534
+class Skill22(ActiveSkill):
+    """
+        把念气聚为小型球状向前抛出， 对敌人造成光属性的多段攻击伤害， 并把附近的敌人拉拽到一起。\n
+        施放技能时按下前方向键， 念气珠会抛向更远处。
+    """
     name = "气玉弹"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cd = 8
     mp = [20, 168]
     uuid = "3fb8395ae3b81bd608e0c4223a8eb534"
-
-    data0 = [0, 966, 1056, 1158, 1253, 1352, 1448, 1542, 1637, 1736, 1834, 1928, 2033, 2125, 2222, 2317, 2417, 2513, 2606, 2701, 2807, 2900, 3000, 3094, 3194, 3288, 3392, 3483, 3578, 3680, 3776, 3869, 3971, 4061, 4165, 4253, 4362, 4456, 4551, 4648, 4743, 4842, 4942, 5039, 5136, 5226, 5336, 5423, 5522, 5620, 5714, 5812, 5904, 6008, 6103, 6196, 6302, 6390, 6499, 6588, 6695, 6780, 6875, 6982, 7074, 7179, 7271, 7359, 7465, 7560, 7662]# noqa: E501
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 11
+    # 念气珠多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 念气珠持续时间 : 1.5秒
+    # [范围信息]
+    # 念气珠大小比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-
-# 烈日气息 태양의 숨결
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/04883563896fe1adac7505c6146b5f59?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill7(ActiveSkill):
+# 烈日气息
+# fighter_female/nenmaster_female/04883563896fe1adac7505c6146b5f59
+# a7a059ebe9e6054c0644b40ef316d6e9/04883563896fe1adac7505c6146b5f59
+class Skill23(ActiveSkill):
+    """
+        增加周围队友的光属性抗性、 魔法防御力、 攻击速度和施放速度， 效果持续一定时间。
+    """
     name = "烈日气息"
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 7 #TODO
+    position = 7
     rangeLv = 3
     cd = 5
     mp = [194, 1502]
     uuid = "04883563896fe1adac7505c6146b5f59"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 施放范围 : {value0}px
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 持续时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 光属性抗性增加 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 魔法防御力增加 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 攻击速度增加 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 施放速度增加 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 队员攻击速度增加 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # 队员施放速度增加 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    # 队员光属性抗性增加 : {value8}
+    data8 = get_data(f'{prefix}/{uuid}', 8)
+    # 队员魔法防御力增加 : {value9}
+    data9 = get_data(f'{prefix}/{uuid}', 9)
 
-    damage = False
-
-# 幻影爆碎 환영폭쇄
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/f0cc2c950f3bdf4103c75fa496bcac34?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill8(PassiveSkill):
+# 幻影爆碎
+# fighter_female/nenmaster_female/f0cc2c950f3bdf4103c75fa496bcac34
+# a7a059ebe9e6054c0644b40ef316d6e9/f0cc2c950f3bdf4103c75fa496bcac34
+class Skill24(PassiveSkill):
+    """
+        分身的冷却时间增加， 可强制中断基本攻击后使用。 敌人碰撞分身时引发光属性爆炸， 对周围敌人造成伤害。\n
+        在决斗场中， 学习幻影爆碎后， 分身的冷却时间减少。
+    """
     name = "幻影爆碎"
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     uuid = "f0cc2c950f3bdf4103c75fa496bcac34"
-
-    data0 = [0, 1426, 1569, 1715, 1858, 2004, 2152, 2295, 2431, 2584, 2727, 2866, 3016, 3160, 3298, 3451, 3594, 3733, 3884, 4022, 4167, 4313, 4457, 4605, 4748, 4886, 5035, 5178, 5321, 5472, 5613, 5753, 5904, 6047, 6186, 6338, 6477, 6623, 6769, 6916, 7050, 7194, 7344, 7485, 7631, 7781, 7917, 8063, 8208, 8357, 8500, 8646, 8789, 8932, 9071, 9219, 9365, 9505, 9654, 9797, 9942, 10091, 10229, 10372, 10521, 10666, 10807, 10956, 11101, 11237, 11385]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 每个分身攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # [范围信息]
+    # 分身爆炸大小比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 学习念气归元后搜寻敌人范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [
         {"type": "*skillRation","data":data0,"skills":["分身"],"ratio":1},
         {"type": "+cd","data":[0]+[3]*maxLv,"skills":["分身"],"ratio":1}
     ]
 
-
-
-# 蓄念炮 축염포
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/c7bf7ccab413009640e65ca6f2f0263a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill9(PassiveSkill):
+# 蓄念炮
+# fighter_female/nenmaster_female/c7bf7ccab413009640e65ca6f2f0263a
+# a7a059ebe9e6054c0644b40ef316d6e9/c7bf7ccab413009640e65ca6f2f0263a
+class Skill25(PassiveSkill):
+    """
+        使念气波变成可以蓄气的念气波， 蓄气完毕后， 可以大幅度增加念气波的大小、 攻击力和射程， 并100%穿刺敌人； 但冷却时间比普通念气波长。
+    """
     name = "蓄念炮"
     learnLv = 20
     masterLv = 1
     maxLv = 11
-    position = 1 #TODO
+    position = 1
     rangeLv = 1
     cd = 3
     mp = [40, 56]
     uuid = "c7bf7ccab413009640e65ca6f2f0263a"
-
-    data0 = [0, 131, 136, 141, 146, 151, 156, 161, 166, 171, 176, 181]# noqa: E501
-
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 念气波攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 增加感电几率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 增加念气波飞行时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 增加念气波发射速度 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     associate = [
         {"type":"*power0","data":data0,"skills":["念气波"]}
     ]
 
 
-# 念气罩 넨 가드
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/dc1ffbe7bfcc6dc2be737951960da9ad?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill10(ActiveSkill):
+# 念气罩
+# fighter_female/nenmaster_female/dc1ffbe7bfcc6dc2be737951960da9ad
+# a7a059ebe9e6054c0644b40ef316d6e9/dc1ffbe7bfcc6dc2be737951960da9ad
+class Skill28(ActiveSkill):
+    """
+        学习后， 在自身周围生成一个巨大的念气罩， 使念气罩内的所有队员进入无敌状态。\n
+        经过一段时间或受到一定伤害后， 念气罩就会消失。\n
+        念气罩生成后施放者可以移动， 但念气罩不会跟随移动； 念气罩消失过程中， 效果也会消失。
+    """
     name = "念气罩"
     learnLv = 25
     masterLv = 1
     maxLv = 11
-    position = 2 #TODO
+    position = 2
     rangeLv = 3
     cd = 30
     mp = [60, 560]
-    damage = False
     uuid = "dc1ffbe7bfcc6dc2be737951960da9ad"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 念气罩持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 念气罩生命值 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [范围信息]
+    # 念气罩范围 : {value2}px
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-
-# 念雷破 뇌전격
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/4c5271b0ecce120d7fc113f377fae76f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill11(ActiveSkill):
+# 念雷破
+# fighter_female/nenmaster_female/4c5271b0ecce120d7fc113f377fae76f
+# a7a059ebe9e6054c0644b40ef316d6e9/4c5271b0ecce120d7fc113f377fae76f
+class Skill29(ActiveSkill):
+    """
+        用念气环绕身体， 向前方突进并推开移动路径上的所有敌人， 突进结束时念气爆炸， 对周围造成伤害。\n
+        按向前方向键， 可以增加突进距离。 
+    """
     name = "念雷破"
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 6 #TODO
+    position = 6
     rangeLv = 2
     cd = 6
     mp = [48, 403]
     uuid = "4c5271b0ecce120d7fc113f377fae76f"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 念气爆炸攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # [范围信息]
+    # 念气爆炸大小比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    data0 = [0, 10717, 11805, 12893, 13979, 15069, 16155, 17241, 18326, 19414, 20500, 21592, 22676, 23766, 24846, 25935, 27025, 28110, 29199, 30286, 31372, 32458, 33544, 34631, 35720, 36805, 37891, 38978, 40067, 41157, 42240, 43330, 44414, 45502, 46588, 47678, 48763, 49852, 50932, 52023, 53106, 54196, 55287, 56372, 57462, 58543, 59633, 60717, 61809, 62893, 63983, 65064, 66156, 67237, 68325, 69418, 70499, 71590, 72675, 73765, 74849, 75941, 77022, 78110, 79194, 80284, 81374, 82457, 83548, 84628, 85717]# noqa: E501
-    hit0 = 1 #TODO
-
-
-# 念气环绕 나선의 넨
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/0ed3148658fe37b3336ccb718dc0fdb0?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill12(ActiveSkill):
+# 念气环绕
+# fighter_female/nenmaster_female/0ed3148658fe37b3336ccb718dc0fdb0
+# a7a059ebe9e6054c0644b40ef316d6e9/0ed3148658fe37b3336ccb718dc0fdb0
+class Skill30(ActiveSkill):
+    """
+        生成念气珠环绕在自身周围， 可以使敌人受到一定的光属性伤害。\n
+        念气珠自动生成， 并持续消耗魔法值。\n
+        再次按技能键， 可以直接关闭念气珠。\n
+        念气珠的数量越多， 基本攻击力和技能攻击力越高。
+    """
     name = "念气环绕"
     learnLv = 30
     masterLv = 10
     maxLv = 20
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cd = 4
     mp = [268, 1694]
     uuid = "0ed3148658fe37b3336ccb718dc0fdb0"
-
-    data0 = [0, 984, 1081, 1178, 1282, 1382, 1482, 1578, 1678, 1776, 1880, 1977, 2077, 2174, 2278, 2377, 2474, 2574, 2672, 2773, 2868]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 21.5]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 每个念气珠物理防御力增加 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 每个念气珠基本攻击力和技能攻击力增加率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 学习念气归元后， 念气珠搜寻敌人范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 学习念气归元后， 念气珠爆炸大小比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
     associate = [
         # 总共两个珠子
-        {"type":"*skillRation","data":data1,"ratio":100/2}
+        {"type":"*skillRation","data":data3,"ratio":100/2}
     ]
 
     def getSkillCD(self,mode=None):
         # 攻击间隔时间
         return 0.5
 
-
-# 旋风腿 질풍각
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/202edb928046f4fa6dedf6337377efd5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill13(ActiveSkill):
+# 旋风腿
+# fighter_female/nenmaster_female/202edb928046f4fa6dedf6337377efd5
+# a7a059ebe9e6054c0644b40ef316d6e9/202edb928046f4fa6dedf6337377efd5
+class Skill31(ActiveSkill):
+    """
+        快速旋转身体向前移动并用连续的扫腿攻击周围的敌人； 可以在地面或空中使用， 最后的扫腿还可以击倒敌人。\n
+        施放后， 可以按上/下方向键改变移动方向， 或按跳跃键中断技能。\n
+        转职成为散打时， 可以强制中断基本攻击动作， 并立即施放该技能。
+    """
     name = "旋风腿"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cd = 8
     mp = [50, 420]
     uuid = "202edb928046f4fa6dedf6337377efd5"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 回旋踢攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0  = 4
+    # 攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    data0 = [0, 2391, 2632, 2876, 3120, 3360, 3602, 3847, 4088, 4330, 4573, 4816, 5056, 5301, 5544, 5784, 6031, 6274, 6516, 6757, 7000, 7244, 7487, 7728, 7970, 8213, 8458, 8698, 8940, 9184, 9424, 9668, 9912, 10154, 10394, 10640, 10882, 11122, 11367, 11608, 11852, 12095, 12336, 12578, 12826, 13066, 13308, 13552, 13796, 14036, 14280, 14522, 14762, 15008, 15250, 15492, 15735, 15978, 16220, 16460, 16704, 16946, 17189, 17432, 17674, 17916, 18160, 18402, 18644, 18888, 19128]# noqa: E501
-    hit0 = 4
-
-
-# 念兽螺旋波 비룡나선파
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/2e2b7efe778656690f9c8cb6e47c3932?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill14(ActiveSkill):
+# 念兽螺旋波
+# fighter_female/nenmaster_female/2e2b7efe778656690f9c8cb6e47c3932
+# a7a059ebe9e6054c0644b40ef316d6e9/2e2b7efe778656690f9c8cb6e47c3932
+class Skill32(ActiveSkill):
+    """
+        向前方发出一只念兽。 念兽呈螺旋状飞出， 吸附移动路径上的敌人并造成伤害。 然后再发出一只念兽， 对路径上的敌人造成伤害， 并有一定几率使敌人进入感电状态。
+    """
     name = "念兽螺旋波"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cd = 12
     mp = [96, 806]
     uuid = "2e2b7efe778656690f9c8cb6e47c3932"
-
-    data0 = [0, 2613, 2878, 3143, 3408, 3675, 3936, 4204, 4468, 4733, 4996, 5265, 5527, 5794, 6055, 6321, 6589, 6854, 7114, 7380, 7647, 7910, 8175, 8439, 8706, 8969, 9233, 9503, 9766, 10028, 10294, 10560, 10824, 11089, 11354, 11620, 11883, 12146, 12412, 12680, 12942, 13207, 13471, 13738, 14006, 14266, 14530, 14798, 15064, 15326, 15589, 15856, 16118, 16385, 16650, 16913, 17177, 17444, 17711, 17974, 18234, 18506, 18771, 19035, 19298, 19564, 19830, 20094, 20359, 20623, 20890]# noqa: E501
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 第一个念兽攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 3
+    # 第一个念兽多段攻击次数上限 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 第二个念兽攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 4
+    # 第二个念兽多段攻击次数上限 : {value3}次
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 感电几率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 感电持续时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 感电攻击力 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # [范围信息]
+    # 念兽大小比率 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7)
 
-    data1 = [0, 2939, 3240, 3536, 3835, 4133, 4432, 4728, 5029, 5326, 5622, 5924, 6215, 6516, 6812, 7113, 7410, 7708, 8007, 8304, 8602, 8901, 9199, 9493, 9792, 10090, 10389, 10688, 10987, 11283, 11584, 11880, 12179, 12476, 12772, 13071, 13367, 13668, 13962, 14265, 14560, 14860, 15159, 15456, 15752, 16051, 16349, 16645, 16946, 17241, 17539, 17838, 18137, 18435, 18732, 19030, 19329, 19625, 19922, 20222, 20516, 20816, 21112, 21415, 21712, 22012, 22306, 22607, 22902, 23202, 23501]# noqa: E501
-    hit1 = 4
-
-
-# 狮子吼 사자후
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/9cb6f9ed646fa87f9b7680a42ce83d1a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill15(ActiveSkill):
+# 狮子吼
+# fighter_female/nenmaster_female/9cb6f9ed646fa87f9b7680a42ce83d1a
+# a7a059ebe9e6054c0644b40ef316d6e9/9cb6f9ed646fa87f9b7680a42ce83d1a
+class Skill33(ActiveSkill):
+    """
+        发出可对周围敌人造成伤害的狮吼， 并有一定几率使敌人进入眩晕状态。
+    """
     name = "狮子吼"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 6 #TODO
+    position = 6
     rangeLv = 2
     cube = 1
     cd = 15
     mp = [120, 1008]
     uuid = "9cb6f9ed646fa87f9b7680a42ce83d1a"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 18424, 20292, 22160, 24026, 25896, 27758, 29631, 31498, 33369, 35234, 37107, 38974, 40842, 42708, 44582, 46448, 48315, 50188, 52054, 53919, 55788, 57657, 59528, 61394, 63266, 65130, 67002, 68868, 70742, 72609, 74480, 76334, 78200, 80074, 81944, 83814, 85677, 87549, 89421, 91284, 93156, 95024, 96892, 98757, 100626, 102495, 104361, 106232, 108099, 109966, 111836, 113706, 115570, 117442, 119308, 121182, 123054, 124917, 126783, 128650, 130520, 132392, 134260, 136124, 137992, 139864, 141736, 143602, 145470, 147339]# noqa: E501
-    hit0 = 1 #TODO
+    # 攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 眩晕几率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 眩晕时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [范围信息]
+    # 狮子吼范围 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
+    def vp_1(self):
+        """
+        [狮子吼]\n
+        命中敌人时不会使敌人眩晕； 念气爆炸后强制控制敌人3秒\n
+        可以解除自身的异常状态并施放\n
+        变更为可填充2次的技能\n
+        - 每次填充冷却时间 : 7.5秒\n
+        - 单次攻击力 -50%
+        """
+        self.cd = 7.5
+        self.skillRation *= 0.5
+        ...
 
-# 螺旋念气场 기공장
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/4224f9b0b8c7c903e9a1e0f9d9f6d04d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill16(ActiveSkill):
+    def vp_2(self):
+        """
+        [狮子吼]\n
+        生成分身代替施放[狮子吼]\n
+        - 可以在其他技能施放过程中无施放动作施放[狮子吼] (觉醒技能除外)
+        """
+        ...
+
+# 螺旋念气场
+# fighter_female/nenmaster_female/4224f9b0b8c7c903e9a1e0f9d9f6d04d
+# a7a059ebe9e6054c0644b40ef316d6e9/4224f9b0b8c7c903e9a1e0f9d9f6d04d
+class Skill34(ActiveSkill):
+    """
+        凝聚念气生成念气场， 使周围敌人受到光属性伤害并有一定几率使其进入感电状态。
+    """
     name = "螺旋念气场"
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cube = 1
     cd = 20
     mp = [170, 1428]
     uuid = "4224f9b0b8c7c903e9a1e0f9d9f6d04d"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 2057, 2262, 2467, 2677, 2882, 3092, 3294, 3502, 3716, 3917, 4129, 4336, 4539, 4746, 4958, 5164, 5371, 5579, 5784, 5994, 6202, 6410, 6618, 6821, 7031, 7241, 7447, 7654, 7864, 8072, 8274, 8481, 8689, 8902, 9108, 9315, 9519, 9725, 9933, 10138, 10355, 10564, 10771, 10973, 11182, 11391, 11597, 11805, 12012, 12218, 12426, 12636, 12844, 13047, 13255, 13462, 13670, 13879, 14087, 14292, 14499, 14707, 14910, 15125, 15327, 15537, 15744, 15954, 16160, 16368]# noqa: E501
+    # 攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 15
+    # 感电几率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 感电持续时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 感电攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 多段攻击次数 : {value4}次
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [范围信息]
+    # 念气场范围 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
+    def vp_1(self):
+        """
+        [螺旋念气场]\n
+        从螺旋念气场正面发射\n
+        念气场范围 +50%
+        """
+        ...
 
-# 念兽 : 龙虎啸 뇌명 : 사나운 빛의 넨수
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/1b1cfab062e0768bcc889e33e1f30dbf?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill17(ActiveSkill):
+    def vp_2(self):
+        """
+        [螺旋念气场]\n
+        在前方生成巨大的螺旋念气场， 聚集敌人后爆炸\n
+        - 删除多段攻击\n
+        - 总攻击力相同
+        """
+        ...
+
+# 念兽 : 龙虎啸
+# fighter_female/nenmaster_female/1b1cfab062e0768bcc889e33e1f30dbf
+# a7a059ebe9e6054c0644b40ef316d6e9/1b1cfab062e0768bcc889e33e1f30dbf
+class Skill35(ActiveSkill):
+    """
+        召唤出念兽龙虎， 强化自身和队员的能力。\n
+        此状态下， 可以使基本攻击增加至5次， 而且基本攻击、 前冲攻击、 跳跃攻击时， 与龙虎一起进行攻击。\n
+        基本攻击、 前冲攻击、 跳跃攻击时， 适用念兽龙虎的攻击力。\n
+        同时还可以使前冲攻击、 跳跃攻击和最后一次基本攻击命中的敌人进入感电状态。\n
+        自身的攻击范围会增加， 并且基本攻击、 跳跃攻击、 前冲攻击变更为受[基础精通]影响的攻击。\n
+        技能持续期间， 增加自身基本攻击力和技能攻击力。\n
+        自身和队友的移动速度、物防和魔防增加； 队友的增益效果在一定范围内实时生效。\n
+        进入地下城时自动施放。 (决斗场除外)
+    """
     name = "念兽 : 龙虎啸"
     learnLv = 40
     masterLv = 10
     maxLv = 20
-    position = 5 #TODO
+    position = 5
     rangeLv = 3
     cd = 5
     mp = [550, 5217]
     uuid = "1b1cfab062e0768bcc889e33e1f30dbf"
-
-    data0 = [0, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169, 169]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191, 191]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 225, 225, 225, 225, 225, 225, 225, 225, 225, 225, 225, 225, 225, 225, 225, 225, 225, 225, 225, 225]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255]# noqa: E501
-    hit3 = 1 #TODO
-
-    data4 = [0, 349, 349, 349, 349, 349, 349, 349, 349, 349, 349, 349, 349, 349, 349, 349, 349, 349, 349, 349, 349]# noqa: E501
-    hit4 = 1 #TODO
-
-    # 前冲
-    data5 = [0, 290, 290, 290, 290, 290, 290, 290, 290, 290, 290, 290, 290, 290, 290, 290, 290, 290, 290, 290, 290]# noqa: E501
-    hit5 = 1 #TODO
-
-    # 跳跃
-    data6 = [0, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424, 424]# noqa: E501
-    hit6 = 1 #TODO
-
-    data7 = [0, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 第1击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 第2击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 第3击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # 第4击攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
+    # 第5击攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 1
+    # 前冲攻击力 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    hit5 = 1
+    # 跳跃攻击力 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    hit6 = 1
+    # 持续时间 : {value7}秒
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    # 最后一次基本攻击感电几率 : {value8}%
+    data8 = get_data(f'{prefix}/{uuid}', 8)
+    # 前冲、 跳跃攻击感电几率 : {value9}%
+    data9 = get_data(f'{prefix}/{uuid}', 9)
+    # 感电持续时间 : {value10}秒
+    data10 = get_data(f'{prefix}/{uuid}', 10)
+    # 感电攻击力 : {value11}%
+    data11 = get_data(f'{prefix}/{uuid}', 11)
+    # 基本攻击力和技能攻击力增加率 : {value12}%
+    data12 = get_data(f'{prefix}/{uuid}', 12)
+    # 有效范围 : {value13}px
+    data13 = get_data(f'{prefix}/{uuid}', 13)
+    # 队员移动速度增加 : {value14}%
+    data14 = get_data(f'{prefix}/{uuid}', 14)
+    # 队员物理防御力增加 : {value15}
+    data15 = get_data(f'{prefix}/{uuid}', 15)
+    # 队员魔法防御力增加 : {value16}
+    data16 = get_data(f'{prefix}/{uuid}', 16)
 
     associate = [
-        {"type":"*skillRation","data":data7}
+        {"type":"*skillRation","data":data12}
     ]
 
-
-# 광룡승천파 광룡승천파
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/dbf8b30c7057032af0d68fcfa289fdae?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill18(ActiveSkill):
+# 狂龙升天破
+# fighter_female/nenmaster_female/dbf8b30c7057032af0d68fcfa289fdae
+# a7a059ebe9e6054c0644b40ef316d6e9/dbf8b30c7057032af0d68fcfa289fdae
+class Skill36(ActiveSkill):
+    """
+        将念聚集于脚后上踢， 释放出念兽龙。\n
+        念兽龙从地面升起， 对范围内敌人造成多段伤害。
+    """
     name = "狂龙升天破"
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cube = 2
     cd = 40
     mp = [316, 2488]
     uuid = "dbf8b30c7057032af0d68fcfa289fdae"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 4569, 5032, 5496, 5960, 6423, 6886, 7350, 7814, 8277, 8740, 9204, 9668, 10131, 10594, 11058, 11522, 11985, 12448, 12912, 13376, 13839, 14302, 14766, 15230, 15693, 16156, 16620, 17084, 17547, 18010, 18474, 18938, 19401, 19864, 20330, 20793, 21256, 21720, 22184, 22647, 23110, 23574, 24038, 24501, 24964, 25428, 25892, 26355, 26818, 27282, 27746, 28209, 28672, 29136, 29600, 30063, 30526, 30990, 31454, 31917, 32380, 32844, 33308, 33771, 34234, 34698, 35162, 35625, 36088, 36552]# noqa: E501
+    # 念兽龙攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 11
+    # 念兽龙多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [范围信息]
+    # 攻击范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
+    def vp_1(self):
+        """
+        [狂龙升天破]\n
+        取消聚集念气的动作\n
+        - 念兽龙释放速度 +25%\n
+        - 多段攻击间隔 -25%\n
+        攻击范围 +30%
+        """
+        ...
 
-# 乱舞 · 千叶花 흩날리는 천염화
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/669f1428193f61f9d92c743b72438c4d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill19(PassiveSkill):
+    def vp_2(self):
+        """
+        [狂龙升天破]\n
+        可以强制中断转职技能的施放后僵直并施放[狂龙升天破] (觉醒技能除外)\n
+        上踢动作后可以连接施放[奔雷掌]
+        """
+        ...
+
+# 乱舞 · 千叶花
+# fighter_female/nenmaster_female/669f1428193f61f9d92c743b72438c4d
+# a7a059ebe9e6054c0644b40ef316d6e9/669f1428193f61f9d92c743b72438c4d
+class Skill37(PassiveSkill):
+    """
+        千叶花的气息凝聚在周围， 增加自身的魔法暴击率、 魔法暴击伤害、 施放速度和移动速度。\n
+        每隔一段时间， 自身周围会生成防御型千叶花。 若千叶花盛开状态下遭受敌人攻击， 则可以免除自身所受伤害并提高硬直， 但千叶花会消失。\n
+        受到中毒、 出血等持续性伤害时， 千叶花免除伤害的效果无效， 消失的千叶花经一定时间后又会重新盛开。
+    """
     name = "乱舞 · 千叶花"
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 4 #TODO
+    position = 4
     rangeLv = 3
     uuid = "669f1428193f61f9d92c743b72438c4d"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 硬直增加 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 魔法暴击伤害增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 魔法暴击率增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 施放速度增加 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 移动速度增加 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 重新盛开所需时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
+    associate = [{"type":"*skillRation","data":data1}]
 
-    data0 = [0, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65]# noqa: E501
-    associate = [{"type":"*skillRation","data":data0}]
-
-
-# 千莲怒放 넨화
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/51a08fd0c90f0a5276cd552047fac93d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill20(ActiveSkill):
+# 千莲怒放
+# fighter_female/nenmaster_female/51a08fd0c90f0a5276cd552047fac93d
+# a7a059ebe9e6054c0644b40ef316d6e9/51a08fd0c90f0a5276cd552047fac93d
+class Skill38(ActiveSkill):
+    """
+        凝聚念气生成6个花蕾形态的念花。\n
+        花蕾状态为0阶段， 若花蕾受到光属性伤害， 则会成长为念花。\n
+        念花从第1阶段到第3阶段依次成长， 念花的成长阶段越高， 攻击力越强、 攻击范围越广。\n
+        再次按技能键或经过一段时间后， 念花会依次产生爆炸并给予周围敌人光属性伤害。\n
+        在空中或者技能施放过程中， 可以再次按技能键。\n
+        花蕾状态下的0阶段时无法引爆， 持续时间结束后会消失。
+    """
     name = "千莲怒放"
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 3 #TODO
+    position = 3
     rangeLv = 5
     cube = 5
     cd = 145
     mp = [900, 7559]
     uuid = "51a08fd0c90f0a5276cd552047fac93d"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 念花持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 成长到1阶段所需的伤害 : 3阶段的{value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 成长到2阶段所需的伤害 : 3阶段的{value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 成长到3阶段所需的伤害 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 1阶段攻击力 : 3阶段的{value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 2阶段攻击力 : 3阶段的{value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 3阶段攻击力 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    hit6 = 6
+    # 念花攻击次数上限 : {value7}次
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    # 1阶段攻击范围 : 3阶段的{value8}%
+    data8 = get_data(f'{prefix}/{uuid}', 8)
+    # 2阶段攻击范围 : 3阶段的{value9}%
+    data9 = get_data(f'{prefix}/{uuid}', 9)
+    # 3阶段攻击范围 : {value10}px
+    data10 = get_data(f'{prefix}/{uuid}', 10)
 
-    data0 = [0, 14602, 17984, 21371, 24755, 28144, 31528, 34909, 38296, 41680, 45065, 48451, 51836, 55220, 58603, 61992, 65373, 68759, 72146, 75531, 78914, 82301, 85684, 89072, 92456, 95844, 99226, 102611, 105995, 109383, 112768, 116149, 119539, 122919, 126306, 129690, 133074, 136462, 139845, 143229, 146611, 150001, 153384, 156768, 160155, 163537, 166923, 170307, 173695, 177080, 180466]# noqa: E501
-    hit0 = 6
-
-
-
-# 究极念气罩 궁극의 넨 가드
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/2c9d9a36c8401bddff6cdb80fab8dc24?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill21(PassiveSkill):
+# 究极念气罩
+# fighter_female/nenmaster_female/2c9d9a36c8401bddff6cdb80fab8dc24
+# a7a059ebe9e6054c0644b40ef316d6e9/2c9d9a36c8401bddff6cdb80fab8dc24
+class Skill39(PassiveSkill):
+    """
+        在自身周围生成一个巨大的念气罩， 使念气罩内的所有队员进入无敌状态。 与普通念气罩相比， 巨大念气罩的范围更大、 生命值更高、 持续时间更长。\n
+        念气罩受到伤害时， 可以使队员恢复一定量的生命值， 并对敌人造成伤害。\n
+        队员的生命值恢复量随念气罩生命值的增加而增加。\n
+        经过一段时间或受到一定伤害后， 念气罩就会消失。
+    """
     name = "究极念气罩"
     learnLv = 60
     masterLv = 1
     maxLv = 11
-    position = 2 #TODO
+    position = 2
     rangeLv = 2
     uuid = "2c9d9a36c8401bddff6cdb80fab8dc24"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 念气罩持续时间增加 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 念气罩范围增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 念气罩生命值增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 念气罩生命值与队员生命值恢复比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
-
-
-# 奔雷掌 광룡십삼장
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/5806440d21e7546d50007a5ba11f8024?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill22(ActiveSkill):
+# 奔雷掌
+# fighter_female/nenmaster_female/5806440d21e7546d50007a5ba11f8024
+# a7a059ebe9e6054c0644b40ef316d6e9/5806440d21e7546d50007a5ba11f8024
+class Skill40(ActiveSkill):
+    """
+        跳到空中后， 向地面发射念气波动造成光属性伤害。 \n
+        在空中使用时， 需要在一定高度以上才能施放技能。
+    """
     name = "奔雷掌"
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cube = 1
     cd = 30
     mp = [450, 1260]
     uuid = "5806440d21e7546d50007a5ba11f8024"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 4900, 5398, 5896, 6392, 6885, 7382, 7881, 8376, 8874, 9374, 9861, 10364, 10862, 11354, 11852, 12352, 12846, 13342, 13844, 14338, 14834, 15327, 15819, 16318, 16816, 17314, 17806, 18310, 18802, 19300, 19796, 20296, 20786, 21290, 21784, 22281, 22772, 23280, 23769, 24266, 24760, 25260, 25758, 26252, 26756, 27242, 27746, 28240, 28734, 29230]# noqa: E501
+    # 小狂龙爆炸攻击力 : {value0}% 
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 6
+    # 最后一击巨大狂龙爆炸攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 小狂龙爆炸攻击次数 : {value2}次
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 巨大狂龙爆炸攻击次数 : {value3}次
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 狂龙爆炸范围 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
-    data1 = [0, 19587, 21570, 23559, 25545, 27531, 29510, 31500, 33486, 35469, 37461, 39447, 41434, 43419, 45406, 47392, 49376, 51360, 53349, 55336, 57322, 59308, 61292, 63279, 65272, 67252, 69237, 71229, 73210, 75200, 77181, 79173, 81164, 83144, 85128, 87117, 89103, 91089, 93075, 95061, 97053, 99030, 101022, 102999, 104991, 106982, 108964, 110950, 112940, 114922, 116908]# noqa: E501
-    hit1 = 1 #TODO
+    def vp_1(self):
+        """
+        [奔雷掌]\n
+        删除小狂龙爆炸攻击\n
+        - 总攻击力相同\n
+        - 巨大狂龙下降速度 -300%\n
+        - 将移动路径上敌人聚集到前方
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [奔雷掌]\n
+        与分身一起施放更强力、 攻击范围更广的[奔雷掌]\n
+        - 小型狂龙爆炸攻击次数 : 10次\n
+        - 巨型狂龙爆炸攻击次数 : 2次\n
+        - 基本冷却时间变更为60秒\n
+        - 总攻击力 +100%\n
+        攻击范围 +30%
+        """
+        self.cd = 60
+        self.skillRation *= 2
+        ...
 
-
-# 狂狮怒吼 태사자후
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/7cf17936a039b418660424125dc968d7?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill23(ActiveSkill):
+# 狂狮怒吼
+# fighter_female/nenmaster_female/7cf17936a039b418660424125dc968d7
+# a7a059ebe9e6054c0644b40ef316d6e9/7cf17936a039b418660424125dc968d7
+class Skill41(ActiveSkill):
+    """
+        发出可以对周围敌人造成光属性伤害的狮吼。\n
+        可以解除我方队员的异常状态； 狮吼可以增加我方队员的命中率和回避率， 该效果持续一定时间。
+    """
     name = "狂狮怒吼"
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 6 #TODO
+    position = 6
     rangeLv = 2
     cube = 2
     cd = 30
     mp = [800, 1680]
     uuid = "7cf17936a039b418660424125dc968d7"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 11584, 12759, 13930, 15106, 16284, 17452, 18628, 19798, 20978, 22152, 23325, 24495, 25672, 26846, 28018, 29194, 30369, 31540, 32718, 33898, 35068, 36240, 37422, 38595, 39765, 40940, 42117, 43287, 44463, 45640, 46812, 47985, 49161, 50337, 51510, 52683, 53854, 55034, 56208, 57381, 58557, 59728, 60904, 62079, 63252, 64425, 65602, 66778, 67950, 69124]# noqa: E501
+    # 攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 5
+    # 多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 解除异常状态数量上限 : {value2}个
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 队友命中率增加 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 队友回避率增加 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 增益效果持续时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # [范围信息]
+    # [狂狮怒吼]范围 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
+    def vp_1(self):
+        """
+        [狂狮怒吼]\n
+        施放时吸附敌人\n
+        - 吸附范围和攻击范围相同\n
+        命中时3秒内， 所受伤害 -60%\n
+        攻击范围 +20%
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [狂狮怒吼]\n
+        施放[狂狮怒吼]时， 初始化[狮子吼]的冷却时间\n
+        - [狮子吼]攻击力 -33%\n
+        [狮子吼]、 [狂狮怒吼]技能施放时间 -20%
+        """
+        ...
 
+    def effect(self, old, new):
+        if self.vp == 2:
+            self.associate = [{"type":"*skillRation","data":[0] + [-33]*self.maxLv,"skills":["狮子吼"]}]
+        return super().effect(old, new)
 
-# 낙화태염성 낙화태염성
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/547ab2b2bd860d3e37355a9cfbc1077c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill24(PassiveSkill):
+# 念花守心
+# fighter_female/nenmaster_female/547ab2b2bd860d3e37355a9cfbc1077c
+# a7a059ebe9e6054c0644b40ef316d6e9/547ab2b2bd860d3e37355a9cfbc1077c
+class Skill42(PassiveSkill):
+    """
+        获得领悟， 部分念气技能变更， 操控念气的能力提升。\n
+        施放部分念气技能时， 进入霸体状态， 效果持续3秒。\n
+        在霸体持续时间内再次施放时， 持续时间刷新。\n
+        增加攻击速度、 施放速度、 基本攻击力和转职技能攻击力。\n
+        究极念气罩技能结束时， 念气罩范围内的队友生成移动型迷你念气罩。\n
+        迷你念气罩的生命值为究极念气罩一定比例。\n
+        [霸体适用技能]\n
+        [狮子吼]、 [螺旋念气场]、 [狂龙升天破]、 [奔雷掌]、 [狂狮怒吼]、 [击电奔星]、 [聚能念气炮]、 [天雷分身步]
+    """
     name = "念花守心"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 3 #TODO
+    position = 3
     rangeLv = 3
     uuid = "547ab2b2bd860d3e37355a9cfbc1077c"
-
-    data0 = [0, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72, 75, 78, 81, 84, 87, 90, 93, 96, 99, 102, 105, 108, 111, 114, 117, 120, 123, 126, 129, 132, 135, 138, 141, 144, 147, 150, 153, 156, 159, 162, 165, 168, 171, 174]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击、 施放速度增加 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 基本攻击力和转职技能攻击力增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 念气罩生命值增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 迷你念气罩生命值比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 迷你念气罩持续时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 分身生成距离减少率 : 50%
 
     associate = [
-        {"type":"*skillRation","data":data0}
+        {"type":"*skillRation","data":data1}
     ]
 
-
-# 섬광환격 섬광환격
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/a5fa08f5d509e6ff2ebc68856a470b5a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill25(ActiveSkill):
+# 击电奔星
+# fighter_female/nenmaster_female/a5fa08f5d509e6ff2ebc68856a470b5a
+# a7a059ebe9e6054c0644b40ef316d6e9/a5fa08f5d509e6ff2ebc68856a470b5a
+class Skill43(ActiveSkill):
+    """
+        在前方召出分身后， 与分身一起向前突进并攻击敌人。 按向前方向键， 可以突进更远的距离。\n
+        若队友接触到该技能的光属性爆炸， 则可恢复少量生命值。\n
+        施放中按跳跃键， 可以立即发动终结攻击。
+    """
     name = "击电奔星"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cube = 3
     cd = 40
     mp = [580, 4500]
     uuid = "a5fa08f5d509e6ff2ebc68856a470b5a"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 21631, 23827, 26026, 28220, 30412, 32607, 34802, 36995, 39193, 41387, 43581, 45778, 47969, 50166, 52363, 54553, 56747, 58944, 61140, 63331, 65523, 67719, 69915, 72112, 74305, 76498, 78692, 80888, 83083, 85275, 87471, 89666, 91865, 94057, 96250, 98445, 100640, 102835, 105032, 107225, 109416, 111611, 113805, 116000, 118194, 120390, 122582, 124777, 126971, 129169]# noqa: E501
+    # 幻影爆炸攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 4
+    # 幻影爆炸攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 每次爆炸队员生命值恢复量 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [范围信息]
+    # 爆炸大小比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
+    def vp_1(self):
+        """
+        [击电奔星]\n
+        分身在穿透敌人后， 在最大移动距离处爆炸\n
+        - 角色不再突进\n
+        - 分身突进和爆炸距离 -20%\n
+        - 分身爆炸范围 +30%\n
+        技能进程速度 -20%
+        """
+        ...
 
-# 聚能念气炮 흡기공탄
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/506e7ed77d517419a6e1c437a2cedb17?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill26(ActiveSkill):
+    def vp_2(self):
+        """
+        [击电奔星]\n
+        与分身一起突进\n
+        变更为单次攻击\n
+        - 总攻击力相同\n
+        使被命中的敌人进入眩晕异常状态， 效果持续5秒
+        """
+        ...
+
+# 聚能念气炮
+# fighter_female/nenmaster_female/506e7ed77d517419a6e1c437a2cedb17
+# a7a059ebe9e6054c0644b40ef316d6e9/506e7ed77d517419a6e1c437a2cedb17
+class Skill44(ActiveSkill):
+    """
+        聚集念气波使之爆炸， 并向前方发射强力的念气炮。
+    """
     name = "聚能念气炮"
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cube = 5
     cd = 45
     mp = [800, 6000]
     uuid = "506e7ed77d517419a6e1c437a2cedb17"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 20821, 22935, 25045, 27158, 29269, 31383, 33493, 35605, 37717, 39832, 41944, 44050, 46169, 48278, 50390, 52499, 54613, 56723, 58837, 60946, 63058, 65170, 67282, 69394, 71504, 73619, 75732, 77843, 79957, 82066, 84179, 86288, 88403, 90515, 92627, 94738, 96852, 98966, 101076, 103189, 105300, 107414, 109522, 111636, 113744, 115861, 117970, 120083, 122195, 124308]# noqa: E501
+    # 攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 5
+    # 多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [范围信息]
+    # 能量波大小比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
+    def vp_1(self):
+        """
+        [聚能念气炮]\n
+        生成2个分身， 代替发射聚能念气炮\n
+        攻击范围 +30%
+        """
+        ...
 
-# 念帝旋天破 광휘의 넨
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/5dc7008b12a459325b548b0715c6b73c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill27(ActiveSkill):
+    def vp_2(self):
+        """
+        [聚能念气炮]\n
+        发射追踪型念气珠\n
+        发射念气珠的同时， 为自身生成保护型念气珠\n
+        - 追踪型念气珠 : 3秒内攻击最强敌人\n
+        - 寻敌范围 : 角色前方800px\n
+        - 保护型念气珠 : [乱舞 · 千叶花]技能剩余冷却时间 -50%
+        """
+        ...
+
+# 念帝旋天破
+# fighter_female/nenmaster_female/5dc7008b12a459325b548b0715c6b73c
+# a7a059ebe9e6054c0644b40ef316d6e9/5dc7008b12a459325b548b0715c6b73c
+class Skill45(ActiveSkill):
+    """
+        跳到空中聚集念气能量， 然后强力释放， 对敌人造成大伤害， 使其进入感电状态。\n
+        按住技能键可进行蓄气， 蓄气时间越久， 攻击范围越大。\n
+        强力释放时， 攻击力与蓄气无关。
+    """
     name = "念帝旋天破"
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 4 #TODO
+    position = 4
     rangeLv = 5
     cube = 10
     cd = 180
     mp = [2500, 5000]
     uuid = "5dc7008b12a459325b548b0715c6b73c"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 攻击范围 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 达到蓄气上限时， 攻击范围 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 蓄气时间上限 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 感电几率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 感电持续时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 感电攻击力 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
-    data0 = [0, 233033, 287068, 341106, 395142, 449179, 503215, 557252, 611287, 665322, 719361, 773398, 827435, 881469, 935504, 989537, 1043574, 1097610, 1151645, 1205683, 1259718, 1313757, 1367795, 1421829, 1475866, 1529905, 1583939, 1637974, 1692010, 1746048, 1800083, 1854117, 1908152, 1962186, 2016230, 2070264, 2124298, 2178334, 2232371, 2286405, 2340445, 2394480, 2448516, 2502552, 2556586, 2610626, 2664664, 2718700, 2772734, 2826769, 2880802]# noqa: E501
-    hit0 = 1 #TODO
-
-# 念气归元 의지를 담은 넨
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/5cac3411ccef1af333953e0ded5e942d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill28(PassiveSkill):
+# 念气归元
+# fighter_female/nenmaster_female/5cac3411ccef1af333953e0ded5e942d
+# a7a059ebe9e6054c0644b40ef316d6e9/5cac3411ccef1af333953e0ded5e942d
+class Skill46(PassiveSkill):
+    """
+        将意志注入念气之中， 用意志控制念气， 从而实现更高境界的念气操控。\n
+        增加基本攻击力和转职技能攻击力， 部分技能附加额外效果。\n
+        [幻影爆碎] : 不会减少分身的生成距离间隔。\n
+        删除再次输入技能键功能， 施放时会向探索范围内级别最高的怪物突进并爆炸。 范围内没有敌人时，无法施放技能。\n
+        [念气环绕] : 施放转职攻击技能时， 念气珠自动飞向范围内级别最高的怪物并爆炸。
+    """
     name = "念气归元"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 3
     uuid = "5cac3411ccef1af333953e0ded5e942d"
-
-    data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
-
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本攻击力和转职技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # [幻影爆碎]搜寻敌人范围 : {value1}px
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [念气环绕]搜寻敌人范围 : {value2}px
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [念气环绕]爆炸攻击力 : 每个念气珠攻击力的400%
+    # 念气珠发射后再次生成间隔 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     associate = [
         {"type":"*skillRation","data":data0}
     ]
 
-
-# 天雷分身步 천뢰분신보
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/85f7c810ad503790e8626439fe936d56?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill29(ActiveSkill):
+# 天雷分身步
+# fighter_female/nenmaster_female/85f7c810ad503790e8626439fe936d56
+# a7a059ebe9e6054c0644b40ef316d6e9/85f7c810ad503790e8626439fe936d56
+class Skill47(ActiveSkill):
+    """
+        向前方全力突进后， 与召唤的分身一起向周围进行多次乱舞攻击。\n
+    乱舞攻击结束后， 与分身一起将念之力凝聚于一点后引爆。
+    """
     name = "天雷分身步"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cube = 7
     cd = 60
     mp = [833, 1667]
     uuid = "85f7c810ad503790e8626439fe936d56"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 突进攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 乱舞攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 10
+    # 乱舞多段攻击次数 : {value2}次
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 爆炸攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
 
-    data0 = [0, 36589, 40302, 44012, 47722, 51435, 55147, 58860, 62571, 66282, 69992, 73704, 77417, 81128, 84840, 88550, 92264, 95976, 99688, 103398, 107108, 110821, 114533, 118244, 121956, 125666, 129378, 133093, 136804, 140515, 144226, 147939, 151650, 155362, 159073, 162784, 166496, 170208, 173920, 177631, 181343, 185055, 188768, 192477, 196188, 199900, 203612, 207326, 211035, 214748, 218459]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 5490, 6046, 6606, 7162, 7718, 8275, 8831, 9387, 9944, 10501, 11057, 11615, 12172, 12730, 13286, 13841, 14399, 14954, 15510, 16070, 16625, 17182, 17739, 18295, 18851, 19410, 19967, 20525, 21078, 21634, 22192, 22750, 23305, 23863, 24420, 24977, 25536, 26090, 26646, 27204, 27760, 28316, 28873, 29432, 29988, 30544, 31099, 31658, 32214, 32771]# noqa: E501
-    hit1 = 10 #TODO
-
-    data2 = [0, 91468, 100747, 110028, 119307, 128584, 137864, 147145, 156422, 165702, 174980, 184261, 193538, 202819, 212096, 221376, 230656, 239935, 249213, 258492, 267771, 277052, 286330, 295610, 304887, 314168, 323446, 332725, 342004, 351284, 360564, 369842, 379120, 388402, 397679, 406959, 416237, 425516, 434795, 444076, 453353, 462632, 471913, 481192, 490470, 499749, 509028, 518308, 527586, 536867, 546143]# noqa: E501
-    hit2 = 1 #TODO
-
-
-# 念印幻流破 염인환류파 - 천지개벽
-# https://api.neople.co.kr/df/skills/a7a059ebe9e6054c0644b40ef316d6e9/002cbdd9bfd0f0b970451ae8d48d029e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill30(ActiveSkill):
+# 念印幻流破
+# fighter_female/nenmaster_female/002cbdd9bfd0f0b970451ae8d48d029e
+# a7a059ebe9e6054c0644b40ef316d6e9/002cbdd9bfd0f0b970451ae8d48d029e
+class Skill48(ActiveSkill):
+    """
+        将自身的意志注入存在于天地万物的念气之中， 幻化为念花中绽放的念兽龙的形态后释放。\n
+        依次释放承载意志大地之念幻化的黄色念兽龙， 以及承载意志的天空之念幻化的蓝色念兽龙。\n
+        操控释放的念兽龙横扫周围一切， 然后为身体注入极致的念气力量， 与念兽龙联合发动终结攻击。\n
+    [三次觉醒技能]\n
+        施放三次觉醒技能时， 与关联的技能共享冷却时间。\n
+        若关联的技能还在冷却中， 则无法施放三次觉醒技能。
+    """
     name = "念印幻流破"
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 5
     cube = 15
     cd = 290
     mp = [4028, 4028]
     uuid = "002cbdd9bfd0f0b970451ae8d48d029e"
-
-    data0 = [0, 11942, 14712, 17480, 20248, 23017, 25789, 28557, 31325, 34094, 36861, 39631, 42402, 45169, 47938, 50710, 53477, 56246, 59015, 61781, 64551, 67318, 70089, 72858, 75626, 78396, 81166, 83934, 86704, 89472, 92240, 95008, 97777, 100546, 103315, 106085, 108853, 111624, 114392, 117160, 119928, 122696, 125466, 128235, 131002, 133773, 136543, 139312, 142081, 144850, 147617]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 黄色念兽龙横扫攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 5
-
-    data1 = [0, 11942, 14712, 17480, 20248, 23017, 25789, 28557, 31325, 34094, 36861, 39631, 42402, 45169, 47938, 50710, 53477, 56246, 59015, 61781, 64551, 67318, 70089, 72858, 75626, 78396, 81166, 83934, 86704, 89472, 92240, 95008, 97777, 100546, 103315, 106085, 108853, 111624, 114392, 117160, 119928, 122696, 125466, 128235, 131002, 133773, 136543, 139312, 142081, 144850, 147617]# noqa: E501
-    hit1 = 5
-
-    data2 = [0, 119409, 147098, 174788, 202476, 230165, 257853, 285544, 313230, 340919, 368608, 396298, 423986, 451673, 479362, 507050, 534739, 562429, 590118, 617804, 645493, 673182, 700872, 728561, 756250, 783937, 811627, 839315, 867004, 894692, 922381, 950072, 977760, 1005447, 1033136, 1060824, 1088512, 1116202, 1143890, 1171579, 1199267, 1226957, 1254645, 1282334, 1310023, 1337712, 1365400, 1393089, 1420777, 1448466, 1476153]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 119409, 147098, 174788, 202476, 230165, 257853, 285544, 313230, 340919, 368608, 396298, 423986, 451673, 479362, 507050, 534739, 562429, 590118, 617804, 645493, 673182, 700872, 728561, 756250, 783937, 811627, 839315, 867004, 894692, 922381, 950072, 977760, 1005447, 1033136, 1060824, 1088512, 1116202, 1143890, 1171579, 1199267, 1226957, 1254645, 1282334, 1310023, 1337712, 1365400, 1393089, 1420777, 1448466, 1476153]# noqa: E501
-    hit3 = 1 #TODO
-
-    data4 = [0, 238817, 294194, 349572, 404949, 460326, 515704, 571082, 626458, 681835, 737215, 792591, 847968, 903345, 958721, 1014099, 1069476, 1124854, 1180231, 1235608, 1290986, 1346364, 1401742, 1457120, 1512497, 1567874, 1623249, 1678628, 1734005, 1789382, 1844759, 1900138, 1955514, 2010892, 2066271, 2121648, 2177023, 2232402, 2287777, 2343155, 2398532, 2453910, 2509288, 2564665, 2620045, 2675420, 2730797, 2786174, 2841552, 2896930, 2952306]# noqa: E501
-    hit4 = 1 #TODO
+    # 黄色念兽龙横扫多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 蓝色念兽龙横扫攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 5
+    # 蓝色念兽龙横扫多段攻击次数 : {value3}次
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 助跑后第一次踢击攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 1
+    # 第二次踢击攻击力 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    hit5 = 1
+    # 最后一击爆炸攻击力 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    hit6 = 1
 
 
 class classChange(Character):
@@ -617,6 +1254,10 @@ class classChange(Character):
         self.name = 'nenmaster_female'
         self.nameCN = '归元·气功师'
         self.role = 'fighter_female'
+        self.角色 = '格斗家(女)'
+        self.职业 = '气功师'
+        self.jobId = 'a7a059ebe9e6054c0644b40ef316d6e9'
+        self.jobGrowId = '37495b941da3b1661bc900e68ef3b2c6'
 
         self.武器选项 = ['手套', '臂铠','爪','东方棍']
         self.输出类型选项 = ['魔法百分比']
@@ -625,9 +1266,4 @@ class classChange(Character):
         self.防具类型 = '布甲'
         self.buff = 1.628*1.21
 
-        self.角色 = '格斗家(女)'
-
-        self.职业 = '气功师'
-
         super().__init__(equVersion, __name__)
-

@@ -82,7 +82,6 @@ class Skill2(ActiveSkill):
     rangeLv = 1
     mp = [1, 1]
     uuid = "7822d6d52e10964a6755f142c666b494"
-    icon = "$common/$uuid"
     hasVP = False
     hasUP = False
     custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
@@ -103,7 +102,6 @@ class Skill3(PassiveSkill):
     position = 1 #TODO
     rangeLv = 1
     uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
-    icon = "$common/$uuid"
     hasVP = False
     hasUP = False
     custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
@@ -134,7 +132,6 @@ class Skill4(ActiveSkill):
     cd = 5
     mp = [1, 1]
     uuid = "ce26c6b69d02a440a81b552bec94f03b"
-    icon = "$common/$uuid"
     hasVP = False
     hasUP = False
     custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
@@ -164,7 +161,6 @@ class Skill5(PassiveSkill):
     position = 0 #TODO
     rangeLv = 1
     uuid = "892ef624d8bf3d7fc045f84825fd6104"
-    icon = "$common/$uuid"
     hasVP = False
     hasUP = False
     custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
@@ -673,7 +669,6 @@ class Skill16(PassiveSkill):
     rangeLv = 1
     cd = 30
     uuid = "2b340542e776818b78f3212af184bd6b"
-    icon = "$common/$uuid"
     hasVP = False
     hasUP = False
     custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
@@ -702,7 +697,6 @@ class Skill17(ActiveSkill):
     cd = 5
     mp = [13, 13]
     uuid = "1fea5a626f15230237946a11a9d11582"
-    icon = "$common/$uuid"
     hasVP = False
     hasUP = False
     custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
