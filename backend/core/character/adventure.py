@@ -196,7 +196,7 @@ adv = [
         'children': [
             {'id': 0, 'name': 'muse', 'title': '聆风·缪斯', 'open': False},
             {'id': 1, 'name': 'traveler', 'title': '聆风·旅人', 'open': False},
-            {'id': 2, 'name': 'hunter', 'title': '聆风·猎人', 'open': False},
+            {'id': 2, 'name': 'hunter', 'title': '聆风·猎人', 'open': True, 'class': 'GF.archer.hunter'},
             {'id': 3, 'name': 'vigilante', 'title': '聆风·妖护使', 'open': False},
             {'id': 4, 'name': 'chimera', 'title': '聆风·奇美拉', 'open': True, 'class': 'GF.archer.chimera'},
         ],
