@@ -19,7 +19,7 @@ class Skill1(ActiveSkill):
     mp = [126, 975]
     uuid = "9dda3f4a849dba1a288dd65e116860f2"
     hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     damage = False
 
@@ -38,7 +38,7 @@ class Skill2(ActiveSkill):
     mp = [22, 119]
     uuid = "bb34e8854a93fd250347a1c64119f7ab"
     hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     damage = False
 
@@ -231,7 +231,7 @@ class Skill13(ActiveSkill):
     mp = [357, 2765]
     uuid = "3c5604bdbb0240b8f130f59ab40509c3"
     hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     data0 = [0, 960, 1114, 1266, 1418, 1572, 1724, 1876, 2030, 2184, 2336, 2490, 2642, 2794, 2948, 3100, 3254, 3407, 3560, 3713, 3866]# noqa: E501
     hit0 = 1 #TODO
@@ -251,7 +251,7 @@ class Skill14(ActiveSkill):
     mp = [357, 2765]
     uuid = "d0cdaca82892e54097f22a1f60817048"
     hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     data0 = [0, 960, 1114, 1266, 1418, 1572, 1724, 1876, 2030, 2184, 2336, 2490, 2642, 2794, 2948, 3100, 3254, 3407, 3560, 3713, 3866]# noqa: E501
     hit0 = 1 #TODO

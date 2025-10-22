@@ -327,7 +327,7 @@ class Skill11(ActiveSkill):
     maxLv = 11
     position = 6 #TODO
     rangeLv = 3
-    cd = [20, 19.5, 19, 18.5, 18, 17.5, 17, 16.5, 16, 15.5, 15]
+    cds = [0, 20, 19.5, 19, 18.5, 18, 17.5, 17, 16.5, 16, 15.5, 15]
     mp = [85, 146]
     uuid = "f2fb27162beb0b87a7cb9af7900e95f2"
     hasVP = False
@@ -355,6 +355,10 @@ class Skill11(ActiveSkill):
     # 生命值最小恢复范围 : {value8}px
     data8 = get_data(f'{prefix}/{uuid}', 8)
     # 在最小恢复范围外不会获得恢复。
+
+    def getSkillCD(self, mode=None):
+        self.cd = self.cds[self.lv]
+        return super().getSkillCD(mode)
 
 # 强化 - 后跳
 # archer/traveler/2b340542e776818b78f3212af184bd6b

@@ -215,7 +215,7 @@ class Skill13(ActiveSkill):
     mp = [45, 392]
     uuid = "8f73f243041c2d27739fe7696f02bf9b"
     hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     data2 = [0, 765, 842, 920, 998, 1076, 1154, 1231, 1309, 1389, 1464, 1542, 1620, 1697, 1777, 1853, 1931, 2009, 2084, 2164, 2242, 2317, 2395, 2472, 2552, 2630, 2706, 2785, 2865, 2941, 3019, 3094, 3172, 3252, 3329, 3407, 3485, 3562, 3641, 3720, 3796, 3873, 3951, 4029, 4107, 4182, 4260, 4342, 4417, 4495, 4571, 4648, 4728, 4804, 4882, 4959, 5039, 5117, 5194, 5272, 5350, 5426, 5505, 5581, 5659, 5738, 5816, 5894, 5972, 6049, 6129]# noqa: E501
     hit2 = 8
@@ -266,7 +266,7 @@ class Skill16(ActiveSkill):
     mp = [20, 160]
     uuid = "de3fea2d65c597f4d55c70a02b97fc79"
     hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     data1 = [0, 1936, 2134, 2329, 2526, 2723, 2921, 3116, 3313, 3511, 3706, 3903, 4099, 4296, 4491, 4689, 4884, 5083, 5280, 5476, 5673, 5868, 6066, 6261, 6458, 6654, 6851, 7047, 7244, 7443, 7638, 7835, 8031, 8228, 8424, 8621, 8816, 9013, 9211, 9406, 9603, 9801, 9998, 10193, 10390, 10588, 10783, 10980, 11176, 11373, 11569, 11766, 11965, 12160, 12357, 12553, 12750, 12946, 13143, 13338, 13535, 13731, 13928, 14124, 14323, 14520, 14715, 14912, 15108, 15305, 15501]# noqa: E501
     hit1 = 1
@@ -333,7 +333,7 @@ class Skill21(ActiveSkill):
     mp = [252, 252]
     uuid = "5dc7008b12a459325b548b0715c6b73c"
     hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     def skillInfo(self, mode = None):
         pre = self.char.GetSkillByName("溃灭射击").skillInfo()
@@ -369,7 +369,7 @@ class Skill23(ActiveSkill):
     cd = 13.9
     uuid = "3d8f3d438405d79f8d3ed68072674d1e"
     hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     def skillInfo(self, mode = None):
         pre = self.char.GetSkillByName("溃灭射击").skillInfo()
