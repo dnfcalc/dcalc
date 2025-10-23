@@ -492,8 +492,8 @@ def suit_48(char: CharacterProperty):
         if char.charEquipInfo[part] is None:
             continue
         num = char.charEquipInfo[part].reinforce
-        if part == '武器':
-            reinforce_3 += num
+        # if part == '武器':
+        #     reinforce_3 += num
         if part in ['上衣', '头肩', '下装', '腰带', '鞋']:
             reinforce_0 += num
         if part in ['手镯', '项链', '戒指']:
@@ -568,8 +568,8 @@ def suit_53(char: CharacterProperty):
         if char.charEquipInfo[part] is None:
             continue
         num = char.charEquipInfo[part].reinforce
-        if part == '武器':
-            reinforce_3 += num
+        # if part == '武器':
+        #     reinforce_3 += num
         if part in ['上衣', '头肩', '下装', '腰带', '鞋']:
             reinforce_0 += num
         if part in ['手镯', '项链', '戒指']:
@@ -647,8 +647,8 @@ def suit_58(char: CharacterProperty):
         if char.charEquipInfo is None:
             continue
         num = char.charEquipInfo[part].reinforce
-        if part == '武器':
-            reinforce_3 += num
+        # if part == '武器':
+        #     reinforce_3 += num
         if part in ['上衣', '头肩', '下装', '腰带', '鞋']:
             reinforce_0 += num
         if part in ['手镯', '项链', '戒指']:
@@ -741,8 +741,8 @@ def suit_63(char: CharacterProperty):
         if char.charEquipInfo[part] is None:
             continue
         num = char.charEquipInfo[part].reinforce
-        if part == '武器':
-            reinforce_3 += num
+        # if part == '武器':
+        #     reinforce_3 += num
         if part in ['上衣', '头肩', '下装', '腰带', '鞋']:
             reinforce_0 += num
         if part in ['手镯', '项链', '戒指']:

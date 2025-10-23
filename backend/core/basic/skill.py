@@ -430,6 +430,7 @@ class BuffSkill(Skill):
     def setUP(self):
         if not self.hasUP:
             return
+        self.char.SetStatus(四维=40)
         if self.up == 1:
             ...
         elif self.up == 2:

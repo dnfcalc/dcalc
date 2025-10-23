@@ -656,7 +656,7 @@ class Character(CharacterProperty):
         if self.max_point >= 2550:
             skillAttack = (self.max_point - 2550) // 70 * 0.01
             buffer =  (self.max_point - 2550) // 70 * 100
-            self.SetStatus(SkillAttack=skillAttack,buffer=buffer)
+            self.SetStatus(SkillAttack=skillAttack,Buffer=buffer)
         return res
 
     def calc_equs(self):
