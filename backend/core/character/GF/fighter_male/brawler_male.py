@@ -256,7 +256,7 @@ class Skill23(ActiveSkill):
     cd = 0.1
     mp = [24, 24]
     hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     uuid = "3fb8395ae3b81bd608e0c4223a8eb534"
 
 
@@ -311,7 +311,7 @@ class Skill26(ActiveSkill):
     mp = [194, 1114]
     uuid = "4b2c90ec226fd40e967875aa5eabefb2"
     hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
 
 # 爪精通 클로 마스터리
@@ -512,7 +512,7 @@ class Skill35(ActiveSkill):
     mp = [60, 252]
     uuid = "e49e57b2e8fbeceb0a2c56a0c63fe6c5"
     hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     hasVP = False
 
     data0 = [0, 17.8, 18.6, 19.4, 20.2, 21, 21.8, 22.6, 23.4, 24.2, 25, 25.8, 26.6, 27.4, 28.2, 29, 29.8, 30.6, 31.4, 32.2, 33]# noqa: E501
