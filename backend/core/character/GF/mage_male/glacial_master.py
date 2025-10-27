@@ -301,7 +301,7 @@ class Skill21(PassiveSkill):
     data2 = get_data(f'{prefix}/{uuid}', 2)
     # 命中率增加 : {value3}%
     data3 = get_data(f'{prefix}/{uuid}', 3)
-    associate = [{"type":"$*PAtkM","data":data0}]
+    associate = [{"type":"$*PAtkM","data":data1}]
 
 # 冰魄旋枪
 # mage_male/glacial_master/547ab2b2bd860d3e37355a9cfbc1077c

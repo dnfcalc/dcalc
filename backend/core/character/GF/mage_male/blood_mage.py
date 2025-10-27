@@ -316,7 +316,10 @@ class Skill17(PassiveSkill):
     # 消耗生命值比率 : 猩红气息消耗量的{value6}%
     # REMOVE: data6 = [0, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]# noqa: E501
     data6 = get_data(f'{prefix}/{uuid}', 6)
-    associate = [{"data":data3,"type":"*cdReduce","skills":["血翼突击","鲜血长枪","猩红狩猎","狱血之牙","绯红之狱","隐行之噬","血翼绽放","死亡之握","血翼蔽空"]}]
+    associate = [
+        {"data":data2,"type":"$*PAtkP"},
+        {"data":data3,"type":"*cdReduce","skills":["血翼突击","鲜血长枪","猩红狩猎","狱血之牙","绯红之狱","隐行之噬","血翼绽放","死亡之握","血翼蔽空"]}
+        ]
 
 # 鲜血之誓
 # mage_male/blood_mage/8b08f9504167a9c0f3a1d29d71b7943e
