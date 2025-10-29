@@ -745,7 +745,7 @@ class Skill34(PassiveSkill):
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 0
     rangeLv = 3
     uuid = "38612d8f2561edc2eb68d5057a837bfa"
     hasVP = False
@@ -779,7 +779,7 @@ class Skill35(ActiveSkill):
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 0
     rangeLv = 5
     cube = 5
     cd = 145

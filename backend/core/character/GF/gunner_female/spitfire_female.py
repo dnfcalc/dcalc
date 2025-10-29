@@ -194,7 +194,7 @@ class Skill23(ActiveSkill):
         if mode == '普通':
             return
         if mode == '强化':
-            self.skillRation *= 1.3
+            self.skillRation *= 1.2
             return
 
 # 超负荷装填
@@ -452,7 +452,7 @@ class Skill32(ActiveSkill):
         if mode == '普通':
             return
         if mode == '强化':
-            self.skillRation *= 1.3
+            self.skillRation *= 1.2
             return
 # 爆裂弹
 # gunner_female/spitfire_female/3c5604bdbb0240b8f130f59ab40509c3
@@ -574,7 +574,7 @@ class Skill35(ActiveSkill):
         if mode == '普通':
             return
         if mode == '强化':
-            self.skillRation *= 1.3
+            self.skillRation *= 1.2
             return
 
 # C4飞弹

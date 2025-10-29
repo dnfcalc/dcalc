@@ -1,126 +1,214 @@
 #1645c45aabb008c98406b3a16447040d
-from core.basic.skill import PassiveSkill, ActiveSkill
+from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
+prefix = "swordman_female/spectre/cn/skillDetail"
 
-# 冥思 냉정함
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/d89f26862e348a801b30bb9fd7125db5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill0(PassiveSkill):
+
+# 冥思
+# swordman_female/spectre/d89f26862e348a801b30bb9fd7125db5
+# 1645c45aabb008c98406b3a16447040d/d89f26862e348a801b30bb9fd7125db5
+class Skill1(PassiveSkill):
+    """
+        进行战斗期间， 将根据连击数按比例增加物理或魔法暴击率。\n
+        增益效果可以重复触发， 但是有触发次数上限。 增益效果重复触发时， 更新现有增益效果的持续时间。
+    """
     name = "冥思"
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 8 #TODO
+    position = 8
     rangeLv = 3
     uuid = "d89f26862e348a801b30bb9fd7125db5"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 触发增益效果所需连击数 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 暴击率增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 暴击率增加上限 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 增益效果持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
 
-
-# 基础精通 기본기 숙련
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/5a56514f35cf0270ae8d6c65f8fefd78?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill1(PassiveSkill):
+# 基础精通
+# swordman_female/spectre/5a56514f35cf0270ae8d6c65f8fefd78
+# 1645c45aabb008c98406b3a16447040d/5a56514f35cf0270ae8d6c65f8fefd78
+class Skill3(PassiveSkill):
+    """
+        增加基本攻击、 前冲攻击、 跳跃攻击、 [浮空击]的攻击力。\n
+        在决斗场中， 增益/减益技能、 被动技能的技能攻击力增加效果对[基础精通]无影响。
+    """
     name = "基础精通"
     learnLv = 1
     masterLv = 115
     maxLv = 200
-    position = 1 #TODO
+    position = 1
     rangeLv = 1
     uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
-    data0 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
+    icon = "$common/$uuid"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本攻击力变化率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 前冲攻击力变化率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 跳跃攻击力变化率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["鬼缚钉"]}]
 
 
-# 刃之心 프로페셔널
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/68062215e75d92575958873ac8ede31a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill2(PassiveSkill):
+# 刃之心
+# swordman_female/spectre/68062215e75d92575958873ac8ede31a
+# 1645c45aabb008c98406b3a16447040d/68062215e75d92575958873ac8ede31a
+class Skill5(PassiveSkill):
+    """
+        不法之地的剑客配备唯一信赖的挚友——刃匣“金刚”。 \n
+        大太刀“黑曜”和小太刀“白牙”收纳于“金刚”之中。 基本攻击变更为刃影专属姿势。
+    """
     name = "刃之心"
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 6 #TODO
+    position = 6
     rangeLv = 3
     uuid = "68062215e75d92575958873ac8ede31a"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-
-# 双重斩 더블 샷
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/9376d04c476cd41d60ed1974ca69ab95?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill3(ActiveSkill):
+# 双重斩
+# swordman_female/spectre/9376d04c476cd41d60ed1974ca69ab95
+# 1645c45aabb008c98406b3a16447040d/9376d04c476cd41d60ed1974ca69ab95
+class Skill6(ActiveSkill):
+    """
+        同时拔出主武器和白牙， 对敌人快速发动2次斩击。 基本攻击过程中使用时， 无需准备姿势， 立即攻击。
+    """
     name = "双重斩"
     learnLv = 1
     masterLv = 60
     maxLv = 70
-    position = 2 #TODO
+    position = 2
     rangeLv = 2
     cd = 4
     mp = [20, 250]
     uuid = "9376d04c476cd41d60ed1974ca69ab95"
-
-    data0 = [0, 1483, 1632, 1782, 1932, 2085, 2236, 2382, 2532, 2685, 2834, 2984, 3134, 3288, 3436, 3587, 3737, 3885, 4040, 4188, 4339, 4492, 4640, 4791, 4939, 5089, 5243, 5389, 5542, 5690, 5842, 5991, 6141, 6294, 6445, 6595, 6744, 6892, 7047, 7198, 7346, 7497, 7644, 7797, 7946, 8096, 8249, 8398, 8550, 8699, 8851, 9000, 9148, 9303, 9454, 9602, 9752, 9901, 10051, 10206, 10353, 10503, 10653, 10802, 10955, 11103, 11254, 11407, 11555, 11707, 11856]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 斩击攻击力 : {value0} x 2
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 2
 
 
-# 鬼缚钉 러스티 네일
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/ef9d26746effee9199b54541f01b8752?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill4(ActiveSkill):
+# 鬼缚钉
+# swordman_female/spectre/ef9d26746effee9199b54541f01b8752
+# 1645c45aabb008c98406b3a16447040d/ef9d26746effee9199b54541f01b8752
+class Skill10(ActiveSkill):
+    """
+        前方一定范围内存在敌人时， 可以施放该技能。\n
+        利用鬼缚珠的魔力生成鬼缚丝， 向范围内的敌人中最强的敌人发射并控制敌人， 然后快速接近并连续攻击敌人。\n
+        技能受[基础精通]的影响， 且可以在空中施放。\n
+        决斗场中无法使用。
+    """
     name = "鬼缚钉"
     learnLv = 5
     masterLv = 1
     maxLv = 1
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cd = 7
     mp = [75, 75]
     uuid = "ef9d26746effee9199b54541f01b8752"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 踢击攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 斩击攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # [范围信息]
+    # 索敌距离 : {value2}px
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 索敌范围 : {value3}px
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 索敌高度 : {value4}px
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
-    data0 = [0, 553]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 1288]# noqa: E501
-    hit1 = 1 #TODO
-
-
-# 回旋勾斩 데인저러스 훅
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/dec8961c485edb02036ba00c789010f0?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill5(ActiveSkill):
+# 回旋勾斩
+# swordman_female/spectre/dec8961c485edb02036ba00c789010f0
+# 1645c45aabb008c98406b3a16447040d/dec8961c485edb02036ba00c789010f0
+class Skill17(ActiveSkill):
+    """
+        向前方大范围挥舞连着鬼缚丝的白牙， 聚拢敌人后， 发动下劈攻击。
+    """
     name = "回旋勾斩"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cd = 8
     mp = [60, 560]
     uuid = "dec8961c485edb02036ba00c789010f0"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 挥击攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 下劈攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    data0 = [0, 2363, 2610, 2846, 3089, 3327, 3567, 3806, 4048, 4286, 4530, 4770, 5008, 5250, 5486, 5731, 5969, 6208, 6450, 6691, 6931, 7169, 7412, 7652, 7891, 8128, 8371, 8610, 8852, 9090, 9333, 9573, 9811, 10052, 10292, 10535, 10775, 11014, 11256, 11494, 11730, 11973, 12214, 12454, 12696, 12935, 13173, 13415, 13654, 13899, 14136, 14377, 14618, 14856, 15094, 15337, 15579, 15815, 16056, 16298, 16541, 16777, 17019, 17260, 17500, 17736, 17978, 18219, 18460, 18702, 18938]# noqa: E501
-    hit0 = 1 #TODO
 
-    data1 = [0, 5851, 6445, 7036, 7633, 8225, 8818, 9416, 10006, 10603, 11194, 11786, 12383, 12974, 13568, 14163, 14761, 15351, 15944, 16541, 17131, 17728, 18318, 18909, 19506, 20099, 20692, 21286, 21881, 22472, 23069, 23666, 24256, 24851, 25440, 26036, 26630, 27220, 27817, 28410, 29005, 29600, 30194, 30785, 31380, 31977, 32564, 33158, 33755, 34345, 34942, 35535, 36127, 36723, 37318, 37912, 38503, 39100, 39690, 40283, 40880, 41470, 42066, 42662, 43255, 43848, 44441, 45035, 45630, 46226, 46813]# noqa: E501
-    hit1 = 1 #TODO
-
-
-
-# 孤勇之志 올드 패션드
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/e36ae35f8964d92e30e33529a65544d7?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill6(PassiveSkill):
+# 孤勇之志
+# swordman_female/spectre/e36ae35f8964d92e30e33529a65544d7
+# 1645c45aabb008c98406b3a16447040d/e36ae35f8964d92e30e33529a65544d7
+class Skill19(PassiveSkill):
+    """
+        为了达到目的， 不惧直面痛苦的过去， 将痛苦化作斗志， 展现出孤勇意志。\n
+        增加独立攻击力， 装备太刀时增加命中率， [疾风斩]附加出血效果。 
+    """
     name = "孤勇之志"
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 6 #TODO
+    position = 6
     rangeLv = 3
     uuid = "e36ae35f8964d92e30e33529a65544d7"
-
-    data0 = [0, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 独立攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 装备太刀时命中率增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [
         {"type":"$*PAtkI","data":data0},
     ]
 
-
-# 封喉丝 블랙아웃
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/f1fdc6c2482ecc510a2a9f04201ba125?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill7(ActiveSkill):
+# 封喉丝
+# swordman_female/spectre/f1fdc6c2482ecc510a2a9f04201ba125
+# 1645c45aabb008c98406b3a16447040d/f1fdc6c2482ecc510a2a9f04201ba125
+class Skill20(ActiveSkill):
+    """
+        该技能可以在空中施放。\n
+        向前方跳跃。 用鬼缚丝缠绕跳跃时撞到的敌人， 封锁其动作， 然后向前方投掷。\n
+        被扔出的敌人砸到地面时产生冲击波， 对其自身和周围敌人造成伤害， 且路径上撞到敌人时也会造成伤害。\n
+        可利用方向键调整突进方向和投掷距离。\n
+        攻击无法抓取的敌人时， 抓住并切断鬼缚丝， 对敌人造成伤害。\n
+        决斗场中不可在空中施放。
+    """
     name = "封喉丝"
     learnLv = 20
     masterLv = 60
@@ -130,329 +218,562 @@ class Skill7(ActiveSkill):
     cd = 8
     mp = [46, 380]
     uuid = "f1fdc6c2482ecc510a2a9f04201ba125"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本投掷的距离 : {value0}px
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 按下方向键时投掷距离 : {value1}px
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 地面冲击波攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 0
+    # 路径碰撞攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 对无法抓取敌人的鬼缚丝切断攻击力 : {value4}
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 1
+    # [范围信息]
+    # 冲击波范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    data0 = [0, 9809, 10802, 11796, 12792, 13789, 14782, 15779, 16777, 17767, 18761, 19759, 20752, 21748, 22743, 23740, 24733, 25730, 26727, 27718, 28716, 29709, 30704, 31700, 32694, 33691, 34685, 35680, 36674, 37669, 38666, 39663, 40652, 41652, 42646, 43641, 44639, 45631, 46624, 47619, 48618, 49611, 50604, 51602, 52598, 53592, 54585, 55583, 56576, 57570, 58567, 59561, 60557, 61554, 62545, 63543, 64537, 65533, 66528, 67524, 68518, 69511, 70509, 71505, 72495, 73493, 74489, 75483, 76478, 77474, 78470]# noqa: E501
-    hit0 = 0
-
-    data1 = [0, 12543, 13818, 15093, 16362, 17636, 18909, 20182, 21454, 22727, 24002, 25274, 26546, 27819, 29089, 30365, 31635, 32907, 34178, 35452, 36723, 37998, 39270, 40540, 41815, 43086, 44363, 45635, 46906, 48181, 49450, 50723, 51998, 53268, 54544, 55818, 57086, 58361, 59634, 60904, 62179, 63454, 64722, 65997, 67271, 68542, 69816, 71089, 72359, 73634, 74907, 76180, 77452, 78727, 79999, 81268, 82545, 83817, 85088, 86363, 87635, 88905, 90180, 91452, 92726, 94000, 95271, 96543, 97816, 99088, 100361]# noqa: E501
-    hit1 = 1
-
-
-
-# 利刃旋风 블렌딩 페인
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/8e1891ddbdd5ebfcc4508ff2090c3e0f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill8(ActiveSkill):
+# 利刃旋风
+# swordman_female/spectre/8e1891ddbdd5ebfcc4508ff2090c3e0f
+# 1645c45aabb008c98406b3a16447040d/8e1891ddbdd5ebfcc4508ff2090c3e0f
+class Skill21(ActiveSkill):
+    """
+        将斗气注入剑中， 强力斩击地面， 然后发动第二次斩击， 生成锋利旋风， 攻击范围内的敌人。
+    """
     name = "利刃旋风"
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 1 #TODO
+    position = 1
     rangeLv = 2
     cd = 6
     mp = [35, 300]
     uuid = "8e1891ddbdd5ebfcc4508ff2090c3e0f"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 第一次斩击攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 第二次斩击攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 旋风多段攻击次数上限 : {value2}次
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 旋风每段攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 5
+    # [范围信息]
+    # 旋风大小比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
-    data0 = [0, 1904, 2098, 2290, 2485, 2678, 2871, 3062, 3259, 3448, 3643, 3834, 4029, 4221, 4415, 4610, 4802, 4996, 5190, 5384, 5576, 5772, 5964, 6159, 6351, 6543, 6739, 6931, 7123, 7318, 7511, 7704, 7893, 8089, 8282, 8474, 8667, 8864, 9056, 9248, 9440, 9636, 9829, 10020, 10215, 10411, 10603, 10795, 10990, 11183, 11376, 11565, 11761, 11954, 12146, 12339, 12534, 12726, 12920, 13112, 13308, 13498, 13692, 13889, 14079, 14273, 14465, 14661, 14853, 15048, 15240]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 2793, 3077, 3359, 3643, 3927, 4211, 4495, 4777, 5059, 5345, 5627, 5909, 6193, 6479, 6763, 7045, 7325, 7609, 7891, 8179, 8459, 8745, 9027, 9313, 9593, 9875, 10159, 10446, 10725, 11011, 11295, 11580, 11863, 12143, 12429, 12714, 12995, 13279, 13564, 13846, 14130, 14411, 14696, 14980, 15263, 15546, 15830, 16114, 16396, 16684, 16961, 17246, 17529, 17814, 18096, 18380, 18663, 18950, 19229, 19514, 19795, 20082, 20364, 20646, 20930, 21218, 21495, 21780, 22064, 22350]# noqa: E501
-    hit1 = 1 #TODO
-
-
-    data2 = [0, 918, 1012, 1102, 1198, 1289, 1380, 1476, 1567, 1661, 1754, 1844, 1943, 2035, 2125, 2218, 2310, 2406, 2499, 2589, 2684, 2778, 2871, 2966, 3060, 3152, 3244, 3335, 3429, 3524, 3616, 3709, 3803, 3895, 3988, 4083, 4175, 4267, 4359, 4452, 4549, 4641, 4733, 4826, 4916, 5012, 5105, 5195, 5290, 5384, 5476, 5571, 5661, 5760, 5853, 5943, 6037, 6130, 6220, 6317, 6409, 6504, 6596, 6686, 6780, 6873, 6968, 7060, 7152, 7247, 7339]# noqa: E501
-    hit2 = 5
-
-
-# 追踪术 트레이스
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/c39c703f72d289fcd5a8f182068140d4?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill9(ActiveSkill):
+# 追踪术
+# swordman_female/spectre/c39c703f72d289fcd5a8f182068140d4
+# 1645c45aabb008c98406b3a16447040d/c39c703f72d289fcd5a8f182068140d4
+class Skill22(ActiveSkill):
+    """
+        释放鬼缚珠的魔力， 获取追踪目标所需要的信息。\n
+        增加自身基本攻击力、 技能攻击力、 移动速度和[鬼缚钉]的索敌范围。
+    """
     name = "追踪术"
     learnLv = 25
     masterLv = 10
     maxLv = 20
-    position = 6 #TODO
+    position = 6
     rangeLv = 3
     cd = 5
-    mp = [126, 975]
     uuid = "c39c703f72d289fcd5a8f182068140d4"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 基本攻击力和技能攻击力增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 移动速度增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [鬼缚钉]索敌范围增加率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-    damage = False
-
-
-# 白牙落斩 행오버
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/8c10cefa65364880451e389bb74d3600?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill10(ActiveSkill):
+# 白牙落斩
+# swordman_female/spectre/8c10cefa65364880451e389bb74d3600
+# 1645c45aabb008c98406b3a16447040d/8c10cefa65364880451e389bb74d3600
+class Skill23(ActiveSkill):
+    """
+        该技能可以在空中施放。\n
+        在白牙上挂上鬼缚丝， 向天花板掷出， 然后跳起。 到达最高点的瞬间， 拔出白牙， 发动强力下斩。\n
+        按下方向键可落回原地； 按向前方向键， 可落到更远的地方。\n
+        倒地和空中被击时也可以施放该技能， 此时进入无敌状态。\n
+        决斗场中不可在空中、 倒地或空中被击时使用。
+    """
     name = "白牙落斩"
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cd = 10
     mp = [44, 375]
     uuid = "8c10cefa65364880451e389bb74d3600"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本下落移动距离 : {value0}px
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 按向前方向键时下落移动距离 : {value1}px
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 下斩攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-    data0 = [0, 13736, 15130, 16524, 17921, 19310, 20703, 22100, 23491, 24888, 26279, 27674, 29067, 30457, 31851, 33247, 34639, 36033, 37429, 38820, 40214, 41609, 43002, 44396, 45790, 47182, 48579, 49968, 51364, 52758, 54150, 55544, 56940, 58332, 59724, 61122, 62512, 63908, 65300, 66696, 68088, 69477, 70876, 72267, 73663, 75057, 76452, 77843, 79235, 80633, 82025, 83419, 84813, 86207, 87599, 88990, 90387, 91781, 93168, 94568, 95958, 97354, 98746, 100142, 101534, 102925, 104320, 105713, 107110, 108501, 109896]# noqa: E501
-    hit0 = 1 #TODO
-
-
-
-# 疾刃之影 섀터드 글래스
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/38805520deffc10fac2e8f881ab7682b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill11(ActiveSkill):
+# 疾刃之影
+# swordman_female/spectre/38805520deffc10fac2e8f881ab7682b
+# 1645c45aabb008c98406b3a16447040d/38805520deffc10fac2e8f881ab7682b
+class Skill24(ActiveSkill):
+    """
+        冷静地蓄力后， 拔刀斩击周围敌人， 留下锐利剑痕。
+    """
     name = "疾刃之影"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 2 #TODO
+    position = 2
     rangeLv = 2
     cd = 8
     mp = [61, 640]
     uuid = "38805520deffc10fac2e8f881ab7682b"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 剑痕攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    data0 = [0, 11932, 13141, 14351, 15565, 16774, 17984, 19195, 20405, 21619, 22826, 24038, 25247, 26459, 27669, 28881, 30090, 31300, 32512, 33721, 34932, 36145, 37354, 38564, 39773, 40987, 42196, 43406, 44616, 45830, 47039, 48248, 49458, 50668, 51882, 53093, 54301, 55512, 56724, 57933, 59145, 60352, 61566, 62778, 63986, 65195, 66407, 67618, 68830, 70040, 71249, 72461, 73671, 74878, 76094, 77302, 78511, 79722, 80937, 82146, 83354, 84568, 85777, 86989, 88196, 89408, 90618, 91827, 93039, 94250, 95458]# noqa: E501
-    hit0 = 1 #TODO
-
-
-
-# 薄暮利刃 딥 더스크
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/66a9967e677651d0def34c475795ccde?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill12(ActiveSkill):
+# 薄暮利刃
+# swordman_female/spectre/66a9967e677651d0def34c475795ccde
+# 1645c45aabb008c98406b3a16447040d/66a9967e677651d0def34c475795ccde
+class Skill25(ActiveSkill):
+    """
+        快速拔出黑曜， 发动多段攻击击倒前方敌人。\n
+        除[回旋十字刃]和觉醒系列技能之外的转职技能命中敌人时， 可以强制中断并立即施放该技能。\n
+        决斗场中， 无法强制中断并立即施放该技能。
+    """
     name = "薄暮利刃"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cd = 9
     mp = [70, 700]
     uuid = "66a9967e677651d0def34c475795ccde"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 多段攻击次数上限 : {value0}次
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 每段攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 5
+    # [范围信息]
+    # 攻击范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    data0 = [0, 2742, 3021, 3298, 3578, 3854, 4129, 4410, 4685, 4967, 5244, 5525, 5800, 6079, 6358, 6635, 6912, 7191, 7468, 7747, 8026, 8301, 8582, 8860, 9141, 9416, 9692, 9972, 10248, 10528, 10807, 11084, 11363, 11642, 11915, 12196, 12473, 12755, 13030, 13308, 13588, 13864, 14144, 14423, 14703, 14977, 15256, 15535, 15810, 16089, 16369, 16646, 16925, 17202, 17478, 17758, 18035, 18316, 18593, 18870, 19150, 19426, 19706, 19984, 20259, 20539, 20818, 21094, 21374, 21651, 21930]# noqa: E501
-    hit0 = 5
-
-
-# 刃之决意 빈티지
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/b69d38bcddd41b3566c6d5cf78d060bb?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill13(PassiveSkill):
+# 刃之决意
+# swordman_female/spectre/b69d38bcddd41b3566c6d5cf78d060bb
+# 1645c45aabb008c98406b3a16447040d/b69d38bcddd41b3566c6d5cf78d060bb
+class Skill26(PassiveSkill):
+    """
+        长期以来多次执行任务， 比任何工具和方法都能更有效地磨炼剑术。\n
+        增加暴击攻击力； 装备太刀时， 可增加暴击率。
+    """
     name = "刃之决意"
     learnLv = 35
     masterLv = 10
     maxLv = 20
-    position = 6 #TODO
+    position = 6
     rangeLv = 3
     uuid = "b69d38bcddd41b3566c6d5cf78d060bb"
-
-    data0 = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 暴击攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 装备太刀时暴击率增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     associate = [
         {"type":"*skillRation","data":data0},
     ]
 
-
-# 黑夜之花 와일드 플라워
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/030663e99462f628b4c9f813e1406c4e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill14(ActiveSkill):
+# 黑夜之花
+# swordman_female/spectre/030663e99462f628b4c9f813e1406c4e
+# 1645c45aabb008c98406b3a16447040d/030663e99462f628b4c9f813e1406c4e
+class Skill27(ActiveSkill):
+    """
+        将主武器和白牙交叉， 然后向反方向快速斩击。\n
+        斩击范围内产生冲击波， 对路径内的敌人造成连续攻击。
+    """
     name = "黑夜之花"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 1 #TODO
+    position = 1
     rangeLv = 2
     cd = 14
     mp = [156, 822]
     uuid = "030663e99462f628b4c9f813e1406c4e"
-    vps = [
-          {
-            "name": "大弧斩",
-            "desc": "变更为收刀术系列技能<br/>攻击力和冷却时间增加",
-            "explain": "[黑夜之花]<br/>收刀后向前方大幅挥斩<br/>- 变更为收刀术系列技能<br/>- 无法维持准备动作<br/>- 删除起始斩击和剑风<br/>- 基本冷却时间变更为24.5秒<br/>- 收刀攻击力为攻击力总和的175%"
-          },
-          {
-            "name": "惩戒",
-            "desc": "无敌强化<br/>范围增加<br/>所受伤害减少",
-            "explain": "[黑夜之花]<br/>学习[夜色敌意]后， 施放时立即进入无敌状态， 持续时间上限变更为1.2秒<br/><br/>准备动作维持时间越长， 剑风范围越大 (最多40%)<br/><br/>[招架]<br/>所受伤害减少率 + 50%"
-          }
-        ]
-    data0 = [0, 2705, 2979, 3254, 3527, 3800, 4074, 4349, 4623, 4898, 5171, 5447, 5721, 5996, 6270, 6545, 6821, 7097, 7368, 7644, 7919, 8192, 8468, 8742, 9014, 9288, 9563, 9837, 10112, 10386, 10659, 10935, 11208, 11484, 11759, 12032, 12308, 12579, 12855, 13131, 13403, 13679, 13952, 14226, 14501, 14777, 15051, 15324, 15600, 15875, 16148, 16424, 16697, 16973, 17247, 17520, 17796, 18068, 18344, 18618, 18890, 19166, 19440, 19715, 19988, 20264, 20538, 20811, 21087, 21360, 21635]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 3080, 3393, 3704, 4019, 4330, 4644, 4955, 5266, 5583, 5894, 6207, 6519, 6830, 7143, 7457, 7767, 8081, 8391, 8707, 9018, 9331, 9644, 9955, 10268, 10583, 10892, 11208, 11518, 11834, 12145, 12457, 12770, 13084, 13394, 13708, 14018, 14332, 14642, 14958, 15272, 15584, 15896, 16207, 16521, 16835, 17146, 17456, 17770, 18081, 18397, 18707, 19019, 19332, 19647, 19960, 20272, 20584, 20897, 21208, 21522, 21832, 22146, 22459, 22771, 23082, 23397, 23707, 24025, 24335, 24648]# noqa: E501
-    hit1 = 5
-    # TODO：变更伤害
+    # 起始斩击攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 冲击波多段攻击次数上限 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 冲击波每段攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 5
+    # [范围信息]
+    # 剑风攻击范围比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+
     def vp_1(self):
+        """
+        [黑夜之花]\n
+        收刀后向前方大幅挥斩\n
+        - 变更为收刀术系列技能\n
+        - 无法维持准备动作\n
+        - 删除起始斩击和剑风\n
+        - 基本冷却时间变更为24.5秒\n
+        - 收刀攻击力为攻击力总和的175%
+        """
         self.cd = 24.5
         self.skillRation *= 1.75
+        ...
 
-# 回旋十字斩 셰이커 블래스트
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/150aa05b9ee8b9c7c04a25f3e425900c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill15(ActiveSkill):
-    name = "回旋十字斩"
+    def vp_2(self):
+        """
+        [黑夜之花]\n
+        学习[夜色敌意]后， 施放时立即进入无敌状态， 持续时间上限变更为1.2秒\n
+        准备动作维持时间越长， 剑风范围越大 (最多40%)\n
+        [招架]\n
+        所受伤害减少率 +50%
+        """
+        ...
+
+# 回旋十字刃
+# swordman_female/spectre/150aa05b9ee8b9c7c04a25f3e425900c
+# 1645c45aabb008c98406b3a16447040d/150aa05b9ee8b9c7c04a25f3e425900c
+class Skill28(ActiveSkill):
+    """
+        用鬼缚丝牵着白牙发动回旋攻击， 同时跳到空中。 命中时将敌人拉到刃影面前。\n
+        回旋攻击后， 在空中回收白牙， 释放锐利剑气， 攻击范围内的敌人。\n
+        按向前方向键， 可增加前进距离。\n
+        在决斗场中， 无法拉动命中的敌人。
+    """
+    name = "回旋十字刃"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cube = 1
     cd = 16
     mp = [179, 940]
     uuid = "150aa05b9ee8b9c7c04a25f3e425900c"
-    vps = [
-          {
-            "name": "回旋余韵",
-            "desc": "可以在空中施放<br/>施放时间减少<br/>范围增加",
-            "explain": "[回旋十字刃]<br/>可以在空中施放<br/><br/>施放时根据角色位置删除部分动作<br/>- 地面施放时删除终结斩击<br/>- 空中施放时删除回旋斩击<br/>- 总攻击力相同<br/><br/>攻击范围 35%"
-          },
-          {
-            "name": "双重回旋",
-            "desc": "可以再次跳跃<br/>施放时间减少<br/>范围增加",
-            "explain": "[回旋十字刃]<br/>终结斩击后处于空中时， 按跳跃键可以跳跃<br/>- 按向左或右方向键时， 可向相应方向跳跃<br/><br/>旋转斩击攻击速度 + 100%<br/><br/>终结斩击范围 + 50%"
-          }
-        ]
-    data0 = [0, 1416, 1558, 1704, 1846, 1990, 2132, 2276, 2421, 2564, 2708, 2852, 2996, 3140, 3285, 3426, 3572, 3714, 3856, 3999, 4144, 4288, 4431, 4575, 4718, 4863, 5007, 5146, 5294, 5439, 5583, 5726, 5870, 6012, 6154, 6298, 6444, 6586, 6730, 6874, 7016, 7161, 7305, 7450, 7592, 7737, 7880, 8025, 8169, 8308, 8452, 8598, 8742, 8884, 9028, 9171, 9316, 9459, 9603, 9747, 9892, 10034, 10179, 10323, 10467, 10608, 10750, 10894, 11040, 11186, 11328]# noqa: E501
-    hit0 = 5
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 11962, 13176, 14390, 15606, 16816, 18032, 19244, 20457, 21670, 22884, 24096, 25312, 26528, 27738, 28953, 30166, 31382, 32592, 33808, 35024, 36234, 37450, 38662, 39876, 41088, 42302, 43516, 44732, 45944, 47157, 48372, 49582, 50798, 52014, 53228, 54440, 55653, 56868, 58078, 59295, 60508, 61720, 62938, 64149, 65364, 66576, 67788, 69003, 70216, 71432, 72644, 73858, 75072, 76284, 77499, 78712, 79926, 81141, 82354, 83566, 84783, 85994, 87208, 88424, 89632, 90850, 92062, 93276, 94488, 95703]# noqa: E501
-    hit1 = 1
+    # 回旋攻击多段攻击次数上限 : {value0}次
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 回旋攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 5
+    # 终结剑气攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # 技能结束后霸体持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 终结斩击范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
+    def vp_1(self):
+        """
+        [回旋十字刃]\n
+        可以在空中施放\n
+        施放时根据角色位置删除部分动作\n
+        - 地面施放时删除终结斩击\n
+        - 空中施放时删除回旋斩击\n
+        - 总攻击力相同\n
+        攻击范围 +35%
+        """
+        ...
 
-# 夜之风 나이트폴
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/89c505581267af77c6d58dc49b710550?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill16(ActiveSkill):
+    def vp_2(self):
+        """
+        [回旋十字刃]\n
+        终结斩击后处于空中时， 按跳跃键可以跳跃\n
+        - 按向左或右方向键时， 可向相应方向跳跃\n
+        旋转斩击攻击速度 +100%\n
+        终结斩击范围 +50%
+        """
+        ...
+
+# 夜之风
+# swordman_female/spectre/89c505581267af77c6d58dc49b710550
+# 1645c45aabb008c98406b3a16447040d/89c505581267af77c6d58dc49b710550
+class Skill29(ActiveSkill):
+    """
+        该技能可以在空中施放。\n
+        向后翻滚的同时从剑鞘中拔出黑曜， 然后用力下劈， 释放剑风。 剑风对命中的敌人造成多段伤害。\n
+        空中施放时， 落地前可以预输入收刀术系列技能键， 并在落地瞬间发动收刀术。\n
+        决斗场中不可在空中施放。
+    """
     name = "夜之风"
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cube = 1
     cd = 20
     mp = [235, 1974]
     uuid = "89c505581267af77c6d58dc49b710550"
-    vps = [
-          {
-            "name": "夜风低语",
-            "desc": "赋予无敌状态<br/>范围增加",
-            "explain": "[夜之风]<br/>被击和倒地状态下可施放该技能， 此时进入无敌状态<br/><br/>剑风大小和前进距离 + 15%<br/><br/>变更为单次攻击<br/>- 总攻击力相同"
-          },
-          {
-            "name": "黎明",
-            "desc": "无法在空中施放<br/>追加聚集敌人",
-            "explain": "[夜之风]<br/>无法在空中施放<br/><br/>双脚蹬地后， 用黑曜在地面上刮擦产生剑风并突进<br/>- 变更为剑风单次攻击<br/>- 被剑风命中的敌人会被吸附到自己下方<br/>- 在空中向下劈斩结束冲锋<br/>- 总攻击力相同<br/><br/>突进过程中再次按技能键或发动[收刀术]时， 立即在该位置后空翻<br/>- 后空翻并回头下劈后下落<br/>- 预输入[收刀术]时， 会在后空翻后施放"
-          }
-        ]
-    data0 = [0, 8223, 9058, 9892, 10726, 11564, 12396, 13228, 14066, 14900, 15732, 16569, 17403, 18237, 19068, 19905, 20736, 21570, 22408, 23242, 24075, 24910, 25744, 26580, 27414, 28248, 29082, 29918, 30753, 31586, 32422, 33254, 34088, 34924, 35758, 36592, 37425, 38262, 39094, 39928, 40766, 41598, 42430, 43269, 44103, 44932, 45770, 46604, 47438, 48274, 49107, 49940, 50778, 51610, 52444, 53277, 54114, 54950, 55780, 56618, 57450, 58284, 59121, 59955, 60789, 61623, 62457, 63290, 64128, 64960, 65794]# noqa: E501
-    hit0 = 3
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-# 秘术·心斩 라스트 오더
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/a81e5b7defa1819263ed8e86f69fd06f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill17(ActiveSkill):
+    # 黑曜剑风多段攻击次数上限 : {value0}次
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 黑曜剑风每段攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 3
+    # [范围信息]
+    # 剑风大小比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+
+    def vp_1(self):
+        """
+        [夜之风]\n
+        被击和倒地状态下可施放该技能， 此时进入无敌状态\n
+        剑风大小和前进距离 +15%\n
+        变更为单次攻击\n
+        - 总攻击力相同
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [夜之风]\n
+        无法在空中施放\n
+        蹬地后用黑曜划过地面， 向前突进并产生剑风\n
+        - 变更为剑风单次攻击\n
+        - 被剑风命中的敌人会被吸附到自身下方\n
+        - 在空中向下劈斩结束冲锋\n
+        - 总攻击力相同\n
+        突进过程中再次按技能键或发动[收刀术]时， 立即在该位置后空翻\n
+        - 后空翻并回头下劈后下落\n
+        - 预输入[收刀术]时， 会在后空翻结束后施放
+        """
+        ...
+
+# 秘术·心斩
+# swordman_female/spectre/a81e5b7defa1819263ed8e86f69fd06f
+# 1645c45aabb008c98406b3a16447040d/a81e5b7defa1819263ed8e86f69fd06f
+class Skill30(ActiveSkill):
+    """
+    [收刀术系列]\n
+        将黑曜收刀， 精神集中到极致。 然后， 以本人为中心向斜线方向拔刀， 对范围内的敌人发动斩击。\n
+        学习[收刀秘术]后， 可通过[收刀术]发动。
+    """
     name = "秘术·心斩"
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cube = 2
     cd = 40
     mp = [250, 2503]
     uuid = "a81e5b7defa1819263ed8e86f69fd06f"
-    vps = [
-          {
-            "name": "心之蚀",
-            "desc": "赋予无敌状态<br/>强控敌人",
-            "explain": "[秘术·心斩]<br/>施放技能时进入无敌状态<br/><br/>使被命中的敌人进入控制状态， 效果持续1.5秒"
-          },
-          {
-            "name": "脱离",
-            "desc": "施放时间减少<br/>范围增加<br/>赋予速度增益效果",
-            "explain": "[秘术·心斩]<br/>精神集中时间 -50%<br/><br/>收刀术连招成功时范围 + 20%， 20秒内所有速度 + 10%"
-          }
-        ]
-    data0 = [0, 47214, 52006, 56796, 61586, 66376, 71168, 75957, 80745, 85538, 90328, 95115, 99906, 104697, 109486, 114276, 119067, 123858, 128649, 133438, 138230, 143018, 147807, 152595, 157384, 162178, 166970, 171758, 176550, 181340, 186128, 190917, 195710, 200499, 205290, 210080, 214869, 219658, 224448, 229238, 234028, 238821, 243608, 248398, 253190, 257979, 262768, 267561, 272350, 277142, 281931, 286722, 291508, 296300, 301089, 305880, 310670, 315462, 320250, 325042, 329832, 334622, 339411, 344204, 348990, 353781, 358570, 363363, 368151, 372942, 377733]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
+    # 拔刀攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
+    def vp_1(self):
+        """
+        [秘术·心斩]\n
+        发动技能时进入无敌状态\n
+        使被命中的敌人进入控制状态， 效果持续1.5秒
+        """
+        ...
 
-# 收刀秘术 라이선스
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/89a4529234904fcbb3abe289e281f2fd?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill18(PassiveSkill):
+    def vp_2(self):
+        """
+        [秘术·心斩]\n
+        精神集中时间 -50%\n
+        收刀术连招成功时范围 +20%， 20秒内所有速度+10%
+        """
+        ...
+
+# 收刀秘术
+# swordman_female/spectre/89a4529234904fcbb3abe289e281f2fd
+# 1645c45aabb008c98406b3a16447040d/89a4529234904fcbb3abe289e281f2fd
+class Skill31(PassiveSkill):
+    """
+        经过艰苦的修炼， 彻底掌握了收刀术。\n
+        学习后， 增加基本攻击力和技能攻击力； 装备太刀时， 增加攻击速度。 \n
+        部分转职系列技能可以强制中断并立即施放收刀术系列技能。 \n
+        [收刀术]\n
+    -    施放过程中， 可以强制中断并施放[收刀术]系列技能。 \n
+    -    技能被强制中断后的攻击力并入[收刀术]技能。\n
+    -    施放收刀术时， 会出现特殊插画。\n
+    -    收刀术技能 : [秘术·心斩]、 [秘术·曜夜斩]、 [黑曜真刃·破晓]\n
+        部分技能无法发动收刀术或有发动时机限制。 \n
+    -    [白牙落斩]、 [追袭逐影丝] : 在地面上连接鬼缚丝期间可施放收刀术系列技能。\n
+    -    [沉寂之狱]、 [悬丝风暴] : 可根据各技能的[特殊功能]中标明的时机预约发动\n
+    -    无法发动收刀术的技能 : [鬼缚钉]、 [冲击斩]、 [封喉丝]、 [薄暮利刃]、 [回旋十字刃]、 [绚烂之舞]、 [秘术·雨夜终曲]
+    """
     name = "收刀秘术"
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 2 #TODO
+    position = 2
     rangeLv = 3
     uuid = "89a4529234904fcbb3abe289e281f2fd"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本攻击力和技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 装备太刀时攻击速度增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    data0 = [0, 4.5, 6, 7.5, 9, 10.5, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5, 30, 31.5, 33, 34.5, 36, 37.5, 39, 40.5, 42, 43.5, 45, 46.5, 48, 49.5, 51, 52.5, 54, 55.5, 57, 58.5, 60, 61.5, 63, 64.5, 66, 67.5, 69, 70.5, 72, 73.5, 75, 76.5, 78]# noqa: E501
     associate = [
         {"type":"*skillRation","data":data0},
     ]
 
-
-# 沉寂之狱 쇼다운
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/515b442ffbf61a82371abb645c149a31?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill19(ActiveSkill):
+# 沉寂之狱
+# swordman_female/spectre/515b442ffbf61a82371abb645c149a31
+# 1645c45aabb008c98406b3a16447040d/515b442ffbf61a82371abb645c149a31
+class Skill32(ActiveSkill):
+    """
+        释放鬼缚珠的力量， 生成无数鬼缚丝穿透周围敌人， 然后拔出黑曜， 和鬼缚丝一同斩击敌人。\n
+        鬼缚丝攻击期间可预约[收刀术]技能； 预约[收刀术]技能时， 预约的技能也进入无敌状态。
+    """
     name = "沉寂之狱"
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 3 #TODO
+    position = 3
     rangeLv = 5
     cube = 5
     cd = 145
     mp = [900, 7559]
     uuid = "515b442ffbf61a82371abb645c149a31"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 鬼缚丝攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 黑曜拔刀攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
 
-    data0 = [0, 28176, 34710, 41242, 47778, 54312, 60844, 67379, 73913, 80446, 86981, 93514, 100047, 106583, 113116, 119648, 126183, 132718, 139252, 145785, 152319, 158852, 165387, 171920, 178454, 184988, 191521, 198055, 204588, 211122, 217657, 224190, 230724, 237257, 243793, 250325, 256860, 263393, 269925, 276461, 282994, 289529, 296061, 302596, 309130, 315663, 322196, 328731, 335266, 341797, 348331]# noqa: E501
-    hit0 = 1 #TODO
-    data0 = [int(i * 1.1 )if index > 9 else i for index, i in enumerate(data0)]
-
-    data1 = [0, 59735, 73586, 87439, 101289, 115141, 128993, 142844, 156696, 170550, 184399, 198252, 212101, 225954, 239805, 253657, 267509, 281360, 295212, 309064, 322916, 336768, 350620, 364472, 378321, 392174, 406025, 419878, 433730, 447581, 461431, 475283, 489136, 502985, 516838, 530691, 544541, 558393, 572245, 586096, 599950, 613801, 627652, 641501, 655355, 669206, 683058, 696911, 710762, 724613, 738464]# noqa: E501
-    hit1 = 1 #TODO
-    data0 = [int(i * 1.1 )if index > 9 else i for index, i in enumerate(data0)]
-
-
-# 瞬影碎魂击 오버페이스
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/87a918bb22cfc959a16e0bf939bb6c24?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill20(ActiveSkill):
+# 瞬影碎魂击
+# swordman_female/spectre/87a918bb22cfc959a16e0bf939bb6c24
+# 1645c45aabb008c98406b3a16447040d/87a918bb22cfc959a16e0bf939bb6c24
+class Skill33(ActiveSkill):
+    """
+        将身体反射神经和爆发力发挥到极致。 用强有力的踢击踢开前方的敌人， 然后利用后坐力低空跳跃， 向地面连续发射白牙， 攻击并强制控制范围内的敌人。\n
+    然后用剑劈被破坏的地面， 展开终结攻击。\n
+        终结攻击前连接收刀术系列技能， 可以延长强制控制时间。
+    """
     name = "瞬影碎魂击"
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cube = 1
     cd = 25
     mp = [280, 784]
     uuid = "87a918bb22cfc959a16e0bf939bb6c24"
-    vps = [
-          {
-            "name": "碎魂录",
-            "desc": "取消僵直",
-            "explain": "[瞬影碎魂击]<br/>除[回旋十字刃]和觉醒技能之外的转职技能命中时， 可以取消僵直并立即施放[瞬影碎魂击]<br/><br/>[瞬影碎魂击]命中敌人时， 可以取消僵直并立即施放转职技能"
-          },
-          {
-            "name": "漂浮",
-            "desc": "施放时间减少<br/>范围增加",
-            "explain": "[瞬影碎魂击]<br/>第1次踢击后不会进行白牙发射攻击， 立即发动最后一击<br/>- 删除白牙发射攻击<br/>- 白牙终结范围 + 30%<br/>- 总攻击力相同"
-          }
-        ]
-    data0 = [0, 8160, 8988, 9816, 10646, 11472, 12300, 13128, 13956, 14782, 15612, 16443, 17270, 18096, 18926, 19752, 20580, 21408, 22238, 23062, 23892, 24720, 25545, 26376, 27204, 28034, 28858, 29690, 30518, 31342, 32172, 33000, 33828, 34654, 35484, 36314, 37138, 37968, 38796, 39624, 40450, 41280, 42106, 42934, 43764, 44590, 45422, 46246, 47078, 47902, 48732]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 3822, 4208, 4598, 4984, 5368, 5760, 6144, 6534, 6918, 7310, 7698, 8084, 8474, 8859, 9248, 9634, 10023, 10410, 10798, 11188, 11572, 11961, 12346, 12736, 13122, 13512, 13900, 14289, 14673, 15060, 15450, 15837, 16226, 16612, 17002, 17386, 17775, 18162, 18552, 18938, 19326, 19714, 20102, 20490, 20877, 21264, 21651, 22040, 22430, 22814]# noqa: E501
-    hit1 = 3
+    # 踢击攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 白牙发射次数上限 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 白牙发射攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 3
+    # 白牙终结攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
+    # 强制控制延长时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [范围信息]
+    # 最后一击范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    data2 = [0, 19106, 21040, 22982, 24920, 26856, 28798, 30734, 32673, 34610, 36546, 38488, 40422, 42364, 44302, 46240, 48180, 50115, 52056, 53992, 55932, 57867, 59808, 61749, 63684, 65626, 67560, 69500, 71439, 73376, 75314, 77252, 79191, 81132, 83067, 85005, 86944, 88882, 90820, 92758, 94694, 96636, 98574, 100512, 102450, 104388, 106328, 108262, 110200, 112142, 114080]# noqa: E501
-    hit2 = 1 #TODO
+    def vp_1(self):
+        """
+        [瞬影碎魂击]\n
+        除[回旋十字刃]和觉醒技能外的转职技能命中时， 可以强制中断僵直并立即施放[瞬影碎魂击]\n
+        [瞬影碎魂击]命中敌人时， 可以强制中断僵直并立即施放转职技能
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [瞬影碎魂击]\n
+        第1次踢击后不会进行白牙发射攻击， 立即发动最后一击\n
+        - 删除白牙发射攻击\n
+        - 白牙终结范围 +30%\n
+        - 总攻击力相同
+        """
+        ...
 
-
-# 追命索魂丝 불스아이
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/aa51c4ddf1659092fa9ed612b9837061?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill21(ActiveSkill):
-    name = "追命索魂丝"
+# 追袭逐影丝
+# swordman_female/spectre/aa51c4ddf1659092fa9ed612b9837061
+# 1645c45aabb008c98406b3a16447040d/aa51c4ddf1659092fa9ed612b9837061
+class Skill34(ActiveSkill):
+    """
+        向对角线方向发射鬼缚丝并将其固定到天花板上， 然后跳跃并释放剑气， 攻击正面的敌人。\n
+        然后向命中的敌人中最强的敌人发射鬼缚丝， 确定方向后快速落地并发动下斩。\n
+        没有攻击目标时， 向正面最远移动位置发动下斩。
+    """
+    name = "追袭逐影丝"
     learnLv = 70
     masterLv = 40
     maxLv = 50
@@ -462,204 +783,332 @@ class Skill21(ActiveSkill):
     cd = 50
     mp = [756, 1587]
     uuid = "aa51c4ddf1659092fa9ed612b9837061"
-    vps = [
-          {
-            "name": "断魂引",
-            "desc": "施放时间减少<br/>范围增加<br/>初始化[鬼缚钉]的冷却时间",
-            "explain": "[追袭逐影丝]<br/>更快速地搜寻并攻击敌人<br/>- 剑气施放鬼缚丝动作时间 -20%<br/>- 落地等待时间 -50%<br/>- 下斩范围 +20%<br/><br/>使用[追袭逐影丝]时， [鬼缚钉]冷却时间初始化<br/><br/>[鬼缚钉]<br/>攻击力 -12.3%"
-          },
-          {
-            "name": "追魂丝",
-            "desc": "无法在空中施放<br/>无敌强化<br/>攻击失败补正",
-            "explain": "[追袭逐影丝]<br/>无法在空中施放<br/><br/>在白牙上挂上鬼缚丝， 向前方最强敌人掷出， 然后回收鬼缚丝并接近敌人将其踢飞<br/>- 总攻击力相同<br/>- 向敌人突进前可以发动收刀术<br/>- 鬼缚丝未命中时， 冷却时间减少至5秒"
-          }
-        ]
-    data0 = [0, 54244, 59748, 65250, 70752, 76257, 81760, 87267, 92766, 98268, 103773, 109276, 114777, 120282, 125787, 131289, 136790, 142293, 147796, 153303, 158802, 164307, 169809, 175316, 180818, 186318, 191822, 197325, 202830, 208330, 213834, 219338, 224842, 230346, 235848, 241352, 246854, 252354, 257859, 263362, 268868, 274372, 279873, 285374, 290880, 296380, 301882, 307389, 312892, 318396, 323898]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 剑气释放攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-
-    data1 = [0, 23246, 25606, 27963, 30321, 32680, 35037, 37398, 39754, 42116, 44474, 46833, 49192, 51549, 53907, 56268, 58624, 60981, 63342, 65700, 68058, 70413, 72774, 75134, 77492, 79851, 82208, 84566, 86926, 89284, 91646, 93999, 96360, 98721, 101079, 103436, 105796, 108153, 110511, 112870, 115227, 117586, 119943, 122304, 124659, 127020, 129378, 131738, 134096, 136454, 138813]# noqa: E501
+    # 落地下劈攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
-    # TODO：变更伤害
+    # 没有攻击目标时最远移动距离 : {value2}px
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
+    def vp_1(self):
+        """
+        [追袭逐影丝]\n
+        更快速地搜寻并攻击敌人\n
+        - 剑气施放鬼缚丝动作时间 -20%\n
+        - 落地等待时间 -50%\n
+        - 下斩范围 +20%\n
+        使用[追袭逐影丝]时， [鬼缚钉]冷却时间初始化\n
+        [鬼缚钉]\n
+        攻击力 -12.3%
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [追袭逐影丝]\n
+        无法在空中施放\n
+        在白牙上挂上鬼缚丝， 向前方最强敌人掷出， 随后回收鬼缚丝并接近敌人将其踢飞\n
+        - 总攻击力相同\n
+        - 向敌人突进前可以发动收刀术\n
+        - 突进失败时， 冷却时间缩短为5秒
+        """
+        ...
     def effect(self, old, new):
         if self.vp == 1:
             self.associate = [{"type":"*skillRation","data":[0] + [-12.3]*self.maxLv,"skills":["鬼缚钉"]}]
         return super().effect(old, new)
 
-
-# 无情夜行 인퍼머스
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/863295a0fc634cf5fcc01e82a735fd6b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill22(PassiveSkill):
+# 无情夜行
+# swordman_female/spectre/863295a0fc634cf5fcc01e82a735fd6b
+# 1645c45aabb008c98406b3a16447040d/863295a0fc634cf5fcc01e82a735fd6b
+class Skill35(PassiveSkill):
+    """
+        冷酷无情的夜皇， 手中的剑刃没有一丝慈悲。\n
+        增加基本攻击力和转职技能攻击力； 减少除觉醒技能之外的技能冷却时间。
+    """
     name = "无情夜行"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 2 #TODO
+    position = 2
     rangeLv = 3
     uuid = "863295a0fc634cf5fcc01e82a735fd6b"
-
-    data0 = [0, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122]# noqa: E501
-
-    data1 = [0, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]# noqa: E501
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 基本攻击力和技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 技能冷却时间减少率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [
         {"type":"*skillRation","data":data0},
         {"type":"*cdReduce","data":data1,"exceptSkills":['沉寂之狱', '黑曜真刃·破晓', '秘术·雨夜终曲']},
     ]
 
-
-# 秘术·曜夜斩 스트레이트 샷
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/3153ca0e6752a6283412c59c5ec8e002?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill23(ActiveSkill):
+# 秘术·曜夜斩
+# swordman_female/spectre/3153ca0e6752a6283412c59c5ec8e002
+# 1645c45aabb008c98406b3a16447040d/3153ca0e6752a6283412c59c5ec8e002
+class Skill36(ActiveSkill):
+    """
+    [收刀术系列]\n
+        将黑曜收刀后蓄气， 然后向前方拔刀。 剑气划过地面时产生冲击波， 对范围内的敌人造成巨大伤害。\n
+        按向前方向键可向前突进， 对路径上的所有敌人造成伤害。
+    """
     name = "秘术·曜夜斩"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cube = 3
     cd = 40
     mp = [580, 4500]
     uuid = "3153ca0e6752a6283412c59c5ec8e002"
-    vps = [
-          {
-            "name": "曜夜之舞",
-            "desc": "施放时间减少<br/>范围增加<br/>追加聚集敌人",
-            "explain": "[秘术·曜夜斩]<br/>更冷静快速地收刀<br/>- [收刀术]成功连招时， 准备动作时间 -50%<br/>- 按向前方向键时， 增加突进距离<br/>- 剑气攻击范围 + 15%<br/><br/>将攻击命中的敌人中后方的敌人拉到前方"
-          },
-          {
-            "name": "米基·斯利姆",
-            "desc": "可以在空中施放<br/>取消僵直",
-            "explain": "[秘术·曜夜斩]<br/>可以在空中施放<br/><br/>部分技能的空中施放形态可以发动[收刀术]<br/>- [夜之风] : 学习[黎明]后， 不会后空翻， 转身施放[收刀术]<br/>- [白牙落斩] : 鬼缚丝动作中可使用[收刀术]<br/>- [追袭逐影丝] : 鬼缚丝动作中可预输入， 落地时施放[收刀术]； 学习[追魂丝]后， 突进后可施放[收刀术]<br/><br/>可以强制中断命中后僵直并施放[鬼缚钉]<br/>- 连接施放时， 可以通过按方向键转身施放 (包括[薄暮利刃]、 [绚烂之舞])"
-          }
-        ]
-    data0 = [0, 76299, 84040, 91782, 99521, 107263, 115003, 122744, 130484, 138225, 145966, 153707, 161446, 169187, 176928, 184669, 192409, 200149, 207890, 215631, 223371, 231111, 238853, 246592, 254334, 262073, 269815, 277556, 285298, 293037, 300779, 308518, 316261, 324000, 331741, 339481, 347223, 354962, 362704, 370443, 378182, 385924, 393664, 401406, 409144, 416886, 424626, 432369, 440108, 447849, 455588]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
+    # 拔刀攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # [范围信息]
+    # 剑气攻击范围比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-# 悬丝风暴 카타르시스
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/02ac8e048f7bbcfa616e74ac68988872?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill24(ActiveSkill):
+    def vp_1(self):
+        """
+        [秘术·曜夜斩]\n
+        更冷静快速地收刀\n
+        - [收刀术]成功连招时， 准备动作时间 -50%\n
+        - 按向前方向键时， 增加突进距离\n
+        - 剑气攻击范围 +15%\n
+        将攻击命中的敌人中后方的敌人拉到前方
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [秘术·曜夜斩]\n
+        可以在空中施放\n
+        - 可施放高度上限 : 400px\n
+        - 空中施放时， 删除输入前方向键功能\n
+        部分技能空中施放时， 可以发动[收刀术]\n
+        - [夜之风] : 学习[黎明]后， 不会后空翻， 转身施放[收刀术]\n
+        - [白牙落斩] : 鬼缚丝动作中可施放[收刀术]\n
+        - [追袭逐影丝] : 鬼缚丝动作中可预输入， 落地时施放[收刀术]； 学习[追魂丝]后， 突进后也可以施放[收刀术]\n
+        可以强制中断命中后僵直并施放[鬼缚钉]\n
+        - 连接施放时， 可以通过按方向键转身施放 (包括[薄暮利刃]、 [绚烂之舞])
+        """
+        ...
+
+# 悬丝风暴
+# swordman_female/spectre/02ac8e048f7bbcfa616e74ac68988872
+# 1645c45aabb008c98406b3a16447040d/02ac8e048f7bbcfa616e74ac68988872
+class Skill37(ActiveSkill):
+    """
+        快速突进， 将缠着鬼缚丝的白牙插入敌人身体。 然后， 踩着敌人进行跳跃， 将鬼缚丝的张力拉到极限后旋转鬼缚丝， 对目标发动大回旋斩击。 \n
+        大回旋斩击的余波吸附四散的空气， 引发剧烈剑气风暴， 风暴命中时对敌人造成多段伤害， 并将敌人吸附到前方。 
+    """
     name = "悬丝风暴"
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cube = 5
     cd = 50
     mp = [800, 1700]
     uuid = "02ac8e048f7bbcfa616e74ac68988872"
-    vps = [
-          {
-            "name": "悬丝者",
-            "desc": "可以在空中施放<br/>追踪",
-            "explain": "[悬丝风暴]<br/>可以在空中施放<br/><br/>删除突进攻击， 变更为向前方范围内最强的敌人投掷附着鬼缚丝的白牙"
-          },
-          {
-            "name": "全域风暴",
-            "desc": "施放时间减少<br/>范围增加",
-            "explain": "[悬丝风暴]<br/>踩踏敌人跃起， 对周围进行乱斩并引发剑气风暴<br/>- 预输入[收刀术]发动时， 在乱斩之前收刀<br/>- 删除跳跃攻击、 大回旋斩击<br/>- 剑气风暴大小 + 50%<br/>- 剑气风暴多段攻击次数 + 10次<br/>- 总攻击力相同<br/><br/>白牙突进距离增加"
-          }
-        ]
-    data0 = [0, 10962, 12071, 13185, 14296, 15408, 16519, 17632, 18744, 19855, 20968, 22081, 23193, 24304, 25414, 26529, 27639, 28752, 29863, 30976, 32087, 33199, 34310, 35424, 36535, 37647, 38761, 39872, 40984, 42095, 43207, 44319, 45432, 46542, 47655, 48768, 49878, 50992, 52104, 53215, 54328, 55438, 56552, 57662, 58775, 59885, 60998, 62110, 63221, 64336, 65447]# noqa: E501
-    hit0 = 1 #TODO
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 16440, 18108, 19775, 21445, 23112, 24782, 26449, 28115, 29783, 31453, 33121, 34788, 36457, 38124, 39792, 41459, 43129, 44796, 46464, 48132, 49798, 51467, 53135, 54805, 56472, 58139, 59808, 61474, 63141, 64811, 66479, 68148, 69815, 71481, 73150, 74819, 76488, 78156, 79823, 81491, 83158, 84827, 86495, 88162, 89831, 91498, 93166, 94834, 96503, 98171]# noqa: E501
-    hit1 = 1 #TODO
+    # 白牙突进攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 跳跃攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 大回旋斩击攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # 剑气风暴攻击次数上限 : {value3}次
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 剑气风暴每段攻击力 : {value4}
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 14
+    # [范围信息]
+    # 剑气风暴攻击范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    data2 = [0, 30264, 33336, 36406, 39477, 42548, 45617, 48689, 51759, 54830, 57901, 60968, 64040, 67109, 70182, 73252, 76321, 79393, 82463, 85535, 88605, 91672, 94744, 97814, 100885, 103955, 107026, 110097, 113168, 116238, 119309, 122378, 125449, 128520, 131590, 134661, 137731, 140803, 143873, 146944, 150014, 153082, 156153, 159223, 162295, 165365, 168436, 171505, 174575, 177647, 180717]# noqa: E501
-    hit2 = 1 #TODO
+    def vp_1(self):
+        """
+        [悬丝风暴]\n
+        可以在空中施放\n
+        删除突进攻击， 变更为向前方范围内最强的敌人投掷附着鬼缚丝的白牙
+        """
+        ...
 
-    data3 = [0, 3150, 3469, 3786, 4110, 4427, 4745, 5067, 5385, 5703, 6025, 6344, 6663, 6983, 7302, 7621, 7941, 8261, 8581, 8899, 9218, 9538, 9858, 10176, 10496, 10818, 11136, 11456, 11776, 12095, 12415, 12735, 13054, 13373, 13691, 14011, 14331, 14651, 14970, 15289, 15609, 15928, 16249, 16568, 16886, 17207, 17526, 17845, 18166, 18485, 18803]# noqa: E501
-    hit3 = 14
+    def vp_2(self):
+        """
+        [悬丝风暴]\n
+        踩踏敌人后跃起， 对周围发动乱斩， 引发剑气风暴\n
+        - 预输入[收刀术]发动时， 在乱斩之前收刀\n
+        - 删除跳跃攻击、 大回旋斩击\n
+        - 剑气风暴大小 +50%\n
+        - 剑气风暴多段攻击次数 +10次\n
+        - 总攻击力相同\n
+        白牙突进距离增加
+        """
+        ...
 
-
-
-# 黑曜真刃·破晓 데이브레이크
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/ca2536eb56df0e812c88c59cabd38be0?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill25(ActiveSkill):
+# 黑曜真刃·破晓
+# swordman_female/spectre/ca2536eb56df0e812c88c59cabd38be0
+# 1645c45aabb008c98406b3a16447040d/ca2536eb56df0e812c88c59cabd38be0
+class Skill38(ActiveSkill):
+    """
+    [收刀术系列]\n
+        周围一定范围内存在敌人时， 可以施放该技能。\n
+        增幅鬼缚珠的魔力， 将其注入黑曜。\n
+    鬼缚珠因魔力增幅而开始发红光， 随后， 夜皇移动到最强敌人的后方， 拔出黑曜发动斩击。 \n
+    拔刀的瞬间， 喷涌出耀眼的闪光， 展开蕴含必杀威力的3次剑击。\n
+        光芒逐渐减弱后， 夜皇收刀的瞬间， 对范围内的敌人造成多段伤害。
+    """
     name = "黑曜真刃·破晓"
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 5
     cube = 10
     cd = 180
     mp = [2500, 5000]
     uuid = "ca2536eb56df0e812c88c59cabd38be0"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 锁定敌人范围 (半径) : {value0}px
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 黑曜拔刀攻击次数上限 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 黑曜每段攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 3
 
-    data0 = [0, 74634, 91937, 109245, 126549, 143858, 161164, 178467, 195776, 213080, 230388, 247695, 264998, 282306, 299611, 316920, 334224, 351529, 368838, 386142, 403450, 420752, 438060, 455367, 472672, 489981, 507284, 524592, 541898, 559204, 576511, 593814, 611123, 628429, 645734, 663041, 680346, 697653, 714960, 732266, 749571, 766876, 784185, 801490, 818795, 836103, 853407, 870715, 888021, 905326, 922633]# noqa: E501
-    hit0 = 3
-
-
-# 夜色杀意 데어데블
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/7f9ffcd296361f1367b8b74e773d5e99?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill26(PassiveSkill):
-    name = "夜色杀意"
+# 夜色敌意
+# swordman_female/spectre/7f9ffcd296361f1367b8b74e773d5e99
+# 1645c45aabb008c98406b3a16447040d/7f9ffcd296361f1367b8b74e773d5e99
+class Skill39(PassiveSkill):
+    """
+        将鬼缚珠的魔力增幅至极限， 对身体进行强化。\n
+        突破鬼缚珠魔力极限时， 鬼缚珠散发红光。\n
+        并且增加基本攻击力和转职技能攻击力， 变更部分技能效果。\n
+    [疾刃之影]\n
+        命中敌人后， 可以强制中断并连接转职技能。\n
+    [黑夜之花]\n
+        长按技能键， 准备姿势时进入无敌状态。 
+    """
+    name = "夜色敌意"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 4 #TODO
+    position = 4
     rangeLv = 3
     uuid = "7f9ffcd296361f1367b8b74e773d5e99"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # [黑夜之花]无敌持续时间上限 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 基本攻击力和转职技能攻击力增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
     associate = [
-        {"type":"*skillRation","data":data0},
+        {"type":"*skillRation","data":data1},
     ]
 
-
-# 绚烂之舞 풀바디
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/c1dd8b776fb1dd24c6373c678ef1dd2e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill27(ActiveSkill):
+# 绚烂之舞
+# swordman_female/spectre/c1dd8b776fb1dd24c6373c678ef1dd2e
+# 1645c45aabb008c98406b3a16447040d/c1dd8b776fb1dd24c6373c678ef1dd2e
+class Skill40(ActiveSkill):
+    """
+        挥动黑曜和白牙收纳状态下的金刚， 用剑鞘攻击周围敌人， 然后发动连续斩击。\n
+        在留有攻击余波的状态下突进， 对敌人造成强力伤害， 同时摆好拔刀的姿势， 返回并拔出黑曜， 发动终结攻击。\n
+        除[回旋十字刃]和觉醒技能之外的转职技能命中敌人时， 可以强制中断并立即施放该技能。
+    """
     name = "绚烂之舞"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 6 #TODO
+    position = 6
     rangeLv = 2
     cube = 7
     cd = 60
     mp = [960, 7200]
     uuid = "c1dd8b776fb1dd24c6373c678ef1dd2e"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 剑鞘攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 连续斩击次数上限 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 连续斩击每段攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 10
+    # 突进攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
+    # 黑曜拔刀终结攻击力 : {value4}
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 1
 
-    data0 = [0, 17283, 19036, 20790, 22542, 24296, 26050, 27802, 29555, 31309, 33060, 34815, 36570, 38322, 40076, 41829, 43582, 45337, 47088, 48845, 50598, 52351, 54104, 55857, 57608, 59362, 61118, 62870, 64624, 66377, 68130, 69884, 71638, 73391, 75143, 76896, 78650, 80404, 82157, 83911, 85665, 87417, 89170, 90923, 92676, 94431, 96184, 97937, 99690, 101443, 103196]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 6050, 6664, 7277, 7892, 8504, 9118, 9732, 10341, 10956, 11572, 12184, 12800, 13411, 14026, 14639, 15254, 15870, 16482, 17096, 17710, 18324, 18935, 19549, 20163, 20778, 21391, 22005, 22617, 23230, 23845, 24458, 25073, 25687, 26301, 26914, 27529, 28139, 28754, 29366, 29982, 30597, 31210, 31824, 32437, 33052, 33664, 34279, 34892, 35507, 36119]# noqa: E501
-    hit1 = 10
-
-    data2 = [0, 25923, 28554, 31184, 33814, 36443, 39074, 41705, 44333, 46964, 49594, 52226, 54856, 57484, 60115, 62744, 65377, 68005, 70635, 73265, 75895, 78525, 81156, 83787, 86416, 89046, 91675, 94303, 96934, 99566, 102195, 104826, 107454, 110085, 112715, 115346, 117975, 120605, 123236, 125866, 128498, 131125, 133754, 136386, 139016, 141647, 144277, 146908, 149536, 152165, 154796]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 69132, 76146, 83158, 90172, 97186, 104201, 111212, 118225, 125239, 132253, 139267, 146279, 153294, 160307, 167319, 174334, 181347, 188361, 195374, 202387, 209402, 216415, 223430, 230440, 237455, 244468, 251481, 258496, 265508, 272522, 279534, 286550, 293562, 300576, 307590, 314603, 321617, 328629, 335643, 342658, 349670, 356682, 363697, 370710, 377723, 384736, 391752, 398764, 405779, 412792]# noqa: E501
-    hit3 = 1 #TODO
-
-
-# 秘术·雨夜终曲 테스타먼트
-# https://api.neople.co.kr/df/skills/1645c45aabb008c98406b3a16447040d/481348575c1e141925c836b59c5db3ca?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill28(ActiveSkill):
+# 秘术·雨夜终曲
+# swordman_female/spectre/481348575c1e141925c836b59c5db3ca
+# 1645c45aabb008c98406b3a16447040d/481348575c1e141925c836b59c5db3ca
+class Skill41(ActiveSkill):
+    """
+        融入雨夜的黑暗之中， 散发杀气压制敌人。\n
+        向压制的敌人中最强大的敌人头顶发射白牙， 然后向对象加速冲刺， 发动黑曜拔刀斩击。\n
+        拔刀后， 将黑曜收回剑鞘， 落地的同时， 将鬼缚珠的所有魔力转移至黑曜。 黑曜的刀刃完全染成血色的瞬间， 冲向目标敌人， 发动终结一切的无情斩击。\n
+    [三次觉醒技能]\n
+        使用三次觉醒技能时， 与关联的技能共享冷却时间。\n
+        若关联的技能还在冷却中， 则无法使用三次觉醒技能。\n
+        选择[黑曜真刃·破晓]时， 可以通过[收刀术]施放[秘术·雨夜终曲]。
+    """
     name = "秘术·雨夜终曲"
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 5
     cube = 15
     cd = 290
     mp = [4027, 8055]
     uuid = "481348575c1e141925c836b59c5db3ca"
-
-    data0 = [0, 55002, 67756, 80509, 93264, 106018, 118773, 131526, 144280, 157035, 169790, 182543, 195296, 208051, 220804, 233561, 246313, 259069, 271822, 284576, 297332, 310085, 322837, 335593, 348346, 361103, 373855, 386609, 399364, 412117, 424873, 437626, 450380, 463133, 475888, 488643, 501398, 514151, 526905, 539658, 552414, 565167, 577921, 590675, 603428, 616185, 628938, 641693, 654446, 667199, 679955]# noqa: E501
-    hit0 = 1 #TODO
-
-    data1 = [0, 192507, 237148, 281787, 326426, 371066, 415704, 460343, 504984, 549623, 594262, 638903, 683543, 728182, 772821, 817460, 862098, 906740, 951380, 996018, 1040658, 1085296, 1129937, 1174577, 1219215, 1263856, 1308497, 1353135, 1397773, 1442413, 1487052, 1531690, 1576333, 1620972, 1665610, 1710250, 1754891, 1799529, 1844169, 1888810, 1933448, 1978088, 2022727, 2067366, 2112006, 2156644, 2201286, 2245926, 2290564, 2335202, 2379844]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 357515, 440416, 523317, 606218, 689122, 772025, 854926, 937827, 1020729, 1103632, 1186532, 1269436, 1352336, 1435239, 1518142, 1601043, 1683945, 1766847, 1849748, 1932650, 2015552, 2098454, 2181358, 2264257, 2347159, 2430062, 2512964, 2595867, 2678768, 2761670, 2844572, 2927474, 3010376, 3093278, 3176180, 3259081, 3341984, 3424886, 3507788, 3590688, 3673592, 3756492, 3839394, 3922298, 4005201, 4088101, 4171002, 4253905, 4336807, 4419710]# noqa: E501
-    hit2 = 1 #TODO
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # 白牙发射攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 黑曜空中拔刀攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 黑曜终结斩击攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
 
     mode = ['白牙','非白牙']
 
@@ -669,9 +1118,14 @@ class Skill28(ActiveSkill):
 
 class classChange(Character):
     def __init__(self, equVersion):
+
         self.name = 'spectre'
         self.nameCN = '极诣·刃影'
         self.role = 'swordman_female'
+        self.角色 = '鬼剑士(女)'
+        self.职业 = '刃影'
+        self.jobId = '1645c45aabb008c98406b3a16447040d'
+        self.jobGrowId = '92da05ec93fb43406e193ffb9a2a629b'
 
         self.武器选项 = ['巨剑', '钝器', '太刀', '短剑']
         self.输出类型选项 = ['物理固伤']
@@ -679,9 +1133,5 @@ class classChange(Character):
         self.防具精通属性 = ['力量']
         self.防具类型 = '皮甲'
         self.buff = 2.083
-
-        self.角色 = '鬼剑士(女)'
-
-        self.职业 = '刃影'
 
         super().__init__(equVersion, __name__)
