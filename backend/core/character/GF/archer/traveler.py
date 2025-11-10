@@ -1130,10 +1130,12 @@ class Skill32(ActiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
     # 箭矢攻击力 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 10
     # 妖气旋风最大打击次数 : {value3}次
     data3 = get_data(f'{prefix}/{uuid}', 3)
     # 妖气旋风攻击力 : {value4}%
     data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 10
     # [范围信息]
     # 旋风范围比率 : {value5}%
     data5 = get_data(f'{prefix}/{uuid}', 5)
