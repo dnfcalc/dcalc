@@ -124,7 +124,6 @@ async def get_skill_data_summary(
             json_files = [f for f in os.listdir(summary_dir) if f.endswith('.json')]
             res = []
             for i in json_files:
-                print(i)
                 if job in i:
                     with open(os.path.join(summary_dir, i), encoding='utf-8') as f:
                         skill_data = json.load(f)
@@ -138,8 +137,8 @@ async def get_skill_data_summary(
         job_summary = get_redis_info(redis, key, get_skill_data_summary)
         for item in job_summary:
             if (len(weapons) == 0 or item['weapon'] in weapons):
-                skills = list(filter(lambda x: x['技能名称'] in skills, item['skills'])) if len(skills) > 0 else item['skills']
-                for skill in skills:
+                items = list(filter(lambda x: x['技能名称'] in skills, item['skills'])) if len(skills) > 0 else item['skills']
+                for skill in items:
                     skill['武器类型'] = item['weapon']
                 data.extend(skills or [])
     except FileNotFoundError as e:
