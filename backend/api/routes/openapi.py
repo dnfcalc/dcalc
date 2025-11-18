@@ -1,14 +1,15 @@
 from fastapi.params import Param
 from api.core.Gzip import register_gzip_request
 import json
-from fastapi import APIRouter, Path
+from fastapi import APIRouter, Path, Query
 from api.core.Response import response
 from api.core.Redis import get_redis_info
 from api.dp import RedisDep
 import re
 from typing import Annotated
 
-from api.types.open import SkillDetailResponse, SkillsListResponse,SearchSkillResponse
+from api.types.open import SkillDataSummaryResponse, SkillDetailResponse, SkillsListResponse, SearchSkillResponse
+import os
 
 router = APIRouter()
 
@@ -29,7 +30,7 @@ def replace_placeholders(template):
 
 
 @router.get('/skills/', operation_id='skillsList')
-async def get_skills_list(redis: RedisDep, skillName: Annotated[str, Param(..., description='技能名称，支持模糊查询')])->SearchSkillResponse:
+async def get_skills_list(redis: RedisDep, skillName: Annotated[str, Param(..., description='技能名称，支持模糊查询')]) -> SearchSkillResponse:
     """
     根据技能名称，获取对应的技能列表信息
     """
@@ -63,6 +64,7 @@ async def get_cn_skills_by_job(redis: RedisDep, jobId: Annotated[str, Path(..., 
 
     skills_list = get_redis_info(redis, key, get_skills_by_job)
     return response(data=skills_list)
+
 
 @router.get('/{jobId}/{jobGrowId}/{skillId}/', operation_id='skillDetail')
 async def get_cn_skill_info(redis: RedisDep, jobId: Annotated[str, Path(..., description='职业')], jobGrowId: Annotated[str, Path(..., description='转职')], skillId: Annotated[str, Path(..., description='技能')], level: Annotated[int, Param(..., description='技能等级')] = None) -> SkillDetailResponse:
@@ -98,3 +100,49 @@ async def get_cn_skill_info(redis: RedisDep, jobId: Annotated[str, Path(..., des
     except FileNotFoundError:
         return response(code=404, message=f'技能信息未找到: {jobId} {jobGrowId} {skillId}', data=None)
     return response(data=skill_info)
+
+
+@router.get('/skillData/summary/', operation_id='skillDataSummary')
+async def get_skill_data_summary(
+    redis: RedisDep,
+    job: Annotated[str, Param(..., description='职业')],
+    skills: Annotated[str, Param(..., description='技能列表字符串,逗号拼接技能名称,不传递或者传递为空时,查询所有')] = "",
+    weapons: Annotated[str, Param(..., description='武器类型列表字符串,逗号拼接武器类型名称,不传递或者传递为空时,查询所有')] = "",
+) -> SkillDataSummaryResponse:
+    """
+    获取技能数据汇总信息
+    """
+    key = f'openapi:skillData:summary:{job}'
+    data = []
+    skills = skills.split(',') if skills else []
+    weapons = weapons.split(',') if weapons else []
+    try:
+        def get_skill_data_summary():
+            # This function should retrieve the skill data summary based on job
+            # For now, we return a placeholder dictionary
+            summary_dir = './openapi/summary/'
+            json_files = [f for f in os.listdir(summary_dir) if f.endswith('.json')]
+            res = []
+            for i in json_files:
+                print(i)
+                if job in i:
+                    with open(os.path.join(summary_dir, i), encoding='utf-8') as f:
+                        skill_data = json.load(f)
+                    weapon = i.split('_')[-1].replace('.json', '')
+                    print(weapon, i)
+                    res.append({
+                        "weapon": weapon if weapon else "通用",
+                        'skills': skill_data
+                    })
+            return res
+        job_summary = get_redis_info(redis, key, get_skill_data_summary)
+        for item in job_summary:
+            if (len(weapons) == 0 or item['weapon'] in weapons):
+                skills = list(filter(lambda x: x['技能名称'] in skills, item['skills'])) if len(skills) > 0 else item['skills']
+                for skill in skills:
+                    skill['武器类型'] = item['weapon']
+                data.extend(skills or [])
+    except FileNotFoundError as e:
+        print(f'File not found: {e}')
+        return response(data=[])
+    return response(data=data)
