@@ -1880,7 +1880,7 @@ class Skill49(PassiveSkill):
     uuid = "84fd944f5aef4283b100c73152d9c4fa"
     hasVP = False
     hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
     data0 = [0] + [17 + 2*i for i in range(1, maxLv + 1)]
     data1 = [0] + [38 + 2*i for i in range(1, maxLv + 1)]
