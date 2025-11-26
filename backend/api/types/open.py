@@ -157,8 +157,18 @@ class SkillSummaryItem(BaseModel):
     SP: float | None = Field(..., description='SP')
     武器类型: str = Field(..., description='武器类型')
 
+class JobInfo(BaseModel):
+    jobId: str = Field(..., description='职业ID')
+    """职业ID"""
+    jobName: str = Field(..., description='职业名称')
+    """职业名称"""
+    jobGrowId: str = Field(..., description='转职ID')
+    """转职ID"""
+    jobGrowName: str = Field(..., description='转职名称')
+    """转职名称"""
 
 SkillDetailResponse = Response[SkillDetail | None]
 SearchSkillResponse = Response[list[SkillInfo]]
 SkillsListResponse = Response[list[SkillListItem]]
 SkillDataSummaryResponse = Response[list[SkillSummaryItem]]
+JobInfoResponse = Response[list[JobInfo]]
