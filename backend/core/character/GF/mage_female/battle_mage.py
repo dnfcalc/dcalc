@@ -747,7 +747,7 @@ class classChange(Character):
         if cur.equInfo.itemDetailType in ['矛','棍棒'] and self.GetSkillByName("战斗法师武器精通").lv > 0:
             cur.equInfo.AtkM = cur.equInfo.AtkP
             # 传世武器强化系数取所有武器的最高的1.12
-            if cur.equInfo.categorize == '传世武器':
+            if '传世武器' in cur.equInfo.categorize:
                 value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理', 1.12)
                 self.SetStatus(AtkP=value, AtkM=value)
             else:

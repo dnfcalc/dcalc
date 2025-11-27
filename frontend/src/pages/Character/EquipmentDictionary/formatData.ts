@@ -16,10 +16,44 @@ export const formatEqu = (total: IEquipment[], subweapons?: string[], curSuit?: 
           }
           return b.categorize.localeCompare(a.categorize)
         })
-      weapons.push(...weapon)
+      weapons.push(
+        ...weapon.filter((a) => !['传世武器升级', '狄瑞吉传世武器'].includes(a.categorize)),
+      )
       const remind = weapons.length % rowCount
-      remind > 0 && weapons.push(...Array(rowCount - remind).fill(undefined))
+      if (remind > 0) {
+        weapons.push(...Array(rowCount - remind).fill(undefined))
+      }
     })
+    if (item_weapon.some((a) => a.categorize === '传世武器升级')) {
+      const length = item_weapon.filter((a) => a.categorize === '传世武器升级').length
+      weapons.push(...Array(length).fill(undefined))
+      weapons.push(
+        ...item_weapon
+          .filter((a) => a.categorize === '传世武器升级')
+          .sort((a, b) => {
+            return a.itemDetailType.localeCompare(b.itemDetailType)
+          }),
+      )
+    }
+    let remind = weapons.length % rowCount
+    if (remind > 0) {
+      weapons.push(...Array(rowCount - remind).fill(undefined))
+    }
+    if (item_weapon.some((a) => a.categorize === '狄瑞吉传世武器')) {
+      const length = item_weapon.filter((a) => a.categorize === '狄瑞吉传世武器').length
+      weapons.push(...Array(length).fill(undefined))
+      weapons.push(
+        ...item_weapon
+          .filter((a) => a.categorize === '狄瑞吉传世武器')
+          .sort((a, b) => {
+            return a.itemDetailType.localeCompare(b.itemDetailType)
+          }),
+      )
+    }
+    remind = weapons.length % rowCount
+    if (remind > 0) {
+      weapons.push(...Array(rowCount - remind).fill(undefined))
+    }
   }
 
   // # region 副武器
@@ -205,7 +239,9 @@ export const formatStone = (total: IEquipment[], curSuit?: string) => {
       const temp = items_suits_rzs.filter(
         (item) => item.itemDetailType === part && item.rarity === rarity,
       )
-      temp.length > 0 && rzs.push(...temp, ...Array(rowCount - temp.length).fill(undefined))
+      if (temp.length > 0) {
+        rzs.push(...temp, ...Array(rowCount - temp.length).fill(undefined))
+      }
     })
     // const temp = items_suits_rzs.filter((item) => item.itemDetailType === part)
     // const remind = temp.length % rowCount

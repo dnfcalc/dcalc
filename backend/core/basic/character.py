@@ -748,7 +748,7 @@ class Character(CharacterProperty):
         value = 锻造计算(115, '史诗', cur.refine)
         self.SetStatus(AtkI=value)
         # 传世武器强化系数取所有武器的最高的1.12
-        if cur.equInfo.categorize == '传世武器':
+        if '传世武器' in cur.equInfo.categorize:
             value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理', 1.12)
             self.SetStatus(AtkP=value, AtkM=value)
         else:
