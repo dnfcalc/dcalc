@@ -133,9 +133,9 @@ import SuitInfo from '@/components/dnf/Equipment/SuitInfo/index.vue'
 import { formatEqu, formatStone } from './formatData'
 import options from './components/options.vue'
 
-const props = defineProps<{
-  alter: string
-}>()
+// const props = defineProps<{
+//   alter: string
+// }>()
 
 const infoStore = useInfoStore()
 const type = ref('equ')

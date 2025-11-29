@@ -7,7 +7,7 @@ export const formatEqu = (total: IEquipment[], subweapons?: string[], curSuit?: 
   const item_weapon = total.filter((a) => a.itemType == '武器') ?? []
   const weapons: (IEquipment | undefined)[] = []
   if (item_weapon.length > 0) {
-    Array.from(new Set(item_weapon.map((item) => item.rarity))).forEach((rarity) => {
+    Array.from(new Set(item_weapon.map((item) => item.rarity))).filter(a=>!['稀有','神器'].includes(a)).forEach((rarity) => {
       const weapon = item_weapon
         .filter((item) => item.rarity === rarity)
         .sort((a, b) => {
@@ -88,9 +88,9 @@ export const formatEqu = (total: IEquipment[], subweapons?: string[], curSuit?: 
     (equip) => equip.categorize.includes('套装') || equip.categorize.includes('通宝'),
   )
   const suits: (IEquipment | undefined)[] = []
-  const raritiyList = Array.from(new Set(item_suits.map((item) => item.rarity)))
+  const raritiyList = Array.from(new Set(item_suits.map((item) => item.rarity))).filter(a=>!['稀有','神器'].includes(a))
   raritiyList.forEach((rarity) => {
-    const armor = item_suits.filter((item) => item.rarity === rarity && item.itemType === '防具')
+    const armor = item_suits.filter((item) => item.rarity === rarity && item.itemType === '防具' && !item.name.includes("侵蚀"))
     if (armor.length > 0) {
       suits.push(...armor, undefined)
     }
@@ -108,6 +108,7 @@ export const formatEqu = (total: IEquipment[], subweapons?: string[], curSuit?: 
     const jewelry = item_suits.filter((item) => item.rarity === rarity && item.itemType === '首饰')
     const jewelryNormal = jewelry.filter((a) => !a.name.includes('黑牙')) ?? []
     const jewelryHY = jewelry.filter((a) => a.name.includes('黑牙')) ?? []
+
     if (jewelry.length > 0) {
       suits.push(
         ...Array(3 - jewelryHY.length + 2).fill(undefined),
@@ -117,6 +118,12 @@ export const formatEqu = (total: IEquipment[], subweapons?: string[], curSuit?: 
       )
       suits.push(...Array(rowCount - (suits.length % rowCount)).fill(undefined))
     }
+
+    const armorUpgrade = item_suits.filter((item) => item.rarity === rarity && item.itemType === '防具' && item.name.includes("侵蚀"))
+    if (armorUpgrade.length > 0) {
+      suits.push(...armorUpgrade)
+    }
+
     if (suits.length % rowCount > 0) {
       suits.push(...Array(rowCount - (suits.length % rowCount)).fill(undefined))
     }
