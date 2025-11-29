@@ -5841,7 +5841,7 @@ def equ_900(char: CharacterProperty):
     - 冷却时间10秒
     rarity: 太初
     '''
-    equ_6(char)
+    equ_8(char)
     pass
 
 
@@ -5870,7 +5870,7 @@ def equ_902(char: CharacterProperty):
     - 冷却时间60秒
     rarity: 太初
     '''
-    equ_14(char)
+    equ_16(char)
     pass
 
 
@@ -5906,7 +5906,7 @@ def equ_904(char: CharacterProperty):
     分身攻击命中时，技能冷却时间恢复速度 +3%，效果持续3秒。（觉醒技能除外；最多叠加1次）
     rarity: 太初
     '''
-    equ_22(char)
+    equ_24(char)
     pass
 
 
@@ -5943,7 +5943,7 @@ def equ_906(char: CharacterProperty):
     - 冷却时间：60秒
     rarity: 太初
     '''
-    equ_30(char)
+    equ_32(char)
     pass
 
 
@@ -5980,7 +5980,7 @@ def equ_908(char: CharacterProperty):
     - 所有速度 +20%
     rarity: 太初
     '''
-    equ_38(char)
+    equ_40(char)
     pass
 
 
@@ -6011,7 +6011,7 @@ def equ_910(char: CharacterProperty):
     召唤念气星体。
     rarity: 太初
     '''
-    equ_46(char)
+    equ_48(char)
     pass
 
 
@@ -6042,7 +6042,7 @@ def equ_912(char: CharacterProperty):
     - 爆炸发生时，如果生命值不足80%，则恢复40%的生命值。（冷却时间30秒）
     rarity: 太初
     '''
-    equ_54(char)
+    equ_56(char)
     pass
 
 
@@ -6088,7 +6088,7 @@ def equ_914(char: CharacterProperty):
     - 所受物理/魔法伤害 -10%
     rarity: 太初
     '''
-    equ_62(char)
+    equ_64(char)
     pass
 
 
@@ -6120,7 +6120,7 @@ def equ_916(char: CharacterProperty):
     - 冲击波范围 +50%
     rarity: 太初
     '''
-    equ_70(char)
+    equ_72(char)
     pass
 
 
@@ -6157,7 +6157,7 @@ def equ_918(char: CharacterProperty):
     - 魔法值为0或再次按键时，解除[魔力觉察]状态
     rarity: 太初
     '''
-    equ_78(char)
+    equ_80(char)
     pass
 
 
@@ -6192,7 +6192,7 @@ def equ_920(char: CharacterProperty):
     - 发动权威光谱效果
     rarity: 太初
     '''
-    equ_86(char)
+    equ_88(char)
     pass
 
 
@@ -6235,7 +6235,7 @@ def equ_922(char: CharacterProperty):
     - 冷却时间1秒
     rarity: 太初
     '''
-    equ_94(char)
+    equ_96(char)
     pass
 
 
@@ -6269,7 +6269,7 @@ def equ_924(char: CharacterProperty):
     - 特效伤害 +29.5%
     rarity: 太初
     '''
-    equ_102(char)
+    equ_104(char)
     pass
 
 
@@ -6307,7 +6307,7 @@ def equ_926(char: CharacterProperty):
     关闭自动爆炸，再次使用时开启。（冷却10秒）
     rarity: 太初
     '''
-    equ_110(char)
+    equ_112(char)
     pass
 
 
@@ -6337,7 +6337,7 @@ def equ_928(char: CharacterProperty):
     - 可取消技能释放（觉醒技能除外）
     rarity: 太初
     '''
-    equ_118(char)
+    equ_120(char)
     pass
 
 
@@ -6364,7 +6364,7 @@ def equ_930(char: CharacterProperty):
     - 特效伤害 +12%
     rarity: 太初
     '''
-    equ_126(char)
+    equ_128(char)
     pass
 
 
@@ -6402,7 +6402,7 @@ def equ_932(char: CharacterProperty):
     被击时，消耗1只羊， 生成最大生命值20%数值的保护罩，效果持续2秒。（冷却时间2秒）
     rarity: 太初
     '''
-    equ_134(char)
+    equ_136(char)
     pass
 
 
@@ -6439,7 +6439,7 @@ def equ_934(char: CharacterProperty):
     *生命值/魔法值恢复10%
     rarity: 太初
     '''
-    equ_142(char)
+    equ_144(char)
     pass
 
 
@@ -6469,7 +6469,7 @@ def equ_936(char: CharacterProperty):
     - 可取消技能释放（觉醒技能除外）
     rarity: 太初
     '''
-    equ_150(char)
+    equ_152(char)
     pass
 
 
@@ -6505,7 +6505,7 @@ def equ_938(char: CharacterProperty):
     技能范围 +30%
     rarity: 太初
     '''
-    equ_158(char)
+    equ_160(char)
     pass
 
 
@@ -6534,7 +6534,7 @@ def equ_940(char: CharacterProperty):
     - 冷却时间：30秒
     rarity: 太初
     '''
-    equ_166(char)
+    equ_168(char)
     pass
 
 
@@ -6564,7 +6564,7 @@ def equ_942(char: CharacterProperty):
     - 每6秒吸收敌人的灵魂，恢复15%的魔法值
     rarity: 太初
     '''
-    equ_174(char)
+    equ_176(char)
     pass
 
 
@@ -6591,7 +6591,7 @@ def equ_944(char: CharacterProperty):
     所有速度 +30%
     rarity: 太初
     '''
-    equ_182(char)
+    equ_184(char)
     pass
 
 
@@ -6626,7 +6626,7 @@ def equ_946(char: CharacterProperty):
     - 可取消技能释放（觉醒技能除外）
     rarity: 太初
     '''
-    equ_190(char)
+    equ_192(char)
     pass
 
 
@@ -6668,7 +6668,7 @@ def equ_948(char: CharacterProperty):
     - 威严痛击伤害量：112200%
     rarity: 太初
     '''
-    equ_198(char)
+    equ_200(char)
     pass
 
 
@@ -6700,7 +6700,7 @@ def equ_950(char: CharacterProperty):
     - 所有速度 +20%
     rarity: 太初
     '''
-    equ_206(char)
+    equ_208(char)
     pass
 
 
@@ -6733,7 +6733,7 @@ def equ_952(char: CharacterProperty):
     - 特效伤害 +12%
     rarity: 太初
     '''
-    equ_214(char)
+    equ_216(char)
     pass
 
 
@@ -6772,7 +6772,7 @@ def equ_954(char: CharacterProperty):
     - 冷却时间20秒
     rarity: 太初
     '''
-    equ_222(char)
+    equ_224(char)
     pass
 
 
@@ -6807,7 +6807,7 @@ def equ_956(char: CharacterProperty):
     - 所受物理/魔法伤害 -5%
     rarity: 太初
     '''
-    equ_230(char)
+    equ_232(char)
     pass
 
 
@@ -6839,7 +6839,7 @@ def equ_958(char: CharacterProperty):
     - 所受物理/魔法伤害 -30%
     rarity: 太初
     '''
-    equ_238(char)
+    equ_240(char)
     pass
 
 
@@ -6870,7 +6870,7 @@ def equ_960(char: CharacterProperty):
     - 可取消技能释放（觉醒技能除外）
     rarity: 太初
     '''
-    equ_246(char)
+    equ_248(char)
     pass
 
 
@@ -6910,7 +6910,7 @@ def equ_962(char: CharacterProperty):
     - [强化 -后跳]冷却时间 -20%
     rarity: 太初
     '''
-    equ_254(char)
+    equ_256(char)
     pass
 
 
@@ -6943,7 +6943,7 @@ def equ_964(char: CharacterProperty):
     - 暗灭之矛伤害量：1100%
     rarity: 太初
     '''
-    equ_262(char)
+    equ_264(char)
     pass
 
 
@@ -6976,7 +6976,7 @@ def equ_966(char: CharacterProperty):
     所受物理/魔法伤害 -30%
     rarity: 太初
     '''
-    equ_270(char)
+    equ_272(char)
     pass
 
 
@@ -7006,7 +7006,7 @@ def equ_968(char: CharacterProperty):
     所有速度 +30%
     rarity: 太初
     '''
-    equ_278(char)
+    equ_280(char)
     pass
 
 
@@ -7044,7 +7044,7 @@ def equ_970(char: CharacterProperty):
     - 冷却时间：2秒
     rarity: 太初
     '''
-    equ_286(char)
+    equ_288(char)
     pass
 
 
@@ -7084,7 +7084,7 @@ def equ_972(char: CharacterProperty):
     若0.2秒内未进行攻击，则下次攻击时追加1次攻击次数（最多叠加5层）
     rarity: 太初
     '''
-    equ_294(char)
+    equ_296(char)
     pass
 
 
@@ -7124,7 +7124,7 @@ def equ_974(char: CharacterProperty):
     - 特效伤害 +10%
     rarity: 太初
     '''
-    equ_302(char)
+    equ_304(char)
     pass
 
 
@@ -7158,7 +7158,7 @@ def equ_976(char: CharacterProperty):
     - 技能伤害 增加 12.3%
     rarity: 太初
     '''
-    equ_310(char)
+    equ_312(char)
     pass
 
 
@@ -7191,7 +7191,7 @@ def equ_978(char: CharacterProperty):
     - 特效伤害 +10%
     rarity: 太初
     '''
-    equ_318(char)
+    equ_320(char)
     pass
 
 
@@ -7225,7 +7225,7 @@ def equ_980(char: CharacterProperty):
     - 特效伤害 +10%
     rarity: 太初
     '''
-    equ_326(char)
+    equ_328(char)
     pass
 
 
@@ -7257,7 +7257,7 @@ def equ_982(char: CharacterProperty):
     - 技能冷却时间 -20%
     rarity: 太初
     '''
-    equ_882(char)
+    equ_884(char)
     pass
 
 
@@ -14578,7 +14578,6 @@ def equ_2001(char: CharacterProperty):
         + (0.1 if point >= 75 else 0)
         + (0.1 if point >= 100 else 0)
     )
-    print(skillAttack)
     buffer = (
         30 * point
         - (point // 25) * 30
