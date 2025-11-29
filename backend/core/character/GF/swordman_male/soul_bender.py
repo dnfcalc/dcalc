@@ -189,7 +189,7 @@ class Skill16(PassiveSkill):
         if weapon is None or weapon.itemDetailType != "短剑":
             return
         data = self.data1
-        if weapon.categorize == "传世武器":
+        if "传世武器" in weapon.categorize:
             data = self.data14
         self.associate = [{"type":"$*PAtkM","data":data}]
         return super().effect(old, new)
@@ -255,7 +255,7 @@ class Skill17(PassiveSkill):
         if weapon is None or weapon.itemDetailType != "太刀":
             return
         data = self.data1
-        if weapon.categorize == "传世武器":
+        if "传世武器" in weapon.categorize:
             data = self.data11
         self.associate = [{"type":"$*PAtkM","data":data}]
         return super().effect(old, new)
@@ -317,7 +317,7 @@ class Skill18(PassiveSkill):
         if weapon is None or weapon.itemDetailType != "巨剑":
             return
         data = self.data1
-        if weapon.categorize == "传世武器":
+        if "传世武器" in weapon.categorize:
             data = self.data10
         self.associate = [{"type":"$*PAtkM","data":data}]
         return super().effect(old, new)
@@ -379,7 +379,7 @@ class Skill19(PassiveSkill):
         if weapon is None or weapon.itemDetailType != "钝器":
             return
         data = self.data1
-        if weapon.categorize == "传世武器":
+        if "传世武器" in weapon.categorize:
             data = self.data9
         self.associate = [{"type":"$*PAtkM","data":data}]
         return super().effect(old, new)

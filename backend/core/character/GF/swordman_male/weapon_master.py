@@ -171,7 +171,7 @@ class Skill3(PassiveSkill):
         if weapon[0] != "光剑":
             return None
         data = self.data0
-        if weapon[1] == "传世武器":
+        if "传世武器" in weapon[1]:
             data = self.data16
         self.associate = [{"type":"$*PAtkP","data":data}]
         return super().effect(old, new)
@@ -272,7 +272,7 @@ class Skill5(PassiveSkill):
         if weapon[0] != "短剑":
             return None
         data = self.data0
-        if weapon[1] == "传世武器":
+        if "传世武器" in weapon[1]:
             data = self.data13
         self.associate = [
             {"type":"$*PAtkP","data":data},
@@ -342,7 +342,7 @@ class Skill6(ActiveSkill):
         if weapon[0] != "太刀":
             return None
         data = self.data0
-        if weapon[1] == "传世武器":
+        if "传世武器" in weapon[1]:
             data = self.data10
         self.associate = [
             {"type":"$*PAtkP","data":data},
@@ -414,7 +414,7 @@ class Skill7(PassiveSkill):
         if weapon[0] != "巨剑":
             return None
         data = self.data0
-        if weapon[1] == "传世武器":
+        if "传世武器" in weapon[1]:
             data = self.data9
         self.associate = [
             {"type":"$*PAtkP","data":data},
@@ -477,7 +477,7 @@ class Skill8(PassiveSkill):
         if weapon[0] != "钝器":
             return None
         data = self.data0
-        if weapon[1] == "传世武器":
+        if "传世武器" in weapon[1]:
             data = self.data9
         self.associate = [{"type":"$*PAtkP","data":data},]
         return super().effect(old, new)
