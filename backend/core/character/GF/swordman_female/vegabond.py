@@ -1,6 +1,8 @@
 #1645c45aabb008c98406b3a16447040d
 from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
+from core.basic.roleinfo import CharacterEquipInfo
+from core.basic.formula import 武器强化计算
 prefix = "swordman_female/vegabond/cn/skillDetail"
 
 
@@ -1216,3 +1218,17 @@ class classChange(Character):
         self.buff = 2.335
 
         super().__init__(equVersion, __name__)
+
+
+    def calc_weapon(self,cur:CharacterEquipInfo):
+        if cur.equInfo is None:
+            return
+        if cur.equInfo.itemType == "副武器":
+            if '传世武器' in cur.equInfo.categorize:
+                ATKP = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理', 1.12)
+            else:
+                # 强化计算
+                ATKP = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理')
+            self.SetStatus(AtkP =  (cur.equInfo.AtkP + ATKP) * 0.1)
+        else:
+            super().calc_weapon(cur)
