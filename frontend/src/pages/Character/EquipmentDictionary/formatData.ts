@@ -254,10 +254,9 @@ export const formatStone = (total: IEquipment[], curSuit?: string) => {
     // const remind = temp.length % rowCount
     // rzs.push(...temp, ...Array(temp.length == 0 ? rowCount-remind : remind).fill(undefined))
   })
-  const items_sj = total.filter((equip) => equip.categorize.includes('神界'))
-  const sj: (IEquipment | undefined)[] = []
-  // const raritiy = Array.from(new Set(items_suits_rzs.map((item) => item.rarity)))
-  sj.push(...items_sj, ...Array(rowCount * 2 - (items_sj.length % rowCount)).fill(undefined))
+  // const items_sj = total.filter((equip) => equip.categorize.includes('神界'))
+  // const sj: (IEquipment | undefined)[] = []
+  // sj.push(...items_sj, ...Array(rowCount * 2 - (items_sj.length % rowCount)).fill(undefined))
   // const temp = items_suits_rzs.filter((item) => item.itemDetailType === part)
   // const remind = temp.length % rowCount
   // rzs.push(...temp, ...Array(temp.length == 0 ? rowCount-remind : remind).fill(undefined))
@@ -278,9 +277,9 @@ export const formatStone = (total: IEquipment[], curSuit?: string) => {
       name: '人造神',
       equs: rzs,
     },
-    {
-      name: '神界',
-      equs: sj,
-    },
+    // {
+    //   name: '神界',
+    //   equs: sj,
+    // },
   ]
 }

@@ -14573,11 +14573,12 @@ def equ_2001(char: CharacterProperty):
     skillAttack = (
         0.1 * point
         - (point // 25) * 0.1
-        + (0.5 if point >= 25 else 0)
-        + (0.6 if point >= 50 else 0)
-        + (0.6 if point >= 75 else 0)
-        + (1.8 if point >= 100 else 0)
+        + (0.1 if point >= 25 else 0)
+        + (0.1 if point >= 50 else 0)
+        + (0.1 if point >= 75 else 0)
+        + (0.1 if point >= 100 else 0)
     )
+    print(skillAttack)
     buffer = (
         30 * point
         - (point // 25) * 30
@@ -14592,6 +14593,65 @@ def equ_2001(char: CharacterProperty):
     char.SetStatus(EquEffectRatio=0.10)
     if cd > 0:
         char.SetSkillCD(cd=cd)
+    if char.buffer:
+        char.BuffSkill.lv += 1
+        char.AwakeSkill.lv += 1
+    pass
+
+@register
+def equ_2002(char: CharacterProperty):
+    '''
+    DCALC_REMOVE: equ_2001 - 玲珑的秘宝气候晶体
+    <纳波尔的记忆>
+    穿戴的最高套装积分达到2100点以上时，才能发挥能力。
+    套装积分达到2550以上时，会发动更强的效果。
+    技能伤害+54.6%
+    增益量12530
+    精度
+    精度100%时，技能伤害+10%，增益量4650
+    技能冷却时间-4%（觉醒技能除外）
+    精度每提升25%，技能冷却时间-4%（最多叠加4次；觉醒技能除外）
+    特效伤害 +10%
+    [不稳定性]
+    展现神之权能，以1~11秒的时间间隔，每次有1%的几率初始化所有技能冷却时间
+    *仅当2个以上技能处于冷却时间时适用
+    *组队挑战时，辅助角色的觉醒技能不会被初始化
+    [气候重构]
+    精度达到100%时，在城镇中使用普通聊天输入“气候重构”时，出现特效。（冷却时间600秒）
+    rarity: 太初
+    '''
+    if 2100 <= char.max_point < 2550:
+        char.SetStatus(SkillAttack=0.384, Buffer=11220)
+        pass
+    if char.max_point >= 2550:
+        char.SetStatus(SkillAttack=0.494 + 0.052, Buffer=12180 + 350)
+        pass
+    point = char.charEquipInfo["辅助装备"].precision
+    skillAttack = (
+        0.1 * point
+        - (point // 25) * 0.1
+        + (0.1 if point >= 25 else 0)
+        + (0.1 if point >= 50 else 0)
+        + (0.1 if point >= 75 else 0)
+        + (0.1 if point >= 100 else 0)
+    )
+    buffer = (
+        30 * point
+        - (point // 25) * 30
+        + (390 if point >= 25 else 0)
+        + (420 if point >= 50 else 0)
+        + (420 if point >= 75 else 0)
+        + (540 if point >= 100 else 0)
+    )
+    char.SetStatus(SkillAttack=skillAttack / 100, Buffer=buffer)
+    for part in ['项链','手镯','戒指']:
+        if char.charEquipInfo[part].equInfo and '黑牙' in char.charEquipInfo[part].equInfo.name:
+            char.SetStatus(SkillAttack = 0.02)
+    # char.SetSkillCD(cd=0.04)
+    # cd = (point // 25) * 0.04
+    # char.SetStatus(EquEffectRatio=0.10)
+    # if cd > 0:
+    #     char.SetSkillCD(cd=cd)
     if char.buffer:
         char.BuffSkill.lv += 1
         char.AwakeSkill.lv += 1
