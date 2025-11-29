@@ -25,7 +25,7 @@ export default defineComponent({
     )
     /** 是否可以设置秘宝精度 */
     const can_set_secret = computed(() => {
-      return ['辅助装备', '魔法石', '耳环'].includes(part.value as string)
+      return ['武器','辅助装备', '魔法石', '耳环'].includes(part.value as string)
     })
     const basicInfoStore = useInfoStore()
 
@@ -289,7 +289,7 @@ export default defineComponent({
                 {can_set_secret.value ? (
                   <>
                     <div class="equ-profile-item">
-                      <div class="row-name">秘宝</div>
+                      <div class="row-name">精度</div>
                       <calc-slider
                         showPercent={true}
                         showValue={false}

@@ -87,7 +87,7 @@ def equ_6(char: CharacterProperty):
             name="无影之剑",
             icon="/equipment/icon/weapon/swordman/sswd/00227.png",
             cd=15,
-            data=49200,
+            data=54120,
         )
     )
     pass
@@ -111,7 +111,7 @@ def equ_7(char: CharacterProperty):
             name="无影之剑",
             icon="/equipment/icon/weapon/swordman/sswd/00228.png",
             cd=15,
-            data=73800,
+            data=81180,
         )
     )
     pass
@@ -135,7 +135,7 @@ def equ_8(char: CharacterProperty):
             name="无影之剑",
             icon="/equipment/icon/weapon/swordman/sswd/00229.png",
             cd=10,
-            data=98400,
+            data=108240,
         )
     )
     pass
@@ -233,7 +233,7 @@ def equ_14(char: CharacterProperty):
     rarity: 传说
     '''
     char.equ_effect.append(
-        EquEffect(name="寒光掠影", icon="/equipment/skill/4.png", cd=60, data=202000)
+        EquEffect(name="寒光掠影", icon="/equipment/skill/4.png", cd=60, data=222200)
     )
     pass
 
@@ -250,7 +250,7 @@ def equ_15(char: CharacterProperty):
     rarity: 史诗
     '''
     char.equ_effect.append(
-        EquEffect(name="寒光掠影", icon="/equipment/skill/4.png", cd=60, data=404000)
+        EquEffect(name="寒光掠影", icon="/equipment/skill/4.png", cd=60, data=444400)
     )
     pass
 
@@ -267,7 +267,7 @@ def equ_16(char: CharacterProperty):
     rarity: 太初
     '''
     char.equ_effect.append(
-        EquEffect(name="寒光掠影", icon="/equipment/skill/4.png", cd=60, data=606000)
+        EquEffect(name="寒光掠影", icon="/equipment/skill/4.png", cd=60, data=666600)
     )
     pass
 
@@ -870,7 +870,7 @@ def equ_55(char: CharacterProperty):
             name="绯红爆炸",
             icon="/equipment/icon/weapon/fighter/gauntlet/00246.png",
             cd=10,
-            data=127500,
+            data=140250,
         )
     )
     pass
@@ -894,7 +894,7 @@ def equ_56(char: CharacterProperty):
             name="绯红爆炸",
             icon="/equipment/icon/weapon/fighter/gauntlet/00247.png",
             cd=10,
-            data=127500,
+            data=140250,
         )
     )
     pass
@@ -965,7 +965,7 @@ def equ_62(char: CharacterProperty):
     '''
     char.SetStatus(SpeedM=0.1, SpeedA=0.1, SpeedR=0.1)
     char.equ_effect.append(
-        EquEffect(name="悲伤魔珠", icon="/equipment/skill/38.png", cd=30, data=4500)
+        EquEffect(name="悲伤魔珠", icon="/equipment/skill/38.png", cd=30, data=4950)
     )
     pass
 
@@ -986,7 +986,7 @@ def equ_63(char: CharacterProperty):
     '''
     char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     char.equ_effect.append(
-        EquEffect(name="悲伤魔珠", icon="/equipment/skill/38.png", cd=15, data=4500)
+        EquEffect(name="悲伤魔珠", icon="/equipment/skill/38.png", cd=15, data=4950)
     )
     pass
 
@@ -1014,7 +1014,7 @@ def equ_64(char: CharacterProperty):
     '''
     char.SetStatus(SpeedM=0.25, SpeedA=0.25, SpeedR=0.25)
     char.equ_effect.append(
-        EquEffect(name="悲伤魔珠", icon="/equipment/skill/38.png", cd=10, data=4500)
+        EquEffect(name="悲伤魔珠", icon="/equipment/skill/38.png", cd=10, data=4950)
     )
     char.equ_effect.append(
         EquEffect(
@@ -1128,7 +1128,7 @@ def equ_71(char: CharacterProperty):
             name="冲击波",
             icon="/equipment/icon/weapon/fighter/bglove/00208.png",
             cd=1,
-            data=7140,
+            data=7860,
         )
     )
     pass
@@ -1150,7 +1150,7 @@ def equ_72(char: CharacterProperty):
             name="冲击波",
             icon="/equipment/icon/weapon/fighter/bglove/00209.png",
             cd=1,
-            data=7140,
+            data=7860,
         )
     )
     pass
@@ -1519,7 +1519,7 @@ def equ_94(char: CharacterProperty):
     '''
     char.equ_effect.append(
         EquEffect(
-            name="冰封的火焰之躯", icon="/equipment/skill/26.png", cd=1, data=7650
+            name="冰封的火焰之躯", icon="/equipment/skill/26.png", cd=1, data=8420
         )
     )
     if char.buffer:
@@ -1547,10 +1547,10 @@ def equ_95(char: CharacterProperty):
     rarity: 史诗
     '''
     char.equ_effect.append(
-        EquEffect(name="冰弩", icon="/equipment/skill/26.png", cd=1, data=7650)
+        EquEffect(name="冰弩", icon="/equipment/skill/26.png", cd=1, data=8420)
     )
     char.equ_effect.append(
-        EquEffect(name="火弩", icon="/equipment/skill/26.png", cd=1, data=7650)
+        EquEffect(name="火弩", icon="/equipment/skill/26.png", cd=1, data=8420)
     )
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -1579,13 +1579,13 @@ def equ_96(char: CharacterProperty):
     rarity: 太初
     '''
     char.equ_effect.append(
-        EquEffect(name="冰弩", icon="/equipment/skill/26.png", cd=1, data=7650)
+        EquEffect(name="冰弩", icon="/equipment/skill/26.png", cd=1, data=8420)
     )
     char.equ_effect.append(
-        EquEffect(name="火弩", icon="/equipment/skill/26.png", cd=1, data=7650)
+        EquEffect(name="火弩", icon="/equipment/skill/26.png", cd=1, data=8420)
     )
     char.equ_effect.append(
-        EquEffect(name="箭雨", icon="/equipment/skill/26.png", cd=20, data=102000)
+        EquEffect(name="箭雨", icon="/equipment/skill/26.png", cd=20, data=112200)
     )
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -1742,7 +1742,7 @@ def equ_104(char: CharacterProperty):
             name="燃烧",
             icon="/equipment/icon/weapon/gunner/musket/00234.png",
             cd=0.2,
-            data=480,
+            data=530,
         )
     )
     if char.buffer:
@@ -1856,7 +1856,7 @@ def equ_111(char: CharacterProperty):
     '''
     char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(
-        EquEffect(name="自动爆炸", icon="/equipment/skill/33.png", cd=10, data=63750)
+        EquEffect(name="自动爆炸", icon="/equipment/skill/33.png", cd=10, data=70150)
     )
     char.SetStatus(EquEffectRatio=0.1)
     if char.buffer:
@@ -1884,7 +1884,7 @@ def equ_112(char: CharacterProperty):
     '''
     char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(
-        EquEffect(name="自动爆炸", icon="/equipment/skill/33.png", cd=10, data=127500)
+        EquEffect(name="自动爆炸", icon="/equipment/skill/33.png", cd=10, data=140250)
     )
     char.SetStatus(EquEffectRatio=0.1)
     if char.buffer:
@@ -1972,7 +1972,7 @@ def equ_118(char: CharacterProperty):
     rarity: 传说
     '''
     char.equ_effect.append(
-        EquEffect(name="发射巨炮", icon="/equipment/skill/41.png", cd=60, data=202000)
+        EquEffect(name="发射巨炮", icon="/equipment/skill/41.png", cd=60, data=222200)
     )
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -1995,7 +1995,7 @@ def equ_119(char: CharacterProperty):
     rarity: 史诗
     '''
     char.equ_effect.append(
-        EquEffect(name="发射巨炮", icon="/equipment/skill/41.png", cd=60, data=404000)
+        EquEffect(name="发射巨炮", icon="/equipment/skill/41.png", cd=60, data=444400)
     )
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -2018,7 +2018,7 @@ def equ_120(char: CharacterProperty):
     rarity: 太初
     '''
     char.equ_effect.append(
-        EquEffect(name="发射巨炮", icon="/equipment/skill/41.png", cd=60, data=606000)
+        EquEffect(name="发射巨炮", icon="/equipment/skill/41.png", cd=60, data=666600)
     )
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -2228,7 +2228,7 @@ def equ_134(char: CharacterProperty):
             name="羊袭",
             icon="/equipment/icon/weapon/mage/rod/00282.png",
             cd=0.5,
-            data=3850,
+            data=4235,
         )
     )
     pass
@@ -2257,7 +2257,7 @@ def equ_135(char: CharacterProperty):
             name="羊袭",
             icon="/equipment/icon/weapon/mage/rod/00283.png",
             cd=0.5,
-            data=6400,
+            data=7040,
         )
     )
     pass
@@ -2286,7 +2286,7 @@ def equ_136(char: CharacterProperty):
             name="绵羊云",
             icon="/equipment/icon/weapon/mage/rod/00284.png",
             cd=2,
-            data=35700,
+            data=39270,
         )
     )
     pass
@@ -2428,7 +2428,7 @@ def equ_144(char: CharacterProperty):
         char.SetSkillCD(1, 100, 0.2)
     char.SetStatus(SpeedA=0.3, SpeedM=0.3, SpeedR=0.3)
     char.equ_effect.append(
-        EquEffect(name="闪电", icon="/equipment/skill/35.png", cd=3, data=1000)
+        EquEffect(name="闪电", icon="/equipment/skill/35.png", cd=3, data=1100)
     )
     pass
 
@@ -2530,7 +2530,7 @@ def equ_150(char: CharacterProperty):
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(
-        EquEffect(name="绝对零度", icon="/equipment/skill/31.png", cd=60, data=202000)
+        EquEffect(name="绝对零度", icon="/equipment/skill/31.png", cd=60, data=222200)
     )
     pass
 
@@ -2552,7 +2552,7 @@ def equ_151(char: CharacterProperty):
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(
-        EquEffect(name="绝对零度", icon="/equipment/skill/31.png", cd=60, data=404000)
+        EquEffect(name="绝对零度", icon="/equipment/skill/31.png", cd=60, data=444400)
     )
     pass
 
@@ -2574,7 +2574,7 @@ def equ_152(char: CharacterProperty):
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(
-        EquEffect(name="绝对零度", icon="/equipment/skill/31.png", cd=60, data=606000)
+        EquEffect(name="绝对零度", icon="/equipment/skill/31.png", cd=60, data=666600)
     )
     pass
 
@@ -2826,7 +2826,7 @@ def equ_166(char: CharacterProperty):
         char.AwakeSkill.lv += 4
         char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(
-        EquEffect(name="神之惩罚", icon="/equipment/skill/42.png", cd=30, data=76500)
+        EquEffect(name="神之惩罚", icon="/equipment/skill/42.png", cd=30, data=84150)
     )
     pass
 
@@ -2849,7 +2849,7 @@ def equ_167(char: CharacterProperty):
         char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(
         EquEffect(
-            name="神之惩罚", icon="/equipment/skill/42.png", cd=30, data=76500 * 2
+            name="神之惩罚", icon="/equipment/skill/42.png", cd=30, data=84150 * 2
         )
     )
     pass
@@ -2873,7 +2873,7 @@ def equ_168(char: CharacterProperty):
         char.SetSkillCD(1, 100, 0.2)
     char.equ_effect.append(
         EquEffect(
-            name="神之惩罚", icon="/equipment/skill/42.png", cd=30, data=76500 * 3
+            name="神之惩罚", icon="/equipment/skill/42.png", cd=30, data=84150 * 3
         )
     )
     pass
@@ -3113,7 +3113,7 @@ def equ_182(char: CharacterProperty):
             name="流星念珠",
             icon="/equipment/icon/weapon/priest/rosary/00196.png",
             cd=10,
-            data=25500,
+            data=28050,
         )
     )
     char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
@@ -3140,7 +3140,7 @@ def equ_183(char: CharacterProperty):
             name="流星念珠",
             icon="/equipment/icon/weapon/priest/rosary/00197.png",
             cd=5,
-            data=25500,
+            data=28050,
         )
     )
     char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
@@ -3167,7 +3167,7 @@ def equ_184(char: CharacterProperty):
             name="流星念珠",
             icon="/equipment/icon/weapon/priest/rosary/00198.png",
             cd=20,
-            data=204000,
+            data=224400,
         )
     )
     if char.buffer:
@@ -3266,7 +3266,7 @@ def equ_190(char: CharacterProperty):
     rarity: 传说
     '''
     char.equ_effect.append(
-        EquEffect(name="行星破坏", icon="/equipment/skill/40.png", cd=60, data=202000)
+        EquEffect(name="行星破坏", icon="/equipment/skill/40.png", cd=60, data=222200)
     )
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -3289,7 +3289,7 @@ def equ_191(char: CharacterProperty):
     rarity: 史诗
     '''
     char.equ_effect.append(
-        EquEffect(name="行星破坏", icon="/equipment/skill/40.png", cd=60, data=404000)
+        EquEffect(name="行星破坏", icon="/equipment/skill/40.png", cd=60, data=444400)
     )
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -3312,7 +3312,7 @@ def equ_192(char: CharacterProperty):
     rarity: 太初
     '''
     char.equ_effect.append(
-        EquEffect(name="行星破坏", icon="/equipment/skill/40.png", cd=60, data=606000)
+        EquEffect(name="行星破坏", icon="/equipment/skill/40.png", cd=60, data=666600)
     )
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
@@ -3409,7 +3409,7 @@ def equ_198(char: CharacterProperty):
             name="威严怒击",
             icon="/equipment/icon/weapon/priest/totem/00280.png",
             cd=3,
-            data=15300,
+            data=16830,
         )
     )
     if char.buffer:
@@ -3440,7 +3440,7 @@ def equ_199(char: CharacterProperty):
             name="威严怒击",
             icon="/equipment/icon/weapon/priest/totem/00281.png",
             cd=3,
-            data=15300,
+            data=25300,
         )
     )
     char.equ_effect.append(
@@ -3483,7 +3483,7 @@ def equ_200(char: CharacterProperty):
             name="威严怒击",
             icon="/equipment/icon/weapon/priest/totem/00282.png",
             cd=3,
-            data=15300,
+            data=16830,
         )
     )
     char.equ_effect.append(
@@ -3491,7 +3491,7 @@ def equ_200(char: CharacterProperty):
             name="威严猛击",
             icon="/equipment/icon/weapon/priest/totem/00282.png",
             cd=5,
-            data=23000,
+            data=25300,
         )
     )
     char.equ_effect.append(
@@ -3499,7 +3499,7 @@ def equ_200(char: CharacterProperty):
             name="威严痛击",
             icon="/equipment/icon/weapon/priest/totem/00282.png",
             cd=20,
-            data=102000,
+            data=112200,
         )
     )
     char.SetSkillCD(1, 100, 0.2)
@@ -3722,7 +3722,7 @@ def equ_214(char: CharacterProperty):
             name="永劫地狱火",
             icon="/equipment/icon/weapon/thief/twinswd/00246.png",
             cd=1,
-            data=9360,
+            data=10300,
         )
     )
     char.SetStatus(EquEffectRatio=0.12)
@@ -3749,7 +3749,7 @@ def equ_215(char: CharacterProperty):
             name="永劫地狱火",
             icon="/equipment/icon/weapon/thief/twinswd/00247.png",
             cd=1,
-            data=10400 * 1.2,
+            data=11440 * 1.2,
         )
     )
     char.SetStatus(EquEffectRatio=0.12)
@@ -3777,7 +3777,7 @@ def equ_216(char: CharacterProperty):
             name="永劫地狱火",
             icon="/equipment/icon/weapon/thief/twinswd/00248.png",
             cd=1,
-            data=12480,
+            data=13730,
         )
     )
     char.equ_effect.append(
@@ -3785,7 +3785,7 @@ def equ_216(char: CharacterProperty):
             name="覆灭地狱火",
             icon="/equipment/icon/weapon/thief/twinswd/00248.png",
             cd=5,
-            data=15600,
+            data=17160,
         )
     )
     char.SetStatus(EquEffectRatio=0.12)
@@ -3880,7 +3880,7 @@ def equ_222(char: CharacterProperty):
             name="恐惧",
             icon="/equipment/icon/weapon/thief/wand/00269.png",
             cd=0.2,
-            data=2000,
+            data=2200,
         )
     )
     pass
@@ -3903,7 +3903,7 @@ def equ_223(char: CharacterProperty):
             name="恐惧",
             icon="/equipment/icon/weapon/thief/wand/00270.png",
             cd=0.2,
-            data=2000,
+            data=2200,
         )
     )
     if char.equ_options.get("5", 0) == 0:
@@ -3918,7 +3918,7 @@ def equ_224(char: CharacterProperty):
     '''
     DCALC_REMOVE: equ_224 - 恐怖之主宰
     攻击时，被恐惧压制的敌人受到伤害。（冷却时间0.2秒）
-    *[恐惧]攻击力：2000%
+    *[恐惧]攻击力：2200%
     [无尽的恐惧][装备主动技能]
     给最强大的敌人施放降灵术。
     - 技能伤害 增加 10%，效果持续10秒
@@ -3932,11 +3932,11 @@ def equ_224(char: CharacterProperty):
             name="恐惧",
             icon="/equipment/icon/weapon/thief/wand/00271.png",
             cd=0.2,
-            data=2000,
+            data=2200,
         )
     )
     char.equ_effect.append(
-        EquEffect(name="冥河之钥", icon="/equipment/skill/55.png", cd=20, data=51000)
+        EquEffect(name="冥河之钥", icon="/equipment/skill/55.png", cd=20, data=56100)
     )
     if char.equ_options.get("5", 0) == 0:
         char.SetStatus(SkillAttack=0.1)
@@ -4252,7 +4252,7 @@ def equ_246(char: CharacterProperty):
     rarity: 传说
     '''
     char.equ_effect.append(
-        EquEffect(name="墨龙偃月斩", icon="/equipment/skill/61.png", cd=60, data=202000)
+        EquEffect(name="墨龙偃月斩", icon="/equipment/skill/61.png", cd=60, data=222200)
     )
     pass
 
@@ -4269,7 +4269,7 @@ def equ_247(char: CharacterProperty):
     rarity: 史诗
     '''
     char.equ_effect.append(
-        EquEffect(name="墨龙偃月斩", icon="/equipment/skill/61.png", cd=60, data=404000)
+        EquEffect(name="墨龙偃月斩", icon="/equipment/skill/61.png", cd=60, data=444400)
     )
     pass
 
@@ -4286,7 +4286,7 @@ def equ_248(char: CharacterProperty):
     rarity: 太初
     '''
     char.equ_effect.append(
-        EquEffect(name="墨龙偃月斩", icon="/equipment/skill/61.png", cd=60, data=606000)
+        EquEffect(name="墨龙偃月斩", icon="/equipment/skill/61.png", cd=60, data=666600)
     )
     pass
 
@@ -4377,7 +4377,7 @@ def equ_254(char: CharacterProperty):
             name="星光盛宴",
             icon="/equipment/icon/weapon/demoniclancer/beamspear/00177.png",
             cd=30,
-            data=76500,
+            data=84150,
         )
     )
     char.SetStatus(EquEffectRatio=0.1)
@@ -4406,7 +4406,7 @@ def equ_255(char: CharacterProperty):
             name="星光盛宴",
             icon="/equipment/icon/weapon/demoniclancer/beamspear/00178.png",
             cd=30,
-            data=76500,
+            data=84150,
         )
     )
     char.SetStatus(EquEffectRatio=0.1)
@@ -4435,7 +4435,7 @@ def equ_256(char: CharacterProperty):
             name="星光盛宴",
             icon="/equipment/icon/weapon/demoniclancer/beamspear/00179.png",
             cd=30,
-            data=76500,
+            data=84150,
         )
     )
     char.SetStatus(EquEffectRatio=0.1)
@@ -4558,7 +4558,7 @@ def equ_263(char: CharacterProperty):
             name="暗灭之矛",
             icon="/equipment/icon/weapon/demoniclancer/javelin/00167.png",
             cd=20,
-            data=54000,
+            data=56100,
         )
     )
     pass
@@ -4587,7 +4587,7 @@ def equ_264(char: CharacterProperty):
             name="暗灭之矛",
             icon="/equipment/icon/weapon/demoniclancer/javelin/00184.png",
             cd=20,
-            data=51000 + 1000 * 6,
+            data=56100 + 1100 * 6,
         )
     )
     pass
@@ -4926,7 +4926,11 @@ def equ_286(char: CharacterProperty):
     '''
     char.SetSkillCD(cd=0.2)
     char.equ_effect.append(
-        EquEffect(name="狂戮掠夺", icon="/equipment/skill/43.png", cd=10, data=2550)
+        EquEffect(name="狂戮掠夺", icon="/equipment/skill/43.png", cd=10, data=2800)
+    )
+    # TODO
+    char.equ_effect.append(
+        EquEffect(name="戮影之舞", icon="/equipment/skill/43.png", cd=10, data=12600)
     )
     char.SetStatus(EquEffectRatio=0.1)
     pass
@@ -4955,7 +4959,11 @@ def equ_287(char: CharacterProperty):
     '''
     char.SetSkillCD(cd=0.2)
     char.equ_effect.append(
-        EquEffect(name="戮影之舞", icon="/equipment/skill/43.png", cd=5, data=2550)
+        EquEffect(name="狂戮掠夺", icon="/equipment/skill/43.png", cd=10, data=2800)
+    )
+    # TODO
+    char.equ_effect.append(
+        EquEffect(name="戮影之舞", icon="/equipment/skill/43.png", cd=10, data=12600)
     )
     char.SetStatus(EquEffectRatio=0.1)
     pass
@@ -4984,7 +4992,11 @@ def equ_288(char: CharacterProperty):
     '''
     char.SetSkillCD(cd=0.2)
     char.equ_effect.append(
-        EquEffect(name="戮影之舞", icon="/equipment/skill/43.png", cd=2, data=2550)
+        EquEffect(name="狂戮掠夺", icon="/equipment/skill/43.png", cd=10, data=2800)
+    )
+    # TODO
+    char.equ_effect.append(
+        EquEffect(name="戮影之舞", icon="/equipment/skill/43.png", cd=10, data=12600)
     )
     char.SetStatus(EquEffectRatio=0.1)
     pass
@@ -5069,7 +5081,7 @@ def equ_294(char: CharacterProperty):
             name="超频源力[5次]",
             icon="/equipment/icon/weapon/gunblader/coreswd/00163.png",
             cd=40,
-            data=4500,
+            data=4950,
         )
     )
     pass
@@ -5096,7 +5108,7 @@ def equ_295(char: CharacterProperty):
             name="超频源力[5次]",
             icon="/equipment/icon/weapon/gunblader/coreswd/00164.png",
             cd=40,
-            data=4500,
+            data=4950,
         )
     )
     char.equ_effect.append(
@@ -5104,7 +5116,7 @@ def equ_295(char: CharacterProperty):
             name="超频源力[20次]",
             icon="/equipment/icon/weapon/gunblader/coreswd/00164.png",
             cd=40,
-            data=35000,
+            data=38500,
         )
     )
     pass
@@ -5132,7 +5144,7 @@ def equ_296(char: CharacterProperty):
             name="超频源力[5次]",
             icon="/equipment/icon/weapon/gunblader/coreswd/00165.png",
             cd=40,
-            data=2835,
+            data=4950,
         )
     )
     char.equ_effect.append(
@@ -5140,7 +5152,7 @@ def equ_296(char: CharacterProperty):
             name="超频源力[20次]",
             icon="/equipment/icon/weapon/gunblader/coreswd/00165.png",
             cd=40,
-            data=22680,
+            data=38500,
         )
     )
     char.equ_effect.append(
@@ -5148,7 +5160,7 @@ def equ_296(char: CharacterProperty):
             name="超频源力[100次]",
             icon="/equipment/icon/weapon/gunblader/coreswd/00165.png",
             cd=40,
-            data=265000,
+            data=291500,
         )
     )
     pass
@@ -5229,7 +5241,11 @@ def equ_302(char: CharacterProperty):
     - 特效伤害 +10%
     rarity: 传说
     '''
-    char.SetStatus(EquEffectRatio=0.1)
+    if char.equ_options.get("6", 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get("6", 0) == 1:
+        char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -5248,7 +5264,11 @@ def equ_303(char: CharacterProperty):
     - 特效伤害 +10%
     rarity: 史诗
     '''
-    char.SetStatus(EquEffectRatio=0.1)
+    if char.equ_options.get("6", 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get("6", 0) == 1:
+        char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -5267,7 +5287,11 @@ def equ_304(char: CharacterProperty):
     - 特效伤害 +10%
     rarity: 太初
     '''
-    char.SetStatus(EquEffectRatio=0.1)
+    if char.equ_options.get("6", 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get("6", 0) == 1:
+        char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -5347,7 +5371,11 @@ def equ_310(char: CharacterProperty):
     - 技能伤害 增加 12.3%
     rarity: 传说
     '''
-    char.SetStatus(EquEffectRatio=0.1)
+    if char.equ_options.get("6", 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get("6", 0) == 1:
+        char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -5367,7 +5395,11 @@ def equ_311(char: CharacterProperty):
     - 技能伤害 增加 12.3%
     rarity: 史诗
     '''
-    char.SetStatus(EquEffectRatio=0.1)
+    if char.equ_options.get("6", 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get("6", 0) == 1:
+        char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -5387,7 +5419,11 @@ def equ_312(char: CharacterProperty):
     - 技能伤害 增加 12.3%
     rarity: 太初
     '''
-    char.SetStatus(EquEffectRatio=0.1)
+    if char.equ_options.get("6", 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get("6", 0) == 1:
+        char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -5482,7 +5518,11 @@ def equ_318(char: CharacterProperty):
     - 特效伤害 +10%
     rarity: 传说
     '''
-    char.SetStatus(EquEffectRatio=0.1)
+    if char.equ_options.get("6", 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get("6", 0) == 1:
+        char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -5502,7 +5542,11 @@ def equ_319(char: CharacterProperty):
     - 特效伤害 +10%
     rarity: 史诗
     '''
-    char.SetStatus(EquEffectRatio=0.1)
+    if char.equ_options.get("6", 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get("6", 0) == 1:
+        char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -5521,7 +5565,11 @@ def equ_320(char: CharacterProperty):
     - 特效伤害 +10%
     rarity: 太初
     '''
-    char.SetStatus(EquEffectRatio=0.1)
+    if char.equ_options.get("6", 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get("6", 0) == 1:
+        char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -5626,7 +5674,11 @@ def equ_326(char: CharacterProperty):
     - 特效伤害 +10%
     rarity: 传说
     '''
-    char.SetStatus(EquEffectRatio=0.1)
+    if char.equ_options.get("6", 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get("6", 0) == 1:
+        char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -5646,7 +5698,11 @@ def equ_327(char: CharacterProperty):
     - 特效伤害 +10%
     rarity: 史诗
     '''
-    char.SetStatus(EquEffectRatio=0.1)
+    if char.equ_options.get("6", 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get("6", 0) == 1:
+        char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -5666,7 +5722,11 @@ def equ_328(char: CharacterProperty):
     - 特效伤害 +10%
     rarity: 太初
     '''
-    char.SetStatus(EquEffectRatio=0.1)
+    if char.equ_options.get("6", 0) == 0:
+        char.SetStatus(SkillAttack=0.123)
+    elif char.equ_options.get("6", 0) == 1:
+        char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     pass
 
 
@@ -5783,6 +5843,7 @@ def equ_882(char: CharacterProperty):
         char.SetStatus(SkillAttack=0.123)
     elif char.equ_options.get("6", 0) == 1:
         char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     ...
 
 
@@ -5804,6 +5865,7 @@ def equ_883(char: CharacterProperty):
         char.SetStatus(SkillAttack=0.123)
     elif char.equ_options.get("6", 0) == 1:
         char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     ...
 
 
@@ -5825,6 +5887,7 @@ def equ_884(char: CharacterProperty):
         char.SetStatus(SkillAttack=0.123)
     elif char.equ_options.get("6", 0) == 1:
         char.SetSkillCD(cd=0.2)
+        char.SetStatus(EquEffectRatio=0.1)
     ...
 
 
@@ -5845,6 +5908,27 @@ def equ_900(char: CharacterProperty):
     pass
 
 
+def weapon_point(char: CharacterProperty):
+    point = char.charEquipInfo["武器"].precision
+    skillAttack = (
+        0.1 * point
+        - (point // 25) * 0.1
+        + (0.6 if point >= 25 else 0)
+        + (0.6 if point >= 50 else 0)
+        + (0.6 if point >= 75 else 0)
+        + (1.9 if point >= 100 else 0)
+    )
+    buffer = (
+        40 * point
+        - (point // 25) * 40
+        + (120 if point >= 25 else 0)
+        + (120 if point >= 50 else 0)
+        + (120 if point >= 75 else 0)
+        + (340 if point >= 100 else 0)
+    )
+    char.SetStatus(SkillAttack=skillAttack / 100, Buffer=buffer)
+    pass
+
 @register
 def equ_901(char: CharacterProperty):
     '''
@@ -5856,6 +5940,7 @@ def equ_901(char: CharacterProperty):
     *减伤效果在离开污染区域后仍可持续5秒左右
     rarity: 太初
     '''
+    weapon_point(char)
     pass
 
 
@@ -5890,6 +5975,14 @@ def equ_903(char: CharacterProperty):
     - 释放技能时，恢复66点生命值（冷却时间1秒，该效果不会使生命值低于66点）
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetSkillCD(cd=0.7)
+    if not char.buffer:
+        char.SetSkillCD(50,50,0.9,[])
+        char.SetSkillCD(85,85,0.9,[])
+        char.SetSkillCD(100,100,0.9,[])
+    char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
+    char.SetStatus(EquEffectRatio=0.15)    
     pass
 
 
@@ -5920,6 +6013,15 @@ def equ_905(char: CharacterProperty):
     - 怨灵席卷伤害：420750%
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="怨灵召唤",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=30,
+            data=420750,
+        )
+    )
     pass
 
 
@@ -5958,13 +6060,15 @@ def equ_907(char: CharacterProperty):
     - 进入地下城时，获得400点能量
     [撕裂的悲鸣][装备主动技能]
     发出撕心裂肺的惨叫，获得增益效果
-    - ，持续时间40秒
+    - 技能伤害 +4%，持续时间40秒
     - 消耗400点能量
     - 冷却时间40秒
     [撕裂的悲鸣 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[撕裂的悲鸣]
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetStatus(SkillAttack=0.04)
     pass
 
 
@@ -5995,6 +6099,15 @@ def equ_909(char: CharacterProperty):
     - 冷却时间：60秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="次元斩",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=60,
+            data=666600,
+        )
+    )
     pass
 
 
@@ -6026,6 +6139,15 @@ def equ_911(char: CharacterProperty):
     - 冷却时间：60秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="切割",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=60,
+            data=666600,
+        )
+    )
     pass
 
 
@@ -6057,13 +6179,15 @@ def equ_913(char: CharacterProperty):
     - 进入地下城时，获得400点能量
     [狂暴乱舞][装备主动技能]
     从愤怒中爆发，获得增益效果
-    - ，持续时间40秒
+    - 技能伤害 +4%，持续时间40秒
     - 消耗400点能量
     - 冷却时间40秒
     [狂暴乱舞 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[狂暴乱舞]
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetStatus(SkillAttack=0.04)
     pass
 
 
@@ -6106,6 +6230,7 @@ def equ_915(char: CharacterProperty):
     - 瘟疫爆发时，对300px范围内的敌人赋予持续5秒的出血/中毒异常状态
     rarity: 太初
     '''
+    weapon_point(char)
     pass
 
 
@@ -6138,6 +6263,16 @@ def equ_917(char: CharacterProperty):
     - 冷却时间：15秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="泉涌追击",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=15,
+            data=2800,
+        )
+    )
+    char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     pass
 
 
@@ -6177,6 +6312,14 @@ def equ_919(char: CharacterProperty):
     - 释放技能时，恢复66点生命值（冷却时间1秒，该效果不会使生命值低于66点）
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetSkillCD(cd=0.7)
+    if not char.buffer:
+        char.SetSkillCD(50,50,0.9,[])
+        char.SetSkillCD(85,85,0.9,[])
+        char.SetSkillCD(100,100,0.9,[])
+    char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
+    char.SetStatus(EquEffectRatio=0.15)    
     pass
 
 
@@ -6207,13 +6350,15 @@ def equ_921(char: CharacterProperty):
     - 进入地下城时，获得400点能量
     [污秽之血][装备主动技能]
     被污秽之血侵蚀，获得增益效果
-    - ，持续时间40秒
+    - 技能伤害 +4%，持续时间40秒
     - 消耗400点能量
     - 冷却时间40秒
     [污秽之血 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[污秽之血]
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetStatus(SkillAttack=0.04)
     pass
 
 
@@ -6251,6 +6396,13 @@ def equ_923(char: CharacterProperty):
     - 累积10个能量时，施放消耗无色小晶块的技能，20秒内所有速度+20%（最多可叠加1次）
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetStatus(EquEffectRatio=0.265)
+    for skill in char.skills:
+        if skill.learnLv <= 30 and skill.damage:
+            skill.skillRation *= 1.30
+        if skill.damage and skill.learnLv >= 35:
+            skill.skillDamage *= 1.25
     pass
 
 
@@ -6289,6 +6441,14 @@ def equ_925(char: CharacterProperty):
     - 释放技能时，恢复66点生命值（冷却时间1秒，该效果不会使生命值低于66点）
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetSkillCD(cd=0.7)
+    if not char.buffer:
+        char.SetSkillCD(50,50,0.9,[])
+        char.SetSkillCD(85,85,0.9,[])
+        char.SetSkillCD(100,100,0.9,[])
+    char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
+    char.SetStatus(EquEffectRatio=0.15)    
     pass
 
 
@@ -6322,6 +6482,7 @@ def equ_927(char: CharacterProperty):
     - 冷却时间10秒
     rarity: 太初
     '''
+    weapon_point(char)
     pass
 
 
@@ -6352,6 +6513,15 @@ def equ_929(char: CharacterProperty):
     -冷却时间：15秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+            EquEffect(
+                name="愤怒跃击",
+                icon=char.charEquipInfo['武器'].equInfo.icon,
+                cd=15,
+                data=2800,
+            )
+        )
     pass
 
 
@@ -6379,13 +6549,15 @@ def equ_931(char: CharacterProperty):
     - 进入地下城时，获得400点能量
     [沸腾之怒][装备主动技能]
     被沸腾的愤怒所侵蚀，获得增益效果
-    - ，持续时间40秒
+    - 技能伤害 +4%，持续时间40秒
     - 消耗400点能量
     - 冷却时间40秒
     [沸腾之怒 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[沸腾之怒]
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetStatus(SkillAttack=0.04)
     pass
 
 
@@ -6419,6 +6591,15 @@ def equ_933(char: CharacterProperty):
     - 冷却时间1秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="开吃",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=3,
+            data=42075,
+        )
+    )
     pass
 
 
@@ -6455,6 +6636,8 @@ def equ_935(char: CharacterProperty):
     - 冷却时间：10秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetStatus(SpeedM=0.15, SpeedA=0.15, SpeedR=0.15)
     pass
 
 
@@ -6489,6 +6672,14 @@ def equ_937(char: CharacterProperty):
     - 释放技能时，恢复66点生命值（冷却时间1秒，该效果不会使生命值低于66点）
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetSkillCD(cd=0.7)
+    if not char.buffer:
+        char.SetSkillCD(50,50,0.9,[])
+        char.SetSkillCD(85,85,0.9,[])
+        char.SetSkillCD(100,100,0.9,[])
+    char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
+    char.SetStatus(EquEffectRatio=0.15)
     pass
 
 
@@ -6520,6 +6711,7 @@ def equ_939(char: CharacterProperty):
     - 冷却时间5秒
     rarity: 太初
     '''
+    weapon_point(char)
     pass
 
 
@@ -6550,6 +6742,8 @@ def equ_941(char: CharacterProperty):
     - 冷却时间：5秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetStatus(SpeedM=0.1, SpeedA=0.1, SpeedR=0.1)
     pass
 
 
@@ -6578,6 +6772,15 @@ def equ_943(char: CharacterProperty):
     - 冷却时间：1秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="尖牙的恩惠",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=1,
+            data=19650,
+        )
+    )
     pass
 
 
@@ -6611,6 +6814,14 @@ def equ_945(char: CharacterProperty):
     - 释放技能时，恢复66点生命值（冷却时间1秒，该效果不会使生命值低于66点）
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetSkillCD(cd=0.7)
+    if not char.buffer:
+        char.SetSkillCD(50,50,0.9,[])
+        char.SetSkillCD(85,85,0.9,[])
+        char.SetSkillCD(100,100,0.9,[])
+    char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
+    char.SetStatus(EquEffectRatio=0.15)
     pass
 
 
@@ -6641,13 +6852,15 @@ def equ_947(char: CharacterProperty):
     - 进入地下城时，获得400点能量
     [污秽之血][装备主动技能]
     被污秽之血所侵蚀，获得增益效果
-    - ，持续时间40秒
+    - 技能伤害 +4%，持续时间40秒
     - 消耗400点能量
     - 冷却时间40秒
     [污秽之血 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[污秽之血]
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetStatus(SkillAttack=0.04)
     pass
 
 
@@ -6686,6 +6899,7 @@ def equ_949(char: CharacterProperty):
     - 冷却时间：20秒
     rarity: 太初
     '''
+    weapon_point(char)
     pass
 
 
@@ -6715,6 +6929,15 @@ def equ_951(char: CharacterProperty):
     - 冷却时间：60秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="充满怨恨的獠牙",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=60,
+            data=666600,
+        )
+    )
     pass
 
 
@@ -6748,13 +6971,15 @@ def equ_953(char: CharacterProperty):
     - 进入地下城时，获得400点能量
     [食腐][装备主动技能]
     吸收周围的毒气，获得增益效果
-    - ，持续时间40秒
+    - 技能伤害 +4%，持续时间40秒
     - 消耗400点能量
     - 冷却时间40秒
     [食腐 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[食腐]
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetStatus(SkillAttack=0.04)
     pass
 
 
@@ -6792,6 +7017,14 @@ def equ_955(char: CharacterProperty):
     - 释放技能时，恢复66点生命值（冷却时间1秒，该效果不会使生命值低于66点）
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetSkillCD(cd=0.7)
+    if not char.buffer:
+        char.SetSkillCD(50,50,0.9,[])
+        char.SetSkillCD(85,85,0.9,[])
+        char.SetSkillCD(100,100,0.9,[])
+    char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
+    char.SetStatus(EquEffectRatio=0.15)
     pass
 
 
@@ -6827,6 +7060,16 @@ def equ_957(char: CharacterProperty):
     - 冷却时间10秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="刀刃旋风",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=25,
+            data=249500,
+        )
+    )
+    char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     pass
 
 
@@ -6856,6 +7099,7 @@ def equ_959(char: CharacterProperty):
     - 冷却时间：20秒
     rarity: 太初
     '''
+    weapon_point(char)
     pass
 
 
@@ -6885,13 +7129,15 @@ def equ_961(char: CharacterProperty):
     - 进入地下城时，获得400点能量
     [狂暴乱舞][装备主动技能]
     愤怒爆发，获得增益效果
-    - ，持续时间40秒
+    - 技能伤害 +4%，持续时间40秒
     - 消耗400点能量
     - 冷却时间40秒
     [狂暴乱舞 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[狂暴乱舞]
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetStatus(SkillAttack=0.04)
     pass
 
 
@@ -6924,6 +7170,15 @@ def equ_963(char: CharacterProperty):
     - 冷却时间：10秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="束缚之链",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=10,
+            data=112200,
+        )
+    )
     pass
 
 
@@ -6963,6 +7218,14 @@ def equ_965(char: CharacterProperty):
     - 释放技能时，恢复66点生命值（冷却时间1秒，该效果不会使生命值低于66点）
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetSkillCD(cd=0.7)
+    if not char.buffer:
+        char.SetSkillCD(50,50,0.9,[])
+        char.SetSkillCD(85,85,0.9,[])
+        char.SetSkillCD(100,100,0.9,[])
+    char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
+    char.SetStatus(EquEffectRatio=0.15)
     pass
 
 
@@ -6991,6 +7254,15 @@ def equ_967(char: CharacterProperty):
     - 冷却时间：60秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="斩破次元",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=60,
+            data=666600,
+        )
+    )
     pass
 
 
@@ -7020,6 +7292,15 @@ def equ_969(char: CharacterProperty):
     - 冷却时间：15秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="你要去哪儿",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=15,
+            data=2800,
+        )
+    )
     pass
 
 
@@ -7064,6 +7345,14 @@ def equ_971(char: CharacterProperty):
     - 释放技能时，恢复66点生命值（冷却时间1秒，该效果不会使生命值低于66点）
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetSkillCD(cd=0.7)
+    if not char.buffer:
+        char.SetSkillCD(50,50,0.9,[])
+        char.SetSkillCD(85,85,0.9,[])
+        char.SetSkillCD(100,100,0.9,[])
+    char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
+    char.SetStatus(EquEffectRatio=0.15)
     pass
 
 
@@ -7099,13 +7388,15 @@ def equ_973(char: CharacterProperty):
     - 进入地下城时，获得400点能量
     [撕裂的悲鸣][装备主动技能]
     发出撕裂的悲鸣，获得增益效果
-    - ，持续时间40秒
+    - 技能伤害 +4%，持续时间40秒
     - 消耗400点能量
     - 冷却时间40秒
     [撕裂的悲鸣 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[撕裂的悲鸣]
     rarity: 太初
     '''
+    weapon_point(char)
+    char.SetStatus(SkillAttack=0.04)
     pass
 
 
@@ -7139,6 +7430,15 @@ def equ_975(char: CharacterProperty):
     - 冷却时间：60秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="污染之息",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=60,
+            data=666600,
+        )
+    )
     pass
 
 
@@ -7173,6 +7473,15 @@ def equ_977(char: CharacterProperty):
     - 冷却时间：60秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="死亡旋律",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=60,
+            data=666600,
+        )
+    )
     pass
 
 
@@ -7206,6 +7515,15 @@ def equ_979(char: CharacterProperty):
     - 冷却时间：60秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="孤独的狙击手",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=60,
+            data=666600,
+        )
+    )
     pass
 
 
@@ -7240,6 +7558,15 @@ def equ_981(char: CharacterProperty):
     - 冷却时间：60秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="扭曲",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=60,
+            data=666600,
+        )
+    )
     pass
 
 
@@ -7272,6 +7599,15 @@ def equ_983(char: CharacterProperty):
     - 冷却时间：60秒
     rarity: 太初
     '''
+    weapon_point(char)
+    char.equ_effect.append(
+        EquEffect(
+            name="亵渎之羽",
+            icon=char.charEquipInfo['武器'].equInfo.icon,
+            cd=60,
+            data=666600,
+        )
+    )
     pass
 
 
