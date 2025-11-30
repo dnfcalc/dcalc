@@ -231,7 +231,6 @@ async def get_skill_data_summary(
                     with open(os.path.join(summary_dir, i), encoding="utf-8") as f:
                         skill_data = json.load(f)
                     weapon = i.split("_")[-1].replace(".json", "")
-                    print(weapon, i)
                     res.append(
                         {"weapon": weapon if weapon else "通用", "skills": skill_data}
                     )
@@ -240,14 +239,10 @@ async def get_skill_data_summary(
         job_summary = get_redis_info(redis, key, get_skill_data_summary)
         for item in job_summary:
             if len(weapons) == 0 or item["weapon"] in weapons:
-                items = (
-                    list(filter(lambda x: x["技能名称"] in skills, item["skills"]))
-                    if len(skills) > 0
-                    else item["skills"]
-                )
+                items = list(filter(lambda x: x["技能名称"] in skills, item["skills"])) if len(skills) > 0 else item["skills"]
                 for skill in items:
                     skill["武器类型"] = item["weapon"]
-                data.extend(skills or [])
+                data.extend(items or [])
     except FileNotFoundError as e:
         print(f"File not found: {e}")
         return response(data=[])
