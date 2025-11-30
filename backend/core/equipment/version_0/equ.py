@@ -5977,11 +5977,11 @@ def equ_903(char: CharacterProperty):
     rarity: 太初
     """
     weapon_point(char)
-    char.SetSkillCD(cd=0.7)
+    char.SetSkillCD(cd=0.3)
     if not char.buffer:
-        char.SetSkillCD(50, 50, 0.9, [])
-        char.SetSkillCD(85, 85, 0.9, [])
-        char.SetSkillCD(100, 100, 0.9, [])
+        char.SetSkillCD(50, 50, 0.1, [])
+        char.SetSkillCD(85, 85, 0.1, [])
+        char.SetSkillCD(100, 100, 0.1, [])
     char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     char.SetStatus(EquEffectRatio=0.15)
     pass
@@ -6314,11 +6314,11 @@ def equ_919(char: CharacterProperty):
     rarity: 太初
     """
     weapon_point(char)
-    char.SetSkillCD(cd=0.7)
+    char.SetSkillCD(cd=0.3)
     if not char.buffer:
-        char.SetSkillCD(50, 50, 0.9, [])
-        char.SetSkillCD(85, 85, 0.9, [])
-        char.SetSkillCD(100, 100, 0.9, [])
+        char.SetSkillCD(50, 50, 0.1, [])
+        char.SetSkillCD(85, 85, 0.1, [])
+        char.SetSkillCD(100, 100, 0.1, [])
     char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     char.SetStatus(EquEffectRatio=0.15)
     pass
@@ -6443,11 +6443,11 @@ def equ_925(char: CharacterProperty):
     rarity: 太初
     """
     weapon_point(char)
-    char.SetSkillCD(cd=0.7)
+    char.SetSkillCD(cd=0.3)
     if not char.buffer:
-        char.SetSkillCD(50, 50, 0.9, [])
-        char.SetSkillCD(85, 85, 0.9, [])
-        char.SetSkillCD(100, 100, 0.9, [])
+        char.SetSkillCD(50, 50, 0.1, [])
+        char.SetSkillCD(85, 85, 0.1, [])
+        char.SetSkillCD(100, 100, 0.1, [])
     char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     char.SetStatus(EquEffectRatio=0.15)
     pass
@@ -6675,11 +6675,11 @@ def equ_937(char: CharacterProperty):
     rarity: 太初
     """
     weapon_point(char)
-    char.SetSkillCD(cd=0.7)
+    char.SetSkillCD(cd=0.3)
     if not char.buffer:
-        char.SetSkillCD(50, 50, 0.9, [])
-        char.SetSkillCD(85, 85, 0.9, [])
-        char.SetSkillCD(100, 100, 0.9, [])
+        char.SetSkillCD(50, 50, 0.1, [])
+        char.SetSkillCD(85, 85, 0.1, [])
+        char.SetSkillCD(100, 100, 0.1, [])
     char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     char.SetStatus(EquEffectRatio=0.15)
     pass
@@ -6817,11 +6817,11 @@ def equ_945(char: CharacterProperty):
     rarity: 太初
     """
     weapon_point(char)
-    char.SetSkillCD(cd=0.7)
+    char.SetSkillCD(cd=0.3)
     if not char.buffer:
-        char.SetSkillCD(50, 50, 0.9, [])
-        char.SetSkillCD(85, 85, 0.9, [])
-        char.SetSkillCD(100, 100, 0.9, [])
+        char.SetSkillCD(50, 50, 0.1, [])
+        char.SetSkillCD(85, 85, 0.1, [])
+        char.SetSkillCD(100, 100, 0.1, [])
     char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     char.SetStatus(EquEffectRatio=0.15)
     pass
@@ -7020,11 +7020,11 @@ def equ_955(char: CharacterProperty):
     rarity: 太初
     """
     weapon_point(char)
-    char.SetSkillCD(cd=0.7)
+    char.SetSkillCD(cd=0.3)
     if not char.buffer:
-        char.SetSkillCD(50, 50, 0.9, [])
-        char.SetSkillCD(85, 85, 0.9, [])
-        char.SetSkillCD(100, 100, 0.9, [])
+        char.SetSkillCD(50, 50, 0.1, [])
+        char.SetSkillCD(85, 85, 0.1, [])
+        char.SetSkillCD(100, 100, 0.1, [])
     char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     char.SetStatus(EquEffectRatio=0.15)
     pass
@@ -7221,11 +7221,11 @@ def equ_965(char: CharacterProperty):
     rarity: 太初
     """
     weapon_point(char)
-    char.SetSkillCD(cd=0.7)
+    char.SetSkillCD(cd=0.3)
     if not char.buffer:
-        char.SetSkillCD(50, 50, 0.9, [])
-        char.SetSkillCD(85, 85, 0.9, [])
-        char.SetSkillCD(100, 100, 0.9, [])
+        char.SetSkillCD(50, 50, 0.1, [])
+        char.SetSkillCD(85, 85, 0.1, [])
+        char.SetSkillCD(100, 100, 0.1, [])
     char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     char.SetStatus(EquEffectRatio=0.15)
     pass
@@ -7348,11 +7348,11 @@ def equ_971(char: CharacterProperty):
     rarity: 太初
     """
     weapon_point(char)
-    char.SetSkillCD(cd=0.7)
+    char.SetSkillCD(cd=0.3)
     if not char.buffer:
-        char.SetSkillCD(50, 50, 0.9, [])
-        char.SetSkillCD(85, 85, 0.9, [])
-        char.SetSkillCD(100, 100, 0.9, [])
+        char.SetSkillCD(50, 50, 0.1, [])
+        char.SetSkillCD(85, 85, 0.1, [])
+        char.SetSkillCD(100, 100, 0.1, [])
     char.SetStatus(SpeedM=0.2, SpeedA=0.2, SpeedR=0.2)
     char.SetStatus(EquEffectRatio=0.15)
     pass
