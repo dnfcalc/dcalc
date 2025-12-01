@@ -284,7 +284,7 @@ class Skill28(ActiveSkill):
     uuid = "b5e3d014f75f3d17abdea52cca57f7e9"
     buffer = True
     hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
 
 # 飞龙斩 드래곤 스매쉬
@@ -491,7 +491,7 @@ class Skill34(ActiveSkill):
     uuid = "96bd070daacc6c1b81d9f24e6d77f48a"
     type = "passive"
     hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     hasVP = False
     data0 = [0, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22.5, 24, 25.5, 27, 28.5, 30, 31.5, 33, 34.5, 36, 37.5, 39, 40.5, 42, 43.5, 45, 46.5, 48, 49.5, 51, 52.5, 54, 55.5, 57, 58.5, 60, 61.5, 63, 64.5, 66, 67.5, 69, 70.5, 72, 73.5, 75, 76.5, 78, 79.5, 81, 82.5, 84, 85.5]# noqa: E501
 

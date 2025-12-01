@@ -1019,7 +1019,7 @@ class Skill45(ActiveSkill):
 
     # 爆炸攻击力 : {value0} X {value1}
     data0 = get_data(f'{prefix}/{uuid}', 0)
-    hit1 = 6
+    hit0 = 6
     data1 = get_data(f'{prefix}/{uuid}', 1)
     # [范围信息]
     # 爆炸范围比率 : {value2}%
