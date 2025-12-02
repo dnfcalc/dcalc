@@ -16,11 +16,20 @@ characterLv = 115 + 5
 @cache
 def get_data(prefix: str, key: int | str, func = lambda x: x):
     redis = next(get_redis())
+
+    def get_custom_cn():
+        with open('./openapi/custom_cn.json', encoding='utf-8') as f:
+            custom_cn = json.load(f)
+        return custom_cn
     def get_skill_info():
         # This function should retrieve the skill info based on job and jobGrow
         # For now, we return a placeholder dictionary
         with open(f'./openapi/data/{prefix}.json', encoding='utf-8') as f:
             skill_data = json.load(f)
+        custom_cn = get_redis_info(redis, 'dcalc:custom_cn', get_custom_cn, without_gzip=True)
+        job = prefix.split('/')[0]
+        jobGrow = prefix.split('/')[1]
+        skill = prefix.split('/')[-1]
         try:
             if isinstance(key, int):
                 data = [0] + list(map(lambda x: x["optionValue"].get("value" + str(key+1), 0), skill_data["levelInfo"]["rows"]))
@@ -28,7 +37,8 @@ def get_data(prefix: str, key: int | str, func = lambda x: x):
             elif key == "vps":
                 data = [ {"name":x["name"],"desc":x["desc"]} for x in skill_data.get("evolution",[])]
             elif key == "custom":
-                data = skill_data.get("custom",1.0)
+                data = next((item.get('custom', 1.0) for item in custom_cn
+                             if item['job'] == job and item['jobGrow'] == jobGrow and item['skillId'] == skill), 1.0)
         except Exception as e:
             print(f"get skill {prefix}/{key} data error",e)
             data = None
