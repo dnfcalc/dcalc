@@ -755,6 +755,7 @@ class Skill32(ActiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
     # 抽打攻击力 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
     # [范围信息]
     # 冲击波大小 : {value3}%
     data3 = get_data(f'{prefix}/{uuid}', 3)

@@ -8913,27 +8913,27 @@ def equ_414(char: CharacterProperty):
         char.SetStatus(STR=200, INT=200, Spirit=200, Vitality=200)
     pass
 
-
+@register
 def equ_989(char: CharacterProperty):
     equ_375(char)
     pass
 
-
+@register
 def equ_990(char: CharacterProperty):
     equ_378(char)
     pass
 
-
+@register
 def equ_991(char: CharacterProperty):
     equ_381(char)
     pass
 
-
+@register
 def equ_992(char: CharacterProperty):
     equ_384(char)
     pass
 
-
+@register
 def equ_993(char: CharacterProperty):
     equ_387(char)
     pass
