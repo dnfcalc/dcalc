@@ -51,7 +51,7 @@ export interface IConfig {
       option: string
     }
   >
-  sundry: Record<string, any>
+  sundry: Record<string, unknown>
   bindAwake: number
   /** 系统奶 */
   DSB: boolean
@@ -144,10 +144,12 @@ export const useConfigStore = defineStore('configStore', () => {
       .filter((a) => !config.value?.skills.hasOwnProperty(a))
 
     part.forEach((p) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       config.value && (config.value.equips[p] = { ...defaultEqusConfig })
     })
 
     avatarPart.forEach((p) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       config.value && (config.value.avatar[p] = { ...defaultAvatarConfig })
     })
 
@@ -157,6 +159,7 @@ export const useConfigStore = defineStore('configStore', () => {
     })
 
     skillIDs.forEach((id) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       config.value &&
         (config.value.skills[id] = {
           lv: infoStore.skills.find((skill) => skill.id.toString() === id)?.maxLearnLv ?? 0,
@@ -191,7 +194,7 @@ export const useConfigStore = defineStore('configStore', () => {
     return await api.calc(config.value)
   }
 
-  const chooseEqu = async (
+  const chooseEqu = (
     equip: IEquipment | undefined,
     isFusion: boolean = false,
     isSubWeapon: boolean = false,

@@ -25,7 +25,7 @@ export default defineComponent({
     )
     /** 是否可以设置秘宝精度 */
     const can_set_secret = computed(() => {
-      return ['武器','辅助装备', '魔法石', '耳环'].includes(part.value as string)
+      return ['武器', '辅助装备', '魔法石', '耳环'].includes(part.value as string)
     })
     const basicInfoStore = useInfoStore()
 
@@ -190,7 +190,11 @@ export default defineComponent({
             {part.value == '副武器' ? (
               <>
                 <div class="equ-profile-item">
-                  <div class="row-name">强化</div>
+                  <div class="row-name">增幅</div>
+                  <calc-select v-model={reinforce_type.value} class="flex-1 !h-20px">
+                    <calc-option value={0}>强化</calc-option>
+                    <calc-option value={1}>增幅</calc-option>
+                  </calc-select>
                   <calc-select v-model={reinforce.value} class="flex-1 !h-20px">
                     {renderList(31, (i) => (
                       <calc-option value={i - 1}>{i - 1}</calc-option>

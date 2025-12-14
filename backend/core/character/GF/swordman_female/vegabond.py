@@ -2,7 +2,7 @@
 from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
 from core.basic.roleinfo import CharacterEquipInfo
-from core.basic.formula import 武器强化计算
+from core.basic.formula import 武器强化计算, 增幅计算
 prefix = "swordman_female/vegabond/cn/skillDetail"
 
 
@@ -1229,6 +1229,11 @@ class classChange(Character):
             else:
                 # 强化计算
                 ATKP = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理')
-            self.SetStatus(AtkP =  (cur.equInfo.AtkP + ATKP) * 0.1)
+            # 武器基础
+            STR = cur.equInfo.STR
+            if cur.reinforceType == 1:
+                # 增幅四维
+                STR += 增幅计算(115, '史诗', cur.reinforce)
+            self.SetStatus(AtkP = (cur.equInfo.AtkP + ATKP) * 0.1,STR = STR*0.1)
         else:
             super().calc_weapon(cur)
