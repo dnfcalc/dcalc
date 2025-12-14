@@ -429,7 +429,7 @@ def enchant_511(char: CharacterProperty):
 def enchant_512(char: CharacterProperty):
     # DCALC_REMOVE: enchant_512
     # 三攻(50)|全属强(16)|属性攻击
-    char.SetStatus(三攻=50)
+    char.SetStatus(三攻=50,力智=50)
     char.AddElementDB('火', 16)
     char.AddElementDB('冰', 16)
     char.AddElementDB('光', 16)
