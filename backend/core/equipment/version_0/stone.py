@@ -3068,7 +3068,7 @@ def stone_306(char: CharacterProperty):
     # 融合的装备强化/增幅从10开始每增加1时，技能伤害 +1%(最多叠加2次)
     # 融合的装备强化/增幅从10开始每增加1时，增益量 +150(最多叠加2次)
     # rarity: 史诗
-    char.SetStatus(SkillAttack=0.185)
+    char.SetStatus(SkillAttack=0.195)
     reinforce = char.charEquipInfo['项链'].reinforce
     if reinforce > 10:
         value = min(reinforce - 10, 2)

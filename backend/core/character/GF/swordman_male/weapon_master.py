@@ -1516,6 +1516,9 @@ class Skill28(ActiveSkill):
         if mode == "剑气":
             self.hit0 = 0
             self.hit1 = 1
+        elif mode == "斩击":
+            self.hit0 = 1
+            self.hit1 = 0
 
     def vp_1(self):
         """

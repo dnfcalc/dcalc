@@ -296,23 +296,23 @@ class Skill28(PassiveSkill):
     hasVP = False
     hasUP = False
     custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
-    # 攻击速度增加 : {value0}%
+    # 物理、 魔法攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
-    # 施放速度增加 : {value1}%
+    # 独立攻击力增加率 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
-    # 物理、 魔法攻击力增加率 : {value2}%
+    # 转职后技能冷却时间减少率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
-    # 独立攻击力增加率 : {value3}%
+    # 攻击速度增加 : {value0}%
     data3 = get_data(f'{prefix}/{uuid}', 3)
-    # 转职后技能冷却时间减少率 : {value4}%
+    # 施放速度增加 : {value1}%
     data4 = get_data(f'{prefix}/{uuid}', 4)
     # (冷却时间减少效果不适用于一次、 二次、 三次觉醒技能)
     # 填装速度增加 : {value5}%
     data5 = get_data(f'{prefix}/{uuid}', 5)
 
     associate = [
-        {'data': data3, 'type': '$*PAtkI'},
-        {'data': data4, 'type': '*cdReduce', 'exceptSkills': ['EMP磁暴','决战之日','终解·制空霸权']}
+        {'data': data0, 'type': '$*PAtkI'},
+        {'data': data2, 'type': '*cdReduce', 'exceptSkills': ['EMP磁暴','决战之日','终解·制空霸权']}
         ]
 
 # M18阔剑地雷
