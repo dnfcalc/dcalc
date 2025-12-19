@@ -1682,6 +1682,7 @@ def suit_147(char: CharacterProperty):
     char.SetSkillRation(100,100,0.76)
     char.SetSkillRation(85,85,0.6)
     char.SetSkillRation(50,50,0.15)
+    char.SetStatus(EquEffectRatio=0.275)
     cd = 0
     for item in char.skills:
         if item.learnLv == 100:
