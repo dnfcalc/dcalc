@@ -5894,7 +5894,7 @@ def equ_884(char: CharacterProperty):
 @register
 def equ_900(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_900 - 黑色瘟疫：无影剑 - 缘生劫灭
+    DCALC_REMOVE: equ_900 - 灾厄之无影剑 - 缘生劫灭
     光属性攻击
     [达到缘生劫灭境界的无影之剑]
     攻击时，无影之剑辉追踪敌人并贯穿进行攻击。
@@ -5933,7 +5933,7 @@ def weapon_point(char: CharacterProperty):
 @register
 def equ_901(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_901 - 黑色瘟疫解放：短剑
+    DCALC_REMOVE: equ_901 - 威压 - 短剑
     [污染地带]
     穿戴时，可以对300px范围内的敌人造成污染
     - 对污染的敌人造成中毒伤害，持续5秒，冷却时间2秒
@@ -5948,7 +5948,7 @@ def equ_901(char: CharacterProperty):
 @register
 def equ_902(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_902 - 黑色瘟疫：杰作 - 金印绝刀
+    DCALC_REMOVE: equ_902 - 灾厄之杰作 - 金印绝刀
     [寒光掠影][装备主动技能]
     剑意三千境，一招足以制胜。
     - 可取消技能释放（觉醒技能除外）
@@ -5963,7 +5963,7 @@ def equ_902(char: CharacterProperty):
 @register
 def equ_903(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_903 - 黑色瘟疫解放：太刀
+    DCALC_REMOVE: equ_903 - 威压 - 太刀
     技能冷却时间-30%（觉醒技能除外）
     特效伤害+15%
     [神经毒素]
@@ -5990,7 +5990,7 @@ def equ_903(char: CharacterProperty):
 @register
 def equ_904(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_904 - 黑色瘟疫：梁月的钝剑 : 神
+    DCALC_REMOVE: equ_904 - 灾厄之梁月的钝剑 : 神
     技能冷却时间20%减少（觉醒技能除外）
     特效伤害 +10%
     所有速度 +15%
@@ -6007,7 +6007,7 @@ def equ_904(char: CharacterProperty):
 @register
 def equ_905(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_905 - 黑色瘟疫解放：钝器
+    DCALC_REMOVE: equ_905 - 威压 - 钝器
     技能范围20%
     [怨灵召唤]
     攻击时，怨灵会席卷敌人，冷却时间30秒
@@ -6029,7 +6029,7 @@ def equ_905(char: CharacterProperty):
 @register
 def equ_906(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_906 - 黑色瘟疫：特型 - 武神凌云剑
+    DCALC_REMOVE: equ_906 - 灾厄之特型 - 武神凌云剑
     命中率 +20%
     [凌云武神之魂]
     穿戴时，凌云武神之魂保护自身。
@@ -6053,7 +6053,7 @@ def equ_906(char: CharacterProperty):
 @register
 def equ_907(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_907 - 黑色瘟疫解放：巨剑
+    DCALC_REMOVE: equ_907 - 威压 - 巨剑
     [撕裂的悲鸣]
     - 攻击时，增涨8点能量（冷却时间1秒）
     - 每秒增加5点能量
@@ -6066,6 +6066,7 @@ def equ_907(char: CharacterProperty):
     - 冷却时间40秒
     [撕裂的悲鸣 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[撕裂的悲鸣]
+    - 冷却时间1秒
     rarity: 太初
     """
     weapon_point(char)
@@ -6076,7 +6077,7 @@ def equ_907(char: CharacterProperty):
 @register
 def equ_908(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_908 - 黑色瘟疫：灭龙剑巴鲁姆克
+    DCALC_REMOVE: equ_908 - 灾厄之灭龙剑巴鲁姆克
     需要[光剑掌握]技能
     [灭龙者]
     技能快捷栏中存在3个及以上空栏，发动[黑龙之力]效果。
@@ -6092,7 +6093,7 @@ def equ_908(char: CharacterProperty):
 @register
 def equ_909(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_909 - 黑色瘟疫解放：光剑
+    DCALC_REMOVE: equ_909 - 威压 - 光剑
     [次元斩][装备主动技能]
     切断世界与世界之间的联系，充满扭曲与绝望
     - 可以中断当前技能进行施放（觉醒技能除外）
@@ -6115,7 +6116,7 @@ def equ_909(char: CharacterProperty):
 @register
 def equ_910(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_910 - 黑色瘟疫：念气之星河
+    DCALC_REMOVE: equ_910 - 灾厄之念气之星河
     技能冷却时间20%减少（觉醒技能除外）
     特效伤害 +10%
     光属性攻击
@@ -6132,7 +6133,7 @@ def equ_910(char: CharacterProperty):
 @register
 def equ_911(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_911 - 黑色瘟疫解放：手套
+    DCALC_REMOVE: equ_911 - 威压 - 手套
     [切割][装备主动技能]
     利用咒术之力，切断宿命
     - 可以中断当前技能进行施放（觉醒技能除外）
@@ -6155,7 +6156,7 @@ def equ_911(char: CharacterProperty):
 @register
 def equ_912(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_912 - 黑色瘟疫：未完成的宇宙臂铠
+    DCALC_REMOVE: equ_912 - 灾厄之未完成的宇宙臂铠
     进入地下城时，生命值上限锁定为80%
     所受物理/魔法伤害 -35%
     攻击敌人时，使敌人发生绯红爆炸。（冷却时间10秒）
@@ -6172,7 +6173,7 @@ def equ_912(char: CharacterProperty):
 @register
 def equ_913(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_913 - 黑色瘟疫解放：臂铠
+    DCALC_REMOVE: equ_913 - 威压 - 臂铠
     [狂暴乱舞]
     - 攻击时，增涨8点能量（冷却时间1秒）
     - 每秒增加5点能量
@@ -6185,6 +6186,7 @@ def equ_913(char: CharacterProperty):
     - 冷却时间40秒
     [狂暴乱舞 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[狂暴乱舞]
+    - 冷却时间1秒
     rarity: 太初
     """
     weapon_point(char)
@@ -6195,7 +6197,7 @@ def equ_913(char: CharacterProperty):
 @register
 def equ_914(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_914 - 黑色瘟疫：魔女的堕落
+    DCALC_REMOVE: equ_914 - 灾厄之魔女的堕落
     穿戴时，发动悲伤残影，并适用以下增益效果
     暗属性攻击
     所有速度 +25%
@@ -6220,7 +6222,7 @@ def equ_914(char: CharacterProperty):
 @register
 def equ_915(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_915 - 黑色瘟疫解放：爪
+    DCALC_REMOVE: equ_915 - 威压 - 爪
     技能范围+20%
     [瘟疫之源]
     驾驭瘟疫之源
@@ -6238,7 +6240,7 @@ def equ_915(char: CharacterProperty):
 @register
 def equ_916(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_916 - 黑色瘟疫：贝兹女王的辉煌之拳
+    DCALC_REMOVE: equ_916 - 灾厄之贝兹女王的辉煌之拳
     需要[拳套掌握]技能
     技能范围 +30%
     攻击敌人时，对该敌人产生冲击波。（冷却时间1秒）
@@ -6253,7 +6255,7 @@ def equ_916(char: CharacterProperty):
 @register
 def equ_917(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_917 - 黑色瘟疫解放：拳套
+    DCALC_REMOVE: equ_917 - 威压 - 拳套
     [永不愈合的伤疤]
     在周围的敌人刻下无法消除的伤疤
     - 对刻下伤疤的敌人造成伤害时，赋予出血状态
@@ -6280,7 +6282,7 @@ def equ_917(char: CharacterProperty):
 @register
 def equ_918(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_918 - 黑色瘟疫：魔力先觉者
+    DCALC_REMOVE: equ_918 - 灾厄之魔力先觉者
     所有速度 +10%
     [魔力吸纳]
     吸收大气中的魔力，每10秒恢复3%魔法值。
@@ -6300,7 +6302,7 @@ def equ_918(char: CharacterProperty):
 @register
 def equ_919(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_919 - 黑色瘟疫解放：东方棍
+    DCALC_REMOVE: equ_919 - 威压 - 东方棍
     技能冷却时间-30%（觉醒技能除外）
     特效伤害+15%
     [神经毒素]
@@ -6327,7 +6329,7 @@ def equ_919(char: CharacterProperty):
 @register
 def equ_920(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_920 - 黑色瘟疫：漫游枪手的威权
+    DCALC_REMOVE: equ_920 - 灾厄之漫游枪手的威权
     [帝王的眼界]
     技能快捷栏中存在3个及以上空栏时，发动[漫游枪手的资格]效果。
     - 进入霸体状态
@@ -6343,7 +6345,7 @@ def equ_920(char: CharacterProperty):
 @register
 def equ_921(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_921 - 黑色瘟疫解放：左轮枪
+    DCALC_REMOVE: equ_921 - 威压 - 左轮枪
     [污秽之血]
     - 攻击时，增涨8点能量（冷却时间1秒）
     - 每秒增加5点能量
@@ -6356,6 +6358,7 @@ def equ_921(char: CharacterProperty):
     - 冷却时间40秒
     [污秽之血 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[污秽之血]
+    - 冷却时间1秒
     rarity: 太初
     """
     weapon_point(char)
@@ -6366,7 +6369,7 @@ def equ_921(char: CharacterProperty):
 @register
 def equ_922(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_922 - 黑色瘟疫：冰火的淬炼之躯
+    DCALC_REMOVE: equ_922 - 灾厄之冰火的淬炼之躯
     攻击时放置冰弩，持续30秒。（冷却时间30秒）
     - 每次攻击伤害量：8420%
     - 冰弩攻击敌人时，使敌人进入冰冻状态，效果持续5秒。
@@ -6388,7 +6391,7 @@ def equ_922(char: CharacterProperty):
 @register
 def equ_923(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_923 - 黑色瘟疫解放：手弩
+    DCALC_REMOVE: equ_923 - 威压 - 手弩
     特效伤害+26.5%
     1~30级技能攻击力+30%
     35~100级技能攻击力+25%
@@ -6410,7 +6413,7 @@ def equ_923(char: CharacterProperty):
 @register
 def equ_924(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_924 - 黑色瘟疫：归来之黑玫瑰狙击者
+    DCALC_REMOVE: equ_924 - 灾厄之归来之黑玫瑰狙击者
     火属性攻击
     45级技能攻击力 +15%
     [火花]
@@ -6429,7 +6432,7 @@ def equ_924(char: CharacterProperty):
 @register
 def equ_925(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_925 - 黑色瘟疫解放：步枪
+    DCALC_REMOVE: equ_925 - 威压 - 步枪
     技能冷却时间-30%（觉醒技能除外）
     特效伤害+15%
     [神经毒素]
@@ -6456,7 +6459,7 @@ def equ_925(char: CharacterProperty):
 @register
 def equ_926(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_926 - 黑色瘟疫：进化式自动手枪
+    DCALC_REMOVE: equ_926 - 灾厄之进化式自动手枪
     [斗志机器人]
     进入地下城时，斗志机器人跟随角色并提供增益。
     - 技能冷却时间 -20%（觉醒技能除外）
@@ -6475,7 +6478,8 @@ def equ_926(char: CharacterProperty):
 @register
 def equ_927(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_927 - 黑色瘟疫解放：自动手枪
+    DCALC_REMOVE: equ_927 - 威压 - 自动手枪
+    自身所受伤害-20%
     [吹笛少年][装备主动技能]
     施放时，在自身位置留下老鼠分身，角色进行瞬间移动
     - 输入方向键，可以控制移动方向
@@ -6490,7 +6494,7 @@ def equ_927(char: CharacterProperty):
 @register
 def equ_928(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_928 - 黑色瘟疫：乌尔班毕生杰作
+    DCALC_REMOVE: equ_928 - 灾厄之乌尔班毕生杰作
     技能范围 +30%
     [发射巨炮][装备主动技能]
     发射乌尔班的杰作巨炮。
@@ -6506,7 +6510,7 @@ def equ_928(char: CharacterProperty):
 @register
 def equ_929(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_929 - 黑色瘟疫解放：手炮
+    DCALC_REMOVE: equ_929 - 威压 - 手炮
     赋予生命值20%的填充型保护罩
     [愤怒跃击][装备主动技能]
     向空中跳跃，对着最强的敌人愤怒地劈砍
@@ -6530,7 +6534,7 @@ def equ_929(char: CharacterProperty):
 @register
 def equ_930(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_930 - 黑色瘟疫：解禁的知识
+    DCALC_REMOVE: equ_930 - 灾厄之解禁的知识
     每存在1个冷却中的技能，技能冷却时间恢复速度 +6%（最多叠加5次，觉醒技能除外）
     - 最大叠加时，技能范围 +15%
     - 特效伤害 +12%
@@ -6543,7 +6547,7 @@ def equ_930(char: CharacterProperty):
 @register
 def equ_931(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_931 - 黑色瘟疫解放：法杖
+    DCALC_REMOVE: equ_931 - 威压 - 法杖
     [沸腾之怒]
     - 攻击时，增涨8点能量（冷却时间1秒）
     - 每秒增加5点能量
@@ -6556,6 +6560,7 @@ def equ_931(char: CharacterProperty):
     - 冷却时间40秒
     [沸腾之怒 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[沸腾之怒]
+    - 冷却时间1秒
     rarity: 太初
     """
     weapon_point(char)
@@ -6566,7 +6571,7 @@ def equ_931(char: CharacterProperty):
 @register
 def equ_932(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_932 - 黑色瘟疫：牧羊人最后的谎言
+    DCALC_REMOVE: equ_932 - 灾厄之牧羊人最后的谎言
     [羊群]
     施放技能时， 生成6只羊。
     - 每1只羊可使所受物理/魔法伤害 -2%
@@ -6583,7 +6588,7 @@ def equ_932(char: CharacterProperty):
 @register
 def equ_933(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_933 - 黑色瘟疫解放：魔杖
+    DCALC_REMOVE: equ_933 - 威压 - 魔杖
     [开吃]
     每隔3秒召唤1只老鼠吞噬敌人（最多可存在5只）
     - 吞噬伤害：42075%
@@ -6608,7 +6613,7 @@ def equ_933(char: CharacterProperty):
 @register
 def equ_934(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_934 - 黑色瘟疫：哈库纳玛塔塔 : 莫烦忧
+    DCALC_REMOVE: equ_934 - 灾厄之哈库纳玛塔塔 : 莫烦忧
     所有速度+30%
     进入地下城时，获得1个幸运硬币。
     每10秒获得1个硬币。（最多叠加10次）
@@ -6629,7 +6634,7 @@ def equ_934(char: CharacterProperty):
 @register
 def equ_935(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_935 - 黑色瘟疫解放：棍棒
+    DCALC_REMOVE: equ_935 - 威压 - 棍棒
     所受物理/魔法伤害-15%
     [酣醉][装备主动技能]
     - 指定对象所有速度+15%
@@ -6646,7 +6651,7 @@ def equ_935(char: CharacterProperty):
 @register
 def equ_936(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_936 - 黑色瘟疫：绝对零度终结者
+    DCALC_REMOVE: equ_936 - 灾厄之绝对零度终结者
     [绝对零度][装备主动技能]
     挥洒冰封万物的凛冽寒气歼灭攻击。
     - 绝对零度伤害量：666600%
@@ -6661,7 +6666,7 @@ def equ_936(char: CharacterProperty):
 @register
 def equ_937(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_937 - 黑色瘟疫解放：矛
+    DCALC_REMOVE: equ_937 - 威压 - 矛
     技能冷却时间-30%（觉醒技能除外）
     特效伤害+15%
     [神经毒素]
@@ -6688,7 +6693,7 @@ def equ_937(char: CharacterProperty):
 @register
 def equ_938(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_938 - 黑色瘟疫：暗黑诅咒
+    DCALC_REMOVE: equ_938 - 灾厄之暗黑诅咒
     需要[扫把掌握]技能
     暗属性攻击
     进入地下城时，生成暗黑花园，发动以下效果。
@@ -6705,7 +6710,7 @@ def equ_938(char: CharacterProperty):
 @register
 def equ_939(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_939 - 黑色瘟疫解放：扫把
+    DCALC_REMOVE: equ_939 - 威压 - 扫把
     所有速度+25%
     [迟来的好梦]
     扭转命运，分散所受伤害
@@ -6720,7 +6725,7 @@ def equ_939(char: CharacterProperty):
 @register
 def equ_940(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_940 - 黑色瘟疫：永恒之神木光杖
+    DCALC_REMOVE: equ_940 - 灾厄之永恒之神木光杖
     获得最大生命值20%数值的[填充型保护罩]。
     [神之惩罚][装备主动技能]
     - 在前方生成3道落雷
@@ -6735,7 +6740,7 @@ def equ_940(char: CharacterProperty):
 @register
 def equ_941(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_941 - 黑色瘟疫解放：十字架
+    DCALC_REMOVE: equ_941 - 威压 - 十字架
     [污秽行星][装备主动技能]
     在自己所在之处显现出污秽行星，对污秽行星上的队友施加以下效果
     - 所有速度+10%
@@ -6752,7 +6757,7 @@ def equ_941(char: CharacterProperty):
 @register
 def equ_942(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_942 - 黑色瘟疫：灵魂掠夺者
+    DCALC_REMOVE: equ_942 - 灾厄之灵魂掠夺者
     [灵魂支配]
     支配灵魂，获得以下效果。
     - 施放技能时，通过额外消耗技能所需魔法值的400%，增加该技能15%的技能攻击力
@@ -6767,10 +6772,10 @@ def equ_942(char: CharacterProperty):
 @register
 def equ_943(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_943 - 黑色瘟疫解放：镰刀
+    DCALC_REMOVE: equ_943 - 威压 - 镰刀
     [尖牙的恩惠]
     攻击时，从异次元裂缝召唤蜘蛛攻击敌人
-    - 攻击伤害：19650%
+    - 攻击伤害：7860%
     - 冷却时间：1秒
     rarity: 太初
     """
@@ -6780,7 +6785,7 @@ def equ_943(char: CharacterProperty):
             name="尖牙的恩惠",
             icon=char.charEquipInfo["武器"].equInfo.imageUrl,
             cd=1,
-            data=19650,
+            data=7860,
         )
     )
     pass
@@ -6789,7 +6794,7 @@ def equ_943(char: CharacterProperty):
 @register
 def equ_944(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_944 - 黑色瘟疫：流星念珠
+    DCALC_REMOVE: equ_944 - 灾厄之流星念珠
     施放技能后，掉落蕴含宇宙力量的流星，效果持续5秒。
     - 流星伤害量：224400%
     - 冷却时间：20秒
@@ -6803,7 +6808,7 @@ def equ_944(char: CharacterProperty):
 @register
 def equ_945(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_945 - 黑色瘟疫解放：念珠
+    DCALC_REMOVE: equ_945 - 威压 - 念珠
     技能冷却时间-30%（觉醒技能除外）
     特效伤害+15%
     [神经毒素]
@@ -6830,7 +6835,7 @@ def equ_945(char: CharacterProperty):
 @register
 def equ_946(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_946 - 黑色瘟疫：灭亡之根源
+    DCALC_REMOVE: equ_946 - 灾厄之灭亡之根源
     技能范围 +30%
     [行星破坏][装备主动技能]
     掷出拥有灭亡的根源之力的战斧。
@@ -6846,7 +6851,7 @@ def equ_946(char: CharacterProperty):
 @register
 def equ_947(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_947 - 黑色瘟疫解放：战斧
+    DCALC_REMOVE: equ_947 - 威压 - 战斧
     [污秽之血]
     - 攻击时，增涨8点能量（冷却时间1秒）
     - 每秒增加5点能量
@@ -6859,6 +6864,7 @@ def equ_947(char: CharacterProperty):
     - 冷却时间40秒
     [污秽之血 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[污秽之血]
+    - 冷却时间1秒
     rarity: 太初
     """
     weapon_point(char)
@@ -6869,7 +6875,7 @@ def equ_947(char: CharacterProperty):
 @register
 def equ_948(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_948 - 黑色瘟疫：天道之威严
+    DCALC_REMOVE: equ_948 - 灾厄之天道之威严
     技能冷却时间20%减少（觉醒技能除外）
     特效伤害 +10%
     [威严怒击]
@@ -6890,7 +6896,7 @@ def equ_948(char: CharacterProperty):
 @register
 def equ_949(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_949 - 黑色瘟疫解放：图腾
+    DCALC_REMOVE: equ_949 - 威压 - 图腾
     所有速度+25%
     [潜藏地底之穴]
     使用武器挖掘地面后潜藏其中向前行进
@@ -6908,7 +6914,7 @@ def equ_949(char: CharacterProperty):
 @register
 def equ_950(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_950 - 黑色瘟疫：女帝的玲珑银妆刀
+    DCALC_REMOVE: equ_950 - 灾厄之女帝的玲珑银妆刀
     [女帝的威严]
     技能快捷栏中存在3个及以上空栏时，发动[女帝的威严]效果。
     - 进入霸体状态
@@ -6923,7 +6929,7 @@ def equ_950(char: CharacterProperty):
 @register
 def equ_951(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_951 - 黑色瘟疫解放：匕首
+    DCALC_REMOVE: equ_951 - 威压 - 匕首
     [充满怨恨的獠牙][装备主动技能]
     对最强的敌人发动狄瑞吉的獠牙
     - 可以中断当前技能进行施放（觉醒技能除外）
@@ -6946,7 +6952,7 @@ def equ_951(char: CharacterProperty):
 @register
 def equ_952(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_952 - 黑色瘟疫：璀璨之地狱火
+    DCALC_REMOVE: equ_952 - 灾厄之璀璨之地狱火
     [永劫地狱火]
     释放技能时，对最强的敌人释放[永劫地狱火]。（冷却时间1秒）
     - 地狱火伤害量：13730%
@@ -6965,7 +6971,7 @@ def equ_952(char: CharacterProperty):
 @register
 def equ_953(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_953 - 黑色瘟疫解放：双剑
+    DCALC_REMOVE: equ_953 - 威压 - 双剑
     [食腐]
     - 攻击时，增涨8点能量（冷却时间1秒）
     - 每秒增加5点能量
@@ -6978,6 +6984,7 @@ def equ_953(char: CharacterProperty):
     - 冷却时间40秒
     [食腐 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[食腐]
+    - 冷却时间1秒
     rarity: 太初
     """
     weapon_point(char)
@@ -6988,7 +6995,7 @@ def equ_953(char: CharacterProperty):
 @register
 def equ_954(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_954 - 黑色瘟疫：恐怖之主宰
+    DCALC_REMOVE: equ_954 - 灾厄之恐怖之主宰
     攻击时，被恐惧压制的敌人受到伤害。（冷却时间0.2秒）
     *[恐惧]攻击力：2000%
     [无尽的恐惧][装备主动技能]
@@ -7006,7 +7013,7 @@ def equ_954(char: CharacterProperty):
 @register
 def equ_955(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_955 - 黑色瘟疫解放：手杖
+    DCALC_REMOVE: equ_955 - 威压 - 手杖
     技能冷却时间-30%（觉醒技能除外）
     特效伤害+15%
     [神经毒素]
@@ -7033,7 +7040,7 @@ def equ_955(char: CharacterProperty):
 @register
 def equ_956(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_956 - 黑色瘟疫：六道之因果轮回
+    DCALC_REMOVE: equ_956 - 灾厄之六道之因果轮回
     需要[苦无掌握]技能
     [六道]
     施放技能时，发动六道之果，效果持续20秒。
@@ -7049,7 +7056,7 @@ def equ_956(char: CharacterProperty):
 @register
 def equ_957(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_957 - 黑色瘟疫解放：苦无
+    DCALC_REMOVE: equ_957 - 威压 - 苦无
     [刀刃旋风]
     攻击时，在周围生成刀刃旋风，对敌人造成伤害
     - 刀刃旋风伤害量：249500%
@@ -7078,7 +7085,7 @@ def equ_957(char: CharacterProperty):
 @register
 def equ_958(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_958 - 黑色瘟疫：战场斗神
+    DCALC_REMOVE: equ_958 - 灾厄之战场斗神
     15级技能冷却时间 -40%
     生成冲锋旗帜，发动以下效果。
     - 所受物理/魔法伤害 -30%
@@ -7091,7 +7098,7 @@ def equ_958(char: CharacterProperty):
 @register
 def equ_959(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_959 - 黑色瘟疫解放：长枪
+    DCALC_REMOVE: equ_959 - 威压 - 长枪
     技能范围+15%
     [扭曲的善言][装备主动技能]
     扭曲即将到来的命运，隐匿身形
@@ -7108,7 +7115,7 @@ def equ_959(char: CharacterProperty):
 @register
 def equ_960(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_960 - 黑色瘟疫：真 · 墨龙偃月刀
+    DCALC_REMOVE: equ_960 - 灾厄之真 · 墨龙偃月刀
     [墨龙偃月斩][装备主动技能]
     强力斩击前方的敌人，击倒对方。
     - 伤害量：666600%
@@ -7123,7 +7130,7 @@ def equ_960(char: CharacterProperty):
 @register
 def equ_961(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_961 - 黑色瘟疫解放：战戟
+    DCALC_REMOVE: equ_961 - 威压 - 战戟
     [狂暴乱舞]
     - 攻击时，增涨8点能量（冷却时间1秒）
     - 每秒增加5点能量
@@ -7136,6 +7143,7 @@ def equ_961(char: CharacterProperty):
     - 冷却时间40秒
     [狂暴乱舞 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[狂暴乱舞]
+    - 冷却时间1秒
     rarity: 太初
     """
     weapon_point(char)
@@ -7146,7 +7154,7 @@ def equ_961(char: CharacterProperty):
 @register
 def equ_962(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_962 - 黑色瘟疫：将星 : 流陨星河
+    DCALC_REMOVE: equ_962 - 灾厄之将星 : 流陨星河
     技能冷却时间20%减少（觉醒技能除外）
     所有速度 +15%
     特效伤害 +10%
@@ -7165,7 +7173,7 @@ def equ_962(char: CharacterProperty):
 @register
 def equ_963(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_963 - 黑色瘟疫解放：光枪
+    DCALC_REMOVE: equ_963 - 威压 - 光枪
     [束缚之链]
     攻击时，召唤出骨链攻击敌人
     - 骨链伤害：112200%
@@ -7187,7 +7195,7 @@ def equ_963(char: CharacterProperty):
 @register
 def equ_964(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_964 - 黑色瘟疫：无影暗断灭
+    DCALC_REMOVE: equ_964 - 灾厄之无影暗断灭
     所有速度 +15%
     [深邃黑暗]
     对周围的所有敌人赋予深邃黑暗。
@@ -7207,7 +7215,7 @@ def equ_964(char: CharacterProperty):
 @register
 def equ_965(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_965 - 黑色瘟疫解放：暗矛
+    DCALC_REMOVE: equ_965 - 威压 - 暗矛
     技能冷却时间-30%（觉醒技能除外）
     特效伤害+15%
     [神经毒素]
@@ -7234,7 +7242,7 @@ def equ_965(char: CharacterProperty):
 @register
 def equ_966(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_966 - 黑色瘟疫：纳斯卡 : 灵魂审判
+    DCALC_REMOVE: equ_966 - 灾厄之纳斯卡 : 灵魂审判
     [魂器][装备主动技能]
     - 施放时，召唤已激活的魂器
     - 再次施放时，破坏已激活的魂器后瞬移到该位置
@@ -7248,7 +7256,7 @@ def equ_966(char: CharacterProperty):
 @register
 def equ_967(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_967 - 黑色瘟疫解放：小太刀
+    DCALC_REMOVE: equ_967 - 威压 - 小太刀
     [斩破次元][装备主动技能]
     劈开周围的次元，造成伤害
     - 可以中断当前技能进行施放（觉醒技能除外）
@@ -7271,13 +7279,14 @@ def equ_967(char: CharacterProperty):
 @register
 def equ_968(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_968 - 黑色瘟疫：满月 : 辉光夜天刀
+    DCALC_REMOVE: equ_968 - 灾厄之满月 : 辉光夜天刀
     [满月]
     使用消耗无色小晶块的技能时，召唤攻击敌人的月影。
     - 月影攻击力：390500%
     - 冷却时间：20秒
     施放[电光飞掠]和[集结·暮光之翼]时，增加夜空中的星星闪烁效果。
     所有速度 +30%
+    技能范围 +20%
     rarity: 太初
     """
     equ_280(char)
@@ -7287,7 +7296,7 @@ def equ_968(char: CharacterProperty):
 @register
 def equ_969(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_969 - 黑色瘟疫解放：长刀
+    DCALC_REMOVE: equ_969 - 威压 - 长刀
     [你要去哪儿？][装备主动技能]
     追击最强敌人进行斩杀
     - 骨链伤害：2800%
@@ -7309,7 +7318,7 @@ def equ_969(char: CharacterProperty):
 @register
 def equ_970(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_970 - 黑色瘟疫：惊魂之锯
+    DCALC_REMOVE: equ_970 - 灾厄之惊魂之锯
     技能冷却时间20%减少（觉醒技能除外）
     特效伤害 +10%
     [躁狂]
@@ -7334,7 +7343,7 @@ def equ_970(char: CharacterProperty):
 @register
 def equ_971(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_971 - 黑色瘟疫解放：重剑
+    DCALC_REMOVE: equ_971 - 威压 - 重剑
     技能冷却时间-30%（觉醒技能除外）
     特效伤害+15%
     [神经毒素]
@@ -7361,7 +7370,7 @@ def equ_971(char: CharacterProperty):
 @register
 def equ_972(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_972 - 黑色瘟疫：核心源力
+    DCALC_REMOVE: equ_972 - 灾厄之核心源力
     [超频源力]
     攻击时，给敌人附着核心源动力。
     - 各目标适用冷却时间40秒
@@ -7382,7 +7391,7 @@ def equ_972(char: CharacterProperty):
 @register
 def equ_973(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_973 - 黑色瘟疫解放：源力剑
+    DCALC_REMOVE: equ_973 - 威压 - 源力剑
     [撕裂的悲鸣]
     - 攻击时，增涨8点能量（冷却时间1秒）
     - 每秒增加5点能量
@@ -7395,6 +7404,7 @@ def equ_973(char: CharacterProperty):
     - 冷却时间40秒
     [撕裂的悲鸣 on/off][装备主动技能]
     - 能量值充满时进行攻击，自动发动[撕裂的悲鸣]
+    - 冷却时间1秒
     rarity: 太初
     """
     weapon_point(char)
@@ -7405,7 +7415,7 @@ def equ_973(char: CharacterProperty):
 @register
 def equ_974(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_974 - 黑色瘟疫：迷雾拓荒者
+    DCALC_REMOVE: equ_974 - 灾厄之迷雾拓荒者
     [引路者][装备主动技能]
     进入地下城时，[迷雾行者]自动生效。
     使用时，[迷雾之路]生效。
@@ -7424,7 +7434,7 @@ def equ_974(char: CharacterProperty):
 @register
 def equ_975(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_975 - 黑色瘟疫解放：玄机弓
+    DCALC_REMOVE: equ_975 - 威压 - 玄机弓
     [污染之息][装备主动技能]
     向前方施放狄瑞吉的吐息，对敌人造成伤害
     - 可以中断当前技能进行施放（觉醒技能除外）
@@ -7447,7 +7457,7 @@ def equ_975(char: CharacterProperty):
 @register
 def equ_976(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_976 - 黑色瘟疫：私语音乐会
+    DCALC_REMOVE: equ_976 - 灾厄之私语音乐会
     需要[悦耳音律]技能
     [琴瑟谐和][装备主动技能]
     进入地下城时，[活力旋律]自动生效。
@@ -7467,7 +7477,7 @@ def equ_976(char: CharacterProperty):
 @register
 def equ_977(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_977 - 黑色瘟疫解放：神弦弓
+    DCALC_REMOVE: equ_977 - 威压 - 神弦弓
     [死亡旋律][装备主动技能]
     弹走死亡旋律对敌人造成伤害
     - 可以中断当前技能进行施放（觉醒技能除外）
@@ -7490,7 +7500,7 @@ def equ_977(char: CharacterProperty):
 @register
 def equ_978(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_978 - 黑色瘟疫：亲眷帕伊卡
+    DCALC_REMOVE: equ_978 - 灾厄之亲眷帕伊卡
     [战略调整][装备主动技能]
     进入地下城时，[帕伊卡助攻]自动生效。
     使用时，[帕伊卡巡逻]生效。
@@ -7509,7 +7519,7 @@ def equ_978(char: CharacterProperty):
 @register
 def equ_979(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_979 - 黑色瘟疫解放：强攻弩
+    DCALC_REMOVE: equ_979 - 威压 - 强攻弩
     [孤独的狙击手][装备主动技能]
     向前方发射巨大炮击，造成伤害
     - 可以中断当前技能进行施放（觉醒技能除外）
@@ -7532,7 +7542,7 @@ def equ_979(char: CharacterProperty):
 @register
 def equ_980(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_980 - 黑色瘟疫：妖语黄昏
+    DCALC_REMOVE: equ_980 - 灾厄之妖语黄昏
     需要[超越两界]技能
     [全神贯注][装备主动技能]
     进入地下城时，[弱点捕捉]自动生效。
@@ -7552,7 +7562,7 @@ def equ_980(char: CharacterProperty):
 @register
 def equ_981(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_981 - 黑色瘟疫解放：妖影弓
+    DCALC_REMOVE: equ_981 - 威压 - 妖影弓
     [扭曲][装备主动技能]
     追踪并扭曲敌人
     - 可以中断当前技能进行施放（觉醒技能除外）
@@ -7575,7 +7585,7 @@ def equ_981(char: CharacterProperty):
 @register
 def equ_982(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_982 - 黑色瘟疫：光铸之翼·伊卡洛斯
+    DCALC_REMOVE: equ_982 - 灾厄之光铸之翼·伊卡洛斯
     [轨道飞行实验开启][装备主动技能]
     选择使用[本能飞跃]和[非理性着陆]
     进入地下城时，[本能飞跃]自动生效。
@@ -7593,7 +7603,7 @@ def equ_982(char: CharacterProperty):
 @register
 def equ_983(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_983 - 黑色瘟疫解放：嵌合弓
+    DCALC_REMOVE: equ_983 - 威压 - 嵌合弓
     [亵渎之羽][装备主动技能]
     向前方发射亵渎之羽，造成伤害
     - 可以中断当前技能进行施放（觉醒技能除外）
@@ -8915,26 +8925,54 @@ def equ_414(char: CharacterProperty):
 
 @register
 def equ_989(char: CharacterProperty):
+    """
+    DCALC_REMOVE: equ_989 - 侵蚀：浓郁的潜影暗袭上衣
+    生命值最大值 +15%
+    魔法值最大值 +15%
+    rarity: 史诗
+    """
     equ_375(char)
     pass
 
 @register
 def equ_990(char: CharacterProperty):
+    """
+    DCALC_REMOVE: equ_990 - 侵蚀：浓郁的潜影融化下装
+    攻击速度 +40%
+    施放速度 +40%
+    rarity: 史诗
+    """
     equ_378(char)
     pass
 
 @register
 def equ_991(char: CharacterProperty):
+    """
+    DCALC_REMOVE: equ_991 - 侵蚀：浓郁的潜影抹除之容貌
+    所受物理/魔法伤害 -10%
+    rarity: 史诗
+    """
     equ_381(char)
     pass
 
 @register
 def equ_992(char: CharacterProperty):
+    """
+    DCALC_REMOVE: equ_992 - 侵蚀：浓郁的潜影缔造之腰带
+    物品栏负重上限 +3kg
+    所有异常状态抗性 +30.5%
+    rarity: 史诗
+    """
     equ_384(char)
     pass
 
 @register
 def equ_993(char: CharacterProperty):
+    """
+    DCALC_REMOVE: equ_993 - 侵蚀：浓郁的潜影之步伐
+    移动速度 +44%
+    rarity: 史诗
+    """
     equ_387(char)
     pass
 
@@ -14939,23 +14977,23 @@ def equ_2001(char: CharacterProperty):
 @register
 def equ_2002(char: CharacterProperty):
     """
-    DCALC_REMOVE: equ_2001 - 玲珑的秘宝气候晶体
-    <纳波尔的记忆>
+    DCALC_REMOVE: equ_2002 - 孕育百病的瘟疫之心
+    物理暴击率 +30%
+    魔法暴击率 +30%
+    <狄瑞吉的瘟疫>
     穿戴的最高套装积分达到2100点以上时，才能发挥能力。
     套装积分达到2550以上时，会发动更强的效果。
-    技能伤害+54.6%
-    增益量12530
+    技能伤害 +54.6%
+    增益量 12180
     精度
-    精度100%时，技能伤害+10%，增益量4650
-    技能冷却时间-4%（觉醒技能除外）
-    精度每提升25%，技能冷却时间-4%（最多叠加4次；觉醒技能除外）
-    特效伤害 +10%
-    [不稳定性]
-    展现神之权能，以1~11秒的时间间隔，每次有1%的几率初始化所有技能冷却时间
-    *仅当2个以上技能处于冷却时间时适用
-    *组队挑战时，辅助角色的觉醒技能不会被初始化
-    [气候重构]
-    精度达到100%时，在城镇中使用普通聊天输入“气候重构”时，出现特效。（冷却时间600秒）
+    精度100%时，技能伤害 +10%，增益量 4650
+    [黑色吐息]
+    每装备一件黑牙装备， 技能伤害增加2% (最多叠加3次)
+    [黑色暴雨]
+    满足以下条件后，在城镇输入普通聊天“黑色暴雨”时，显示专属特效。(冷却时间600秒)
+    - 装备精密度100%
+    - 装备升级后的传世武器或净化率100%的狄瑞吉防具
+    - 穿戴5件狄瑞吉防具
     rarity: 太初
     """
     if 2100 <= char.max_point < 2550:
