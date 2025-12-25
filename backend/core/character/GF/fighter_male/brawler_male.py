@@ -1,27 +1,40 @@
 #ca0f0e0e9e1d55b5f9955b03d9dd213c
-from core.basic.skill import PassiveSkill, ActiveSkill
+from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
+prefix = "fighter_male/brawler_male/cn/skillDetail"
 
 
-# 剧毒抵抗 독에 익숙함
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/03bb5314ffd41e9458d67ef924fef38f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 剧毒抵抗
+# fighter_male/brawler_male/03bb5314ffd41e9458d67ef924fef38f
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/03bb5314ffd41e9458d67ef924fef38f
 class Skill1(PassiveSkill):
+    """
+        通过对毒的修炼， 减少自身受到的中毒伤害。
+    """
     name = "剧毒抵抗"
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 7
+    position = 0 #TODO
     rangeLv = 1
     uuid = "03bb5314ffd41e9458d67ef924fef38f"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 25]# noqa: E501
+    # 中毒伤害减少率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    damage = False
-
-
-# 毒攻掌握 사공 수련
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/bb34e8854a93fd250347a1c64119f7ab?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 毒攻掌握
+# fighter_male/brawler_male/bb34e8854a93fd250347a1c64119f7ab
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/bb34e8854a93fd250347a1c64119f7ab
 class Skill2(PassiveSkill):
+    """
+    정통 격투가 사이에서 금기시되는 사파의 속성 무공을 수련한다. 체내에 특수한 독으로 된 혈도를 생성하는 위험한 시술로 잘못 익히면 목숨이 위태로울 수 있다.\n
+    이 독특한 무공은 외공을 주로 수련하는 이에게는 내공 증진의 효과를 가져다주며, 반대로 내공을 주로 수련하는 이에게는 외공 증진의 효과를 가져다주는 것으로 알려져 있다.\n
+        力量和智力、 物理暴击率和魔法暴击率中会按照一定比率相互补正。\n
+    사공을 수련한 부작용으로 넨 계열의 스킬(넨탄, 분신)을 시전 시 일정 확률로 주화입마(기절)에 빠지게 된다.
+    """
     name = "毒攻掌握"
     learnLv = 1
     masterLv = 1
@@ -29,19 +42,26 @@ class Skill2(PassiveSkill):
     position = 6
     rangeLv = 1
     uuid = "bb34e8854a93fd250347a1c64119f7ab"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 100]# noqa: E501
+    # 力量和智力补正比率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 物理暴击率和魔法暴击率补正比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 施放念气系列技能时眩晕几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    data1 = [0, 100]# noqa: E501
 
-    data2 = [0, 2]# noqa: E501
-
-    damage = False
-
-
-# 基础精通 기본기 숙련
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/5a56514f35cf0270ae8d6c65f8fefd78?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 基础精通
+# fighter_male/brawler_male/5a56514f35cf0270ae8d6c65f8fefd78
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/5a56514f35cf0270ae8d6c65f8fefd78
 class Skill5(PassiveSkill):
+    """
+        增加基本攻击、 前冲攻击、 跳跃攻击、 [后踢]的攻击力。\n
+        在决斗场中， 增益/减益技能、 被动技能的技能攻击力增加效果对[基础精通]无影响。
+    """
     name = "基础精通"
     learnLv = 1
     masterLv = 115
@@ -49,32 +69,125 @@ class Skill5(PassiveSkill):
     position = 1
     rangeLv = 1
     uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
+    icon = "$common/$uuid"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 150, 158.7, 167.3, 176, 184.5, 193.2, 201.8, 210.5, 219.2, 227.7, 236.4, 245, 253.7, 262.2, 270.9, 284.3, 297.6, 311, 324.3, 337.7, 350.9, 364.2, 377.6, 390.9, 404.3, 417.6, 431, 444.3, 457.7, 471, 484.2, 497.6, 510.9, 524.3, 537.6, 551, 564.3, 577.7, 591, 604.4, 617.7, 630.9, 644.3, 657.6, 671, 684.3, 697.7, 711, 724.4, 737.7, 751.1, 764.3, 777.6, 791, 804.3, 817.7, 831, 844.4, 857.7, 871.1, 884.4, 897.8, 911, 924.3, 937.7, 951, 964.4, 977.7, 991.1, 1004.4, 1017.8, 1031.1, 1044.5, 1057.7, 1071, 1084.4, 1097.7, 1111.1, 1124.4, 1137.8, 1151.1, 1164.5, 1177.8, 1191, 1204.4, 1217.7, 1231.1, 1244.4, 1257.8, 1271.1, 1284.5, 1297.8, 1311.2, 1324.5, 1337.7, 1351.1, 1364.4, 1377.8, 1391.1, 1404.5, 1417.8, 1431.2, 1444.5, 1457.9, 1471.2, 1484.6, 1497.9, 1511.3, 1524.6, 1538, 1551.3, 1564.7, 1578, 1591.4, 1604.7, 1618.1, 1631.4, 1644.8, 1658.1, 1671.5, 1684.8, 1698.2, 1711.5, 1724.9, 1738.2, 1751.6, 1764.9, 1778.3, 1791.6, 1805, 1818.3, 1831.7, 1845, 1858.4, 1871.7, 1885.1, 1898.4, 1911.8, 1925.1, 1938.5, 1951.8, 1965.2, 1978.5, 1991.9, 2005.2, 2018.6, 2031.9, 2045.3, 2058.6, 2072, 2085.3, 2098.7, 2112, 2125.4, 2138.7, 2152.1, 2165.4, 2178.8, 2192.1, 2205.5, 2218.8, 2232.2, 2245.5, 2258.9, 2272.2, 2285.6, 2298.9, 2312.3, 2325.6, 2339, 2352.3, 2365.7, 2379, 2392.4, 2405.7, 2419.1, 2432.4, 2445.8, 2459.1, 2472.5, 2485.8, 2499.2, 2512.5, 2525.9, 2539.2, 2552.6, 2565.9, 2579.3, 2592.6, 2606, 2619.3, 2632.7, 2646, 2659.4, 2672.7, 2686.1, 2699.4, 2712.8, 2726.1, 2739.5]# noqa: E501
-
+    # 基本攻击力变化率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 前冲攻击力变化率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 跳跃攻击力变化率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["罗网投掷"]}]
 
 
-# 下段踢 로킥
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/4655101518604f874721b3cc249aae10?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 下段踢
+# fighter_male/brawler_male/4655101518604f874721b3cc249aae10
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/4655101518604f874721b3cc249aae10
 class Skill9(ActiveSkill):
+    """
+        向敌人下段发出高伤害的踢脚攻击， 可以攻击倒地的敌人， 而且能使被击中的敌人出现较长时间的僵直。\n
+        攻击成功时产生冲击波， 对周围敌人造成伤害。\n
+        被直接命中的敌人不受冲击波伤害。
+    """
     name = "下段踢"
     learnLv = 5
     masterLv = 60
     maxLv = 70
-    position = 2
+    position = 0 #TODO
     rangeLv = 2
     cd = 2
     mp = [10, 112]
     uuid = "4655101518604f874721b3cc249aae10"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 2118, 2332, 2547, 2761, 2982, 3193, 3407, 3621, 3842, 4055, 4267, 4483, 4697, 4913, 5129, 5343, 5557, 5770, 5987, 6202, 6416, 6637, 6849, 7064, 7279, 7495, 7708, 7924, 8140, 8354, 8568, 8784, 8998, 9212, 9428, 9642, 9858, 10074, 10287, 10503, 10719, 10933, 11145, 11359, 11579, 11793, 12005, 12225, 12439, 12653, 12871, 13087, 13301, 13517, 13731, 13943, 14159, 14375, 14589, 14805, 15023, 15237, 15451, 15669, 15881, 16096, 16308, 16526, 16738, 16954]# noqa: E501
+    # 下段踢攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
+    # 冲击波攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 发动速度增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [范围信息]
+    # 冲击波大小比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+
+# 分身
+# fighter_male/brawler_male/f2fb27162beb0b87a7cb9af7900e95f2
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/f2fb27162beb0b87a7cb9af7900e95f2
+class Skill10(ActiveSkill):
+    """
+        生成分身扰乱敌人的攻击或阻挡子弹。\n
+        经过一定时间或受一定伤害后， 生成的分身消失。\n
+        转职成气功师后， 可以学习[幻影爆碎]技能。
+    """
+    name = "分身"
+    learnLv = 5
+    masterLv = 10
+    maxLv = 20
+    position = 0 #TODO
+    rangeLv = 3
+    cd = 7
+    mp = [6, 84]
+    uuid = "f2fb27162beb0b87a7cb9af7900e95f2"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+
+    # 分身持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 分身生成数量 : {value1}个
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+
+# 膝击
+# fighter_male/brawler_male/cfacda0647b9a0f595df2c2aad30c18d
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/cfacda0647b9a0f595df2c2aad30c18d
+class Skill11(ActiveSkill):
+    """
+        抓住前方敌人并用膝盖对其进行猛力的撞击。\n
+        对无法抓取的敌人不适用控制效果。\n
+        转职为柔道家后， 可以对无法抓取的敌人施放， 增加攻击次数， 且使用方向键时， 使最后一击发生变化。\n
+    [转职为柔道家后]\n
+    上方向键 : 使敌人浮空， 且柔道家也一并跳跃\n
+    下方向键 : 把敌人扔向地面， 并产生冲击波攻击周围敌人
+    """
+    name = "膝击"
+    learnLv = 5
+    masterLv = 60
+    maxLv = 70
+    position = 0 #TODO
+    rangeLv = 2
+    cd = 5
+    mp = [20, 168]
+    uuid = "cfacda0647b9a0f595df2c2aad30c18d"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+
+    # 膝击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 膝击多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 膝击最后一击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 落地冲击波攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 冲击波范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
 
-# 钢筋铁骨 철금강
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/c9664191611af31142e052dfaef84530?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 钢筋铁骨
+# fighter_male/brawler_male/c9664191611af31142e052dfaef84530
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/c9664191611af31142e052dfaef84530
 class Skill13(PassiveSkill):
+    """
+        使自身的身体强悍如钢铁， 并增加一定的物防和体力。 被击时， 有一定几率使自身进入霸体状态。
+    """
     name = "钢筋铁骨"
     learnLv = 10
     masterLv = 50
@@ -82,11 +195,25 @@ class Skill13(PassiveSkill):
     position = 8
     rangeLv = 3
     uuid = "c9664191611af31142e052dfaef84530"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
+    # 增加物防 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 增加体力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 霸体发动几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-# 鹰踏 공중 밟기
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/78bd107acd474518b606be1e4fd38239?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 鹰踏
+# fighter_male/brawler_male/78bd107acd474518b606be1e4fd38239
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/78bd107acd474518b606be1e4fd38239
 class Skill14(ActiveSkill):
+    """
+        在空中跳跃着踩踏敌人并给予敌人一定伤害。\n
+        可以连续对敌人进行一定次数的踩踏。 技能的冷却时间从最后一次踩踏结束落地时开始计算。
+    """
     name = "鹰踏"
     learnLv = 10
     masterLv = 60
@@ -96,17 +223,29 @@ class Skill14(ActiveSkill):
     cd = 7
     mp = [10, 97]
     uuid = "78bd107acd474518b606be1e4fd38239"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [ 0, 705, 777, 849, 920, 992, 1063, 1135, 1206, 1278, 1350, 1421, 1493, 1564, 1636, 1707, 1779, 1851, 1922, 1994, 2065, 2137, 2208, 2280, 2352, 2423, 2495, 2566, 2638, 2709, 2781, 2853, 2924, 2996, 3067, 3139, 3210, 3282, 3353, 3425, 3497, 3568, 3640, 3711, 3783, 3854, 3926, 3998, 4069, 4141, 4212, 4284, 4355, 4427, 4499, 4570, 4642, 4713, 4785, 4856, 4928, 5000, 5071, 5143, 5214, 5286, 5357, 5429, 5501, 5572, 5644 ]
+    # 踩踏攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
+    # 踩踏次数上限 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 最后踩踏攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
 
-    data1 = [ 0, 2417, 2662, 2908, 3153, 3398, 3643, 3889, 4134, 4379, 4624, 4869, 5115, 5360, 5605, 5850, 6096, 6341, 6586, 6831, 7077, 7322, 7567, 7812, 8057, 8303, 8548, 8793, 9038, 9284, 9529, 9774, 10019, 10264, 10510, 10755, 11000, 11245, 11491, 11736, 11981, 12226, 12472, 12717, 12962, 13207, 13452, 13698, 13943, 14188, 14433, 14679, 14924, 15169, 15414, 15659, 15905, 16150, 16395, 16640, 16886, 17131, 17376, 17621, 17866, 18112, 18357, 18602, 18847, 19093, 19338 ]
-    hit1 = 1
-
-
-# 疾风追击 호신연격
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/dcb31a63ef58954f44ff2070c42a9a98?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 疾风追击
+# fighter_male/brawler_male/dcb31a63ef58954f44ff2070c42a9a98
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/dcb31a63ef58954f44ff2070c42a9a98
 class Skill15(ActiveSkill):
+    """
+        前冲攻击后， 通过快速连续的攻击给予敌人一定伤害。\n
+    호신연격을 배우면 대시 공격 시 적이 다운되지 않게 된다.\n
+    대시 공격 후 공격키를 누르거나 스킬키를 누르면 연타를 하게 되며 그 때마다 MP가 소모 된다.\n
+    기본은 1타까지만 사용 가능하고 호포 습득 시 2타까지 추가로 공격이 가능하게 된다.
+    """
     name = "疾风追击"
     learnLv = 10
     masterLv = 60
@@ -116,17 +255,29 @@ class Skill15(ActiveSkill):
     cd = 2
     mp = [8, 67]
     uuid = "dcb31a63ef58954f44ff2070c42a9a98"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 351, 387, 424, 460, 497, 533, 569, 606, 641, 677, 714, 750, 787, 823, 859, 896, 932, 969, 1005, 1041, 1078, 1114, 1149, 1186, 1222, 1258, 1295, 1331, 1368, 1404, 1440, 1477, 1513, 1550, 1586, 1622, 1659, 1694, 1730, 1767, 1803, 1840, 1876, 1912, 1949, 1985, 2022, 2058, 2094, 2131, 2167, 2202, 2239, 2275, 2311, 2348, 2384, 2421, 2457, 2493, 2530, 2566, 2603, 2639, 2675, 2712, 2747, 2783, 2820, 2856]# noqa: E501
-    hit0 = 1 #TODO
+    # 第1击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 第2击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
 
-    data1 = [0, 390, 430, 471, 511, 551, 592, 632, 672, 712, 753, 793, 833, 874, 914, 954, 996, 1036, 1076, 1117, 1157, 1197, 1238, 1278, 1318, 1359, 1399, 1439, 1479, 1520, 1560, 1600, 1641, 1681, 1721, 1762, 1802, 1842, 1882, 1923, 1963, 2003, 2044, 2084, 2124, 2166, 2206, 2246, 2287, 2327, 2367, 2408, 2448, 2488, 2529, 2569, 2609, 2649, 2690, 2730, 2770, 2811, 2851, 2891, 2932, 2972, 3012, 3052, 3093, 3133, 3173]# noqa: E501
-    hit1 = 1 #TODO
-
-
-# 金刚碎 금강쇄
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/4f2e001e9a19eb7bae50ad1840dfb329?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 金刚碎
+# fighter_male/brawler_male/4f2e001e9a19eb7bae50ad1840dfb329
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/4f2e001e9a19eb7bae50ad1840dfb329
 class Skill16(ActiveSkill):
+    """
+        向前方小跳后用双脚猛击地面引发冲击波。\n
+        发动时， 可以用方向键控制攻击地点。\n
+        处于攻击地点中心的敌人， 会受到脚踢和冲击波的二次伤害。\n
+        技能等级越高， 技能施放后的僵直时间越短。\n
+    - [转职为柔道家时] -\n
+        可以强制中断基本攻击动作， 并立即施放该技能； 攻击方式变更为肘击， 且对敌人造成更多伤害； 可以强制中断施放后的僵直动作， 并立即施放[霹雳旋踢]。
+    """
     name = "金刚碎"
     learnLv = 10
     masterLv = 60
@@ -136,17 +287,34 @@ class Skill16(ActiveSkill):
     cd = 5
     mp = [20, 238]
     uuid = "4f2e001e9a19eb7bae50ad1840dfb329"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 628, 691, 757, 818, 881, 947, 1010, 1071, 1138, 1201, 1265, 1328, 1391, 1456, 1520, 1581, 1646, 1711, 1775, 1836, 1901, 1966, 2030, 2093, 2156, 2221, 2285, 2346, 2411, 2476, 2539, 2603, 2666, 2729, 2795, 2856, 2919, 2986, 3047, 3111, 3176, 3239, 3304, 3366, 3429, 3494, 3557, 3621, 3684, 3749, 3814, 3875, 3939, 4004, 4065, 4131, 4194, 4259, 4324, 4385, 4451, 4514, 4575, 4641, 4704, 4767, 4832, 4895, 4959, 5024]# noqa: E501
+    # 踢击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-
-    data1 = [0, 3066, 3378, 3689, 4001, 4310, 4623, 4934, 5243, 5558, 5867, 6178, 6489, 6800, 7112, 7423, 7735, 8045, 8358, 8667, 8978, 9291, 9600, 9911, 10224, 10535, 10845, 11158, 11469, 11778, 12091, 12402, 12713, 13024, 13334, 13646, 13957, 14269, 14580, 14892, 15202, 15511, 15826, 16135, 16446, 16759, 17070, 17380, 17691, 18003, 18313, 18626, 18935, 19250, 19559, 19868, 20183, 20492, 20803, 21113, 21427, 21737, 22046, 22361, 22670, 22983, 23292, 23605, 23916, 24225, 24537]# noqa: E501
+    # 冲击波攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
+    # 浮空力比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 施放后的僵直时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 对倒地的敌人攻击力增加率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [范围信息]
+    # 范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-
-# 瞬步 순보
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/9dc8438e4572d39243c97da31c113acc?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 瞬步
+# fighter_male/brawler_male/9dc8438e4572d39243c97da31c113acc
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/9dc8438e4572d39243c97da31c113acc
 class Skill17(ActiveSkill):
+    """
+        向前方快速移动一定距离。\n
+        撞到敌人时停止移动。
+    """
     name = "瞬步"
     learnLv = 10
     masterLv = 1
@@ -156,13 +324,22 @@ class Skill17(ActiveSkill):
     cd = 5
     mp = [10, 10]
     uuid = "9dc8438e4572d39243c97da31c113acc"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    damage = False
+    # 移动距离 : {value0}px
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
 
-# 抛沙 헬터 스켈터
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/8f73f243041c2d27739fe7696f02bf9b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 抛沙
+# fighter_male/brawler_male/8f73f243041c2d27739fe7696f02bf9b
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/8f73f243041c2d27739fe7696f02bf9b
 class Skill21(ActiveSkill):
+    """
+        卑鄙地抛出沙子攻击敌人， 使敌人进入失明状态。\n
+        转职为街霸后， 可以强制中断基本攻击并施放。
+    """
     name = "抛沙"
     learnLv = 15
     masterLv = 60
@@ -172,18 +349,43 @@ class Skill21(ActiveSkill):
     cd = 3
     mp = [15, 154]
     uuid = "8f73f243041c2d27739fe7696f02bf9b"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 2313, 2548, 2782, 3017, 3252, 3486, 3721, 3956, 4190, 4425, 4660, 4894, 5129, 5363, 5598, 5833, 6067, 6302, 6537, 6771, 7006, 7241, 7475, 7710, 7945, 8179, 8414, 8649, 8883, 9118, 9353, 9587, 9822, 10057, 10291, 10526, 10760, 10995, 11230, 11464, 11699, 11934, 12168, 12403, 12638, 12872, 13107, 13342, 13576, 13811, 14046, 14280, 14515, 14750, 14984, 15219, 15454, 15688, 15923, 16157, 16392, 16627, 16861, 17096, 17331, 17565, 17800, 18035, 18269, 18504]# noqa: E501
+    # 攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
+    # 失明几率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 失明持续时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 减少视野 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 命中率减少 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [范围信息]
+    # 范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    # 双重投掷部分
-    data1 = data0
-    hit1 = 1
-    power0 = 0
-
-# 毒瓶投掷 독병 투척
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/762c4e6d030eaf0abbfe1fec2b298574?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 毒瓶投掷
+# fighter_male/brawler_male/762c4e6d030eaf0abbfe1fec2b298574
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/762c4e6d030eaf0abbfe1fec2b298574
 class Skill22(ActiveSkill):
+    """
+    [投掷]\n
+        施放后， 在消耗完所有装填次数之前， 具有固有的重新投掷冷却时间。\n
+        向前方的敌人投掷毒瓶\n
+        发动[后街战术]和[后备口袋]效果时， 第2个毒瓶替换为火焰瓶。\n
+    (灼伤攻击力和异常状态持续时间与中毒相同)\n
+    [投掷强化]\n
+    - 向前方投掷毒瓶， 在一定范围内暂时形成猛毒地带\n
+    - 按向下方向键可以向脚底投掷毒瓶， 在自身周围生成猛毒地带\n
+    (在决斗场中无效)\n
+    [学习逆道·皆允后]\n
+    - 普通投掷时， 会投掷1次结合毒瓶和火焰瓶功能的特制火焰瓶。\n
+    - 使用[投掷强化]时， 在地面生成毒雾， 爆炸后进入的敌人也会进入中毒状态。
+    """
     name = "毒瓶投掷"
     learnLv = 15
     masterLv = 60
@@ -196,57 +398,74 @@ class Skill22(ActiveSkill):
     cd = 2
     mp = [50, 420]
     uuid = "762c4e6d030eaf0abbfe1fec2b298574"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    # 常规-瓶子伤害
-    data0 = [0, 773, 896, 1019, 1142, 1265, 1388, 1512, 1635, 1758, 1881, 2004, 2127, 2251, 2374, 2497, 2620, 2743, 2866, 2990, 3113, 3236, 3359, 3482, 3605, 3729, 3852, 3975, 4098, 4221, 4344, 4468, 4591, 4714, 4837, 4960, 5083, 5206, 5330, 5453, 5576, 5699, 5822, 5945, 6069, 6192, 6315, 6438, 6561, 6684, 6808, 6931, 7054, 7177, 7300, 7423, 7547, 7670, 7793, 7916, 8039, 8162, 8286, 8409, 8532, 8655, 8778, 8901, 9025, 9148, 9271]# noqa: E501
-    hit0 = 1
+    # 投掷冷却时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 毒瓶数量 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 毒瓶攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 2
+    # 猛毒地带范围 : {value3}px
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 中毒持续时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 中毒攻击力 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    hit5 = 2
+    # [投掷强化]
+    # 毒瓶消耗量 : {value6}个
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # 中毒攻击力 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    hit7 = 1
+    # [范围信息]
+    # [投掷强化]猛毒地带范围比率 : {value8}%
+    data8 = get_data(f'{prefix}/{uuid}', 8)
 
-    # 常规-瓶子异常伤害；双重投掷打两次，不会被双重投掷减少第二次伤害
-    data1 = [0, 1017, 1178, 1340, 1501, 1668, 1828, 1992, 2156, 2317, 2474, 2637, 2807, 2960, 3126, 3286, 3449, 3607, 3774, 3936, 4097, 4262, 4425, 4588, 4748, 4911, 5069, 5234, 5394, 5559, 5715, 5882, 6045, 6207, 6370, 6531, 6696, 6853, 7021, 7182, 7344, 7500, 7670, 7830, 7987, 8155, 8315, 8476, 8638, 8804, 8966, 9127, 9287, 9455, 9615, 9775, 9940, 10103, 10263, 10421, 10588, 10746, 10914, 11076, 11237, 11398, 11558, 11725, 11885, 12050, 12209]# noqa: E501
-    hit1 = 1
+    data9 = data7
+    power9 = 0
+    hit9 = 1
 
-    # 强化-瓶子伤害
-    data2 = [0, 3434, 3971, 4522, 5068, 5615, 6164, 6710, 7254, 7800, 8349, 8896, 9442, 9993, 10538, 11086, 11630, 12179, 12719, 13272, 13821, 14362, 14918, 15456, 16002, 16548, 17097, 17644, 18188, 18741, 19290, 19830, 20378, 20925, 21473, 22018, 22569, 23106, 23661, 24203, 24750, 25298, 25845, 26391, 26936, 27489, 28035, 28575, 29126, 29674, 30219, 30767, 31316, 31865, 32404, 32951, 33497, 34049, 34593, 35139, 35690, 36230, 36778, 37322, 37876, 38423, 38969, 39516, 40064, 40608, 41150]# noqa: E501
-    hit2 = 1
-
-    # 双重投掷部分
-    data4 = data0
-    hit4 = 1
-    power4 = 0
-    # 不会被双重投掷减少第二次伤害
-    data5 = data1
-    hit5 = 1
-    power5 = 0
-
-    data6 = data1
-    hit6 = 0
-    power6 = 0
-
-    data7 = data2
-    hit7 = 0
-    power7 = 0
     mode = ['常规','强化','爆破污桶']
 
     def setMode(self, mode):
         if mode == "常规":
-            self.hit0 = self.hit1 = self.hit4 = self.hit5 = 1
-            self.hit2 = self.hit6 = self.hit7 = 0
+            self.hit2 = self.hit5 = 2
+            self.hit7 = self.hit9 = 0
         elif mode == "强化":
-            self.hit0 = self.hit1 = self.hit4 = self.hit5 = self.hit6 = self.hit7 = 0
-            self.hit1 = 1
+            self.hit7 = 1
+            self.hit2 = self.hit5 = self.hit9 = 0
         elif mode == "爆破污桶":
-            self.hit0 = self.hit1 = self.hit2 = self.hit4 = self.hit5 = 0
-            self.hit6 = self.hit7 = 1
+            self.hit9 = 1
+            self.hit2 = self.hit5 = self.hit7 = 1
 
     def getSkillCD(self, mode=None):
         if mode == "爆破污桶":
             return self.char.GetSkillByName("爆破污桶").getSkillCD(mode)
         return super().getSkillCD(mode)
 
-
-# 投掷强化 강화 투척
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/3fb8395ae3b81bd608e0c4223a8eb534?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 投掷强化
+# fighter_male/brawler_male/3fb8395ae3b81bd608e0c4223a8eb534
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/3fb8395ae3b81bd608e0c4223a8eb534
 class Skill23(ActiveSkill):
+    """
+        施放后， 强化下次投掷技能。\n
+        消耗更多装填数， 发动方式发生变化。\n
+    [毒瓶投掷]\n
+        向前方投掷毒瓶， 在一定范围内暂时形成猛毒地带。\n
+    [毒针投掷]\n
+        一次性投掷变更为范围攻击判定的多枚毒针， 呈扇形分布。\n
+    [砖块投掷]\n
+        举起巨石从空中向前方投掷。 (学习[逆道·皆允]后， 可以在地面投掷)\n
+    [罗网投掷]\n
+        投掷更大的罗网， 将命中的敌人吸附到前面。\n
+    [逆道·爆狱]\n
+        用装有易燃物质的金属桶代替木桶， 使其发生连锁爆炸。
+    """
     name = "投掷强化"
     learnLv = 15
     masterLv = 1
@@ -255,14 +474,25 @@ class Skill23(ActiveSkill):
     rangeLv = 3
     cd = 0.1
     mp = [24, 24]
-    hasUP = False
-    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     uuid = "3fb8395ae3b81bd608e0c4223a8eb534"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
 
-# 自动填充 자동 장전
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/5806440d21e7546d50007a5ba11f8024?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 自动填充
+# fighter_male/brawler_male/5806440d21e7546d50007a5ba11f8024
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/5806440d21e7546d50007a5ba11f8024
 class Skill24(PassiveSkill):
+    """
+        消耗投掷技能的装填数时， 自动重新装填。\n
+    [投掷技能]\n
+    - [毒瓶投掷]、 [毒针投掷]、 [砖块投掷]、 [罗网投掷]\n
+    - 投掷时间间隔 : 技能属性描述中的下一次投掷为止的冷却时间\n
+    - 自动填充时间 : 技能冷却时间显示的装填数全部消耗后， 可重新装填的冷却时间\n
+    [学习诡诈之道后]\n
+        进入地下城和复活时， 自动装填投掷技能。
+    """
     name = "自动填充"
     learnLv = 15
     masterLv = 1
@@ -270,11 +500,22 @@ class Skill24(PassiveSkill):
     position = 0
     rangeLv = 5
     uuid = "5806440d21e7546d50007a5ba11f8024"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
 
-# 擒月炎 일발화약성
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/0969cd4054d93da07708108c0cc1c4b5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 擒月炎
+# fighter_male/brawler_male/0969cd4054d93da07708108c0cc1c4b5
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/0969cd4054d93da07708108c0cc1c4b5
 class Skill25(ActiveSkill):
+    """
+        先用扫腿攻击前方敌人并用后踢将1名敌人踢飞， 然后再用强威力的侧踢， 引爆火药使敌人受到伤害。\n
+        攻击处于异常状态的敌人时， 造成更大的伤害。 (最多叠加3次)\n
+        火药爆炸会引发持续时间较长的灼伤异常状态。\n
+        对无法抓取的不适用控制效果， 立即引爆火药。\n
+        在决斗场中， 攻击无法抓取的敌人时， 不会发生爆炸。
+    """
     name = "擒月炎"
     learnLv = 20
     masterLv = 60
@@ -284,23 +525,46 @@ class Skill25(ActiveSkill):
     cd = 5.5
     mp = [30, 280]
     uuid = "0969cd4054d93da07708108c0cc1c4b5"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 1192, 1312, 1433, 1554, 1675, 1796, 1917, 2038, 2159, 2279, 2400, 2521, 2642, 2763, 2884, 3005, 3126, 3247, 3367, 3488, 3609, 3730, 3851, 3972, 4093, 4214, 4334, 4455, 4576, 4697, 4818, 4939, 5060, 5181, 5302, 5422, 5543, 5664, 5785, 5906, 6027, 6148, 6269, 6389, 6510, 6631, 6752, 6873, 6994, 7115, 7236, 7357, 7477, 7598, 7719, 7840, 7961, 8082, 8203, 8324, 8444, 8565, 8686, 8807, 8928, 9049, 9170, 9291, 9412, 9532]# noqa: E501
+    # 扫腿攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-
-    data1 = [0, 1192, 1312, 1433, 1554, 1675, 1796, 1917, 2038, 2159, 2279, 2400, 2521, 2642, 2763, 2884, 3005, 3126, 3247, 3367, 3488, 3609, 3730, 3851, 3972, 4093, 4214, 4334, 4455, 4576, 4697, 4818, 4939, 5060, 5181, 5302, 5422, 5543, 5664, 5785, 5906, 6027, 6148, 6269, 6389, 6510, 6631, 6752, 6873, 6994, 7115, 7236, 7357, 7477, 7598, 7719, 7840, 7961, 8082, 8203, 8324, 8444, 8565, 8686, 8807, 8928, 9049, 9170, 9291, 9412, 9532]# noqa: E501
+    # 后踢攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
-
-    data2 = [0, 4331, 4770, 5209, 5649, 6088, 6527, 6967, 7406, 7845, 8285, 8724, 9164, 9603, 10042, 10482, 10921, 11360, 11800, 12239, 12678, 13118, 13557, 13996, 14436, 14875, 15314, 15754, 16193, 16632, 17072, 17511, 17950, 18390, 18829, 19268, 19708, 20147, 20587, 21026, 21465, 21905, 22344, 22783, 23223, 23662, 24101, 24541, 24980, 25419, 25859, 26298, 26737, 27177, 27616, 28055, 28495, 28934, 29373, 29813, 30252, 30692, 31131, 31570, 32010, 32449, 32888, 33328, 33767, 34206, 34646]# noqa: E501
+    # 爆炸攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
+    # 每个异常状态的攻击力增加率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 灼伤几率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 灼伤持续时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # [范围信息]
+    # 爆炸范围比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
     #每个异常增伤20%，最高60%增伤
     skillRation = 1.6
 
-
-# 后街战术 뒷골목 싸움법
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/4b2c90ec226fd40e967875aa5eabefb2?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 后街战术
+# fighter_male/brawler_male/4b2c90ec226fd40e967875aa5eabefb2
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/4b2c90ec226fd40e967875aa5eabefb2
 class Skill26(ActiveSkill):
+    """
+        遵循后街法则， 准备更多暗器。\n
+        增加基本攻击力和转职技能攻击力， 可以双重投掷暗器， 并增加部分技能的爆炸范围。\n
+    [双重投掷]\n
+    - 投掷道具时可以连续投掷两个\n
+    - 消耗两个投掷类消耗品或填装数\n
+    - 技能的第二个投掷物攻击力降低\n
+    - 适用范围 : 投掷类消耗品、 [抛沙]、 [毒瓶投掷]、 [毒针投掷]、 [砖块投掷]\n
+    - 使用[后备口袋]、 [投掷强化]时， 各自的技能优先生效
+    """
     name = "后街战术"
     learnLv = 20
     masterLv = 10
@@ -308,15 +572,28 @@ class Skill26(ActiveSkill):
     position = 3
     rangeLv = 3
     cd = 5
-    mp = [194, 1114]
     uuid = "4b2c90ec226fd40e967875aa5eabefb2"
+    hasVP = False
     hasUP = False
-    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 基本攻击力和转职技能攻击力增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [擒月炎]爆炸范围增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [毒雷引爆]毒气柱大小增加率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
 
-# 爪精通 클로 마스터리
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/e4c354a89c337310aeb7041d5e742828?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 爪精通
+# fighter_male/brawler_male/e4c354a89c337310aeb7041d5e742828
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/e4c354a89c337310aeb7041d5e742828
 class Skill29(PassiveSkill):
+    """
+    물리 공격력, 마법 공격력이 증가하고, 클로 장착 시 경직률, 적중률이 증가한다.
+    """
     name = "爪精通"
     learnLv = 25
     masterLv = 20
@@ -324,20 +601,39 @@ class Skill29(PassiveSkill):
     position = 2
     rangeLv = 3
     uuid = "e4c354a89c337310aeb7041d5e742828"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51]# noqa: E501
-
-    data1 = [0, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51]# noqa: E501
+    # 物理攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 魔法攻击力增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [冲膝]
+    # 僵直率增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 命中率增加 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
     associate = [
         {"type":"$*PAtkP","data":data0},
         {"type":"$*MAtkP","data":data1},
-        ]
+    ]
 
-
-# 毒针投掷 바늘 투척
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/38612d8f2561edc2eb68d5057a837bfa?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 毒针投掷
+# fighter_male/brawler_male/38612d8f2561edc2eb68d5057a837bfa
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/38612d8f2561edc2eb68d5057a837bfa
 class Skill30(ActiveSkill):
+    """
+    [投掷]\n
+        施放后， 在消耗完所有装填次数之前， 具有固有的重新投掷冷却时间。\n
+        向敌人发射毒针， 使命中的敌人进入出血状态。\n
+        发动[后街战术]和[后备口袋]效果时， 投掷带电的毒针， 使敌人进入感电状态。\n
+    (感电攻击力及持续时间为出血的200%)\n
+    [投掷强化]\n
+    - 一次性投掷变更为范围攻击判定的多枚毒针， 呈扇形分布。\n
+        在决斗场中， 强化投掷时的毒针具有单独的攻击判定。
+    """
     name = "毒针投掷"
     learnLv = 25
     masterLv = 60
@@ -349,73 +645,92 @@ class Skill30(ActiveSkill):
     cd = 3
     mp = [50, 420]
     uuid = "38612d8f2561edc2eb68d5057a837bfa"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    # 常规-毒针伤害
-    data0 = [0, 765, 843, 921, 998, 1076, 1154, 1231, 1309, 1387, 1464, 1542, 1620, 1697, 1775, 1852, 1930, 2008, 2085, 2163, 2241, 2318, 2396, 2474, 2551, 2629, 2707, 2784, 2862, 2940, 3017, 3095, 3172, 3250, 3328, 3405, 3483, 3561, 3638, 3716, 3794, 3871, 3949, 4027, 4104, 4182, 4260, 4337, 4415, 4492, 4570, 4648, 4725, 4803, 4881, 4958, 5036, 5114, 5191, 5269, 5347, 5424, 5502, 5580, 5657, 5735, 5812, 5890, 5968, 6045, 6123]# noqa: E501
-    hit0 = 1
+    # 投掷冷却时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 毒针数量 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 毒针攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 2
+    # 出血攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 2
+    # 出血持续时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [投掷强化]
+    # 毒针消耗量 : {value5}个
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 毒针攻击上限 : {value6}
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # 毒针攻击力 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    hit7 = 4
+    # 出血攻击力 : {value8}%
+    data8 = get_data(f'{prefix}/{uuid}', 8)
+    hit8 = 4
 
-    # 常规-毒针异常伤害
-    data1 = [0, 706, 772, 843, 916, 986, 1057, 1134, 1200, 1273, 1340, 1416, 1486, 1559, 1625, 1702, 1770, 1843, 1916, 1986, 2059, 2130, 2202, 2271, 2343, 2409, 2487, 2553, 2623, 2700, 2769, 2842, 2914, 2984, 3057, 3130, 3198, 3271, 3339, 3408, 3485, 3553, 3624, 3699, 3767, 3845, 3913, 3985, 4056, 4131, 4197, 4269, 4337, 4410, 4480, 4554, 4626, 4699, 4767, 4842, 4913, 4983, 5054, 5129, 5194, 5268, 5335, 5409, 5479, 5550, 5625]# noqa: E501
-    hit1 = 1
-
-    # 强化-毒针伤害
-    data2 = [0, 641, 707, 770, 836, 901, 966, 1034, 1093, 1161, 1226, 1292, 1358, 1420, 1482, 1552, 1618, 1680, 1748, 1809, 1878, 1943, 2004, 2072, 2139, 2202, 2270, 2329, 2397, 2458, 2524, 2598, 2657, 2722, 2788, 2853, 2916, 2982, 3045, 3116, 3179, 3240, 3306, 3371, 3441, 3500, 3568, 3633, 3699, 3762, 3827, 3891, 3959, 4024, 4088, 4153, 4218, 4281, 4350, 4412, 4476, 4546, 4607, 4677, 4738, 4802, 4865, 4932, 4998, 5063, 5131]# noqa: E501
-    hit2 = 4
-
-    # 强化-毒针异常伤害
-    data3 = [0, 840, 926, 1012, 1096, 1180, 1270, 1353, 1438, 1527, 1613, 1693, 1780, 1867, 1948, 2035, 2123, 2208, 2292, 2377, 2465, 2550, 2632, 2720, 2805, 2893, 2978, 3063, 3148, 3237, 3320, 3405, 3490, 3580, 3662, 3747, 3834, 3918, 4004, 4090, 4177, 4264, 4345, 4434, 4520, 4604, 4689, 4775, 4860, 4949, 5029, 5114, 5200, 5285, 5370, 5454, 5544, 5627, 5714, 5800, 5887, 5970, 6055, 6144, 6227, 6310, 6400, 6484, 6569, 6650, 6739]# noqa: E501
-    hit3 = 4
-
-    # 双重投掷部分
-    data5 = data0
-    hit5 = 1
-    power5 = 0
-    # 双重投掷 第二次投出的是闪电针，伤害为第一次出血针的2倍，所以总共按3计算
-    data6 = data1
-    hit6 = 1
-    power6 = 0
-
-    data7 = data0
-    hit7 = 0
-    power7 = 0
-    data8 = data1
-    hit8 = 0
-    power8 = 0
+    # 飞沙走石 VP2部分伤害
+    data9 = data2
+    power9 = 0
+    hit9 = 1
+    data10 = data3
+    power10 = 0
+    hit10 = 1
 
     mode = ['常规','强化','飞沙走石']
 
     def setMode(self, mode):
         if mode == "常规":
-            self.hit0 = self.hit1 = self.hit5 = self.hit6 = 1
-            self.hit7 = self.hit8 = self.hit2 = self.hit3 = 0
+            self.hit2 = self.hit3 = 2
+            self.hit7 = self.hit8 = self.hit9 = self.hit10 = 0
         elif mode == "强化":
-            self.hit0 = self.hit1 = self.hit5 = self.hit6 = self.hit7 = self.hit8 = 0
-            self.hit2 = self.hit3 = 4
+            self.hit7 = self.hit8 = 4
+            self.hit2 = self.hit3 = self.hit9 = self.hit10 = 0
         elif mode == "飞沙走石":
-            self.hit7 = self.hit8 = 1
-            self.hit0 = self.hit1 = self.hit2 = self.hit3 = self.hit5 = self.hit6 = 0
+            self.hit9 = self.hit10 = 1
+            self.hit2 = self.hit3 = self.hit7 = self.hit8 = 0
 
-    def getSkillCD(self, mode=None):
-        if mode == "飞沙走石":
-            return self.char.GetSkillByName("飞沙走石").getSkillCD()
-        return super().getSkillCD(mode)
-
-
-# 后备口袋 뒷주머니
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/2e9c5a06ff3fe8aea672a2a55c40fdbf?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 后备口袋
+# fighter_male/brawler_male/2e9c5a06ff3fe8aea672a2a55c40fdbf
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/2e9c5a06ff3fe8aea672a2a55c40fdbf
 class Skill31(PassiveSkill):
+    """
+        使用基本攻击和转职技能的过程中， 可以使用[投掷强化]。\n
+        [后街战术]状态下， 使用[毒瓶投掷]或[毒针投掷]时， 各技能可以获得以下效果。\n
+    [毒瓶投掷]\n
+    - 普通投掷时， 第二个投掷物变更为火焰瓶。\n
+    - 施加灼伤而非中毒。\n
+    - 灼伤攻击力与持续时间 : 普通[毒瓶投掷]中毒的100%\n
+    [毒针投掷]\n
+    - 普通投掷时， 投掷1次通电的毒针。\n
+    - 施加感电异常状态。\n
+    - 感电攻击力与持续时间 : 普通[毒针投掷]出血的200%
+    """
     name = "后备口袋"
     learnLv = 25
     masterLv = 1
     maxLv = 1
-    position = 4
+    position = 0 #TODO
     rangeLv = 5
     uuid = "2e9c5a06ff3fe8aea672a2a55c40fdbf"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
 
-# 伏虎霸王拳 마운트
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/8c2379737c5acc935c1731f67f607655?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 伏虎霸王拳
+# fighter_male/brawler_male/8c2379737c5acc935c1731f67f607655
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/8c2379737c5acc935c1731f67f607655
 class Skill32(ActiveSkill):
+    """
+        将敌人击倒并发出强威力的伏虎霸王拳， 可以向敌人连续发出3次攻击。\n
+        每次攻击倒地的敌人， 都会产生冲击波攻击周围的敌人。\n
+        对无法抓取的敌人不适用控制效果。
+    """
     name = "伏虎霸王拳"
     learnLv = 30
     masterLv = 60
@@ -425,14 +740,29 @@ class Skill32(ActiveSkill):
     cd = 15
     mp = [80, 672]
     uuid = "8c2379737c5acc935c1731f67f607655"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 2069, 2279, 2489, 2699, 2909, 3119, 3328, 3538, 3748, 3958, 4168, 4378, 4588, 4798, 5008, 5218, 5428, 5637, 5847, 6057, 6267, 6477, 6687, 6897, 7107, 7317, 7527, 7736, 7946, 8156, 8366, 8576, 8786, 8996, 9206, 9416, 9626, 9835, 10045, 10255, 10465, 10675, 10885, 11095, 11305, 11515, 11725, 11935, 12144, 12354, 12564, 12774, 12984, 13194, 13404, 13614, 13824, 14034, 14243, 14453, 14663, 14873, 15083, 15293, 15503, 15713, 15923, 16133, 16342, 16552]# noqa: E501
+    # [伏虎霸王拳]攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 3
+    # 冲击波攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [范围信息]
+    # 冲击波范围比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-
-# 旋风腿 질풍각
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/202edb928046f4fa6dedf6337377efd5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 旋风腿
+# fighter_male/brawler_male/202edb928046f4fa6dedf6337377efd5
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/202edb928046f4fa6dedf6337377efd5
 class Skill33(ActiveSkill):
+    """
+        在原地快速旋转身体并用连续的扫腿攻击周围的敌人。\n
+    지상과 공중에서 모두 사용 가능하며, 맞은 적을 끌어당기는 효과가 있다.\n
+    시전 중 이동은 불가하며, 점프 키를 누르면 취소된다. \n
+        转职成为散打时， 才可以强制中断基本攻击动作， 并立即施放该技能。
+    """
     name = "旋风腿"
     learnLv = 30
     masterLv = 60
@@ -442,19 +772,31 @@ class Skill33(ActiveSkill):
     cd = 8
     mp = [50, 420]
     uuid = "202edb928046f4fa6dedf6337377efd5"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 1449, 1597, 1742, 1888, 2036, 2182, 2329, 2477, 2624, 2770, 2333, 2453, 2567, 2687, 2802, 2921, 3037, 3156, 3274, 3390, 2923, 3022, 3121, 3215, 3314, 3415, 3513, 3610, 3705, 3805, 3346, 3431, 3514, 3598, 3681, 3762, 3845, 3931, 4015, 4098, 3661, 3732, 3809, 3880, 3953, 4029, 4100, 4174, 4248, 4322, 3907, 3972, 4039, 4106, 4167, 4235, 4299, 4364, 4429, 4495, 4106, 4163, 4221, 4282, 4340, 4396, 4456, 4514, 4577, 4634]# noqa: E501
-    hit0 = 1 #TODO
+    # 旋风腿攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 10
+    # 攻击次数 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    data1 = [0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12]# noqa: E501
-
-    def setMode(self, mode):
-        self.hit0 = self.data1[self.lv]
-
-
-# 砖块投掷 블럭 투척
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/bc11d28c04e01923a093d65752c55516?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 砖块投掷
+# fighter_male/brawler_male/bc11d28c04e01923a093d65752c55516
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/bc11d28c04e01923a093d65752c55516
 class Skill34(ActiveSkill):
+    """
+    [投掷]\n
+        施放后， 在消耗完所有装填次数之前， 具有固有的重新投掷冷却时间。\n
+        用砖块攻击敌人。\n
+        砖块命中敌人后会碎裂并给予周围敌人伤害。\n
+    [投掷强化]\n
+    - 举起圆形巨石砸向前方。\n
+    - 巨石被举在空中时， 可以按方向键控制投掷方向。\n
+        学习[逆道·皆允]后， 使用[投掷强化]时， 圆形巨石可以在地面砸向前方。\n
+        在决斗场中， 减少处于[罗网投掷]束缚状态敌人的眩晕时间。
+    """
     name = "砖块投掷"
     learnLv = 30
     masterLv = 60
@@ -462,46 +804,79 @@ class Skill34(ActiveSkill):
     position = 4
     rangeLv = 2
     # cd = 6
+    # 投掷cd
     cd = 4
     mp = [50, 420]
     uuid = "bc11d28c04e01923a093d65752c55516"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    # 常规-砖块伤害；双重投掷打两次，用power体现
-    data0 = [0, 1684, 1855, 2026, 2196, 2367, 2538, 2709, 2880, 3051, 3221, 3392, 3563, 3734, 3905, 4076, 4246, 4417, 4588, 4759, 4930, 5101, 5271, 5442, 5613, 5784, 5955, 6126, 6296, 6467, 6638, 6809, 6980, 7151, 7321, 7492, 7663, 7834, 8005, 8176, 8346, 8517, 8688, 8859, 9030, 9201, 9371, 9542, 9713, 9884, 10055, 10226, 10396, 10567, 10738, 10909, 11080, 11251, 11421, 11592, 11763, 11934, 12105, 12276, 12446, 12617, 12788, 12959, 13130, 13301, 13471]# noqa: E501
-    hit0 = 1
+    # 投掷冷却时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 砖块数量 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 砖块打击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 2
+    # 砖块碎片攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 2
+    # 眩晕几率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 眩晕持续时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # [投掷强化]
+    # 砖块消耗量 : {value6}个
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # 岩石攻击力 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    # 岩石碎片攻击力 : {value8}%
+    data8 = get_data(f'{prefix}/{uuid}', 8)
+    # 岩石碎片眩晕几率 : {value9}%
+    data9 = get_data(f'{prefix}/{uuid}', 9)
+    # 眩晕持续时间 : {value10}秒
+    data10 = get_data(f'{prefix}/{uuid}', 10)
+    # 学习[逆道·皆允]后巨石攻击力 : {value11}%
+    data11 = get_data(f'{prefix}/{uuid}', 11)
+    hit11 = 1
+    # [范围信息]
+    # 碎片范围比率 : {value12}%
+    data12 = get_data(f'{prefix}/{uuid}', 12)
 
-    # 常规-砖块碎片伤害；双重投掷打两次，用power体现
-    data1 = [0, 1270, 1399, 1528, 1657, 1786, 1915, 2044, 2172, 2301, 2430, 2559, 2688, 2817, 2946, 3075, 3203, 3332, 3461, 3590, 3719, 3848, 3977, 4106, 4234, 4363, 4492, 4621, 4750, 4879, 5008, 5137, 5265, 5394, 5523, 5652, 5781, 5910, 6039, 6168, 6296, 6425, 6554, 6683, 6812, 6941, 7070, 7199, 7327, 7456, 7585, 7714, 7843, 7972, 8101, 8230, 8358, 8487, 8616, 8745, 8874, 9003, 9132, 9261, 9389, 9518, 9647, 9776, 9905, 10034, 10163]# noqa: E501
-    hit1 = 1
 
-    # 强化-巨石伤害
-    data2 = [0, 6565, 7242, 7908, 8575, 9240, 9906, 10577, 11244, 11915, 12580, 13241, 13911, 14578, 15247, 15909, 16584, 17245, 17908, 18576, 19247, 19912, 20580, 21247, 21920, 22586, 23246, 23917, 24580, 25250, 25911, 26588, 27248, 27912, 28587, 29248, 29923, 30586, 31256, 31926, 32589, 33260, 33927, 34586, 35255, 35921, 36589, 37254, 37930, 38598, 39260, 39923, 40594, 41256, 41922, 42594, 43262, 43930, 44598, 45264, 45926, 46595, 47265, 47932, 48608, 49261, 49941, 50597, 51265, 51928, 52600]# noqa: E501
-    hit2 = 1
+    # 暗街夺命锁 VP2部分伤害
+    data13 = data2
+    power13 = 0
+    hit13 = 1
+    data14 = data3
+    power14 = 0
+    hit14 = 1
 
-    # 双重投掷部分
-    data4 = data0
-    hit4 = 1
-    power4 = 0
-    # 双重投掷
-    data5 = data1
-    hit5 = 1
-    power5 = 0
-
-
-    mode = ['常规','强化']
+    mode = ['常规','强化','暗街夺命锁']
 
     def setMode(self, mode):
         if mode == "常规":
-            self.hit0 = self.hit1 = self.hit4 = self.hit5 = 1
-            self.hit2 = 0
+            self.hit2 = self.hit3 = 1
+            self.hit11 = self.hit13 = self.hit14 = 0
         elif mode == "强化":
-            self.hit0 = self.hit1 = self.hit4 = self.hit5 = 0
-            self.hit2 = 1
+            self.hit11 = 1
+            self.hit2 = self.hit3 = self.hit13 = self.hit14 = 0
+        elif mode == "暗街夺命锁":
+            self.hit13 = self.hit14 = 1
+            self.hit2 = self.hit3 = self.hit11 = 0
 
-
-# 挑衅 도발
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/e49e57b2e8fbeceb0a2c56a0c63fe6c5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 挑衅
+# fighter_male/brawler_male/e49e57b2e8fbeceb0a2c56a0c63fe6c5
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/e49e57b2e8fbeceb0a2c56a0c63fe6c5
 class Skill35(ActiveSkill):
+    """
+        学习后， 持续减少一定范围内敌人的控制型异常状态抗性， 并增加对敌人造成的伤害。\n
+        施放时， 向自身周围的敌人发出挑衅， 使被挑衅的敌人集中攻击施放者。\n
+        被挑衅的敌人会变得异常兴奋从而降低命中率。\n
+        按前方向键时， 将会向该方向发射挑衅音波挑衅更远处的敌人。\n
+        在决斗场里无法使用挑衅功能。
+    """
     name = "挑衅"
     learnLv = 35
     masterLv = 10
@@ -511,54 +886,118 @@ class Skill35(ActiveSkill):
     cd = 5
     mp = [60, 252]
     uuid = "e49e57b2e8fbeceb0a2c56a0c63fe6c5"
-    hasUP = False
-    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 17.8, 18.6, 19.4, 20.2, 21, 21.8, 22.6, 23.4, 24.2, 25, 25.8, 26.6, 27.4, 28.2, 29, 29.8, 30.6, 31.4, 32.2, 33]# noqa: E501
+    # [持续效果]
+    # 控制型异常状态抗性减少值 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 伤害增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [施放时效果]
+    # 挑衅持续时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 命中率减少 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 控制型异常状态抗性减少及挑衅范围 : {value4}px
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 前方挑衅射程 : {value5}px
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    data1 = [0, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45]# noqa: E501
+    associate = [ {"type": "*skillRation", "data":data1} ]
 
-    associate = [ {"type": "*skillRation", "data":data1}, ]
-
-
-# 罗网投掷 그물 투척
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/d0cdaca82892e54097f22a1f60817048?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 罗网投掷
+# fighter_male/brawler_male/d0cdaca82892e54097f22a1f60817048
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/d0cdaca82892e54097f22a1f60817048
 class Skill36(ActiveSkill):
+    """
+    [投掷]\n
+        施放后， 在消耗完所有装填次数之前， 具有固有的重新投掷冷却时间。\n
+        投掷罗网强制控制命中的敌人， 并使其进入束缚状态。\n
+        罗网攻击力受[基础精通]等级的影响。\n
+    [投掷强化]\n
+        投掷更大的罗网， 将命中的敌人吸附到前面。\n
+        在决斗场中， 使用[投掷强化]后罗网命中浮空或倒地的敌人时， 会把敌人拉到面前并使敌人处于倒地状态， 但不强制控制。
+    """
     name = "罗网投掷"
     learnLv = 35
     masterLv = 1
     maxLv = 11
     position = 4
     rangeLv = 3
-    cd = 15
+    # cd = 17
+    # 投掷cd
+    cd = 14.7
     mp = [180, 1512]
     uuid = "d0cdaca82892e54097f22a1f60817048"
-    vps = [
-          {
-            "name": "三味一体",
-            "desc": "取消僵直<br/>自动投掷强化<br/>施放时间减少",
-            "explain": "[罗网投掷]<br/>强化的[罗网投掷]命中时， 可以强制中断并施放[毒瓶投掷]、 [毒针投掷]、 [砖块投掷]， 之后1.5秒内投掷物得到强化<br/>- 强制取消后僵直并施放[毒瓶投掷]、 [毒针投掷]、 [砖块投掷]<br/>- 持续时间内或最多可使用2次投掷强化<br/><br/>[罗网投掷]速度 + 50%"
-          },
-          {
-            "name": "杂鱼捆缚",
-            "desc": "[投掷强化]失效<br/>范围增加",
-            "explain": "[罗网投掷]<br/>无法投掷强化， 投掷更远更大的罗网<br/>- 更快地投掷罗网\\<br/><br/>束缚持续时间增加3秒， 控制时间增加1秒"
-          }
-        ]
-    # 投掷冷却时间，非装填时间
-    data0 = [0, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 2489, 2489, 2489, 2489, 2489, 2489, 2489, 2489, 2489, 2489, 2489]# noqa: E501
-    hit1 = 1
+    # 投掷冷却时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 填装数量 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 束缚几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
+    # 束缚持续时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 控制时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    data2 = [0, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17, 17]# noqa: E501
-    hit2 = 1
+    def vp_1(self):
+        """
+        [罗网投掷]\n
+        无法使用普通投掷； 强化[罗网投掷]命中时， 可以立即连接[毒瓶投掷]、 [毒针投掷]、 [砖块投掷]， 随后1.5秒内投掷物得到强化\n
+        - 可以强制中断施放后僵直并施放[毒瓶投掷]、 [毒针投掷]、 [砖块投掷]\n
+        - 持续时间内最多可以自动使用3次投掷强化\n
+        [罗网投掷]速度 +100%\n
+        再次投掷冷却时间 -70%\n
+        - 总攻击力 -70%\n
+        [罗网投掷]基本装填数变为1个
+        """
+        self.cd *= 0.3
+        self.skillRation *= 0.3
+        ...
 
+    def vp_2(self):
+        """
+        [罗网投掷]\n
+        无法使用[投掷强化]； 投掷更大的罗网、 投掷距离更远\n
+        - 更快地投掷罗网\n
+        束缚持续时间增加3秒， 控制时间增加1秒\n
+        [毒瓶投掷]\n
+        普通投掷时， 射程 +100%\n
+        [毒针投掷]\n
+        学习[后备口袋]后， 通电毒针打击攻击力 +110%\n
+        [砖块投掷]\n
+        普通投掷时， 射程 +100%
+        """
+        ...
 
-# 螺旋滑铲 그라운드 태클
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/e0a072e8cef2d77893aad5f68aeed56a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def effect(self, old, new):
+        if self.vp == 2:
+            self.associate = [
+                {"type":"*power2","data":[0] + [(200+110)/(200)]*self.maxLv,"skills":["毒针投掷"]}
+            ]
+        return super().effect(old, new)
+
+# 螺旋滑铲
+# fighter_male/brawler_male/e0a072e8cef2d77893aad5f68aeed56a
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/e0a072e8cef2d77893aad5f68aeed56a
 class Skill37(ActiveSkill):
+    """
+        向前方滑铲一定距离。\n
+        移动时， 对碰撞的敌人造成伤害并使其进入失明状态。\n
+        对无法抓取的敌人造成更多伤害。\n
+        命中敌人时， 可以强制中断并施放[狂 · 霸王拳]， 施放技能时， 按向后方向键可以缩短滑铲距离。 (在决斗场中无效)
+    """
     name = "螺旋滑铲"
     learnLv = 35
     masterLv = 60
@@ -569,21 +1008,23 @@ class Skill37(ActiveSkill):
     cd = 20
     mp = [200, 1820]
     uuid = "e0a072e8cef2d77893aad5f68aeed56a"
-    vps = [
-          {
-            "name": "尘暴滑铲",
-            "desc": "施放时间减少<br/>范围增加",
-            "explain": "[螺旋滑铲]<br/>更用力地跳跃， 猛烈地滑铲地面， 激起大量尘土并落地<br/>- 变更为单次攻击<br/>- 总攻击力相同<br/><br/>更细微地调整移动距离<br/>- 按向后方向键时， 移动距离大幅减少<br/>- 按向前方向键时， 移动距离增加"
-          },
-          {
-            "name": "法外之徒",
-            "desc": "取消僵直<br/>攻击时间减少",
-            "explain": "[螺旋滑铲]<br/>可以强制中断[抛沙]及投掷类技能的施放后僵直并施放<br/><br/>命中时， 可以强制中断并施放部分技能<br/>目标技能 : [毒雷引爆]、 [极恶飞锁]、 [千锁乱舞]、 [爆破污桶]、 [暗街夺命锁]、 [飞沙走石]<br/>- 按向后方向键施放技能时， 角色会回头施放<br/><br/>减少多段攻击间隔"
-          }
-        ]
-    data0 = [0, 7710, 8488, 9273, 10053, 10834, 11619, 12399, 13185, 13965, 14746, 15524, 16306, 17094, 17874, 18658, 19434, 20222, 21004, 21784, 22566, 23348, 24129, 24910, 25696, 26478, 27262, 28044, 28821, 29604, 30392, 31170, 31954, 32728, 33514, 34299, 35082, 35860, 36644, 37426, 38206, 38991, 39771, 40556, 41337, 42118, 42900, 43680, 44464, 45249, 46028, 46812, 47592, 48376, 49160, 49936, 50720, 51501, 52286, 53066, 53853, 54630, 55412, 56192, 56974, 57762, 58538, 59320, 60108, 60891, 61671]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 3
-    power0 = 1.2 #不可抓取怪额外增伤
+    power0 = 1.0
+    # 多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 失明几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 失明时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 对无法抓取的怪物的伤害增加率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
     mode = ['不可抓取','可抓取']
 
@@ -591,12 +1032,40 @@ class Skill37(ActiveSkill):
         if mode == "不可抓取":
             self.power0 = 1.2
         elif mode == "可抓取":
-            self.power0 = 1
+            self.power0 = 1.0
 
+    def vp_1(self):
+        """
+        [螺旋滑铲]\n
+        全力跃起后猛烈地滑铲地面， 激起大量尘土并落地\n
+        - 变更为单次攻击\n
+        - 总攻击力相同\n
+        更细微地调整移动距离\n
+        - 按向后方向键时， 移动距离大幅减少\n
+        - 按向前方向键时， 移动距离增加
+        """
+        ...
 
-# 狂 · 霸王拳 크레이지 발칸
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/b3659936a9a74c4ed6f7faf07cca1f9e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_2(self):
+        """
+        [螺旋滑铲]\n
+        可以强制中断[抛沙]及投掷类技能的施放后僵直并施放\n
+        命中时， 可以强制中断并施放部分技能\n
+        目标技能 : [毒雷引爆]、 [极恶飞锁]、 [千锁乱舞]、 [爆破污桶]、 [暗街夺命锁]、 [飞沙走石]\n
+        - 按向后方向键施放技能时， 角色会回头施放\n
+        减少多段攻击间隔
+        """
+        ...
+
+# 狂 · 霸王拳
+# fighter_male/brawler_male/b3659936a9a74c4ed6f7faf07cca1f9e
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/b3659936a9a74c4ed6f7faf07cca1f9e
 class Skill38(PassiveSkill):
+    """
+        伏虎霸王拳攻击次数变更为1次， 攻击力和周围冲击波的范围大幅增加。\n
+        对无法抓取的敌人也可以施放。 (不适用控制效果)\n
+        攻击异常状态的敌人时， 伤害会更加强大， 冲击波范围也会增加(最多叠加3次)。
+    """
     name = "狂 · 霸王拳"
     learnLv = 40
     masterLv = 1
@@ -605,25 +1074,39 @@ class Skill38(PassiveSkill):
     rangeLv = 3
     cube = 1
     uuid = "b3659936a9a74c4ed6f7faf07cca1f9e"
-
     hasVP = True
-    vps = [
-          {
-            "name": "暴裂火神炮",
-            "desc": "范围增加",
-            "explain": "[狂·霸王拳]<br/>变更为， 施放时投掷火焰瓶炸弹， 引发大范围爆炸的技能<br/>- 对周围敌人造成与被抓取敌人相同的伤害<br/>- 抓取失败时也可以发动"
-          },
-          {
-            "name": "终极结局",
-            "desc": "追踪<br/>攻击力和冷却时间增加",
-            "explain": "[狂·霸王拳]<br/>变更为， 用锁链压制敌人后， 靠近并猛烈下砸的技能<br/>- 基本冷却时间变更为45秒<br/>- 总攻击力 200%"
-          }
-        ]
-    data0 = [0, 945, 963, 981, 999, 1017, 1035, 1053, 1071, 1089, 1107, 1125]# noqa: E501
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    #每个异常增伤20%，最高60%增伤
-    data3 = [0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]# noqa: E501
+    # 伏虎霸王拳攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 冲击波范围增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 每种状态异常攻击力增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 每种异常状态的冲击波范围额外增加 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
+    def vp_1(self):
+        """
+        [狂·霸王拳]\n
+        施放时投掷火焰瓶炸弹， 引发大范围爆炸\n
+        - 对周围敌人造成与被抓取敌人相同的伤害\n
+        - 抓取失败时也可以发动\n
+        每个异常状态攻击力增加率变更为5%\n
+        - 基本攻击力 +39.2%
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [狂·霸王拳]\n
+        用锁链压制敌人后， 靠近并猛烈下砸\n
+        - 基本冷却时间变更为45秒\n
+        - 总攻击力 +200%
+        """
+        ...
 
     def effect(self, old, new):
         self.associate = [
@@ -636,10 +1119,14 @@ class Skill38(PassiveSkill):
             self.associate.append({"type":"*skillRation","data":[0] + [200]*self.maxLv,"skills":["伏虎霸王拳"]})
         return super().effect(old, new)
 
-
-# 毒雷引爆 베놈 마인
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/6a1d1f08a6572be420bb3a256c44c015?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 毒雷引爆
+# fighter_male/brawler_male/6a1d1f08a6572be420bb3a256c44c015
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/6a1d1f08a6572be420bb3a256c44c015
 class Skill39(ActiveSkill):
+    """
+        在前方悬空放置一枚毒地雷， 然后用侧踢击中地雷使其爆炸。\n
+        爆炸的毒地雷会向喷发毒气柱攻击敌人， 并使敌人进入中毒状态。
+    """
     name = "毒雷引爆"
     learnLv = 40
     masterLv = 60
@@ -650,31 +1137,58 @@ class Skill39(ActiveSkill):
     cd = 24
     mp = [180, 1512]
     uuid = "6a1d1f08a6572be420bb3a256c44c015"
-    vps = [
-          {
-            "name": "毒雷轰炸",
-            "desc": "范围增加<br/>附加灼伤效果",
-            "explain": "[毒雷引爆]<br/>变更为同时引爆3枚毒地雷<br/>- 删除侧踢判定<br/>- 总攻击力相同<br/>- [后备口袋]开启时， 其中一个毒地雷造成灼伤效果"
-          },
-          {
-            "name": "连接毒素",
-            "desc": "施放时间减少<br/>更改为附着型技能",
-            "explain": "[毒雷引爆]<br/>变更为投掷添加了特殊爆炸物的地雷。<br/>地雷不会立即爆炸， 而是附着在敌人身上， 随后每次用消耗型投掷物或[爆破污桶]命中敌人时， 地雷会发生反应并爆炸<br/>- 地雷爆炸次数 : 3次<br/>- 最大附着时间 : 6秒<br/>- 总攻击力相同"
-          }
-        ]
-    data0 = [0, 9972, 10983, 11992, 13005, 14020, 15028, 16041, 17054, 18066, 19072, 20088, 21099, 22107, 23126, 24134, 25142, 26163, 27171, 28178, 29194, 30204, 31218, 32228, 33240, 34251, 35264, 36274, 37288, 38298, 39308, 40320, 41336, 42344, 43359, 44368, 45381, 46390, 47404, 48414, 49426, 50440, 51448, 52458, 53472, 54488, 55490, 56511, 57519, 58528, 59542, 60555, 61562, 62574, 63588, 64600, 65608, 66630, 67638, 68644, 69662, 70671, 71680, 72696, 73707, 74721, 75729, 76738, 77751, 78764, 79776]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 踢击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-
-    data1 = [0, 19576, 21562, 23546, 25532, 27519, 29505, 31484, 33470, 35460, 37446, 39429, 41414, 43402, 45392, 47379, 49362, 51346, 53331, 55320, 57300, 59288, 61272, 63260, 65248, 67236, 69222, 71205, 73191, 75176, 77162, 79150, 81134, 83120, 85104, 87090, 89078, 91065, 93052, 95031, 97017, 99006, 100992, 102976, 104961, 106947, 108933, 110920, 112904, 114892, 116878, 118868, 120850, 122835, 124818, 126808, 128796, 130778, 132765, 134745, 136736, 138720, 140712, 142695, 144680, 146670, 148654, 150636, 152624, 154606, 156597]# noqa: E501
+    # 毒气柱攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
-
-    data2 = [0, 4924, 5418, 5924, 6423, 6920, 7422, 7924, 8418, 8918, 9418, 9916, 10416, 10920, 11415, 11916, 12416, 12915, 13419, 13918, 14414, 14913, 15411, 15910, 16416, 16914, 17409, 17912, 18410, 18906, 19406, 19910, 20408, 20908, 21408, 21908, 22407, 22906, 23406, 23904, 24402, 24902, 25407, 25898, 26403, 26901, 27400, 27902, 28404, 28900, 29400, 29898, 30399, 30897, 31401, 31898, 32394, 32895, 33394, 33894, 34392, 34899, 35398, 35894, 36393, 36892, 37395, 37893, 38390, 38892, 39387]# noqa: E501
+    # 中毒攻击力: {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
+    # 中毒持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 爆炸范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
+    def vp_1(self):
+        """
+        [毒雷引爆]\n
+        变更为同时引爆3枚毒地雷\n
+        - 删除侧踢判定\n
+        - 总攻击力相同\n
+        - [后备口袋]开启时， 其中一个毒地雷造成灼伤效果
+        """
+        ...
 
-# 极恶飞锁 비셔스 래리어트
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/030663e99462f628b4c9f813e1406c4e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_2(self):
+        """
+        [毒雷引爆]\n
+        变更为投掷添加了特殊爆炸物的地雷\n
+        地雷不会立即爆炸， 而是附着在敌人身上， 随后每次用消耗型投掷物或[爆破污桶]命中敌人时， 地雷会发生反应并爆炸\n
+        - 地雷爆炸次数 : 3次\n
+        - 最大附着时间 : 6秒\n
+        - 爆炸时， 附加感电异常状态\n
+        - 异常状态持续时间 +100%\n
+        - 总攻击力相同
+        """
+        ...
+
+# 极恶飞锁
+# fighter_male/brawler_male/030663e99462f628b4c9f813e1406c4e
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/030663e99462f628b4c9f813e1406c4e
 class Skill40(ActiveSkill):
+    """
+        挥舞数次锁链进行攻击后， 向前方下挥聚拢敌人。\n
+        被锁链击中的敌人进入出血状态， 被终结打击命中的敌人会被拉到角色前方。\n
+        挥舞锁链时， 可快速连按增加攻击速度， 按跳跃键时立即进行终结打击。
+    """
     name = "极恶飞锁"
     learnLv = 45
     masterLv = 60
@@ -685,36 +1199,57 @@ class Skill40(ActiveSkill):
     cd = 40
     mp = [450, 3780]
     uuid = "030663e99462f628b4c9f813e1406c4e"
-    vps = [
-          {
-            "name": "诡道奇袭",
-            "desc": "赋予无敌状态<br/>范围增加",
-            "explain": "[极恶飞锁]<br/>发动技能时， 进入无敌状态<br/><br/>锁链挥动范围 + 10%"
-          },
-          {
-            "name": "高速飞锁",
-            "desc": "施放时间减少<br/>范围增加",
-            "explain": "[极恶飞锁]<br/>删除锁链挥动攻击力和攻击次数<br/>- 最后一击范围 +50%<br/>- 总攻击力相同"
-          }
-        ]
-    data0 = [0, 2602, 2866, 3129, 3393, 3660, 3924, 4188, 4452, 4714, 4978, 5242, 5506, 5772, 6036, 6298, 6564, 6828, 7092, 7356, 7622, 7884, 8148, 8412, 8676, 8940, 9206, 9470, 9734, 9998, 10262, 10526, 10790, 11054, 11316, 11580, 11847, 12111, 12375, 12639, 12902, 13166, 13430, 13694, 13959, 14223, 14486, 14751, 15015, 15279, 15543, 15808, 16071, 16335, 16599, 16863, 17127, 17392, 17656, 17919, 18184, 18448, 18712, 18976, 19240, 19503, 19767, 20031, 20298, 20562, 20826]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 锁链挥舞攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 8
-
-    #出血异常1
-    data1 = [0, 2602, 2866, 3129, 3393, 3660, 3924, 4188, 4452, 4714, 4978, 5242, 5506, 5772, 6036, 6298, 6564, 6828, 7092, 7356, 7622, 7884, 8148, 8412, 8676, 8940, 9206, 9470, 9734, 9998, 10262, 10526, 10790, 11054, 11316, 11580, 11847, 12111, 12375, 12639, 12902, 13166, 13430, 13694, 13959, 14223, 14486, 14751, 15015, 15279, 15543, 15808, 16071, 16335, 16599, 16863, 17127, 17392, 17656, 17919, 18184, 18448, 18712, 18976, 19240, 19503, 19767, 20031, 20298, 20562, 20826]# noqa: E501
+    # 锁链横扫出血攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 8
-
-    data2 = [0, 5205, 5733, 6262, 6789, 7318, 7848, 8374, 8902, 9430, 9958, 10488, 11016, 11544, 12070, 12600, 13130, 13656, 14186, 14714, 15240, 15770, 16299, 16826, 17354, 17882, 18411, 18939, 19467, 19994, 20523, 21052, 21579, 22107, 22636, 23163, 23692, 24220, 24748, 25276, 25804, 26331, 26862, 27390, 27918, 28444, 28974, 29504, 30030, 30558, 31088, 31614, 32144, 32673, 33200, 33728, 34256, 34785, 35313, 35841, 36368, 36896, 37425, 37953, 38481, 39010, 39537, 40065, 40594, 41122, 41650]# noqa: E501
-    hit2 = 1
-
-    #出血异常2
-    data3 = [0, 5205, 5733, 6262, 6789, 7318, 7848, 8374, 8902, 9430, 9958, 10488, 11016, 11544, 12070, 12600, 13130, 13656, 14186, 14714, 15240, 15770, 16299, 16826, 17354, 17882, 18411, 18939, 19467, 19994, 20523, 21052, 21579, 22107, 22636, 23163, 23692, 24220, 24748, 25276, 25804, 26331, 26862, 27390, 27918, 28444, 28974, 29504, 30030, 30558, 31088, 31614, 32144, 32673, 33200, 33728, 34256, 34785, 35313, 35841, 36368, 36896, 37425, 37953, 38481, 39010, 39537, 40065, 40594, 41122, 41650]# noqa: E501
+    # 锁链横扫攻击次数 : {value2}次
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 最后一击攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 1
+    # 最后一击出血攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 1
+    # 出血持续时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # [范围信息]
+    # 范围比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
+    def vp_1(self):
+        """
+        [极恶飞锁]\n
+        发动技能时， 进入无敌状态\n
+        锁链挥动范围 +10%
+        """
+        ...
 
-# 千手奥义 천수천안
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/ab6fc3303df03b58911967dfca2b5d07?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_2(self):
+        """
+        [极恶飞锁]\n
+        删除锁链挥动攻击力和攻击次数\n
+        - 最后一击范围 +50%\n
+        - 总攻击力相同
+        """
+        ...
+
+# 千手奥义
+# fighter_male/brawler_male/ab6fc3303df03b58911967dfca2b5d07
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/ab6fc3303df03b58911967dfca2b5d07
 class Skill41(PassiveSkill):
+    """
+        熟练地使用各种投掷物， 让敌人更快地进入安息。\n
+        增加投掷类技能的填装数和射出的速度， 并且减少投掷的时间间隔和填装间隔。\n
+        并增加基本攻击力、 技能攻击力、 物理暴击率和魔法暴击率。
+    """
     name = "千手奥义"
     learnLv = 48
     masterLv = 40
@@ -722,18 +1257,39 @@ class Skill41(PassiveSkill):
     position = 2
     rangeLv = 3
     uuid = "ab6fc3303df03b58911967dfca2b5d07"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 1.5, 3, 4.5, 6, 7.5, 9, 10.5, 12, 13.5, 15, 16.5, 18, 19.5, 21, 22.5, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92]# noqa: E501
-    data3 = [0, 98, 96, 93, 91, 88, 86, 83, 81, 78, 76, 73, 71, 68, 66, 63, 61, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60]# noqa: E501
+    # 填装数增加量 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 强化的[砖块投掷]、 [毒瓶投掷]和[罗网投掷]的射出速度变化率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 其它投掷的射出速度变化率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 投掷时间间隔减少率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 填装时间间隔减少率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 基本攻击力和技能攻击力增加率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 物理、 魔法暴击率增加量 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+
     associate = [
-        {"data":data0,"type":"*skillRation"},
-        {"data":data3,"type":"*cdReduce","skills":["抛沙","毒瓶投掷","毒针投掷","砖块投掷"]},
+        {"data":data5,"type":"*skillRation"},
+        {"data":data4,"type":"*cdReduce","skills":["抛沙","毒瓶投掷","毒针投掷","砖块投掷"]},
     ]
 
-
-# 天崩地裂 천붕지괴
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/c5a2956d8ed3af1746ed2f76ca971a09?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 天崩地裂
+# fighter_male/brawler_male/c5a2956d8ed3af1746ed2f76ca971a09
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/c5a2956d8ed3af1746ed2f76ca971a09
 class Skill42(ActiveSkill):
+    """
+        先用钩子抓裂地面， 使地面上的敌人受到爆炸伤害； 然后将地上的碎石勾起， 聚集成一块巨型石块投向地面。 石块落地时会产生强烈的冲击波并使周围的敌人受到巨大伤害。\n
+    갈고리로 땅을 긁을 때 출혈 상태 이상을 걸며, 땅을 들어낸 지역에는 화염 지대가 생성되어 영역 내에 있는 적들에게 중독 및 화상을 건다.\n
+        施放时， 使剩余填装数多于1的投掷类技能填装至最大值。
+    """
     name = "天崩地裂"
     learnLv = 50
     masterLv = 40
@@ -744,29 +1300,38 @@ class Skill42(ActiveSkill):
     cd = 145
     mp = [900, 7559]
     uuid = "c5a2956d8ed3af1746ed2f76ca971a09"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 36553, 45032, 53509, 61982, 70461, 78933, 87415, 95890, 104367, 112847, 121321, 129799, 138278, 146751, 155229, 163702, 172182, 180658, 189136, 197612, 206086, 214564, 223042, 231518, 239992, 248468, 256948, 265425, 273897, 282378, 290853, 299334, 307807, 316286, 324763, 333238, 341716, 350194, 358664, 367145, 375622, 384098, 392576, 401051, 409527, 418005, 426481, 434958, 443434, 451912]# noqa: E501
+    # 地面爆炸攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-
-    data1 = [0, 52091, 64169, 76251, 88330, 100408, 112486, 124566, 136646, 148723, 160803, 172882, 184962, 197043, 209122, 221201, 233279, 245358, 257439, 269518, 281597, 293676, 305755, 317836, 329916, 341991, 354070, 366148, 378229, 390310, 402390, 414470, 426549, 438624, 450708, 462787, 474863, 486942, 499021, 511103, 523181, 535260, 547341, 559419, 571497, 583578, 595657, 607736, 619816, 631894, 643974]# noqa: E501
+    # 石块落地攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
-
-    #出血
-    data2 = [0, 913, 1126, 1337, 1549, 1759, 1972, 2184, 2394, 2607, 2818, 3035, 3245, 3457, 3668, 3880, 4090, 4302, 4517, 4731, 4940, 5151, 5362, 5574, 5785, 5999, 6210, 6426, 6633, 6847, 7059, 7271, 7484, 7695, 7906, 8117, 8329, 8542, 8751, 8967, 9176, 9389, 9601, 9812, 10025, 10238, 10449, 10661, 10872, 11084, 11296]# noqa: E501
+    # 出血攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
+    # 出血持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 火焰地带持续时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 每秒灼伤攻击力 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    hit5 = 6
+    # 每秒中毒攻击力 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    hit6 = 6
 
-    #灼伤
-    data3 = [0, 153, 185, 222, 259, 292, 327, 361, 398, 433, 470, 506, 539, 576, 613, 647, 682, 719, 749, 786, 823, 857, 891, 929, 964, 1001, 1035, 1073, 1105, 1141, 1174, 1210, 1247, 1284, 1316, 1353, 1386, 1424, 1458, 1493, 1531, 1564, 1600, 1635, 1671, 1706, 1741, 1778, 1812, 1847, 1882]# noqa: E501
-    hit3 = 6
-
-    #中毒
-    data4 = [0, 152, 189, 222, 259, 292, 327, 361, 398, 433, 470, 506, 539, 576, 613, 647, 682, 719, 749, 786, 823, 857, 891, 929, 964, 1001, 1035, 1073, 1105, 1141, 1174, 1210, 1247, 1284, 1316, 1353, 1386, 1424, 1458, 1493, 1531, 1564, 1600, 1635, 1671, 1706, 1741, 1778, 1812, 1847, 1882]# noqa: E501
-    hit4 = 6
-
-
-# 爆破污桶 더티 배럴
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/5cac3411ccef1af333953e0ded5e942d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 爆破污桶
+# fighter_male/brawler_male/5cac3411ccef1af333953e0ded5e942d
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/5cac3411ccef1af333953e0ded5e942d
 class Skill43(ActiveSkill):
+    """
+        向前方敌人投掷一个装满炸药的肮脏木桶， 攻击大范围的敌人。\n
+        受爆炸伤害的敌人进入减速和灼伤状态。
+    """
     name = "爆破污桶"
     learnLv = 60
     masterLv = 40
@@ -777,33 +1342,71 @@ class Skill43(ActiveSkill):
     cd = 20
     mp = [280, 784]
     uuid = "5cac3411ccef1af333953e0ded5e942d"
-    vps = [
-          {
-            "name": "超能去污桶",
-            "desc": "取消僵直<br/>赋予无敌状态",
-            "explain": "[爆破污桶]<br/>[诡诈之道]可强制中断其他技能后施放的技能列表中添加[爆破污桶]<br/>- 强制施放[爆破污桶]时进入无敌状态"
-          },
-          {
-            "name": "致命枪管",
-            "desc": "合并[毒瓶投掷]<br/>范围增加",
-            "explain": "[爆破污桶]<br/>木桶中装填了更多的剧毒物质， 爆炸后形成毒雾区域<br/>- 施放时消耗10个[毒瓶投掷]装填数<br/>- 毒雾区域 : [毒瓶投掷] (强化)攻击力的1043%， 造成3秒中毒效果<br/><br/>投掷物及爆炸范围 +40%<br/><br/>[毒瓶投掷]<br/>攻击力 -50%"
-          }
-        ]
-    data0 = [0, 39926, 43968, 48020, 52070, 56124, 60171, 64227, 68265, 72316, 76371, 80421, 84465, 88521, 92570, 96626, 100666, 104722, 108772, 112827, 116866, 120915, 124966, 129012, 133071, 137120, 141168, 145215, 149266, 153318, 157366, 161420, 165464, 169510, 173566, 177612, 181671, 185720, 189765, 193816, 197864, 201916, 205964, 210018, 214064, 218110, 222166, 226214, 230266, 234320, 238365]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 爆炸攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-
-    #灼伤
-    data1 = [0, 1680, 1851, 2022, 2193, 2364, 2532, 2703, 2874, 3045, 3216, 3387, 3556, 3728, 3897, 4068, 4239, 4410, 4580, 4750, 4922, 5091, 5260, 5432, 5602, 5774, 5944, 6116, 6284, 6454, 6626, 6796, 6968, 7137, 7308, 7479, 7648, 7820, 7990, 8160, 8331, 8502, 8673, 8842, 9012, 9183, 9354, 9525, 9696, 9867, 10035]# noqa: E501
+    # 灼伤攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
+    # 灼伤持续时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 中毒攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
+    # 中毒持续时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 减速持续时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 移动速度减少率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # 攻击速度减少率 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    # [范围信息]
+    # 爆炸范围比率 : {value8}%
+    data8 = get_data(f'{prefix}/{uuid}', 8)
 
-    #中毒
-    data2 = [0, 420, 464, 506, 549, 591, 634, 676, 718, 760, 802, 846, 888, 932, 974, 1017, 1059, 1102, 1144, 1188, 1230, 1274, 1316, 1359, 1401, 1444, 1486, 1528, 1572, 1614, 1658, 1698, 1742, 1784, 1827, 1869, 1912, 1954, 1998, 2040, 2082, 2126, 2168, 2211, 2253, 2296, 2338, 2382, 2424, 2468, 2510]# noqa: E501
-    hit2 = 1
+    def vp_1(self):
+        """
+        [爆破污桶]\n
+        [诡诈之道]可强制中断其他技能后施放的技能列表中添加[爆破污桶]\n
+        - 强制施放[爆破污桶]时进入无敌状态
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [爆破污桶]\n
+        木桶中装填了更多的剧毒物质， 爆炸后形成毒雾区域\n
+        - 施放时消耗10个[毒瓶投掷]装填数\n
+        - 毒雾区域 : [毒瓶投掷] (强化)攻击力的1043%， 造成3秒中毒效果\n
+        投掷物和爆炸范围 +40%\n
+        投掷速度和距离 +100%\n
+        [毒瓶投掷]\n
+        攻击力 -50%
+        """
+        ...
 
-# 千锁乱舞 광폭혈쇄
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/dac8d8207618150c162e4c6f9e168527?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def effect(self, old, new):
+        if self.vp == 2:
+            self.associate = [
+                {"type":"*skillRation","data":[0] + [-50]*self.maxLv,"skills":["毒瓶投掷"]},
+                {"type":"+power9","data":[0] + [1043]*self.maxLv,"skills":["毒瓶投掷"]}
+            ]
+        return super().effect(old, new)
+
+# 千锁乱舞
+# fighter_male/brawler_male/dac8d8207618150c162e4c6f9e168527
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/dac8d8207618150c162e4c6f9e168527
 class Skill44(ActiveSkill):
+    """
+        大幅挥舞锁链攻击敌人， 聚集至中央后强力拉拽。\n
+        被最后拉拽攻击命中的远处敌人会被拉至前方。
+    """
     name = "千锁乱舞"
     learnLv = 70
     masterLv = 40
@@ -814,33 +1417,58 @@ class Skill44(ActiveSkill):
     cd = 50
     mp = [800, 1680]
     uuid = "dac8d8207618150c162e4c6f9e168527"
-    vps = [
-          {
-            "name": "疤面煞星",
-            "desc": "范围增加<br/>聚集敌人强化",
-            "explain": "[千锁乱舞]<br/>更快地连续挥舞锁链聚集敌人<br/>- 连续打击次数 + 100%<br/>- 施放速度 + 35%<br/>- 范围 + 30%<br/>- 总攻击力相同<br/>- 最后一击无视距离将敌人拉到自己面前<br/><br/>利用[诡诈之道]连接消耗型投掷类技能时， 将该技能的装填数填装至最大值"
-          },
-          {
-            "name": "墓地",
-            "desc": "可多次发动<br/>取消僵直",
-            "explain": "[千锁乱舞]<br/>挥舞锁链后不拉回敌人， 并直接结束技能。<br/>变更为可填充2次的技能<br/>- 每次填充冷却时间 : 25秒<br/>- 单次攻击力 -50%<br/><br/>可以强制中断投掷后僵直并施放"
-          }
-        ]
-    data0 = [0, 7798, 8595, 9382, 10179, 10966, 11760, 12552, 13342, 14134, 14922, 15717, 16508, 17304, 18088, 18885, 19672, 20468, 21260, 22053, 22842, 23637, 24429, 25220, 26012, 26798, 27596, 28384, 29174, 29964, 30760, 31548, 32344, 33136, 33922, 34719, 35511, 36298, 37094, 37880, 38673, 39470, 40262, 41046, 41842, 42634, 43420, 44214, 45004, 45796, 46588]# noqa: E501
-    hit0 = 4
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    #出血
-    data1 = [0, 7798, 8595, 9382, 10179, 10966, 11760, 12552, 13342, 14134, 14922, 15717, 16508, 17304, 18088, 18885, 19672, 20468, 21260, 22053, 22842, 23637, 24429, 25220, 26012, 26798, 27596, 28384, 29174, 29964, 30760, 31548, 32344, 33136, 33922, 34719, 35511, 36298, 37094, 37880, 38673, 39470, 40262, 41046, 41842, 42634, 43420, 44214, 45004, 45796, 46588]# noqa: E501
+    # 打击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 4
+    # 出血攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 4
-    # TODO：变更伤害
+    # 出血持续时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 拉拽最小触发距离 : {value3}px
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+
+    def vp_1(self):
+        """
+        [千锁乱舞]\n
+        更快地连续挥舞锁链聚集敌人\n
+        - 连续打击次数 +100%\n
+        - 施放速度 +35%\n
+        - 范围 +30%\n
+        - 总攻击力相同\n
+        - 最后一击无视距离将敌人拉到自己面前\n
+        利用[诡诈之道]连接消耗型投掷类技能时， 将该技能的装填数填装至最大值
+        """
+        ...
 
     def vp_2(self):
+        """
+        [千锁乱舞]\n
+        挥舞锁链后不会拉回敌人， 直接结束技能\n
+        变更为可填充2次的技能\n
+        - 每次填充冷却时间 : 25秒\n
+        - 单次攻击力 -50%\n
+        可以强制中断[抛沙]及投掷类技能的施放后僵直并施放
+        """
+        ...
         self.cd = 25
         self.skillRation *= 0.5
 
-# 诡诈之道 룰 브레이크
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/a3880ba488ddca966c36c640cce927a7?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 诡诈之道
+# fighter_male/brawler_male/a3880ba488ddca966c36c640cce927a7
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/a3880ba488ddca966c36c640cce927a7
 class Skill45(PassiveSkill):
+    """
+        破坏规则， 并获得强力的战斗技术。\n
+        增加基本攻击力和技能攻击力； 减少所有敌人的控制型异常状态抗性。 若学习了自动填充技能， 则进入地下城或复活时， 将自动装填消耗型投掷物。\n
+        可以强制中断[毒雷引爆]、 [极恶飞锁]、 [千锁乱舞]、 [爆破污桶]、 [飞沙走石]， 并立即使用[抛沙]和投掷类技能。强制中断后使用技能时会进入霸体状态， 且不消耗投掷物。\n
+        此功能可以在已学习的技能窗口上用鼠标右键设置开启/关闭。
+    """
     name = "诡诈之道"
     learnLv = 75
     masterLv = 40
@@ -848,15 +1476,27 @@ class Skill45(PassiveSkill):
     position = 6
     rangeLv = 3
     uuid = "a3880ba488ddca966c36c640cce927a7"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data1 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
+    # 控制型异常状态抗性减少 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 基本攻击力和技能攻击力增加率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [ {"data":data1,"type":"*skillRation"} ]
 
-
-# 暗街夺命锁 체인 드라이브
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/2b39a776471c142f581ad3cc8bb89e55?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 暗街夺命锁
+# fighter_male/brawler_male/2b39a776471c142f581ad3cc8bb89e55
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/2b39a776471c142f581ad3cc8bb89e55
 class Skill46(ActiveSkill):
+    """
+        把锁链插进地面后， 旋转锁链把周围敌人挑到空中， 使其进入出血状态， 随后抓起来扔到地面上。\n
+        把周围敌人挑到空中时， 进入无敌状态。 扔出敌人之前， 按前方向键可以调整扔出的位置。\n
+        按上方向键时， 会扔到最远的位置。 按前方向键时， 会把敌人扔到锁链插进地面的位置。 除此之外， 都会把敌人扔到面前。\n
+        对无法抓取的敌人会造成单独的伤害， 不适用控制效果。
+    """
     name = "暗街夺命锁"
     learnLv = 75
     masterLv = 40
@@ -867,30 +1507,28 @@ class Skill46(ActiveSkill):
     cd = 40
     mp = [580, 4500]
     uuid = "2b39a776471c142f581ad3cc8bb89e55"
-    vps = [
-          {
-            "name": "燃烬夺命锁",
-            "desc": "范围增加<br/>异常状态伤害立即生效<br/>附加灼伤/感电效果",
-            "explain": "[暗街夺命锁]<br/>电流通过锁链传导， 与地面碰撞时产生火花<br/>- 引发火焰， 攻击更广范围的敌人<br/>- 使陷入火焰中的敌人当前出血/中毒异常状态伤害爆发<br/>- 使敌人进入灼伤、 感电状态， 效果持续10秒"
-          },
-          {
-            "name": "蝎子",
-            "desc": "聚集敌人强化<br/>删除出血效果<br/>取消僵直",
-            "explain": "[暗街夺命锁]<br/>变更为用锁链撕裂地面， 将巨型石块合并后与锁链一同向前方投掷的技能<br/>- 删除翻转地面攻击力<br/>- 删除无法抓取的敌人区分<br/>- 删除附加出血<br/>- 石块命中时， 使敌人进入眩晕异常状态， 效果持续3秒<br/>- 投掷后， 可使用[诡诈之道]的强制中断功能<br/>- 总攻击力相同"
-          }
-        ]
-    data0 = [0, 41272, 45460, 49647, 53836, 58018, 62207, 66394, 70584, 74769, 78954, 83143, 87331, 91517, 95702, 99889, 104079, 108268, 112452, 116637, 120824, 125015, 129199, 133388, 137575, 141761, 145948, 150134, 154323, 158510, 162697, 166884, 171068, 175259, 179445, 183633, 187818, 192003, 196191, 200382, 204568, 208753, 212942, 217128, 221316, 225502, 229690, 233876, 238063, 242249, 246438]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 翻转地面攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-
-    data1 = [0, 24764, 27276, 29786, 32299, 34811, 37323, 39834, 42350, 44859, 47375, 49883, 52398, 54912, 57420, 59931, 62445, 64959, 67471, 69984, 72497, 75008, 77521, 80036, 82543, 85055, 87569, 90080, 92594, 95106, 97614, 100129, 102641, 105153, 107667, 110179, 112694, 115203, 117715, 120227, 122738, 125251, 127763, 130278, 132790, 135301, 137814, 140326, 142838, 145349, 147862]# noqa: E501
+    # 地面冲撞攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
-
-    data2 = [0, 66036, 72735, 79436, 86134, 92834, 99531, 106232, 112930, 119632, 126327, 133028, 139728, 146426, 153126, 159828, 166525, 173223, 179924, 186623, 193322, 200020, 206719, 213419, 220119, 226818, 233519, 240217, 246915, 253615, 260315, 267014, 273717, 280411, 287110, 293809, 300511, 307211, 313909, 320610, 327309, 334007, 340707, 347406, 354104, 360804, 367505, 374203, 380902, 387602, 394300]# noqa: E501
+    # 对无法抓取的敌人的攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
-
-    #出血
-    data3 = [0, 16509, 18181, 19857, 21531, 23209, 24882, 26556, 28231, 29907, 31581, 33256, 34934, 36609, 38283, 39955, 41630, 43304, 44981, 46655, 48328, 50006, 51680, 53356, 55026, 56706, 58379, 60052, 61725, 63406, 65079, 66753, 68427, 70105, 71777, 73451, 75130, 76801, 78475, 80151, 81829, 83502, 85176, 86851, 88526, 90200, 91875, 93550, 95225, 96900, 98575]# noqa: E501
-    hit3 = 1
+    # 出血时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 出血攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 1
+    # [范围信息]
+    # 地面冲撞爆炸范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
     mode = ['不可抓取','可抓取']
 
@@ -902,10 +1540,50 @@ class Skill46(ActiveSkill):
             self.hit0 = self.hit1 = 1
             self.hit2 = 0
 
+    def vp_1(self):
+        """
+        [暗街夺命锁]\n
+        电流通过锁链传导， 与地面碰撞时产生火花\n
+        - 引发火焰， 攻击更大范围的敌人\n
+        - 使陷入火焰中的敌人当前出血、 中毒异常状态伤害爆发\n
+        - 使敌人进入灼伤、 感电状态， 效果持续15秒
+        """
+        ...
 
-# 飞沙走石 만천화우
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/b306cc4c67c775ab7ddff9785a3fe6a4?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+    def vp_2(self):
+        """
+        [暗街夺命锁]\n
+        利用锁链破坏地面， 将巨型石块合并后与锁链一同向前方投掷\n
+        - 投掷时， 消耗9个[砖块投掷]装填数\n
+        - 删除翻转地面攻击力\n
+        - 删除无法抓取敌人的例外情况\n
+        - 删除附加出血效果\n
+        - 石块命中时， 造成相当于[砖块投掷]砖块打击攻击力1671%的额外伤害， 并使敌人进入眩晕异常状态， 效果持续3秒\n
+        - 投掷后， 可使用[诡诈之道]的强制中断功能\n
+        - [暗街夺命锁]总攻击力相同\n
+        [砖块投掷]\n
+        攻击力 -30%
+        """
+        ...
+
+    def effect(self, old, new):
+        if self.vp == 2:
+            self.associate = [
+                {"type":"*skillRation","data":[0] + [-30]*self.maxLv,"skills":["砖块投掷"]},
+                {"type":"+power13","data":[0] + [1671]*self.maxLv,"skills":["砖块投掷"]},
+                {"type":"+power14","data":[0] + [1671]*self.maxLv,"skills":["砖块投掷"]}
+            ]
+        return super().effect(old, new)
+
+# 飞沙走石
+# fighter_male/brawler_male/b306cc4c67c775ab7ddff9785a3fe6a4
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/b306cc4c67c775ab7ddff9785a3fe6a4
 class Skill47(ActiveSkill):
+    """
+        把锁镰插到天花板上， 随后拉拽铁链摧毁天花板， 掉落大量石块。\n
+        石块可以强控敌人。\n
+        最后掉落巨型石块， 使敌人进入出血状态并引起冲击波。
+    """
     name = "飞沙走石"
     learnLv = 80
     masterLv = 40
@@ -916,43 +1594,74 @@ class Skill47(ActiveSkill):
     cd = 45
     mp = [800, 6000]
     uuid = "b306cc4c67c775ab7ddff9785a3fe6a4"
-    vps = [
-          {
-            "name": "雪崩",
-            "desc": "施放时间减少<br/>取消僵直",
-            "explain": "[飞沙走石]<br/>不再掉落小石块， 立即掉落巨型石块<br/>- 删除小石块攻击力<br/>- 总攻击力相同<br/><br/>学习[诡诈之道]后， 强制中断时机变更为从天花板拉拽锁链后<br/>- 除[抛沙]和消耗型投掷技能外， 可以强制中断并施放转职技能"
-          },
-          {
-            "name": "鲜血融合",
-            "desc": "合并[毒针投掷]<br/>范围增加",
-            "explain": "[飞沙走石]<br/>向天花板投掷锁镰时， 同步投掷毒针， 与破碎的天花板碎片一同坠落。<br/>- 施放时消耗20个[毒针投掷]装填数<br/>- 毒针攻击力 : [毒针投掷] (普通)攻击力的392%<br/><br/>攻击范围 25%<br/><br/>[毒针投掷]<br/>攻击力 -50%"
-          }
-        ]
-    data0 = [0, 3086, 3399, 3712, 4030, 4339, 4654, 4971, 5280, 5597, 5910, 6221, 6538, 6849, 7161, 7476, 7789, 8102, 8416, 8729, 9041, 9358, 9670, 9980, 10294, 10609, 10920, 11236, 11549, 11863, 12173, 12490, 12805, 13115, 13431, 13741, 14054, 14372, 14683, 14994, 15310, 15623, 15937, 16250, 16562, 16877, 17190, 17504, 17817, 18129, 18444]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 小石块攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 10
-
-    data1 = [0, 18341, 20199, 22061, 23920, 25781, 27644, 29503, 31363, 33226, 35086, 36944, 38808, 40668, 42528, 44390, 46247, 48109, 49973, 51831, 53691, 55550, 57412, 59272, 61133, 62995, 64855, 66718, 68578, 70436, 72296, 74160, 76020, 77878, 79741, 81602, 83461, 85325, 87183, 89043, 90905, 92765, 94626, 96486, 98347, 100208, 102068, 103929, 105789, 107649, 109511]# noqa: E501
+    # 巨型石块攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
-
-    data2 = [0, 18341, 20199, 22061, 23920, 25781, 27644, 29503, 31363, 33226, 35086, 36944, 38808, 40668, 42528, 44390, 46247, 48109, 49973, 51831, 53691, 55550, 57412, 59272, 61133, 62995, 64855, 66718, 68578, 70436, 72296, 74160, 76020, 77878, 79741, 81602, 83461, 85325, 87183, 89043, 90905, 92765, 94626, 96486, 98347, 100208, 102068, 103929, 105789, 107649, 109511]# noqa: E501
+    # 冲击波攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
+    # 出血持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 出血攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    #出血
-    data3 = [0, 28958, 31892, 34832, 37769, 40709, 43646, 46585, 49525, 52459, 55397, 58333, 61272, 64213, 67148, 70088, 73024, 75962, 78898, 81836, 84774, 87715, 90654, 93589, 96531, 99468, 102403, 105341, 108278, 111219, 114155, 117095, 120033, 122970, 125905, 128843, 131784, 134722, 137659, 140597, 143538, 146473, 149411, 152348, 155287, 158224, 161163, 164100, 167039, 169976, 172915]# noqa: E501
-    hit3 = 1
+    def vp_1(self):
+        """
+        [飞沙走石]\n
+        不再掉落小型石块， 从天花板立即掉落巨型石块\n
+        - 删除小石块攻击力\n
+        - 总攻击力相同\n
+        学习[诡诈之道]后， 强制中断时机变更为从天花板拉拽锁链后\n
+        - 除[抛沙]和消耗型投掷技能外， 可以强制中断并施放转职技能
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [飞沙走石]\n
+        向天花板投掷锁镰时， 同时投掷毒针， 毒针与破碎的天花板碎片一同坠落\n
+        - 施放时， 消耗20个[毒针投掷]装填数\n
+        - 不会掉落巨型石块\n
+        - 小型石块掉落次数 +60%， 速度 +50%\n
+        - 毒针攻击力 : [毒针投掷] (普通)攻击力的210%\n
+        - 掉落的毒针中， 有一半不是造成出血状态， 而是造成感电状态\n
+        - [飞沙走石]总攻击力相同\n
+        攻击范围 +25%\n
+        [毒针投掷]\n
+        攻击力 -40%
+        """
+        ...
 
     def effect(self, old, new):
         if self.vp == 2:
             self.associate = [
-                {"data":[0] + [-50]*self.maxLv,"skills" : ["毒针投掷"]},
-                {"data":[0] + [392]*self.maxLv,"skills" : ["毒针投掷"],"type":"+power7"},
-                {"data":[0] + [392]*self.maxLv,"skills" : ["毒针投掷"],"type":"+power8"}
+                {"type":"*skillRation","data":[0] + [-40]*self.maxLv,"skills":["毒针投掷"]},
+                {"type":"+power9","data":[0] + [210]*self.maxLv,"skills":["毒针投掷"]},
+                {"type":"+power10","data":[0] + [210]*self.maxLv,"skills":["毒针投掷"]}
             ]
         return super().effect(old, new)
 
-# 燃火轰天炮 개조형 파진포 : 연화
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/949849d5791944973d60af7e2a7eefb0?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 燃火轰天炮
+# fighter_male/brawler_male/949849d5791944973d60af7e2a7eefb0
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/949849d5791944973d60af7e2a7eefb0
 class Skill48(ActiveSkill):
+    """
+        用气势压制周围敌人， 强控敌人后， 用捆绑着轰天炮的铁管攻击。\n
+        随后轰天炮连续爆炸并造成伤害。\n
+        压制敌人时， 若敌人处于状态异常中， 则会造成更强力的伤害。 (最多叠加3次)
+    """
     name = "燃火轰天炮"
     learnLv = 85
     masterLv = 40
@@ -963,26 +1672,37 @@ class Skill48(ActiveSkill):
     cd = 180
     mp = [2500, 5000]
     uuid = "949849d5791944973d60af7e2a7eefb0"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 45856, 56493, 67126, 77763, 88393, 99026, 109661, 120297, 130928, 141560, 152197, 162839, 173464, 184095, 194737, 205361, 215998, 226636, 237268, 247901, 258540, 269168, 279806, 290438, 301073, 311711, 322343, 332972, 343610, 354243, 364875, 375511, 386144, 396776, 407413, 418045, 428680, 439318, 449947, 460578, 471216, 481849, 492484, 503117, 513751, 524385, 535018, 545653, 556287, 566920]# noqa: E501
+    # 铁管打击 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-
-    data1 = [0, 26584, 32749, 38912, 45079, 51244, 57411, 63571, 69737, 75902, 82066, 88229, 94394, 100562, 106724, 112890, 119053, 125219, 131380, 137551, 143710, 149877, 156042, 162207, 168369, 174532, 180699, 186865, 193029, 199197, 205355, 211523, 217688, 223852, 230016, 236181, 242345, 248510, 254674, 260841, 267005, 273168, 279334, 285497, 291664, 297826, 303991, 310156, 316320, 322485, 328650]# noqa: E501
+    # 第1次~第2次爆炸 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 2
-
-    data2 = [0, 13293, 16375, 19457, 22539, 25623, 28703, 31786, 34871, 37951, 41034, 44116, 47197, 50281, 53363, 56444, 59527, 62611, 65694, 68774, 71856, 74938, 78024, 81102, 84185, 87267, 90351, 93432, 96515, 99597, 102681, 105762, 108842, 111923, 115012, 118087, 121174, 124257, 127337, 130420, 133502, 136584, 139667, 142750, 145831, 148913, 151995, 155078, 158161, 161242, 164324]# noqa: E501
+    # 第3次~第5五次爆炸 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 3
-
-    data3 = [0, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25]# noqa: E501
+    # 每种状态异常攻击力增加率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
     associate = [
         {"type":"*skillRation","data":[i*3 if i > 0 else i for i in data3],"skills":["燃火轰天炮"]}
     ]
 
-
-# 逆道·爆狱 로드 투 헬
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/dec8961c485edb02036ba00c789010f0?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 逆道·爆狱
+# fighter_male/brawler_male/dec8961c485edb02036ba00c789010f0
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/dec8961c485edb02036ba00c789010f0
 class Skill49(ActiveSkill):
+    """
+        将装有特殊硬化剂的木桶滚向前方敌人， 造成伤害后， 用脚踢飞炸药桶使其爆炸。\n
+        爆炸时， 强制控制范围内的敌人一定时间。\n
+    [投掷强化]\n
+    - 用装有易燃物质的金属桶代替木桶， 使其发生连锁爆炸。\n
+    - 代替强制控制， 使敌人进入灼伤状态， 效果持续一定时间。
+    """
     name = "逆道·爆狱"
     learnLv = 95
     masterLv = 40
@@ -993,38 +1713,61 @@ class Skill49(ActiveSkill):
     cd = 60
     mp = [960, 7200]
     uuid = "dec8961c485edb02036ba00c789010f0"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 12395, 13654, 14912, 16167, 17425, 18683, 19942, 21198, 22455, 23713, 24971, 26227, 27486, 28744, 30002, 31259, 32516, 33774, 35032, 36288, 37546, 38805, 40063, 41320, 42577, 43835, 45093, 46349, 47607, 48865, 50124, 51381, 52638, 53896, 55154, 56410, 57668, 58927, 60184, 61442, 62699, 63957, 65214, 66472, 67729, 68986, 70245, 71502, 72759, 74018]# noqa: E501
+    # 木桶攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 5
-
-    data1 = [0, 92972, 102403, 111833, 121268, 130699, 140132, 149563, 158995, 168427, 177859, 187290, 196723, 206155, 215588, 225019, 234450, 243882, 253314, 262747, 272180, 281611, 291043, 300472, 309907, 319337, 328772, 338204, 347634, 357066, 366498, 375930, 385361, 394794, 404227, 413659, 423089, 432522, 441953, 451386, 460818, 470250, 479681, 489115, 498547, 507978, 517410, 526841, 536273, 545705, 555138]# noqa: E501
-    hit1 = 1
-
-    data2 = [0, 14277, 15725, 17174, 18620, 20071, 21518, 22965, 24416, 25863, 27311, 28762, 30210, 31658, 33104, 34555, 36003, 37450, 38899, 40349, 41795, 43246, 44695, 46141, 47590, 49040, 50487, 51935, 53383, 54832, 56280, 57729, 59177, 60627, 62074, 63523, 64971, 66418, 67868, 69315, 70765, 72213, 73661, 75110, 76559, 78007, 79455, 80903, 82352, 83800, 85249]# noqa: E501
-    hit2 = 5
-
-    data3 = [0, 17846, 19656, 21466, 23278, 25088, 26899, 28708, 30520, 32330, 34140, 35952, 37761, 39571, 41382, 43192, 45003, 46815, 48626, 50437, 52246, 54057, 55868, 57678, 59487, 61299, 63109, 64919, 66729, 68540, 70350, 72162, 73972, 75782, 77593, 79404, 81215, 83024, 84834, 86646, 88456, 90266, 92079, 93887, 95698, 97509, 99320, 101130, 102940, 104751, 106562]# noqa: E501
-    hit3 = 5
-
-    #灼伤
-    data4 = [0, 3569, 3929, 4293, 4655, 5017, 5381, 5741, 6104, 6466, 6827, 7190, 7552, 7914, 8276, 8636, 8999, 9363, 9726, 10087, 10450, 10810, 11173, 11535, 11896, 12260, 12621, 12983, 13344, 13707, 14067, 14432, 14796, 15155, 15518, 15881, 16242, 16603, 16966, 17328, 17691, 18053, 18414, 18776, 19138, 19500, 19863, 20226, 20587, 20950, 21312]# noqa: E501
+    # 木桶攻击次数上限 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 爆炸攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # 强制控制时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [投掷强化]
+    # 金属桶攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     hit4 = 5
+    # 金属桶攻击次数上限 : {value5}次
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 连锁爆炸攻击力 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    hit6 = 5
+    # 连锁爆炸攻击次数上限 : {value7}次
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    # 灼伤持续时间 : {value8}秒
+    data8 = get_data(f'{prefix}/{uuid}', 8)
+    # 灼伤攻击力 : {value9}%
+    data9 = get_data(f'{prefix}/{uuid}', 9)
+    hit9 = 5
 
     mode = ['常规','强化']
 
     def setMode(self, mode):
         if mode == "常规":
             self.hit0 = 5
-            self.hit1 = 1
-            self.hit2 = self.hit3 = self.hit4 = 0
+            self.hit2 = 1
+            self.hit4 = self.hit6 = self.hit9 = 0
         elif mode == "强化":
-            self.hit0 = self.hit1 = 0
-            self.hit2 = self.hit3 = self.hit4 = 5
+            self.hit0 = self.hit2 = 0
+            self.hit4 = self.hit6 = self.hit9 = 5
 
-
-# 逆道·皆允 피카레스크
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/8e1891ddbdd5ebfcc4508ff2090c3e0f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 逆道·皆允
+# fighter_male/brawler_male/8e1891ddbdd5ebfcc4508ff2090c3e0f
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/8e1891ddbdd5ebfcc4508ff2090c3e0f
 class Skill50(PassiveSkill):
+    """
+        不择手段， 只为追求胜利， 增加基本攻击力和转职技能攻击力， 变更部分投掷技能。\n
+    [毒瓶投掷]\n
+    - 普通投掷时， 投掷合并毒瓶和烈焰瓶的功能的特殊瓶。\n
+    -  [投掷强化]状态下， 一段时间内在地面上生成毒雾， 进入毒雾范围的敌人会中毒。\n
+    [砖块投掷]\n
+    - 强化投掷时， 技能变更为抽起地面的锁链， 将圆形巨石向前方砸出的形态。\n
+    [毒瓶投掷]普通投掷变更效果适用条件 : 在[后街战术]状态下， 获得[后备口袋]技能， 装填消耗量和攻击力与原技能一致。
+    """
     name = "逆道·皆允"
     learnLv = 95
     masterLv = 40
@@ -1032,15 +1775,30 @@ class Skill50(PassiveSkill):
     position = 5
     rangeLv = 3
     uuid = "8e1891ddbdd5ebfcc4508ff2090c3e0f"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
+    # 基本攻击力和转职技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 强化毒瓶投掷毒雾持续时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [ {"data":data0,"type":"*skillRation"} ]
 
-
-# 逆道·幽链之界 배드 엔딩
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/f1fdc6c2482ecc510a2a9f04201ba125?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
+# 逆道·幽链之界
+# fighter_male/brawler_male/f1fdc6c2482ecc510a2a9f04201ba125
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/f1fdc6c2482ecc510a2a9f04201ba125
 class Skill51(ActiveSkill):
+    """
+        将敌人引到街霸的大本营暗街， 用锁链攻击周围的敌人， 并摧毁建筑物。\n
+        然后， 跳到空中， 将建筑物碎片聚集成巨型爆弹， 扔向敌人并将其引爆。\n
+        爆炸攻击命中的敌人进入出血、 中毒、 灼伤状态， 效果持续一定时间。\n
+        施放时， 使剩余填装数多于1的投掷类技能填装至最大值。\n
+    [三次觉醒技能]\n
+        使用三次觉醒技能时， 与关联的技能共享冷却时间。\n
+        若关联的技能还在冷却中， 则无法使用三次觉醒技能。
+    """
     name = "逆道·幽链之界"
     learnLv = 100
     masterLv = 40
@@ -1051,33 +1809,40 @@ class Skill51(ActiveSkill):
     cd = 290
     mp = [4025, 8055]
     uuid = "f1fdc6c2482ecc510a2a9f04201ba125"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 18216, 22438, 26663, 30888, 35112, 39335, 43561, 47784, 52008, 56232, 60457, 64679, 68903, 73128, 77351, 81576, 85799, 90024, 94249, 98472, 102696, 106921, 111144, 115366, 119593, 123817, 128040, 132265, 136489, 140711, 144938, 149160, 153384, 157608, 161833, 166056, 170281, 174505, 178728, 182953, 187177, 191401, 195625, 199849, 204073, 208298, 212520, 216744, 220969, 225192]# noqa: E501
-    hit0 = 5
-
-    data1 = [0, 30358, 37401, 44438, 51478, 58520, 65560, 72599, 79640, 86681, 93720, 100761, 107799, 114838, 121880, 128921, 135960, 143001, 150041, 157080, 164121, 171160, 178198, 185242, 192281, 199321, 206360, 213401, 220441, 227481, 234522, 241561, 248599, 255642, 262681, 269720, 276762, 283802, 290842, 297882, 304921, 311962, 319001, 326043, 333083, 340121, 347162, 354202, 361241, 368283, 375323]# noqa: E501
-    hit1 = 1
-
-    data2 = [0, 18216, 22438, 26663, 30888, 35112, 39335, 43561, 47784, 52008, 56232, 60457, 64679, 68903, 73128, 77351, 81576, 85799, 90024, 94249, 98472, 102696, 106921, 111144, 115366, 119593, 123817, 128040, 132265, 136489, 140711, 144938, 149160, 153384, 157608, 161833, 166056, 170281, 174505, 178728, 182953, 187177, 191401, 195625, 199849, 204073, 208298, 212520, 216744, 220969, 225192]# noqa: E501
-    hit2 = 10
-
-    data3 = [0, 91079, 112200, 133320, 154441, 175561, 196679, 217801, 238921, 260041, 281161, 302282, 323401, 344522, 365642, 386763, 407883, 429003, 450124, 471244, 492365, 513484, 534605, 555725, 576844, 597964, 619084, 640204, 661324, 682445, 703564, 724685, 745805, 766926, 788045, 809167, 830287, 851407, 872527, 893647, 914768, 935887, 957008, 978128, 999249, 1020368, 1041489, 1062609, 1083728, 1104849, 1125969]# noqa: E501
-    hit3 = 1
-
-    data4 = [0, 194304, 239360, 284418, 329474, 374529, 419587, 464644, 509700, 554756, 599814, 644868, 689924, 734982, 780037, 825095, 870152, 915206, 960264, 1005319, 1050378, 1095432, 1140487, 1185546, 1230602, 1275656, 1320714, 1365772, 1410828, 1455883, 1500942, 1545996, 1591052, 1636110, 1681165, 1726223, 1771279, 1816334, 1861392, 1906448, 1951503, 1996560, 2041616, 2086674, 2131730, 2176786, 2221843, 2266898, 2311956, 2357012, 2402067]# noqa: E501
-    hit4 = 1
-
-    #出血
-    data5 = [0, 6072, 7479, 8887, 10296, 11705, 13112, 14518, 15926, 17336, 18742, 20151, 21561, 22967, 24377, 25782, 27191, 28599, 30008, 31414, 32823, 34232, 35639, 37048, 38454, 39863, 41271, 42680, 44089, 45494, 46903, 48311, 49720, 51127, 52536, 53945, 55352, 56759, 58167, 59576, 60984, 62391, 63800, 65208, 66616, 68024, 69432, 70840, 72247, 73657, 75064]# noqa: E501
+    # 锁链横扫次数上限 : {value0}次
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 锁链挥舞攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 5
+    # 锁链突刺攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # 锁链旋转攻击次数上限 : {value3}次
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 锁链旋转攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    hit4 = 10
+    # 建筑炸弹地面上攻击力 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     hit5 = 1
-
-    #中毒
-    data6 = [0, 6072, 7479, 8887, 10296, 11705, 13112, 14518, 15926, 17336, 18742, 20151, 21561, 22967, 24377, 25782, 27191, 28599, 30008, 31414, 32823, 34232, 35639, 37048, 38454, 39863, 41271, 42680, 44089, 45494, 46903, 48311, 49720, 51127, 52536, 53945, 55352, 56759, 58167, 59576, 60984, 62391, 63800, 65208, 66616, 68024, 69432, 70840, 72247, 73657, 75064]# noqa: E501
+    # 建筑炸弹爆炸攻击力 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     hit6 = 1
-
-    #灼伤
-    data7 = [0, 6072, 7479, 8887, 10296, 11705, 13112, 14518, 15926, 17336, 18742, 20151, 21561, 22967, 24377, 25782, 27191, 28599, 30008, 31414, 32823, 34232, 35639, 37048, 38454, 39863, 41271, 42680, 44089, 45494, 46903, 48311, 49720, 51127, 52536, 53945, 55352, 56759, 58167, 59576, 60984, 62391, 63800, 65208, 66616, 68024, 69432, 70840, 72247, 73657, 75064]# noqa: E501
-    hit7 = 1
+    # 异常状态持续时间 : {value7}秒
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    # 出血攻击力 : {value8}%
+    data8 = get_data(f'{prefix}/{uuid}', 8)
+    hit8 = 1
+    # 中毒攻击力 : {value9}%
+    data9 = get_data(f'{prefix}/{uuid}', 9)
+    hit9 = 1
+    # 灼伤攻击力 : {value10}%
+    data10 = get_data(f'{prefix}/{uuid}', 10)
+    hit10 = 1
 
 
 class classChange(Character):
@@ -1086,6 +1851,10 @@ class classChange(Character):
         self.name = 'brawler_male'
         self.nameCN = '归元·街霸'
         self.role = 'fighter_male'
+        self.角色 = '格斗家(男)'
+        self.职业 = '街霸'
+        self.jobId = 'ca0f0e0e9e1d55b5f9955b03d9dd213c'
+        self.jobGrowId = '6d459bc74ba73ee4fe5cdc4655400193'
 
         self.武器选项 = ['手套', '臂铠','爪','东方棍']
         self.输出类型选项 = ['魔法百分比', '物理百分比']
@@ -1093,9 +1862,5 @@ class classChange(Character):
         self.防具精通属性 = ['力量', '智力']
         self.防具类型 = '重甲'
         self.buff = 1.861
-
-        self.角色 = '格斗家(男)'
-
-        self.职业 = '街霸'
 
         super().__init__(equVersion, __name__)
