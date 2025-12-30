@@ -33,7 +33,10 @@ def sundry_5(char: CharacterProperty, *args):
     '''迷雾系统'''
     lv = args[0]
     value = 0.1 + (lv-1) * 0.005 + int(lv / 5) * 0.005 + int(lv / 10) * 0.005
+    buffer = 2400 + (lv-1) * 50 + int(lv / 5) * 50 + int(lv /10) * 50
     char.SetStatus(SkillAttack=value)
+    if char.buffer:
+        char.SetStatus(Buffer=buffer)
     pass
 
 @register
