@@ -170,7 +170,7 @@ export default defineComponent({
                 <div></div>
               )}
             </div>
-            {part.value == '武器' ? (
+            {false && part.value == '武器' ? (
               <div class="equ-profile-item">
                 <div class="row-name">武器融合</div>
                 <div class="flex">

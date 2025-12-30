@@ -15232,7 +15232,44 @@ def equ_3009(char: CharacterProperty):
     char.AddSkillLv(95, 95, 1, 0)
     pass
 
+@register
+def equ_3017(char: CharacterProperty):
+    """
+    DCALC_REMOVE: equ_3017 - 大奥秘库之主宰
+    三觉被动Lv +1
+    所有属性强化 +45
+    攻击强化增幅 +40%
+    暴击率 +15%
+    所有速度 +4%
+    rarity: 传说
+    """
+    char.AddElementDB("火", 45)
+    char.AddElementDB("冰", 45)
+    char.AddElementDB("光", 45)
+    char.AddElementDB("暗", 45)
+    char.SetStatus(AttackP=0.40, SpeedM=0.04, SpeedA=0.04, SpeedR=0.04)
+    char.AddSkillLv(95, 95, 1, 0)
+    pass
 
+
+@register
+def equ_3018(char: CharacterProperty):
+    """
+    DCALC_REMOVE: equ_3018 - 宿命天定者
+    三觉被动Lv +1
+    所有属性强化 +25
+    攻击强化增幅 +30%
+    暴击率 +12%
+    所有速度 +3%
+    rarity: 稀有
+    """
+    char.AddElementDB("火", 25)
+    char.AddElementDB("冰", 25)
+    char.AddElementDB("光", 25)
+    char.AddElementDB("暗", 25)
+    char.SetStatus(AttackP=0.30, SpeedM=0.03, SpeedA=0.03, SpeedR=0.03)
+    char.AddSkillLv(95, 95, 1, 0)
+    pass
 # endregion
 # region 耕耘
 
@@ -15496,7 +15533,7 @@ def equ_4006(char: CharacterProperty):
     """
     DCALC_REMOVE: equ_4006 - 迷你地界镇护者舒茉
     Lv1~95所有技能 +1
-    所有属性强化 +25
+    所有属性强化 +30
     攻击强化增幅 +45%
     暴击率 +10%
     所有速度 +5%
@@ -15504,10 +15541,10 @@ def equ_4006(char: CharacterProperty):
     rarity: 稀有
     """
     char.AddSkillLv(1, 95, 1)
-    char.AddElementDB("火", 25)
-    char.AddElementDB("冰", 25)
-    char.AddElementDB("光", 25)
-    char.AddElementDB("暗", 25)
+    char.AddElementDB("火", 30)
+    char.AddElementDB("冰", 30)
+    char.AddElementDB("光", 30)
+    char.AddElementDB("暗", 30)
     char.SetStatus(AttackP=0.45, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
     char.SetSkillCD(1, 100, 0.05, [])
     pass
@@ -15540,7 +15577,7 @@ def equ_4008(char: CharacterProperty):
     """
     DCALC_REMOVE: equ_4008 - 菩提龙女
     Lv1~95所有技能 +1
-    所有属性强化 +25
+    所有属性强化 +30
     攻击强化增幅 +50%
     暴击率 +10%
     所有速度 +5%
@@ -15548,10 +15585,10 @@ def equ_4008(char: CharacterProperty):
     rarity: 稀有
     """
     char.AddSkillLv(1, 95, 1)
-    char.AddElementDB("火", 25)
-    char.AddElementDB("冰", 25)
-    char.AddElementDB("光", 25)
-    char.AddElementDB("暗", 25)
+    char.AddElementDB("火", 30)
+    char.AddElementDB("冰", 30)
+    char.AddElementDB("光", 30)
+    char.AddElementDB("暗", 30)
     char.SetStatus(AttackP=0.50, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
     char.SetSkillCD(1, 100, 0.05, [])
     pass
@@ -15575,6 +15612,48 @@ def equ_4009(char: CharacterProperty):
     char.AddElementDB("光", 25)
     char.AddElementDB("暗", 25)
     char.SetStatus(AttackP=0.35, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
+    char.SetSkillCD(1, 100, 0.05, [])
+    pass
+
+@register
+def equ_4020(char: CharacterProperty):
+    """
+    DCALC_REMOVE: equ_4020 - 命运之裁剪师
+    Lv1~95所有技能 +1
+    所有属性强化 +40
+    攻击强化增幅 +55%
+    暴击率 +10%
+    所有速度 +5%
+    技能冷却时间 -5%
+    rarity: 稀有
+    """
+    char.AddSkillLv(1, 95, 1)
+    char.AddElementDB("火", 40)
+    char.AddElementDB("冰", 40)
+    char.AddElementDB("光", 40)
+    char.AddElementDB("暗", 40)
+    char.SetStatus(AttackP=0.55, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
+    char.SetSkillCD(1, 100, 0.05, [])
+    pass
+
+@register
+def equ_4021(char: CharacterProperty):
+    """
+    DCALC_REMOVE: equ_4021 - 迷你裁剪师
+    Lv1~95所有技能 +1
+    所有属性强化 +30
+    攻击强化增幅 +40%
+    暴击率 +10%
+    所有速度 +5%
+    技能冷却时间 -5%
+    rarity: 稀有
+    """
+    char.AddSkillLv(1, 95, 1)
+    char.AddElementDB("火", 30)
+    char.AddElementDB("冰", 30)
+    char.AddElementDB("光", 30)
+    char.AddElementDB("暗", 30)
+    char.SetStatus(AttackP=0.40, SpeedM=0.05, SpeedA=0.05, SpeedR=0.05)
     char.SetSkillCD(1, 100, 0.05, [])
     pass
 

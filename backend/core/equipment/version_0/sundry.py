@@ -29,6 +29,14 @@ def sundry_0(char: CharacterProperty, *args):
         char.SetStatus(攻击强化=gems_quality[0]*0.1, 增益量=gems_quality[1])
 
 @register
+def sundry_5(char: CharacterProperty, *args):
+    '''迷雾系统'''
+    lv = args[0]
+    value = 0.1 + (lv-1) * 0.005 + int(lv / 5) * 0.005 + int(lv / 10) * 0.005
+    char.SetStatus(SkillAttack=value)
+    pass
+
+@register
 def sundry_6(char: CharacterProperty, *args):
     '''冒险团'''
     lv = args[0] - 1
@@ -69,9 +77,9 @@ def sundry_10(char: CharacterProperty, *args):
     per_1 = 0
     per_2 = 0
     if args[0] == 1:
-      per_0 = 15
-      per_1 = 15
-      per_2 = 3
+      per_0 = 20
+      per_1 = 20
+      per_2 = 5
     elif args[0] == 2:
       per_0 = 10
       per_1 = 10

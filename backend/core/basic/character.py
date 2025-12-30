@@ -706,20 +706,20 @@ class Character(CharacterProperty):
             # 获取装备额外属性
             if fun is not None:
                 fun(self)
-        # 武器贴膜处理
-        weapon = self.charEquipInfo['武器']
-        if weapon.equInfo is None or weapon.weaponFusion is None or weapon.weaponFusion == 0:
-            return
-        adaptation = min(weapon.adaptation,weapon.equInfo.max_adaptation)
-        if weapon.weaponFusion == 1:
-            self.SetStatus(SkillAttack = 0.07 + adaptation * 0.01)
-        if weapon.weaponFusion == 2:
-            self.SetStatus(SkillAttack = 0.055 + adaptation * 0.01)
-            self.SetStatus(SpeedA = 0.2,SpeedM = 0.2,SpeedR = 0.2)
-        if weapon.weaponFusion == 3:
-            self.SetStatus(SkillAttack = 0.01 + adaptation * 0.01)
-            self.SetSkillCD(1, 100, 0.1)
-            self.SetStatus(EquEffectRatio = 0.05)
+        # 武器铭刻处理 已移除该系统
+        # weapon = self.charEquipInfo['武器']
+        # if weapon.equInfo is None or weapon.weaponFusion is None or weapon.weaponFusion == 0:
+        #     return
+        # adaptation = min(weapon.adaptation,weapon.equInfo.max_adaptation)
+        # if weapon.weaponFusion == 1:
+        #     self.SetStatus(SkillAttack = 0.07 + adaptation * 0.01)
+        # if weapon.weaponFusion == 2:
+        #     self.SetStatus(SkillAttack = 0.055 + adaptation * 0.01)
+        #     self.SetStatus(SpeedA = 0.2,SpeedM = 0.2,SpeedR = 0.2)
+        # if weapon.weaponFusion == 3:
+        #     self.SetStatus(SkillAttack = 0.01 + adaptation * 0.01)
+        #     self.SetSkillCD(1, 100, 0.1)
+        #     self.SetStatus(EquEffectRatio = 0.05)
 
     def calc_avatar(self, avatar: dict):
         """计算时装效果"""
@@ -821,6 +821,9 @@ class Character(CharacterProperty):
         )
         funs.execture("sundry_6")(self,
             sundry.get("adventure", 1)
+        )
+        funs.execture("sundry_5")(self,
+            sundry.get("fog", 1)
         )
         funs.execture("sundry_7")(self,
             sundry.get("marriage_house", 0),

@@ -1,6 +1,18 @@
 <template>
   <div class="flex flex-wrap equ-profile">
     <div class="equ-profile-item">
+      <div class="row-name">迷雾系统</div>
+      <calc-slider
+        :showPercent="true"
+        :formatValue="(lv: number) => `${lv} 级`"
+        v-model="sundryData['fog']"
+        :min="1"
+        :max="30"
+        :step="1"
+        class="flex-1 !h-20px"
+      />
+    </div>
+    <div class="equ-profile-item">
       <div class="row-name">勋章</div>
       <calc-select
         v-for="(key, index) in ['medal_rarity', 'medal_reinforce']"
@@ -28,11 +40,15 @@
     </div>
     <div class="equ-profile-item">
       <div class="row-name">冒险团</div>
-      <calc-select v-model="sundryData['adventure']" class="flex-1 !h-20px">
-        <calc-option v-for="(item, idx) in list('adventure')" :key="idx" :value="item.value">
-          {{ item.name }}
-        </calc-option>
-      </calc-select>
+      <calc-slider
+        :showPercent="true"
+        :formatValue="(lv: number) => `${lv} 级`"
+        v-model="sundryData['adventure']"
+        :min="1"
+        :max="40"
+        :step="1"
+        class="flex-1 !h-20px"
+      />
     </div>
     <div class="equ-profile-item">
       <div class="row-name">结婚系统</div>
@@ -87,7 +103,7 @@ const infoStore = useInfoStore()
 const currentInfo = function <T>(name: string, defaultValue?: T) {
   return computed<string | number>({
     get() {
-      return configStore.config.sundry?.[name] ?? defaultValue ?? 0
+      return (configStore.config.sundry?.[name] ?? defaultValue ?? 0) as string | number
     },
     set(val) {
       if (val == undefined) {
@@ -112,6 +128,7 @@ const sundryData = reactive({
   medal_gem_2: currentInfo('medal_gem_2', 4),
   medal_gem_3: currentInfo('medal_gem_3', 4),
   adventure: currentInfo('adventure', 30),
+  fog: currentInfo('fog', 10),
   marriage_house: currentInfo('marriage_house', 4),
   marriage_ring: currentInfo('marriage_ring', 2),
   contract: currentInfo('contract', 1),
