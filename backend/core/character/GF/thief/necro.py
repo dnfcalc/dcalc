@@ -237,11 +237,11 @@ class Skill21(PassiveSkill):
     hasUP = False
     custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    # 施放速度增加 : {value0}%
+    # 技能冷却时间减少率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
-    # 技能冷却时间减少率 : {value1}%
+    # 施放速度增加 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
-    associate = [{"type":"*cdReduce","data":data1,"exceptSkills":["千魂祭","亡者君临 : 巴拉克之戮","命运殇痕·摩罗斯之咒"]}]
+    associate = [{"type":"*cdReduce","data":data0,"exceptSkills":["千魂祭","亡者君临 : 巴拉克之戮","命运殇痕·摩罗斯之咒"]}]
 
 # 驱使枯灵
 # thief/necro/d0cdaca82892e54097f22a1f60817048
