@@ -35,8 +35,8 @@ def sundry_5(char: CharacterProperty, *args):
     """迷雾系统"""
     lv = args[0]
     四维 = [0, 30, 80, 110, 160, 190, 250]
-    value = 0.1 + (lv - 1) * 0.005 +lv // 5 * 0.005 +lv // 10 * 0.005
-    buffer = 2400 + (lv - 1) * 50 +lv // 5 * 50 +lv // 10 * 50
+    value = 0.1 + (lv - 1) * 0.005 + (lv // 5) * 0.005 +lv // 10 * 0.005 + (lv // 30) * 0.01
+    buffer = 2400 + (lv - 1) * 50 +lv // 5 * 50 +lv // 10 * 50 + (lv // 30) * 100
     char.SetStatus(SkillAttack=value, 四维=四维[args[0] // 5])
     if char.buffer:
         char.SetStatus(Buffer=buffer)
