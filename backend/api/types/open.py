@@ -145,17 +145,17 @@ class SkillListItem(BaseModel):
 
 
 class SkillSummaryItem(BaseModel):
-    技能名称: str = Field(..., description='技能名称')
+    技能名称: str | None = Field(..., description='技能名称')
     """技能名称"""
     Lv: int | None = Field(..., description='技能等级')
     """技能等级"""
-    基础百分比: float = Field(..., description='基础百分比')
-    等效百分比: float = Field(..., description='等效百分比')
+    基础百分比: float | None | str = Field(..., description='基础百分比')
+    等效百分比: float | None | str = Field(..., description='等效百分比')
     原始冷却: float | str = Field(..., description='原始冷却')
     实际冷却: float | str = Field(..., description='实际冷却')
     理论秒伤: float | str | None = Field(..., description='理论秒伤')
-    SP: float | None = Field(..., description='SP')
-    武器类型: str = Field(..., description='武器类型')
+    SP: float | None | str = Field(..., description='SP')
+    武器类型: str | None = Field(..., description='武器类型')
 
 class JobInfo(BaseModel):
     jobId: str = Field(..., description='职业ID')
