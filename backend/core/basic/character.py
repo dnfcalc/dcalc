@@ -1020,13 +1020,14 @@ class Character(CharacterProperty):
         skillInfos = []
         # 适用属性
         main = getattr(self, get_key_by_value(self.适用属性))
+        # 增益量
         buffer_power = self.Buffer * self.BufferP
         # buff系数
-        buff_ratio_new = (((main+ 4350) / 665 + 1) * (buffer_power + 3500)/26395) if buffer_power > 0 else 0
-        buff_ratio_old = main / 665 + 1
+        buff_ratio_new = (main / 2993 +1) * (buffer_power / 4800 + 1) if buffer_power > 0 else 0
+        buff_ratio_old = main / 2993 + 1
         # 觉醒系数
-        awake_ratio_new = ((main + 5250) / 750 + 1) *(buffer_power + 5000) * 0.000025 if buffer_power > 0 else 0
-        awake_ratio_old = main / 750 + 1
+        awake_ratio_new = ((main + 7500) / 7500 + 1) *((buffer_power + 68000) / 8500 + 1) if buffer_power > 0 else 0
+        awake_ratio_old = main / 7500 + 1
         for i in self.skills:
             if i.lv > 0 and i.hasUP and i.up is not None and i.up > 0:
                 self.SetStatus(四维=40)
