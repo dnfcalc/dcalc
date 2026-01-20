@@ -219,7 +219,6 @@ async def get_skill_data_summary(
     skills = skills.split(",") if skills else []
     weapons = weapons.split(",") if weapons else []
     try:
-
         def get_skill_data_summary():
             # This function should retrieve the skill data summary based on job
             # For now, we return a placeholder dictionary

@@ -7,6 +7,7 @@ class Config(BaseSettings):
     PORT:int = 27173
     MCPPORT: int = 27174
     REDIS_URL: str = 'redis://localhost:6379/1'
+    COLG_TOKEN: str = ''
 
     class Config:
         env_file = ('config/.env', 'config/.env.dev', 'config/.env.prod')
