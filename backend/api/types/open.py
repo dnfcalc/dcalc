@@ -147,12 +147,12 @@ class SkillListItem(BaseModel):
 class SkillSummaryItem(BaseModel):
     技能名称: str | None = Field(..., description='技能名称')
     """技能名称"""
-    Lv: int | None = Field(..., description='技能等级')
+    Lv: int | str | None = Field(..., description='技能等级')
     """技能等级"""
     基础百分比: float | None | str = Field(..., description='基础百分比')
     等效百分比: float | None | str = Field(..., description='等效百分比')
-    原始冷却: float | str = Field(..., description='原始冷却')
-    实际冷却: float | str = Field(..., description='实际冷却')
+    原始冷却: float | str | None = Field(..., description='原始冷却')
+    实际冷却: float | str | None = Field(..., description='实际冷却')
     理论秒伤: float | str | None = Field(..., description='理论秒伤')
     SP: float | None | str = Field(..., description='SP')
     武器类型: str | None = Field(..., description='武器类型')
