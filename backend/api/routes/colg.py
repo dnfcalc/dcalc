@@ -132,7 +132,7 @@ async def get_history_gold(region: Annotated[int, Query(..., description='跨区
         'yAxis': {'type': 'value', 'name': '价格 (万金币/1人民币)', 'min': 65, 'max': 75},
         'series': [
             {'name': '平均金价', 'type': 'line', 'smooth': True, 'data': [item['avg'] for item in data], 'markPoint': {'data': [{'type': 'max', 'name': '最大值'}, {'type': 'min', 'name': '最小值'}]}},
-            {'name': '峰值金价', 'type': 'line', 'smooth': True, 'data': [item['zero'] for item in data], 'markLine': {'data': [{'type': 'average', 'name': '平均值'}]}},
+            {'name': '12时金价', 'type': 'line', 'smooth': True, 'data': [item['zero'] for item in data], 'markLine': {'data': [{'type': 'average', 'name': '平均值'}]}},
         ],
     }
     return response(data={'region': region_name, 'data': data, 'echartsData': echartsData})
