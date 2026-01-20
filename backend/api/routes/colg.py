@@ -71,7 +71,17 @@ async def get_history_gold(region: Annotated[int, Query(..., description='跨区
     获取历史金价数据
 
     Args:
-        region (int): 跨区id，必填参数
+        region (int): 跨区id，必填参数，跨区id对应的映射如下
+            {
+                '跨1': 1,
+                '跨2': 2,
+                '跨3A': 3,
+                '跨3B': 4,
+                '跨4': 5,
+                '跨5': 6,
+                '跨6': 7,
+                '跨7': 8,
+            }
         timeRange (int, optional): 时间跨度天数，默认为7天
 
     Returns:
