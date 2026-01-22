@@ -380,7 +380,7 @@ class Skill19(PassiveSkill):
             return
         data = self.data1
         if "传世武器" in weapon.categorize:
-            data = self.data9
+            data = self.data10
         self.associate = [{"type":"$*PAtkM","data":data}]
         return super().effect(old, new)
 
