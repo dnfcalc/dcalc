@@ -521,7 +521,7 @@ class Skill10(PassiveSkill):
     data1 = get_data(f"{prefix}/{uuid}", 1)
 
     associate = [
-        {"type":"*cdReduce","data":data0,"exceptSkills":["极 · 鬼剑术 (暴风式)", "万剑归宗", "万剑极诣·开天斩"],"weapon":["光剑"]},
+        {"type":"*cdReduce","data":data0,"exceptSkills":["极 · 鬼剑术 (暴风式)", "万剑归宗", "万剑极诣·开天斩"]},
     ]
 
 # 里 · 鬼剑术
