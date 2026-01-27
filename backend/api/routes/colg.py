@@ -129,7 +129,7 @@ async def get_history_gold(region: Annotated[int, Query(..., description='跨区
         'tooltip': {'trigger': 'axis', 'axisPointer': {'type': 'cross', 'label': {'backgroundColor': '#6a7985'}}},
         'legend': {'data': ['平均金价', '12时金价'], 'bottom': 0},
         'xAxis': {'type': 'category', 'name': '日期', 'boundaryGap': False, 'data': [item['date'] for item in data]},
-        'yAxis': {'type': 'value', 'name': '价格 (万金币/1人民币)', 'min': 65, 'max': 75},
+        'yAxis': {'type': 'value', 'name': '价格 (万金币/1人民币)', 'min': (min([item['avg'] for item in data] + [item['zero'] for item in data]) // 5 ) * 5, 'max': (max([item['avg'] for item in data] + [item['zero'] for item in data]) // 5 ) * 5 + 5, 'axisLabel': {'formatter': '{value} 万金币'}},
         'series': [
             {'name': '平均金价', 'type': 'line', 'smooth': True, 'data': [item['avg'] for item in data], 'markPoint': {'data': [{'type': 'max', 'name': '最大值'}, {'type': 'min', 'name': '最小值'}]}},
             {'name': '12时金价', 'type': 'line', 'smooth': True, 'data': [item['zero'] for item in data], 'markLine': {'data': [{'type': 'average', 'name': '平均值'}]}},
