@@ -14908,7 +14908,7 @@ def equ_2000(char: CharacterProperty):
                 name="地震波",
                 icon="/equipment/icon/special/magicstone/00417.png",
                 cd=30,
-                data=45900 * effect,
+                data=75750 * effect,
             )
         )
     if char.buffer:
@@ -15020,12 +15020,14 @@ def equ_2002(char: CharacterProperty):
         + (540 if point >= 100 else 0)
     )
     char.SetStatus(SkillAttack=skillAttack / 100, Buffer=buffer)
+    count = 0
     for part in ["项链", "手镯", "戒指"]:
         if (
             char.charEquipInfo[part].equInfo
             and "黑牙" in char.charEquipInfo[part].equInfo.name
         ):
-            char.SetStatus(SkillAttack=0.02)
+            count += 1
+    char.SetStatus(SkillAttack=0.02*count)
     # char.SetSkillCD(cd=0.04)
     # cd = (point // 25) * 0.04
     # char.SetStatus(EquEffectRatio=0.10)
