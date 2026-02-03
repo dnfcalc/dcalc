@@ -5912,7 +5912,6 @@ def weapon_point(char: CharacterProperty):
     point = char.charEquipInfo["武器"].precision
     skillAttack = (
         0.1 * point
-        - (point // 25) * 0.1
         + (0.6 if point >= 25 else 0)
         + (0.6 if point >= 50 else 0)
         + (0.6 if point >= 75 else 0)
@@ -5920,7 +5919,6 @@ def weapon_point(char: CharacterProperty):
     )
     buffer = (
         40 * point
-        - (point // 25) * 40
         + (120 if point >= 25 else 0)
         + (120 if point >= 50 else 0)
         + (120 if point >= 75 else 0)
@@ -14880,7 +14878,7 @@ def equ_2000(char: CharacterProperty):
         char.SetStatus(SkillAttack=0.378, Buffer=12180)
         pass
     if char.max_point >= 2550:
-        char.SetStatus(SkillAttack=0.539, Buffer=12530)
+        char.SetStatus(SkillAttack=0.555, Buffer=12630)
         pass
     point = char.charEquipInfo["魔法石"].precision
     skillAttack = (
@@ -14943,7 +14941,7 @@ def equ_2001(char: CharacterProperty):
         char.SetStatus(SkillAttack=0.384, Buffer=11220)
         pass
     if char.max_point >= 2550:
-        char.SetStatus(SkillAttack=0.494 + 0.052, Buffer=12180 + 350)
+        char.SetStatus(SkillAttack=0.562, Buffer=12630)
         pass
     point = char.charEquipInfo["耳环"].precision
     skillAttack = (
@@ -15000,7 +14998,7 @@ def equ_2002(char: CharacterProperty):
         char.SetStatus(SkillAttack=0.384, Buffer=11220)
         pass
     if char.max_point >= 2550:
-        char.SetStatus(SkillAttack=0.494 + 0.052, Buffer=12180 + 350)
+        char.SetStatus(SkillAttack=0.57, Buffer=12630)
         pass
     point = char.charEquipInfo["辅助装备"].precision
     skillAttack = (
@@ -15014,20 +15012,18 @@ def equ_2002(char: CharacterProperty):
     buffer = (
         30 * point
         - (point // 25) * 30
-        + (390 if point >= 25 else 0)
-        + (420 if point >= 50 else 0)
-        + (420 if point >= 75 else 0)
-        + (540 if point >= 100 else 0)
+        + (350 if point >= 25 else 0)
+        + (380 if point >= 50 else 0)
+        + (380 if point >= 75 else 0)
+        + (510 if point >= 100 else 0)
     )
     char.SetStatus(SkillAttack=skillAttack / 100, Buffer=buffer)
-    count = 0
     for part in ["项链", "手镯", "戒指"]:
         if (
             char.charEquipInfo[part].equInfo
             and "黑牙" in char.charEquipInfo[part].equInfo.name
         ):
-            count += 1
-    char.SetStatus(SkillAttack=0.02*count)
+            char.SetStatus(SkillAttack=0.03,Buffer=75)
     # char.SetSkillCD(cd=0.04)
     # cd = (point // 25) * 0.04
     # char.SetStatus(EquEffectRatio=0.10)
