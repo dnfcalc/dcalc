@@ -327,7 +327,7 @@ class Skill9(PassiveSkill):
         {"type":"*skillRation","data":data1,"skills":["帝国剑术"],"weapon":["太刀"]},
         {"type":"*skillRation","data":data2,"skills":["魔剑降临"],"weapon":["太刀"]},
         {"type":"*skillRation","data":data6,"weapon":["太刀"]},
-        {"type":"*cdReduce","data":data7,"weapon":["太刀"]},
+        {"type":"*cdRatio","data":data7,"weapon":["太刀"]},
         {"type":"+hit0","data":data8,"skills":["瞬影三绝斩"],"weapon":["太刀"],"ratio":1},
         {"type":"+hit3","data":data8,"skills":["瞬影三绝斩"],"weapon":["太刀"],"ratio":1},
         ]
