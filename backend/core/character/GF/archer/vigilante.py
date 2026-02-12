@@ -177,7 +177,7 @@ class Skill5(PassiveSkill):
     # 跳跃攻击力变化率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["妖爪"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["妖爪"]}]
 
 # 受身蹲伏
 # archer/vigilante/ce26c6b69d02a440a81b552bec94f03b
@@ -575,7 +575,7 @@ class Skill18(PassiveSkill):
     # 妖兽形物理/魔法防御力增加 : {value2}
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]		
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 暴击
 # archer/vigilante/fc1262c19f3d0477ee8eda47b8db8696
@@ -916,7 +916,7 @@ class Skill27(PassiveSkill):
     # 命中率增加 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]		
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 狂妖风暴
 # archer/vigilante/8e358ecf99ac9df31a6132aeafe378a9
@@ -1079,8 +1079,8 @@ class Skill30(PassiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
     # [鲜活宴场]生命值恢复量增加率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
-    
-    associate = [ {"data":data0,"type":"*skillRation"}]	
+
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 鲜活宴场
 # archer/vigilante/0e409ac3e1c1f3976b3ef2bfe4c13069
@@ -1260,8 +1260,8 @@ class Skill34(PassiveSkill):
 
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
-    
-    associate = [ {"data":data0,"type":"*skillRation"}]	
+
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 卸骨
 # archer/vigilante/527cdc3ecca985e18ef819d456532b26
@@ -1450,7 +1450,7 @@ class Skill38(PassiveSkill):
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 神妖之爪
 # archer/vigilante/dd32a9825ec1af42a91f2223be6658e5
@@ -1504,7 +1504,7 @@ class Skill39(ActiveSkill):
     # 攻击力增加最大值 : {value7}%
     data7 = get_data(f'{prefix}/{uuid}', 7)
     # 妖气能量消耗 : 全部
-    
+
     mode = ["人","妖兽(满强化)","妖兽(无强化)"]
 
     def setMode(self, mode):

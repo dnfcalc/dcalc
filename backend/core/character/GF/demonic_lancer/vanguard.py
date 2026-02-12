@@ -95,7 +95,7 @@ class Skill3(PassiveSkill):
     # 跳跃攻击力变化率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["霸王戟"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["霸王戟"]}]
 
 
 # 回旋钩
@@ -821,7 +821,7 @@ class Skill28(PassiveSkill):
     # [第2阶段]被击时， 不会进入僵直的伤害量上限增加 : 生命值最大值的{value6}%
     data6 = get_data(f'{prefix}/{uuid}', 6)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 千魂弑
 # demonic_lancer/vanguard/d0cdaca82892e54097f22a1f60817048
@@ -1039,7 +1039,7 @@ class Skill33(PassiveSkill):
     # [战戟猛攻]能量层数增加量 : {value1}
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 断魂裂岩斩
 # demonic_lancer/vanguard/ca75c965f20a150f99f54155a37400df
@@ -1158,7 +1158,7 @@ class Skill36(PassiveSkill):
     # 命中时能量恢复时间减少量 : {value1}秒
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":data0,"type":"*skillRation"},{"data":[-i for i in data1],"type":"+cd","skills":["战戟猛攻"],"ratio":1}]
+    associate = [ {"data":data0,"type":"*skillDamage"},{"data":[-i for i in data1],"type":"+cd","skills":["战戟猛攻"],"ratio":1}]
 
 # 镇狱裂地枪
 # demonic_lancer/vanguard/78b86e64fbb74c1db1b71c50a5ac21cd

@@ -593,7 +593,7 @@ class Skill24(PassiveSkill):
     # 技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 无畏波动枪
 # demonic_lancer/skirmisher/8c2379737c5acc935c1731f67f607655
@@ -919,11 +919,11 @@ class Skill30(PassiveSkill):
     data4 = get_data(f'{prefix}/{uuid}', 4)
 
     associate = [
-        {"data":data0,"type":"*skillRation","skills":["行云 : 风"]},
-        {"data":data1,"type":"*skillRation","skills":["行云 : 疾"]},
-        {"data":data2,"type":"*skillRation","skills":["行云 : 落"]},
-        {"data":data3,"type":"*skillRation","skills":["连环枪"]},
-        {"data":data4,"type":"*skillRation","exceptSkills":["行云 : 风","行云 : 疾","行云 : 落"]}
+        {"data":data0,"type":"*skillDamage","skills":["行云 : 风"]},
+        {"data":data1,"type":"*skillDamage","skills":["行云 : 疾"]},
+        {"data":data2,"type":"*skillDamage","skills":["行云 : 落"]},
+        {"data":data3,"type":"*skillDamage","skills":["连环枪"]},
+        {"data":data4,"type":"*skillDamage","exceptSkills":["行云 : 风","行云 : 疾","行云 : 落"]}
     ]
 
 # 流云幻灭
@@ -1146,9 +1146,9 @@ class Skill34(PassiveSkill):
     data9 = get_data(f'{prefix}/{uuid}', 9)
 
     associate = [
-        {"data":data2,"type":"*skillRation","skills":["行云 : 风","行云 : 疾","行云 : 落"]},
-        {"data":data3,"type":"*skillRation","skills":["刺击","双重刺击"]},
-        {"data":data4,"type":"*skillRation","exceptSkills":["行云 : 风","行云 : 疾","行云 : 落","刺击","双重刺击"]}
+        {"data":data2,"type":"*skillDamage","skills":["行云 : 风","行云 : 疾","行云 : 落"]},
+        {"data":data3,"type":"*skillDamage","skills":["刺击","双重刺击"]},
+        {"data":data4,"type":"*skillDamage","exceptSkills":["行云 : 风","行云 : 疾","行云 : 落","刺击","双重刺击"]}
     ]
 
 # 无双突刺
@@ -1335,7 +1335,7 @@ class Skill38(PassiveSkill):
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 双龙流云灭
 # demonic_lancer/skirmisher/4c5271b0ecce120d7fc113f377fae76f

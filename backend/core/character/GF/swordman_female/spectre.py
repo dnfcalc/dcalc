@@ -58,7 +58,7 @@ class Skill3(PassiveSkill):
     # 跳跃攻击力变化率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["鬼缚钉"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["鬼缚钉"]}]
 
 
 # 刃之心
@@ -412,7 +412,7 @@ class Skill26(PassiveSkill):
     # 装备太刀时暴击率增加 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
     associate = [
-        {"type":"*skillRation","data":data0},
+        {"type":"*skillDamage","data":data0},
     ]
 
 # 黑夜之花
@@ -674,7 +674,7 @@ class Skill31(PassiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [
-        {"type":"*skillRation","data":data0},
+        {"type":"*skillDamage","data":data0},
     ]
 
 # 沉寂之狱
@@ -822,7 +822,7 @@ class Skill34(ActiveSkill):
         ...
     def effect(self, old, new):
         if self.vp == 1:
-            self.associate = [{"type":"*skillRation","data":[0] + [-12.3]*self.maxLv,"skills":["鬼缚钉"]}]
+            self.associate = [{"type":"*skillDamage","data":[0] + [-12.3]*self.maxLv,"skills":["鬼缚钉"]}]
         return super().effect(old, new)
 
 # 无情夜行
@@ -849,7 +849,7 @@ class Skill35(PassiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [
-        {"type":"*skillRation","data":data0},
+        {"type":"*skillDamage","data":data0},
         {"type":"*cdReduce","data":data1,"exceptSkills":['沉寂之狱', '黑曜真刃·破晓', '秘术·雨夜终曲']},
     ]
 
@@ -1034,7 +1034,7 @@ class Skill39(PassiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [
-        {"type":"*skillRation","data":data1},
+        {"type":"*skillDamage","data":data1},
     ]
 
 # 绚烂之舞

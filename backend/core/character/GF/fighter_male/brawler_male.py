@@ -80,7 +80,7 @@ class Skill5(PassiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
     # 跳跃攻击力变化率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["罗网投掷"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["罗网投掷"]}]
 
 
 # 下段踢
@@ -549,7 +549,7 @@ class Skill25(ActiveSkill):
     data6 = get_data(f'{prefix}/{uuid}', 6)
 
     #每个异常增伤20%，最高60%增伤
-    skillRation = 1.6
+    skillDamage = 1.6
 
 # 后街战术
 # fighter_male/brawler_male/4b2c90ec226fd40e967875aa5eabefb2
@@ -906,7 +906,7 @@ class Skill35(ActiveSkill):
     # 前方挑衅射程 : {value5}px
     data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    associate = [ {"type": "*skillRation", "data":data1} ]
+    associate = [ {"type": "*skillDamage", "data":data1} ]
 
 # 罗网投掷
 # fighter_male/brawler_male/d0cdaca82892e54097f22a1f60817048
@@ -1277,7 +1277,7 @@ class Skill41(PassiveSkill):
     data6 = get_data(f'{prefix}/{uuid}', 6)
 
     associate = [
-        {"data":data5,"type":"*skillRation"},
+        {"data":data5,"type":"*skillDamage"},
         {"data":data4,"type":"*cdReduce","skills":["抛沙","毒瓶投掷","毒针投掷","砖块投掷"]},
     ]
 
@@ -1485,7 +1485,7 @@ class Skill45(PassiveSkill):
     # 基本攻击力和技能攻击力增加率 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":data1,"type":"*skillRation"} ]
+    associate = [ {"data":data1,"type":"*skillDamage"} ]
 
 # 暗街夺命锁
 # fighter_male/brawler_male/2b39a776471c142f581ad3cc8bb89e55
@@ -1689,7 +1689,7 @@ class Skill48(ActiveSkill):
     data3 = get_data(f'{prefix}/{uuid}', 3)
 
     associate = [
-        {"type":"*skillRation","data":[i*3 if i > 0 else i for i in data3],"skills":["燃火轰天炮"]}
+        {"type":"*skillDamage","data":[i*3 if i > 0 else i for i in data3],"skills":["燃火轰天炮"]}
     ]
 
 # 逆道·爆狱
@@ -1784,7 +1784,7 @@ class Skill50(PassiveSkill):
     # 强化毒瓶投掷毒雾持续时间 : {value1}秒
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":data0,"type":"*skillRation"} ]
+    associate = [ {"data":data0,"type":"*skillDamage"} ]
 
 # 逆道·幽链之界
 # fighter_male/brawler_male/f1fdc6c2482ecc510a2a9f04201ba125

@@ -97,9 +97,9 @@ class Skill:
     """技能冷却恢复"""
     associate: list = []
     """关联技能
-    type: 关联类型 *乘算 +加算 =直接赋值 $角色属性 默认'*skillRation'
+    type: 关联类型 *乘算 +加算 =直接赋值 $角色属性 默认'*skillDamage'
     e.g.
-    *skillRation 乘算技能面板倍率
+    *skillDamage 乘算技能伤害
     *cdReduce 乘算技能冷却缩减
     $*PATK 乘算角色物理攻击
     ~直接走type对应的函数名称 传参为old,new,data,skills,exceptSkills
@@ -175,7 +175,7 @@ class Skill:
 
     def effect(self, old: int, new: int):
         for assoc in self.associate:
-            type = assoc.get('type', '*skillRation')
+            type = assoc.get('type', '*skillDamage')
             skills = assoc.get('skills', '*')
             data = assoc.get('data', [0] * self.maxLv)
             ratio = assoc.get('ratio', 100)

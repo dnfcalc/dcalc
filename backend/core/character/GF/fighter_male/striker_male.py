@@ -220,7 +220,7 @@ class Skill14(PassiveSkill):
     uuid = "8ec9da6f808889b63adf2680fbf1f331"
 
     associate = [
-        {"type":"*skillRation","data":data0,"skills":["鹰踏"]},
+        {"type":"*skillDamage","data":data0,"skills":["鹰踏"]},
     ]
 
 # 弱点感知 급소 지정
@@ -271,7 +271,7 @@ class Skill17(PassiveSkill):
 
     data0 = [0, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35]# noqa: E501
 
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"*skillDamage","data":data0}]
 
 # 闪步 섬보
 # https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/0c262dac3ec41ff79e359ada9c7a7faf?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -477,7 +477,7 @@ class Skill25(ActiveSkill):
 
     associate = [
         {"data":data0,"type":"*cdReduce", 'exceptSkills': ['双重释放', '烈焰焚步', '极武霸皇踢', '焚火逐日拳']},
-        {"type":"*skillRation","data":data1},
+        {"type":"*skillDamage","data":data1},
     ]
 
 
@@ -625,7 +625,7 @@ class Skill30(PassiveSkill):
 
     data0 = [0, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101, 103, 105, 107, 109, 111, 113, 115, 117]# noqa: E501
 
-    associate = [ {"type":"*skillRation","data":data0} ]
+    associate = [ {"type":"*skillDamage","data":data0} ]
 
 
 # 烈火强拳 아토믹 캐넌
@@ -693,7 +693,7 @@ class Skill33(PassiveSkill):
 
     data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
 
-    associate = [ {"type":"*skillRation","data":data0} ]
+    associate = [ {"type":"*skillDamage","data":data0} ]
 
 
 # 炼狱坠星腿 필멸의 습격

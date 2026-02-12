@@ -93,7 +93,7 @@ class Skill3(PassiveSkill):
     # 跳跃攻击力变化率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["猎杀枪"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["猎杀枪"]}]
 
 
 # 回旋钩
@@ -474,7 +474,7 @@ class Skill20(PassiveSkill):
     # 命中率增加 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 
 # 能量萃取
@@ -907,7 +907,7 @@ class Skill31(PassiveSkill):
     # 技能攻击力增加率 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":[-i for i in data0],"type":"+cd","skills":["猎杀枪"],"ratio":1}, {"data":data1,"type":"*skillRation"}]
+    associate = [ {"data":[-i for i in data0],"type":"+cd","skills":["猎杀枪"],"ratio":1}, {"data":data1,"type":"*skillDamage"}]
 
 # 逐云灭龙杀
 # demonic_lancer/dragoon/4f2e001e9a19eb7bae50ad1840dfb329
@@ -1084,7 +1084,7 @@ class Skill35(PassiveSkill):
     # 命中率增加 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 凌空之狩
 # demonic_lancer/dragoon/9dc8438e4572d39243c97da31c113acc
@@ -1257,7 +1257,7 @@ class Skill39(PassiveSkill):
     data0 = get_data(f'{prefix}/{uuid}', 0)
     # [蛮横冲撞]按向前方向键时前进距离额外增加 : 30%
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 瞬光猎杀枪
 # demonic_lancer/dragoon/31823197cc0b04d4c5dcf8f928d9220c

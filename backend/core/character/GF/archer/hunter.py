@@ -213,7 +213,7 @@ class Skill6(PassiveSkill):
     # 跳跃攻击力变化率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["急速扳机"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["急速扳机"]}]
 
 
 # 全力挥击
@@ -711,8 +711,8 @@ class Skill26(PassiveSkill):
     # [重型穿甲箭]攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
     # [重型穿甲箭]弩箭速度增加量 : 25%
-    
-    associate = [ {"type":"*skillRation","data":data0,"skills":["重型穿甲箭"]}, ]
+
+    associate = [ {"type":"*skillDamage","data":data0,"skills":["重型穿甲箭"]}, ]
 
 
 # 光爆箭
@@ -994,7 +994,7 @@ class Skill31(PassiveSkill):
     # 暴击伤害增加率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [ {"data":data2,"type":"*skillRation"}]	
+    associate = [ {"data":data2,"type":"*skillDamage"}]
 
 # 联合作战 : 围猎
 # archer/hunter/1812a1ece67bb37b6b44b54766450064
@@ -1192,7 +1192,7 @@ class Skill35(PassiveSkill):
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]	
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 终结穿刺
 # archer/hunter/b89c9ab317bc0a443f6497b7cca2f6a8
@@ -1384,7 +1384,7 @@ class Skill39(PassiveSkill):
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]	
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 联合作战 : 扭转战局
 # archer/hunter/e0daa922b19cdc35de879e938361464e

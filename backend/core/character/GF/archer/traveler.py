@@ -145,7 +145,7 @@ class Skill4(PassiveSkill):
     # 跳跃攻击力变化率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["迷雾箭雨"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["迷雾箭雨"]}]
 
 # 受身蹲伏
 # archer/traveler/ce26c6b69d02a440a81b552bec94f03b
@@ -682,8 +682,8 @@ class Skill22(ActiveSkill):
     data2 = get_data(f'{prefix}/{uuid}', 2)
     # 暴击伤害增加率 : {value3}%
     data3 = get_data(f'{prefix}/{uuid}', 3)
-    
-    associate = [ {"data":data3,"type":"*skillRation"}]
+
+    associate = [ {"data":data3,"type":"*skillDamage"}]
 
 # 高原雾花
 # archer/traveler/42c82812f86ff6704ae9952a2e6093a4
@@ -978,7 +978,7 @@ class Skill28(PassiveSkill):
     # 技能和消耗品生命值、 魔法值恢复效果增加率 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]	
+    associate = [ {"data":data0,"type":"*skillDamage"}]	
 
 # 旷野火炎
 # archer/traveler/506e7ed77d517419a6e1c437a2cedb17
@@ -1198,7 +1198,7 @@ class Skill33(PassiveSkill):
     # [神雾兵仗·流星]冷却时间减少率 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 流雾疾风
 # archer/traveler/da6e37c1e3f0e8867f70007d89c239ff
@@ -1329,7 +1329,7 @@ class Skill36(ActiveSkill):
         - [装置驱动]攻击力 -26.6%\n
         - [装置驱动]爆炸时追加小型烟花漫天
         """
-	
+
     def effect(self, old, new):
         if self.vp == 2:
             self.associate = [{"type":"*skillRation","data":[0] + [-26.6]*self.maxLv,"skills":["装置驱动"]}]
@@ -1407,7 +1407,7 @@ class Skill38(PassiveSkill):
     # 基本攻击力和转职技能攻击力增加率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [ {"data":data2,"type":"*skillRation"}]	
+    associate = [ {"data":data2,"type":"*skillDamage"}]
 
 # 装置驱动 : 星云
 # archer/traveler/03bb5314ffd41e9458d67ef924fef38f

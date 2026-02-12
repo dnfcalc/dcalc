@@ -249,7 +249,7 @@ class Skill23(PassiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [
-        {"data":data0,"type":"*skillRation"}
+        {"data":data0,"type":"*skillDamage"}
     ]
 
 # 四象引
@@ -760,7 +760,7 @@ class Skill36(PassiveSkill):
     data4 = get_data(f'{prefix}/{uuid}', 4)
 
     associate = [
-        {"data":data0,"type":"*skillRation"}
+        {"data":data0,"type":"*skillDamage"}
     ]
 
 # 花开寒影
@@ -1006,7 +1006,7 @@ class Skill41(PassiveSkill):
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
     associate = [
-        {"data":data0,"type":"*skillRation"}
+        {"data":data0,"type":"*skillDamage"}
     ]
 
 # 樱花劫
@@ -1167,7 +1167,7 @@ class Skill45(PassiveSkill):
     data3 = get_data(f'{prefix}/{uuid}', 3)
 
     associate = [
-        {"data":data0,"type":"*skillRation"}
+        {"data":data0,"type":"*skillDamage"}
     ]
 
 # 轻云出月风静夜

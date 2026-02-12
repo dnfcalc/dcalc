@@ -1,768 +1,1455 @@
 #0c1b401bb09241570d364420b3ba3fd7
-from core.basic.skill import PassiveBufferSkill,ActiveBufferSkill,ActiveSkill,PassiveSkill
+from core.basic.skill import PassiveBufferSkill,ActiveBufferSkill,ActiveSkill,PassiveSkill, get_data
 from core.basic.character import Character
+prefix = "priest_female/crusader_female/cn/skillDetail"
 
-# 圣光灌注 빛의 은총
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/8f73f243041c2d27739fe7696f02bf9b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill0(PassiveBufferSkill):
+
+# 圣光灌注
+# priest_female/crusader_female/8f73f243041c2d27739fe7696f02bf9b
+# 0c1b401bb09241570d364420b3ba3fd7/8f73f243041c2d27739fe7696f02bf9b
+class Skill2(PassiveBufferSkill):
+    """
+        受到圣光的恩泽， 攻击变为光属性， 并增加光属性抗性和异常状态抗性， 攻击时附加属性伤害量增加的减益效果。\n
+        属性伤害量增加效果持续一定时间， 最多可叠加一定次数， 且无法与光明骑士 (男) 的[守护恩赐]、 小魔女的[冥月绽放]、 缪斯的[多彩感性]、 协战师的[系统 · 战场信息]属性伤害量增加效果叠加。\n
+        单人挑战时， 不适用增加属性伤害的减益效果， 而是增加自身独立攻击力， 减少技能冷却时间。
+    """
     name = "圣光灌注"
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 3 #TODO
+    position = 3
     rangeLv = 1
     uuid = "8f73f243041c2d27739fe7696f02bf9b"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    CarryRatio = [0, (1.045 ** 3) * 100 - 100]# noqa: E501
+    # 光属性抗性增加 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 所有异常状态抗性增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 属性伤害量增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 属性伤害量增加持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 属性伤害量增加效果重叠次数上限 : {value4}次
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [单人挑战专属效果]
+    # 独立攻击力增加量 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 技能冷却时间减少量 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
+    CarryRatio = [0, (1.055 ** 3) * 100 - 100]# noqa: E501
 
-# 启示 : 惩戒 계시 : 크루세이드
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/42c82812f86ff6704ae9952a2e6093a4?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill1(PassiveSkill):
+# 启示 : 惩戒
+# priest_female/crusader_female/42c82812f86ff6704ae9952a2e6093a4
+# 0c1b401bb09241570d364420b3ba3fd7/42c82812f86ff6704ae9952a2e6093a4
+class Skill3(PassiveSkill):
+    """
+        增加基本攻击、 跳跃攻击、 前冲攻击的攻击范围。\n
+        增加基本攻击力、 技能攻击力、 攻击速度。
+    """
     name = "启示 : 惩戒"
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     uuid = "42c82812f86ff6704ae9952a2e6093a4"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 15]# noqa: E501
-    hit0 = 1 #TODO
+    # 基本攻击力和技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 攻击速度增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    data1 = [0, 5]# noqa: E501
-    hit1 = 1 #TODO
 
-
-# 治愈祈祷 치유의 기도
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/0969cd4054d93da07708108c0cc1c4b5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill2(ActiveBufferSkill):
+# 治愈祈祷
+# priest_female/crusader_female/0969cd4054d93da07708108c0cc1c4b5
+# 0c1b401bb09241570d364420b3ba3fd7/0969cd4054d93da07708108c0cc1c4b5
+class Skill10(ActiveBufferSkill):
+    """
+        向神明祷告， 治疗自身的伤势， 恢复生命值。\n
+        转职成为光明骑士时， 可以治疗队友， 并增加治疗量。\n
+        学习[大天使的庇护]后， 施放[勇气颂歌]、 [新生颂歌]过程中可以使用该技能。
+    """
     name = "治愈祈祷"
     learnLv = 5
     masterLv = 60
     maxLv = 70
-    position = 4 #TODO
+    position = 4
     rangeLv = 3
     cd = 10
     mp = [15, 154]
-    buffer = True
     uuid = "0969cd4054d93da07708108c0cc1c4b5"
+    hasVP = False
     hasUP = True
-    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     upType = "heal"
 
-    data0 = [0, 468, 1170, 1824, 2433, 3135, 3743, 4444, 5052, 5707, 6363, 7018, 7672, 8328, 8983, 9637, 10292, 10948, 11603, 12257, 12912, 13568, 14222, 14877, 15533, 16140, 16842, 17451, 18105, 18807, 19929, 21099, 21894, 22738, 23531, 24375, 25216, 26059, 26901, 27742, 28586, 29427, 30223, 31064, 31907, 32749, 33590, 34434, 35275, 36117, 36912, 37755, 38597, 39438, 40282, 41123, 41965, 42808, 43603, 44445, 45286, 46130, 46971, 47813, 48656, 49497, 50293, 51134, 51978, 52819, 53661]# noqa: E501
-    hit0 = 1 #TODO
+    # 生命值恢复量 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 转职成为光明骑士时， 生命值恢复量比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [范围信息]
+    # 治愈范围 : {value2}px
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    data1 = [0, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150]# noqa: E501
-    hit1 = 1 #TODO
 
-    data2 = [0, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900]# noqa: E501
-    hit2 = 1 #TODO
-
-# 净化 큐어
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/4655101518604f874721b3cc249aae10?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill3(ActiveBufferSkill):
+# 净化
+# priest_female/crusader_female/4655101518604f874721b3cc249aae10
+# 0c1b401bb09241570d364420b3ba3fd7/4655101518604f874721b3cc249aae10
+class Skill13(ActiveBufferSkill):
+    """
+        使范围内的所有队员消除异常状态。
+    """
     name = "净化"
     learnLv = 10
     masterLv = 1
     maxLv = 11
-    position = 4 #TODO
+    position = 4
     rangeLv = 5
     cd = 15
     mp = [22, 238]
-    buffer = True
     uuid = "4655101518604f874721b3cc249aae10"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10]# noqa: E501
-    hit0 = 1 #TODO
+    # 异常状态消除数量上限 : {value0}个
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # [范围信息]
+    # [净化]适用范围 : {value1}px
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    data1 = [0, 1530, 1530, 1530, 1530, 1530, 1530, 1530, 1530, 1530, 1530, 1530]# noqa: E501
-    hit1 = 1 #TODO
 
-# 圣洁之光 홀리 플래쉬
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/4224f9b0b8c7c903e9a1e0f9d9f6d04d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill4(ActiveSkill):
+# 圣洁之光
+# priest_female/crusader_female/4224f9b0b8c7c903e9a1e0f9d9f6d04d
+# 0c1b401bb09241570d364420b3ba3fd7/4224f9b0b8c7c903e9a1e0f9d9f6d04d
+class Skill19(ActiveSkill):
+    """
+        使用圣洁之力生成光芒， 将其投向前方。\n
+        光芒与敌人碰撞时会爆炸， 并给敌人造成光属性伤害。
+    """
     name = "圣洁之光"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 8 #TODO
+    position = 8
     rangeLv = 2
     cd = 4
     mp = [27, 294]
     uuid = "4224f9b0b8c7c903e9a1e0f9d9f6d04d"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 4847, 5338, 5829, 6321, 6814, 7305, 7796, 8288, 8779, 9272, 9763, 10254, 10746, 11239, 11730, 12221, 12713, 13204, 13697, 14188, 14680, 15171, 15662, 16155, 16646, 17138, 17629, 18122, 18613, 19105, 19596, 20087, 20580, 21072, 21563, 22054, 22547, 23038, 23530, 24021, 24512, 25005, 25497, 25988, 26479, 26972, 27464, 27955, 28446, 28937, 29430, 29922, 30413, 30904, 31396, 31889, 32380, 32871, 33363, 33856, 34347, 34838, 35329, 35821, 36314, 36805, 37296, 37788, 38281, 38772]# noqa: E501
-    hit0 = 1 #TODO
+    # 爆炸攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # [范围信息]
+    # 爆炸大小比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-# 启示 : 圣歌 계시 : 아리아
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/78bd107acd474518b606be1e4fd38239?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill5(PassiveBufferSkill):
-    name = "启示 : 圣歌"
+# 启示 : 颂歌
+# priest_female/crusader_female/78bd107acd474518b606be1e4fd38239
+# 0c1b401bb09241570d364420b3ba3fd7/78bd107acd474518b606be1e4fd38239
+class Skill20(PassiveBufferSkill):
+    """
+        学习该技能后， 增加智力\n
+        [勇气圣歌]的攻击功能可以在已学习的技能窗口上用鼠标右键设置开启/关闭。
+    """
+    name = "启示 : 颂歌"
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 2 #TODO
+    position = 2
     rangeLv = 3
     uuid = "78bd107acd474518b606be1e4fd38239"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    INT = [0, 86, 90, 94, 98, 102, 107, 112, 117, 123, 129, 135, 141, 147, 154, 161, 169, 177, 185, 193, 201, 210, 219, 229, 238, 248, 258, 269, 279, 290, 301, 313, 325, 337, 349, 361, 375, 388, 401, 415, 429, 443, 457, 473, 487, 503, 519, 535, 551, 567, 584, 598, 614, 630, 646, 662, 677, 693, 709, 725, 741, 756, 772, 788, 804, 820, 835, 851, 867, 883, 899]# noqa: E501
+    # 智力增加 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    associate = [{"data":data0,"type":"$+INT","ratio":1}]
 
-    associate = [{"data":INT,"type":"$+INT","ratio":1}]
-
-# 十字架精通 십자가 마스터리
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/9cb6f9ed646fa87f9b7680a42ce83d1a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill6(PassiveSkill):
-    name = "十字架精通"
+# 光杖精通
+# priest_female/crusader_female/9cb6f9ed646fa87f9b7680a42ce83d1a
+# 0c1b401bb09241570d364420b3ba3fd7/9cb6f9ed646fa87f9b7680a42ce83d1a
+class Skill21(PassiveSkill):
+    """
+    독립 공격력과 마법 크리티컬 확률이 증가하고, 십자가 착용 시 캐스팅 속도가 증가한다.
+    """
+    name = "光杖精通"
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 2
     rangeLv = 3
     uuid = "9cb6f9ed646fa87f9b7680a42ce83d1a"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 6.5, 8, 9.5, 11, 12.5, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35]# noqa: E501
+    # 独立攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 魔法暴击率增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [装备光杖时]
+    # 施放速度增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     associate = [{"data": data0, "type": "$*PATKI"}]
 
-    data1 = [0, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]# noqa: E501
-
-    data2 = [0, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21, 21.5, 22, 22.5, 23, 23.5, 24, 24.5, 25]# noqa: E501
-
-# 胜利之矛 승리의 창
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/3d8f3d438405d79f8d3ed68072674d1e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill7(ActiveSkill):
+# 胜利之矛
+# priest_female/crusader_female/3d8f3d438405d79f8d3ed68072674d1e
+# 0c1b401bb09241570d364420b3ba3fd7/3d8f3d438405d79f8d3ed68072674d1e
+class Skill22(ActiveSkill):
+    """
+        向敌人投掷由神圣之力凝聚成的矛。\n
+        矛可以穿刺敌人， 给敌人造成伤害， 并束缚敌人。 一定时间后， 矛会爆炸， 并追加伤害。\n
+        若蓄气后投掷， 则增加束缚敌人的时间。\n
+        当矛嵌入地面人时， 再次按技能键， 会立即引爆矛。\n
+        学习[圣天使之光]后， 默认以最大蓄气状态施放。
+    """
     name = "胜利之矛"
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 6 #TODO
+    position = 6
     rangeLv = 2
     cd = 7
     mp = [32, 343]
     uuid = "3d8f3d438405d79f8d3ed68072674d1e"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 3764, 4145, 4527, 4908, 5289, 5673, 6054, 6436, 6817, 7198, 7580, 7963, 8345, 8726, 9109, 9489, 9872, 10254, 10635, 11018, 11399, 11779, 12164, 12544, 12927, 13308, 13690, 14071, 14455, 14836, 15217, 15599, 15980, 16364, 16745, 17126, 17508, 17889, 18272, 18654, 19037, 19417, 19798, 20181, 20563, 20946, 21327, 21707, 22090, 22471, 22855, 23236, 23618, 23999, 24380, 24762, 25145, 25527, 25908, 26291, 26671, 27054, 27436, 27817, 28200, 28580, 28961, 29345, 29726, 30109]# noqa: E501
-    hit0 = 1 #TODO
+    # 穿刺攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 爆炸攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 蓄气时间 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 普通束缚时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 蓄气后束缚时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [范围信息]
+    # 枪大小比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    data1 = [0, 5644, 6219, 6790, 7363, 7936, 8509, 9081, 9653, 10226, 10800, 11371, 11944, 12517, 13090, 13663, 14234, 14809, 15382, 15953, 16526, 17100, 17672, 18244, 18817, 19390, 19963, 20534, 21107, 21682, 22253, 22826, 23401, 23972, 24545, 25116, 25690, 26263, 26835, 27407, 27982, 28553, 29126, 29699, 30272, 30845, 31416, 31991, 32564, 33135, 33708, 34282, 34853, 35426, 35999, 36572, 37145, 37716, 38289, 38864, 39435, 40008, 40582, 41154, 41727, 42298, 42872, 43445, 44016, 44589, 45164]# noqa: E501
-    hit1 = 1 #TODO
-
-# 守护祝福 수호의 축복
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/ade01c1d6afc8a05055225045e89fe49?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill8(ActiveSkill):
+# 守护祝福
+# priest_female/crusader_female/ade01c1d6afc8a05055225045e89fe49
+# 0c1b401bb09241570d364420b3ba3fd7/ade01c1d6afc8a05055225045e89fe49
+class Skill23(ActiveSkill):
+    """
+        祝福一定范围内的队友， 增加队友的生命值最大值、 魔法值最大值、 物防、 魔防、 体力、 精神， 效果持续一段时间。\n
+        该技能效果不与光明骑士 (男) 的[守护徽章]以及小魔女的[小魔女的偏爱]、 缪斯的[主角登场]、 协战师的[装甲强化]技能效果叠加。
+    """
     name = "守护祝福"
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 4 #TODO
+    position = 4
     rangeLv = 3
     cd = 10
     mp = [35, 392]
     uuid = "ade01c1d6afc8a05055225045e89fe49"
+    hasVP = False
     hasUP = False
-    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300]# noqa: E501
-    hit0 = 1 #TODO
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 生命值/魔法值最大值增加 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 物理/魔法防御力增加 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 体力/精神增加 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 增益效果范围 : {value4}px
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
-    data1 = [0, 383, 386, 389, 392, 395, 398, 401, 404, 407, 410, 413, 416, 419, 422, 425, 428, 431, 434, 437, 440]# noqa: E501
-    hit1 = 1 #TODO
 
-    data2 = [0, 11080, 11130, 11180, 11230, 11280, 11330, 11380, 11430, 11480, 11530, 11580, 11630, 11680, 11730, 11780, 11830, 11880, 11930, 11980, 12030]# noqa: E501
-    hit2 = 1 #TODO
-
-    data3 = [0, 94, 98, 102, 107, 112, 116, 122, 127, 131, 137, 141, 147, 153, 158, 163, 169, 175, 181, 187, 192]# noqa: E501
-    hit3 = 1 #TODO
-
-    data4 = [0, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900, 900]# noqa: E501
-    hit4 = 1 #TODO
-
-# 洗礼之光 세례의 빛
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/ff171dc487807bb9aa28900ca9a46b41?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill9(ActiveSkill):
+# 洗礼之光
+# priest_female/crusader_female/ff171dc487807bb9aa28900ca9a46b41
+# 0c1b401bb09241570d364420b3ba3fd7/ff171dc487807bb9aa28900ca9a46b41
+class Skill25(ActiveSkill):
+    """
+        在前方落下神圣的洗礼之光， 给敌人造成伤害。\n
+        按住向下键的同时施放该技能， 可以在更靠近自己的位置落下洗礼之光。\n
+        学习[圣天使之光]后， 施放[勇气颂歌]、 [新生颂歌]过程中可以使用该技能， 此时攻击周围的敌人。
+    """
     name = "洗礼之光"
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 8 #TODO
+    position = 8
     rangeLv = 2
     cd = 7
     mp = [32, 343]
     uuid = "ff171dc487807bb9aa28900ca9a46b41"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 9778, 10771, 11762, 12755, 13746, 14739, 15732, 16723, 17716, 18707, 19700, 20692, 21684, 22676, 23667, 24660, 25653, 26644, 27637, 28628, 29621, 30614, 31605, 32598, 33589, 34581, 35574, 36565, 37558, 38549, 39542, 40535, 41526, 42519, 43510, 44503, 45495, 46487, 47479, 48470, 49463, 50456, 51447, 52440, 53429, 54424, 55417, 56406, 57401, 58390, 59383, 60374, 61367, 62359, 63351, 64343, 65334, 66327, 67320, 68311, 69304, 70295, 71288, 72281, 73272, 74265, 75256, 76248, 77241, 78232]# noqa: E501
-    hit0 = 1 #TODO
+    # 攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-# 圣光守护 신성한 빛
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/547ab2b2bd860d3e37355a9cfbc1077c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill10(ActiveBufferSkill):
+# 圣光守护
+# priest_female/crusader_female/547ab2b2bd860d3e37355a9cfbc1077c
+# 0c1b401bb09241570d364420b3ba3fd7/547ab2b2bd860d3e37355a9cfbc1077c
+class Skill26(ActiveSkill):
+    """
+        使范围内的队友置身于神圣的光晕中， 效果持续一定时间。\n
+        在此状态下， 光晕会减少队友受到的伤害， 且使队友被攻击时， 不会进入僵直状态， 持续时间过后， 光晕会爆炸， 给敌人造成光属性伤害。\n
+        光晕持续时间内再次按技能键， 光晕立即爆炸。\n
+        在施放[勇气颂歌]、 [新生颂歌]过程中， 可以使用[圣光守护]。\n
+        在决斗场中， 在持续时间内减少移动速度， 同时增加[守护祝福]的增益效果。
+    """
     name = "圣光守护"
     learnLv = 25
     masterLv = 50
     maxLv = 60
-    position = 5 #TODO
+    position = 5
     rangeLv = 3
     cd = 20
     mp = [15, 154]
-    buffer = True
     uuid = "547ab2b2bd860d3e37355a9cfbc1077c"
+    hasVP = False
     hasUP = True
-    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 19695, 22833, 25973, 29113, 32252, 35392, 38532, 41670, 44810, 47950, 51090, 54230, 57368, 60508, 63648, 66788, 69928, 73066, 76206, 79346, 82486, 85626, 88766, 91904, 95044, 98184, 101323, 104463, 107602, 110741, 113881, 117021, 120161, 123299, 126439, 129579, 132719, 135859, 138999, 142137, 145277, 148417, 151557, 154697, 157835, 160975, 164115, 167255, 170394, 173533, 176673, 179812, 182952, 186092, 189230, 192370, 195510, 198650, 201790, 204930]# noqa: E501
-    hit0 = 1 #TODO
+    # 光晕持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 爆炸攻击力(自身) : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 爆炸攻击力(队员) : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 所受伤害减少率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [决斗场]
+    # 移动速度减少率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [守护祝福]效果增幅率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # [范围信息]增益效果范围 : {value6}px
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # 爆炸大小比率 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7)
 
-# 勇气祝福 용맹의 축복
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/8c2379737c5acc935c1731f67f607655?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill11(ActiveBufferSkill):
+# 勇气祝福
+# priest_female/crusader_female/8c2379737c5acc935c1731f67f607655
+# 0c1b401bb09241570d364420b3ba3fd7/8c2379737c5acc935c1731f67f607655
+class Skill27(ActiveBufferSkill):
+    """
+        使范围内的队友增加物理/魔法/独立攻击力、 力量、 智力和命中率， 并增加自身基本攻击力和技能攻击力， 效果持续一段时间。\n
+        施放者的智力越高， 物理/魔法/独立攻击力、 力量、 智力的增加量越多。\n
+        达到20级以上后， 不再增加自身基本攻击力和技能攻击力， 且物理/魔法/独立攻击力、 力量、 智力增加效果不适用于自身。\n
+        效果不与光明骑士 (男) 的[荣誉祝福]、 小魔女的[禁术吟咏]、 缪斯的[可爱节拍]、 协战师的[军械强化]的技能效果叠加。
+    """
     name = "勇气祝福"
     learnLv = 30
-    masterLv = 10
-    maxLv = 40
-    position = 4 #TODO
+    masterLv = 40
+    maxLv = 50
+    position = 4
     rangeLv = 3
     cd = 10
-    mp = [35, 399]
+    uuid = "8c2379737c5acc935c1731f67f607655"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+
     buffer = True
     buffType = "buff"
-    uuid = "8c2379737c5acc935c1731f67f607655"
 
-    # 三攻
-    ATK = [0, 39, 41, 43, 44, 45, 47, 49, 50, 52, 53, 54, 56, 58, 59, 61, 62, 63, 65, 67, 69, 70, 71, 73, 75, 77, 79, 80, 81, 83, 85, 86, 88, 89, 90, 92, 94, 95, 97, 98, 100]# noqa: E501
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 物理/魔法/独立攻击力增加 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 力量/智力增加 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 命中率增加率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 基本攻击力和技能攻击力增加率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [范围信息]
+    # 增益效果范围 : {value5}px
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    # 力智
-    STRINT = [0, 154, 164, 176, 186, 197, 206, 216, 227, 237, 249, 259, 269, 280, 290, 302, 311, 321, 332, 342, 353, 363, 374, 385, 395, 406, 415, 425, 437, 447, 458, 468, 478, 489, 500, 511, 520, 530, 541, 551, 563]# noqa: E501
+    ATK = data1
+    STRINT = data2
 
-# 圣光烬盾 세인트 월
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/5dc7008b12a459325b548b0715c6b73c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill12(ActiveSkill):
+# 圣光烬盾
+# priest_female/crusader_female/5dc7008b12a459325b548b0715c6b73c
+# 0c1b401bb09241570d364420b3ba3fd7/5dc7008b12a459325b548b0715c6b73c
+class Skill28(ActiveSkill):
+    """
+        生成神圣的光芒墙壁向前推进。\n
+        光芒墙壁会推进撞到的敌人并造成持续伤害， 到达最远距离后墙壁会爆炸。
+    """
     name = "圣光烬盾"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 8 #TODO
+    position = 8
     rangeLv = 2
     cd = 10
     mp = [91, 763]
     uuid = "5dc7008b12a459325b548b0715c6b73c"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 4174, 4595, 5018, 5443, 5867, 6288, 6712, 7137, 7560, 7982, 8407, 8830, 9253, 9676, 10100, 10523, 10946, 11371, 11793, 12216, 12640, 13065, 13488, 13909, 14333, 14758, 15181, 15603, 16028, 16451, 16874, 17296, 17721, 18144, 18567, 18992, 19414, 19837, 20261, 20686, 21107, 21531, 21954, 22379, 22802, 23224, 23649, 24072, 24495, 24917, 25342, 25765, 26189, 26610, 27035, 27458, 27882, 28307, 28728, 29152, 29577, 30000, 30422, 30845, 31270, 31693, 32115, 32538, 32963, 33386]# noqa: E501
-    hit0 = 1 #TODO
+    # 撞击攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 爆炸攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # [范围信息]
+    # 盾牌大小比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 爆炸大小比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-    data1 = [0, 9736, 10725, 11713, 12701, 13688, 14678, 15664, 16653, 17641, 18627, 19616, 20602, 21592, 22579, 23567, 24555, 25544, 26530, 27520, 28507, 29495, 30483, 31472, 32458, 33446, 34435, 35421, 36411, 37397, 38386, 39374, 40361, 41349, 42339, 43325, 44314, 45302, 46289, 47277, 48266, 49252, 50240, 51230, 52216, 53205, 54191, 55180, 56168, 57156, 58143, 59133, 60119, 61108, 62096, 63084, 64071, 65059, 66047, 67034, 68024, 69010, 69999, 70987, 71975, 72962, 73952, 74938, 75927, 76913, 77903]# noqa: E501
-    hit1 = 1 #TODO
-
-# 神光惩戒 샤인 크로스
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/7e904ea3d2a9faa054604e55120a9268?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill13(ActiveSkill):
+# 神光惩戒
+# priest_female/crusader_female/7e904ea3d2a9faa054604e55120a9268
+# 0c1b401bb09241570d364420b3ba3fd7/7e904ea3d2a9faa054604e55120a9268
+class Skill29(ActiveSkill):
+    """
+        凝聚光的力量， 快速挥击3次攻击敌人。\n
+        施放技能时， 按下方向键可使角色边移动边攻击敌人。\n
+        攻击成功时， 可以强制中断并立即施放[神光十字]、 [忏悔重击]； [神光十字]、 [忏悔重击]命中敌人时， 可强制中断并施放[神光惩戒]。\n
+        决斗场中无法强制中断并立即施放其他技能。
+    """
     name = "神光惩戒"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 6 #TODO
+    position = 6
     rangeLv = 2
     cd = 10
     mp = [400, 1000]
     uuid = "7e904ea3d2a9faa054604e55120a9268"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 2708, 2984, 3257, 3531, 3806, 4082, 4357, 4633, 4905, 5180, 5455, 5731, 6006, 6278, 6554, 6829, 7104, 7380, 7655, 7927, 8203, 8478, 8753, 9029, 9302, 9576, 9852, 10127, 10402, 10676, 10951, 11225, 11501, 11776, 12050, 12325, 12600, 12876, 13150, 13423, 13699, 13974, 14249, 14525, 14797, 15072, 15348, 15623, 15898, 16174, 16446, 16721, 16997, 17272, 17547, 17819, 18095, 18370, 18646, 18921, 19195, 19468, 19744, 20019, 20295, 20568, 20844, 21117, 21393, 21668]# noqa: E501
-    hit0 = 1 #TODO
+    # 第一击攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 第二击攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 第三击攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-    data1 = [0, 4063, 4473, 4886, 5299, 5712, 6122, 6535, 6948, 7359, 7771, 8184, 8597, 9008, 9420, 9833, 10244, 10657, 11069, 11482, 11893, 12306, 12718, 13129, 13542, 13955, 14367, 14778, 15191, 15604, 16014, 16427, 16840, 17250, 17663, 18076, 18489, 18899, 19312, 19725, 20137, 20548, 20961, 21374, 21786, 22199, 22610, 23021, 23435, 23848, 24259, 24670, 25084, 25497, 25906, 26319, 26733, 27142, 27555, 27968, 28382, 28791, 29204, 29617, 30029, 30440, 30853, 31266, 31678, 32089, 32502]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 6769, 7458, 8143, 8832, 9518, 10205, 10892, 11579, 12266, 12954, 13639, 14328, 15013, 15701, 16390, 17075, 17763, 18448, 19137, 19822, 20511, 21197, 21884, 22571, 23258, 23945, 24631, 25318, 26007, 26692, 27380, 28065, 28754, 29439, 30127, 30814, 31501, 32188, 32875, 33561, 34250, 34935, 35624, 36309, 36997, 37682, 38371, 39059, 39744, 40433, 41118, 41806, 42493, 43180, 43867, 44554, 45240, 45927, 46614, 47303, 47988, 48676, 49361, 50050, 50735, 51423, 52110, 52797, 53484, 54171]# noqa: E501
-    hit2 = 1 #TODO
-
-
-# 勇气圣歌 용맹의 아리아
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/506e7ed77d517419a6e1c437a2cedb17?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill14(ActiveBufferSkill):
-    name = "勇气圣歌"
+# 勇气颂歌
+# priest_female/crusader_female/506e7ed77d517419a6e1c437a2cedb17
+# 0c1b401bb09241570d364420b3ba3fd7/506e7ed77d517419a6e1c437a2cedb17
+class Skill30(ActiveBufferSkill):
+    """
+        颂唱勇气颂歌， 增强范围内我方的增益效果， 对敌人造成伤害。\n
+        颂歌结束或离开效果范围后， 增益效果仍将持续一定时间。\n
+        [勇气颂歌]持续期间， 减少光明骑士所受伤害， 并增加所有异常状态抗性。\n
+        [勇气颂歌]施放过程中， 可以用方向键移动； 连续按攻击键可以减少颂歌的持续时间和多段攻击的间隔； 按跳跃键会终止[勇气颂歌]。\n
+        施放过程中， 可以施放[圣光守护]、 [神之教诲]、 [圣洁之翼]、 [圣佑之阵]、 [圣言十字]； 学习[大天使的庇护]后， 可以施放[治愈祈祷]； 学习圣天使之光后， 可以施放[洗礼之光]。\n
+        学习[大天使的庇护]后， 增加[勇气颂歌]范围。
+    """
+    name = "勇气颂歌"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 2 #TODO
+    position = 2
     rangeLv = 3
     cube = 1
     cd = 40
     mp = [150, 1260]
-    buffer = True
-    buffType = "buffSub"
     uuid = "506e7ed77d517419a6e1c437a2cedb17"
     hasVP = True
     hasUP = True
-    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
-    vps = [
-          {
-            "name": "圣音协奏",
-            "desc": "施放时间减少",
-            "explain": "[勇气颂歌]<br/>大天使米迦勒代替施放[勇气颂歌]<br/>- 多段攻击间隔 -15%<br/>- 多段攻击次数 +2次<br/>- 总攻击力相同<br/><br/>[新生圣歌]<br/>大天使乌列尔出现， 和光明骑士一起施放[新生颂歌]<br/>- 每秒生命值恢复量 +35%"
-          },
-          {
-            "name": "天堂进行曲",
-            "desc": "范围增加<br/>移动速度增加<br/>所受伤害减少",
-            "explain": "[勇气颂歌]<br/>范围 +40%<br/><br/>施放过程中适用以下效果<br/>- 移动速度 +200%<br/>- 所受伤害减少量额外 +40%<br/>- 所有状态异常抗性增加量额外 +30%<br/><br/>[新生圣歌]<br/>大天使乌列尔出现， 和光明骑士一起施放[新生颂歌]<br/>- 每秒生命值恢复量 +35%"
-          }
-        ]
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 2069, 2399, 2727, 3059, 3389, 3717, 4049, 4379, 4707, 5039, 5367, 5697, 6029, 6357, 6687, 7019, 7347, 7677, 8007, 8337, 8667, 8997, 9327, 9656, 9987, 10317, 10646, 10977, 11306, 11636, 11967, 12296, 12626, 12957, 13286, 13616, 13946, 14276, 14606, 14936, 15266, 15594, 15926, 16256, 16584, 16916, 17244, 17574, 17906, 18234, 18564, 18893, 19224, 19554, 19883, 20214, 20544, 20873, 21204, 21533, 21863, 22194, 22523, 22853, 23183, 23513, 23843, 24173, 24503, 24831]# noqa: E501
-    hit0 = 1 #TODO
+    buffer = True
+    buffType = "buffSub"
 
-    data1 = [0, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]# noqa: E501
-    hit0 = 1 #TODO
+    # 颂歌持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 颂歌增益效果持续时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [勇气祝福]增益效果增幅率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 颂歌多段攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 颂歌的攻击次数上限 : {value4}
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 颂歌多段攻击间隔 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 所受伤害减少率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # 所有异常状态抗性增加 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    # [范围信息]
+    # 颂歌范围 : {value8}px
+    data8 = get_data(f'{prefix}/{uuid}', 8)
 
     def skillInfo(self):
         prep = self.char.BuffSkill.skillInfo()
-        ratio = self.data1[self.lv] / 100
+        ratio = self.data2[self.lv] / 100
         return prep[0] * ratio, [prep[1][0]*ratio,prep[1][1],prep[1][2]*ratio], [prep[2][0]*ratio,prep[2][1],prep[2][2]*ratio],0,self.getSkillCD()
 
-# 神圣锁环 홀리 써클릿
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/8ee0099656df08a0b39225f8a21d514b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill15(ActiveSkill):
+    def vp_1(self):
+        """
+        [勇气颂歌]\n
+        由大天使米迦勒代替施放[勇气颂歌]\n
+        - 多段攻击间隔 -15%\n
+        - 多段攻击次数 +2次\n
+        - 总攻击力相同\n
+        [新生圣歌]\n
+        大天使乌列尔出现， 和光明骑士一起施放[新生颂歌]\n
+        - 每秒生命值恢复量 +35%
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [勇气颂歌]\n
+        范围 +40%\n
+        施放过程中适用以下效果\n
+        - 移动速度 +200%\n
+        - 所受伤害减少量额外 +40%\n
+        - 所有状态异常抗性增加量额外 +30%\n
+        [新生圣歌]\n
+        大天使乌列尔出现， 和光明骑士一起施放[新生颂歌]\n
+        - 每秒生命值恢复量 +35%
+        """
+        ...
+
+# 神圣锁环
+# priest_female/crusader_female/8ee0099656df08a0b39225f8a21d514b
+# 0c1b401bb09241570d364420b3ba3fd7/8ee0099656df08a0b39225f8a21d514b
+class Skill31(ActiveSkill):
+    """
+        在前方召唤出神圣的光环。\n
+        束缚光环范围内的敌人后向内聚拢， 造成多段攻击后爆炸。\n
+        光环缩小后再次按技能键， 光环会立即爆炸。\n
+        在决斗场中再次按技能键时， 光环不会爆炸。
+    """
     name = "神圣锁环"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 8 #TODO
+    position = 8
     rangeLv = 2
     cube = 1
     cd = 18
     mp = [150, 1260]
     uuid = "8ee0099656df08a0b39225f8a21d514b"
-
     hasVP = True
-    vps = [
-          {
-            "name": "天使佑光",
-            "desc": "范围增加<br/>攻击时间减少<br/>赋予[圣洁之光]强化增益",
-            "explain": "[神圣锁环]<br/>拉贵尔在前方进行大范围攻击后， 为光明骑士赋予一定时间的惩恶天使增益效果<br/>- 删除强制控制效果<br/>- 攻击次数 : 10次<br/>- 总攻击力相同<br/>- 增益持续时间 : 15秒<br/><br/>[圣洁之光]<br/>惩恶天使增益效果<br/>- 范围 +25%<br/>- 穿过敌人并移动200px后爆炸<br/>- 光移动速度增加<br/>- 击退光移动路径上的敌人<br/><br/>[圣光守护]<br/>保护罩功能强化<br/>- 保护罩持续时间 +50%<br/>- 通过再次按下技能键进行爆炸攻击时， 保护罩不会消失<br/>- 物理、 魔法伤害减少效果与[圣佑之阵]重叠"
-          },
-          {
-            "name": "神圣召唤",
-            "desc": "变更为范围攻击<br/>可以在颂歌过程中施放",
-            "explain": "[神圣锁环]<br/>对周围的敌人施放[神圣锁环]<br/>- 攻击范围 : 600px<br/>- 范围内存在敌人时可以施放技能<br/><br/>可以在施放以下技能过程中施放该技能<br/>- [勇气颂歌]<br/>- [新生颂歌]<br/><br/>[圣光守护]<br/>保护罩功能强化<br/>- 保护罩持续时间 +50%<br/>- 通过再次按下技能键进行爆炸攻击时， 保护罩不会消失<br/>- 物理、 魔法伤害减少效果与[圣佑之阵]重叠"
-          }
-        ]
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 368, 405, 443, 479, 516, 555, 593, 629, 666, 705, 741, 779, 816, 852, 891, 929, 965, 1002, 1041, 1079, 1115, 1152, 1191, 1227, 1265, 1302, 1338, 1377, 1415, 1451, 1488, 1527, 1565, 1601, 1638, 1676, 1713, 1751, 1788, 1824, 1863, 1901, 1937, 1974, 2012, 2049, 2087, 2124, 2160, 2199, 2237, 2274, 2310, 2348, 2387, 2423, 2460, 2498, 2535, 2573, 2610, 2646, 2685, 2723, 2760, 2796, 2834, 2873, 2909, 2946]# noqa: E501
+    # 多段攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 13
+    # 多段攻击间隔 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 爆炸攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # [范围信息]
+    # 环大小比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-    data2 = [0, 11174, 12308, 13440, 14574, 15707, 16842, 17975, 19109, 20243, 21375, 22509, 23642, 24777, 25910, 27044, 28178, 29310, 30444, 31578, 32712, 33845, 34979, 36113, 37245, 38379, 39513, 40647, 41780, 42914, 44048, 45180, 46316, 47448, 48582, 49715, 50849, 51983, 53115, 54251, 55383, 56517, 57650, 58784, 59918, 61052, 62186, 63318, 64452, 65585, 66719, 67853, 68987, 70121, 71253, 72387, 73520, 74654, 75789, 76922, 78056, 79188, 80322, 81455, 82590, 83724, 84857, 85991, 87123, 88257, 89390]# noqa: E501
-    hit2 = 1 #TODO
+    def vp_1(self):
+        """
+        [神圣锁环]\n
+        拉贵尔在前方进行大范围攻击后， 为光明骑士赋予一定时间的惩恶天使增益效果\n
+        - 删除强制控制效果\n
+        - 攻击次数 : 10次\n
+        - 总攻击力相同\n
+        - 增益持续时间 : 15秒\n
+        [圣洁之光]\n
+        惩恶天使增益效果\n
+        - 范围 +25%\n
+        - 穿过敌人并移动200px后爆炸\n
+        - 光移动速度增加\n
+        - 击退光移动路径上的敌人\n
+        [圣光守护]\n
+        保护罩功能强化\n
+        - 保护罩持续时间 +50%\n
+        - 通过再次按下技能键进行爆炸攻击时， 保护罩不会消失\n
+        - 物理、 魔法伤害减少效果与[圣佑之阵]重叠
+        """
+        ...
 
-# 神之教诲 에디피케이션
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/9bff7f2559e003766fee2853dca00631?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill16(ActiveBufferSkill):
+    def vp_2(self):
+        """
+        [神圣锁环]\n
+        对周围的敌人施放[神圣锁环]\n
+        - 攻击范围 : 600px\n
+        - 范围内存在敌人时可以施放技能\n
+        可以在施放以下技能过程中施放该技能\n
+        - [勇气颂歌]\n
+        - [新生颂歌]\n
+        [圣光守护]\n
+        保护罩功能强化\n
+        - 保护罩持续时间 +50%\n
+        - 通过再次按下技能键进行爆炸攻击时， 保护罩不会消失\n
+        - 物理、 魔法伤害减少效果与[圣佑之阵]重叠
+        """
+        ...
+
+# 神之教诲
+# priest_female/crusader_female/9bff7f2559e003766fee2853dca00631
+# 0c1b401bb09241570d364420b3ba3fd7/9bff7f2559e003766fee2853dca00631
+class Skill32(ActiveBufferSkill):
+    """
+        祝福范围内的队友， 大幅增加队友的移动速度， 效果持续一定时间。\n
+        进入下一个房间时， 增加移动速度的效果会消失。\n
+        施放[勇气颂歌]、 [新生颂歌]时， 可以使用[神之教诲]。
+    """
     name = "神之教诲"
     learnLv = 35
     masterLv = 1
     maxLv = 1
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cube = 1
     cd = 20
     mp = [630, 630]
     uuid = "9bff7f2559e003766fee2853dca00631"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 移动速度增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [范围信息]
+    # 增益效果范围 : {value2}px
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-# 忏悔之雷 정화의 번개
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/da6e37c1e3f0e8867f70007d89c239ff?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill17(ActiveSkill):
+# 忏悔之雷
+# priest_female/crusader_female/da6e37c1e3f0e8867f70007d89c239ff
+# 0c1b401bb09241570d364420b3ba3fd7/da6e37c1e3f0e8867f70007d89c239ff
+class Skill33(ActiveSkill):
+    """
+        在前方落下闪电， 给敌人持续造成光属性魔法伤害。\n
+        被最后一道闪电击中的敌人会解除其增益效果， 有一定几率进入忏悔状态。\n
+        进入忏悔状态的敌人会攻击自己的友军。\n
+        对领主、 精英、 稀有、 深渊类怪物， 忏悔效果会有所缩减， 对人形怪物会大幅减少忏悔几率及忏悔持续时间。\n
+        在决斗场中， 解除对敌人赋予的效果， 不适用忏悔状态。
+    """
     name = "忏悔之雷"
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 8 #TODO
+    position = 8
     rangeLv = 2
     cube = 1
     cd = 18
     mp = [160, 1344]
     uuid = "da6e37c1e3f0e8867f70007d89c239ff"
     hasVP = True
-    vps = [
-          {
-            "name": "奇迹之光",
-            "desc": "施放时间减少<br/>变更为单次攻击<br/>范围增加",
-            "explain": "[忏悔之雷]<br/>直接施放最终闪电<br/>- 删除多段闪电<br/>- 总攻击力相同<br/>- 最终闪电大小 +35%<br/><br/>[复苏之光]<br/>大天使拉法尔降临， 和光明骑士一起施放[复苏之光]<br/>- [复苏之光]有效范围变更为全地图<br/>- [复苏之光]复活对象的生命值/魔法值恢复量 +15%"
-          },
-          {
-            "name": "救赎之歌",
-            "desc": "攻击时间减少<br/>可以在施放颂歌时使用",
-            "explain": "[忏悔之雷]<br/>删除终结攻击， 多段攻击次数 +5次<br/>- 总攻击力相同<br/><br/>可以在施放以下技能过程中施放该技能<br/>- [勇气颂歌]<br/>- [新生颂歌]<br/><br/>施放颂歌时， 雷米尔会进行闪电攻击<br/>- 攻击范围 : 与[勇气颂歌]相同<br/>- 多段攻击次数 : 10次<br/>- 总攻击力相同<br/><br/>[复苏之光]<br/>大天使拉法尔降临， 和光明骑士一起施放[复苏之光]<br/>- [复苏之光]有效范围变更为全地图<br/>- [复苏之光]复活对象的生命值/魔法值恢复量 +15%"
-          }
-        ]
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 2289, 2523, 2753, 2987, 3219, 3452, 3684, 3915, 4148, 4380, 4613, 4845, 5076, 5309, 5543, 5775, 6008, 6239, 6471, 6704, 6936, 7169, 7400, 7632, 7865, 8099, 8331, 8562, 8795, 9027, 9260, 9492, 9723, 9956, 10188, 10421, 10655, 10886, 11118, 11351, 11583, 11816, 12047, 12279, 12512, 12744, 12977, 13208, 13442, 13674, 13907, 14139, 14370, 14603, 14835, 15068, 15300, 15531, 15764, 15998, 16230, 16463, 16694, 16926, 17159, 17391, 17624, 17855, 18087, 18320]# noqa: E501
+    # 多段落雷攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 5
+    # 最后一道闪电魔法攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 忏悔几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 忏悔持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [驱散魔法]解除数量上限 : {value4}
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [范围信息]
+    # 多段落雷大小比率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 最后一道闪电大小比率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
-    data1 = [0, 11450, 12612, 13773, 14934, 16097, 17258, 18420, 19581, 20744, 21905, 23066, 24228, 25389, 26552, 27713, 28875, 30036, 31197, 32360, 33521, 34683, 35844, 37007, 38168, 39330, 40491, 41652, 42815, 43976, 45138, 46299, 47462, 48623, 49784, 50946, 52107, 53270, 54431, 55593, 56754, 57917, 59078, 60239, 61401, 62562, 63725, 64886, 66048, 67209, 68370, 69533, 70694, 71856, 73017, 74180, 75341, 76502, 77664, 78825, 79988, 81149, 82311, 83472, 84635, 85796, 86957, 88119, 89280, 90443, 91604]# noqa: E501
-    hit1 = 1 #TODO
+    def vp_1(self):
+        """
+        [忏悔之雷]\n
+        直接施放最终闪电\n
+        - 删除多段闪电\n
+        - 总攻击力相同\n
+        - 最终闪电大小 +35%\n
+        [复苏之光]\n
+        大天使拉法尔降临， 和光明骑士一起施放[复苏之光]\n
+        - [复苏之光]有效范围变更为全地图\n
+        - [复苏之光]复活对象的生命值/魔法值恢复量 +15%
+        """
+        ...
 
-# 复苏之光 부활
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/a6c8f69107f8c4f5d1a0c7a57d000290?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill18(ActiveSkill):
+    def vp_2(self):
+        """
+        [忏悔之雷]\n
+        删除终结攻击， 多段攻击次数 +5次\n
+        - 总攻击力相同\n
+        可以在施放以下技能过程中施放该技能\n
+        - [勇气颂歌]\n
+        - [新生颂歌]\n
+        施放颂歌时， 雷米尔会进行闪电攻击\n
+        - 攻击范围 : 与[勇气颂歌]相同\n
+        - 多段攻击次数 : 10次\n
+        - 总攻击力相同\n
+        [复苏之光]\n
+        大天使拉法尔降临， 和光明骑士一起施放[复苏之光]\n
+        - [复苏之光]有效范围变更为全地图\n
+        - [复苏之光]复活对象的生命值/魔法值恢复量 +15%
+        """
+        ...
+
+# 复苏之光
+# priest_female/crusader_female/a6c8f69107f8c4f5d1a0c7a57d000290
+# 0c1b401bb09241570d364420b3ba3fd7/a6c8f69107f8c4f5d1a0c7a57d000290
+class Skill34(ActiveSkill):
+    """
+        使用神圣的力量， 复活死亡的队友。\n
+        与光明骑士 (女) 组队时， 死亡后会躺在地面， 保持死亡待机状态一定时间。\n
+        死亡待机状态下， 维持获得的增益效果， 当光明骑士 (女) 施放[复苏之光]时， 会带着一定量的生命值和魔法值原地复活。\n
+        一次性可复活的队员人数有限制； 复活时， 不会初始化技能冷却时间。\n
+        在死亡待机状态持续时间中输入攻击键会立即死亡， 使用复活币复活时， 复活之前获得的效果会消失。\n
+    사망 대기 상태의 파티원 수가 한번에 부활 가능한 파티원 수를 초과할 경우, 크루세이더(여)와 근접한 파티원을 우선으로 부활시킨다.\n
+        学习[大天使的庇护]后， 增加复活范围。
+    """
     name = "复苏之光"
     learnLv = 40
     masterLv = 1
     maxLv = 11
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cube = 2
     mp = [200, 1680]
     uuid = "a6c8f69107f8c4f5d1a0c7a57d000290"
-    hasUP = False
-    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+
+    # 队友死亡状态持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 队友复活时， 生命值和魔法值恢复量 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 复活队友数量上限 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [范围信息]
+    # 复活适用范围 : {value3}px
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
     def getSkillCD(self,mode=None):
         return 0
 
-# 神光十字 그랜드 크로스 크래쉬
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/3829c15bf5f520c13998a3479ba0ce7b?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill19(ActiveBufferSkill):
+# 神光十字
+# priest_female/crusader_female/3829c15bf5f520c13998a3479ba0ce7b
+# 0c1b401bb09241570d364420b3ba3fd7/3829c15bf5f520c13998a3479ba0ce7b
+class Skill35(ActiveBufferSkill):
+    """
+        生成神圣的光杖， 猛力捶向前方地面。\n
+        地面被光杖捶裂后， 会涌出光晕， 被命中的敌人会浮空。\n
+        当队友接触到这些光晕时， 会延长当前携带的光明骑士 (女) 效果的持续时间。 (每次施放技能时只适用一次)\n
+        [神光十字]命中敌人后， 可以强制中断并立即施放[神光惩戒]、 [忏悔重击]。\n
+        在决斗场中无法强制中断并施放其他技能。
+    """
     name = "神光十字"
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 6 #TODO
+    position = 6
     rangeLv = 2
     cube = 2
     cd = 45
     mp = [350, 2940]
-    damage = True
     uuid = "3829c15bf5f520c13998a3479ba0ce7b"
-
     hasVP = True
-    vps = [
-          {
-            "name": "十字庇护",
-            "desc": "范围增加<br/>变更为单次攻击<br/>附加眩晕效果<br/>队员生命值和魔法值恢复量增加",
-            "explain": "[神光十字]<br/>神光十字攻击强化<br/>- 大小 +50%<br/>- 生成神光十字时击退附近敌人<br/>- 删除撞击攻击<br/>- 总攻击力相同<br/>- 冲击波攻击使敌人进入眩晕状态3秒<br/><br/>光之气息流出的裂痕功能强化<br/>- 光杖地面裂痕使队友恢复20%的生命值和魔法值<br/>- 光杖地面裂痕持续时间 +5秒"
-          },
-          {
-            "name": "代理者的收割",
-            "desc": "施放时间减少<br/>取消僵直<br/>队员生命值和魔法值恢复量增加",
-            "explain": "[神光十字]<br/>施放前僵直 -20%<br/><br/>可以强制中断转职技能的施放后僵直并施放 (觉醒技能除外)<br/><br/>光之气息流出的裂痕功能强化<br/>- 光杖地面裂痕使队友恢复20%的生命值和魔法值<br/>- 光杖地面裂痕持续时间 +5秒"
-          }
-        ]
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 18954, 20876, 22800, 24722, 26646, 28568, 30491, 32414, 34337, 36260, 38183, 40104, 42029, 43950, 45875, 47796, 49719, 51642, 53565, 55488, 57411, 59333, 61257, 63179, 65103, 67025, 68949, 70871, 72794, 74717, 76640, 78561, 80486, 82407, 84332, 86253, 88178, 90099, 92022, 93945, 95868, 97791, 99714, 101636, 103560, 105483, 107406, 109329, 111251, 113175, 115097, 117021, 118943, 120867, 122789, 124712, 126635, 128558, 130479, 132404, 134325, 136250, 138171, 140096, 142017, 143940, 145863, 147786, 149709, 151632]# noqa: E501
-    hit0 = 1 #TODO
+    # 捶击攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 冲击波攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 增益效果持续时间增加 : {value2}秒
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [范围信息]
+    # 光杖大小比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-    data1 = [0, 28431, 31316, 34199, 37083, 39968, 42852, 45737, 48620, 51506, 54389, 57273, 60158, 63042, 65927, 68810, 71696, 74580, 77463, 80348, 83234, 86117, 89001, 91884, 94770, 97655, 100538, 103422, 106307, 109191, 112076, 114960, 117845, 120728, 123612, 126498, 129381, 132266, 135149, 138035, 140919, 143802, 146687, 149573, 152456, 155340, 158225, 161109, 163994, 166877, 169763, 172646, 175530, 178415, 181299, 184184, 187067, 189951, 192837, 195720, 198605, 201491, 204374, 207258, 210141, 213027, 215912, 218795, 221679, 224564, 227448]# noqa: E501
-    hit1 = 1 #TODO
+    def vp_1(self):
+        """
+        [神光十字]\n
+        神光十字攻击强化\n
+        - 大小 +50%\n
+        - 生成神光十字时击退附近敌人\n
+        - 删除撞击攻击\n
+        - 总攻击力相同\n
+        - 冲击波攻击使敌人进入眩晕状态3秒\n
+        光之气息流出的裂痕功能强化\n
+        - 光杖地面裂痕使队友恢复20%的生命值和魔法值\n
+        - 光杖地面裂痕持续时间 +5秒
+        """
+        ...
 
-    STRINT = [0, 78, 84, 90, 96, 102, 108, 114, 120, 126, 132, 138, 144, 150, 156, 162, 168, 174, 180, 186, 192, 198, 204, 210, 216, 222, 228, 234, 240, 246, 252, 258, 264, 270, 276, 282, 288, 294, 300, 306, 312, 318, 324, 330, 336, 342, 348, 354, 360, 366, 372, 378, 384, 390, 396, 402, 408, 414, 420, 426, 432, 438, 444, 450, 456, 462, 468, 474, 480, 486, 492]# noqa: E501
+    def vp_2(self):
+        """
+        [神光十字]\n
+        施放前僵直 -20%\n
+        可以强制中断转职技能的施放后僵直并施放 (觉醒技能除外)\n
+        光之气息流出的裂痕功能强化\n
+        - 光杖地面裂痕使队友恢复20%的生命值和魔法值\n
+        - 光杖地面裂痕持续时间 +5秒
+        """
+        ...
 
-# 新生圣歌 재생의 아리아
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/03bb5314ffd41e9458d67ef924fef38f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill20(ActiveBufferSkill):
-    name = "新生圣歌"
+# 新生颂歌
+# priest_female/crusader_female/03bb5314ffd41e9458d67ef924fef38f
+# 0c1b401bb09241570d364420b3ba3fd7/03bb5314ffd41e9458d67ef924fef38f
+class Skill36(ActiveBufferSkill):
+    """
+        颂唱新生颂歌， 为范围内队友解除异常状态， 并恢复队友的生命值。\n
+        [新生颂歌]持续时间内， 减少光明骑士所受伤害， 并增加所有异常状态抗性。\n
+        [新生颂歌]施放过程中， 可以用方向键移动； 按跳跃键会终止[新生颂歌]。\n
+        施放过程中， 可以施放[圣光守护]、 [神之教诲]、 [圣洁之翼]、 [圣佑之阵]、 [圣言十字]； 学习[大天使的庇护]后， 可以施放[治愈祈祷]； 学习圣天使之光后， 可以施放[洗礼之光]。\n
+        学习[大天使的庇护]后， 增加[新生颂歌]范围。
+    """
+    name = "新生颂歌"
     learnLv = 45
     masterLv = 1
     maxLv = 11
-    position = 2 #TODO
+    position = 2
     rangeLv = 2
     cube = 2
     cd = 40
     mp = [350, 2940]
     uuid = "03bb5314ffd41e9458d67ef924fef38f"
+    hasVP = False
     hasUP = True
-    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+
     upType = "heal"
 
+    # 颂歌持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 解除异常状态数量上限 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 生命值恢复量 : 每秒<pnumber>%
+    # 所受伤害减少率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 所有异常状态抗性增加 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 颂歌范围 : {value4}px
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
-# 虔诚信念 신실한 열정
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/1dad88963abdc96b091fcab185a8820d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill21(PassiveBufferSkill):
+# 虔诚信念
+# priest_female/crusader_female/1dad88963abdc96b091fcab185a8820d
+# 0c1b401bb09241570d364420b3ba3fd7/1dad88963abdc96b091fcab185a8820d
+class Skill37(PassiveBufferSkill):
+    """
+        光明歌颂者的虔诚信念感动了周围的队友， 增加队友的力量、 智力、 体力、 精神、 攻击速度、 移动速度和施放速度， 并增加本人的基本攻击力和技能攻击力。\n
+        光明歌颂者的技能命中敌人时， 可以延长队友携带的增益效果持续时间。
+    """
     name = "虔诚信念"
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 7 #TODO
+    position = 7
     rangeLv = 3
     uuid = "1dad88963abdc96b091fcab185a8820d"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    STRINT = [0, 14, 37, 59, 82, 104, 127, 149, 172, 194, 217, 239, 262, 284, 307, 329, 352, 374, 397, 419, 442, 464, 487, 509, 532, 554, 577, 599, 622, 644, 667, 689, 712, 734, 757, 779, 802, 824, 847, 869, 892, 914, 937, 959, 982, 1004, 1027, 1049, 1072, 1094, 1117]# noqa: E501
-    hit0 = 1 #TODO
+    # 力量/智力增加 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 体力/精神增加 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 攻击/移动/施放速度增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 增益效果持续时间增加 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 基本攻击力和技能攻击力增加率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [范围信息]
+    # 光环范围 : {value5}px
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    data0 = [0, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31.5, 33, 34.5, 36, 37.5, 39, 40.5, 42, 43.5, 45, 46.5, 48, 49.5, 51, 52.5, 54, 55.5, 57, 58.5, 60, 61.5, 63, 64.5, 66, 67.5, 69, 70.5, 72, 73.5, 75]# noqa: E501
-
-    INT = STRINT
+    STRINT = data0
+    INT = data0
 
     associate = [
         {"data":INT,"type":"$+INT","ratio":1}
     ]
 
-
-# 圣光天启 크럭스 오브 빅토리아
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/bb34e8854a93fd250347a1c64119f7ab?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill22(ActiveBufferSkill):
+# 圣光天启
+# priest_female/crusader_female/bb34e8854a93fd250347a1c64119f7ab
+# 0c1b401bb09241570d364420b3ba3fd7/bb34e8854a93fd250347a1c64119f7ab
+class Skill38(ActiveBufferSkill):
+    """
+        光明歌颂者打开蕴含神力的圣书， 神圣的气息会飞向队友。 神圣的气息会祝福我军， 增加力量、 智力、 攻击速度、 移动速度和施放速度， 效果持续一定时间。\n
+        此后， 胜利的光杖出现在空中， 光明歌颂者会抓取光杖后插在地面。 光杖会喷发耀眼的光芒， 光芒碰到敌人后会造成多段伤害， 之后光芒爆炸。\n
+        技能施放过程中进入无敌状态； 胜利的光杖消失之前， 我军获得[勇气颂歌]的攻击力增幅效果。\n
+        力量、 智力的增加量随施放者的智力值增加而增多； 力量、 智力提升效果对自身无效。\n
+        效果不与光明骑士 (男) 的[天启之光]和小魔女的[开幕！ 人偶剧场]、  缪斯的[梦想的舞台]、 协战师的[强袭策略 : 区域肃清]的效果叠加。
+    """
     name = "圣光天启"
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 6 #TODO
+    position = 6
     rangeLv = 5
     cube = 5
     cd = 170
     mp = [1200, 10080]
-    buffType = 'awake'
     uuid = "bb34e8854a93fd250347a1c64119f7ab"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    STRINT = [0, 43, 57, 74, 91, 111, 131, 153, 176, 201, 228, 255, 284, 315, 346, 379, 414, 449, 487, 526, 567, 608, 651, 696, 741, 789, 838, 888, 939, 993, 1047, 1103, 1160, 1219, 1278, 1340, 1403, 1467, 1533, 1600, 1668, 1736, 1804, 1872, 1940, 2008, 2076, 2144, 2212, 2280, 2348]# noqa: E501
+    buffType = 'awake'
 
-    data0 = [0, 2277, 2805, 3334, 3862, 4390, 4918, 5447, 5975, 6503, 7031, 7560, 8088, 8616, 9145, 9673, 10201, 10729, 11259, 11787, 12315, 12843, 13372, 13900, 14428, 14957, 15485, 16013, 16541, 17070, 17598, 18126, 18654, 19183, 19711, 20239, 20767, 21296, 21824, 22352, 22881, 23409, 23937, 24465, 24994, 25522, 26050, 26578, 27107, 27635, 28162]# noqa: E501
-    hit0 = 16
+    # 增益效果持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 力量/智力增加 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 攻击/移动/施放速度增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 多段攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 多段攻击间隔 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 爆炸攻击力 : {value5}
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    data1 = [0, 67694, 83391, 99089, 114786, 130483, 146181, 161877, 177574, 193271, 208969, 224666, 240363, 256061, 271758, 287455, 303153, 318850, 334547, 350244, 365943, 381640, 397337, 413035, 428732, 444429, 460125, 475823, 491520, 507217, 522915, 538612, 554309, 570007, 585704, 601401, 617098, 632796, 648493, 664190, 679888, 695585, 711282, 726980, 742677, 758374, 774070, 789768, 805465, 821162, 836860]# noqa: E501
-    hit1 = 1 #TODO
+    STRINT = data1
 
-# 忏悔重击 리펜텐스 스매시
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/27bade584bb42fef68148d3a0b72bace?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill23(ActiveSkill):
+# 苦修
+# priest_female/crusader_female/2a0a39184de92acf1c1375e00b77404c
+# 0c1b401bb09241570d364420b3ba3fd7/2a0a39184de92acf1c1375e00b77404c
+class Skill39(PassiveSkill):
+    """
+        掌握该技能后， 力量和物理暴击率会调整为与智力和魔法暴击率相同的数值。\n
+        [苦修后获得的这股力量， 只为守护你而使用。]
+    """
+    name = "苦修"
+    learnLv = 50
+    masterLv = 1
+    maxLv = 1
+    position = 0 #TODO
+    rangeLv = 3
+    uuid = "2a0a39184de92acf1c1375e00b77404c"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+
+
+# 忏悔重击
+# priest_female/crusader_female/27bade584bb42fef68148d3a0b72bace
+# 0c1b401bb09241570d364420b3ba3fd7/27bade584bb42fef68148d3a0b72bace
+class Skill40(ActiveSkill):
+    """
+        使用神圣之力， 生成巨大的神光惩戒， 大幅度挥动两次光杖。\n
+        被击中的敌人会被拽到的前方。\n
+        命中敌人时， 可强制中断并施放[神光惩戒]、 [神光十字]；[神光惩戒]、 [神光十字]命中敌人时， 可强制中断并施放[忏悔重击]。
+    """
     name = "忏悔重击"
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 6 #TODO
+    position = 6
     rangeLv = 2
     cube = 2
     cd = 30
     mp = [400, 1000]
     uuid = "27bade584bb42fef68148d3a0b72bace"
-
     hasVP = True
-    vps = [
-          {
-            "name": "光之祈祷",
-            "desc": "可多次发动<br/>范围增加<br/>强化聚集敌人效果",
-            "explain": "[忏悔重击]<br/>变更为可填充2次的技能<br/>- 每次填充冷却时间 : 15秒<br/>- 单次攻击力 -50%<br/><br/>神光十字攻击强化<br/>- 光杖大小 +30%<br/>- 即使是无法抓取的敌人也会被吸附过来<br/>- 第二次挥击命中时， 引发光之爆炸<br/>- 光之爆炸攻击力 : 第二次挥击攻击力的11%<br/>- 总攻击力相同<br/><br/>[圣光天启]<br/>满足以下条件时当前冷却时间减少1秒 (最多25秒)<br/>- [圣光灌注] : 属性伤害量增加效果持续5秒时<br/>- [虔诚信念] : 增益效果持续时间更新效果发动时<br/>- [新生颂歌] : 对队友施加恢复效果时<br/>- [圣光普照] : 对队友施加恢复效果时"
-          },
-          {
-            "name": "命途终章",
-            "desc": "施放时间减少<br/>取消僵直",
-            "explain": "[忏悔重击]<br/>只进行第2次挥击攻击<br/>- 不再吸附敌人<br/>- 总攻击力相同<br/><br/>可以强制中断施放后僵直并施放转职技能 (觉醒技能除外)<br/><br/>[圣光天启]<br/>满足以下条件时当前冷却时间减少1秒 (最多25秒)<br/>- [圣光灌注] : 属性伤害量增加效果持续5秒时<br/>- [虔诚信念] : 增益效果持续时间更新效果发动时<br/>- [新生颂歌] : 对队友施加恢复效果时<br/>- [圣光普照] : 对队友施加恢复效果时"
-          }
-        ]
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 16059, 17690, 19319, 20948, 22575, 24204, 25835, 27464, 29093, 30722, 32351, 33981, 35610, 37239, 38868, 40497, 42128, 43757, 45386, 47015, 48644, 50274, 51903, 53532, 55161, 56790, 58421, 60050, 61679, 63308, 64937, 66567, 68196, 69824, 71453, 73082, 74712, 76341, 77970, 79599, 81228, 82859, 84488, 86117, 87746, 89375, 91005, 92634, 94263, 95892]# noqa: E501
-    hit0 = 1 #TODO
+    # 第一击攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 第二击攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [范围信息]
+    # 光杖大小比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    data1 = [0, 24089, 26532, 28977, 31421, 33864, 36308, 38753, 41196, 43641, 46083, 48527, 50972, 53415, 55860, 58302, 60747, 63191, 65636, 68079, 70521, 72966, 75410, 77855, 80298, 82742, 85185, 87630, 90074, 92519, 94961, 97404, 99849, 102293, 104738, 107180, 109625, 112068, 114513, 116957, 119399, 121844, 124287, 126732, 129176, 131619, 134063, 136508, 138951, 141396, 143838]# noqa: E501
-    hit1 = 1 #TODO
+    def vp_1(self):
+        """
+        [忏悔重击]\n
+        变更为可填充2次的技能\n
+        - 每次填充冷却时间 : 15秒\n
+        - 单次攻击力 -50%\n
+        神光十字攻击强化\n
+        - 光杖大小 +30%\n
+        - 可以吸附无法抓取的敌人\n
+        - 第2次挥击命中时， 引发光之爆炸\n
+        - 光之爆炸攻击力 : 第2次挥击攻击力的11%\n
+        - 总攻击力相同\n
+        [圣光天启]\n
+        满足以下条件时当前冷却时间减少1秒 (最多25秒)\n
+        - [圣光灌注] : 属性伤害量增加效果持续5秒时\n
+        - [虔诚信念] : 增益效果持续时间更新效果发动时\n
+        - [新生颂歌] : 对队友施加恢复效果时\n
+        - [圣光普照] : 对队友施加恢复效果时
+        """
+        ...
 
-    def effect(self, old, new):
-        if self.vp > 0:
-            self.associate = [{"type":"+cdCut","data":[0]+[25]*self.maxLv,"skills":["圣光天启"],"ratio":1}]
-        return super().effect(old, new)
+    def vp_2(self):
+        """
+        [忏悔重击]\n
+        仅发动第2次挥击攻击\n
+        - 不再吸附敌人\n
+        - 总攻击力相同\n
+        可以强制中断施放后僵直并施放转职技能 (觉醒技能除外)\n
+        [圣光天启]\n
+        满足以下条件时当前冷却时间减少1秒 (最多25秒)\n
+        - [圣光灌注] : 属性伤害量增加效果持续5秒时\n
+        - [虔诚信念] : 增益效果持续时间更新效果发动时\n
+        - [新生颂歌] : 对队友施加恢复效果时\n
+        - [圣光普照] : 对队友施加恢复效果时
+        """
+        ...
 
-# 圣洁之翼 대천사의 축복
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/04883563896fe1adac7505c6146b5f59?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill24(ActiveBufferSkill):
+# 圣洁之翼
+# priest_female/crusader_female/04883563896fe1adac7505c6146b5f59
+# 0c1b401bb09241570d364420b3ba3fd7/04883563896fe1adac7505c6146b5f59
+class Skill41(ActiveBufferSkill):
+    """
+        祝福周围的队友， 受到祝福的队友会增加力量、 智力、 攻击速度、 移动速度和施放速度， 效果持续一定时间。\n
+        祝福持续时间内， 再次按技能键时， 会在受到祝福的队友和自身周围引发强烈的爆炸， 给敌人造成伤害。\n
+        祝福持续时间内， 当自身技能命中敌人时， 可以获得大天使的气息， 凝聚的大天使的气息越多， 爆炸大小越大。\n
+        在施放[勇气颂歌]、 [新生颂歌]过程中， 可以使用[圣洁之翼]。\n
+        力量和智力增加效果仅适用于队友， 并不适用于自身。
+    """
     name = "圣洁之翼"
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 2
     cube = 2
     cd = 50
     mp = [860, 1500]
     uuid = "04883563896fe1adac7505c6146b5f59"
-    hasUP = True
-    # custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     hasVP = True
-    vps = [
-          {
-            "name": "神明祝言",
-            "desc": "范围增加<br/>攻击次数增加",
-            "explain": "[圣洁之翼]<br/>以大天使的气息最大叠加的状态施放<br/>- 爆炸范围 +40%<br/><br/>受到祝福的队友获得以下效果<br/>- 生成光电护盾， 持续10秒<br/>- 对周围的敌人造成光属性多段伤害<br/>- 光电护盾的攻击力 : 爆炸攻击力的1%<br/>- 总攻击力相同<br/><br/>[神之教诲]<br/>增益持续效果强化<br/>- 切换房间后效果也不会消失<br/>- 增益效果持续时间 +2秒"
-          },
-          {
-            "name": "吉布里尔的圣翼",
-            "desc": "追踪<br/>可以再次跳跃<br/>可以减少下降速度",
-            "explain": "[圣洁之翼]<br/>删除追加输入技能键功能和爆炸攻击<br/><br/>受到祝福的状态下攻击时， 吉普莉尔发动大天使的审判<br/>- 大天使的审判发动次数 : 总共10次<br/>- 大天使的审判发动冷却时间 : 0.5秒<br/>- 总攻击力相同<br/><br/>强化自身增益效果<br/>- 在空中按跳跃键可再跳跃一次<br/>- 在空中长按技能键时， 下降速度减少<br/><br/>[神之教诲]<br/>增益持续效果强化<br/>- 切换房间后效果也不会消失<br/>- 增益效果持续时间 +2秒"
-          }
-        ]
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 68789, 75767, 82745, 89723, 96704, 103682, 110660, 117638, 124616, 131597, 138575, 145553, 152531, 159509, 166488, 173468, 180446, 187424, 194402, 201381, 208359, 215339, 222317, 229295, 236274, 243252, 250230, 257210, 264188, 271167, 278145, 285123, 292103, 299081, 306060, 313038, 320016, 326994, 333975, 340953, 347931, 354909, 361887, 368868, 375846, 382824, 389802, 396780, 403760, 410739]# noqa: E501
-    hit0 = 1
+    # 祝福持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 力量和智力增加 (队友) : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 所有速度增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 爆炸攻击力 (自身) : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 爆炸攻击力 (队友) : {value4}
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 大天使的气息叠加数量上限 : {value5}
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # [范围信息]
+    # 祝福有效范围 : {value6}px
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # 爆炸大小比率 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7)
 
-# 大天使的庇护 라파엘의 축복
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/dbf8b30c7057032af0d68fcfa289fdae?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill25(PassiveBufferSkill):
+    def vp_1(self):
+        """
+        [圣洁之翼]\n
+        以大天使的气息最大叠加的状态施放\n
+        - 爆炸范围 +40%\n
+        受到祝福的队友获得以下效果\n
+        - 生成光电护盾， 持续10秒\n
+        - 对周围的敌人造成光属性多段伤害\n
+        - 光电护盾的攻击力 : 爆炸攻击力的1%\n
+        - 总攻击力相同\n
+        [神之教诲]\n
+        增益持续效果强化\n
+        - 切换房间后效果也不会消失\n
+        - 增益效果持续时间 +2秒
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [圣洁之翼]\n
+        删除追加输入技能键功能和爆炸攻击\n
+        受到祝福的状态下攻击时， 吉普莉尔发动大天使的审判\n
+        - 大天使的审判发动次数 : 总共10次\n
+        - 大天使的审判发动冷却时间 : 0.5秒\n
+        - 总攻击力相同\n
+        强化自身增益效果\n
+        - 在空中按跳跃键可再跳跃一次\n
+        - 在空中长按技能2键时， 下降速度减少\n
+        - 스킬2키는 기본적으로 'Space'로 지정되어 있으며, 게임 설정창에서 단축키 설정으로 변경 가능\n
+        [神之教诲]\n
+        增益持续效果强化\n
+        - 切换房间后效果也不会消失\n
+        - 增益效果持续时间 +2秒
+        """
+        ...
+
+# 大天使的庇护
+# priest_female/crusader_female/dbf8b30c7057032af0d68fcfa289fdae
+# 0c1b401bb09241570d364420b3ba3fd7/dbf8b30c7057032af0d68fcfa289fdae
+class Skill42(PassiveBufferSkill):
+    """
+        炽天使得到大天使的庇护， 增加智力、 魔法暴击率和暴击伤害， [勇气颂歌]、 [新生颂歌]、 [复苏之光]技能得到加强。\n
+        神力与信念超越人类的境界， 当生命值变为0时， 大天使会出现进行复活。\n
+        施放[勇气颂歌]、 [新生颂歌]过程中， 可以施放[治愈祈祷]。\n
+        复活有冷却时间， 复活自身的功能可以在已学的技能栏中通过鼠标右击进行开启/关闭切换。
+    """
     name = "大天使的庇护"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 2 #TODO
+    position = 2
     rangeLv = 3
     uuid = "dbf8b30c7057032af0d68fcfa289fdae"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    INT = [0, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640]# noqa: E501
-
-    data0 = [0, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114]
+    # 智力增加 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 魔法暴击增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 暴击伤害增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [勇气颂歌]、 [新生颂歌]、 [复苏之光]范围增加率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 自身复活时恢复生命值 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 自身复活冷却时间 : {value5}秒
+    data5 = get_data(f'{prefix}/{uuid}', 5)
 
     associate = [
-        {"data":INT ,"type":"$+INT","ratio":1}
+        {"data":data0 ,"type":"$+INT","ratio":1}
     ]
 
-# 圣佑之阵 우리엘의 결계
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/5152480fdde81362575a488d4cec4af9?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill26(ActiveBufferSkill):
+# 圣佑之阵
+# priest_female/crusader_female/5152480fdde81362575a488d4cec4af9
+# 0c1b401bb09241570d364420b3ba3fd7/5152480fdde81362575a488d4cec4af9
+class Skill43(ActiveBufferSkill):
+    """
+        布置大天使圣佑之阵， 从危险中保护自己和队友， 并给予敌人造成伤害。\n
+        结界将持续一定时间， 范围内队友获得霸体状态， 并且提高攻击速度、 移动速度、 施放速度， 减少所受伤害； 施放者进入无敌状态。\n
+        减伤效果与圣光守护的减伤效果不能重叠， 两者当中数值更高的一个会生效。\n
+        施放[勇气颂歌]、 [新生颂歌]过程中， 可以使用[圣佑之阵]。
+    """
     name = "圣佑之阵"
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 4 #TODO
+    position = 4
     rangeLv = 2
     cube = 3
     cd = 50
     mp = [580, 4500]
-    damage = True
     uuid = "5152480fdde81362575a488d4cec4af9"
     hasVP = True
-    vps = [
-          {
-            "name": "乌列尔的夙愿",
-            "desc": "范围增加<br/>取消僵直<br/>为队员赋予无敌效果",
-            "explain": "[圣佑之阵]<br/>结界范围 +35%<br/><br/>可以强制中断结界生成后僵直并移动或施放技能<br/><br/>结界内的队友获得以下效果<br/>- 进入无敌状态1.5秒<br/>- 每次技能仅发动1次"
-          },
-          {
-            "name": "崇高誓言",
-            "desc": "可以在其他动作中施放<br/>强化自身速度增益<br/>为队员赋予无敌效果",
-            "explain": "[圣佑之阵]<br/>施放转职技能时可以发动 (觉醒技能除外)<br/><br/>结界持续时间变更为1.5秒<br/><br/>自身适用的攻击/移动/施放速度增加量 +200%<br/><br/>结界内的队友获得以下效果<br/>- 进入无敌状态1.5秒<br/>- 每次技能仅发动1次"
-          }
-        ]
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 86713, 95510, 104307, 113104, 121901, 130698, 139495, 148292, 157089, 165887, 174683, 183481, 192277, 201075, 209871, 218669, 227465, 236263, 245059, 253857, 262653, 271451, 280248, 289045, 297842, 306639, 315436, 324233, 333030, 341827, 350624, 359421, 368218, 377016, 385812, 394610, 403406, 412204, 421000, 429798, 438594, 447392, 456188, 464986, 473782, 482580, 491377, 500174, 508971, 517768]# noqa: E501
-    hit0 = 1 #TODO
+    # 结界持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 结界攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 攻击、 移动、 施放速度增加 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 队员所受伤害减少率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 结界范围 : {value4}px
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
-# 圣光普照 미라클 샤인
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/2391a27457b5a8c6fa4b4670a91bdd11?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill27(ActiveBufferSkill):
+    def vp_1(self):
+        """
+        [圣佑之阵]\n
+        结界范围 +35%\n
+        可以强制中断结界生成后僵直并移动或施放技能\n
+        结界内的队友获得以下效果\n
+        - 进入无敌状态1.5秒\n
+        - 每次技能仅发动1次
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [圣佑之阵]\n
+        施放转职技能时可以发动 (觉醒技能除外)\n
+        结界持续时间变更为1.5秒\n
+        自身适用的攻击/移动/施放速度增加量 +200%\n
+        结界内的队友获得以下效果\n
+        - 进入无敌状态1.5秒\n
+        - 每次技能仅发动1次
+        """
+        ...
+
+# 圣光普照
+# priest_female/crusader_female/2391a27457b5a8c6fa4b4670a91bdd11
+# 0c1b401bb09241570d364420b3ba3fd7/2391a27457b5a8c6fa4b4670a91bdd11
+class Skill44(ActiveBufferSkill):
+    """
+        利用奇迹之光治疗队友并攻击敌人。\n
+        圣光普照命中队友或敌人时， 不分敌我进行游移， 在队友身上产生回血效果， 给敌人造成多段攻击伤害。\n
+        首次目标范围内没有队友或敌人时， 不会施放圣光普照； 没有队友，只存在一名敌人时， 圣光普照的攻击力得到强化。
+    """
     name = "圣光普照"
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cube = 5
     cd = 40
     mp = [860, 1500]
     uuid = "2391a27457b5a8c6fa4b4670a91bdd11"
     hasVP = True
-    vps = [
-          {
-            "name": "光耀加身",
-            "desc": "施放时间减少<br/>范围增加",
-            "explain": "[圣光普照]<br/>施放时， 召唤米迦勒的圣光球<br/>- 持续3秒， 向范围内的敌人与队友发射1次奇迹之光<br/>- 奇迹之光命中的敌人与队友适用圣光普照效果<br/>- 删除攻击个体限制， 删除仅为1名敌人时的伤害增幅功能<br/><br/>范围 +45%"
-          },
-          {
-            "name": "米迦勒的奏鸣",
-            "desc": "施放时间减少<br/>可以在施放颂歌时使用",
-            "explain": "[圣光普照]<br/>施放时， 召唤米迦勒的圣光球<br/>- 持续3秒， 向范围内的敌人与队友发射1次奇迹之光<br/>- 奇迹之光命中的敌人与队友适用圣光普照效果<br/>- 删除攻击个体限制， 删除仅为1名敌人时的伤害增幅功能<br/><br/>攻击和恢复次数上限 -50%<br/>- 总攻击力/恢复量相同<br/><br/>可以在施放以下技能过程中施放该技能<br/>- [勇气颂歌]<br/>- [新生颂歌]"
-          }
-        ]
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 8237, 9073, 9909, 10745, 11580, 12416, 13251, 14087, 14923, 15759, 16595, 17431, 18266, 19101, 19937, 20773, 21609, 22445, 23281, 24116, 24951, 25787, 26623, 27459, 28295, 29131, 29966, 30801, 31637, 32473, 33309, 34145, 34981, 35817, 36651, 37487, 38323, 39159, 39995, 40831, 41667, 42501, 43337, 44173, 45009, 45845, 46681, 47517, 48352, 49187]# noqa: E501
-    hit0 = 1
+    # 光线最大移动次数 : {value0}次
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 队员生命值恢复量 : <pnumber2>%
+    # 队员生命值恢复间隔 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 队员生命值恢复次数 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 多段攻击攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 多段攻击间隔 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 多段攻击次数上限 : {value5}
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 一个敌人时的攻击力增加率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # [范围信息]
+    # 首次索敌范围 (X轴) : {value7}px
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    # 首次索敌范围 (Y轴) : {value8}px
+    data8 = get_data(f'{prefix}/{uuid}', 8)
 
-    # 单体怪物增伤
-    skillRation = 1.1
+    def vp_1(self):
+        """
+        [圣光普照]\n
+        施放时， 召唤米迦勒的圣光球\n
+        - 持续3秒， 向范围内的敌人与队友发射1次奇迹之光\n
+        - 奇迹之光命中的敌人与队友适用圣光普照效果\n
+        - 删除攻击个体限制， 删除仅为1名敌人时的伤害增幅功能\n
+        范围 +45%
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [圣光普照]\n
+        施放时， 召唤米迦勒的圣光球\n
+        - 持续3秒， 向范围内的敌人与队友发射1次奇迹之光\n
+        - 奇迹之光命中的敌人与队友适用圣光普照效果\n
+        - 删除攻击个体限制， 删除仅攻击1名敌人时的伤害增幅功能\n
+        攻击和恢复次数上限 -50%\n
+        - 总攻击力/恢复量相同\n
+        可以在施放以下技能过程中施放该技能\n
+        - [勇气颂歌]\n
+        - [新生颂歌]
+        """
+        ...
 
-# 救赎彼岸 : 惩戒圣枪 성창 : 브류나크
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/5892d1fa4462e561ac8f8d2c74892b0a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill28(ActiveSkill):
+# 救赎彼岸 : 惩戒圣枪
+# priest_female/crusader_female/5892d1fa4462e561ac8f8d2c74892b0a
+# 0c1b401bb09241570d364420b3ba3fd7/5892d1fa4462e561ac8f8d2c74892b0a
+class Skill45(ActiveSkill):
+    """
+        用蕴含神力的圣枪“布里欧纳克”歼灭邪恶。\n
+        施放技能时， 用圣光长矛穿透敌人， 然后飞向天空， 朝地面投掷圣枪布里欧纳克。\n
+        圣枪布里欧纳克撞到敌人后造成魔法伤害， 插入地面引发巨大的爆炸， 对敌人造成强大的魔法伤害。 \n
+        施放技能时， 进入无敌状态， 被圣光长矛穿透敌人进入强制控制状态。
+    """
     name = "救赎彼岸 : 惩戒圣枪"
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 5
     cube = 10
     cd = 180
     mp = [2500, 5000]
     uuid = "5892d1fa4462e561ac8f8d2c74892b0a"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 77606, 95601, 113597, 131592, 149588, 167583, 185579, 203575, 221570, 239566, 257561, 275557, 293553, 311548, 329544, 347539, 365535, 383530, 401526, 419522, 437517, 455514, 473508, 491505, 509501, 527496, 545492, 563487, 581483, 599478, 617474, 635470, 653465, 671461, 689456, 707452, 725448, 743443, 761439, 779434, 797430, 815425, 833421, 851417, 869412, 887408, 905403, 923399, 941395, 959390]# noqa: E501
-    hit0 = 1 #TODO
+    # 长枪穿透攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 长枪爆炸攻击力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
 
-    data1 = [0, 116409, 143401, 170395, 197389, 224382, 251376, 278369, 305363, 332356, 359349, 386342, 413336, 440329, 467323, 494317, 521310, 548304, 575296, 602290, 629283, 656277, 683270, 710264, 737257, 764251, 791243, 818237, 845230, 872224, 899218, 926211, 953205, 980197, 1007191, 1034184, 1061178, 1088171, 1115165, 1142158, 1169152, 1196144, 1223138, 1250132, 1277125, 1304119, 1331112, 1358106, 1385099, 1412093, 1439085]# noqa: E501
-    hit1 = 1 #TODO
-
-# 圣天使之光 루클렌티스 엔젤
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/5cac3411ccef1af333953e0ded5e942d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill29(PassiveBufferSkill):
+# 圣天使之光
+# priest_female/crusader_female/5cac3411ccef1af333953e0ded5e942d
+# 0c1b401bb09241570d364420b3ba3fd7/5cac3411ccef1af333953e0ded5e942d
+class Skill46(PassiveBufferSkill):
+    """
+        增加智力、 基本攻击力和转职技能攻击力， 部分技能赋予特殊效果。\n
+    [胜利之矛]\n
+        不论是否蓄气， 均以最大蓄气的状态施放。\n
+    [洗礼之光]\n
+        施放[勇气颂歌]、 [新生颂歌]过程中可以使用该技能， 此时会攻击光明骑士周围的敌人。\n
+        <大天使萨菲尔， 这是我的权能。>
+    """
     name = "圣天使之光"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 3
     uuid = "5cac3411ccef1af333953e0ded5e942d"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
-    hit0 = 1 #TODO
-
-    INT = [0, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650]# noqa: E501
+    # 基本攻击力和转职技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 智力增加 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [
-        {"data":INT,"type":"$+INT","ratio":1}
+        {"data":data1,"type":"$+INT","ratio":1}
     ]
-# 圣言十字 크럭스 오브 샤피엘
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/85f7c810ad503790e8626439fe936d56?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill30(ActiveBufferSkill):
+
+# 圣言十字
+# priest_female/crusader_female/85f7c810ad503790e8626439fe936d56
+# 0c1b401bb09241570d364420b3ba3fd7/85f7c810ad503790e8626439fe936d56
+class Skill47(ActiveSkill):
+    """
+        神圣的光芒从天而降， 在前方萨菲尔的光杖插入地面， 形成圣域。\n
+        萨菲尔的光杖在一定时间内对周围敌人造成多段伤害， 然后爆炸。\n
+        可以在[勇气颂歌]与[新生颂歌]施放过程中使用； 光杖存在期间再次按技能键， 可以立即引爆光杖。\n
+        圣域内， 增加[勇气颂歌]增益效果持续时间， [新生颂歌]生命值恢复速度， [圣佑之阵]的攻击速度、 移动速度、 施放速度增加量\n
+        每施放1次技能， 只能发动一次技能强化效果。 [勇气颂歌]增益效果持续时间增加效果， 适用于发动中的颂歌增益效果， 不适用于[圣光天启]和[祈愿·天使赞歌]的[勇气颂歌]增幅效果。\n
+        <施惠于众生， 铲除邪恶>
+    """
     name = "圣言十字"
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cube = 7
     cd = 60
     mp = [960, 7200]
     uuid = "85f7c810ad503790e8626439fe936d56"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 33632, 37044, 40456, 43868, 47280, 50692, 54104, 57516, 60928, 64340, 67752, 71164, 74576, 77988, 81400, 84812, 88224, 91636, 95048, 98460, 101872, 105284, 108696, 112108, 115520, 118932, 122344, 125756, 129168, 132580, 135992, 139404, 142816, 146228, 149640, 153052, 156464, 159876, 163288, 166700, 170112, 173524, 176936, 180348, 183760, 187172, 190584, 193996, 197408, 200820]# noqa: E501
-    hit0 = 1 #TODO
+    # 光仗落下冲击波攻击力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 圣域多段攻击力 : {value1} x {value2}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 20
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 光杖爆炸攻击力 : {value3}
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
+    # [勇气颂歌]增益效果持续时间增加 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # [新生颂歌]生命值恢复速度增加 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # [圣佑之阵]所有速度增加 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
 
-    data1 = [0, 2102, 2315, 2528, 2741, 2954, 3167, 3381, 3594, 3807, 4021, 4234, 4448, 4661, 4874, 5087, 5300, 5514, 5727, 5940, 6153, 6366, 6579, 6793, 7006, 7219, 7433, 7646, 7860, 8073, 8286, 8499, 8712, 8926, 9139, 9352, 9565, 9778, 9991, 10205, 10418, 10631, 10845, 11058, 11272, 11485, 11698, 11911, 12124, 12338, 12551]# noqa: E501
-    hit1 = 1 #TODO
-
-    data2 = [0, 92489, 101872, 111255, 120639, 130021, 139404, 148787, 158171, 167553, 176936, 186319, 195703, 205086, 214468, 223851, 233235, 242618, 252000, 261383, 270767, 280150, 289532, 298915, 308299, 317682, 327064, 336447, 345831, 355214, 364596, 373979, 383363, 392746, 402128, 411511, 420895, 430278, 439661, 449043, 458427, 467810, 477193, 486576, 495959, 505342, 514725, 524108, 533491, 542874, 552257]# noqa: E501
-    hit2 = 1 #TODO
-
-# 祈愿·天使赞歌 라우스 디 안젤루스
-# https://api.neople.co.kr/df/skills/0c1b401bb09241570d364420b3ba3fd7/002cbdd9bfd0f0b970451ae8d48d029e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill31(ActiveBufferSkill):
+# 祈愿·天使赞歌
+# priest_female/crusader_female/002cbdd9bfd0f0b970451ae8d48d029e
+# 0c1b401bb09241570d364420b3ba3fd7/002cbdd9bfd0f0b970451ae8d48d029e
+class Skill48(ActiveBufferSkill):
+    """
+    化身大天使萨菲尔降临， 与7大天使一起向神咏唱赞歌。\n
+        咏唱赞歌时， 向队友施加增益效果。 赞歌结束后， 释放出灿烂光芒， 对敌人造成强大伤害。\n
+        施放时进入无敌状态， 根据关联的觉醒技能， 7大天使的演奏形态和增益效果会有所不同， 并且一定时间内[勇气颂歌]技能的勇气祝福增益效果会得到增幅。\n
+    选择[圣光天启]时\n
+        大天使吉普莉尔、 拉贵尔、 沙利叶、 雷米尔与萨菲尔一起， 出现在队友身后进行独奏并提供效果， 一定时间内提供力量和智力， 以及攻击速度、 移动速度和施放速度增益效果。\n
+        (移动到其他房间时维持效果)\n
+    选择[救赎彼岸 : 惩戒圣枪]时\n
+        7大天使进行合奏， 提供力量和智力增益效果， 效果持续一段时间。 (可以与[圣光天启]增益效果叠加， 移动到其他房间时解除效果)\n
+        萨菲尔降临、 呈现天国景象之前， 预输入[圣光天启]技能键， 可以省略施放动作使用该技能； 预输入时， [圣光天启]的攻击力以一定比率合并入[祈愿·天使赞歌]的终结攻击力中。\n
+        [三次觉醒技能]\n
+        使用三次觉醒技能时， 与关联的技能共享冷却时间。\n
+        若关联的技能还在冷却中， 则无法使用三次觉醒技能。\n
+        <全能的雷米迪奥斯啊， 请聆听我们的赞歌>
+    """
     name = "祈愿·天使赞歌"
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 5 #TODO
+    position = 5
     rangeLv = 5
     cube = 15
     cd = 290
     mp = [4025, 8055]
-    buffType = 'awakeSub'
     uuid = "002cbdd9bfd0f0b970451ae8d48d029e"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 22510, 27730, 32950, 38170, 43390, 48610, 53829, 59049, 64269, 69489, 74709, 79929, 85149, 90368, 95588, 100808, 106028, 111248, 116468, 121688, 126907, 132127, 137347, 142567, 147787, 153007, 158227, 163446, 168666, 173886, 179106, 184326, 189546, 194766, 199985, 205205, 210425, 215645, 220865, 226085, 231305, 236524, 241744, 246964, 252184, 257404, 262624, 267844, 273063, 278283]# noqa: E501
-    hit0 = 1 #TODO
+    buffType = 'awakeSub'
 
-    data2 = [0, 337659, 415956, 494254, 572552, 650851, 729149, 807447, 885745, 964042, 1042340, 1120638, 1198936, 1277234, 1355532, 1433829, 1512127, 1590425, 1668723, 1747021, 1825319, 1903616, 1981914, 2060212, 2138510, 2216808, 2295106, 2373404, 2451701, 2529999, 2608297, 2686595, 2764893, 2843190, 2921488, 2999786, 3078085, 3156382, 3234680, 3312978, 3391276, 3469574, 3547872, 3626170, 3704467, 3782766, 3861064, 3939361, 4017659, 4095957, 4174255]# noqa: E501
-    hit2 = 1 #TODO
-
-    # 绑定1觉时数据
-    data3 = [0, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158]# noqa: E501
-
-    # 绑定2觉时数据
-    data4 = [0, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73]# noqa: E501
+    # 终结多段攻击力 : {value0} x {value1}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 终结爆炸攻击力 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [选择圣光天启时效果]
+    # 增益效果持续时间 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 力量、 智力增加量 : [圣光天启]的{value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 攻击、 移动、 施放速度增加 : [圣光天启]的{value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # [选择救赎彼岸 : 惩戒圣枪时效果]
+    # 增益效果持续时间 : {value6}秒
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # 力量、 智力增加量 : [圣光天启]的{value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    # 预输入[圣光天启]时攻击力合并计算比率 : {value8}%
+    data8 = get_data(f'{prefix}/{uuid}', 8)
 
     def skillInfo(self):
         """技能信息"""
@@ -770,9 +1457,9 @@ class Skill31(ActiveBufferSkill):
         ratio = 0
         # 绑定一觉时，替代一觉
         if self.char.bindAwake == 50:
-            ratio = self.data3[self.lv] / 100
-        if self.char.bindAwake == 85:
             ratio = self.data4[self.lv] / 100
+        if self.char.bindAwake == 85:
+            ratio = self.data7[self.lv] / 100
         return prep[0] * ratio, [prep[1][0]*ratio,prep[1][1],prep[1][2]*ratio], [prep[2][0]*ratio,prep[2][1],prep[2][2]*ratio],0,self.getSkillCD()
 
 class classChange(Character):

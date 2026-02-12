@@ -83,7 +83,7 @@ class Skill3(PassiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
     # 跳跃攻击力变化率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["残影之凯贾"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["残影之凯贾"]}]
 
 # 刀魂之卡赞
 # swordman_male/soul_bender/a5fa08f5d509e6ff2ebc68856a470b5a

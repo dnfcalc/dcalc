@@ -24,7 +24,7 @@ class Skill0(PassiveSkill):
 
     # 基本攻击力变化率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["波动刻印"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["波动刻印"]}]
 
 
 # 鬼印珠
@@ -151,8 +151,8 @@ class Skill3(ActiveSkill):
     hit7 = 1
 
     associate = [
-        {"type":"*skillRation","data":data0},
-        {"type":"*skillRation","data":[0] + [20]*maxLv,"skills":["鬼印珠","不动明王阵"]},
+        {"type":"*skillDamage","data":data0},
+        {"type":"*skillDamage","data":[0] + [20]*maxLv,"skills":["鬼印珠","不动明王阵"]},
     ]
 
 
@@ -243,7 +243,7 @@ class Skill6(PassiveSkill):
     data3 = get_data(f'{prefix}/{uuid}', 3)
     # 邪光剑气多段攻击次数 : 3次
 
-    associate = [{"type":"*skillRation","data":data1,"skills":["邪光斩"]}]
+    associate = [{"type":"*skillDamage","data":data1,"skills":["邪光斩"]}]
 
 
 # 慧思 관조 관조
@@ -326,7 +326,7 @@ class Skill9(PassiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
     # 每分钟魔法值恢复增加 : {value2}
     data2 = get_data(f'{prefix}/{uuid}', 2)
-    associate = [{"type":"*skillRation","data":data1}]
+    associate = [{"type":"*skillDamage","data":data1}]
 
 
 # 冰刃 · 波动剑
@@ -696,8 +696,8 @@ class Skill16(PassiveSkill):
     data1 = [0, 16, 17.5, 19, 20.5, 22, 23.5, 25, 26.5, 28, 29.5, 31, 32.5, 34, 35.5, 37, 38.5, 40.5, 42.5, 44.5, 46.5, 48.5, 50.5, 52.5, 54.5, 56.5, 58.5, 60.5, 62.5, 64.5, 66.5, 68.5, 70.5, 72.5, 74.5, 76.5, 78.5, 80.5, 82.5, 84.5, 86.5, 88.5, 90.5, 92.5, 94.5, 96.5, 98.5, 100.5, 102.5, 104.5, 106.5]# noqa: E501
 
     associate = [
-        {"type":"*skillRation","data":data2,"exceptSkills":["地裂 · 波动剑"]},
-        {"type":"*skillRation","data":data3,"skills":["地裂 · 波动剑"]},
+        {"type":"*skillDamage","data":data2,"exceptSkills":["地裂 · 波动剑"]},
+        {"type":"*skillDamage","data":data3,"skills":["地裂 · 波动剑"]},
     ]
 
 
@@ -1039,7 +1039,7 @@ class Skill20(ActiveSkill):
     # 感电持续时间 : {value5}秒
     data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    associate = [{"type":"*skillRation","data":data2}]
+    associate = [{"type":"*skillDamage","data":data2}]
 
     def getSkillCD(self,mode=None):
         return 2.5
@@ -1180,6 +1180,8 @@ class Skill22(ActiveSkill):
     mode = ['雷针','终结']
 
     def setMode(self, mode):
+        if self.vp == 2:
+            mode = "雷针"
         if mode == "雷针":
             self.hit3 = self.hit10 = 6
             self.hit8 = self.hit9 = 0
@@ -1280,7 +1282,7 @@ class Skill24(PassiveSkill):
     data0 = get_data(f'{prefix}/{uuid}', 0)
     # [修罗邪光斩]施放时波动刻印额外生成数量 : {value1}个
     data1 = get_data(f'{prefix}/{uuid}', 1)
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"*skillDamage","data":data0}]
 
 
 # 波动慧眼 : 无为法

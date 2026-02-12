@@ -99,7 +99,7 @@ class Skill15(PassiveSkill):
     data6 = get_data(f'{prefix}/{uuid}', 6, lambda x = None: x)
 
     associate = [
-        {"data":data0,"type":"*skillRation"},
+        {"data":data0,"type":"*skillDamage"},
         {"data":data1,"type":"*power0","skills":["双重投射"]},
         {"data":data1,"type":"*power0","skills":["暗矛投射"]},
         {"data":data1,"type":"*power0","skills":["绝望枪"]},
@@ -498,7 +498,7 @@ class Skill27(PassiveSkill):
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0, lambda x = None: x)
 
-    associate = [ {"type":"*skillRation","data":data0} ]
+    associate = [ {"type":"*skillDamage","data":data0} ]
 
 # 连锁侵蚀
 # demonic_lancer/impaler/2c9d9a36c8401bddff6cdb80fab8dc24
@@ -782,7 +782,7 @@ class Skill32(PassiveSkill):
     # 暗蚀持续时间增加 : {value1}秒
     data1 = get_data(f'{prefix}/{uuid}', 1, lambda x = None: x)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 无尽侵蚀 : 缚魂
 # demonic_lancer/impaler/e0daa922b19cdc35de879e938361464e
@@ -985,7 +985,7 @@ class Skill36(PassiveSkill):
     # 暗蚀领域持续时间 : {value4}秒
     data4 = get_data(f'{prefix}/{uuid}', 4, lambda x = None: x)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 冥夜裂空
 # demonic_lancer/impaler/7ec521d063d2190e1fcc5bd229af9bcf
@@ -1184,7 +1184,7 @@ class Skill40(PassiveSkill):
     # 总投掷次数 : 15次
     # 绝望枪攻击力 : 原有[绝望枪]投掷魔枪攻击力的60%
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 虚空碎灭
 # demonic_lancer/impaler/527cdc3ecca985e18ef819d456532b26

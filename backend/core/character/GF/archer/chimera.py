@@ -74,7 +74,7 @@ class Skill2(PassiveSkill):
     # 跳跃攻击力变化率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["华丽回收"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["华丽回收"]}]
 
 # 肃静！
 # archer/chimera/e2cfb515fe293cf121a649fcc4bab84b
@@ -337,8 +337,8 @@ class Skill16(ActiveSkill):
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [
-        {"type":"*skillRation","data":data0},
-        {"type":"*skillRation","data":data1,"exceptSkills":["华丽回收"]},
+        {"type":"*skillDamage","data":data0},
+        {"type":"*skillDamage","data":data1,"exceptSkills":["华丽回收"]},
     ]
 
 # 空翻刃袭
@@ -484,7 +484,7 @@ class Skill21(PassiveSkill):
     # 移动速度增加率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [ {"type":"*skillRation","data":data0} ]
+    associate = [ {"type":"*skillDamage","data":data0} ]
 
 # 土星环
 # archer/chimera/e862146efac2fce3de3a12f038f4116b
@@ -790,7 +790,7 @@ class Skill27(PassiveSkill):
     # 物理防御力增加 : {value1}
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"type":"*skillRation","data":data0} ]
+    associate = [ {"type":"*skillDamage","data":data0} ]
 
 # 重力加速度
 # archer/chimera/94c450d6214cafdc673f763badceeaf1
@@ -946,7 +946,7 @@ class Skill31(PassiveSkill):
     # 物理暴击率增加率 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"type":"*skillRation","data":data0} ]
+    associate = [ {"type":"*skillDamage","data":data0} ]
 
 # 巨镰斯诺克
 # archer/chimera/0dbdeaf846356f8b9380f8fbb8e97377
@@ -1172,7 +1172,7 @@ class Skill35(PassiveSkill):
     # 基本攻击力和技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    associate = [ {"type":"*skillRation","data":data0} ]
+    associate = [ {"type":"*skillDamage","data":data0} ]
 
 # 颠倒之浩劫
 # archer/chimera/bbc15561bec24f9c1e79e23d715b1dd2

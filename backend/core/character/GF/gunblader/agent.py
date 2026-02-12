@@ -90,7 +90,7 @@ class Skill3(PassiveSkill):
     # 跳跃攻击力变化率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["斩射"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["斩射"]}]
 
 
 
@@ -263,7 +263,7 @@ class Skill15(PassiveSkill):
     # 暴击伤害增加率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [ {"type":"*skillRation","data":data2} ]
+    associate = [ {"type":"*skillDamage","data":data2} ]
 
 # 源能护盾
 # gunblader/agent/0232c151ef3731c2dede51931a374723
@@ -800,7 +800,7 @@ class Skill30(PassiveSkill):
     # 寻敌范围增加 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 毁灭绝击
 # gunblader/agent/01c3a2fb793d293a25ed8dc7a0d70c1a
@@ -969,7 +969,7 @@ class Skill34(PassiveSkill):
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [
-        {"type":"*skillRation","data":data1},
+        {"type":"*skillDamage","data":data1},
         {"type":"+cd","data":[0] + [-1]*maxLv,"skills":["迅步突袭"],"ratio":1},
     ]
 
@@ -1151,7 +1151,7 @@ class Skill38(PassiveSkill):
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    associate = [ {"type":"*skillRation","data":data0}]
+    associate = [ {"type":"*skillDamage","data":data0}]
 
 # 夜影迷踪
 # gunblader/agent/c5a2956d8ed3af1746ed2f76ca971a09

@@ -772,7 +772,7 @@ class Skill39(PassiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [
-        {"type":"*skillRation","data":data0},
+        {"type":"*skillDamage","data":data0},
         {"type":"+cd","data":[0] + [-1]*maxLv,"skills":["鬼步"],"ratio":1},
     ]
 

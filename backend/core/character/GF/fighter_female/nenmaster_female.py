@@ -71,7 +71,7 @@ class Skill5(PassiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
     # 跳跃攻击力变化率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["念兽 : 龙虎啸"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["念兽 : 龙虎啸"]}]
 
 # 分身
 # fighter_female/nenmaster_female/f2fb27162beb0b87a7cb9af7900e95f2
@@ -278,7 +278,7 @@ class Skill24(PassiveSkill):
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [
-        {"type": "*skillRation","data":data0,"skills":["分身"],"ratio":1},
+        {"type": "*skillDamage","data":data0,"skills":["分身"],"ratio":1},
         {"type": "+cd","data":[0]+[3]*maxLv,"skills":["分身"],"ratio":1}
     ]
 
@@ -409,7 +409,7 @@ class Skill30(ActiveSkill):
 
     associate = [
         # 总共两个珠子
-        {"type":"*skillRation","data":data3,"ratio":100/2}
+        {"type":"*skillDamage","data":data3,"ratio":100/2}
     ]
 
     def getSkillCD(self,mode=None):
@@ -659,7 +659,7 @@ class Skill35(ActiveSkill):
     data16 = get_data(f'{prefix}/{uuid}', 16)
 
     associate = [
-        {"type":"*skillRation","data":data12}
+        {"type":"*skillDamage","data":data12}
     ]
 
 # 狂龙升天破
@@ -744,7 +744,7 @@ class Skill37(PassiveSkill):
     # 重新盛开所需时间 : {value5}秒
     data5 = get_data(f'{prefix}/{uuid}', 5)
 
-    associate = [{"type":"*skillRation","data":data1}]
+    associate = [{"type":"*skillDamage","data":data1}]
 
 # 千莲怒放
 # fighter_female/nenmaster_female/51a08fd0c90f0a5276cd552047fac93d
@@ -988,7 +988,7 @@ class Skill42(PassiveSkill):
     # 分身生成距离减少率 : 50%
 
     associate = [
-        {"type":"*skillRation","data":data1}
+        {"type":"*skillDamage","data":data1}
     ]
 
 # 击电奔星
@@ -1166,7 +1166,7 @@ class Skill46(PassiveSkill):
     # 念气珠发射后再次生成间隔 : {value3}秒
     data3 = get_data(f'{prefix}/{uuid}', 3)
     associate = [
-        {"type":"*skillRation","data":data0}
+        {"type":"*skillDamage","data":data0}
     ]
 
 # 天雷分身步

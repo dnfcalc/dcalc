@@ -61,7 +61,7 @@ class Skill1(PassiveSkill):
     uuid = "5a56514f35cf0270ae8d6c65f8fefd78"
     # 基本攻击力变化率 : {value0}%
     data0 = get_data(f"{prefix}/{uuid}", 0)
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["里 · 鬼剑术","空之连刃"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["里 · 鬼剑术","空之连刃"]}]
 
 # 空之连刃
 # swordman_male/weapon_master/78bd107acd474518b606be1e4fd38239
@@ -277,8 +277,8 @@ class Skill5(PassiveSkill):
         self.associate = [
             {"type":"$*PAtkP","data":data},
             {"type":"+dataplus0","data":self.data3,"skills":["里 · 鬼剑术"],"ratio":1},
-            {"type":"*skillRation","data":self.data11,"skills":["破军升龙击"]},
-            {"type":"*skillRation","data":self.data12,"skills":["猛龙断空斩"]},
+            {"type":"*skillDamage","data":self.data11,"skills":["破军升龙击"]},
+            {"type":"*skillDamage","data":self.data12,"skills":["猛龙断空斩"]},
         ]
         return super().effect(old, new)
 
@@ -681,7 +681,7 @@ class Skill14(PassiveSkill):
 
     # 基本攻击力和技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"*skillDamage","data":data0}]
 
 # 破极兵刃
 # swordman_male/weapon_master/762c4e6d030eaf0abbfe1fec2b298574
@@ -964,7 +964,7 @@ class Skill20(ActiveSkill):
     data3 = get_data(f"{prefix}/{uuid}", 3)
 
     associate = [
-        {"type":"*skillRation","data":data2,"skills":["流心 : 升","流心 : 刺","流心 : 跃"]}
+        {"type":"*skillDamage","data":data2,"skills":["流心 : 升","流心 : 刺","流心 : 跃"]}
     ]
 
 
@@ -1329,7 +1329,7 @@ class Skill25(PassiveSkill):
     # 基本攻击力和技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"*skillDamage","data":data0}]
 
 
 # 极 · 鬼剑术 (暴风式)
@@ -1368,7 +1368,7 @@ class Skill26(ActiveSkill):
     # 攻击力增加率 : {value3}%
     data3 = get_data(f'{prefix}/{uuid}', 3)
     associate = [
-        {"type":"*skillRation","data":data3,"skills":["极 · 鬼剑术 (暴风式)"]}
+        {"type":"*skillDamage","data":data3,"skills":["极 · 鬼剑术 (暴风式)"]}
     ]
 
 # 极 · 神剑术 (流星落)
@@ -1759,7 +1759,7 @@ class Skill31(PassiveSkill):
     data23 = get_data(f'{prefix}/{uuid}', 23)
 
     associate = [
-        {"type":"*skillRation","data":data0,"skills":["拔刀斩", "破军斩龙击", "极 · 鬼剑术 (暴风式)", "破空拔刀斩","极 · 神剑术 (瞬斩)", "万剑归宗", "极 · 神剑术 (无形斩)", "万剑极诣·开天斩"]},
+        {"type":"*skillDamage","data":data0,"skills":["拔刀斩", "破军斩龙击", "极 · 鬼剑术 (暴风式)", "破空拔刀斩","极 · 神剑术 (瞬斩)", "万剑归宗", "极 · 神剑术 (无形斩)", "万剑极诣·开天斩"]},
         {"type":"+power13","data":data2,"skills":["破军升龙击"]},
         {"type":"+power4","data":data3,"skills":["猛龙断空斩"]},
         {"type":"+power17","data":data4,"skills":["幻影剑舞"]},
@@ -1951,7 +1951,7 @@ class Skill34(PassiveSkill):
     data18 = get_data(f'{prefix}/{uuid}', 18)
 
     # 对流系技能存在技能形态变动，但是实际加成和其他技能一致，这里简单化处理
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"*skillDamage","data":data0}]
 
 # 极 · 神剑术 (无形斩)
 # swordman_male/weapon_master/0113c8b1306ca76d208f83f2d093dd62

@@ -97,7 +97,7 @@ class Skill2(PassiveSkill):
 
     data0 = data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["帝国剑术"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["帝国剑术"]}]
 
 
 # 招架反击
@@ -271,10 +271,10 @@ class Skill8(PassiveSkill):
 
     associate = [
         {"type":"$*PAtkP","data":data0,"weapon":["短剑"]},
-        {"type":"*skillRation","data":data1,"weapon":["短剑"]},
+        {"type":"*skillDamage","data":data1,"weapon":["短剑"]},
         {"type":"+power_sub","data":data2,"skills":["魔剑奥义"],"weapon":["短剑"]},
         {"type":"+power_sub","data":data2,"skills":["魔剑奥义"],"weapon":["短剑"]},
-        {"type":"*skillRation","data":data3,"skills":["魔剑奥义"],"weapon":["短剑"]},
+        {"type":"*skillDamage","data":data3,"skills":["魔剑奥义"],"weapon":["短剑"]},
         {"type":"*cdReduce","data":data4,"skills":["魔剑奥义"],"weapon":["短剑"]},
         ]
 
@@ -324,9 +324,9 @@ class Skill9(PassiveSkill):
 
     associate = [
         {"type":"$*PAtkP","data":data0,"weapon":["太刀"]},
-        {"type":"*skillRation","data":data1,"skills":["帝国剑术"],"weapon":["太刀"]},
-        {"type":"*skillRation","data":data2,"skills":["魔剑降临"],"weapon":["太刀"]},
-        {"type":"*skillRation","data":data6,"weapon":["太刀"]},
+        {"type":"*skillDamage","data":data1,"skills":["帝国剑术"],"weapon":["太刀"]},
+        {"type":"*skillDamage","data":data2,"skills":["魔剑降临"],"weapon":["太刀"]},
+        {"type":"*skillDamage","data":data6,"weapon":["太刀"]},
         {"type":"*cdRatio","data":data7,"weapon":["太刀"]},
         {"type":"+hit0","data":data8,"skills":["瞬影三绝斩"],"weapon":["太刀"],"ratio":1},
         {"type":"+hit3","data":data8,"skills":["瞬影三绝斩"],"weapon":["太刀"],"ratio":1},
@@ -376,9 +376,9 @@ class Skill10(PassiveSkill):
 
     associate = [
         {"type":"$*PAtkP","data":data0,"weapon":["巨剑"]},
-        {"type":"*skillRation","data":data1,"skills":["帝国剑术"],"weapon":["巨剑"]},
-        {"type":"*skillRation","data":data5,"weapon":["巨剑"]},
-        {"type":"*skillRation","data":data6,"skills":["破军旋舞斩"],"weapon":["巨剑"]},
+        {"type":"*skillDamage","data":data1,"skills":["帝国剑术"],"weapon":["巨剑"]},
+        {"type":"*skillDamage","data":data5,"weapon":["巨剑"]},
+        {"type":"*skillDamage","data":data6,"skills":["破军旋舞斩"],"weapon":["巨剑"]},
         {"type":"*power1","data":data8,"skills":["恶即斩"],"weapon":["巨剑"]},
     ]
 
@@ -427,8 +427,8 @@ class Skill11(PassiveSkill):
         {"type":"$*PAtkP","data":data0,"weapon":["钝器"]},
         {"type":"*power3","data":data3,"skills":["穿云破空剑"],"weapon":["钝器"]},
         {"type":"*power2","data":data5,"skills":["幻剑术"],"weapon":["钝器"]},
-        {"type":"*skillRation","data":data8,"weapon":["钝器"]},
-        {"type":"*skillRation","data":data7,"skills":["雷鸣千军破"],"weapon":["钝器"]},
+        {"type":"*skillDamage","data":data8,"weapon":["钝器"]},
+        {"type":"*skillDamage","data":data7,"skills":["雷鸣千军破"],"weapon":["钝器"]},
     ]
 
 # 自动招架
@@ -719,7 +719,7 @@ class Skill20(PassiveSkill):
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
     associate = [
-        {"type":"*skillRation","data":data0},
+        {"type":"*skillDamage","data":data0},
     ]
 
 
@@ -1072,7 +1072,7 @@ class Skill25(PassiveSkill):
 
     # 国服特色被动+3%
     associate = [
-        {"type":"*skillRation","data":[i + 3 if i> 0 else 0 for i in data0]},
+        {"type":"*skillDamage","data":[i + 3 if i> 0 else 0 for i in data0]},
     ]
 
 # 极 · 驭剑术 (时空斩)
@@ -1535,7 +1535,7 @@ class Skill34(PassiveSkill):
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [
-        {"type":"*skillRation","data":data0},
+        {"type":"*skillDamage","data":data0},
     ]
 
 # 誓约之引 : 万剑之巅
