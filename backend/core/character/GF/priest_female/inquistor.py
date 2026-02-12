@@ -756,11 +756,10 @@ class Skill31(ActiveSkill):
     # 爆炸大小比率 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    def 等效百分比(self, **argv):
-        char: Character = argv.get('char', {})
-        self.data0 = [0, char.get_skill_by_name("神焰洗礼").净化之焰适用()]
-        self.hit0 = 1
-        return super().等效百分比(**argv)
+    def skillInfo(self, mode: str | None = None):
+        pre = self.char.GetSkillByName("神焰洗礼")
+        cd = self.getSkillCD(mode)
+        return pre[0] * 0.3 * self.skillRation, self.skillDamage, cd
 
 
     def vp_1(self):
@@ -1336,6 +1335,6 @@ class classChange(Character):
         self.输出类型 = '物理百分比'
         self.防具精通属性 = ['力量']
         self.防具类型 = '重甲'
-        self.buff = 1.93
+        self.buff = 2.002
 
         super().__init__(equVersion, __name__)

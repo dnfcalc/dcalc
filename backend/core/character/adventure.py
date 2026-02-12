@@ -135,9 +135,9 @@ adv = [
                 'class': 'GF.priest_female.crusader_female'
                 # 'options': [{'id': 0, 'name': 'default', 'title': '奶', 'class': 'GF.priest_female.crusader_female', "open": True}, {'id': 1, 'name': 'default', 'title': '输出', 'class': 'crusader_female_carry'}],
             },
-            {'id': 1, 'name': 'inquistor', 'title': '神启·异端审判者', 'open': False},
-            {'id': 2, 'name': 'sorceress', 'title': '神启·巫女', 'open': False},
-            {'id': 3, 'name': 'mistress', 'title': '神启·诱魔者', 'open': False},
+            {'id': 1, 'name': 'inquistor', 'title': '神启·异端审判者', 'open': True, 'class': 'GF.priest_female.inquistor'},
+            {'id': 2, 'name': 'sorceress', 'title': '神启·巫女', 'open': True, 'class': 'GF.priest_female.sorceress'},
+            {'id': 3, 'name': 'mistress', 'title': '神启·诱魔者', 'open': True, 'class': 'GF.priest_female.mistress'},
             {'id': 4, 'name': 'empty', 'title': ''},
         ],
     },
