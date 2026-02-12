@@ -229,7 +229,7 @@ class Skill25(ActiveSkill):
     data6 = get_data(f'{prefix}/{uuid}', 6)
 
     associate = [
-        {"data": data4, "type": '*skillRation'},
+        {"data": data4, "type": '*skillDamage'},
         {'data': data5, 'type': '*cdReduce', 'exceptSkills': ['魔狱血刹', '血魔 · 弑天', '血魔极道 : 灭世']}
     ]
 
@@ -972,7 +972,7 @@ class Skill44(PassiveSkill):
 
     # 基本攻击力和技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
-    associate = [{"data": data0,"type": '*skillRation'}]
+    associate = [{"data": data0,"type": '*skillDamage'}]
 
 # 浴血之怒
 # swordman_male/berserker/8ec9da6f808889b63adf2680fbf1f331
@@ -1173,7 +1173,7 @@ class Skill49(PassiveSkill):
 
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
-    associate = [{"data": data0,"type": '*skillRation'}]
+    associate = [{"data": data0,"type": '*skillDamage'}]
 
 # 血魔极道 : 灭世
 # swordman_male/berserker/d59c9840f65381bde8487757f1753c71

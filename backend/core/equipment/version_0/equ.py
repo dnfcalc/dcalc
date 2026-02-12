@@ -1674,7 +1674,7 @@ def equ_102(char: CharacterProperty):
     """
     for skill in char.skills:
         if skill.learnLv == 45 and skill.damage:
-            skill.skillRation *= 1.15
+            skill.skillDamage *= 1.15
         if skill.damage and skill.cube > 0:
             skill.skillDamage *= 1.25
     if char.buffer:
@@ -1701,7 +1701,7 @@ def equ_103(char: CharacterProperty):
     """
     for skill in char.skills:
         if skill.learnLv == 45 and skill.damage:
-            skill.skillRation *= 1.15
+            skill.skillDamage *= 1.15
         if skill.damage and skill.cube > 0:
             skill.skillDamage *= 1.25
         if skill.damage and skill.cube == 0:
@@ -1732,7 +1732,7 @@ def equ_104(char: CharacterProperty):
     """
     for skill in char.skills:
         if skill.learnLv == 45 and skill.damage:
-            skill.skillRation *= 1.15
+            skill.skillDamage *= 1.15
         if skill.damage and skill.cube > 0:
             skill.skillDamage *= 1.30
         if skill.damage and skill.cube == 0:
@@ -6402,7 +6402,7 @@ def equ_923(char: CharacterProperty):
     char.SetStatus(EquEffectRatio=0.265)
     for skill in char.skills:
         if skill.learnLv <= 30 and skill.damage:
-            skill.skillRation *= 1.30
+            skill.skillDamage *= 1.30
         if skill.damage and skill.learnLv >= 35:
             skill.skillDamage *= 1.25
     pass

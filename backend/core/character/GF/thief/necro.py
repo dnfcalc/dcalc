@@ -507,7 +507,7 @@ class Skill29(ActiveSkill):
 
     def setMode(self, mode):
         if mode == "自爆":
-            self.skillRation *= 1.2
+            self.skillDamage *= 1.2
 
 # 复苏者之怨
 # thief/necro/c27418ae613c647527200a7ca17d97fd

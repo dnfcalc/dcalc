@@ -388,7 +388,7 @@ class Character(CharacterProperty):
             if min <= skill.learnLv <= max and (skill.type == 'active' or skill.damage) and skill.learnLv not in exclude:
                 skill.cdRecover += cd
 
-    def SetSkillRation(self, min=1, max=100, ratio=0, type=-1) -> None:
+    def SetSkillRation(self, min=1, max=100, ratio=1, type=-1) -> None:
         """设置技能倍率
         0 修改技能面板 1 不修改技能面板
         type: -1 全部, 0 被动, 1 主动

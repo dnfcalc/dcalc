@@ -250,8 +250,8 @@ class Skill25(PassiveSkill):
     data5 = get_data(f'{prefix}/{uuid}', 5)
 
     associate = [
-        {'data': data3, 'type': '*skillRation'},
-        {'data': data4, 'type': '*skillRation'}
+        {'data': data3, 'type': '*skillDamage'},
+        {'data': data4, 'type': '*skillDamage'}
     ]
 
 # 手雷精通
@@ -275,7 +275,7 @@ class Skill26(PassiveSkill):
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
     associate = [
-        {'type': '*skillRation', 'data': data0, 'skills': ['G-14手雷','G-35L感电手雷','G-18C冰冻手雷']},
+        {'type': '*skillDamage', 'data': data0, 'skills': ['G-14手雷','G-35L感电手雷','G-18C冰冻手雷']},
     ]
 
 
@@ -817,7 +817,7 @@ class Skill40(PassiveSkill):
     data0 = get_data(f'{prefix}/{uuid}', 0)
     # 过电流持续时间 : {value1}秒
     data1 = get_data(f'{prefix}/{uuid}', 1)
-    associate = [{'type': '*skillRation', 'data': data0}]
+    associate = [{'type': '*skillDamage', 'data': data0}]
 
 # EMP磁暴
 # gunner_female/spitfire_female/2c9d9a36c8401bddff6cdb80fab8dc24
@@ -992,7 +992,7 @@ class Skill44(PassiveSkill):
     # 基本攻击力和技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    associate = [{'type': '*skillRation', 'data': data0}]
+    associate = [{'type': '*skillDamage', 'data': data0}]
 
 # 开火
 # gunner_female/spitfire_female/9ceb0c55f40f1fc0fe0fcc65c8fee3a0
@@ -1152,7 +1152,7 @@ class Skill48(PassiveSkill):
     # 强化手雷攻击力 : 手雷攻击力的{value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [{'type': '*skillRation', 'data': data0}]
+    associate = [{'type': '*skillDamage', 'data': data0}]
 
 # 空袭战略
 # gunner_female/spitfire_female/c591d1827cfbe224031c704e21d07932

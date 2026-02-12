@@ -127,7 +127,7 @@ class Skill7(PassiveSkill):
 
     data0 = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]# noqa: E501
     associate = [
-        {'type': '*skillRation', 'data': data0, 'skills': ['G-14手雷','G-35L感电手雷','G-18C冰冻手雷']},
+        {'type': '*skillDamage', 'data': data0, 'skills': ['G-14手雷','G-35L感电手雷','G-18C冰冻手雷']},
     ]
 
 # 兵器研究 병기 숙련

@@ -3867,7 +3867,7 @@ def stone_1002(char: CharacterProperty):
     char.SetStatus(SkillAttack=0.055)
     for skill in char.skills:
         if skill.learnLv in [50, 85, 100]:
-            skill.skillRation *= 1.11
+            skill.skillDamage *= 1.11
             skill.cdRecover += 0.15
     pass
 
@@ -3959,7 +3959,7 @@ def stone_1007(char: CharacterProperty):
     char.SetStatus(SkillAttack=0.055)
     for skill in char.skills:
         if skill.learnLv in [50, 85, 100]:
-            skill.skillRation *= 1.11
+            skill.skillDamage *= 1.11
             skill.cdRecover += 0.15
     pass
 
@@ -4014,7 +4014,7 @@ def stone_1010(char: CharacterProperty):
     char.SetStatus(SkillAttack=0.055)
     for skill in char.skills:
         if skill.learnLv in [50, 85, 100]:
-            skill.skillRation *= 1.08
+            skill.skillDamage *= 1.08
             skill.cdRecover += 0.15
     pass
 
@@ -4048,7 +4048,7 @@ def stone_1012(char: CharacterProperty):
     char.SetStatus(SkillAttack=0.055)
     for skill in char.skills:
         if skill.learnLv in [50, 85, 100]:
-            skill.skillRation *= 1.08
+            skill.skillDamage *= 1.08
             skill.cdRecover += 0.15
     pass
 
@@ -4068,7 +4068,7 @@ def stone_1013(char: CharacterProperty):
     char.SetStatus(SkillAttack=0.055)
     for skill in char.skills:
         if skill.learnLv in [50, 85, 100]:
-            skill.skillRation *= 1.08
+            skill.skillDamage *= 1.08
             skill.cdRecover += 0.15
     pass
 
@@ -4102,7 +4102,7 @@ def stone_1015(char: CharacterProperty):
     char.SetStatus(SkillAttack=0.015)
     for skill in char.skills:
         if skill.learnLv == 85:
-            skill.skillRation *= 1.30
+            skill.skillDamage *= 1.30
             skill.cdRecover += 1.00
     pass
 

@@ -471,15 +471,15 @@ class Skill25(PassiveSkill):
         if mode == '失败':
             self.hit0 = 1
             self.hit1 = self.hit2 = 0
-            self.skillRation *= self.powerFail
+            self.skillDamage *= self.powerFail
         elif mode == '成功':
             self.hit1 = 1
             self.hit0 = self.hit2 = 0
-            self.skillRation *= self.powerSuccess
+            self.skillDamage *= self.powerSuccess
         elif mode == '大成功':
             self.hit2 = 1
             self.hit0 = self.hit1 = 0
-            self.skillRation *= self.powerSuccess
+            self.skillDamage *= self.powerSuccess
 
 # 改良魔法星弹
 # mage_female/witch/7cf17936a039b418660424125dc968d7
@@ -533,7 +533,7 @@ class Skill26(ActiveSkill):
     powerFail = 1.0
 
     def setMode(self, mode):
-        self.skillRation *= self.powerSuccess
+        self.skillDamage *= self.powerSuccess
 
 
 # 魔法秀
@@ -781,19 +781,19 @@ class Skill33(ActiveSkill):
         if mode == '失败':
             self.hit4 = 36
             self.hit1 = self.hit5 = self.hit6 = 0
-            self.skillRation *= self.powerFail
+            self.skillDamage *= self.powerFail
             ...
         elif mode == '成功':
             self.hit5 = 36
             self.hit1 = self.hit4 = self.hit6 = 0
-            self.skillRation *= self.powerSuccess
+            self.skillDamage *= self.powerSuccess
             ...
         elif mode == '大成功':
             # 测试为6 描述为5
             self.hit1 = 6
             self.hit6 = 36
             self.hit4 = self.hit5 = 0
-            self.skillRation *= self.powerSuccess
+            self.skillDamage *= self.powerSuccess
             ...
 
 # 熔岩药瓶
@@ -872,13 +872,13 @@ class Skill34(ActiveSkill):
         if mode == '失败':
             self.hit4 = 1
             self.hit1 = self.hit2 = 0
-            self.skillRation *= self.powerFail
+            self.skillDamage *= self.powerFail
             ...
         elif mode == '大成功':
             self.hit1 = 6
             self.hit2 = 11
             self.hit4 = 0
-            self.skillRation *= self.powerSuccess
+            self.skillDamage *= self.powerSuccess
             ...
 
 # 苍蝇拍 : 魔法禁锢
@@ -1105,14 +1105,16 @@ class Skill38(ActiveSkill):
     powerFail = 1.0
 
     def setMode(self, mode):
+        if self.vp == 2:
+            mode = "设置型"
         if mode == "设置型":
             self.hit6 = self.hit13 = 14
             self.hit10 = 1
-            self.skillRation *= self.powerSuccess
+            self.skillDamage *= self.powerSuccess
         elif mode == "乘骑型":
             self.hit6 = self.hit13 = 22
             self.hit10 = 1
-            self.skillRation *= self.powerSuccess
+            self.skillDamage *= self.powerSuccess
 
     def vp_1(self):
         """
@@ -1195,15 +1197,15 @@ class Skill39(ActiveSkill):
         if mode == "失败":
             self.hit0 = 1
             self.hit1 = self.hit2 = 0
-            self.skillRation *= self.powerFail
+            self.skillDamage *= self.powerFail
         elif mode == "成功":
             self.hit1 = 1
             self.hit0 = self.hit2 = 0
-            self.skillRation *= self.powerSuccess
+            self.skillDamage *= self.powerSuccess
         elif mode == "大成功":
             self.hit2 = 1
             self.hit0 = self.hit1 = 0
-            self.skillRation *= self.powerSuccess
+            self.skillDamage *= self.powerSuccess
 
     def vp_1(self):
         """
@@ -1307,16 +1309,16 @@ class Skill40(ActiveSkill):
         if mode == "失败":
             self.hit6 = 13
             self.hit8 = self.hit15 = self.hit17 = 0
-            self.skillRation *= self.powerFail
+            self.skillDamage *= self.powerFail
         elif mode == "成功":
             self.hit8 = 28
             self.hit6 = self.hit15 = self.hit17 = 0
-            self.skillRation *= self.powerSuccess
+            self.skillDamage *= self.powerSuccess
         elif mode == "大成功":
             self.hit15 = 48
             self.hit17 = 1
             self.hit6 = self.hit8 = 0
-            self.skillRation *= self.powerSuccess
+            self.skillDamage *= self.powerSuccess
 
     def vp_1(self):
         """
@@ -1445,13 +1447,13 @@ class Skill42(ActiveSkill):
             self.hit2 = 9
             self.hit4 = 1
             self.hit8 = self.hit9 = self.hit11 = 0
-            self.skillRation *= self.powerFail
+            self.skillDamage *= self.powerFail
         elif mode == "大成功":
             self.hit8 = 1
             self.hit9 = 47
             self.hit11 = 3
             self.hit2 = self.hit4 = 0
-            self.skillRation *= self.powerSuccess
+            self.skillDamage *= self.powerSuccess
 
     def vp_1(self):
         """
@@ -1705,7 +1707,7 @@ class Skill46(ActiveSkill):
     powerFail = 1.0
 
     def setMode(self, mode):
-        self.skillRation *= self.powerSuccess
+        self.skillDamage *= self.powerSuccess
 
     def vp_1(self):
         """
