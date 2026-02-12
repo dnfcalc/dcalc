@@ -38,7 +38,7 @@ class Skill17(PassiveSkill):
     data5 = get_data(f'{prefix}/{uuid}', 5)
 
     associate = [
-        {"data":data2,"type":"*skillRation"}
+        {"data":data2,"type":"*skillDamage"}
     ]
 
 # 蛇腹剑 : 破
@@ -231,7 +231,7 @@ class Skill24(PassiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [
-        {"data":data0,"type":"*skillRation"}
+        {"data":data0,"type":"*skillDamage"}
     ]
 
 # 蛇腹剑 : 灭
@@ -564,7 +564,7 @@ class Skill30(PassiveSkill):
     data4 = get_data(f'{prefix}/{uuid}', 4)
 
     associate = [
-        {"data":data2,"type":"*skillRation"}
+        {"data":data2,"type":"*skillDamage"}
     ]
 
 # 空绝斩 : 千刃
@@ -784,7 +784,7 @@ class Skill34(ActiveSkill):
 
     def effect(self, old, new):
         if self.vp == 1:
-            self.associate = [{"type":"*skillRation","data":[0] + [-11]*self.maxLv,"skills":["蛇腹剑 : 舞"]}]
+            self.associate = [{"type":"*skillDamage","data":[0] + [-11]*self.maxLv,"skills":["蛇腹剑 : 舞"]}]
         return super().effect(old, new)
 
 # 唤魔 : 弑神剑
@@ -837,7 +837,7 @@ class Skill35(PassiveSkill):
     data5 = get_data(f'{prefix}/{uuid}', 5)
 
     associate = [
-        {"data":data0,"type":"*skillRation","exceptSkills":["魔刃狂舞","蛇腹剑 : 缠","唤魔 : 塔莫斯之袭"]},
+        {"data":data0,"type":"*skillDamage","exceptSkills":["魔刃狂舞","蛇腹剑 : 缠","唤魔 : 塔莫斯之袭"]},
         {"data":data1,"type":"+power6","skills":["蛇腹剑 : 缠"]},
         {"data":data1,"type":"+power7","skills":["蛇腹剑 : 缠"]},
         {"data":data2,"type":"+power4","skills":["魔刃狂舞"]},
@@ -999,7 +999,7 @@ class Skill39(PassiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [
-        {"data":data0,"type":"*skillRation","exceptSkills":["蛇腹剑 : 缠"]},
+        {"data":data0,"type":"*skillDamage","exceptSkills":["蛇腹剑 : 缠"]},
         {"data":data1,"type":"+power6","skills":["蛇腹剑 : 缠"]},
         {"data":data1,"type":"+power7","skills":["蛇腹剑 : 缠"]},
     ]

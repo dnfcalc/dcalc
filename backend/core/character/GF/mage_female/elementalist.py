@@ -282,7 +282,7 @@ class Skill16(PassiveSkill):
 
     _ratio = 1
 
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"*skillDamage","data":data0}]
 
     @property
     def ratio(self):
@@ -336,7 +336,7 @@ class Skill18(PassiveSkill):
     data0 = [0, 55]# noqa: E501
     associate = [
         {"type":"+cd","data":[0,5],"skills":["天雷"],"ratio":1},
-        {"type":"*skillRation","data":data0,"skills":["天雷"]}
+        {"type":"*skillDamage","data":data0,"skills":["天雷"]}
     ]
 
 # 湮灭黑洞 나이트 할로우
@@ -492,7 +492,7 @@ class Skill26(PassiveSkill):
 
     data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
 
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"*skillDamage","data":data0}]
 
 # 圣灵符文 초월의 룬
 # https://api.neople.co.kr/df/skills/3909d0b188e9c95311399f776e331da5/bb34e8854a93fd250347a1c64119f7ab?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
@@ -586,7 +586,7 @@ class Skill31(PassiveSkill):
 
     data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
 
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"*skillDamage","data":data0}]
 
 # 光与暗的交响 썬더 레이지
 # https://api.neople.co.kr/df/skills/3909d0b188e9c95311399f776e331da5/bdb73ed79f64fbfa8024978ac7f2e0f2?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0

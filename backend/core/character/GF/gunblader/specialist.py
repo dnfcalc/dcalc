@@ -393,7 +393,7 @@ class Skill21(PassiveSkill):
     # 基本攻击力和技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 源能波刃
 # gunblader/specialist/8572675ec6a1f50b6eff6a867376c2de
@@ -803,7 +803,7 @@ class Skill30(PassiveSkill):
     # [源能提炼]累积数上限增加 : {value1}个
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 超能场域
 # gunblader/specialist/fc458e449ee00b01dbf88d09aae65462
@@ -1005,7 +1005,7 @@ class Skill34(PassiveSkill):
     # [源能应用]物理/魔法防御力额外增加 : {value3}
     data3 = get_data(f'{prefix}/{uuid}', 3)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 绝望圆舞
 # gunblader/specialist/2c9d9a36c8401bddff6cdb80fab8dc24
@@ -1192,7 +1192,7 @@ class Skill38(PassiveSkill):
     # [源能提炼]能量获得额外增加 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 临界源能弹
 # gunblader/specialist/d429147c372b549c3dadcabcba50787f

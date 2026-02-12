@@ -470,7 +470,7 @@ class Skill22(PassiveSkill):
     # 物理暴击率增加 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 潜行射击
 # gunblader/hitman/6e33d47e6622ce03b6defdd912140270
@@ -827,7 +827,7 @@ class Skill30(PassiveSkill):
     # 基本攻击力和技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 电光飞掠
 # gunblader/hitman/669f1428193f61f9d92c743b72438c4d
@@ -1025,7 +1025,7 @@ class Skill34(PassiveSkill):
     # 基本攻击力和技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 致命焰火
 # gunblader/hitman/6a1d1f08a6572be420bb3a256c44c015
@@ -1244,7 +1244,7 @@ class Skill38(PassiveSkill):
     data3 = get_data(f'{prefix}/{uuid}', 3)
 
     associate = [
-        {"data":data0,"type":"*skillRation"},
+        {"data":data0,"type":"*skillDamage"},
         {"data":data1,"type":"=hit2","skills":["轮盘连射"],"ratio":1},
         {"data":[i - 100 if i >0 else 0 for i in data2],"type":"*power2","skills":["轮盘连射"]}
         ]

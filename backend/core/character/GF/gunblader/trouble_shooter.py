@@ -1064,7 +1064,7 @@ class Skill33(PassiveSkill):
     # 基本攻击力和技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 爆弹华尔兹
 # gunblader/trouble_shooter/762c4e6d030eaf0abbfe1fec2b298574
@@ -1247,7 +1247,7 @@ class Skill37(PassiveSkill):
     # [广域散射]射击范围增加率 : {value1}% 
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":data0,"type":"*skillRation"}]
+    associate = [ {"data":data0,"type":"*skillDamage"}]
 
 # 铁腕爆弹
 # gunblader/trouble_shooter/9dc8438e4572d39243c97da31c113acc

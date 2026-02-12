@@ -81,7 +81,7 @@ class Skill4(PassiveSkill):
     # 跳跃攻击力变化率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["影刃"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["影刃"]}]
 
 
 # 波动斩
@@ -184,7 +184,7 @@ class Skill19(PassiveSkill):
     custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
     # 转职后技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
-    associate = [{"type":"*skillRation","data":data0}]# noqa: E501
+    associate = [{"type":"*skillDamage","data":data0}]# noqa: E501
 
 # 暗影遁行
 # swordman_female/dark_templar/bc11d28c04e01923a093d65752c55516
@@ -352,11 +352,11 @@ class Skill25(PassiveSkill):
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [
-        {"type":"*skillRation","data":data0},
-        {"type":"*skillRation","data":[0]+[100]*maxLv,"skills":["释魂飞弹"]},
+        {"type":"*skillDamage","data":data0},
+        {"type":"*skillDamage","data":[0]+[100]*maxLv,"skills":["释魂飞弹"]},
         {"type":"*power0","data":[0]+[15]*maxLv,"skills":["罚罪之光"]},
-        {"type":"*skillRation","data":[0]+[15]*maxLv,"skills":["天罚之剑"]},
-        {"type":"*skillRation","data":[0]+[10]*maxLv,"skills":["神罚 · 灭世裁决"]},
+        {"type":"*skillDamage","data":[0]+[15]*maxLv,"skills":["天罚之剑"]},
+        {"type":"*skillDamage","data":[0]+[10]*maxLv,"skills":["神罚 · 灭世裁决"]},
         ]# noqa: E501
 
 # 暗影禁锢
@@ -764,7 +764,7 @@ class Skill34(PassiveSkill):
     # 暴击伤害增加率 : {value5}%
     data5 = get_data(f'{prefix}/{uuid}', 5)
     associate = [
-        {"type":"*skillRation","data":data5},
+        {"type":"*skillDamage","data":data5},
     ]
 
 # 末日狂战
@@ -1014,7 +1014,7 @@ class Skill39(PassiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
     associate = [
-        {"type": "*skillRation", "data": data0,"exceptSkills":['释魂飞弹', '释魂狂怒']},
+        {"type": "*skillDamage", "data": data0,"exceptSkills":['释魂飞弹', '释魂狂怒']},
     ]
 
 # 天罚之剑
@@ -1175,7 +1175,7 @@ class Skill43(PassiveSkill):
     data3 = get_data(f'{prefix}/{uuid}', 3)
 
     associate = [
-        {"type":"*skillRation","data":data0},
+        {"type":"*skillDamage","data":data0},
         {"type":"+hit0","data":[0]+[-1]*maxLv,"skills":["魅影暗魂斩"],"ratio":1}
     ]
 

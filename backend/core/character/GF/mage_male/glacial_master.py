@@ -187,7 +187,7 @@ class Skill17(PassiveSkill):
 
     # 基本攻击力和转职技能攻击力增加率 : {value0}%
     data0 = get_data(f'{prefix}/{uuid}', 0)
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"*skillDamage","data":data0}]
 
 # 寒冰连枪
 # mage_male/glacial_master/ade01c1d6afc8a05055225045e89fe49
@@ -272,7 +272,7 @@ class Skill20(ActiveSkill):
     data6 = get_data(f'{prefix}/{uuid}', 6)
     # 减速移动速度减少 : {value7}%
     data7 = get_data(f'{prefix}/{uuid}', 7)
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"*skillDamage","data":data0}]
 
 # 冰之领悟
 # mage_male/glacial_master/ff171dc487807bb9aa28900ca9a46b41
@@ -464,7 +464,7 @@ class Skill26(PassiveSkill):
     data0 = get_data(f'{prefix}/{uuid}', 0)
 
     associate = [
-        {"type":"*skillRation","data":data0,"skills":["冰魄剑"]},
+        {"type":"*skillDamage","data":data0,"skills":["冰魄剑"]},
         {"type":"+hit1","data":[0] + [-1]*maxLv,"skills":["冰魄剑"],"ratio":1},
         ]
 
@@ -790,7 +790,7 @@ class Skill32(PassiveSkill):
     # [范围信息]
     # 冰冻效果范围 : {value4}px
     data4 = get_data(f'{prefix}/{uuid}', 4)
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"*skillDamage","data":data0}]
 
 # 千旋冰轮破
 # mage_male/glacial_master/78be08a3f8c834d3b06fa20c6a08c5a5
@@ -981,8 +981,8 @@ class Skill36(PassiveSkill):
     # 冰枪爆炸攻击力占原技能攻击力百分比 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
     associate = [
-        {"type":"*skillRation","data":data0},
-        {"type":"*skillRation","data":data1,"skills":["冰魄剑", "寒冰连枪", "冰魄旋枪", "旋冰穿刺", "冰魄锤击", "极冰绽放", "碎冰破", "极冰猎魔斩"]}
+        {"type":"*skillDamage","data":data0},
+        {"type":"*skillDamage","data":data1,"skills":["冰魄剑", "寒冰连枪", "冰魄旋枪", "旋冰穿刺", "冰魄锤击", "极冰绽放", "碎冰破", "极冰猎魔斩"]}
     ]
 
 # 碎冰破
@@ -1160,7 +1160,7 @@ class Skill40(PassiveSkill):
     data0 = get_data(f'{prefix}/{uuid}', 0)
     # [冰魄之弓]对弓箭未命中敌人的最后一击伤害增加率 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
-    associate = [{"type":"*skillRation","data":data0}]
+    associate = [{"type":"*skillDamage","data":data0}]
 
 # 极冰猎魔斩
 # mage_male/glacial_master/9f57da5cb3651d81ca7dc9f78be33d01

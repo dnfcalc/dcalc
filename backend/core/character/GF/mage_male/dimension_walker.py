@@ -167,7 +167,7 @@ class Skill8(PassiveSkill):
     # 跳跃攻击力变化率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [{"type":"*skillRation","data":[i-100 if i>0 else 0 for i in data0],"skills":["乖离 : 禁忌之奈雅丽"]}]
+    associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["乖离 : 禁忌之奈雅丽"]}]
 
 # 幽冥火
 # mage_male/dimension_walker/cfacda0647b9a0f595df2c2aad30c18d
@@ -1196,7 +1196,7 @@ class Skill40(ActiveSkill):
 
     def effect(self, old, new):
         if self.vp == 1:
-            self.associate = [{"type":"*skillRation","data":[0] + [-14]*self.maxLv,"skills":["乖离 : 魅魔之舞"]}]
+            self.associate = [{"type":"*skillDamage","data":[0] + [-14]*self.maxLv,"skills":["乖离 : 魅魔之舞"]}]
         return super().effect(old, new)
 
     def vp_1(self):
@@ -1222,10 +1222,6 @@ class Skill40(ActiveSkill):
         """
         ...
 
-    def effect(self, old, new):
-        if self.vp == 1:
-            self.associate = [{"type":"*skillRation","data":[0] + [-14]*self.maxLv,"skills":["乖离 : 魅魔之舞"]}]
-        return super().effect(old, new)
 # 混沌源能石
 # mage_male/dimension_walker/5c45f69c9ebc7a784e994369d2cc3c66
 # a5ccbaf5538981c6ef99b236c0a60b73/5c45f69c9ebc7a784e994369d2cc3c66
