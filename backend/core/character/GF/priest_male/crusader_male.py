@@ -464,7 +464,7 @@ class Skill22(ActiveBufferSkill):
     Vitality = data3
     Spirit = data4
 
-    associate = [{"type":"$+Vitality","value":data3},{"type":"$+Spirit","value":data4}]
+    associate = [{"type":"$+Vitality","value":data3,"ratio":1},{"type":"$+Spirit","value":data4,"ratio":1}]
 
 # 圣光守护
 # priest_male/crusader_male/ff171dc487807bb9aa28900ca9a46b41
@@ -1411,7 +1411,7 @@ class Skill43(ActiveBufferSkill):
     Vitality = data0
     Spirit = data0
 
-    associate = [{"data": Vitality, "type": "$+Vitality"}, {"data": Spirit, "type": "$+Spirit"}]
+    associate = [{"data": Vitality, "type": "$+Vitality","ratio":1}, {"data": Spirit, "type": "$+Spirit","ratio":1}]
 
     def vp_1(self):
         """
@@ -1647,7 +1647,7 @@ class Skill48(PassiveBufferSkill):
 
     Vitality = Spirit = data1
 
-    associate = [{"data": Vitality, "type": "$+Vitality"}, {"data": Spirit, "type": "$+Spirit"}]
+    associate = [{"data": Vitality, "type": "$+Vitality","ratio":1}, {"data": Spirit, "type": "$+Spirit","ratio":1}]
 
 # 生命礼赞 : 神威
 # priest_male/crusader_male/a81e5b7defa1819263ed8e86f69fd06f
