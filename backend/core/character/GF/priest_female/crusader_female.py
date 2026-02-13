@@ -174,6 +174,8 @@ class Skill20(PassiveBufferSkill):
 
     # 智力增加 : {value0}
     data0 = get_data(f'{prefix}/{uuid}', 0)
+
+    INT = data0
     associate = [{"data":data0,"type":"$+INT","ratio":1}]
 
 # 光杖精通
@@ -1154,6 +1156,8 @@ class Skill42(PassiveBufferSkill):
     # 自身复活冷却时间 : {value5}秒
     data5 = get_data(f'{prefix}/{uuid}', 5)
 
+    INT = data0
+
     associate = [
         {"data":data0 ,"type":"$+INT","ratio":1}
     ]
@@ -1348,6 +1352,8 @@ class Skill46(PassiveBufferSkill):
     data0 = get_data(f'{prefix}/{uuid}', 0)
     # 智力增加 : {value1}
     data1 = get_data(f'{prefix}/{uuid}', 1)
+
+    INT = data1
 
     associate = [
         {"data":data1,"type":"$+INT","ratio":1}
