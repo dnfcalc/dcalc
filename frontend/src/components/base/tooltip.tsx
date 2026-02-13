@@ -66,9 +66,10 @@ export default defineComponent({
     )
 
     const dropdownStyle = computed<CSSProperties>(() => {
+      const zoom = parseFloat(getComputedStyle(document.body).zoom) || 1
       return {
-        left: `${dropdownPosition.x}px`,
-        top: `${dropdownPosition.y}px`,
+        left: `${dropdownPosition.x / zoom}px`,
+        top: `${dropdownPosition.y / zoom}px`,
         visibility: isShow.value ? 'visible' : 'hidden',
       }
     })

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mt-0 h-100% overflow-y-auto" :style="`zoom:${zoom}`">
+  <div class="w-full mt-0 h-100% overflow-y-auto">
     <Suspense>
       <RouterView></RouterView>
     </Suspense>
@@ -15,4 +15,9 @@ const zoom = computed(() => {
 import { useDialog } from '@/components/hooks/dialog'
 
 const { render } = useDialog()
+
+onMounted(() => {
+  document.body.style.overflow = 'hidden'
+  document.body.style.zoom = zoom.value.toString()
+})
 </script>
