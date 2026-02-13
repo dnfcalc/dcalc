@@ -3,6 +3,18 @@ from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
 prefix = "archer/traveler/cn/skillDetail"
 
+class TravelerActiveSkill(ActiveSkill):
+    travelerDamage = 0
+    travelerCDR = 0
+
+    mode = ["猛击", "普通"]
+
+    def setMode(self, mode):
+        if mode == "猛击":
+            self.skillDamage *= 1 + self.travelerDamage
+            self.cdReduce = 1 - 0.8
+        pass
+
 # 附件 : 迷雾装置
 # archer/traveler/9dda3f4a849dba1a288dd65e116860f2
 # b9cb48777665de22c006fabaf9a560b3/9dda3f4a849dba1a288dd65e116860f2
@@ -99,24 +111,6 @@ class Skill2(ActiveSkill):
     # 冲击波范围比率 : {value2}%
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-# 后跳
-# archer/traveler/7822d6d52e10964a6755f142c666b494
-# b9cb48777665de22c006fabaf9a560b3/7822d6d52e10964a6755f142c666b494
-class Skill3(ActiveSkill):
-    """
-        使自身向后方小跳并避开敌人的攻击。
-    """
-    name = "后跳"
-    learnLv = 1
-    masterLv = 1
-    maxLv = 1
-    position = 3 #TODO
-    rangeLv = 1
-    mp = [1, 1]
-    uuid = "7822d6d52e10964a6755f142c666b494"
-    hasVP = False
-    hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
 
 # 基础精通
@@ -147,51 +141,6 @@ class Skill4(PassiveSkill):
 
     associate = [{"type":"*skillDamage","data":[i-100 if i>0 else 0 for i in data0],"skills":["迷雾箭雨"]}]
 
-# 受身蹲伏
-# archer/traveler/ce26c6b69d02a440a81b552bec94f03b
-# b9cb48777665de22c006fabaf9a560b3/ce26c6b69d02a440a81b552bec94f03b
-class Skill5(ActiveSkill):
-    """
-        使自身在倒地状态下迅速起身并采取蹲伏姿势； 蹲伏状态下， 自身会进入无敌状态， 效果持续一定时间。
-    """
-    name = "受身蹲伏"
-    learnLv = 1
-    masterLv = 10
-    maxLv = 20
-    position = 2 #TODO
-    rangeLv = 1
-    cd = 5
-    mp = [1, 1]
-    uuid = "ce26c6b69d02a440a81b552bec94f03b"
-    hasVP = False
-    hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
-
-    # 蹲伏姿势最短无敌时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0)
-    # 蹲伏姿势最长无敌时间 : {value1}秒
-    data1 = get_data(f'{prefix}/{uuid}', 1)
-    # 起身时霸体时间 : {value2}秒
-    data2 = get_data(f'{prefix}/{uuid}', 2)
-
-# 防具精通
-# archer/traveler/892ef624d8bf3d7fc045f84825fd6104
-# b9cb48777665de22c006fabaf9a560b3/892ef624d8bf3d7fc045f84825fd6104
-class Skill6(PassiveSkill):
-    """
-        穿戴防具时， 可以增加各种属性。\n
-        穿戴的防具越多， 效果越强； 可根据转职， 增加不同的属性种类及数值。
-    """
-    name = "防具精通"
-    learnLv = 1
-    masterLv = 1
-    maxLv = 1
-    position = 0 #TODO
-    rangeLv = 1
-    uuid = "892ef624d8bf3d7fc045f84825fd6104"
-    hasVP = False
-    hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
 
 # 绝技袭击
@@ -360,56 +309,7 @@ class Skill11(ActiveSkill):
         self.cd = self.cds[self.lv]
         return super().getSkillCD(mode)
 
-# 强化 - 后跳
-# archer/traveler/2b340542e776818b78f3212af184bd6b
-# b9cb48777665de22c006fabaf9a560b3/2b340542e776818b78f3212af184bd6b
-class Skill12(PassiveSkill):
-    """
-    施放技能期间、 被击或倒地的状态下， 可以施放无敌状态的[后跳]。\n
-    该能力适用与[后跳]不同的冷却时间， 并且不受冷却时间减少效果的影响。\n
-    根据施放情况的不同(强制中断技能和被敌人攻击)， 进入不同冷却时间。\n
-    无法强制中断觉醒技能和跳跃超过一定高度的技能。
-    """
-    name = "强化 - 后跳"
-    learnLv = 10
-    masterLv = 1
-    maxLv = 1
-    position = 4 #TODO
-    rangeLv = 1
-    cd = 30
-    uuid = "2b340542e776818b78f3212af184bd6b"
-    hasVP = False
-    hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    # 强制中断技能时的冷却时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0)
-    # 被击或倒地期间施放时的冷却时间 : {value1}秒
-    data1 = get_data(f'{prefix}/{uuid}', 1)
-
-# 跃翔
-# archer/traveler/1fea5a626f15230237946a11a9d11582
-# b9cb48777665de22c006fabaf9a560b3/1fea5a626f15230237946a11a9d11582
-class Skill13(ActiveSkill):
-    """
-        增加自身20%的跳跃力， 效果持续一定时间。\n
-        效果持续期间内， 再次按技能键可以结束。
-    """
-    name = "跃翔"
-    learnLv = 10
-    masterLv = 1
-    maxLv = 1
-    position = 6 #TODO
-    rangeLv = 3
-    cd = 5
-    mp = [13, 13]
-    uuid = "1fea5a626f15230237946a11a9d11582"
-    hasVP = False
-    hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
-
-    # 持续时间 : {value0}秒
-    data0 = get_data(f'{prefix}/{uuid}', 0)
 
 # 迷雾箭雨
 # archer/traveler/cfacda0647b9a0f595df2c2aad30c18d
@@ -504,26 +404,6 @@ class Skill16(PassiveSkill):
 
     associate = [{"type":"$*PAtkP","data":data0}]
 
-# 暴击
-# archer/traveler/fc1262c19f3d0477ee8eda47b8db8696
-# b9cb48777665de22c006fabaf9a560b3/fc1262c19f3d0477ee8eda47b8db8696
-class Skill17(PassiveSkill):
-    """
-        集中精神， 提升物理/魔法暴击率。
-    """
-    name = "暴击"
-    learnLv = 20
-    masterLv = 10
-    maxLv = 20
-    position = 5 #TODO
-    rangeLv = 3
-    uuid = "fc1262c19f3d0477ee8eda47b8db8696"
-    hasVP = False
-    hasUP = False
-    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
-
-    # 物理/魔法暴击率增加 : {value0}%
-    data0 = get_data(f'{prefix}/{uuid}', 0)
 
 # 三重加速
 # archer/traveler/8f73f243041c2d27739fe7696f02bf9b
@@ -683,7 +563,6 @@ class Skill22(ActiveSkill):
     # 暴击伤害增加率 : {value3}%
     data3 = get_data(f'{prefix}/{uuid}', 3)
 
-    associate = [ {"data":data3,"type":"*skillDamage"}]
 
 # 高原雾花
 # archer/traveler/42c82812f86ff6704ae9952a2e6093a4
@@ -819,10 +698,12 @@ class Skill25(ActiveSkill):
     # 空中施放技能结束后霸体护甲持续时间 : {value2}秒
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
+    associate = [{"data":data0, "type":"=travelerDamage" , "skills": ["装置驱动", "浓雾暴雨", "登跃飞锚", "神雾兵仗·妖旋风", "流雾疾风", "装载 : 烟花漫天", "装置驱动·星云"]}]
+
 # 浓雾暴雨
 # archer/traveler/ade01c1d6afc8a05055225045e89fe49
 # b9cb48777665de22c006fabaf9a560b3/ade01c1d6afc8a05055225045e89fe49
-class Skill26(ActiveSkill):
+class Skill26(TravelerActiveSkill):
     """
         提高迷雾装置的输出功率， 向天空发射由箭矢和迷雾箭形成的箭雨。\n
         箭雨落到地面产生大量冲击波， 造成多段伤害。
@@ -872,7 +753,7 @@ class Skill26(ActiveSkill):
 # 神雾兵仗·流星
 # archer/traveler/ff171dc487807bb9aa28900ca9a46b41
 # b9cb48777665de22c006fabaf9a560b3/ff171dc487807bb9aa28900ca9a46b41
-class Skill27(ActiveSkill):
+class Skill27(TravelerActiveSkill):
     """
         学习后， 在玄机弓下方安装只有隶属于自由旅行者组织“流浪协会”的优秀弓箭手才能驾驭的[神雾兵仗·流星]。\n
         可以在除[高原雾花]和觉醒技能以外的旅人弓术系列技能的瞄准和射击过程中发动， 根据施放的弓术技能形态 (贯穿型、 爆炸型、 散射型) 发动蕴含星雾力量的流星箭。\n
@@ -911,13 +792,16 @@ class Skill27(ActiveSkill):
     # 散射型冲击波范围比率 : {value6}%
     data6 = get_data(f'{prefix}/{uuid}', 6)
 
-    mode = ["爆炸型/贯穿型","散射型"]
+    mode = ["猛击","爆炸","散射"]
 
     def setMode(self, mode):
-        if mode == "爆炸型/贯穿型":
+        if mode == "猛击" and self.vp != 2:
+            self.skillRation = 0
+            return
+        if mode == "爆炸" or self.vp == 2:
             self.hit1 = 1
             self.hit3 = 0
-        elif mode == "散射型":
+        elif mode == "散射":
             self.hit1 = 0
             self.hit3 = 7
 
@@ -938,18 +822,18 @@ class Skill27(ActiveSkill):
     def vp_2(self):
         """
         [神雾兵仗·流星]\n
-        解除神雾兵仗·流星后， 发射强大的流星箭； 可单独施放\n
+        变为可独立使用的技能； 解除神雾兵仗·流星装置， 发射强大的流星箭\n
         - 可以在地面和空中施放\n
         - 在空中施放时， 会在落地后施放\n
-        - 变更为可以适用装载 : 猛击/闪攻\n
-        - 可以强制中断旅人转职技能施放后僵直并施放 (觉醒技能除外)\n
+        - 变更为可以使用装载 : 猛击/闪攻\n
+        - 可以强制中断旅人转职技能的施放后僵直并施放 (觉醒技能除外)\n
         - [流浪之星的纹章]冷却时间减少效果， 不受是否学习[自动操作模式]的影响\n
         - 基本冷却时间变更为40秒\n
         - 适用[神雾兵仗·流星]4次攻击力\n
         - 总攻击力相同\n
-        - 删除填充效果
+        - 删除填充效果\n
+        发射体射程 +25%
         """
-        self.setMode("爆炸型/贯穿型")
         self.cd = 40
         self.skillRation *= 4
 
@@ -1040,15 +924,17 @@ class Skill30(PassiveSkill):
     # 增益最大持续时间 : {value1}秒
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
+    associate = [{"data":data0, "type":"=travelerCDR", "skills": []}]
+
 # 登跃飞锚
 # archer/traveler/a5fa08f5d509e6ff2ebc68856a470b5a
 # b9cb48777665de22c006fabaf9a560b3/a5fa08f5d509e6ff2ebc68856a470b5a
-class Skill31(ActiveSkill):
+class Skill31(TravelerActiveSkill):
     """
         该技能可在地面或空中施放。\n
         将用于安装帐篷或攀岩时使用的多功能飞锚附加到震动箭上， 驱动迷雾能量发射。\n
         箭在落地前射出飞锚， 产生冲击波， 摩擦地面猛烈旋转。\n
-        在回收飞锚时拔出岩石轰击中央地面， 对范围内的敌人造成巨额伤害。   
+        在回收飞锚时拔出岩石轰击中央地面， 对范围内的敌人造成巨额伤害。
     """
     name = "登跃飞锚"
     learnLv = 60
@@ -1104,7 +990,7 @@ class Skill31(ActiveSkill):
 # 神雾兵仗·妖旋风
 # archer/traveler/5dc7008b12a459325b548b0715c6b73c
 # b9cb48777665de22c006fabaf9a560b3/5dc7008b12a459325b548b0715c6b73c
-class Skill32(ActiveSkill):
+class Skill32(TravelerActiveSkill):
     """
         该技能可以在地面和空中施放； 可以强制中断其他技能并施放该技能， 或强制中断该技能并施放其他技能。\n
         将自由旅行家组织“流浪协会”秘传的影雾封存到特制的“神雾兵仗·妖旋风”燃料罐中， 安装在迷雾装置上发射， 释放的妖气引发猛烈的旋风， 连同织梦者发射的箭矢席卷一切。
@@ -1198,12 +1084,16 @@ class Skill33(PassiveSkill):
     # [神雾兵仗·流星]冷却时间减少率 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":data0,"type":"*skillDamage"}]
+    def effect(self, old, new):
+        if self.char.GetSkillByName("自动操作模式").lv > 0 and self.char.GetSkillByName("神雾兵仗·流星").vp != 2:
+            self.associate = [ {"data":self.data0,"type":"*skillDamage"}]
+        else:
+            self.associate = [ {"data":self.data0,"type":"*skillDamage"},{"data":self.data1,"type":"*cdReduce","skills":["神雾兵仗·流星"]}]
 
 # 流雾疾风
 # archer/traveler/da6e37c1e3f0e8867f70007d89c239ff
 # b9cb48777665de22c006fabaf9a560b3/da6e37c1e3f0e8867f70007d89c239ff
-class Skill34(ActiveSkill):
+class Skill34(TravelerActiveSkill):
     """
         将迷雾装置功率发动到极限， 流动的高浓度迷雾能量包覆在箭矢上， 如同疾风骤雨般连续发射。\n
         在连续发射过程中按跳跃键可以中断技能。
@@ -1272,7 +1162,7 @@ class Skill35(PassiveSkill):
 # 装载 : 烟花漫天
 # archer/traveler/9bff7f2559e003766fee2853dca00631
 # b9cb48777665de22c006fabaf9a560b3/9bff7f2559e003766fee2853dca00631
-class Skill36(ActiveSkill):
+class Skill36(TravelerActiveSkill):
     """
         该技能可在前方一定范围内存在敌人时施放。\n
         可以在地面和空中施放； 可以强制中断其他技能并施放该技能， 或强制中断该技能并施放其他技能。\n
@@ -1380,7 +1270,7 @@ class Skill37(ActiveSkill):
 # 星辰装置
 # archer/traveler/3829c15bf5f520c13998a3479ba0ce7b
 # b9cb48777665de22c006fabaf9a560b3/3829c15bf5f520c13998a3479ba0ce7b
-class Skill38(PassiveSkill):
+class Skill38(TravelerActiveSkill):
     """
         只有领悟到旅行的真谛的聆风·旅人， 才能通过名为“星辰装置”的星座图的指引， 施放神秘的星光之力。\n
         增加基本攻击力和转职技能攻击力， 变更部分技能效果。\n
@@ -1486,11 +1376,11 @@ class classChange(Character):
         self.jobId = 'b9cb48777665de22c006fabaf9a560b3'
         self.jobGrowId = '618326026de1a1f1cfba5dbd0b8396e7'
 
-        self.武器选项 = ["玄机弓"] # TODO
-        self.输出类型选项 = ["物理百分比"] # TODO
-        self.输出类型 = "物理百分比" # TODO
-        self.防具精通属性 = ["力量"] # TODO
+        self.武器选项 = ["玄机弓"]
+        self.输出类型选项 = ["物理百分比"]
+        self.输出类型 = "物理百分比"
+        self.防具精通属性 = ["力量"]
         self.防具类型 = "皮甲"
-        self.buff = 2.00 # TODO
+        self.buff = 2.083
 
         super().__init__(equVersion, __name__)
