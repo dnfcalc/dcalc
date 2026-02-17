@@ -177,7 +177,8 @@ class Skill23(PassiveSkill):
     data0 = get_data(f'{prefix}/{uuid}', 0)
     # 命中率增加 : {value1}%
     data1 = get_data(f'{prefix}/{uuid}', 1)
-    associate = [{"data":data0}]
+
+    associate = [ {"type":"$*PAtkP","data":data0}, ]
 
 # 幻鬼 : 连击
 # swordman_male/ghostblade/150aa05b9ee8b9c7c04a25f3e425900c
