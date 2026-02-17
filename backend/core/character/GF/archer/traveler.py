@@ -12,7 +12,7 @@ class TravelerActiveSkill(ActiveSkill):
     def setMode(self, mode):
         if mode == "猛击":
             self.skillDamage *= 1 + self.travelerDamage
-            self.cdReduce = 1 - 0.8
+            self.cdReduce *= 1 - self.travelerCDR
         pass
 
 # 附件 : 迷雾装置
@@ -698,7 +698,7 @@ class Skill25(ActiveSkill):
     # 空中施放技能结束后霸体护甲持续时间 : {value2}秒
     data2 = get_data(f'{prefix}/{uuid}', 2)
 
-    associate = [{"data":data0, "type":"=travelerDamage" , "skills": ["装置驱动", "浓雾暴雨", "登跃飞锚", "神雾兵仗·妖旋风", "流雾疾风", "装载 : 烟花漫天", "装置驱动·星云"]}]
+    associate = [{"data":data0, "type":"=travelerDamage" , "skills": ["装置驱动", "浓雾暴雨", "登跃飞锚", "神雾兵仗·妖旋风", "流雾疾风", "装载 : 烟花漫天", "装置驱动·星云","神雾兵仗·流星"]}]
 
 # 浓雾暴雨
 # archer/traveler/ade01c1d6afc8a05055225045e89fe49
@@ -795,8 +795,12 @@ class Skill27(TravelerActiveSkill):
     mode = ["猛击","爆炸","散射"]
 
     def setMode(self, mode):
-        if mode == "猛击" and self.vp != 2:
-            self.skillRation = 0
+        if mode == "猛击":
+            if  self.vp != 2:
+                self.skillRation = 0
+            else:
+                self.skillDamage *= 1 + self.travelerDamage
+                self.cdReduce *= 1 - self.travelerCDR
             return
         if mode == "爆炸" or self.vp == 2:
             self.hit1 = 1
@@ -924,7 +928,7 @@ class Skill30(PassiveSkill):
     # 增益最大持续时间 : {value1}秒
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [{"data":data0, "type":"=travelerCDR", "skills": []}]
+    associate = [{"data":data0, "type":"=travelerCDR" , "skills": ["装置驱动", "浓雾暴雨", "登跃飞锚", "神雾兵仗·妖旋风", "流雾疾风", "装载 : 烟花漫天", "装置驱动·星云","神雾兵仗·流星"]}]
 
 # 登跃飞锚
 # archer/traveler/a5fa08f5d509e6ff2ebc68856a470b5a

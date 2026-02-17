@@ -18,7 +18,7 @@ class Skill10(ActiveSkill):
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 7
     rangeLv = 2
     cd = 6
     mp = [28, 308]
@@ -63,7 +63,7 @@ class Skill13(ActiveSkill):
     learnLv = 15
     masterLv = 1
     maxLv = 11
-    position = 0 #TODO
+    position = 1
     rangeLv = 5
     cd = 8
     uuid = "2f5d03c7848effbc0a23f4df45d9ca46"
@@ -108,7 +108,7 @@ class Skill15(PassiveSkill):
     learnLv = 15
     masterLv = 20
     maxLv = 30
-    position = 0 #TODO
+    position = 3
     rangeLv = 3
     uuid = "dac8d8207618150c162e4c6f9e168527"
     hasVP = False
@@ -142,7 +142,7 @@ class Skill16(ActiveSkill):
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 5
     rangeLv = 2
     cd = 5
     mp = [30, 336]
@@ -179,7 +179,7 @@ class Skill17(ActiveSkill):
     learnLv = 15
     masterLv = 1
     maxLv = 11
-    position = 0 #TODO
+    position = 6
     rangeLv = 15
     cd = 5
     mp = [394, 5061]
@@ -220,7 +220,7 @@ class Skill19(PassiveSkill):
     learnLv = 20
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 6
     rangeLv = 3
     uuid = "8b08f9504167a9c0f3a1d29d71b7943e"
     hasVP = False
@@ -253,7 +253,7 @@ class Skill20(ActiveSkill):
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 8
     rangeLv = 2
     cd = 5
     mp = [30, 336]
@@ -288,7 +288,7 @@ class Skill22(ActiveSkill):
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 4
     rangeLv = 2
     cd = 10
     mp = [45, 462]
@@ -337,7 +337,7 @@ class Skill23(ActiveSkill):
     learnLv = 25
     masterLv = 20
     maxLv = 30
-    position = 0 #TODO
+    position = 1
     rangeLv = 3
     cd = 5
     uuid = "527cdc3ecca985e18ef819d456532b26"
@@ -365,7 +365,7 @@ class Skill24(ActiveSkill):
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 2
     rangeLv = 2
     cd = 10
     mp = [60, 686]
@@ -404,7 +404,7 @@ class Skill25(PassiveSkill):
     learnLv = 30
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 1
     rangeLv = 3
     uuid = "002cbdd9bfd0f0b970451ae8d48d029e"
     hasVP = False
@@ -436,7 +436,7 @@ class Skill26(ActiveSkill):
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 5
     rangeLv = 2
     cd = 16
     mp = [180, 1512]
@@ -504,7 +504,7 @@ class Skill27(ActiveSkill):
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 7
     rangeLv = 2
     cube = 1
     cd = 20
@@ -568,7 +568,7 @@ class Skill28(ActiveSkill):
     learnLv = 40
     masterLv = 50
     maxLv = 60
-    position = 0 #TODO
+    position = 1
     rangeLv = 2
     cube = 1
     cd = 25
@@ -647,7 +647,7 @@ class Skill29(ActiveSkill):
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 3
     rangeLv = 2
     cube = 2
     cd = 40
@@ -717,7 +717,7 @@ class Skill30(PassiveSkill):
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 9
     rangeLv = 3
     uuid = "31823197cc0b04d4c5dcf8f928d9220c"
     hasVP = False
@@ -757,7 +757,7 @@ class Skill31(ActiveSkill):
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 1
     rangeLv = 5
     cube = 5
     cd = 145
@@ -851,7 +851,7 @@ class Skill32(ActiveSkill):
     learnLv = 50
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 2
     rangeLv = 1
     cd = 145
     uuid = "85f7c810ad503790e8626439fe936d56"
@@ -906,7 +906,7 @@ class Skill33(ActiveSkill):
     learnLv = 50
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 1
     rangeLv = 1
     cd = 5
     uuid = "dd32a9825ec1af42a91f2223be6658e5"
@@ -929,7 +929,7 @@ class Skill34(PassiveSkill):
     learnLv = 50
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 2
     rangeLv = 1
     uuid = "573723c8c0614f5b1218ca9ff992115b"
     hasVP = False
@@ -952,7 +952,7 @@ class Skill35(ActiveSkill):
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 4
     rangeLv = 2
     cube = 1
     cd = 30
@@ -1006,7 +1006,7 @@ class Skill36(ActiveSkill):
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 8
     rangeLv = 2
     cube = 2
     cd = 50
@@ -1065,7 +1065,7 @@ class Skill37(ActiveSkill):
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 3
     rangeLv = 2
     cube = 3
     cd = 40
@@ -1152,7 +1152,7 @@ class Skill38(PassiveSkill):
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 1
     rangeLv = 3
     uuid = "f45301a5590cccefbe0becf2f8d029f5"
     hasVP = False
@@ -1183,7 +1183,7 @@ class Skill39(ActiveSkill):
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 2
     rangeLv = 2
     cube = 5
     cd = 45
@@ -1254,7 +1254,7 @@ class Skill40(ActiveSkill):
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 4
     rangeLv = 5
     cube = 10
     cd = 180
@@ -1309,7 +1309,7 @@ class Skill41(PassiveSkill):
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5
     rangeLv = 3
     uuid = "ca2536eb56df0e812c88c59cabd38be0"
     hasVP = False
@@ -1343,7 +1343,7 @@ class Skill42(ActiveSkill):
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 7
     rangeLv = 2
     cube = 7
     cd = 60
@@ -1389,7 +1389,7 @@ class Skill43(ActiveSkill):
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5
     rangeLv = 5
     cube = 15
     cd = 290

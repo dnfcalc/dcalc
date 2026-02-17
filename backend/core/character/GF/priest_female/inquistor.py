@@ -757,7 +757,7 @@ class Skill31(ActiveSkill):
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
     def skillInfo(self, mode: str | None = None):
-        pre = self.char.GetSkillByName("神焰洗礼")
+        pre = self.char.GetSkillByName("神焰洗礼").skillInfo()
         cd = self.getSkillCD(mode)
         return pre[0] * 0.3 * self.skillRation, self.skillDamage, cd
 
@@ -1237,7 +1237,7 @@ class Skill41(PassiveSkill):
 
     associate = [
         {"data":data0,"type":"*skillDamage"},
-        {"data":data3*data4,"type":"*skillDamage","Skills":["审判重击"]}
+        {"data":[(i*j) for i,j in zip(data3,data4)],"type":"*skillDamage","Skills":["审判重击"]}
                  ]
 
 # 补赎逆十字

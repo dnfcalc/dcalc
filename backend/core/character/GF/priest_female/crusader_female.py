@@ -40,7 +40,7 @@ class Skill2(PassiveBufferSkill):
     # 技能冷却时间减少量 : {value6}%
     data6 = get_data(f'{prefix}/{uuid}', 6)
 
-    CarryRatio = [0, (1.055 ** 3) * 100 - 100]# noqa: E501
+    CarryRatio = [0]+[(1.055 ** 3) * 100 - 100]*maxLv# noqa: E501
 
 # 启示 : 惩戒
 # priest_female/crusader_female/42c82812f86ff6704ae9952a2e6093a4

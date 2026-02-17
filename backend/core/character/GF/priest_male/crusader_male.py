@@ -17,7 +17,7 @@ class Skill0(ActiveSkill):
     learnLv = 1
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 6
     rangeLv = 3
     cd = 2
     uuid = "3c5604bdbb0240b8f130f59ab40509c3"
@@ -43,7 +43,7 @@ class Skill2(PassiveBufferSkill):
     learnLv = 1
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 1
     rangeLv = 1
     uuid = "0232c151ef3731c2dede51931a374723"
     hasVP = False
@@ -65,7 +65,7 @@ class Skill7(ActiveBufferSkill):
     learnLv = 5
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 3
     rangeLv = 3
     cd = 8
     mp = [28, 308]
@@ -94,7 +94,7 @@ class Skill9(ActiveBufferSkill):
     learnLv = 10
     masterLv = 1
     maxLv = 11
-    position = 0 #TODO
+    position = 4
     rangeLv = 5
     cd = 15
     mp = [22, 238]
@@ -132,7 +132,7 @@ class Skill13(ActiveSkill):
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 6
     rangeLv = 2
     cd = 6
     mp = [28, 308]
@@ -161,7 +161,7 @@ class Skill14(ActiveSkill):
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 7
     rangeLv = 2
     cd = 2
     mp = [27, 294]
@@ -200,7 +200,7 @@ class Skill15(PassiveSkill):
     learnLv = 15
     masterLv = 15
     maxLv = 25
-    position = 0 #TODO
+    position = 9
     rangeLv = 3
     uuid = "2ba299855fc22192cba4f73db75e9d0e"
     hasVP = False
@@ -225,7 +225,7 @@ class Skill16(PassiveBufferSkill):
     learnLv = 15
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 2
     rangeLv = 3
     uuid = "2c9d9a36c8401bddff6cdb80fab8dc24"
     hasVP = False
@@ -255,7 +255,7 @@ class Skill16(PassiveBufferSkill):
         {"data":data0,"type":"$+Vitality","ratio":1},
         {"data":data1,"type":"$+Spirit","ratio":1}
     ]
-    CarryRatio = [0, (1.055 ** 3) * 100 - 100]# noqa: E501
+    CarryRatio = [0]+[(1.055 ** 3) * 100 - 100]*maxLv# noqa: E501
 
 # 光之正义
 # priest_male/crusader_male/547ab2b2bd860d3e37355a9cfbc1077c
@@ -269,7 +269,7 @@ class Skill17(ActiveSkill):
     learnLv = 20
     masterLv = 1
     maxLv = 11
-    position = 0 #TODO
+    position = 4
     rangeLv = 2
     cd = 10
     mp = [45, 469]
@@ -317,7 +317,7 @@ class Skill18(PassiveSkill):
     learnLv = 20
     masterLv = 1
     maxLv = 6
-    position = 0 #TODO
+    position = 0
     rangeLv = 3
     uuid = "a5fa08f5d509e6ff2ebc68856a470b5a"
     hasVP = False
@@ -350,7 +350,7 @@ class Skill19(ActiveSkill):
     learnLv = 20
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 6
     rangeLv = 2
     cd = 6.6
     mp = [32, 343]
@@ -387,7 +387,7 @@ class Skill21(ActiveSkill):
     learnLv = 20
     masterLv = 20
     maxLv = 30
-    position = 0 #TODO
+    position = 9
     rangeLv = 2
     cd = 5
     uuid = "d8ff976e2aaa4720272a5175d1eb9126"
@@ -434,7 +434,7 @@ class Skill22(ActiveBufferSkill):
     learnLv = 25
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 2
     rangeLv = 3
     cd = 10
     mp = [201, 262]
@@ -480,7 +480,7 @@ class Skill23(ActiveSkill):
     learnLv = 25
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 1
     rangeLv = 3
     cd = 15
     mp = [85, 154]
@@ -508,7 +508,7 @@ class Skill24(PassiveSkill):
     learnLv = 25
     masterLv = 1
     maxLv = 6
-    position = 0 #TODO
+    position = 3
     rangeLv = 2
     uuid = "d2c6df5105577fb59fb92529a36165a0"
     hasVP = False
@@ -533,7 +533,7 @@ class Skill25(ActiveBufferSkill):
     learnLv = 25
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 5
     rangeLv = 2
     cd = 8
     mp = [32, 343]
@@ -572,7 +572,7 @@ class Skill26(ActiveSkill):
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 7
     rangeLv = 2
     cd = 8
     mp = [91, 763]
@@ -605,7 +605,7 @@ class Skill27(ActiveBufferSkill):
     learnLv = 30
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 2
     rangeLv = 3
     cd = 10
     uuid = "e4c354a89c337310aeb7041d5e742828"
@@ -652,8 +652,8 @@ class Skill28(PassiveSkill):
     learnLv = 30
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
-    rangeLv = 0
+    position = 7
+    rangeLv = 1
     uuid = "3fb8395ae3b81bd608e0c4223a8eb534"
     hasVP = False
     hasUP = False
@@ -683,7 +683,7 @@ class Skill29(PassiveSkill):
     learnLv = 30
     masterLv = 10
     maxLv = 20
-    position = 0 #TODO
+    position = 5
     rangeLv = 3
     uuid = "030663e99462f628b4c9f813e1406c4e"
     hasVP = False
@@ -709,7 +709,7 @@ class Skill30(ActiveSkill):
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 7
     rangeLv = 2
     cube = 1
     cd = 14.4
@@ -785,8 +785,8 @@ class Skill31(PassiveSkill):
     learnLv = 35
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
-    rangeLv = 0
+    position = 8
+    rangeLv = 1
     uuid = "9dc8438e4572d39243c97da31c113acc"
     hasVP = False
     hasUP = False
@@ -816,7 +816,7 @@ class Skill32(ActiveSkill):
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 5
     rangeLv = 2
     cd = 10
     mp = [32, 343]
@@ -880,7 +880,7 @@ class Skill33(ActiveBufferSkill):
     learnLv = 40
     masterLv = 1
     maxLv = 11
-    position = 0 #TODO
+    position = 0
     rangeLv = 2
     cube = 2
     cd = 60
@@ -913,7 +913,7 @@ class Skill34(ActiveSkill):
     learnLv = 40
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 5
     rangeLv = 2
     cube = 1
     cd = 14.4
@@ -973,7 +973,7 @@ class Skill35(ActiveBufferSkill):
     learnLv = 45
     masterLv = 1
     maxLv = 11
-    position = 0 #TODO
+    position = 3
     rangeLv = 2
     cube = 2
     cd = 60
@@ -1011,7 +1011,7 @@ class Skill36(ActiveSkill):
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 0 #TODO
+    position = 6
     rangeLv = 2
     cube = 2
     cd = 45
@@ -1074,7 +1074,7 @@ class Skill37(PassiveBufferSkill):
     learnLv = 48
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5
     rangeLv = 3
     uuid = "4f2e001e9a19eb7bae50ad1840dfb329"
     hasVP = False
@@ -1117,7 +1117,7 @@ class Skill38(ActiveBufferSkill):
     learnLv = 50
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 6
     rangeLv = 5
     cube = 5
     cd = 170
@@ -1162,7 +1162,7 @@ class Skill39(PassiveSkill):
     learnLv = 50
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 0
     rangeLv = 3
     uuid = "56aa7844a2da23f5bea9b585aea5ae45"
     hasVP = False
@@ -1181,7 +1181,7 @@ class Skill40(ActiveSkill):
     learnLv = 60
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 7
     rangeLv = 2
     cube = 1
     cd = 30
@@ -1245,7 +1245,7 @@ class Skill41(ActiveSkill):
     learnLv = 70
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 6
     rangeLv = 2
     cube = 2
     cd = 40
@@ -1312,7 +1312,7 @@ class Skill42(ActiveBufferSkill):
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5
     rangeLv = 2
     cube = 3
     cd = 40
@@ -1380,7 +1380,7 @@ class Skill43(ActiveBufferSkill):
     learnLv = 75
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 4
     rangeLv = 3
     cube = 3
     cd = 20
@@ -1411,7 +1411,7 @@ class Skill43(ActiveBufferSkill):
     Vitality = data0
     Spirit = data0
 
-    associate = [{"data": Vitality, "type": "$+Vitality","ratio":1}, {"data": Spirit, "type": "$+Spirit","ratio":1}]
+    associate = [{"data": Vitality, "type": "$+Vitality"}, {"data": Spirit, "type": "$+Spirit"}]
 
     def vp_1(self):
         """
@@ -1461,7 +1461,7 @@ class Skill44(ActiveSkill):
     learnLv = 80
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 4
     rangeLv = 2
     cube = 5
     cd = 45
@@ -1514,7 +1514,7 @@ class Skill45(ActiveBufferSkill):
     learnLv = 85
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5
     rangeLv = 5
     cube = 10
     cd = 180
@@ -1560,7 +1560,7 @@ class Skill46(ActiveSkill):
     learnLv = 85
     masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 6
     rangeLv = 5
     cube = 10
     cd = 180
@@ -1592,7 +1592,7 @@ class Skill47(ActiveSkill):
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 7
     rangeLv = 2
     cube = 7
     cd = 60
@@ -1630,7 +1630,7 @@ class Skill48(PassiveBufferSkill):
     learnLv = 95
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5
     rangeLv = 3
     uuid = "89a4529234904fcbb3abe289e281f2fd"
     hasVP = False
@@ -1647,7 +1647,7 @@ class Skill48(PassiveBufferSkill):
 
     Vitality = Spirit = data1
 
-    associate = [{"data": Vitality, "type": "$+Vitality","ratio":1}, {"data": Spirit, "type": "$+Spirit","ratio":1}]
+    associate = [{"data": Vitality, "type": "$+Vitality"}, {"data": Spirit, "type": "$+Spirit"}]
 
 # 生命礼赞 : 神威
 # priest_male/crusader_male/a81e5b7defa1819263ed8e86f69fd06f
@@ -1672,7 +1672,7 @@ class Skill49(ActiveBufferSkill):
     learnLv = 100
     masterLv = 40
     maxLv = 50
-    position = 0 #TODO
+    position = 5
     rangeLv = 5
     cube = 15
     cd = 290

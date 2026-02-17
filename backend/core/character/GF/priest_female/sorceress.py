@@ -816,7 +816,7 @@ class Skill33(PassiveSkill):
     associate = [
         {"data":data0},
         {"data":data1,"skills":["念珠连射"]},
-        {"data":data2,"skills":["神龙如意珠"],"type":"-cdReduceP"},
+        {"data":data2,"skills":["神龙如意珠"],"type":"*cdReduceP"},
     ]
 
 # 退魔阴阳符

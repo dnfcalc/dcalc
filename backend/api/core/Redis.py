@@ -5,7 +5,7 @@ from config.main import config
 
 def get_redis_info(redis, key, fun, expire = 0, without_gzip=False):
     info = None
-    if redis and not config.DEBUG_MODE:
+    if not config.DEBUG_MODE and redis:
         try:
             if without_gzip:
                 info = json.loads(redis.get(key))
@@ -15,7 +15,7 @@ def get_redis_info(redis, key, fun, expire = 0, without_gzip=False):
             info = None
     if info is None:
         info = fun()
-        if redis and info is not None:
+        if not config.DEBUG_MODE and redis and info is not None:
             if without_gzip:
                 redis.set(key, json.dumps(info))
             else:
