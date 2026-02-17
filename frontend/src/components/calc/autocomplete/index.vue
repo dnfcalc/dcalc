@@ -55,11 +55,10 @@ export default defineComponent({
     function onResize() {
       if (triggerRef.value) {
         const { width, height, left, top } = triggerRef.value.getBoundingClientRect()
-        const zoom = parseFloat(getComputedStyle(document.body).zoom) || 1
         dropdownPosition.value = {
-          w: width / zoom,
-          x: left / zoom,
-          y: top / zoom + height / zoom + 2,
+          w: width,
+          x: left,
+          y: top + height + 2,
         }
       }
     }

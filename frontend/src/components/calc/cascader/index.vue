@@ -56,18 +56,17 @@ export default defineComponent({
     const dropdownPosition = ref({ x: 0, y: 0, w: 0, z: 0 })
     // 下拉框位置
     const dropdownStyle = computed<CSSProperties>(() => {
-      const zoom = parseFloat(getComputedStyle(document.body).zoom) || 1
       if (dropdownPosition.value.z == 0) {
         return {
-          left: `${dropdownPosition.value.x / zoom}px`,
-          top: `${dropdownPosition.value.y / zoom}px`,
-          width: `${dropdownPosition.value.w / zoom}px`,
+          left: `${dropdownPosition.value.x}px`,
+          top: `${dropdownPosition.value.y}px`,
+          width: `${dropdownPosition.value.w}px`,
         }
       } else {
         return {
-          left: `${dropdownPosition.value.x / zoom}px`,
-          bottom: `${dropdownPosition.value.z / zoom}px`,
-          width: `${dropdownPosition.value.w / zoom}px`,
+          left: `${dropdownPosition.value.x}px`,
+          bottom: `${dropdownPosition.value.z}px`,
+          width: `${dropdownPosition.value.w}px`,
         }
       }
     })
