@@ -1,11 +1,19 @@
 #ca0f0e0e9e1d55b5f9955b03d9dd213c
-from core.basic.skill import PassiveSkill, ActiveSkill
+from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
+prefix = "fighter_male/striker_male/cn/skillDetail"
 
 
-# 下段踢 로킥
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/4655101518604f874721b3cc249aae10?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill1(ActiveSkill):
+
+# 下段踢
+# fighter_male/striker_male/4655101518604f874721b3cc249aae10
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/4655101518604f874721b3cc249aae10
+class Skill6(ActiveSkill):
+    """
+    向敌人发出高伤害的踢脚攻击， 可以攻击倒地的敌人， 而且能使被击中的敌人出现较长时间的僵直。\n
+    攻击成功时产生冲击波， 对周围敌人造成伤害。\n
+    被直接命中的敌人不受冲击波伤害。
+    """
     name = "下段踢"
     learnLv = 5
     masterLv = 60
@@ -15,28 +23,57 @@ class Skill1(ActiveSkill):
     cd = 2
     mp = [10, 112]
     uuid = "4655101518604f874721b3cc249aae10"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [ 0, 2118, 2332, 2547, 2761, 2982, 3193, 3407, 3621, 3842, 4055, 4267, 4483, 4697, 4913, 5129, 5343, 5557, 5770, 5987, 6202, 6416, 6637, 6849, 7064, 7279, 7495, 7708, 7924, 8140, 8354, 8568, 8784, 8998, 9212, 9428, 9642, 9858, 10074, 10287, 10503, 10719, 10933, 11145, 11359, 11579, 11793, 12005, 12225, 12439, 12653, 12871, 13087, 13301, 13517, 13731, 13943, 14159, 14375, 14589, 14805, 15023, 15237, 15451, 15669, 15881, 16096, 16308, 16526, 16738, 16954]
+    # 下段踢攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
+    # 冲击波攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 发动速度增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [范围信息]
+    # 冲击波大小比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-# 蹲伏 크라우치
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/9dda3f4a849dba1a288dd65e116860f2?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill2(ActiveSkill):
+
+# 蹲伏
+# fighter_male/striker_male/9dda3f4a849dba1a288dd65e116860f2
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/9dda3f4a849dba1a288dd65e116860f2
+class Skill9(ActiveSkill):
+    """
+    蹲下并避开敌人的上段判定式攻击。\n
+    若在前冲中使用此技能， 可以边向前滑行边蹲下。\n
+    蹲下时进入无敌状态， 起身的瞬间也会进入无敌状态。\n
+    [蹲伏]姿势中按攻击键， 可以用肩尖撞击敌人； 经过一定时间或按跳跃键可以中断蹲伏状态。
+    """
     name = "蹲伏"
     learnLv = 10
     masterLv = 1
     maxLv = 11
-    position = 7 #TODO
+    position = 7
     rangeLv = 1
     cd = 3
     mp = [3, 4]
     uuid = "9dda3f4a849dba1a288dd65e116860f2"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    damage = False
+    # 姿势持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 肩撞攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-# 钢筋铁骨 철금강
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/c9664191611af31142e052dfaef84530?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill3(PassiveSkill):
+# 钢筋铁骨
+# fighter_male/striker_male/c9664191611af31142e052dfaef84530
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/c9664191611af31142e052dfaef84530
+class Skill10(PassiveSkill):
+    """
+    使自身的身体强悍如钢铁， 并增加一定的物防和体力。 被击时， 有一定几率使自身进入霸体状态。
+    """
     name = "钢筋铁骨"
     learnLv = 10
     masterLv = 50
@@ -44,10 +81,25 @@ class Skill3(PassiveSkill):
     position = 4
     rangeLv = 3
     uuid = "c9664191611af31142e052dfaef84530"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-# 鹰踏 공중 밟기
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/78bd107acd474518b606be1e4fd38239?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill4(ActiveSkill):
+    # 增加物理防御力 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 增加体力 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 霸体发动几率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+
+# 鹰踏
+# fighter_male/striker_male/78bd107acd474518b606be1e4fd38239
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/78bd107acd474518b606be1e4fd38239
+class Skill11(ActiveSkill):
+    """
+    在空中跳跃着踩踏敌人并给予敌人一定伤害。\n
+    可以连续对敌人进行一定次数的踩踏。 技能的冷却时间从最后一次踩踏结束落地时开始计算。
+    """
     name = "鹰踏"
     learnLv = 10
     masterLv = 60
@@ -57,50 +109,80 @@ class Skill4(ActiveSkill):
     cd = 7
     mp = [10, 97]
     uuid = "78bd107acd474518b606be1e4fd38239"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [ 0, 705, 777, 849, 920, 992, 1063, 1135, 1206, 1278, 1350, 1421, 1493, 1564, 1636, 1707, 1779, 1851, 1922, 1994, 2065, 2137, 2208, 2280, 2352, 2423, 2495, 2566, 2638, 2709, 2781, 2853, 2924, 2996, 3067, 3139, 3210, 3282, 3353, 3425, 3497, 3568, 3640, 3711, 3783, 3854, 3926, 3998, 4069, 4141, 4212, 4284, 4355, 4427, 4499, 4570, 4642, 4713, 4785, 4856, 4928, 5000, 5071, 5143, 5214, 5286, 5357, 5429, 5501, 5572, 5644 ]
+    # 踩踏攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
+    # 踩踏次数上限 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 最后踩踏攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
 
-    data1 = [ 0, 2417, 2662, 2908, 3153, 3398, 3643, 3889, 4134, 4379, 4624, 4869, 5115, 5360, 5605, 5850, 6096, 6341, 6586, 6831, 7077, 7322, 7567, 7812, 8057, 8303, 8548, 8793, 9038, 9284, 9529, 9774, 10019, 10264, 10510, 10755, 11000, 11245, 11491, 11736, 11981, 12226, 12472, 12717, 12962, 13207, 13452, 13698, 13943, 14188, 14433, 14679, 14924, 15169, 15414, 15659, 15905, 16150, 16395, 16640, 16886, 17131, 17376, 17621, 17866, 18112, 18357, 18602, 18847, 19093, 19338 ]
-    hit1 = 1
-
-# 疾风追击 호신연격
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/dcb31a63ef58954f44ff2070c42a9a98?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill5(ActiveSkill):
+# 疾风追击
+# fighter_male/striker_male/dcb31a63ef58954f44ff2070c42a9a98
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/dcb31a63ef58954f44ff2070c42a9a98
+class Skill12(ActiveSkill):
+    """
+    前冲攻击后， 通过快速连续的攻击给予敌人一定伤害； 前冲攻击命中敌人时， 敌人不会倒地。 前冲攻击后按攻击键或技能键， 可以进行追击， 此时会消耗自身一定量的魔法值。\n
+    该技能的基本攻击只有1次， 但学习[疾风连击]后可再追加1次。
+    """
     name = "疾风追击"
     learnLv = 10
     masterLv = 60
     maxLv = 70
-    position = 8 #TODO
+    position = 8
     rangeLv = 2
     cd = 2
     mp = [8, 67]
     uuid = "dcb31a63ef58954f44ff2070c42a9a98"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 351, 387, 424, 460, 497, 533, 569, 606, 641, 677, 714, 750, 787, 823, 859, 896, 932, 969, 1005, 1041, 1078, 1114, 1149, 1186, 1222, 1258, 1295, 1331, 1368, 1404, 1440, 1477, 1513, 1550, 1586, 1622, 1659, 1694, 1730, 1767, 1803, 1840, 1876, 1912, 1949, 1985, 2022, 2058, 2094, 2131, 2167, 2202, 2239, 2275, 2311, 2348, 2384, 2421, 2457, 2493, 2530, 2566, 2603, 2639, 2675, 2712, 2747, 2783, 2820, 2856]# noqa: E501
-    hit0 = 1 #TODO
+    # 第1击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # 第2击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
 
-    data1 = [0, 390, 430, 471, 511, 551, 592, 632, 672, 712, 753, 793, 833, 874, 914, 954, 996, 1036, 1076, 1117, 1157, 1197, 1238, 1278, 1318, 1359, 1399, 1439, 1479, 1520, 1560, 1600, 1641, 1681, 1721, 1762, 1802, 1842, 1882, 1923, 1963, 2003, 2044, 2084, 2124, 2166, 2206, 2246, 2287, 2327, 2367, 2408, 2448, 2488, 2529, 2569, 2609, 2649, 2690, 2730, 2770, 2811, 2851, 2891, 2932, 2972, 3012, 3052, 3093, 3133, 3173]# noqa: E501
-    hit1 = 1 #TODO
 
-# 瞬步 순보
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/9dc8438e4572d39243c97da31c113acc?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill6(ActiveSkill):
+# 瞬步
+# fighter_male/striker_male/9dc8438e4572d39243c97da31c113acc
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/9dc8438e4572d39243c97da31c113acc
+class Skill14(ActiveSkill):
+    """
+    向前方快速移动一定距离。\n
+    撞到敌人时停止移动。
+    """
     name = "瞬步"
     learnLv = 10
     masterLv = 1
     maxLv = 1
-    position = 6 #TODO
+    position = 6
     rangeLv = 2
     cd = 5
     mp = [10, 10]
     uuid = "9dc8438e4572d39243c97da31c113acc"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    damage = False
+    # 移动距离 : {value0}px
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
-# 拳套掌握 권투글러브 사용 가능
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/1dad88963abdc96b091fcab185a8820d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill7(PassiveSkill):
+
+# 拳套掌握
+# fighter_male/striker_male/1dad88963abdc96b091fcab185a8820d
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/1dad88963abdc96b091fcab185a8820d
+class Skill19(PassiveSkill):
+    """
+
+    """
     name = "拳套掌握"
     learnLv = 15
     masterLv = 1
@@ -108,32 +190,52 @@ class Skill7(PassiveSkill):
     position = 1
     rangeLv = 3
     uuid = "1dad88963abdc96b091fcab185a8820d"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
+    # 冷却时间减少率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     associate = [
         {"data":data0,"type":"*cdReduce", 'exceptSkills': ['双重释放', '烈焰焚步', '极武霸皇踢', '焚火逐日拳']}
     ]
 
-# 强拳 강권
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/dcd536f1674630f01fc9667bb202b851?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill8(ActiveSkill):
+# 强拳
+# fighter_male/striker_male/dcd536f1674630f01fc9667bb202b851
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/dcd536f1674630f01fc9667bb202b851
+class Skill20(ActiveSkill):
+    """
+    集中体内的能量， 增加命中敌人的僵直比率和自身暴击伤害， 效果持续一定时间。
+    """
     name = "强拳"
     learnLv = 15
     masterLv = 20
     maxLv = 30
-    position = 5 #TODO
+    position = 5
     rangeLv = 3
     cd = 5
-    mp = [126, 1195]
     uuid = "dcd536f1674630f01fc9667bb202b851"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    damage = False
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 敌人的僵直比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 暴击伤害增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 决斗场攻击速度减少 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-
-# 肘击 뇌격
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/c77a417c43de80c4ce32c1ed405d174a?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill9(ActiveSkill):
+# 肘击
+# fighter_male/striker_male/c77a417c43de80c4ce32c1ed405d174a
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/c77a417c43de80c4ce32c1ed405d174a
+class Skill21(ActiveSkill):
+    """
+    用强劲的肘部快速攻击敌人， 并使敌人进入僵直状态。\n
+    可以通过按方向键， 调整方向移动施放。
+    """
     name = "肘击"
     learnLv = 15
     masterLv = 60
@@ -143,39 +245,76 @@ class Skill9(ActiveSkill):
     cd = 6
     mp = [30, 252]
     uuid = "c77a417c43de80c4ce32c1ed405d174a"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 5579, 6144, 6708, 7273, 7840, 8403, 8971, 9537, 10105, 10671, 11234, 11801, 12368, 12932, 13500, 14064, 14630, 15198, 15762, 16327, 16895, 17461, 18027, 18596, 19159, 19727, 20288, 20859, 21422, 21991, 22557, 23120, 23684, 24251, 24815, 25388, 25951, 26515, 27083, 27645, 28213, 28779, 29347, 29913, 30476, 31042, 31608, 32174, 32742, 33306, 33873, 34439, 35000, 35571, 36137, 36701, 37269, 37832, 38401, 38967, 39528, 40100, 40662, 41230, 41795, 42362, 42925, 43493, 44056, 44627]# noqa: E501
+    # 肘击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
+    # 敌人僵直比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 肘击速度增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-# 霸体护甲 슈퍼아머
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/3d8f3d438405d79f8d3ed68072674d1e?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill10(ActiveSkill):
+# 霸体护甲
+# fighter_male/striker_male/3d8f3d438405d79f8d3ed68072674d1e
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/3d8f3d438405d79f8d3ed68072674d1e
+class Skill22(ActiveSkill):
+    """
+    可以使自身增加物理/魔法防御力和体力， 而且被攻击后不会倒地， 但仍会受到伤害， 效果持续一定时间。
+    """
     name = "霸体护甲"
     learnLv = 20
     masterLv = 20
     maxLv = 30
-    position = 4 #TODO
+    position = 4
     rangeLv = 3
     cd = 30
     mp = [40, 336]
     uuid = "3d8f3d438405d79f8d3ed68072674d1e"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    damage = False
+    # 持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 物理、 魔法防御力增加 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 体力增加 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [决斗场]
+    # 移动速度减少 : 10%
 
-# 疾风连击 호포
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/8572675ec6a1f50b6eff6a867376c2de?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill11(PassiveSkill):
+# 疾风连击
+# fighter_male/striker_male/8572675ec6a1f50b6eff6a867376c2de
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/8572675ec6a1f50b6eff6a867376c2de
+class Skill23(PassiveSkill):
+    """
+    施放[疾风追击]时， 可以向敌人发出第3、 4击。
+    """
     name = "疾风连击"
     learnLv = 20
     masterLv = 1
     maxLv = 1
-    position = 8 #TODO
+    position = 8
     rangeLv = 1
     uuid = "8572675ec6a1f50b6eff6a867376c2de"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-# 铁山靠 철산고
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/3c5604bdbb0240b8f130f59ab40509c3?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill12(ActiveSkill):
+
+
+
+# 铁山靠
+# fighter_male/striker_male/3c5604bdbb0240b8f130f59ab40509c3
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/3c5604bdbb0240b8f130f59ab40509c3
+class Skill25(ActiveSkill):
+    """
+    向前滑行用肩部对敌人进行猛力的攻击。\n
+    按前方向键， 可以滑行得更远进行攻击。
+    """
     name = "铁山靠"
     learnLv = 25
     masterLv = 60
@@ -185,14 +324,27 @@ class Skill12(ActiveSkill):
     cd = 7
     mp = [50, 420]
     uuid = "3c5604bdbb0240b8f130f59ab40509c3"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 8371, 9223, 10074, 10924, 11774, 12623, 13473, 14323, 15174, 16023, 16876, 17724, 18573, 19424, 20276, 21124, 21976, 22823, 23673, 24526, 25373, 26224, 27073, 27923, 28771, 29624, 30471, 31323, 32173, 33023, 33873, 34723, 35573, 36423, 37274, 38123, 38976, 39824, 40674, 41523, 42374, 43223, 44076, 44919, 45769, 46623, 47469, 48321, 49173, 50021, 50871, 51723, 52571, 53421, 54274, 55121, 55973, 56821, 57671, 58524, 59374, 60223, 61073, 61919, 62773, 63619, 64467, 65323, 66171, 67019]# noqa: E501
+    # 铁山靠攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-
-# 碎骨 본 크러셔
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/717f1e2104fe4b796f800352fa143ecc?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill13(ActiveSkill):
+# 碎骨
+# fighter_male/striker_male/717f1e2104fe4b796f800352fa143ecc
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/717f1e2104fe4b796f800352fa143ecc
+class Skill26(ActiveSkill):
+    """
+    向敌人发出强威力的下段踢。\n
+    有一定几率使命中的敌人进入减速状态。\n
+    攻击成功时产生冲击波， 对周围敌人造成伤害。\n
+    被直接击中的敌人不受冲击波伤害。
+    """
     name = "碎骨"
     learnLv = 25
     masterLv = 60
@@ -202,92 +354,176 @@ class Skill13(ActiveSkill):
     cd = 7
     mp = [50, 420]
     uuid = "717f1e2104fe4b796f800352fa143ecc"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data1 = [0, 8486, 9345, 10205, 11065, 11927, 12789, 13653, 14508, 15371, 16230, 17092, 17952, 18814, 19674, 20538, 21398, 22256, 23120, 23979, 24837, 25702, 26561, 27423, 28281, 29143, 30003, 30867, 31727, 32591, 33448, 34309, 35170, 36033, 36892, 37752, 38612, 39474, 40333, 41198, 42055, 42917, 43780, 44639, 45499, 46362, 47219, 48086, 48943, 49805, 50663, 51525, 52384, 53249, 54108, 54971, 55833, 56688, 57550, 58414, 59272, 60136, 60993, 61858, 62715, 63575, 64439, 65299, 66157, 67021, 67881]# noqa: E501
-    hit1 = 1
+    # 发动速度增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 下段踢攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit0 = 1
+    # 冲击波攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 减速几率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 减速持续时间 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 移动速度减少率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 攻击速度减少率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # [范围信息]
+    # 冲击波大小比率 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7)
 
-
-# 强袭重击 강습펀치
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/8ec9da6f808889b63adf2680fbf1f331?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill14(PassiveSkill):
+# 强袭重击
+# fighter_male/striker_male/8ec9da6f808889b63adf2680fbf1f331
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/8ec9da6f808889b63adf2680fbf1f331
+class Skill27(PassiveSkill):
+    """
+    [鹰踏]变更为[强袭重击]， 使用[鹰踏]时， 使用俯冲地面的[强袭重击]击打敌人。\n
+    [鹰踏]的攻击力使用增加后的伤害向下重击地面。\n
+    [强袭重击]的第一次击打攻击力是[鹰踏]的第一次击打攻击力， 最后的爆炸攻击力是[鹰踏]的最后一击攻击力。\n
+    在空中可以使用[柔化肌肉]强制中断。
+    """
     name = "强袭重击"
     learnLv = 25
     masterLv = 1
     maxLv = 11
-    position = 3 #TODO
+    position = 3
     rangeLv = 1
-    data0 = [0, 45, 49, 53, 57, 61, 65, 69, 73, 77, 81, 85]# noqa: E501
     uuid = "8ec9da6f808889b63adf2680fbf1f331"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+
+    # [鹰踏]攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
     associate = [
         {"type":"*skillDamage","data":data0,"skills":["鹰踏"]},
     ]
 
-# 弱点感知 급소 지정
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/23a5e0fba03283cb1b324a847b3fe370?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill15(PassiveSkill):
+# 弱点感知
+# fighter_male/striker_male/23a5e0fba03283cb1b324a847b3fe370
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/23a5e0fba03283cb1b324a847b3fe370
+class Skill28(PassiveSkill):
+    """
+    感知敌人的弱点， 并增加自身的物理暴击率和物理命中率。
+    """
     name = "弱点感知"
     learnLv = 30
     masterLv = 10
     maxLv = 20
-    position = 5 #TODO
+    position = 5
     rangeLv = 3
     uuid = "23a5e0fba03283cb1b324a847b3fe370"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    damage = False
+    # 暴击率增加 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 命中率增加 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-
-# 旋风腿 질풍각
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/202edb928046f4fa6dedf6337377efd5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill16(ActiveSkill):
+# 旋风腿
+# fighter_male/striker_male/202edb928046f4fa6dedf6337377efd5
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/202edb928046f4fa6dedf6337377efd5
+class Skill29(ActiveSkill):
+    """
+    在原地快速旋转身体并用连续的扫腿攻击周围的敌人； 可以在地面或空中使用， 对命中的敌人有吸附效果。\n
+    施放后不能移动， 可以按跳跃键中断技能。\n
+    转职成为散打时， 才可以强制中断基本攻击动作， 并立即施放该技能。
+    """
     name = "旋风腿"
     learnLv = 30
     masterLv = 60
     maxLv = 70
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cd = 8
     mp = [50, 420]
     uuid = "202edb928046f4fa6dedf6337377efd5"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 1449, 1597, 1742, 1888, 2036, 2182, 2329, 2477, 2624, 2770, 2333, 2453, 2567, 2687, 2802, 2921, 3037, 3156, 3274, 3390, 2923, 3022, 3121, 3215, 3314, 3415, 3513, 3610, 3705, 3805, 3346, 3431, 3514, 3598, 3681, 3762, 3845, 3931, 4015, 4098, 3661, 3732, 3809, 3880, 3953, 4029, 4100, 4174, 4248, 4322, 3907, 3972, 4039, 4106, 4167, 4235, 4299, 4364, 4429, 4495, 4106, 4163, 4221, 4282, 4340, 4396, 4456, 4514, 4577, 4634]# noqa: E501
-    hit0 = 1 #TODO
+    # 旋风腿攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 10
+    # 攻击次数 : {value1}
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    data1 = [0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12]# noqa: E501
-
-    def setMode(self, mode):
-        self.hit0 = self.data1[self.lv]
-
-# 柔化肌肉 머슬 시프트
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/5152480fdde81362575a488d4cec4af9?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill17(PassiveSkill):
+# 柔化肌肉
+# fighter_male/striker_male/5152480fdde81362575a488d4cec4af9
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/5152480fdde81362575a488d4cec4af9
+class Skill30(PassiveSkill):
+    """
+    使自身的身体瞬间变得柔若无骨； 增加转职技能攻击力， 使用散打系列技能时， 可以强制中断当前的技能并立即施放散打系列的其他技能， 可以使技能与技能形成连续技。\n
+    使用[柔化肌肉]强制中断并施放技能时， 如果该技能命中敌人， 则增加已激活的霸体状态持续时间。\n
+    可以强制中断的技能 : [后踢]、 [前踢]、 [下段踢]、 [鹰踏]、 [强袭重击]、 [疾风连击]、 [旋风腿]、 [闪击快打]、 [肘击]、 [铁山靠]、 [碎骨]、 [炽焰旋风腿]、 [冲膝]、 [闪电之舞]、 [瞬影连环踢]、 [旋风碎心踢]、 [飞燕旋风]、 [烈火强踢]、 [烈火强拳]、 [极武霸皇踢]、 [炼狱坠星腿]\n
+    可以强制中断其他散打系列技能并立即使用[焚火逐日拳]， 但无法中断[焚火逐日拳]并立即施放其他散打系列技能。\n
+    在决斗场中有起始冷却时间， 起始冷却时间结束后自动激活。 技能攻击力增加率效果仅适用于柔化后使用的技能。
+    """
     name = "柔化肌肉"
     learnLv = 30
-    masterLv = 4
+    masterLv = 5
     maxLv = 15
     position = 5
     rangeLv = 5
     uuid = "5152480fdde81362575a488d4cec4af9"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 14, 15.5, 17, 18.5, 20, 21.5, 23, 24.5, 26, 27.5, 29, 30.5, 32, 33.5, 35]# noqa: E501
+    # 强制中断的次数 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 强制中断次数自动恢复时间 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 转职技能攻击力增加率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 霸体持续时间增加 : {value3}秒
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 霸体持续时间上限 : {value4}秒
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # - [决斗场] -
+    # 起始冷却时间 : 10秒
 
-    associate = [{"type":"*skillDamage","data":data0}]
+    associate = [{"type":"*skillDamage","data":data2}]
 
-# 闪步 섬보
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/0c262dac3ec41ff79e359ada9c7a7faf?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill18(PassiveSkill):
+# 闪步
+# fighter_male/striker_male/0c262dac3ec41ff79e359ada9c7a7faf
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/0c262dac3ec41ff79e359ada9c7a7faf
+class Skill31(PassiveSkill):
+    """
+    向前后方快速移动一定距离。\n
+    使用[柔化肌肉]强制中断其他技能， 并发动此技能时， 可以无视冷却时间使用。\n
+    使用[柔化肌肉]强制施放此技能时， 若按向后方向键， 则角色会面向前方， 并向后移动。\n
+    学习[闪步]后， 身手变得更加灵活， [瞬步]移动过程中即使撞到敌人也不会停下。
+    """
     name = "闪步"
     learnLv = 30
-    masterLv = 6
+    masterLv = 1
     maxLv = 1
-    position = 0 #TODO
+    position = 0
     rangeLv = 1
     uuid = "0c262dac3ec41ff79e359ada9c7a7faf"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
 
-# 闪击快打 섬격
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/d204ec03a0aed2f20211fb6ccc48d46d?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill19(ActiveSkill):
+# 闪击快打
+# fighter_male/striker_male/d204ec03a0aed2f20211fb6ccc48d46d
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/d204ec03a0aed2f20211fb6ccc48d46d
+class Skill32(ActiveSkill):
+    """
+    以光一般的速度向敌人突进并发动敏捷的连续攻击。\n
+    按方向键可以追踪前方一定范围内的敌人并向其突进， 并对突进过程中碰到第一个敌人发动连续攻击。\n
+    使用[柔化肌肉]强制中断后施放时， 也可以转换方向。
+    """
     name = "闪击快打"
     learnLv = 30
     masterLv = 60
@@ -297,83 +533,143 @@ class Skill19(ActiveSkill):
     cd = 12
     mp = [50, 420]
     uuid = "d204ec03a0aed2f20211fb6ccc48d46d"
+    hasVP = False
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 5738, 6319, 6899, 7487, 8067, 8645, 9233, 9812, 10397, 10980, 11560, 12141, 12723, 13306, 13889, 14469, 15055, 15635, 16216, 16803, 17383, 17962, 18544, 19132, 19710, 20296, 20874, 21461, 22041, 22622, 23208, 23785, 24371, 24951, 25534, 26112, 26700, 27278, 27865, 28444, 29029, 29611, 30189, 30777, 31353, 31938, 32519, 33104, 33686, 34267, 34848, 35433, 36015, 36598, 37179, 37760, 38345, 38922, 39508, 40088, 40673, 41257, 41835, 42420, 43002, 43583, 44166, 44747, 45334, 45912]# noqa: E501
+    # 突进肘击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-
-    data1 = [0, 7975, 8787, 9597, 10411, 11212, 12024, 12828, 13643, 14450, 15263, 16068, 16878, 17685, 18498, 19309, 20114, 20929, 21736, 22545, 23351, 24162, 24968, 25782, 26590, 27402, 28212, 29022, 29830, 30639, 31448, 32256, 33067, 33874, 34685, 35493, 36302, 37113, 37922, 38731, 39540, 40351, 41162, 41973, 42781, 43588, 44394, 45205, 46017, 46825, 47636, 48443, 49252, 50062, 50873, 51680, 52491, 53300, 54113, 54925, 55726, 56539, 57344, 58155, 58965, 59777, 60585, 61399, 62201, 63014, 63823]# noqa: E501
+    # 中段踢攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
+    # [范围信息]
+    # 第2击冲击波大小比率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
-
-# 冲膝 클로즈 킥
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/42c82812f86ff6704ae9952a2e6093a4?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill20(ActiveSkill):
+# 冲膝
+# fighter_male/striker_male/42c82812f86ff6704ae9952a2e6093a4
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/42c82812f86ff6704ae9952a2e6093a4
+class Skill33(ActiveSkill):
+    """
+    将力量聚集到膝盖， 然后向近身的敌人发出极强威力的撞击； 可以击退敌人并引发冲击波， 使前方的多个敌人受到伤害。\n
+    虽然此技能破坏力极大， 但是未命中敌人时会出现极大的空隙。
+    """
     name = "冲膝"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 3
+    position = 8
     rangeLv = 2
     cube = 1
     cd = 15
     mp = [130, 1092]
     uuid = "42c82812f86ff6704ae9952a2e6093a4"
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    vps = [
-          {
-            "name": "近战专家",
-            "desc": "所受伤害减少<br/>施放时间减少<br/>未命中时缩短冷却时间",
-            "explain": "[冲膝]<br/>若未命中目标， 技能冷却时间缩短为1秒<br/><br/>命中时， 10秒内所受伤害 -30%<br/><br/>通过[柔化肌肉]强制中断并施放时， 技能施放速度 +20%"
-          },
-          {
-            "name": "立正站好",
-            "desc": "增加强制控制功能<br/>范围增加",
-            "explain": "[冲膝]<br/>被直接击中的敌人将进入束缚状态， 效果持续3秒<br/>再次攻击束缚状态的敌人或束缚时间结束时， 对其适用攻击力， 并产生以相同攻击力对周围敌人造成伤害的巨大冲击波<br/>- 删除直接打击攻击力<br/>- 总攻击力相同<br/>- 冲击波大小 +100%"
-          }
-        ]
+    # 膝撞速度增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 踢击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    hit1 = 1
+    # 冲击波攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # [范围信息]
+    # 冲击波大小比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
-    data0 = [0, 17789, 19596, 21393, 23198, 25005, 26810, 28616, 30422, 32225, 34029, 35835, 37643, 39444, 41246, 43053, 44859, 46661, 48471, 50273, 52077, 53882, 55685, 57491, 59294, 61104, 62907, 64709, 66516, 68319, 70122, 71930, 73736, 75540, 77340, 79148, 80952, 82757, 84563, 86370, 88170, 89975, 91781, 93587, 95391, 97197, 99003, 100806, 102605, 104414, 106221, 108023, 109827, 111633, 113439, 115241, 117047, 118854, 120657, 122462, 124266, 126068, 127877, 129683, 131489, 133287, 135092, 136899, 138702, 140511, 142314]# noqa: E501
-    hit0 = 1
+    def vp_1(self):
+        """
+        [冲膝]\n
+        若未命中目标， 技能冷却时间缩短为1秒\n
+        命中时， 10秒内所受伤害 -30%\n
+        通过[柔化肌肉]强制中断并施放时， 技能施放速度 +20%
+        """
+        ...
 
+    def vp_2(self):
+        """
+        [冲膝]\n
+        使被直接命中的敌人进入强制控制状态， 效果持续3秒\n
+        再次攻击强制控制状态的敌人， 或强制控制时间结束时， 攻击力伤害生效， 并产生巨大冲击波， 对周围敌人造成等量伤害\n
+        - 删除直接命中攻击力\n
+        - 总攻击力相同\n
+        - 冲击波大小 +70%\n
+        - 被强制控制的敌人攻击力 -30%， 效果持续10秒
+        """
+        ...
 
-# 炽焰旋风腿 홍염 질풍각
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/852f8ad797db4dca1405cb3e77198401?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill21(ActiveSkill):
+# 炽焰旋风腿
+# fighter_male/striker_male/852f8ad797db4dca1405cb3e77198401
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/852f8ad797db4dca1405cb3e77198401
+class Skill34(ActiveSkill):
+    """
+    向上跃起并用带有火焰的旋风腿对附近敌人造成多段攻击伤害， 随后向下劈击敌人。\n
+    按向前键后施放技能时， 会边前进边跳跃， 随后向下劈击敌人。\n
+    技能施放过程中按跳跃键时， 技能会被取消。\n
+    在决斗场中， 无法用跳跃键取消技能。
+    """
     name = "炽焰旋风腿"
     learnLv = 35
     masterLv = 60
     maxLv = 70
-    position = 7 #TODO
+    position = 7
     rangeLv = 2
     cube = 1
     cd = 20
     mp = [170, 1428]
     uuid = "852f8ad797db4dca1405cb3e77198401"
-    vps = [
-          {
-            "name": "爆裂旋风腿",
-            "desc": "攻击次数增加<br/>范围增加<br/>施放时间减少",
-            "explain": "[炽焰旋风腿]<br/>多段攻击次数 +12次<br/>- 总攻击力相同<br/><br/>攻击范围 +70%<br/><br/>通过[柔化肌肉]强制中断并施放时， 技能施放速度 +50%"
-          },
-          {
-            "name": "连环！爆裂腿！",
-            "desc": "变更为3次回旋踢的技能",
-            "explain": "[炽焰旋风腿]<br/>变更为向前方施展敏捷的3次回旋踢<br/>- 总攻击力相同<br/>- 无法在空中施放"
-          }
-        ]
-    data0 = [0, 2184, 2408, 2627, 2849, 3071, 3290, 3518, 3738, 3959, 4182, 4403, 4628, 4848, 5066, 5288, 5508, 5733, 5954, 6176, 6399, 6620, 6842, 7065, 7287, 7508, 7728, 7950, 8172, 8396, 8618, 8840, 9059, 9282, 9501, 9725, 9947, 10170, 10392, 10613, 10838, 11055, 11277, 11501, 11720, 11942, 12168, 12387, 12609, 12831, 13052, 13275, 13499, 13719, 13938, 14156, 14384, 14604, 14829, 15051, 15270, 15492, 15711, 15933, 16157, 16380, 16602, 16823, 17046, 17267, 17487]# noqa: E501
-    hit0 = 1
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 2184, 2408, 2627, 2849, 3071, 3290, 3518, 3738, 3959, 4182, 4403, 4628, 4848, 5066, 5288, 5508, 5733, 5954, 6176, 6399, 6620, 6842, 7065, 7287, 7508, 7728, 7950, 8172, 8396, 8618, 8840, 9059, 9282, 9501, 9725, 9947, 10170, 10392, 10613, 10838, 11055, 11277, 11501, 11720, 11942, 12168, 12387, 12609, 12831, 13052, 13275, 13499, 13719, 13938, 14156, 14384, 14604, 14829, 15051, 15270, 15492, 15711, 15933, 16157, 16380, 16602, 16823, 17046, 17267, 17487]# noqa: E501
-    hit1 = 6
-
-    data2 = [0, 6617, 7290, 7956, 8628, 9299, 9975, 10643, 11315, 11987, 12657, 13326, 14000, 14673, 15342, 16013, 16685, 17355, 18029, 18699, 19371, 20043, 20714, 21384, 22055, 22730, 23400, 24071, 24738, 25413, 26085, 26753, 27429, 28095, 28770, 29442, 30113, 30783, 31458, 32126, 32796, 33470, 34143, 34814, 35486, 36155, 36825, 37499, 38168, 38840, 39515, 40185, 40853, 41526, 42195, 42869, 43538, 44211, 44880, 45557, 46224, 46896, 47568, 48236, 48908, 49580, 50255, 50928, 51597, 52266, 52940]# noqa: E501
+    # 旋风腿攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 7
+    # 旋风腿多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 下踢攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
+    # 攻击速度增加率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # [范围信息]
+    # 攻击范围比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
+    def vp_1(self):
+        """
+        [炽焰旋风腿]\n
+        多段攻击次数 +12次\n
+        - 总攻击力相同\n
+        攻击范围 +70%\n
+        通过[柔化肌肉]强制中断并施放时， 技能施放速度 +50%
+        """
+        ...
 
-# 闪电之舞 라이트닝 댄스
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/28b583c75a49103a1d8aabf799c000a4?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill22(ActiveSkill):
+    def vp_2(self):
+        """
+        [炽焰旋风腿]\n
+        变更为向前方施展敏捷的3次回旋踢\n
+        - 总攻击力相同\n
+        - 无法在空中施放
+        """
+        ...
+
+# 闪电之舞
+# fighter_male/striker_male/28b583c75a49103a1d8aabf799c000a4
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/28b583c75a49103a1d8aabf799c000a4
+class Skill35(ActiveSkill):
+    """
+    向前方敌人发出强威力的踢脚， 并利用反作用力闪电般地在一定范围内的多个敌人间移动且对这些敌人造成伤害， 最后将敌人聚到一处并给予超强威力的终结一击。 周围没有敌人或移动攻击达到一定次数后就会停止移动。 无法攻击处于透明、 无敌、 伪装状态或一定高度以上的敌人。\n
+    技能施放过程中， 按方向键可以调整移动距离， 按跳跃键可以停止移动并立即发动最后一击。\n
+    对无法抓取的敌人不适用控制效果。\n
+    在决斗场中， 被[闪电之舞]击中的敌人会微微浮空并被束缚。
+    """
     name = "闪电之舞"
     learnLv = 40
     masterLv = 60
@@ -384,65 +680,107 @@ class Skill22(ActiveSkill):
     cd = 20
     mp = [180, 1512]
     uuid = "28b583c75a49103a1d8aabf799c000a4"
-    vps = [
-          {
-            "name": "迅疾如风",
-            "desc": "追踪<br/>施放时间减少",
-            "explain": "[闪电之舞]<br/>施放时追踪范围的敌人并移动至该敌人位置发动首次攻击<br/><br/>删除最后一击<br/>- 总攻击力相同<br/><br/>施放中移动速度 +50%"
-          },
-          {
-            "name": "一起上吧",
-            "desc": "强化聚集敌人效果<br/>施放时间减少<br/>范围增加",
-            "explain": "[闪电之舞]<br/>以首次攻击位置为基准， 瞬间聚集大范围内的敌人后， 发动最后一击<br/>- 周围敌人聚集范围 : 1200px<br/>- 移动次数 +4次<br/><br/>- 基本冷却时间变更为12秒<br/>总攻击力 -40%"
-          }
-        ]
-    data0 = [0, 2654, 2928, 3194, 3462, 3734, 4001, 4274, 4544, 4811, 5079, 5354, 5622, 5888, 6159, 6431, 6696, 6968, 7238, 7505, 7778, 8046, 8313, 8586, 8852, 9123, 9396, 9665, 9929, 10205, 10472, 10743, 11009, 11279, 11552, 11820, 12087, 12357, 12629, 12899, 13166, 13436, 13707, 13977, 14244, 14511, 14784, 15054, 15323, 15593, 15863, 16133, 16403, 16673, 16938, 17213, 17483, 17747, 18020, 18288, 18555, 18828, 19098, 19364, 19637, 19905, 20175, 20445, 20712, 20984, 21255]# noqa: E501
-    hit0 = 1
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 18596, 20483, 22371, 24254, 26144, 28029, 29918, 31803, 33692, 35577, 37463, 39353, 41238, 43121, 45011, 46896, 48786, 50670, 52554, 54444, 56333, 58218, 60104, 61991, 63881, 65769, 67652, 69543, 71427, 73313, 75201, 77085, 78975, 80859, 82746, 84636, 86520, 88407, 90294, 92180, 94070, 95952, 97841, 99728, 101613, 103500, 105387, 107274, 109161, 111045, 112935, 114821, 116711, 118596, 120482, 122367, 124256, 126147, 128030, 129914, 131802, 133689, 135579, 137460, 139349, 141236, 143124, 145011, 146894, 148785]# noqa: E501
-    hit1 = 1
+    # 移动攻击次数上限 : {value0}
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 每次攻击时的攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 待确认
+    hit0 = 1
+    # 终结一击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # 打击后移动距离 : {value3}px
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+
+    def vp_1(self):
+        """
+        [闪电之舞]\n
+        施放时， 追踪范围的敌人并移动至该敌人位置发动首次攻击\n
+        删除最后一击\n
+        - 总攻击力相同\n
+        施放中移动速度 +50%
+        """
+        ...
 
     def vp_2(self):
+        """
+        [闪电之舞]\n
+        以首次攻击位置为基准， 瞬间聚集大范围内的敌人后， 发动最后一击\n
+        - 周围敌人聚集范围 : 1200px\n
+        - 移动次数 +4次\n
+        - 基本冷却时间变更为12秒\n
+        总攻击力 -40%
+        """
         self.cd = 12
         self.skillRation *= 1 - 0.4
+        ...
 
-
-# 瞬影连环踢 헥토파스칼 킥
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/0b8db1e10b3abbd24d38564e708675d5?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill23(ActiveSkill):
+# 瞬影连环踢
+# fighter_male/striker_male/0b8db1e10b3abbd24d38564e708675d5
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/0b8db1e10b3abbd24d38564e708675d5
+class Skill36(ActiveSkill):
+    """
+    此技能是散打系列技能的上位技能， 发动后， 可以向敌人发出强威力的飞踢， 使敌人受到巨大伤害。\n
+    飞踢后落地时， 可以用[柔化肌肉]强制中断当前技能并施放其他技能。\n
+    但是， 在决斗场中无法在落地时使用[柔化肌肉]强制施放其他技能。
+    """
     name = "瞬影连环踢"
     learnLv = 45
     masterLv = 60
     maxLv = 70
-    position = 3 #TODO
+    position = 3
     rangeLv = 2
     cube = 2
     cd = 45
     mp = [400, 3360]
     uuid = "0b8db1e10b3abbd24d38564e708675d5"
-    vps = [
-          {
-            "name": "烈焰猛袭",
-            "desc": "追踪<br/>取消僵直",
-            "explain": "[瞬影连环踢]<br/>追踪前方一定范围内最强的敌人， 以肉眼不可见的速度发出飞踢<br/><br/>攻击后， 可以使用[柔化肌肉]强制中断并施放[旋风腿]、 [炽焰旋风腿]、 [烈火强踢]、 [强袭重击]、 [炼狱坠星腿]"
-          },
-          {
-            "name": "蓄力强踢",
-            "desc": "范围增加<br/>所受伤害减少<br/>蓄气时， 攻击力和冷却时间增加",
-            "explain": "[瞬影连环踢]<br/>通过持续按住技能键， 可维持准备动作<br/>准备动作的维持时间越长， 连环踢距离和命中时的冲击波范围越大<br/>- 攻击力最多增加50%<br/>- 冷却时间最多增加50%<br/>- 准备动作最大维持时间 : 3秒<br/><br/>施放技能过程中所受伤害 -90%"
-          }
-        ]
-    data0 = [0, 41270, 45461, 49647, 53835, 58020, 62208, 66395, 70584, 74769, 78962, 83145, 87330, 91520, 95706, 99896, 104082, 108270, 112457, 116646, 120831, 125019, 129203, 133392, 137577, 141768, 145956, 150141, 154328, 158511, 162702, 166890, 171080, 175263, 179456, 183641, 187824, 192014, 196200, 200390, 204576, 208763, 212948, 217139, 221324, 225515, 229700, 233885, 238076, 242261, 246447, 250634, 254820, 259008, 263199, 267384, 271574, 275759, 279945, 284132, 288321, 292509, 296697, 300884, 305069, 309258, 313443, 317636, 321821, 326007, 330194]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 飞踢攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+
+    def vp_1(self):
+        """
+        [瞬影连环踢]\n
+        追踪前方一定范围内最强的敌人， 以肉眼不可见的速度发出飞踢\n
+        攻击后， 可以使用[柔化肌肉]强制中断并施放[旋风腿]、 [炽焰旋风腿]、 [烈火强踢]、 [强袭重击]、 [炼狱坠星腿]
+        """
+        ...
 
     def vp_2(self):
-        self.skillRation *= 1 + 0.5
+        """
+        [瞬影连环踢]\n
+        通过持续按住技能键， 可维持准备动作\n
+        准备动作的维持时间越长， 连环踢距离和命中时的冲击波范围越大\n
+        - 攻击力最多增加50%\n
+        - 冷却时间最多增加50%\n
+        - 准备动作最大维持时间 : 3秒\n
+        施放技能过程中所受伤害 -90%
+        """
         self.cd = 45 * 1.5
+        self.skillRation *= 1 + 0.5
+        ...
 
-
-# 烈焰燃烧 효율적인 연소
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/6e33d47e6622ce03b6defdd912140270?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill24(PassiveSkill):
+# 烈焰燃烧
+# fighter_male/striker_male/6e33d47e6622ce03b6defdd912140270
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/6e33d47e6622ce03b6defdd912140270
+class Skill37(PassiveSkill):
+    """
+    몸 안에 내재된 힘을 집중하여 더욱 강하고 효율적으로 운용한다. 습득 시 물리 공격력이 증가하고, 화염의 각 스킬의 지속 시간이 늘어나며, 지속 시간 동안 스킬 MP 소모량이 감소한다.\n
+    배운 스킬창 목록에서 화염의 각 바닥 데미지를 on/off 가능하다.
+    """
     name = "烈焰燃烧"
     learnLv = 48
     masterLv = 40
@@ -450,15 +788,26 @@ class Skill24(PassiveSkill):
     position = 6
     rangeLv = 3
     uuid = "6e33d47e6622ce03b6defdd912140270"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]# noqa: E501
+    # 物理攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # [烈焰焚步]持续时间增加 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 魔法值消耗量减少率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [{"type":"$*PAtkP","data":data0}]
 
-
-# 烈焰焚步 화염의 각
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/01384bbfc346775d1267fa0bc4ca605f?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill25(ActiveSkill):
+# 烈焰焚步
+# fighter_male/striker_male/01384bbfc346775d1267fa0bc4ca605f
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/01384bbfc346775d1267fa0bc4ca605f
+class Skill38(ActiveSkill):
+    """
+    召唤地狱烈焰缠绕在双脚上； 可以减少除[烈焰焚步]、 [双重释放]、 [极武霸皇踢]、 [焚火逐日拳]以外的散打系列技能的冷却时间、 技能施放后的僵直时间， 同时还可以增加敌人的僵直时间以及技能和基本攻击的攻击力。
+    """
     name = "烈焰焚步"
     learnLv = 50
     masterLv = 40
@@ -469,34 +818,65 @@ class Skill25(ActiveSkill):
     cd = 145
     mp = [500, 4480]
     uuid = "01384bbfc346775d1267fa0bc4ca605f"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+
     bind = False
 
-    data0 = [0, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15]# noqa: E501
-
-    data1 = [0, 2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50, 54, 58, 62, 66, 70, 74, 78, 82, 86, 90, 94, 98, 102, 106, 110, 114, 118, 122, 126, 130, 134, 138, 142, 146, 150, 154, 158, 162, 166, 170, 174, 178, 182, 186, 190, 194, 198]# noqa: E501
+    # [烈焰焚步]持续时间 : {value0}秒
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 散打系列技能冷却时间减少率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 散打系列技能的僵直时间减少率 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    # 敌人僵直时间增加 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    # 移动速度增加 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
+    # 技能攻击力增加率 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
+    # 基本攻击和上击时额外变化率 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
+    # 施放后爆炸攻击力 : {value7}%
+    data7 = get_data(f'{prefix}/{uuid}', 7)
+    # 地面的烈焰攻击力 : {value8}%
+    data8 = get_data(f'{prefix}/{uuid}', 8)
+    # [柔化肌肉]蓄气时间减少 : {value9}秒
+    data9 = get_data(f'{prefix}/{uuid}', 9)
 
     associate = [
-        {"data":data0,"type":"*cdReduce", 'exceptSkills': ['双重释放', '烈焰焚步', '极武霸皇踢', '焚火逐日拳']},
-        {"type":"*skillDamage","data":data1},
+        {"data":data1,"type":"*cdReduce", 'exceptSkills': ['双重释放', '烈焰焚步', '极武霸皇踢', '焚火逐日拳']},
+        {"type":"*skillDamage","data":data5},
     ]
 
 
-# 双重释放 이중개방
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/c39c703f72d289fcd5a8f182068140d4?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill26(ActiveSkill):
+# 双重释放
+# fighter_male/striker_male/c39c703f72d289fcd5a8f182068140d4
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/c39c703f72d289fcd5a8f182068140d4
+class Skill39(ActiveSkill):
+    """
+    瞬间引爆体内的地狱火焰， 释放更强大的力量。 [瞬影连环踢]、 [烈火强拳]、 [炼狱坠星腿]中， 在[双重释放]后最先使用的技能将额外适用[双重释放]的攻击力。\n
+    可以在[烈焰焚步]状态下施放。\n
+    学习后， 技能等级与[烈焰焚步]同步。
+    """
     name = "双重释放"
     learnLv = 50
-    masterLv = 1
-    maxLv = 1
-    line = 60
+    masterLv = 40
+    maxLv = 50
     position = 5
     rangeLv = 5
     cd = 145
     mp = [850, 7000]
     uuid = "c39c703f72d289fcd5a8f182068140d4"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+
     bind = True
 
-    data0 = [0, 66520, 81946, 97369, 112792, 128218, 143642, 159068, 174493, 189918, 205341, 220767, 236192, 251621, 267043, 282468, 297896, 313317, 328745, 344167, 359595, 375018, 390443, 405869, 421291, 436718, 452143, 467565, 482992, 498418, 513841, 529265, 544690, 560118, 575544, 590969, 606390, 621816, 637241, 652666, 668090, 683521, 698946, 714363, 729793, 745215, 760642, 776068, 791491, 806918, 822340]# noqa: E501
+    # 双重释放强化攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
 
     @property
@@ -508,10 +888,14 @@ class Skill26(ActiveSkill):
     def lv(self, value):
         ...
 
-
-# 飞燕旋风 비연선풍
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/8e358ecf99ac9df31a6132aeafe378a9?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill27(ActiveSkill):
+# 飞燕旋风
+# fighter_male/striker_male/8e358ecf99ac9df31a6132aeafe378a9
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/8e358ecf99ac9df31a6132aeafe378a9
+class Skill40(ActiveSkill):
+    """
+    以敏捷的回旋踢聚集敌人后， 发动强力终结攻击。\n
+    施放技能时， 按前方向键可以向前方跳跃。
+    """
     name = "飞燕旋风"
     learnLv = 60
     masterLv = 40
@@ -522,31 +906,54 @@ class Skill27(ActiveSkill):
     cd = 30
     mp = [450, 1260]
     uuid = "8e358ecf99ac9df31a6132aeafe378a9"
-    vps = [
-          {
-            "name": "双旋破空",
-            "desc": "可多次发动<br/>范围增加<br/>移动功能强化",
-            "explain": "[飞燕旋风]<br/>变更为可填充2次的技能<br/>- 每次填充冷却时间 : 15秒<br/>- 单次攻击力 -50%<br/><br/>可通过输入方向键沿着对角线方向移动并施放回旋踢<br/><br/>回旋踢移动距离 +20%<br/><br/>回旋踢攻击范围 +20%"
-          },
-          {
-            "name": "鹰隼飞踢",
-            "desc": "变更为跳跃后施放飞踢的技能<br/>赋予无敌状态",
-            "explain": "[飞燕旋风]<br/>施放时攻击敌人并进行后空翻后， 可通过再次输入技能键施放地面飞踢<br/><br/>施放时进入无敌状态<br/>- 无敌状态持续时间 : 1.5秒"
-          }
-        ]
-    data0 = [0, 8697, 9576, 10458, 11340, 12225, 13112, 13989, 14871, 15753, 16637, 17516, 18401, 19283, 20165, 21050, 21932, 22814, 23693, 24576, 25463, 26342, 27222, 28106, 28991, 29874, 30753, 31634, 32519, 33398, 34281, 35163, 36048, 36930, 37812, 38694, 39576, 40458, 41339, 42222, 43109, 43991, 44873, 45755, 46634, 47519, 48402, 49284, 50166, 51050, 51932]# noqa: E501
-    hit0 = 2
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data1 = [0, 17892, 19713, 21525, 23340, 25158, 26976, 28793, 30603, 32418, 34235, 36053, 37869, 39681, 41498, 43314, 45131, 46944, 48759, 50574, 52392, 54209, 56025, 57840, 59655, 61469, 63285, 65102, 66915, 68733, 70551, 72363, 74180, 75996, 77813, 79626, 81444, 83256, 85076, 86891, 88707, 90519, 92337, 94154, 95970, 97782, 99600, 101415, 103233, 105047, 106860]# noqa: E501
-    hit1 = 1
+    # 回旋踢攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 2
+    # 回旋踢多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 终结攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
+    hit2 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
 
     def vp_1(self):
+        """
+        [飞燕旋风]\n
+        变更为可填充2次的技能\n
+        - 每次填充冷却时间 : 15秒\n
+        - 单次攻击力 -50%\n
+        可通过输入方向键沿着对角线方向移动并施放回旋踢\n
+        回旋踢移动距离 +20%\n
+        回旋踢攻击范围 +20%
+        """
         self.cd = 15
         self.skillRation *= 1 - 0.5
+        ...
 
-# 旋风碎心踢 스핀 킥
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/31823197cc0b04d4c5dcf8f928d9220c?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill28(ActiveSkill):
+    def vp_2(self):
+        """
+        [飞燕旋风]\n
+        施放时， 攻击敌人并进行后空翻， 随后可通过再次输入技能键施放飞踢\n
+        施放时进入无敌状态\n
+        - 无敌状态持续时间 : 1.5秒
+        """
+        ...
+
+# 旋风碎心踢
+# fighter_male/striker_male/31823197cc0b04d4c5dcf8f928d9220c
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/31823197cc0b04d4c5dcf8f928d9220c
+class Skill41(ActiveSkill):
+    """
+    先高速旋转身体引发一阵旋风， 然后跃起利用离心力进行极具威力的踢腿攻击。\n
+    被击中的敌人会向后飞出并倒地。
+    """
     name = "旋风碎心踢"
     learnLv = 70
     masterLv = 40
@@ -557,35 +964,57 @@ class Skill28(ActiveSkill):
     cd = 50
     mp = [935, 1960]
     uuid = "31823197cc0b04d4c5dcf8f928d9220c"
-    vps = [
-          {
-            "name": "碎心聚合",
-            "desc": "可多次发动<br/>增加聚集敌人效果<br/>范围增加",
-            "explain": "[旋风碎心踢]<br/>变更为可填充2次的技能<br/>- 每次填充冷却时间 : 25秒<br/>- 单次攻击力 -50%<br/><br/>最后踢腿攻击时攻击前方大范围的敌人， 并生成聚拢命中的敌人的冲击波"
-          },
-          {
-            "name": "颚骨碎击",
-            "desc": "变更为单次攻击<br/>增加强制控制功能<br/>施放时间减少",
-            "explain": "[旋风碎心踢]<br/>变更为仅使用最后一击的1段攻击<br/>- 总攻击力相同<br/>攻击可抓取的敌人时， 使其猛烈旋转并浮空； 攻击不可抓取的敌人时， 使其进入强制控制状态<br/>- 强制控制持续时间 : 1秒"
-          }
-        ]
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-    data0 = [0, 1202, 1326, 1446, 1568, 1692, 1812, 1937, 2058, 2181, 2304, 2424, 2544, 2670, 2790, 2912, 3035, 3158, 3282, 3402, 3524, 3645, 3768, 3888, 4011, 4134, 4256, 4380, 4499, 4623, 4746, 4866, 4989, 5112, 5232, 5357, 5477, 5600, 5723, 5844, 5969, 6089, 6213, 6336, 6455, 6579, 6699, 6822, 6947, 7068, 7190]# noqa: E501
+    # 旋转多段攻击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 4
-
-    data1 = [0, 17417, 19179, 20951, 22713, 24485, 26249, 28017, 29783, 31554, 33317, 35084, 36852, 38618, 40389, 42153, 43923, 45687, 47454, 49221, 50988, 52757, 54524, 56288, 58058, 59823, 61590, 63357, 65126, 66893, 68657, 70425, 72192, 73964, 75728, 77496, 79262, 81027, 82794, 84558, 86328, 88095, 89862, 91628, 93396, 95166, 96930, 98699, 100463, 102231, 103995]# noqa: E501
-    hit1 = 1
-
-    data2 = [0, 39477, 43484, 47486, 51492, 55499, 59507, 63510, 67512, 71519, 75522, 79532, 83535, 87542, 91544, 95550, 99557, 103560, 107567, 111572, 115578, 119577, 123588, 127593, 131595, 135603, 139608, 143610, 147617, 151625, 155630, 159633, 163643, 167642, 171648, 175652, 179661, 183665, 187673, 191678, 195678, 199686, 203688, 207699, 211703, 215706, 219713, 223715, 227721, 231725, 235733]# noqa: E501
+    # 旋转多段攻击次数 : {value1}次
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # 第一击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
+    # 最后一击攻击力 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
+    hit3 = 1
+    # [范围信息]
+    # 冲击波大小比率 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
 
     def vp_1(self):
+        """
+        [旋风碎心踢]\n
+        变更为可填充2次的技能\n
+        - 每次填充冷却时间 : 25秒\n
+        - 单次攻击力 -50%\n
+        最后踢腿攻击时攻击前方大范围的敌人， 并生成聚拢命中的敌人的冲击波
+        """
         self.cd = 25
         self.skillRation *= 1 - 0.5
+        ...
 
-# 烈火强踢 낙화
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/374f53e8989ef04a8506c8ec99d9ecdc?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill29(ActiveSkill):
+    def vp_2(self):
+        """
+        [旋风碎心踢]\n
+        变更为仅使用最后一击的1段攻击\n
+        - 总攻击力相同\n
+        攻击可抓取的敌人时， 使其猛烈旋转并浮空； 攻击不可抓取的敌人时， 使其进入强制控制状态\n
+        - 强制控制持续时间 : 1秒
+        """
+        ...
+
+# 烈火强踢
+# fighter_male/striker_male/374f53e8989ef04a8506c8ec99d9ecdc
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/374f53e8989ef04a8506c8ec99d9ecdc
+class Skill42(ActiveSkill):
+    """
+    往前突进， 并让敌人进入僵直状态。 把敌人聚集后， 使用强力的向下劈击对敌人造成大量伤害。\n
+    无法聚集或上挑霸体状态的怪物。\n
+    在空中可以强制中断该技能并使用[柔化肌肉]。
+    """
     name = "烈火强踢"
     learnLv = 75
     masterLv = 40
@@ -596,25 +1025,49 @@ class Skill29(ActiveSkill):
     cd = 45
     mp = [450, 1260]
     uuid = "374f53e8989ef04a8506c8ec99d9ecdc"
-    vps = [
-          {
-            "name": "不灭之火",
-            "desc": "施放时间减少<br/>范围增加",
-            "explain": "[烈火强踢]<br/>使用[柔化肌肉]强制中断并施放技能时， 无跳跃动作立即用脚下劈<br/>直接使用时， 向更高处跳跃并下劈<br/><br/>攻击范围 +30%"
-          },
-          {
-            "name": "炎域之阵",
-            "desc": "范围增加<br/>赋予速度增益效果<br/>所受伤害减少<br/>附加灼伤效果",
-            "explain": "[烈火强踢]<br/>以命中的地点为中心生成火焰领域， 为散打和敌人赋予各类增益/减益效果<br/>- 火焰领域持续时间 : 10秒<br/><br/>[散打适用效果]<br/>- 攻击速度 +15%<br/>- 移动速度 +15%<br/>- 所受伤害 -20%<br/><br/>[敌人适用效果]<br/>- 赋予敌人灼烧异常状态"
-          }
-        ]
-    data0 = [0, 69030, 76034, 83036, 90041, 97043, 104044, 111051, 118051, 125054, 132057, 139062, 146065, 153067, 160069, 167075, 174077, 181081, 188081, 195087, 202090, 209091, 216097, 223101, 230101, 237106, 244108, 251112, 258117, 265117, 272122, 279125, 286128, 293129, 300133, 307138, 314140, 321144, 328147, 335148, 342154, 349156, 356159, 363162, 370165, 377168, 384173, 391173, 398177, 405182, 412184]# noqa: E501
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
+
+    # 爆炸攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
 
+    def vp_1(self):
+        """
+        [烈火强踢]\n
+        使用[柔化肌肉]强制中断并施放技能时， 无跳跃动作立即用脚下劈\n
+        普通施放时， 跳跃后下劈\n
+        攻击范围 +30%
+        """
+        ...
 
-# 烈火支配 화력개방
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/b501ae53638d33a32351904f31cb6aa3?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill30(PassiveSkill):
+    def vp_2(self):
+        """
+        [烈火强踢]\n
+        以命中的地点为中心生成火焰领域， 为散打和敌人赋予各类增益/减益效果\n
+        - 火焰领域持续时间 : 10秒\n
+        [散打适用效果]\n
+        - 攻击速度 +20%\n
+        - 移动速度 +20%\n
+        - 所受伤害 -20%\n
+        [敌人适用效果]\n
+        - 赋予敌人灼伤异常状态
+        """
+        ...
+
+# 烈火支配
+# fighter_male/striker_male/b501ae53638d33a32351904f31cb6aa3
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/b501ae53638d33a32351904f31cb6aa3
+class Skill43(PassiveSkill):
+    """
+    使用灵魂的力量支配火焰。\n
+    学习后， 会根据[烈火支配]的效果增加技能攻击力和基本攻击力， 增加[柔化肌肉]的强制中断次数、 减少恢复时间。
+    """
     name = "烈火支配"
     learnLv = 75
     masterLv = 40
@@ -622,15 +1075,28 @@ class Skill30(PassiveSkill):
     position = 5
     rangeLv = 3
     uuid = "b501ae53638d33a32351904f31cb6aa3"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99, 101, 103, 105, 107, 109, 111, 113, 115, 117]# noqa: E501
+    # 基本攻击力和技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # [柔化肌肉]恢复时间减少 : {value1}秒
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+    # [柔化肌肉]强制中断次数增加 : {value2}
+    data2 = get_data(f'{prefix}/{uuid}', 2)
 
     associate = [ {"type":"*skillDamage","data":data0} ]
 
-
-# 烈火强拳 아토믹 캐넌
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/e1daab884dd07fc9e70d08b83d1790eb?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill31(ActiveSkill):
+# 烈火强拳
+# fighter_male/striker_male/e1daab884dd07fc9e70d08b83d1790eb
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/e1daab884dd07fc9e70d08b83d1790eb
+class Skill44(ActiveSkill):
+    """
+    用强力的突进拳击攻击并击飞敌人。\n
+    可以通过按住技能键蓄力调整突进的时机， 同时在施放准备姿态下， 可以通过输入方向键调整突进距离。\n
+    输入向前方向键时， 突进距离会调整到前方。 输入向后方向键时， 突进距离会调整到原地。
+    """
     name = "烈火强拳"
     learnLv = 80
     masterLv = 40
@@ -641,24 +1107,47 @@ class Skill31(ActiveSkill):
     cd = 55
     mp = [450, 1260]
     uuid = "e1daab884dd07fc9e70d08b83d1790eb"
-    vps = [
-          {
-            "name": "爆炎湮灭",
-            "desc": "范围增加<br/>突进距离增加<br/>增加聚集敌人效果",
-            "explain": "[烈火强拳]<br/>生成伴随强烈热气的冲击波， 对更大范围进行攻击<br/>- 突进距离 +50%<br/>- 攻击范围 +20%<br/><br/>攻击过程中， 可以使用[柔化肌肉]强制中断<br/><br/>突进时身体周围产生风压， 吸引更大范围内的敌人"
-          },
-          {
-            "name": "极武瞬杀",
-            "desc": "命中时停止突进<br/>可以在空中施放<br/>施放时间减少",
-            "explain": "[烈火强拳]<br/>无需准备动作， 立即向正前方发动突进拳击<br/>突进过程中若接触到敌人， 则停止突进并在该位置生成冲击波<br/>- 删除长按技能键功能<br/>- 删除施放时方向键输入功能<br/><br/>可以在地面和空中施放技能"
-          }
-        ]
-    data0 = [0, 84060, 92587, 101115, 109640, 118169, 126697, 135230, 143752, 152282, 160811, 169338, 177867, 186391, 194921, 203448, 211979, 220506, 229032, 237561, 246090, 254615, 263144, 271675, 280200, 288728, 297255, 305784, 314312, 322839, 331368, 339893, 348422, 356953, 365476, 374008, 382535, 391062, 399590, 408118, 416647, 425175, 433700, 442231, 450756, 459285, 467814, 476345, 484870, 493397, 501925]# noqa: E501
-    hit0 = 1
+    hasVP = True
+    hasUP = True
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
+    vps = get_data(f'{prefix}/{uuid}', "vps") # noqa: E501
 
-# 极武霸皇踢 패황연격
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/c524c4f378d1cd0ff99e4580750a4567?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill32(ActiveSkill):
+    # 突进拳击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    hit0 = 1
+    # [范围信息]
+    # 攻击范围比率 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
+
+    def vp_1(self):
+        """
+        [烈火强拳]\n
+        生成伴随强烈热气的冲击波， 对更大范围进行攻击\n
+        - 突进距离 +50%\n
+        - 攻击范围 +20%\n
+        攻击过程中， 可以使用[柔化肌肉]强制中断\n
+        突进时身体周围产生风压， 吸引更大范围内的敌人
+        """
+        ...
+
+    def vp_2(self):
+        """
+        [烈火强拳]\n
+        无需准备动作， 立即向正前方发动突进拳击\n
+        突进过程中若接触到敌人， 则停止突进并在该位置生成冲击波\n
+        - 删除长按技能键功能\n
+        - 删除施放时方向键输入功能\n
+        可以在地面和空中施放技能
+        """
+        ...
+
+# 极武霸皇踢
+# fighter_male/striker_male/c524c4f378d1cd0ff99e4580750a4567
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/c524c4f378d1cd0ff99e4580750a4567
+class Skill45(ActiveSkill):
+    """
+    以电光火石般的拳击把前方的敌人聚集到击打地点， 左右轮番攻击一次， 并且把全身的力量聚于腿的末端， 使用穿刺前方的强力飞踢对敌人造成大量伤害。
+    """
     name = "极武霸皇踢"
     learnLv = 85
     masterLv = 40
@@ -669,20 +1158,30 @@ class Skill32(ActiveSkill):
     cd = 180
     mp = [2500, 5000]
     uuid = "c524c4f378d1cd0ff99e4580750a4567"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 35065, 43193, 51325, 59455, 67585, 75714, 83848, 91978, 100108, 108240, 116369, 124501, 132632, 140764, 148893, 157023, 165157, 173285, 181419, 189546, 197680, 205808, 213942, 222071, 230202, 238333, 246464, 254594, 262726, 270856, 278987, 287118, 295248, 303380, 311510, 319639, 327771, 335901, 344034, 352165, 360296, 368425, 376556, 384685, 392819, 400948, 409080, 417209, 425342, 433469]# noqa: E501
+    # 第一击攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-
-    data1 = [0, 44024, 54231, 64441, 74649, 84857, 95065, 105274, 115482, 125690, 135898, 146109, 156316, 166525, 176732, 186944, 197149, 207358, 217568, 227777, 237985, 248194, 258403, 268610, 278818, 289028, 299237, 309442, 319653, 329861, 340068, 350278, 360487, 370697, 380902, 391112, 401323, 411529, 421737, 431946, 442156, 452363, 462572, 472780, 482988, 493197, 503406, 513613, 523821, 534030, 544239]# noqa: E501
+    # 第二击攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
-
-    data2 = [0, 96852, 119309, 141768, 164227, 186689, 209145, 231605, 254063, 276523, 298981, 321440, 343895, 366356, 388816, 411272, 433733, 456190, 478650, 501107, 523568, 546026, 568486, 590945, 613403, 635859, 658322, 680780, 703238, 725695, 748153, 770613, 793072, 815532, 837988, 860449, 882905, 905368, 927825, 950284, 972743, 995202, 1017661, 1040117, 1062577, 1085034, 1107495, 1129953, 1152412, 1174870, 1197330]# noqa: E501
+    # 最后第三击攻击力 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
 
-
-# 千锤百炼 한계 개방
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/ef9d26746effee9199b54541f01b8752?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill33(PassiveSkill):
+# 千锤百炼
+# fighter_male/striker_male/ef9d26746effee9199b54541f01b8752
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/ef9d26746effee9199b54541f01b8752
+class Skill46(PassiveSkill):
+    """
+    以烈火煅烧自身肉体超越极限， 增加基本攻击力和技能攻击力， 使部分技能附加额外效果。\n
+    [碎骨] : 在[烈焰焚步]状态下施放时， 攻击时产生的冲击波范围变大。\n
+    [铁山靠] : 在[烈焰焚步]状态下施放时， 攻击时产生向前方扩散的冲击波。\n
+    [烈焰焚步] : 可以在施放其他技能的过程中双重施放， 利用双重施放强化后的技能在命中敌人之前， 双重施放功能处于未激活状态。
+    """
     name = "千锤百炼"
     learnLv = 95
     masterLv = 40
@@ -690,15 +1189,23 @@ class Skill33(PassiveSkill):
     position = 5
     rangeLv = 3
     uuid = "ef9d26746effee9199b54541f01b8752"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108, 110, 112, 114, 116, 118]# noqa: E501
+    # 基本攻击力和转职技能攻击力增加率 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
 
     associate = [ {"type":"*skillDamage","data":data0} ]
 
-
-# 炼狱坠星腿 필멸의 습격
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/5536486eaf9b13c9a8283447cb5e77ab?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill34(ActiveSkill):
+# 炼狱坠星腿
+# fighter_male/striker_male/5536486eaf9b13c9a8283447cb5e77ab
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/5536486eaf9b13c9a8283447cb5e77ab
+class Skill47(ActiveSkill):
+    """
+    可以在地面和空中施放。 施放时， 可以搜寻周围的敌人当中最强大的敌人， 敏捷地跳跃到空中后， 对其发动致命的下劈攻击， 并产生冲击波对敌人造成伤害。\n
+    双重释放激活的状态下， 产生更强力的冲击波， 冲击波适用双重释放攻击力。
+    """
     name = "炼狱坠星腿"
     learnLv = 95
     masterLv = 40
@@ -709,13 +1216,27 @@ class Skill34(ActiveSkill):
     cd = 60
     mp = [773, 6000]
     uuid = "5536486eaf9b13c9a8283447cb5e77ab"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data1 = [0, 140798, 155082, 169366, 183651, 197936, 212219, 226502, 240788, 255072, 269354, 283642, 297925, 312209, 326493, 340778, 355060, 369347, 383629, 397914, 412199, 426483, 440765, 455051, 469333, 483621, 497902, 512187, 526472, 540756, 555042, 569326, 583608, 597892, 612177, 626460, 640746, 655031, 669312, 683596, 697883, 712166, 726450, 740736, 755019, 769304, 783586, 797869, 812155, 826441, 840723]# noqa: E501
+    # 搜寻敌人范围 : {value0}px
+    data0 = get_data(f'{prefix}/{uuid}', 0)
+    # 下劈冲击波攻击力 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
 
-# 焚火逐日拳 멸화파천격
-# https://api.neople.co.kr/df/skills/ca0f0e0e9e1d55b5f9955b03d9dd213c/e36ae35f8964d92e30e33529a65544d7?apikey=fdvit1Kj64EAJm0qfB3JEAD8FLExLDD0
-class Skill35(ActiveSkill):
+# 焚火逐日拳
+# fighter_male/striker_male/e36ae35f8964d92e30e33529a65544d7
+# ca0f0e0e9e1d55b5f9955b03d9dd213c/e36ae35f8964d92e30e33529a65544d7
+class Skill48(ActiveSkill):
+    """
+    将不惜牺牲一切的觉悟蕴含在拳中， 竭尽浑身力量发动一次又一次的连击。\n
+    施放时， 搜寻并瞬间移动至周围最强大的敌人身边， 然后发动连续攻击。\n
+    [三次觉醒技能]\n
+    使用三次觉醒技能时， 与关联的技能共享冷却时间。\n
+    若关联的技能还在冷却中， 则无法使用三次觉醒技能。
+    """
     name = "焚火逐日拳"
     learnLv = 100
     masterLv = 40
@@ -726,26 +1247,30 @@ class Skill35(ActiveSkill):
     cd = 290
     mp = [4028, 8056]
     uuid = "e36ae35f8964d92e30e33529a65544d7"
+    hasVP = False
+    hasUP = False
+    custom = get_data(f'{prefix}/{uuid}', "custom") # noqa: E501
 
-    data0 = [0, 50686, 62439, 74192, 85944, 97699, 109452, 121206, 132959, 144711, 156464, 168220, 179973, 191727, 203479, 215232, 226988, 238741, 250494, 262247, 274000, 285754, 297507, 309261, 321013, 332767, 344522, 356273, 368028, 379780, 391534, 403288, 415041, 426794, 438548, 450300, 462056, 473809, 485562, 497315, 509068, 520821, 532577, 544330, 556083, 567835, 579589, 591343, 603096, 614850, 626602]# noqa: E501
+    # 铁山靠攻击力 : {value0}%
+    data0 = get_data(f'{prefix}/{uuid}', 0)
     hit0 = 1
-
-    data1 = [0, 25342, 31218, 37095, 42973, 48848, 54726, 60601, 66480, 72356, 78233, 84108, 89986, 95862, 101740, 107615, 113492, 119368, 125246, 131124, 136999, 142878, 148752, 154630, 160507, 166384, 172260, 178136, 184012, 189889, 195766, 201644, 207518, 213397, 219272, 225150, 231029, 236903, 242781, 248656, 254534, 260410, 266287, 272163, 278040, 283916, 289795, 295670, 301548, 307423, 313301]# noqa: E501
+    # 正拳第1击 : {value1}%
+    data1 = get_data(f'{prefix}/{uuid}', 1)
     hit1 = 1
-
-    data2 = [0, 30411, 37463, 44515, 51565, 58617, 65673, 72724, 79775, 86827, 93880, 100932, 107982, 115034, 122087, 129140, 136191, 143244, 150296, 157348, 164400, 171451, 178503, 185555, 192608, 199660, 206711, 213764, 220815, 227868, 234920, 241972, 249025, 256077, 263127, 270181, 277232, 284284, 291336, 298387, 305441, 312494, 319544, 326596, 333649, 340701, 347753, 354803, 361856, 368910, 375962]# noqa: E501
+    # 正拳第2击 : {value2}%
+    data2 = get_data(f'{prefix}/{uuid}', 2)
     hit2 = 1
-
-    data3 = [0, 35480, 43707, 51933, 60161, 68389, 76615, 84844, 93072, 101299, 109526, 117753, 125981, 134207, 142434, 150663, 158891, 167117, 175345, 183573, 191799, 200026, 208254, 216482, 224710, 232936, 241165, 249393, 257619, 265845, 274073, 282300, 290529, 298755, 306983, 315211, 323438, 331665, 339893, 348120, 356347, 364574, 372803, 381031, 389257, 397485, 405712, 413938, 422166, 430394, 438621]# noqa: E501
+    # 正拳第3击 : {value3}%
+    data3 = get_data(f'{prefix}/{uuid}', 3)
     hit3 = 1
-
-    data4 = [0, 76027, 93659, 111289, 128919, 146549, 164178, 181809, 199439, 217070, 234700, 252328, 269961, 287589, 305221, 322849, 340481, 358110, 375740, 393371, 411001, 428631, 446260, 463890, 481523, 499150, 516782, 534410, 552043, 569674, 587301, 604932, 622561, 640194, 657822, 675452, 693084, 710712, 728344, 745971, 763603, 781234, 798864, 816495, 834122, 851755, 869383, 887015, 904644, 922276, 939905]# noqa: E501
+    # 高踢攻击力 : {value4}%
+    data4 = get_data(f'{prefix}/{uuid}', 4)
     hit4 = 1
-
-    data5 = [0, 111509, 137366, 163225, 189082, 214938, 240797, 266653, 292512, 318370, 344227, 370085, 395941, 421799, 447657, 473514, 499371, 525231, 551087, 576943, 602802, 628659, 654516, 680374, 706233, 732090, 757945, 783804, 809662, 835520, 861378, 887235, 913092, 938949, 964807, 990663, 1016524, 1042380, 1068236, 1094093, 1119952, 1145809, 1171667, 1197526, 1223382, 1249240, 1275097, 1300954, 1326813, 1352671, 1378527]# noqa: E501
+    # 终结攻击拳击攻击力 : {value5}%
+    data5 = get_data(f'{prefix}/{uuid}', 5)
     hit5 = 1
-
-    data6 = [0, 177401, 218540, 259674, 300813, 341950, 383086, 424224, 465360, 506497, 547635, 588771, 629907, 671046, 712182, 753318, 794457, 835592, 876729, 917867, 959004, 1000140, 1041278, 1082415, 1123551, 1164689, 1205825, 1246963, 1288098, 1329236, 1370373, 1411509, 1452648, 1493784, 1534920, 1576058, 1617196, 1658331, 1699469, 1740607, 1781742, 1822881, 1864017, 1905153, 1946291, 1987428, 2028563, 2069702, 2110840, 2151974, 2193113]# noqa: E501
+    # 终结攻击拳击冲击波攻击力 : {value6}%
+    data6 = get_data(f'{prefix}/{uuid}', 6)
     hit6 = 1
 
 
@@ -755,16 +1280,16 @@ class classChange(Character):
         self.name = 'striker_male'
         self.nameCN = '归元·散打'
         self.role = 'fighter_male'
+        self.角色 = '格斗家(男)'
+        self.职业 = '散打'
+        self.jobId = 'ca0f0e0e9e1d55b5f9955b03d9dd213c'
+        self.jobGrowId = '618326026de1a1f1cfba5dbd0b8396e7'
 
         self.武器选项 = ['手套', '臂铠','爪','拳套','东方棍']
         self.输出类型选项 = ['物理百分比']
         self.输出类型 = '物理百分比'
         self.防具精通属性 = ['力量']
         self.防具类型 = '轻甲'
-        self.buff = 2.123
-
-        self.角色 = '格斗家(男)'
-
-        self.职业 = '散打'
+        self.buff = 2.143
 
         super().__init__(equVersion, __name__)

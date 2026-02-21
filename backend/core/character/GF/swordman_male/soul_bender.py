@@ -1121,9 +1121,16 @@ class Skill41(ActiveSkill):
     # [冥炎剑]最后一击范围比率 : {value4}%
     data4 = get_data(f'{prefix}/{uuid}', 4)
 
-    def skillInfo(self, mode: str | None = None):
-        self.lv = self.char.GetSkillByName("冥炎之卡洛").lv
-        return super().skillInfo(mode)
+
+    @property
+    def lv(self):
+        """技能等级"""
+        return self.char.GetSkillByName("冥炎之卡洛").lv
+
+    @lv.setter
+    def lv(self, value):
+        ...
+
 
     def vp_1(self):
         """

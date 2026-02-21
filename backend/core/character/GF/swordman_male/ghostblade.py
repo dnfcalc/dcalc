@@ -1,4 +1,6 @@
 #41f1cdc2ff58bb5fdc287be0db2a8df3
+from core.basic.roleinfo import CharacterEquipInfo
+from core.basic.formula import 武器强化计算
 from core.basic.skill import PassiveSkill, ActiveSkill, get_data
 from core.basic.character import Character
 prefix = "swordman_male/ghostblade/cn/skillDetail"
@@ -1114,3 +1116,17 @@ class classChange(Character):
         self.buff = 2.083
 
         super().__init__(equVersion, __name__)
+
+    def calc_weapon(self,cur:CharacterEquipInfo):
+        if cur.equInfo.itemDetailType in ['太刀'] and self.GetSkillByName("剑影太刀精通").lv > 0:
+            cur.equInfo.AtkP = cur.equInfo.AtkM
+            # 传世武器强化系数取所有武器的最高的1.12
+            if '传世武器' in cur.equInfo.categorize:
+                value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '魔法', 1.12)
+                self.SetStatus(AtkP=value, AtkM=value)
+            else:
+                # 强化计算
+                value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '魔法')
+                self.SetStatus(AtkP=value, AtkM=value)
+        else:
+            super().calc_weapon(cur)

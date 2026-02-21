@@ -885,7 +885,16 @@ class Skill32(ActiveSkill):
     # 魔化状态下[审判]攻击力增加率 : {value10}%
     data10 = get_data(f'{prefix}/{uuid}', 10)
 
-    associate = [{"data": [0] + [10]*60,"skills":[name]}]
+    associate = [{"data": [0] + [10]*maxLv,"skills":[name]}]
+
+    @property
+    def lv(self):
+        """技能等级"""
+        return self.char.GetSkillByName("魔化 : 末日守卫者").lv
+
+    @lv.setter
+    def lv(self, value):
+        ...
 
     def skillInfo(self, mode = None):
         pre = self.char.GetSkillByName("魔化 : 末日守卫者")
