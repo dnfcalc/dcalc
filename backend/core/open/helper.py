@@ -143,7 +143,8 @@ def trans_to_dcalc_set(detail):
                 info['option'] = item.get('attr', '')
                 avatar[item['posName']] = info
         else:
-            print(avatar)
+            # TODO: 处理没有找到对应时装的情况 即光环、皮肤、武器装扮
+            print(item)
     return {
         'job': job,
         'equips': equips,
@@ -163,7 +164,6 @@ def getEnchatIdByName(name: str, position: str, items: list):
 
 
 def getEmblemIdByName(detail: str, categorize: str, rarity: str, items: list):
-    print()
     if categorize == '白金':
         return detail
     for item in items:
