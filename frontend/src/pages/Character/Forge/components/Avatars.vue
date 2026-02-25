@@ -15,7 +15,7 @@ export default defineComponent({
     const has_socket = computed(() => ['武器装扮', '光环', '皮肤'].includes(part.value as string))
     const basicInfoStore = useInfoStore()
     const has_enchant = computed(() => {
-      return !['头发', '帽子', '脸部', '胸部', '上衣', '腰带', '下装', '鞋'].includes(
+      return !['头部', '帽子', '脸部', '胸部', '上衣', '腰带', '下装', '鞋'].includes(
         part.value as string,
       )
     })

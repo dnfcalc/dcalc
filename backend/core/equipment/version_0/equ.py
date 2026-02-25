@@ -15655,6 +15655,12 @@ def equ_4021(char: CharacterProperty):
     char.SetSkillCD(1, 100, 0.05, [])
     pass
 
+@register
+def equ_4022(char: CharacterProperty):
+    """
+    """
+    equ_4020(char)
+    pass
 
 # endregion
 # region 耕耘

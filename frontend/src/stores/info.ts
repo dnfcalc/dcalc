@@ -72,7 +72,7 @@ export const useInfoStore = defineStore('infoStore', () => {
 
   const avatarParts = [
     '武器装扮',
-    '头发',
+    '头部',
     '帽子',
     '脸部',
     '光环',

@@ -9,6 +9,7 @@ from api.core.Redis import get_redis_info
 from api.dp import RedisDep,AltersDep
 from core.character.adventure import get_adv_list
 from core.basic.character import createCharacter
+from core.open.helper import get_user_info_by_id
 
 router = APIRouter()
 
@@ -97,8 +98,7 @@ async def get_skill_info(
 @router.get("/dnfhelper/{uid}/")
 async def get_info_by_dnfhelper(uid: str, redis: RedisDep):
     try:
-        from openapi.dnfhelper.main import get_main_user_info_by_id
-        result = await get_main_user_info_by_id(uid)
+        result = await get_user_info_by_id(uid,'')
         return response(data=result)
     except Exception as e:
         print(f"Error fetching DNFHelper info: {e}")

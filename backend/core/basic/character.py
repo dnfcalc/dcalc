@@ -724,9 +724,9 @@ class Character(CharacterProperty):
     def calc_avatar(self, avatar: dict):
         """计算时装效果"""
         equ = get_equipment(self.equVersion)
-        dress = {key: value for key, value in avatar.items() if key in ['头发', '帽子', '脸部', '胸部', '上衣', '腰带', '下装', '鞋']}
+        dress = {key: value for key, value in avatar.items() if key in ['头部', '帽子', '脸部', '胸部', '上衣', '腰带', '下装', '鞋']}
         equ.funs.calc_dress_effect(dress, self)
-        avatarElse = {key: value for key, value in avatar.items() if key not in ['头发', '帽子', '脸部', '胸部', '上衣', '腰带', '下装', '鞋']}
+        avatarElse = {key: value for key, value in avatar.items() if key not in ['头部', '帽子', '脸部', '胸部', '上衣', '腰带', '下装', '鞋']}
         for key in avatarElse:
             value = avatarElse[key].get('enchant', None)
             emblem_0 = avatarElse[key].get('emblem_0', None)
