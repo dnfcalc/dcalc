@@ -1,7 +1,7 @@
 from fastapi.params import Param
 from api.core.Gzip import register_gzip_request
 import json
-from fastapi import APIRouter, Path, Query
+from fastapi import APIRouter, Path, Query, Depends
 from api.core.Response import response
 from api.core.Redis import get_redis_info
 from api.dp import RedisDep
@@ -40,7 +40,7 @@ def replace_placeholders(template):
 @router.get("/skills/", operation_id="skillsList")
 async def get_skills_list(
     redis: RedisDep,
-    skillName: Annotated[str, Param(..., description="技能名称，支持模糊查询")],
+    skillName: Annotated[str, Param(..., description="技能名称，支持模糊查询")] = None,
 ) -> SearchSkillResponse:
     """
     根据技能名称，获取对应的技能列表信息
@@ -72,7 +72,7 @@ async def get_skills_list(
 @router.get("/jobInfo/", operation_id="jobsInfo")
 async def get_jobs_info(
     redis: RedisDep,
-    jobName: Annotated[str, Query(..., description="职业名称，支持模糊查询")],
+    jobName: Annotated[str, Query(..., description="职业名称，支持模糊查询")]  = None,
 ) -> JobInfoResponse:
     """
     根据职业名称，获取对应的职业转职信息

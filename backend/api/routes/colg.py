@@ -2,7 +2,7 @@ from api.types.colg import HistoryGold, RealTimeGold
 from fastapi.params import Param
 from api.core.Gzip import register_gzip_request
 import json
-from fastapi import APIRouter, Path, Query
+from fastapi import APIRouter, Path, Query ,Depends
 from api.core.Response import response
 from api.core.Redis import get_redis_info
 from api.dp import RedisDep
@@ -121,7 +121,7 @@ async def get_history_gold(region: Annotated[int, Query(..., description='跨区
                     'zero': resp['y1'][i],
                 }
             )
-    except Exception as e:
+    except Exception as _:
         return response(data=None)
     echartsData = {
         'title': {'text': f'DNF{region_name}近{timeRange}天金币价格趋势分析', 'left': 'center'},

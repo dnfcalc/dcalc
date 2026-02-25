@@ -2,7 +2,8 @@ import re
 from api.core.Auth import createToken
 from api.core.Gzip import register_gzip_request
 import json
-from fastapi import APIRouter,Request
+from fastapi import APIRouter,Request, Depends
+from typing import Annotated
 from api.core.Response import Return, response
 from api.core.Redis import get_redis_info
 from api.dp import RedisDep,AltersDep
@@ -91,3 +92,14 @@ async def get_skill_info(
     except FileNotFoundError:
         return response(code=404, message=f'技能信息未找到: {jobId} {jobGrowId} {skillId}', data=None)
     return response(data=skill_info)
+
+
+@router.get("/dnfhelper/{uid}/")
+async def get_info_by_dnfhelper(uid: str, redis: RedisDep):
+    try:
+        from openapi.dnfhelper.main import get_main_user_info_by_id
+        result = await get_main_user_info_by_id(uid)
+        return response(data=result)
+    except Exception as e:
+        print(f"Error fetching DNFHelper info: {e}")
+        return response(code=500, message="Failed to fetch DNFHelper info", data=None)
