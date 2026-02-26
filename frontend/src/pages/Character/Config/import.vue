@@ -16,6 +16,7 @@ export default defineComponent({
         const res = await api.getConfigFromHelper(uid.value)
         configStore.config.equips = res.equips
         configStore.config.avatar = res.avatars
+        configStore.config.avatarLink = res.avatarLink
         const { alert } = useDialog()
         visible.value = false
         await alert({

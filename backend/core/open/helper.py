@@ -181,6 +181,7 @@ def trans_to_dcalc_set(detail, alter: AltersDep):
         'job': job,
         'equips': equips,
         'avatars': avatar,
+        'avatarLink': detail.get('avatarLink', ''),
     }
     # 处理装备
     # 处理时装

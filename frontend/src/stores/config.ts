@@ -58,6 +58,7 @@ export interface IConfig {
   /** 奶 */
   BUFF: boolean
   options: Record<string, number>
+  avatarLink: string
 }
 
 const defaultEqusConfig = {
@@ -93,7 +94,8 @@ export const useConfigStore = defineStore('configStore', () => {
     bindAwake: 50,
     DSB: false,
     BUFF: false,
-    options:{}
+    options:{},
+    avatarLink: '',
   })
 
   const skillCountConfig = ref<IResultSkillCount[]>([])
@@ -122,7 +124,8 @@ export const useConfigStore = defineStore('configStore', () => {
         bindAwake: 50,
         DSB: false,
         BUFF: false,
-        options:{}
+        options:{},
+        avatarLink: '',
       }
     if (!config.value?.equips) config.value.equips = {}
     if (!config.value?.skills) config.value.skills = {}

@@ -31,6 +31,12 @@
       </template>
       <template v-else> 副武 </template>
     </div>
+    <img
+      v-if="props.avatar"
+      :src="props.avatar"
+      alt="Avatar"
+      class="pos-absolute w-70% left-1/2 translate-x--1/2 -bottom-10px"
+    />
   </div>
 </template>
 
@@ -60,6 +66,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  avatar: {
+    type: String,
+    default: '',
+  }
 })
 const partModelValue = useVModel(props, 'part')
 const infoStore = useInfoStore()

@@ -4,6 +4,7 @@
       <EquList
         :detail="props.equs"
         :with-sub-weapon="(infoStore.infos?.subweapons?.length ?? 0) > 0"
+        :avatar="props.avatar"
       ></EquList>
     </div>
     <div class="flex flex-wrap border-y-1px my-1px border-y-solid border-#FFFF/10 gap-1% px-1%">
@@ -85,6 +86,7 @@ const props = defineProps<{
   info: IResultUserInfo[]
   suits: IResultSuit[]
   equs: Record<string, IConfigEquip>
+  avatar: string
 }>()
 
 const partOrder = [

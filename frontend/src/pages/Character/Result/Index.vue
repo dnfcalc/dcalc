@@ -9,6 +9,7 @@
         :suits="configStore.result.state.suits"
         :info="configStore.result.state.info"
         :equs="configStore.config.equips"
+        :avatar="configStore.config.avatarLink"
       ></Info>
     </div>
     <Skill
