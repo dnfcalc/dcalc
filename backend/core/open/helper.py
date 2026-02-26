@@ -157,12 +157,13 @@ def trans_to_dcalc_set(detail, alter: AltersDep):
                 if item.get('posName', '') == '武器装扮':
                     if item.get('name', '') == '神器克隆武器装扮':
                         item['enchant'] = '技攻(3%)|增益量(1%)|四维(65)'
-                    match = re.search(r'\[(\d+)级\]', item.get('name', ''))
-                    lv = int(match.group(1)) if match else None
-                    if lv:
-                        item['enchant'] = f'Lv{lv}主动+1|四维(55)'
                     else:
-                        item['enchant'] = '全属强(6)'
+                        match = re.search(r'\[(\d+)级\]', item.get('name', ''))
+                        lv = int(match.group(1)) if match else None
+                        if lv:
+                            item['enchant'] = f'Lv{lv}主动+1|四维(55)'
+                        else:
+                            item['enchant'] = '全属强(6)'
                 if item.get('posName', '') == '皮肤':
                     match = re.search(r'\[(\d+)级\]', item.get('name', ''))
                     lv = int(match.group(1)) if match else None
