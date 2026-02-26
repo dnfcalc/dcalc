@@ -44,7 +44,7 @@ job_mapping = {
     '知源·魔道学者': 'witch',
     '知源·小魔女': 'enchantress',
     '光启·光明骑士(男)': 'crusader_male',
-    '光启·蓝拳圣使': 'infighter',
+    '光启·蓝拳使者': 'infighter',
     '光启·驱魔师(男)': 'exorcist',
     '光启·惩戒者': 'avenger',
     '光启·光明骑士(女)': 'crusader_female',
@@ -78,8 +78,8 @@ job_mapping = {
 
 
 async def get_user_info_by_id(user_id: str, alter: AltersDep):
-    if alter is None:
-        raise ResponseException("登录过期或无效Token，请刷新后重试")
+    # if alter is None:
+    #     raise ResponseException("登录过期或无效Token，请刷新后重试")
     # 通过OCR助手获取用户信息
     helper_info = await get_main_user_info_by_id(user_id)
     if helper_info is None:
@@ -91,8 +91,8 @@ async def get_user_info_by_id(user_id: str, alter: AltersDep):
 
 def trans_to_dcalc_set(detail, alter: AltersDep):
     job = job_mapping.get(detail.get('job', ''), '')
-    if job != alter.origin:
-        raise ResponseException(f"职业不匹配，请切换到{detail.get('job', '')}后或修改助手的默认角色后重试")
+    # if job != alter.origin:
+    #     raise ResponseException(f"职业不匹配，请切换到{detail.get('job', '')}后或修改助手的默认角色后重试")
     basic = get_equipment('0')
     basicAvatars = basic.funs.get_dress_list([])
     equs = detail.get('equs', [])
@@ -186,17 +186,23 @@ def trans_to_dcalc_set(detail, alter: AltersDep):
 
 
 def getEnchatIdByName(name: str, position: str, items: list):
-    items = list(filter(lambda x: position in x.get('position', []), items))
-    for item in items:
-        if '|'.join(sorted(item.get('detail', '').split('|'))) == '|'.join(sorted(name.split('|'))):
-            return item.get('id', 0)
-    return 0
+    try:
+        items = list(filter(lambda x: position in x.get('position', []), items))
+        for item in items:
+            if '|'.join(sorted(item.get('detail', '').split('|'))) == '|'.join(sorted(name.split('|'))):
+                return item.get('id', 0)
+        return 0
+    except Exception as _:
+        return 0
 
 
 def getEmblemIdByName(detail: str, categorize: str, rarity: str, items: list):
-    if categorize == '白金':
-        return detail
-    for item in items:
-        if item.get('detail', '') == detail and categorize in item.get('categorize', []) and item.get('rarity', '') == rarity:
-            return item.get('id', 0)
-    return 0
+    try:
+        if categorize == '白金':
+            return detail
+        for item in items:
+            if item.get('detail', '') == detail and categorize in item.get('categorize', []) and item.get('rarity', '') == rarity:
+                return item.get('id', 0)
+        return 0
+    except Exception as _:
+        return 0
