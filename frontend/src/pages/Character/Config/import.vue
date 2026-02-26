@@ -16,6 +16,7 @@ export default defineComponent({
         const res = await api.getConfigFromHelper(uid.value)
         configStore.config.equips = res.equips
         configStore.config.avatar = res.avatars
+        const { alert } = useDialog()
         await alert({
           content: '导入成功',
         })
