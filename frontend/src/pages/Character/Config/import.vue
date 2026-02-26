@@ -75,7 +75,7 @@ export default defineComponent({
             </div>
             <div>
               <p class="text-hex-e9c556/80">
-                * 点击导入后会从助手通过文字识别获取主角色打造
+                * 点击导入后会从助手通过文字识别获取打造
               </p>
               <p class="text-hex-e9c556/80">
                 * 部分打造无法获取，此处仅做快捷导入
