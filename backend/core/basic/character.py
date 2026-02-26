@@ -683,8 +683,8 @@ class Character(CharacterProperty):
             # 徽章效果
             emblem_0 = detail[3]
             emblem_1 = detail[4]
-            if str(emblem_1).isdigit():
-                fun = effects.execture(f'emblem_{emblem_1}')
+            if str(emblem_0).isdigit():
+                fun = effects.execture(f'emblem_{emblem_0}')
                 if fun is not None:
                     fun(self)
             else:
@@ -693,7 +693,7 @@ class Character(CharacterProperty):
                 if skill is not None:
                     skill.lv += 1
                     self.SetStatus(四维=8)
-            fun = effects.execture(f'emblem_{emblem_0}')
+            fun = effects.execture(f'emblem_{emblem_1}')
             if fun is not None:
                 fun(self)
             # 贴膜
