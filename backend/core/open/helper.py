@@ -78,10 +78,11 @@ job_mapping = {
 
 
 async def get_user_info_by_id(user_id: str, alter: AltersDep):
-    # if alter is None:
-    #     raise ResponseException("登录过期或无效Token，请刷新后重试")
+    if alter is None:
+        raise ResponseException("登录过期或无效Token，请刷新后重试")
+    name = next((k for k, v in job_mapping.items() if v == alter.origin), '')
     # 通过OCR助手获取用户信息
-    helper_info = await get_main_user_info_by_id(user_id)
+    helper_info = await get_main_user_info_by_id(user_id, name)
     if helper_info is None:
         raise ResponseException("当前助手ID不存在或已隐藏，请确认后重试")
     else:
@@ -91,8 +92,8 @@ async def get_user_info_by_id(user_id: str, alter: AltersDep):
 
 def trans_to_dcalc_set(detail, alter: AltersDep):
     job = job_mapping.get(detail.get('job', ''), '')
-    # if job != alter.origin:
-    #     raise ResponseException(f"职业不匹配，请切换到{detail.get('job', '')}后或修改助手的默认角色后重试")
+    if job != alter.origin:
+        raise ResponseException("未能匹配到当前职业对应的角色信息，请确认后重试")
     basic = get_equipment('0')
     basicAvatars = basic.funs.get_dress_list([])
     equs = detail.get('equs', [])
