@@ -92,6 +92,9 @@ export default defineComponent({
             parts = [part.value]
           }
           for (const part of parts) {
+            if (!configStore.config.equips[part]) {
+              configStore.config.equips[part] = { ...configStore.defaultEqusConfig }
+            }
             if (configStore.config.equips[part]) {
               ;(configStore.config.equips[part] as Record<string, any>)[name] = val
             }

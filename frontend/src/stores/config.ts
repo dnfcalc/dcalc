@@ -233,5 +233,7 @@ export const useConfigStore = defineStore('configStore', () => {
     result,
     chooseEqu,
     skillCountConfig,
+    defaultEqusConfig,
+    defaultAvatarConfig,
   }
 })

@@ -47,6 +47,9 @@ export default defineComponent({
           }
           let key: 'avatar' | 'equips' = 'avatar'
           if (part.value == '宠物') key = 'equips'
+          if (!configStore.config[key][part.value]) {
+            configStore.config[key][part.value] = key === 'avatar' ? { ...configStore.defaultAvatarConfig } : { ...configStore.defaultEqusConfig }
+          }
           if (configStore.config[key][part.value]) {
             ;(configStore.config[key][part.value] as Record<string, any>)[name] = val
           }
