@@ -55,6 +55,16 @@ def enchant_5(char: CharacterProperty):
     char.SetStatus(三攻=20, 四维=75, 技攻=0.07)
     pass
 
+@register
+def enchant_6(char: CharacterProperty):
+    """
+    DCALC_REMOVE: enchant_6
+    四维(75)|Lv1~50主动+1
+    """
+    char.SetStatus(四维=75)
+    char.AddSkillLv(1, 50, 1, 1)
+    pass
+
 
 # endregion
 # region 上衣

@@ -21,21 +21,28 @@
     <div class="footer flex">
       <calc-checkbox round v-model="configStore.config.DSB">系统奶</calc-checkbox>
       <calc-checkbox round v-model="configStore.config.BUFF">组队</calc-checkbox>
+      <calc-button title="打造导入" @click="showImport" class="ml-1" icon="import"></calc-button>
     </div>
   </div>
+
+  <calc-dialog lazy header="存档导入" v-model:visible="importVisible">
+    <ImportVue></ImportVue>
+  </calc-dialog>
 </template>
 
 <script lang="ts" setup name="Index">
 import { useInfoStore } from '@/stores/info'
 import { useConfigStore } from '@/stores'
+import ImportVue from './Config/import.vue';
 import Result from './Result/Index.vue'
 const props = defineProps<{
   alter: string
 }>()
 const infoStore = useInfoStore()
 const configStore = useConfigStore()
+const importVisible = ref(false)
 
-const stopWatch = watch<any>(
+const stopWatch = watch(
   () => {
     return JSON.stringify(configStore.config)
   },
@@ -43,6 +50,10 @@ const stopWatch = watch<any>(
     ;(await configStore.result).execute()
   }, 800),
 )
+
+const showImport = () => {
+  importVisible.value = true
+}
 
 onMounted(async () => {
   await infoStore.createCharacter(props.alter, '0')

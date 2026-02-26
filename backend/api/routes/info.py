@@ -10,6 +10,7 @@ from api.dp import RedisDep,AltersDep
 from core.character.adventure import get_adv_list
 from core.basic.character import createCharacter
 from core.open.helper import get_user_info_by_id
+from api.core.exception import ResponseException
 
 router = APIRouter()
 
@@ -96,10 +97,11 @@ async def get_skill_info(
 
 
 @router.get("/dnfhelper/{uid}/")
-async def get_info_by_dnfhelper(uid: str, redis: RedisDep):
+async def get_info_by_dnfhelper(uid: str, state: AltersDep, redis: RedisDep):
     try:
-        result = await get_user_info_by_id(uid,'')
+        result = await get_user_info_by_id(uid,state)
         return response(data=result)
     except Exception as e:
-        print(f"Error fetching DNFHelper info: {e}")
+        if isinstance(e, ResponseException):
+            return response(code=500, message=str(e), data=None)
         return response(code=500, message="Failed to fetch DNFHelper info", data=None)

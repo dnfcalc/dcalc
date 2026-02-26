@@ -1,5 +1,8 @@
 from openapi.dnfhelper.public import get_main_user_info_by_id
 from core.basic.equipment import get_equipment
+from api.dp import AltersDep
+from api.core.exception import ResponseException
+import re
 
 job_mapping = {
     '极诣·剑魂': 'weapon_master',
@@ -74,18 +77,22 @@ job_mapping = {
 }
 
 
-async def get_user_info_by_id(user_id: str, alter: str):
+async def get_user_info_by_id(user_id: str, alter: AltersDep):
+    if alter is None:
+        raise ResponseException("登录过期或无效Token，请刷新后重试")
     # 通过OCR助手获取用户信息
     helper_info = await get_main_user_info_by_id(user_id)
     if helper_info is None:
-        return None
+        raise ResponseException("当前助手ID不存在或已隐藏，请确认后重试")
     else:
-        return trans_to_dcalc_set(helper_info)
+        return trans_to_dcalc_set(helper_info, alter)
         pass
 
 
-def trans_to_dcalc_set(detail):
+def trans_to_dcalc_set(detail, alter: AltersDep):
     job = job_mapping.get(detail.get('job', ''), '')
+    if job != alter.origin:
+        raise ResponseException(f"职业不匹配，请切换到{detail.get('job', '')}后或修改助手的默认角色后重试")
     basic = get_equipment('0')
     basicAvatars = basic.funs.get_dress_list([])
     equs = detail.get('equs', [])
@@ -114,7 +121,7 @@ def trans_to_dcalc_set(detail):
             'precision': 100,
         }
         # 装备
-        dcalcEqu = next((item for item in basic.equs if item.name == equ['name']), None)
+        dcalcEqu = next((item for item in basic.equs if item.name == equ['name'].replace('(黑雨) ', '')), None)
         # 贴膜
         if dcalcEqu:
             info['id'] = dcalcEqu.id
@@ -143,8 +150,31 @@ def trans_to_dcalc_set(detail):
                 info['option'] = item.get('attr', '')
                 avatar[item['posName']] = info
         else:
-            # TODO: 处理没有找到对应时装的情况 即光环、皮肤、武器装扮
-            print(item)
+            if item.get('posName', '') in ['光环', '皮肤', '武器装扮']:
+                # TODO: 处理没有找到对应时装的情况 即光环、皮肤、武器
+                # 装扮
+                if item.get('posName', '') == '武器装扮':
+                    if item.get('name', '') == '神器克隆武器装扮':
+                        item['enchant'] = '技攻(3%)|增益量(1%)|四维(65)'
+                    match = re.search(r'\[(\d+)级\]', item.get('name', ''))
+                    lv = int(match.group(1)) if match else None
+                    if lv:
+                        item['enchant'] = f'Lv{lv}主动+1|四维(55)'
+                    else:
+                        item['enchant'] = '全属强(6)'
+                if item.get('posName', '') == '皮肤':
+                    match = re.search(r'\[(\d+)级\]', item.get('name', ''))
+                    lv = int(match.group(1)) if match else None
+                    if lv :
+                        item['enchant'] = f'Lv{lv}主动+1|全属强(12)|四维(55)'
+                if item.get('posName', '') == '光环':
+                    # 先默认这个了 不管了
+                    item['enchant'] = 'Lv1~95+1|攻击强化(12%)|增益量(7%)'
+                info['enchant'] = getEnchatIdByName(item.get('enchant', ''), item.get('posName', ''), basic.enchants)
+                emblems = [getEmblemIdByName(i.get('detail', ''), i.get('categorize', ''), i.get('rarity', ''), basic.emblems) for i in item.get('emblems', [])]
+                info['emblem_0'] = emblems[0] if len(emblems) > 0 else 0
+                info['emblem_1'] = emblems[1] if len(emblems) > 1 else 0
+                avatar[item['posName']] = info
     return {
         'job': job,
         'equips': equips,

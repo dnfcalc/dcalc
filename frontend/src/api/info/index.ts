@@ -18,6 +18,10 @@ export default defineRequest((request) => {
     async skillDetail(skillId: string, level: number) {
       const res = await request.get<ISkillInfo>(`/skill/${skillId}/${level}`)
       return res.data
+    },
+    async getConfigFromHelper(uid: string) {
+      const res = await request.get(`/dnfhelper/${uid}/`)
+      return res.data
     }
   }
 })
