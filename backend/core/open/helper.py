@@ -182,6 +182,11 @@ def trans_to_dcalc_set(detail, alter: AltersDep):
         'equips': equips,
         'avatars': avatar,
         'avatarLink': detail.get('avatarLink', ''),
+        'dressInfo': [{
+            'dress': i.get('name', ''),
+            'clone': i.get('clone', ''),
+            'part': i.get('posName', ''),
+        } for i in detail.get('avatars', [])]
     }
     # 处理装备
     # 处理时装
