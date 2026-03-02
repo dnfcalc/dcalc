@@ -1127,7 +1127,7 @@ class Skill41(ActiveSkill):
         未命中时冷却时间变更为3秒\n
         成功命中时， 可用[俯冲]或[摆动]强制中断技能施放后僵直
         """
-        self.skillRation = 1 - 0.5
+        self.skillRation *= 1 - 0.5
         self.cd = 20
         ...
 
@@ -1139,7 +1139,7 @@ class Skill41(ActiveSkill):
         - 总攻击力 +50%
         """
         self.cd = 60
-        self.skillRation = 1 + 0.5
+        self.skillRation *= 1 + 0.5
         ...
 
 # 正义惩戒

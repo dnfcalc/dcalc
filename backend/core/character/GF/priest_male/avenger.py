@@ -616,7 +616,7 @@ class Skill28(ActiveSkill):
         - [毁灭强击]、 [黑暗权能]进化方向1 (魔化) 可以在特定时间点以后可以施放
         """
         self.cd = 12.5
-        self.skillRation = 1 - 0.5
+        self.skillRation *= 1 - 0.5
         ...
 
     def vp_2(self):
@@ -630,7 +630,7 @@ class Skill28(ActiveSkill):
         - 不论当前状态均适用
         """
         self.cd = 50
-        self.skillRation = 1 + 1
+        self.skillRation *= 1 + 1
         ...
 
 # 黑暗权能
