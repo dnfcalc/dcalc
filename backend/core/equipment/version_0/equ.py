@@ -2971,6 +2971,7 @@ def equ_174(char: CharacterProperty):
     - 攻击时，恢复1%的魔法值（冷却时间1秒）
     rarity: 传说
     """
+    char.SetStatus(SkillAttack=0.10)
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
@@ -2991,6 +2992,7 @@ def equ_175(char: CharacterProperty):
     - 攻击时，使敌人发生灵魂爆炸，恢复10%的魔法值（冷却时间6秒）
     rarity: 史诗
     """
+    char.SetStatus(SkillAttack=0.13)
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
@@ -3010,6 +3012,7 @@ def equ_176(char: CharacterProperty):
     - 每6秒吸收敌人的灵魂，恢复15%的魔法值
     rarity: 太初
     """
+    char.SetStatus(SkillAttack=0.15)
     if char.buffer:
         char.AddSkillLv(1, 100, 2)
         char.BuffSkill.lv += 3
