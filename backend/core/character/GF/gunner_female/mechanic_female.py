@@ -1123,7 +1123,7 @@ class Skill31(PassiveSkill):
     # REMOVE: data1 = [0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20]# noqa: E501
     data1 = get_data(f'{prefix}/{uuid}', 1)
 
-    associate = [ {"data":data0,"type":"*skillDamage","exceptSkills":["G-1科罗纳","改装 : G-2旋雷者","改装 : G-3捕食者","G-磁力弹"]}, ]
+    associate = [ {"data":data0,"type":"*skillDamage","exceptSkills":["G-1科罗纳","改装 : G-2旋雷者","改装 : G-3捕食者","G-磁力弹"]}]
 
 # 伪装
 # gunner_female/mechanic_female/4b2c90ec226fd40e967875aa5eabefb2
