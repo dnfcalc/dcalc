@@ -409,6 +409,11 @@ class Character(CharacterProperty):
         """通过技能ID获取技能"""
         return skill[0] if len(skill) > 0 else None
 
+    def GetSkillByUUID(self, uuid: str) -> Skill:
+        skill = list(filter(lambda x: str(x.uuid) == uuid, self.skills))
+        """通过技能UUID获取技能"""
+        return skill[0] if len(skill) > 0 else None
+
     def GetSkillNames(self, type: Literal['active', 'passive', 'all'] = 'all', damage: Literal[True, False, 'all'] = 'all') -> list[str]:
         """获取技能名字"""
         return [skill.name for skill in self.skills if (type == 'all' or skill.type == type) and (damage == 'all' or skill.damage == damage)]

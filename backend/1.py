@@ -1,0 +1,3 @@
+from core.open.skillTree import get_skill_info
+
+print(get_skill_info("eJy1xzFOwlAAgOH/hzbAs7QsxqCDcYDEkMhbSKBX8BS2A1MHo4Obszdourswkbh7Em/RkYXEO/BtX5+kyfCNj2eQ8efX3/sR4uSB2tTKKS9O6Ly28MYTM1pv3SM1czKXbHi0YWXJkxLYEY1Er5DEwCuBewKpI7bojMAAPSALNEfv0Az9RX4Ys0YTNG2lkE4bzHTY/b+EfEdJa2HnNxDZ0JAJtUBlxWX0Z3XoGMU="))
