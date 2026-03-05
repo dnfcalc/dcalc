@@ -461,12 +461,11 @@ def get_skill_tree_info(encoded: str) -> dict:
         if getattr(s, 'hasUP', False) and str(s.id) in skillLearn:
           skillLearn[str(s.id)]['up'] = enh['type']
     for i in character.skills:
-       if (i.learnLv in [50,85] or i.name == '基础精通') and str(i.id) not in skillLearn:
+       if str(i.id) not in skillLearn:
           skillLearn[str(i.id)] = {
-          'lv': i.calculate_lv(),
+          'lv': i.calculate_lv() if (i.learnLv in [50,85] or i.name == '基础精通') and str(i.id) else 0,
           'up': 0,
           'vp': 0,
-        #   'name': i.name,
         }
     return {
        "name": header['name'],
