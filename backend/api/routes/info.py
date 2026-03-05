@@ -2,7 +2,7 @@ import re
 from api.core.Auth import createToken
 from api.core.Gzip import register_gzip_request
 import json
-from fastapi import APIRouter,Request, Depends
+from fastapi import APIRouter,Request, Depends, Body
 from typing import Annotated
 from api.core.Response import Return, response
 from api.core.Redis import get_redis_info
@@ -10,6 +10,7 @@ from api.dp import RedisDep,AltersDep
 from core.character.adventure import get_adv_list
 from core.basic.character import createCharacter
 from core.open.helper import get_user_info_by_id
+from core.open.skillTree import get_skill_tree_info
 from api.core.exception import ResponseException
 
 router = APIRouter()
@@ -105,3 +106,16 @@ async def get_info_by_dnfhelper(uid: str, state: AltersDep, redis: RedisDep):
         if isinstance(e, ResponseException):
             return response(code=500, message=str(e), data=None)
         return response(code=500, message="Failed to fetch DNFHelper info", data=None)
+
+@router.post("/skillTree/")
+async def get_skill_by_code(state: AltersDep, code = Body(None)):
+    try:
+        skills = get_skill_tree_info(code.get("code", ""))
+        if skills.get("job",{}).get("class","") != state.alter:
+            return response(code=500, message="技能加点代码职业与登录职业不匹配", data=None)
+        return response(data=skills)
+    except Exception as e:
+        print(f"Error fetching skill tree info: {e}")
+        if isinstance(e, ResponseException):
+            return response(code=500, message=str(e), data=None)
+        return response(code=500, message="解析技能加点失败", data=None)

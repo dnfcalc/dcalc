@@ -9,14 +9,13 @@ import { useConfigStore } from '@/stores'
 export default defineComponent({
   setup() {
     const configStore = useConfigStore()
-    const uid = ref('')
+    const skillCode = ref('')
 
     const { state, execute, isLoading } = useAsyncState(
       async () => {
-        const res = await api.getConfigFromHelper(uid.value)
-        configStore.config.equips = res.equips
-        configStore.config.avatar = res.avatars
-        configStore.config.avatarLink = res.avatarLink
+        const res = await api.getSkillFromCode(skillCode.value)
+        console.log(res)
+        configStore.config.skills = res.skills
         const { alert } = useDialog()
         visible.value = false
         await alert({
@@ -34,7 +33,7 @@ export default defineComponent({
 
     onShow(
       () => {
-        uid.value = ''
+        skillCode.value = ''
         state.value = undefined
       },
       { immediate: true },
@@ -45,21 +44,21 @@ export default defineComponent({
     return () => {
       return (
         <>
-          <div class="h-30 w-80 py-2 px-4 text-hex-e9c556">
+          <div class="h-35 w-80 py-2 px-4 text-hex-e9c556">
             <div class="flex justify-around items-center">
-              助手社区ID
-              <calc-input class="!w-60" v-model={uid.value} />
+              技能加点代码
+              <calc-input class="!w-60" v-model={skillCode.value} />
             </div>
             <div>
               <p class="text-hex-e9c556/80">
-                * 点击导入后会从助手通过文字识别获取打造
+                * 点击导入后会根据规则解析出技能加点、技能进化、技能强化
               </p>
               <p class="text-hex-e9c556/80">
-                * 部分打造无法获取，此处仅做快捷导入
+                * 部分技能可能存在无法识别的情况，需要手动调整
               </p>
             </div>
             <div class="flex justify-around items-center">
-              <calc-button onClick={execute} disabled={isLoading.value}>导入</calc-button>
+              <calc-button onClick={execute} disabled={!skillCode.value || isLoading.value}>导入</calc-button>
               <calc-button onClick={() => (visible.value = false)}>取消</calc-button>
             </div>
           </div>

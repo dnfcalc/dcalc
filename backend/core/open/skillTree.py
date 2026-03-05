@@ -403,7 +403,7 @@ def _parse_section2(sec2: bytes):
     return evolutions, enhancements, keybinds, remaining
 
 
-def get_skill_info(encoded: str) -> dict:
+def get_skill_tree_info(encoded: str) -> dict:
     r = decode_skill_hash(encoded)
     header = r['header']
     role = role_map.get(str(header['job_bytes'][0]), None)
@@ -443,10 +443,10 @@ def get_skill_info(encoded: str) -> dict:
         chosen = next((x for x in candidates if x.type == ('active' if skill['skill_type'] == 1 else 'passive')), None)
       if chosen:
         skillLearn[str(chosen.id)] = {
-          'level': skill['level'],
+          'lv': skill['level'],
           'up': 0,
           'vp': 0,
-          'name': chosen.name,
+        #   'name': chosen.name,
         }
 
     # 处理进化
@@ -460,6 +460,14 @@ def get_skill_info(encoded: str) -> dict:
       for s in skillMap.get(enh['skill_index'], []):
         if getattr(s, 'hasUP', False) and str(s.id) in skillLearn:
           skillLearn[str(s.id)]['up'] = enh['type']
+    for i in character.skills:
+       if (i.learnLv in [50,85] or i.name == '基础精通') and str(i.id) not in skillLearn:
+          skillLearn[str(i.id)] = {
+          'lv': i.calculate_lv(),
+          'up': 0,
+          'vp': 0,
+        #   'name': i.name,
+        }
     return {
        "name": header['name'],
        "level": header['level'],

@@ -22,6 +22,10 @@ export default defineRequest((request) => {
     async getConfigFromHelper(uid: string) {
       const res = await request.get(`/dnfhelper/${uid}/`)
       return res.data
+    },
+    async getSkillFromCode(code: string) {
+      const res = await request.post(`/skillTree/`, { code })
+      return res.data
     }
   }
 })

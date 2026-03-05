@@ -22,11 +22,17 @@
       <calc-checkbox round v-model="configStore.config.DSB">系统奶</calc-checkbox>
       <calc-checkbox round v-model="configStore.config.BUFF">组队</calc-checkbox>
       <calc-button title="打造导入" @click="showImport" class="ml-1" icon="import"></calc-button>
+      <calc-button title="技能导入" @click="showImportSkill" class="ml-1" icon="exchange"></calc-button>
     </div>
   </div>
 
-  <calc-dialog lazy header="存档导入" v-model:visible="importVisible">
+  <calc-dialog lazy header="打造导入" v-model:visible="importVisible">
     <ImportVue></ImportVue>
+  </calc-dialog>
+
+
+  <calc-dialog lazy header="技能导入" v-model:visible="importSkillVisible">
+    <ImportSkillVue></ImportSkillVue>
   </calc-dialog>
 </template>
 
@@ -34,6 +40,7 @@
 import { useInfoStore } from '@/stores/info'
 import { useConfigStore } from '@/stores'
 import ImportVue from './Config/import.vue';
+import ImportSkillVue from './Config/importSkill.vue';
 import Result from './Result/Index.vue'
 const props = defineProps<{
   alter: string
@@ -41,6 +48,7 @@ const props = defineProps<{
 const infoStore = useInfoStore()
 const configStore = useConfigStore()
 const importVisible = ref(false)
+const importSkillVisible = ref(false)
 
 const stopWatch = watch(
   () => {
@@ -55,6 +63,9 @@ const showImport = () => {
   importVisible.value = true
 }
 
+const showImportSkill = () => {
+  importSkillVisible.value = true
+}
 onMounted(async () => {
   await infoStore.createCharacter(props.alter, '0')
   window.addEventListener('beforeunload', () => {
