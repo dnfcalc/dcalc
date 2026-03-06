@@ -419,7 +419,7 @@ def get_skill_tree_info(encoded: str) -> dict:
     className = advInfo['class']
     character = createCharacter(className)
     skillMap = {}
-    for i in r['skills']:
+    for index, i in enumerate(r['skills']):
         skillIndex = i['skill_index']
         skillUuids = skill_map.get(str(skillIndex), [None])
         skills = []
@@ -428,12 +428,16 @@ def get_skill_tree_info(encoded: str) -> dict:
             if skill is not None:
                 skills.append(skill)
         skillMap[skillIndex] = skills
+        if len(skills) == 0:
+            r['skills'][index] = None
     for k, v in skillMap.items():
         if len(v) > 1:
             skillMap[k] = [s for s in v if s.learnLv not in [50, 85]]
     skillLearn = {}
     # 处理技能等级
     for skill in r['skills']:
+      if skill is None:
+        continue
       skillIndex = skill['skill_index']
       candidates = skillMap.get(skillIndex, [])
       chosen = None
@@ -441,14 +445,13 @@ def get_skill_tree_info(encoded: str) -> dict:
         chosen = candidates[0]
       elif len(candidates) > 1:
         chosen = next((x for x in candidates if x.type == ('active' if skill['skill_type'] == 1 else 'passive')), None)
-      if chosen:
+      if chosen and skillLearn.get(str(chosen.id), {'lv': 0})['lv'] < skill['level']:
         skillLearn[str(chosen.id)] = {
           'lv': skill['level'],
           'up': 0,
           'vp': 0,
-        #   'name': chosen.name,
+          'name': chosen.name,
         }
-
     # 处理进化
     for evo in r['evolutions']:
       for s in skillMap.get(evo['skill_index'], []):
@@ -466,6 +469,7 @@ def get_skill_tree_info(encoded: str) -> dict:
           'lv': i.calculate_lv() if (i.learnLv in [50,85] or i.name == '基础精通') and str(i.id) else 0,
           'up': 0,
           'vp': 0,
+          'name': i.name,
         }
     return {
        "name": header['name'],
