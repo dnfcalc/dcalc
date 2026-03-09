@@ -1,4 +1,7 @@
 
+import os
+import time
+
 from fastmcp import FastMCP
 from main import application
 from fastmcp.server.providers.openapi import  MCPType
@@ -19,4 +22,7 @@ mcp = FastMCP.from_fastapi(
     route_map_fn=custom_route_mapper,
 )
 
+
+os.environ['TZ'] = 'Asia/Shanghai'
+time.tzset()
 mcp.run(transport="streamable-http", host="0.0.0.0", port=config.MCPPORT)

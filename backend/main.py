@@ -4,6 +4,8 @@ from fastapi import FastAPI
 from multiprocessing import freeze_support
 from api.core import Exceptions,Middleware,Gzip
 import uvicorn
+import os
+import time
 
 application = FastAPI(docs_url='/doc', redoc_url=None)
 application.add_exception_handler(Exception, Exceptions.all_exception_handler)
@@ -19,6 +21,8 @@ if __name__ == '__main__':
         print("dcalc is starting...")
         return print("Application starting...")
 
+    os.environ['TZ'] = 'Asia/Shanghai'
+    time.tzset()
     uvicorn.run(app = "main:application", host='0.0.0.0', port=config.PORT, workers=config.WORKERS,reload=False)
 
 
