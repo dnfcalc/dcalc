@@ -1,9 +1,10 @@
+import inspect
 import json
 from api.core.Gzip import gzip_zip, gzip_unzip
 from config.main import config
 
 
-def get_redis_info(redis, key, fun, expire = 0, without_gzip=False):
+async def get_redis_info(redis, key, fun, expire = 0, without_gzip=False):
     info = None
     if not config.DEBUG_MODE and redis:
         try:
@@ -14,7 +15,10 @@ def get_redis_info(redis, key, fun, expire = 0, without_gzip=False):
         except Exception:
             info = None
     if info is None:
-        info = fun()
+        if inspect.iscoroutinefunction(fun):
+            info = await fun()
+        else:
+            info = fun()
         if not config.DEBUG_MODE and redis and info is not None:
             if without_gzip:
                 redis.set(key, json.dumps(info))

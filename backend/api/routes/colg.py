@@ -182,6 +182,7 @@ async def get_official_gold(redis: RedisDep) -> Response[list[OfficialGold]]:
                         }
                     )
             return datas
+
     except Exception as e:
         print(e)
         return response(data=[])
