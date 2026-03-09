@@ -47,7 +47,7 @@ def get_date_str(timestamp: int) -> str:
     return beijing_time.strftime('%Y-%m-%d %H:%M:%S')
 
 
-@router.get('/gold/realtime/', operation_id='realtime_gold',response_model=Response[list[RealTimeGold]])
+@router.get('/gold/realtime/', operation_id='realtimeGold',response_model=Response[list[RealTimeGold]])
 async def get_real_time_gold(redis: RedisDep) -> Response[list[RealTimeGold]]:
     """
     返回所有跨区的实时金价信息
@@ -74,7 +74,7 @@ async def get_real_time_gold(redis: RedisDep) -> Response[list[RealTimeGold]]:
     return response(data=data)
 
 
-@router.get('/gold/history/', operation_id='history_gold',response_model=Response[HistoryGold] | Response[None])
+@router.get('/gold/history/', operation_id='historyGold',response_model=Response[HistoryGold] | Response[None])
 async def get_history_gold(region: Annotated[int, Query(..., description='跨区id')], timeRange: Annotated[int, Query(..., description='时间跨度天数')] = 7) -> Response[HistoryGold] | Response[None]:
     """
     获取历史金价数据
@@ -146,7 +146,7 @@ async def get_history_gold(region: Annotated[int, Query(..., description='跨区
     return response(data={'region': region_name, 'data': data, 'echartsData': echartsData})
 
 
-@router.get('/gold/official/', operation_id='official_gold',response_model=Response[list[OfficialGold]])
+@router.get('/gold/official/', operation_id='officialGold',response_model=Response[list[OfficialGold]])
 async def get_official_gold(redis: RedisDep) -> Response[list[OfficialGold]]:
     """
     获取DNF官方金币寄售实时数据

@@ -37,7 +37,7 @@ def replace_placeholders(template):
     return pattern.sub(repl, template)
 
 
-@router.get("/skills/", operation_id="skills_list", response_model=SearchSkillResponse)
+@router.get("/skills/", operation_id="skillsList", response_model=SearchSkillResponse)
 async def get_skills_list(
     redis: RedisDep,
     skillName: Annotated[str, Param(..., description="技能名称，支持模糊查询")] = None,
@@ -69,7 +69,7 @@ async def get_skills_list(
     return response(data=data)
 
 
-@router.get("/jobInfo/", operation_id="jobs_info", response_model=JobInfoResponse)
+@router.get("/jobInfo/", operation_id="jobsInfo", response_model=JobInfoResponse)
 async def get_jobs_info(
     redis: RedisDep,
     jobName: Annotated[str, Query(..., description="职业名称，支持模糊查询")]  = None,
@@ -101,7 +101,7 @@ async def get_jobs_info(
     return response(data=result)
 
 
-@router.get("/{jobId}/{jobGrowId}/skills/", operation_id="skills_by_job",response_model=SkillsListResponse)
+@router.get("/{jobId}/{jobGrowId}/skills/", operation_id="skillsByJob",response_model=SkillsListResponse)
 async def get_cn_skills_by_job(
     redis: RedisDep,
     jobId: Annotated[str, Path(..., description="职业")],
@@ -125,7 +125,7 @@ async def get_cn_skills_by_job(
     return response(data=skills_list)
 
 
-@router.get("/{jobId}/{jobGrowId}/{skillId}/", operation_id="skill_detail", response_model=SkillDetailResponse)
+@router.get("/{jobId}/{jobGrowId}/{skillId}/", operation_id="skillDetail", response_model=SkillDetailResponse)
 async def get_cn_skill_info(
     redis: RedisDep,
     jobId: Annotated[str, Path(..., description="职业")],
@@ -192,7 +192,7 @@ async def get_cn_skill_info(
     return response(data=skill_info)
 
 
-@router.get("/skillData/summary/", operation_id="skill_data_summary",response_model=SkillDataSummaryResponse)
+@router.get("/skillData/summary/", operation_id="skillDataSummary",response_model=SkillDataSummaryResponse)
 async def get_skill_data_summary(
     redis: RedisDep,
     job: Annotated[str, Param(..., description="职业")],
