@@ -4,7 +4,7 @@ from api.core.Gzip import gzip_zip, gzip_unzip
 from config.main import config
 
 
-async def get_redis_info(redis, key, fun, expire = 0, without_gzip=False):
+async def get_redis_info_async(redis, key, fun, expire = 0, without_gzip=False):
     info = None
     if not config.DEBUG_MODE and redis:
         try:
@@ -19,6 +19,27 @@ async def get_redis_info(redis, key, fun, expire = 0, without_gzip=False):
             info = await fun()
         else:
             info = fun()
+        if not config.DEBUG_MODE and redis and info is not None:
+            if without_gzip:
+                redis.set(key, json.dumps(info))
+            else:
+                redis.set(key, gzip_zip(json.dumps(info)))
+            if expire > 0:
+                redis.expire(key, expire)
+    return info
+
+def get_redis_info(redis, key, fun, expire = 0, without_gzip=False):
+    info = None
+    if not config.DEBUG_MODE and redis:
+        try:
+            if without_gzip:
+                info = json.loads(redis.get(key))
+            else:
+                info = json.loads(gzip_unzip(redis.get(key)))
+        except Exception:
+            info = None
+    if info is None:
+        info = fun()
         if not config.DEBUG_MODE and redis and info is not None:
             if without_gzip:
                 redis.set(key, json.dumps(info))

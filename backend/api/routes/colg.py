@@ -6,7 +6,7 @@ from api.core.Gzip import register_gzip_request
 import json
 from fastapi import APIRouter, Path, Query, Depends
 from api.core.Response import response
-from api.core.Redis import get_redis_info
+from api.core.Redis import get_redis_info,get_redis_info_async
 from api.dp import RedisDep
 from typing import Annotated
 import requests
@@ -187,5 +187,5 @@ async def get_official_gold(redis: RedisDep) -> Response[list[OfficialGold]]:
         print(e)
         return response(data=[])
     # 设置半小时过期一次
-    data = await get_redis_info(redis, key, get_data, 30 * 60)
+    data = await get_redis_info_async(redis, key, get_data, 30 * 60)
     return response(data=data)
