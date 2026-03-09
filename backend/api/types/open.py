@@ -1,9 +1,6 @@
 from enum import Enum
 from pydantic import BaseModel, Field
-from typing import Generic, TypeVar
-from pydantic.generics import GenericModel
 from api.core.Response import Return as Response
-
 
 class SkillInfo(BaseModel):
     skillId: str = Field(..., description='技能ID')

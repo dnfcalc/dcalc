@@ -1,9 +1,8 @@
 # import os
 # import sys
 from sqlalchemy import Column, Integer, Text, Float
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session,declarative_base
 
 Base = declarative_base()
 metadata = Base.metadata

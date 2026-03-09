@@ -34,6 +34,12 @@ url = 'https://poservice.colg.cn/api/v1/trend/getCoinTrendDataKol'
 
 payload = {'token': config.COLG_TOKEN, 'area': 0, 'time_type': 'other', 'start_time': '2026-01-06', 'end_time': '2026-01-06'}
 
+payload_helper = {
+    'r': 'godRank/godDealRank',
+    'userId': config.HELPER_ID,
+    'token': config.HELPER_TOKEN,
+}
+
 
 def get_date_str(timestamp: int) -> str:
     utc_time = datetime.fromtimestamp(timestamp, tz=timezone.utc)
@@ -41,13 +47,14 @@ def get_date_str(timestamp: int) -> str:
     return beijing_time.strftime('%Y-%m-%d %H:%M:%S')
 
 
-@router.get('/gold/realtime/', operation_id='realTimeGold')
+@router.get('/gold/realtime/', operation_id='realtime_gold',response_model=Response[list[RealTimeGold]])
 async def get_real_time_gold(redis: RedisDep) -> Response[list[RealTimeGold]]:
     """
     返回所有跨区的实时金价信息
     """
     key = 'openapi:colg:real_time_gold'
     try:
+
         def get_gold_data():
             res = []
             for region_name, region_id in regionMap.items():
@@ -67,7 +74,7 @@ async def get_real_time_gold(redis: RedisDep) -> Response[list[RealTimeGold]]:
     return response(data=data)
 
 
-@router.get('/gold/history/', operation_id='historyGold')
+@router.get('/gold/history/', operation_id='history_gold',response_model=Response[HistoryGold] | Response[None])
 async def get_history_gold(region: Annotated[int, Query(..., description='跨区id')], timeRange: Annotated[int, Query(..., description='时间跨度天数')] = 7) -> Response[HistoryGold] | Response[None]:
     """
     获取历史金价数据
@@ -139,43 +146,42 @@ async def get_history_gold(region: Annotated[int, Query(..., description='跨区
     return response(data={'region': region_name, 'data': data, 'echartsData': echartsData})
 
 
-@router.get('/gold/official/', operation_id='officialGold')
+@router.get('/gold/official/', operation_id='official_gold',response_model=Response[list[OfficialGold]])
 async def get_official_gold(redis: RedisDep) -> Response[list[OfficialGold]]:
     """
-    获取官方金币寄售实时数据
+    获取DNF官方金币寄售实时数据
+
+    Returns:
+        Response[list[OfficialGold]]: 包含官方金币寄售数据的响应对象
+    Note:
+        - 该接口会返回所有跨区的官方金币寄售数据，包括最低成交价排名前5的价格和最高成交价排名前5的价格
+        - 数据来源于DNF官方提供的接口，可能会有一定的延迟和不稳定性
     """
     official_url = 'https://dzhu.qq.com/zangyi/activity/app'
-    headers = {
-    'Content-Type': 'application/x-www-form-urlencoded'
-    }
-    params = {
-        'r': 'godRank/godDealRank',
-        'userId': config.HELPER_ID,
-        'token': config.HELPER_TOKEN,
-    }
+    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
     key = 'openapi:colg:real_time_gold_officical'
     list = ['1', '2', '3A', '3B', '4', '5', '6', '7']
     try:
         async def get_data():
             datas = []
-            async def fetch_data():
-                async with aiohttp.ClientSession() as session:
-                    tasks = []
-                    for i in list:
-                        params['serverNo'] = i
-                        query = '&'.join(f'{k}={v}' for k, v in params.items())
-                        tasks.append(session.post(official_url, data=query, headers=headers, timeout=10))
-                    responses = await asyncio.gather(*tasks)
-                    for index, resp in enumerate(responses):
-                        res = json.loads(await resp.read())
-                        datas.append({
+            async with aiohttp.ClientSession() as session:
+                tasks = []
+                for i in list:
+                    payload_helper['serverNo'] = i
+                    query = '&'.join(f'{k}={v}' for k, v in payload_helper.items())
+                    tasks.append(session.post(official_url, data=query, headers=headers, timeout=10))
+                responses = await asyncio.gather(*tasks)
+                for index, resp in enumerate(responses):
+                    res = json.loads(await resp.read())
+                    datas.append(
+                        {
                             'updataTime': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                             'region': f'跨{list[index]}',
-                            'godDealRank': [int(i.get('price')) for i in res['data']['godDealRank']],
-                            'godTopDealRank': [int(i.get('price')) for i in res['data']['godTopDealRank']],
-                        })
-                return datas
-            return await fetch_data()
+                            'goldDealRank': [int(i.get('price')) for i in res['data']['godDealRank']],
+                            'goldTopDealRank': [int(i.get('price')) for i in res['data']['godTopDealRank']],
+                        }
+                    )
+            return datas
     except Exception as e:
         print(e)
         return response(data=[])

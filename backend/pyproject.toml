@@ -7,7 +7,7 @@ requires-python = ">=3.10"
 dependencies = [
     "aiohttp>=3.13.3",
     "fastapi[all]>=0.115.11",
-    "fastmcp>=2.7.1",
+    "fastmcp>=3.1.0",
     "redis>=5.2.1",
     "requests>=2.32.3",
     "sqlalchemy>=2.0.38",

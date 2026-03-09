@@ -1,7 +1,6 @@
 from enum import Enum
 from pydantic import BaseModel, Field
 from typing import Generic, TypeVar
-from pydantic.generics import GenericModel
 from api.core.Response import Return as Response
 
 
@@ -10,7 +9,7 @@ class RealTimeGold(BaseModel):
     """更新时间"""
     region: str = Field(..., description='跨区')
     """跨区"""
-    goldPrice: float = Field(..., description='金价')
+    goldPrice: float|str = Field(..., description='金价')
     """金价"""
 
 class DayGold(BaseModel):
@@ -33,7 +32,7 @@ class OfficialGold(BaseModel):
     """更新时间"""
     region: str = Field(..., description='跨区')
     """跨区"""
-    godDealRank: list[float] = Field(..., description='金币寄售最低成交价排名前5的价格')
+    goldDealRank: list[float|str] = Field(..., description='金币寄售最低成交价排名前5的价格')
     """金币寄售最低成交价排名前5的价格"""
-    godTopDealRank: list[float] = Field(..., description='金币寄售最高成交价排名前5的价格')
+    goldTopDealRank: list[float|str] = Field(..., description='金币寄售最高成交价排名前5的价格')
     """金币寄售最高成交价排名前5的价格"""

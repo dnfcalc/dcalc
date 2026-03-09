@@ -1,5 +1,12 @@
-from pydantic_settings import BaseSettings
+import os
+import sys
 
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+try:
+    os.chdir(os.path.dirname(sys.argv[0]))
+except Exception:
+    pass
 
 class Config(BaseSettings):
     DEBUG_MODE: bool = True
@@ -11,8 +18,9 @@ class Config(BaseSettings):
     HELPER_TOKEN: str = ''
     HELPER_ID: str = ''
 
-    class Config:
-        env_file = ('config/.env', 'config/.env.dev', 'config/.env.prod')
+    model_config = SettingsConfigDict(
+        env_file=('config/.env', 'config/.env.dev', 'config/.env.prod')
+    )
 
 
 config = Config()
