@@ -27,3 +27,13 @@ class HistoryGold(BaseModel):
     data: list[DayGold] = Field(..., description='历史数据')
     echartsData : dict = Field(..., description='echarts数据')
     """echarts数据"""
+
+class OfficialGold(BaseModel):
+    updataTime: str = Field(..., description='更新时间')
+    """更新时间"""
+    region: str = Field(..., description='跨区')
+    """跨区"""
+    godDealRank: list[float] = Field(..., description='金币寄售最低成交价排名前5的价格')
+    """金币寄售最低成交价排名前5的价格"""
+    godTopDealRank: list[float] = Field(..., description='金币寄售最高成交价排名前5的价格')
+    """金币寄售最高成交价排名前5的价格"""

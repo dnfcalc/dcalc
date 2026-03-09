@@ -1,8 +1,10 @@
-from api.types.colg import HistoryGold, RealTimeGold
+import asyncio
+
+from api.types.colg import HistoryGold, OfficialGold, RealTimeGold
 from fastapi.params import Param
 from api.core.Gzip import register_gzip_request
 import json
-from fastapi import APIRouter, Path, Query ,Depends
+from fastapi import APIRouter, Path, Query, Depends
 from api.core.Response import response
 from api.core.Redis import get_redis_info
 from api.dp import RedisDep
@@ -11,6 +13,7 @@ import requests
 from config.main import config
 from datetime import datetime, timezone, timedelta
 from api.core.Response import Return as Response
+import aiohttp
 
 router = APIRouter()
 
@@ -45,7 +48,6 @@ async def get_real_time_gold(redis: RedisDep) -> Response[list[RealTimeGold]]:
     """
     key = 'openapi:colg:real_time_gold'
     try:
-
         def get_gold_data():
             res = []
             for region_name, region_id in regionMap.items():
@@ -94,7 +96,6 @@ async def get_history_gold(region: Annotated[int, Query(..., description='跨区
         - region参数必须在regionMap的值范围内
         - timeRange参数是可选的，使用默认值7表示最近7天的数据
     """
-    print(region, timeRange)
     if region not in regionMap.values():
         return response(
             code=404,
@@ -129,10 +130,55 @@ async def get_history_gold(region: Annotated[int, Query(..., description='跨区
         'tooltip': {'trigger': 'axis', 'axisPointer': {'type': 'cross', 'label': {'backgroundColor': '#6a7985'}}},
         'legend': {'data': ['平均金价', '12时金价'], 'bottom': 0},
         'xAxis': {'type': 'category', 'name': '日期', 'boundaryGap': False, 'data': [item['date'] for item in data]},
-        'yAxis': {'type': 'value', 'name': '价格 (万金币/1人民币)', 'min': (min([item['avg'] for item in data] + [item['zero'] for item in data]) // 5 ) * 5, 'max': (max([item['avg'] for item in data] + [item['zero'] for item in data]) // 5 ) * 5 + 5, 'axisLabel': {'formatter': '{value} 万金币'}},
+        'yAxis': {'type': 'value', 'name': '价格 (万金币/1人民币)', 'min': (min([item['avg'] for item in data] + [item['zero'] for item in data]) // 5) * 5, 'max': (max([item['avg'] for item in data] + [item['zero'] for item in data]) // 5) * 5 + 5, 'axisLabel': {'formatter': '{value} 万金币'}},
         'series': [
             {'name': '平均金价', 'type': 'line', 'smooth': True, 'data': [item['avg'] for item in data], 'markPoint': {'data': [{'type': 'max', 'name': '最大值'}, {'type': 'min', 'name': '最小值'}]}},
             {'name': '12时金价', 'type': 'line', 'smooth': True, 'data': [item['zero'] for item in data], 'markLine': {'data': [{'type': 'average', 'name': '平均值'}]}},
         ],
     }
     return response(data={'region': region_name, 'data': data, 'echartsData': echartsData})
+
+
+@router.get('/gold/official/', operation_id='officialGold')
+async def get_official_gold(redis: RedisDep) -> Response[list[OfficialGold]]:
+    """
+    获取官方金币寄售实时数据
+    """
+    official_url = 'https://dzhu.qq.com/zangyi/activity/app'
+    headers = {
+    'Content-Type': 'application/x-www-form-urlencoded'
+    }
+    params = {
+        'r': 'godRank/godDealRank',
+        'userId': config.HELPER_ID,
+        'token': config.HELPER_TOKEN,
+    }
+    key = 'openapi:colg:real_time_gold_officical'
+    list = ['1', '2', '3A', '3B', '4', '5', '6', '7']
+    try:
+        async def get_data():
+            datas = []
+            async def fetch_data():
+                async with aiohttp.ClientSession() as session:
+                    tasks = []
+                    for i in list:
+                        params['serverNo'] = i
+                        query = '&'.join(f'{k}={v}' for k, v in params.items())
+                        tasks.append(session.post(official_url, data=query, headers=headers, timeout=10))
+                    responses = await asyncio.gather(*tasks)
+                    for index, resp in enumerate(responses):
+                        res = json.loads(await resp.read())
+                        datas.append({
+                            'updataTime': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                            'region': f'跨{list[index]}',
+                            'godDealRank': [int(i.get('price')) for i in res['data']['godDealRank']],
+                            'godTopDealRank': [int(i.get('price')) for i in res['data']['godTopDealRank']],
+                        })
+                return datas
+            return await fetch_data()
+    except Exception as e:
+        print(e)
+        return response(data=[])
+    # 设置半小时过期一次
+    data = await get_redis_info(redis, key, get_data, 30 * 60)
+    return response(data=data)
