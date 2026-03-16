@@ -8,7 +8,7 @@ from api.core.exception import ResponseException
 
 
 class AlterState:
-    def __init__(self, alter: str, token: str, charcater: Character, equVersion: str,time: int):
+    def __init__(self, alter: str, token: str, charcater: Character, equVersion: str, time: int):
         if alter is None:
             raise ResponseException('无效的职业')
         self.alter = alter
@@ -44,7 +44,7 @@ def createToken(value: str, equVersion: str, redis = None, expire=86400 / 24 * 2
     token = base64.urlsafe_b64encode(token.encode('utf-8')).decode('utf-8')
     # character = createCharacter(alter)
     character = {}
-    redis.set(f'token:{token}', json.dumps(AlterState(value, token, character, equVersion).to_dict()), int(expire))
+    redis.set(f'token:{token}', json.dumps(AlterState(value, token, character, equVersion,expire).to_dict()), int(expire))
     return token
 
 
