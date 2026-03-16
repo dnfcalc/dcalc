@@ -36,15 +36,12 @@ def dict2obj(dictObj):
     return d
 
 
-def createToken(value: str, equVersion: str, redis = None, expire=86400 / 24 * 2)->str:
-    ts_str = str(time.time() + expire)
-    ts_byte = ts_str.encode('utf-8')
-    sha1_tshex_str = hmac.new(value.encode('utf-8'), ts_byte, 'sha1').hexdigest()
-    token = sha1_tshex_str
-    token = base64.urlsafe_b64encode(token.encode('utf-8')).decode('utf-8')
+def createToken(alter: str, equVersion: str, redis = None, expire=86400 / 24 * 2)->str:
+    payload = json.dumps({"alter": alter, "equVersion": equVersion, "time": time.time() + expire})
+    token = base64.urlsafe_b64encode(payload.encode('utf-8')).decode('utf-8')
     # character = createCharacter(alter)
     character = {}
-    redis.set(f'token:{token}', json.dumps(AlterState(value, token, character, equVersion,expire).to_dict()), int(expire))
+    redis.set(f'token:{token}', json.dumps(AlterState(alter, token, character, equVersion,expire).to_dict()), int(expire))
     return token
 
 
