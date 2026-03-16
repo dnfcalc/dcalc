@@ -6520,7 +6520,6 @@ def equ_929(char: CharacterProperty):
     rarity: 太初
     """
     weapon_point(char)
-    print(char.charEquipInfo["武器"].equInfo)
     char.equ_effect.append(
         EquEffect(
             name="愤怒跃击",
