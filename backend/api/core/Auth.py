@@ -37,7 +37,7 @@ def dict2obj(dictObj):
 
 
 def createToken(alter: str, equVersion: str, redis = None, expire=86400 / 24 * 2)->str:
-    payload = json.dumps({"alter": alter, "equVersion": equVersion, "time": time.time() + expire})
+    payload = json.dumps({"alter": alter, "equVersion": equVersion, "time": int(time.time() * 1000)})
     token = base64.urlsafe_b64encode(payload.encode('utf-8')).decode('utf-8')
     # character = createCharacter(alter)
     character = {}
