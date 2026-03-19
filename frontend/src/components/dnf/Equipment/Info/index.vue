@@ -1,7 +1,7 @@
 <template>
   <div class="bg-hex-222222">
     <div
-      :class="['bg-black text-shadow text-12px h-auto', 'text-hex-9D9476']"
+      :class="['bg-black text-shadow text-12px h-auto', 'text-#9D9476']"
       style="
         width: 220px;
         float: left;
@@ -26,7 +26,7 @@
       <div class="divide"></div>
       <div class="flex flex-col items-end my-1px" style="line-height: 15px">
         <div :class="rarity">{{ props.equipment?.rarity }}</div>
-        <div class="text-hex-7C6430">{{ props.equipment?.itemDetailType }}</div>
+        <div class="text-#7C6430">{{ props.equipment?.itemDetailType }}</div>
       </div>
       <!-- 装备基础信息 -->
       <div class="divide"></div>

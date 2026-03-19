@@ -13,8 +13,8 @@
           class="flex box-border mt-2px"
           :style="{ width: info.value.toString().includes('/') ? '100%' : '49%' }"
         >
-          <div class="w-60px text-hex-836832">{{ info.name }}</div>
-          <div class="ml-auto text-hex-3ea74e">{{ info.value }}</div>
+          <div class="w-60px text-#836832">{{ info.name }}</div>
+          <div class="ml-auto text-#3ea74e">{{ info.value }}</div>
         </div>
       </template>
     </div>

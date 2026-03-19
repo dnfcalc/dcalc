@@ -165,7 +165,7 @@ export const useDialog = createSharedComposable(() => {
                     return h(
                       'div',
                       {
-                        class: 'w-full justify-center text-hex-d4d6b6 text-center',
+                        class: 'w-full justify-center text-#d4d6b6 text-center',
                         style: 'margin:10px',
                       },
                       content,

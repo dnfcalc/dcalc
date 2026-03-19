@@ -1,7 +1,7 @@
 <template>
   <div class="bg-hex-222222">
     <div
-      :class="['bg-black text-shadow text-12px h-auto', 'text-hex-9D9476']"
+      :class="['bg-black text-shadow text-12px h-auto', 'text-#9D9476']"
       style="
         width: 220px;
         float: left;

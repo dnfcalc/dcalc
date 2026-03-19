@@ -75,7 +75,7 @@ export default defineComponent(async () => {
                 >
                   {child.comment}
                 </div>
-                <div class="text-xs text-center w-full bottom-1 text-hex-bea347 absolute">
+                <div class="text-xs text-center w-full bottom-1 text-#bea347 absolute">
                   {child.title}
                 </div>
                 <div
@@ -87,7 +87,7 @@ export default defineComponent(async () => {
           </div>
         ))}
         <div class="flex pt-4 justify-center">
-          <a class="text-hex-bea347" href="https://beian.miit.gov.cn/" target="_blank">
+          <a class="text-#bea347" href="https://beian.miit.gov.cn/" target="_blank">
             赣ICP备2023003492号
           </a>
         </div>

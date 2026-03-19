@@ -45,16 +45,16 @@ export default defineComponent({
     return () => {
       return (
         <>
-          <div class="h-30 w-80 py-2 px-4 text-hex-e9c556">
+          <div class="h-30 w-80 py-2 px-4 text-#e9c556">
             <div class="flex justify-around items-center">
               助手社区ID
               <calc-input class="!w-60" v-model={uid.value} />
             </div>
             <div>
-              <p class="text-hex-e9c556/80">
+              <p class="text-#e9c556/80">
                 * 点击导入后会从助手通过文字识别获取打造
               </p>
-              <p class="text-hex-e9c556/80">
+              <p class="text-#e9c556/80">
                 * 部分打造无法获取，此处仅做快捷导入
               </p>
             </div>

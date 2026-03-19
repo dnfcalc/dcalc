@@ -91,7 +91,7 @@ export function defineRequest<T>(fn: (ax: AxiosInstance) => T) {
               return h(
                 'div',
                 {
-                  class: 'justify-center text-hex-d4d6b6 text-center',
+                  class: 'justify-center text-#d4d6b6 text-center',
                   style: 'white-space:pre-wrap;width:250px;margin:10px',
                 },
                 `出现错误，可加群反馈:183439472\n${response.data.message}`,
