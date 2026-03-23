@@ -1149,7 +1149,8 @@ class Skill40(ActiveSkill):
         - 总攻击力 +30%\n
         - 使枪刃命中的敌人移动到前方150px的位置
         """
-        ...
+        self.cd = 65
+        self.skillRation *= 1.3
 
     def vp_2(self):
         """
