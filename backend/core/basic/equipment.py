@@ -1,5 +1,5 @@
 import importlib
-from database.models import EmblemData, Session, EquData, StoneData, SuitData, EnchantData,JadeData
+from database.models import EmblemData, OathData, Session, EquData, StoneData, SuitData, EnchantData,JadeData
 from database.connect import get_db_engine as get_engine
 
 def parse_to_number_list(info: str, default: list[float] = [0]) -> list[float]:
@@ -45,7 +45,6 @@ class Equ:
             temp[attr] = value[min(adaptation, len(value) - 1)] if isinstance(value, list) else value
         return Equ(**temp)
 
-
 class Suit:
     id: int
     suitId: int
@@ -61,7 +60,6 @@ class Suit:
 
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
-
 
 class Equipments:
     def __init__(self, version='0'):
@@ -176,6 +174,25 @@ class Equipments:
             pass
         pass
 
+    def init_oaths(self):
+        """从数据库中获取所有誓约信息"""
+        with Session(self.engine) as session:
+            db_list = session.query(OathData).all()
+        keys = [key for key in OathData.__dict__.keys() if key[0].isupper()]
+        for item in db_list:
+            max_adaptation = 0
+            item.id = str(item.id)
+            for attr in keys:
+                value = parse_to_number_list(getattr(item, attr))
+                max_adaptation = max(max_adaptation, len(value) - 1)
+                setattr(item, attr, value)
+            oath_dict = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
+            oath_dict['max_adaptation'] = max_adaptation
+            oath = Oath(**oath_dict)
+            self.oaths.append(oath)
+            self.oath_dict[oath.id] = oath
+
+
     def init_func(self):
         """根据装备版本加载装备效果"""
         try:
@@ -215,6 +232,47 @@ class EquEffect:
         self.icon = icon
         self.cd = cd
         self.data = data
+
+class Oath:
+    id: str
+    name: str
+    rarity: str
+    position: list[str]
+    suit: list[str]
+    Point: list[float] | float
+    categorize: str
+    imageUrl: str
+    detail: str
+    bufferDetail: str
+    STR: list[float] | float
+    INT: list[float] | float
+    Vitality: list[float] | float
+    Spirit: list[float] | float
+    AtkP: list[float] | float
+    AtkM: list[float] | float
+    AtkI: list[float] | float
+    SkillAttack: list[float] | float
+    Attack: list[float] | float
+    Buffer: list[float] | float
+    wearUrls: list[str]
+    max_adaptation: int
+
+    def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)
+
+    def adapt(self, adaptation: int = 0):
+        """调适
+
+        Args:
+            adaptation (int): 调适等级
+        """
+        temp = self.__dict__.copy()
+        keys = [key for key in OathData.__dict__.keys() if key[0].isupper()]
+        for attr in keys:
+            value = getattr(self, attr)
+            temp[attr] = value[min(adaptation, len(value) - 1)] if isinstance(value, list) else value
+        return Oath(**temp)
+
 
 global equ0
 equ0 =  Equipments("0")
