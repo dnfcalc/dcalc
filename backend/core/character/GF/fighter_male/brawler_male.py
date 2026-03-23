@@ -1278,7 +1278,7 @@ class Skill41(PassiveSkill):
 
     associate = [
         {"data":data5,"type":"*skillDamage"},
-        {"data":data4,"type":"*cdReduce","skills":["抛沙","毒瓶投掷","毒针投掷","砖块投掷"]},
+        {"data":data4,"type":"*cdReduce","skills":["抛沙","毒瓶投掷","毒针投掷","砖块投掷","罗网投掷"]},
     ]
 
 # 天崩地裂
