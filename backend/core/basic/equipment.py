@@ -1,9 +1,15 @@
 import importlib
-from database.models import EmblemData, OathData, Session, EquData, StoneData, SuitData, EnchantData,JadeData
+from database.models import EmblemData, OathData, OathSuitData, OathSuitSkillData, PrimerData, Session, EquData, StoneData, SuitData, EnchantData,JadeData
 from database.connect import get_db_engine as get_engine
 
 def parse_to_number_list(info: str, default: list[float] = [0]) -> list[float]:
     return default if not info else [float(i) for i in info.split(',')]
+
+def parse_to_string_list(info: str, default: list[str] = ['']) -> list[str]:
+    return default if not info else [i for i in info.split(',')]
+
+def parse_to_int_list(info: str, default: list[int] = [0]) -> list[int]:
+    return default if not info else [int(i) for i in info.split(',')]
 
 class Equ:
     id: str
@@ -66,6 +72,8 @@ class Equipments:
         self.version = version
         self.engine = get_engine(version)
         self.equs: list[Equ] = []
+        self.oaths: list[Oath] = []
+        self.oath_dict: dict[str, Oath] = {}
         self.stones: list[Equ] = []
         self.funs = self.init_func()
         self.equ_dict: dict[str, Equ] = {}
@@ -75,6 +83,7 @@ class Equipments:
         self.emblems = []
         self.suits: list[Suit] = []
         self.suit_dict: dict[str, Suit] = {}
+        self.oath_suits: list[Suit] = []
         self.init_equs()
         self.init_suits()
         self.init_enchants()
@@ -177,20 +186,51 @@ class Equipments:
     def init_oaths(self):
         """从数据库中获取所有誓约信息"""
         with Session(self.engine) as session:
-            db_list = session.query(OathData).all()
+            db_list_1 = session.query(OathData).all()
+            db_list_2 = session.query(PrimerData).all()
         keys = [key for key in OathData.__dict__.keys() if key[0].isupper()]
-        for item in db_list:
+        print(keys)
+        for item in db_list_1 + db_list_2:
             max_adaptation = 0
             item.id = str(item.id)
+            if item.wearUrl is None:
+                item.wearUrl = item.imageUrl
             for attr in keys:
                 value = parse_to_number_list(getattr(item, attr))
                 max_adaptation = max(max_adaptation, len(value) - 1)
+                setattr(item, attr, value)
+            for attr in ['wearUrl','position','suit']:
+                value = [] if getattr(item, attr) is None else getattr(item, attr).split(',')
                 setattr(item, attr, value)
             oath_dict = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
             oath_dict['max_adaptation'] = max_adaptation
             oath = Oath(**oath_dict)
             self.oaths.append(oath)
             self.oath_dict[oath.id] = oath
+
+    def init_oath_suits(self):
+        """从数据库中获取所有誓约套装信息"""
+        with Session(self.engine) as session:
+            db_list = session.query(OathSuitData).all()
+            db_skills_list = session.query(OathSuitSkillData).all()
+        for item in db_list:
+            lvs = len(item.point.split(','))
+            suits = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
+            for i in range(1, lvs + 1):
+                suit = {k: v for k, v in suits.items()}
+                suit['point'] = int(suit['point'].split(',')[i - 1])
+                skills = [x for x in db_skills_list if x.suitId == suit['suitId'] and x.key == suit['key']]
+                suit['level'] = i
+                skillAttaks = parse_to_number_list(suit['SkillAttack'], [0])
+                suit['SkillAttack'] = 0 if i - 1 >= len(skillAttaks) else skillAttaks[i - 1]
+                attacks = parse_to_number_list(suit['Attack'], [0])
+                suit['Attack'] = 0 if i - 1 >= len(attacks) else attacks[i - 1]
+                buffers = parse_to_number_list(suit['Buffer'], [0])
+                suit['Buffer'] = 0 if i - 1 >= len(buffers) else buffers[i - 1]
+                suit['skills'] = [OathSuitSkill(**{k: v for k, v in skill.__dict__.items() if not k.startswith('_')}) for skill in skills]
+                self.oath_suits.append(suit)
+            pass
+        pass
 
 
     def init_func(self):
@@ -210,6 +250,22 @@ class Equipments:
             return []
         # 先筛选出点数小于等于point和数量小于等于count的套装
         suits: list[Suit] = [suit for suit in self.suit_dict[str(suitId)] if suit.point <= point and suit.count <= count]
+        result: dict[int, Suit] = {}
+        # 取每种count套装中点数最高的
+        for suit in suits:
+            if suit.count not in result or suit.point > result[suit.count].point:
+                result[suit.count] = suit
+        return list(result.values())
+
+    def get_oath_suit_info(self, suitId: str | int, point: int = 0, count: int = 0) -> list[Suit]:
+        """根据套装点数返回对应适用的誓约套装属性\n
+        新套装只需要传入suitID和point即可，count默认为0\n
+        老套装需要传入suitID和count即可，point默认为0
+        """
+        if suitId not in self.oath_suit_dict:
+            return []
+        # 先筛选出点数小于等于point和数量小于等于count的套装
+        suits: list[Suit] = [suit for suit in self.oath_suit_dict[str(suitId)] if suit.point <= point and suit.count <= count]
         result: dict[int, Suit] = {}
         # 取每种count套装中点数最高的
         for suit in suits:
@@ -254,7 +310,7 @@ class Oath:
     SkillAttack: list[float] | float
     Attack: list[float] | float
     Buffer: list[float] | float
-    wearUrls: list[str]
+    wearUrl: list[str]
     max_adaptation: int
 
     def __init__(self, **kwargs):
@@ -272,6 +328,43 @@ class Oath:
             value = getattr(self, attr)
             temp[attr] = value[min(adaptation, len(value) - 1)] if isinstance(value, list) else value
         return Oath(**temp)
+
+
+class OathSuitSkill:
+    id: int
+    key: str
+    suitId: int
+    suitName: str
+    skillId: int
+    name: str
+    rarity: str
+    imageUrl: str
+    SkillAttack: float
+    Attack: float
+    Buffer: float
+    value: str
+    bufferValue: str
+
+    def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)
+
+class OathSuit:
+    id: int
+    key: str
+    suitId: int
+    suitName: str
+    rarity: str
+    name: str
+    point: int
+    level: int
+    count: int
+    imageUrl: str
+    SkillAttack: float
+    Attack: float
+    skills: list[OathSuitSkill]
+
+    def __init__(self, **kwargs):
+        self.__dict__.update(kwargs)
 
 
 global equ0

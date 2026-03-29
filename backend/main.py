@@ -22,7 +22,8 @@ if __name__ == '__main__':
         return print("Application starting...")
 
     os.environ['TZ'] = 'Asia/Shanghai'
-    time.tzset()
+    if os.name != 'nt':  # Only call tzset on Unix-like systems, not on Windows
+        time.tzset()
     uvicorn.run(app = "main:application", host='0.0.0.0', port=config.PORT, workers=config.WORKERS,reload=False)
 
 

@@ -144,6 +144,7 @@ class OathData(Base):
     Attack = Column(Text)
     Buffer = Column(Text)
     suit = Column(Text)
+    wearUrl = Column(Text)
 
 class PrimerData(Base):
     """
@@ -172,6 +173,7 @@ class PrimerData(Base):
     Attack = Column(Text)
     Buffer = Column(Text)
     suit = Column(Text)
+    wearUrl = Column(Text)
 
 class OathSuitData(Base):
     __tablename__ = 'oathSuit'
@@ -184,6 +186,10 @@ class OathSuitData(Base):
     name = Column(Text)
     point = Column(Integer)
     count = Column(Integer)
+    imageUrl = Column(Text)
+    SkillAttack = Column(Text)
+    Attack = Column(Text)
+    Buffer = Column(Text)
 
 class OathSuitSkillData(Base):
     __tablename__ = 'oathSuitSkill'
