@@ -13,7 +13,7 @@ from core.basic.equipment import get_equipment, EquEffect, Equ
 # from core.basic.equipment import equipments
 # from core.basic.skill import Skill, ActiveSkill, PassiveSkill
 from .formula import 增幅计算, 强化技攻, 武器强化计算, 精通计算, 获取唤醒属性, 获取基础属性, 耳环计算, 左右计算, 锻造计算
-from .roleinfo import CharacterEquipInfo, get_key_by_value
+from .roleinfo import CharacterEquipInfo, get_key_by_value, CharacterOathInfo
 # from .property import 精通计算, 角色基础, CharacterInfo
 
 
@@ -117,7 +117,7 @@ class Character(CharacterProperty):
 
     # endregion
 
-    BindAwake : int
+    BindAwake: int
     """绑定觉醒等级"""
     skills: list['Skill'] = []
     # """技能列表"""
@@ -127,6 +127,8 @@ class Character(CharacterProperty):
     """装备版本"""
     charEquipInfo: dict[str, 'CharacterEquipInfo']
     """装备打造信息"""
+    charOathInfo: list['CharacterOathInfo']
+    """誓约打造信息"""
     equ_effect: list['EquEffect'] = []
     """装备效果列表"""
     equ_options: dict[str, int] = {}
@@ -231,7 +233,7 @@ class Character(CharacterProperty):
         temp = 获取基础属性(self.角色, self.职业)
         唤醒 = 获取唤醒属性()
         for index, i in enumerate([get_key_by_value(i) for i in ['力量', '体力', '智力', '精神']]):
-            setattr(self, i, getattr(self,i) + temp[index] + 唤醒)
+            setattr(self, i, getattr(self, i) + temp[index] + 唤醒)
         # 角色属性抗性
         pass
         # 角色异常抗性
@@ -420,21 +422,26 @@ class Character(CharacterProperty):
 
     def GetWeaponType(self) -> tuple[str, str]:
         """获取武器类型"""
-        weapon = self.charEquipInfo["武器"].equInfo
+        weapon = self.charEquipInfo['武器'].equInfo
         if weapon is None:
-            return None,None
+            return None, None
         else:
-            return weapon.itemDetailType,weapon.categorize
+            return weapon.itemDetailType, weapon.categorize
+
     # endregion
 
     # region 计算相关
     def SetDetail(self, info: dict[str, dict]) -> None:
         self.charEquipInfo = {}
+        self.charOathInfo = []
         self.bindAwake = info.get('bindAwake', 50)
         """打造信息导入"""
         for key in info['equips']:
             # 导入部位打造信息、装备信息、贴膜信息
             self.charEquipInfo[key] = CharacterEquipInfo(info['equips'][key], self.equVersion, key)
+        for key in info['oaths']:
+            # 导入誓约打造信息、誓约信息
+            self.charOathInfo.append(CharacterOathInfo(info['oaths'][key], self.equVersion, key))
 
     def getInfo(self):
         """返回到前端信息"""
@@ -480,7 +487,7 @@ class Character(CharacterProperty):
                     'hasUP': skill.hasUP,
                     'upType': skill.upType,
                     'uuid': skill.uuid,
-                    'vps': [{"name":i["name"],"desc":i["desc"]} for i in skill.vps],
+                    'vps': [{'name': i['name'], 'desc': i['desc']} for i in skill.vps],
                 }
             )
         info['skills'] = skillInfo
@@ -500,7 +507,7 @@ class Character(CharacterProperty):
         info['suits'] = suits
         info['stones'] = stones
         key = '辅助' if self.buffer else '输出'
-        info['enchants'] = list(filter(lambda x: key in x["categorize"], equInfos.enchants))
+        info['enchants'] = list(filter(lambda x: key in x['categorize'], equInfos.enchants))
         info['emblems'] = [i for i in equInfos.emblems]
         info['avatar'] = equInfos.funs.get_dress_list(skill_clothes)
         info['jades'] = equInfos.jades
@@ -581,7 +588,7 @@ class Character(CharacterProperty):
         module = sys.modules[self.moduleName]
         for name in dir(module):
             memberClass = getattr(module, name)
-            if isinstance(memberClass, type) and memberClass.__name__.startswith("Skill"):
+            if isinstance(memberClass, type) and memberClass.__name__.startswith('Skill'):
                 skill = memberClass(char=self)
                 self.skills_dict[skill.name] = skill
                 self.skills.append(skill)
@@ -660,8 +667,8 @@ class Character(CharacterProperty):
         # 太初积分以上，每超过70点数增加1%技能攻击力
         if self.max_point >= 2550:
             skillAttack = (self.max_point - 2550) // 70 * 0.01
-            buffer =  (self.max_point - 2550) // 70 * 100
-            self.SetStatus(SkillAttack=skillAttack,Buffer=buffer)
+            buffer = (self.max_point - 2550) // 70 * 100
+            self.SetStatus(SkillAttack=skillAttack, Buffer=buffer)
         return res
 
     def calc_equs(self):
@@ -748,7 +755,7 @@ class Character(CharacterProperty):
                     fun(self)
         pass
 
-    def calc_weapon(self,cur:CharacterEquipInfo):
+    def calc_weapon(self, cur: CharacterEquipInfo):
         # 锻造独立计算
         value = 锻造计算(115, '史诗', cur.refine)
         self.SetStatus(AtkI=value)
@@ -776,7 +783,7 @@ class Character(CharacterProperty):
                 continue
 
             for key in self.防具精通属性:
-                value = 精通计算(115, equ.rarity, reinforce, equ.itemDetailType, self.防具类型,self.buffer,key)
+                value = 精通计算(115, equ.rarity, reinforce, equ.itemDetailType, self.防具类型, self.buffer, key)
                 key = get_key_by_value(key)
                 setattr(self, key, getattr(self, key) + value)
         # 115增幅强化品级固定史诗
@@ -811,40 +818,31 @@ class Character(CharacterProperty):
         funs = get_equipment(self.equVersion).funs
         for key in jades:
             jade = jades[key]
-            fun = funs.execture(f'jade_{jade.get("id",0)}')
+            fun = funs.execture(f'jade_{jade.get("id", 0)}')
             if fun is not None:
-                fun(self,jade.get('value', 0))
+                fun(self, jade.get('value', 0))
         pass
 
     def calc_sundry(self, sundry: dict):
         """计算杂项效果"""
         funs = get_equipment(self.equVersion).funs
-        funs.execture("sundry_0")(self,
-            sundry.get("medal_rarity", 0),
-            sundry.get("medal_reinforce", 0),
-            [sundry.get("medal_gem_0", 0), sundry.get("medal_gem_1", 0), sundry.get("medal_gem_2", 0), sundry.get("medal_gem_3", 0)],
+        funs.execture('sundry_0')(
+            self,
+            sundry.get('medal_rarity', 0),
+            sundry.get('medal_reinforce', 0),
+            [sundry.get('medal_gem_0', 0), sundry.get('medal_gem_1', 0), sundry.get('medal_gem_2', 0), sundry.get('medal_gem_3', 0)],
         )
-        funs.execture("sundry_6")(self,
-            sundry.get("adventure", 1)
+        funs.execture('sundry_6')(self, sundry.get('adventure', 1))
+        funs.execture('sundry_5')(self, sundry.get('fog', 1))
+        funs.execture('sundry_7')(self, sundry.get('marriage_house', 0), sundry.get('marriage_ring', 0))
+        funs.execture('sundry_9')(self, sundry.get('contract', 0))
+        funs.execture('sundry_10')(
+            self,
+            sundry.get('collection_type', 0),
+            sundry.get('collection_num_0', 0),
+            sundry.get('collection_num_1', 0),
         )
-        funs.execture("sundry_5")(self,
-            sundry.get("fog", 1)
-        )
-        funs.execture("sundry_7")(self,
-            sundry.get("marriage_house", 0),
-            sundry.get("marriage_ring", 0)
-        )
-        funs.execture("sundry_9")(self,
-            sundry.get("contract", 0)
-        )
-        funs.execture("sundry_10")(self,
-            sundry.get("collection_type", 0),
-            sundry.get("collection_num_0", 0),
-            sundry.get("collection_num_1", 0),
-        )
-        funs.execture("sundry_13")(self,
-            sundry.get("costume_card", 0)
-        )
+        funs.execture('sundry_13')(self, sundry.get('costume_card', 0))
         pass
 
     def calc(self, setInfo: dict[str, dict]):
@@ -883,21 +881,14 @@ class Character(CharacterProperty):
                         self.输出类型 = '魔法百分比'
                     else:
                         self.输出类型 = '物理百分比'
-            skillInfos = self.calc_carry_skills(setInfo.get("DSB", False),setInfo.get("BUFF", False))
+            skillInfos = self.calc_carry_skills(setInfo.get('DSB', False), setInfo.get('BUFF', False))
             info = self.get_carry_info()
-        return {
-            'uuid': uuid1().hex,
-            'skills': skillInfos,
-            'info': info,
-            'suits': suit,
-            'buffer':self.buffer
-        }
+        return {'uuid': uuid1().hex, 'skills': skillInfos, 'info': info, 'suits': suit, 'buffer': self.buffer}
         # 技能影响角色的属性，如属强、抗性等
-
 
     # region 输出计算项
 
-    def calc_damage_ration(self,DSB:bool,BUFF:bool):
+    def calc_damage_ration(self, DSB: bool, BUFF: bool):
         """计算属性系数"""
         # 计算最终属性
         # 力/智 攻击力 攻击力%(特效不吃这部分)
@@ -937,7 +928,7 @@ class Character(CharacterProperty):
         ratio_9 = 1.0 * self.ElementIncrease
         return (ratio_0, ratio_1, ratio_2, ratio_3, ratio_4, ratio_5, ratio_6, ratio_7, ratio_8, ratio_9)
 
-    def calc_carry_skills(self,DSB:bool,BUFF:bool):
+    def calc_carry_skills(self, DSB: bool, BUFF: bool):
         skillInfos = []
         for i in self.skills:
             if i.damage and i.lv > 0:
@@ -957,24 +948,13 @@ class Character(CharacterProperty):
                                 'type': i.type,
                             }
                         )
-        ratios = self.calc_damage_ration(DSB,BUFF)
+        ratios = self.calc_damage_ration(DSB, BUFF)
         ratio_char_skill = ratios[0] * ratios[1] * ratios[2] * ratios[3] * ratios[4] * ratios[5] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 1000
         ratuio_equ_skill = ratios[0] * ratios[1] * ratios[3] * ratios[4] * ratios[6] * ratios[7] * ratios[8] * ratios[9] / 1000
         for i in skillInfos:
             i['damage'] = ratio_char_skill * i['data'] * i['ratio'] / 100
         for i in self.equ_effect:
-            skillInfos.append(
-                {
-                    'name': i.name,
-                    'icon': i.icon,
-                    'lv': 0,
-                    'data': i.data,
-                    'ratio': 10.0,
-                    'cd': i.cd,
-                    'damage': ratuio_equ_skill * i.data * 10 * self.EquEffectRatio / 100,
-                    'mode':''
-                }
-            )
+            skillInfos.append({'name': i.name, 'icon': i.icon, 'lv': 0, 'data': i.data, 'ratio': 10.0, 'cd': i.cd, 'damage': ratuio_equ_skill * i.data * 10 * self.EquEffectRatio / 100, 'mode': ''})
         # 合并相同 name、cd、damage 的项
         # merged = {}
         # for skill in skillInfos:
@@ -997,7 +977,7 @@ class Character(CharacterProperty):
         if self.输出类型 == '魔法固伤':
             attrs.extend(['INT', 'AtkI'])
         info = []
-        attrs.extend(['Attack', 'AttackP', 'SkillAttack','EquEffectRatio', 'ElementDB'])
+        attrs.extend(['Attack', 'AttackP', 'SkillAttack', 'EquEffectRatio', 'ElementDB'])
         for attr in attrs:
             temp = getattr(CharacterInfo, attr)
             if attr.startswith('Atk'):
@@ -1006,7 +986,7 @@ class Character(CharacterProperty):
             else:
                 value = getattr(self, attr)
                 if attr == 'SkillAttack':
-                    value *= (self.jade_effect.SkillAttack + 1)
+                    value *= self.jade_effect.SkillAttack + 1
                 if attr == 'AttackP':
                     value += self.jade_effect.AttackP
                 info.append(
@@ -1017,9 +997,10 @@ class Character(CharacterProperty):
                 )
                 pass
         return info
+
     # endregion
 
-    #region 辅助计算项
+    # region 辅助计算项
 
     def calc_buffer_skills(self):
         skillInfos = []
@@ -1028,10 +1009,10 @@ class Character(CharacterProperty):
         # 增益量
         buffer_power = self.Buffer * self.BufferP
         # buff系数
-        buff_ratio_new = (main / 2993 +1) * (buffer_power / 4800 + 1) if buffer_power > 0 else 0
+        buff_ratio_new = (main / 2993 + 1) * (buffer_power / 4800 + 1) if buffer_power > 0 else 0
         buff_ratio_old = main / 2993 + 1
         # 觉醒系数
-        awake_ratio_new = ((main + 7500) / 7500 + 1) *((buffer_power + 68000) / 8500 + 1) if buffer_power > 0 else 0
+        awake_ratio_new = ((main + 7500) / 7500 + 1) * ((buffer_power + 68000) / 8500 + 1) if buffer_power > 0 else 0
         awake_ratio_old = main / 7500 + 1
         for i in self.skills:
             if i.lv > 0 and i.hasUP and i.up is not None and i.up > 0:
@@ -1042,42 +1023,47 @@ class Character(CharacterProperty):
                 value = info[0]
                 # buff技能
                 if i.buffType == 'buff' or i.buffType == 'buffSub':
-                    value1 = (info[1][0] + info[1][2])*info[1][1]*buff_ratio_old + info[1][0]*buff_ratio_new
-                    value2 = (info[2][0] + info[2][2])*info[2][1]*buff_ratio_old + info[2][0]*buff_ratio_new
+                    value1 = (info[1][0] + info[1][2]) * info[1][1] * buff_ratio_old + info[1][0] * buff_ratio_new
+                    value2 = (info[2][0] + info[2][2]) * info[2][1] * buff_ratio_old + info[2][0] * buff_ratio_new
                 # 觉醒技能
                 elif i.buffType == 'awake' or i.buffType == 'awakeSub':
-                    value1 = (info[1][0] + info[1][2])*info[1][1]*awake_ratio_old + info[1][0]*awake_ratio_new
-                    value2 = (info[2][0] + info[2][2])*info[2][1]*awake_ratio_old + info[2][0]*awake_ratio_new
+                    value1 = (info[1][0] + info[1][2]) * info[1][1] * awake_ratio_old + info[1][0] * awake_ratio_new
+                    value2 = (info[2][0] + info[2][2]) * info[2][1] * awake_ratio_old + info[2][0] * awake_ratio_new
                 else:
-                    value1 = (info[1][0] + info[1][2])*info[1][1]
-                    value2 = (info[2][0] + info[2][2])*info[2][1]
+                    value1 = (info[1][0] + info[1][2]) * info[1][1]
+                    value2 = (info[2][0] + info[2][2]) * info[2][1]
                 value3 = info[3]
                 value4 = info[4]
                 if i.buffType == 'awake' and self.bindAwake == 50:
                     pass
                 else:
-                    skillInfos.append({
-                        "name":i.name,
-                        "cd":value4,
-                        "icon":i.icon,
-                        "lv": i.lv,
-                        # 对自己的加成 三攻 力智 伤害直接加成
-                        "buff":[value, value1, value2, value3],
-                        "type":i.type
-                    })
+                    skillInfos.append(
+                        {
+                            'name': i.name,
+                            'cd': value4,
+                            'icon': i.icon,
+                            'lv': i.lv,
+                            # 对自己的加成 三攻 力智 伤害直接加成
+                            'buff': [value, value1, value2, value3],
+                            'type': i.type,
+                        }
+                    )
         return skillInfos
 
     def get_buffer_info(self):
-        attrs = [get_key_by_value(self.适用属性),'Buffer','BufferP']
+        attrs = [get_key_by_value(self.适用属性), 'Buffer', 'BufferP']
         info = []
         for attr in attrs:
             temp = getattr(CharacterInfo, attr)
             value = getattr(self, attr)
-            info.append({
-                'name': temp.name,
-                'value': temp.value(value),
-            })
+            info.append(
+                {
+                    'name': temp.name,
+                    'value': temp.value(value),
+                }
+            )
         return info
+
     # endregion
 
     # endregion

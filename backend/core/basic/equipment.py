@@ -1,15 +1,19 @@
 import importlib
-from database.models import EmblemData, OathData, OathSuitData, OathSuitSkillData, PrimerData, Session, EquData, StoneData, SuitData, EnchantData,JadeData
+from database.models import EmblemData, OathData, OathSuitData, OathSuitSkillData, PrimerData, Session, EquData, StoneData, SuitData, EnchantData, JadeData
 from database.connect import get_db_engine as get_engine
+
 
 def parse_to_number_list(info: str, default: list[float] = [0]) -> list[float]:
     return default if not info else [float(i) for i in info.split(',')]
 
+
 def parse_to_string_list(info: str, default: list[str] = ['']) -> list[str]:
     return default if not info else [i for i in info.split(',')]
 
+
 def parse_to_int_list(info: str, default: list[int] = [0]) -> list[int]:
     return default if not info else [int(i) for i in info.split(',')]
+
 
 class Equ:
     id: str
@@ -51,6 +55,7 @@ class Equ:
             temp[attr] = value[min(adaptation, len(value) - 1)] if isinstance(value, list) else value
         return Equ(**temp)
 
+
 class Suit:
     id: int
     suitId: int
@@ -66,6 +71,7 @@ class Suit:
 
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
+
 
 class Equipments:
     def __init__(self, version='0'):
@@ -90,6 +96,8 @@ class Equipments:
         self.init_stones()
         self.init_emblem()
         self.init_jades()
+        self.init_oaths()
+        self.init_oath_suits()
         self.engine.dispose()
 
     def init_equs(self):
@@ -189,7 +197,6 @@ class Equipments:
             db_list_1 = session.query(OathData).all()
             db_list_2 = session.query(PrimerData).all()
         keys = [key for key in OathData.__dict__.keys() if key[0].isupper()]
-        print(keys)
         for item in db_list_1 + db_list_2:
             max_adaptation = 0
             item.id = str(item.id)
@@ -199,7 +206,7 @@ class Equipments:
                 value = parse_to_number_list(getattr(item, attr))
                 max_adaptation = max(max_adaptation, len(value) - 1)
                 setattr(item, attr, value)
-            for attr in ['wearUrl','position','suit']:
+            for attr in ['wearUrl', 'position', 'suit']:
                 value = [] if getattr(item, attr) is None else getattr(item, attr).split(',')
                 setattr(item, attr, value)
             oath_dict = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
@@ -232,13 +239,12 @@ class Equipments:
             pass
         pass
 
-
     def init_func(self):
         """根据装备版本加载装备效果"""
         try:
-            funs = importlib.import_module(f"core.equipment.version_{self.version}")
+            funs = importlib.import_module(f'core.equipment.version_{self.version}')
         except Exception:
-            funs = importlib.import_module("core.equipment.version_0")
+            funs = importlib.import_module('core.equipment.version_0')
         return funs
 
     def get_suit_info(self, suitId: str | int, point: int = 0, count: int = 0) -> list[Suit]:
@@ -273,6 +279,7 @@ class Equipments:
                 result[suit.count] = suit
         return list(result.values())
 
+
 class EquEffect:
     name: str = ''
     """装备技能名称"""
@@ -280,7 +287,7 @@ class EquEffect:
     """技能图标"""
     cd: float = 0
     """技能冷却时间"""
-    data:float = 0
+    data: float = 0
     """伤害量"""
 
     def __init__(self, name: str, icon: str, cd: float, data: float):
@@ -288,6 +295,7 @@ class EquEffect:
         self.icon = icon
         self.cd = cd
         self.data = data
+
 
 class Oath:
     id: str
@@ -348,6 +356,7 @@ class OathSuitSkill:
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
 
+
 class OathSuit:
     id: int
     key: str
@@ -368,12 +377,13 @@ class OathSuit:
 
 
 global equ0
-equ0 =  Equipments("0")
+equ0 = Equipments('0')
+
 
 def get_equipment(version: str = '0') -> Equipments:
     # print('加载装备信息')
     try:
-        temp = eval(f"equ{version}".format(version))
+        temp = eval(f'equ{version}'.format(version))
     except Exception:
         temp = equ0
     return temp

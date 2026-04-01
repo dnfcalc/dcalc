@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Union
 
-from core.basic.equipment import Equ, get_equipment
+from core.basic.equipment import Equ, get_equipment, Oath
 
 
 class CharacterEquipInfo:
@@ -29,13 +29,13 @@ class CharacterEquipInfo:
     """装备信息"""
     fusionInfo: Union['Equ', None]
     """贴膜信息"""
-    precision:float
+    precision: float
     """秘宝精度"""
 
     def __init__(self, info={}, equVerison=0, part='') -> None:
-        info["fusion"] = info.get("fusion", None)
-        info["precision"] = info.get("precision", 0)
-        info["weaponFusion"] = info.get("weaponFusion", None)
+        info['fusion'] = info.get('fusion', None)
+        info['precision'] = info.get('precision', 0)
+        info['weaponFusion'] = info.get('weaponFusion', None)
         self.__dict__.update(info)
         equ = get_equipment(equVerison).equ_dict.get(self.id, None)
         fusion = get_equipment(equVerison).stone_dict.get(self.fusion, None)
@@ -43,13 +43,33 @@ class CharacterEquipInfo:
             self.equInfo = equ.adapt(self.adaptation)
             self.adaptation = min(self.adaptation, self.equInfo.max_adaptation)
             if part == '副武器' and equ.itemType == '武器':
-                self.equInfo.itemType = "副武器"
+                self.equInfo.itemType = '副武器'
         else:
             self.equInfo = None
         if fusion is not None and (fusion.itemType == part or fusion.itemDetailType == part):
             self.fusionInfo = fusion.adapt(self.adaptation)
         else:
             self.fusionInfo = None
+
+
+class CharacterOathInfo:
+    id: str
+    """誓约ID"""
+    adaptation: int
+    """调适等级"""
+    oathInfo: Union['Oath', None]
+    """誓约信息"""
+
+    def __init__(self, info={}, equVerison=0, position='') -> None:
+        self.__dict__.update(info)
+        self.id = str(self.id)
+        oath = get_equipment(equVerison).oath_dict.get(self.id, None)
+        print(position, oath)
+        if oath is not None and position in oath.position:
+            self.oathInfo = oath.adapt(self.adaptation)
+            self.adaptation = min(self.adaptation, self.oathInfo.max_adaptation)
+        else:
+            self.oathInfo = None
 
 
 class CharacterWeaponInfo(CharacterEquipInfo):
@@ -104,7 +124,7 @@ class CharacterAttributes(Enum):
     AttackP = '攻击强化%'
 
 
-mapping = {value.value : key for key, value in CharacterAttributes.__members__.items()}
+mapping = {value.value: key for key, value in CharacterAttributes.__members__.items()}
 
 
 def get_key_by_value(value: str) -> str:

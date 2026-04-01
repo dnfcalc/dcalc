@@ -1,11 +1,9 @@
-from core.basic.equipment import Equipments
-equ = Equipments("0")
+from core.basic.character import createCharacter
 
-equ.init_oath_suits()
-item = equ.oath_suits[3]
-for i in range(1, 7):
-  print(f"Lv{i}：")
-  print(equ.oath_suits[i])
-  for skill in equ.oath_suits[i]['skills']:
-    print(skill.__dict__)
-  print("------------------")
+char = createCharacter('GF.gunner_female.spitfire_female')
+
+char.calc_init({'oaths': {'0': {'id': '2010201', 'adaptation': 3}, '11': {'id': '2050200', 'adaptation': 0}}, 'equips': {}})
+
+
+for oath in char.charOathInfo:
+    print(oath.id, oath.adaptation, oath.oathInfo.position, oath.oathInfo.max_adaptation, oath.oathInfo.Point)
