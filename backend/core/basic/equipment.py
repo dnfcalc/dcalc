@@ -96,8 +96,8 @@ class Equipments:
         self.init_stones()
         self.init_emblem()
         self.init_jades()
-        self.init_oaths()
-        self.init_oath_suits()
+        # self.init_oaths()
+        # self.init_oath_suits()
         self.engine.dispose()
 
     def init_equs(self):

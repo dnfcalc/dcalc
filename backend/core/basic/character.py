@@ -433,15 +433,15 @@ class Character(CharacterProperty):
     # region 计算相关
     def SetDetail(self, info: dict[str, dict]) -> None:
         self.charEquipInfo = {}
-        self.charOathInfo = []
+        # self.charOathInfo = []
         self.bindAwake = info.get('bindAwake', 50)
         """打造信息导入"""
         for key in info['equips']:
             # 导入部位打造信息、装备信息、贴膜信息
             self.charEquipInfo[key] = CharacterEquipInfo(info['equips'][key], self.equVersion, key)
-        for key in info['oaths']:
-            # 导入誓约打造信息、誓约信息
-            self.charOathInfo.append(CharacterOathInfo(info['oaths'][key], self.equVersion, key))
+        # for key in info['oaths']:
+        #     # 导入誓约打造信息、誓约信息
+        #     self.charOathInfo.append(CharacterOathInfo(info['oaths'][key], self.equVersion, key))
 
     def getInfo(self):
         """返回到前端信息"""

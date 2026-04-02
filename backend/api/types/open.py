@@ -2,6 +2,7 @@ from enum import Enum
 from pydantic import BaseModel, Field
 from api.core.Response import Return as Response
 
+
 class SkillInfo(BaseModel):
     skillId: str = Field(..., description='技能ID')
     """技能ID"""
@@ -153,6 +154,8 @@ class SkillSummaryItem(BaseModel):
     理论秒伤: float | str | None = Field(..., description='理论秒伤')
     SP: float | None | str = Field(..., description='SP')
     武器类型: str | None = Field(..., description='武器类型')
+    职业: str | None = Field(..., description='职业')
+
 
 class JobInfo(BaseModel):
     jobId: str = Field(..., description='职业ID')
@@ -163,6 +166,7 @@ class JobInfo(BaseModel):
     """转职ID"""
     jobGrowName: str = Field(..., description='转职名称')
     """转职名称"""
+
 
 SkillDetailResponse = Response[SkillDetail | None]
 SearchSkillResponse = Response[list[SkillInfo]]

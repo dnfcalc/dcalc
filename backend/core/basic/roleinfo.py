@@ -64,7 +64,6 @@ class CharacterOathInfo:
         self.__dict__.update(info)
         self.id = str(self.id)
         oath = get_equipment(equVerison).oath_dict.get(self.id, None)
-        print(position, oath)
         if oath is not None and position in oath.position:
             self.oathInfo = oath.adapt(self.adaptation)
             self.adaptation = min(self.adaptation, self.oathInfo.max_adaptation)
