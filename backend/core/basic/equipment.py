@@ -89,15 +89,16 @@ class Equipments:
         self.emblems = []
         self.suits: list[Suit] = []
         self.suit_dict: dict[str, Suit] = {}
-        self.oath_suits: list[Suit] = []
+        self.oath_suits: list[OathSuit] = []
+        self.oath_suit_dict: dict[str, OathSuit] = {}
         self.init_equs()
         self.init_suits()
         self.init_enchants()
         self.init_stones()
         self.init_emblem()
         self.init_jades()
-        # self.init_oaths()
-        # self.init_oath_suits()
+        self.init_oaths()
+        self.init_oath_suits()
         self.engine.dispose()
 
     def init_equs(self):
@@ -235,7 +236,9 @@ class Equipments:
                 buffers = parse_to_number_list(suit['Buffer'], [0])
                 suit['Buffer'] = 0 if i - 1 >= len(buffers) else buffers[i - 1]
                 suit['skills'] = [OathSuitSkill(**{k: v for k, v in skill.__dict__.items() if not k.startswith('_')}) for skill in skills]
-                self.oath_suits.append(suit)
+                oath_suit = OathSuit(**suit)
+                self.oath_suits.append(oath_suit)
+                self.oath_suit_dict.setdefault(str(suit['suitId']), []).append(oath_suit)
             pass
         pass
 
@@ -263,7 +266,7 @@ class Equipments:
                 result[suit.count] = suit
         return list(result.values())
 
-    def get_oath_suit_info(self, suitId: str | int, point: int = 0, count: int = 0) -> list[Suit]:
+    def get_oath_suit_info(self, suitId: str | int, point: int = 0, count: int = 0) -> list['OathSuit']:
         """根据套装点数返回对应适用的誓约套装属性\n
         新套装只需要传入suitID和point即可，count默认为0\n
         老套装需要传入suitID和count即可，point默认为0
@@ -271,8 +274,8 @@ class Equipments:
         if suitId not in self.oath_suit_dict:
             return []
         # 先筛选出点数小于等于point和数量小于等于count的套装
-        suits: list[Suit] = [suit for suit in self.oath_suit_dict[str(suitId)] if suit.point <= point and suit.count <= count]
-        result: dict[int, Suit] = {}
+        suits: list[OathSuit] = [suit for suit in self.oath_suit_dict[str(suitId)] if suit.point <= point and suit.count <= count]
+        result: dict[int, OathSuit] = {}
         # 取每种count套装中点数最高的
         for suit in suits:
             if suit.count not in result or suit.point > result[suit.count].point:
