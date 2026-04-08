@@ -213,7 +213,7 @@ async def get_skill_data_summary(
                     with open(os.path.join(summary_dir, i), encoding='utf-8') as f:
                         skill_data = json.load(f)
                     weapon = i.split('_')[-1].replace('.json', '')
-                    res.append({'weapon': weapon if weapon else '通用', 'skills': skill_data, 'job': k})
+                    res.append({'weapon': weapon if weapon else '通用', 'skills': skill_data, 'job': k.group(1) if k else ''})
             return res
 
         job_summary = get_redis_info(redis, key, get_skill_data_summary)
@@ -224,6 +224,7 @@ async def get_skill_data_summary(
                     skill['武器类型'] = item['weapon']
                     skill['职业'] = item['job']
                 data.extend(items or [])
+        print(data)
     except FileNotFoundError as e:
         print(f'File not found: {e}')
         return response(data=[])
