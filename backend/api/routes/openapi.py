@@ -224,7 +224,6 @@ async def get_skill_data_summary(
                     skill['武器类型'] = item['weapon']
                     skill['职业'] = item['job']
                 data.extend(items or [])
-        print(data)
     except FileNotFoundError as e:
         print(f'File not found: {e}')
         return response(data=[])
