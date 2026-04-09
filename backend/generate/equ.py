@@ -1,5 +1,5 @@
 from database.connect import get_db_engine as get_engine
-from database.models import Session, EquData, SuitData
+from database.models import Session, EquData
 
 engine = get_engine('0')
 
