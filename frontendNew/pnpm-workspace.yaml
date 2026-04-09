@@ -1,0 +1,18 @@
+overrides:
+  'vue': 'beta'
+  '@vue/compiler-core': 'beta'
+  '@vue/compiler-dom': 'beta'
+  '@vue/compiler-sfc': 'beta'
+  '@vue/compiler-ssr': 'beta'
+  '@vue/compiler-vapor': 'beta'
+  '@vue/reactivity': 'beta'
+  '@vue/runtime-core': 'beta'
+  '@vue/runtime-dom': 'beta'
+  '@vue/runtime-vapor': 'beta'
+  '@vue/server-renderer': 'beta'
+  '@vue/shared': 'beta'
+  '@vue/compat': 'beta'
+
+peerDependencyRules:
+  allowAny:
+    - 'vue'
