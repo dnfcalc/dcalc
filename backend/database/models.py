@@ -2,7 +2,7 @@
 # import sys
 from sqlalchemy import Column, Integer, Text, Float
 from sqlalchemy import create_engine
-from sqlalchemy.orm import Session,declarative_base
+from sqlalchemy.orm import Session, declarative_base
 
 Base = declarative_base()
 metadata = Base.metadata
@@ -25,6 +25,7 @@ class SuitData(Base):
     value = Column(Text)
     bufferValue = Column(Text)
     fame = Column(Integer)
+
 
 class EquData(Base):
     """
@@ -56,6 +57,7 @@ class EquData(Base):
     Buffer = Column(Text)
     suit = Column(Text)
 
+
 class StoneData(Base):
     """
     装备属性映射
@@ -86,6 +88,7 @@ class StoneData(Base):
     Buffer = Column(Text)
     suit = Column(Text)
 
+
 class EnchantData(Base):
     __tablename__ = 'enchant'
 
@@ -95,6 +98,7 @@ class EnchantData(Base):
     itemType = Column(Text)
     fame = Column(Integer)
     rarity = Column(Text)
+
 
 class EmblemData(Base):
     __tablename__ = 'emblem'
@@ -106,6 +110,7 @@ class EmblemData(Base):
     fame = Column(Integer)
     rarity = Column(Text)
 
+
 class JadeData(Base):
     __tablename__ = 'jade'
 
@@ -116,11 +121,13 @@ class JadeData(Base):
     unit = Column(Text)
     pre = Column(Float)
 
+
 class OathData(Base):
     """
     誓约属性映射
     首字母大写的属性为调适可能会影响到的属性
     """
+
     __tablename__ = 'oath'
 
     id = Column(Integer, primary_key=True)
@@ -145,11 +152,13 @@ class OathData(Base):
     suit = Column(Text)
     wearUrl = Column(Text)
 
+
 class PrimerData(Base):
     """
     誓约属性映射
     首字母大写的属性为调适可能会影响到的属性
     """
+
     __tablename__ = 'primer'
 
     id = Column(Integer, primary_key=True)
@@ -174,6 +183,7 @@ class PrimerData(Base):
     suit = Column(Text)
     wearUrl = Column(Text)
 
+
 class OathSuitData(Base):
     __tablename__ = 'oathSuit'
 
@@ -189,6 +199,7 @@ class OathSuitData(Base):
     SkillAttack = Column(Text)
     Attack = Column(Text)
     Buffer = Column(Text)
+
 
 class OathSuitSkillData(Base):
     __tablename__ = 'oathSuitSkill'

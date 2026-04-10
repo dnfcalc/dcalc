@@ -20,7 +20,7 @@ from core.abstract.character import CharacterProperty
 from core.basic.property import CharacterInfo
 from core.basic.skill import Skill
 
-from core.basic.equipment import get_equipment, EquEffect, Equ
+from core.basic.equipment import Suit, get_equipment, EquEffect, Equ, OathSuit
 
 # from core.basic.equipment import equipments
 # from core.basic.skill import Skill, ActiveSkill, PassiveSkill

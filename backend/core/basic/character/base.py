@@ -3,7 +3,7 @@ from typing import Any, Literal
 
 from core.abstract.character import CharacterProperty
 from core.basic.skill import Skill
-from core.basic.equipment import EquEffect
+from core.basic.equipment import EquEffect, OathSuit, OathSuitSkill, Suit
 from ..formula import 获取基础属性, 获取唤醒属性
 from ..roleinfo import CharacterEquipInfo, get_key_by_value, CharacterOathInfo
 from .jade import Jade
@@ -22,6 +22,14 @@ class CharacterBase(CharacterProperty):
     """装备打造信息"""
     charOathInfo: list['CharacterOathInfo']
     """誓约打造信息"""
+    charOathSkillId: int
+    """誓约技能ID"""
+    suitInfo: list['Suit']
+    """套装信息"""
+    oathSuitInfo: list['OathSuit']
+    """誓约套装信息"""
+    oathSkillInfo: list['OathSuitSkill']
+    """誓约技能信息"""
     equ_effect: list['EquEffect'] = []
     """装备效果列表"""
     equ_options: dict[str, int] = {}
@@ -336,3 +344,28 @@ class CharacterBase(CharacterProperty):
             return weapon.itemDetailType, weapon.categorize
 
     # endregion
+
+    def GetReinforceSum(self) -> list[int]:
+        """获取强化总和"""
+        reinforce_0 = 0
+        """防具"""
+        reinforce_1 = 0
+        """首饰"""
+        reinforce_2 = 0
+        """特殊装备"""
+        reinforce_3 = 0
+        """武器"""
+        for part in self.charEquipInfo.keys():
+            if self.charEquipInfo[part] is None:
+                continue
+            num = self.charEquipInfo[part].reinforce
+            # if part == '武器':
+            #     reinforce_3 += num
+            if part in ['上衣', '头肩', '下装', '腰带', '鞋']:
+                reinforce_0 += num
+            if part in ['手镯', '项链', '戒指']:
+                reinforce_1 += num
+            if part in ['耳环', '辅助装备', '魔法石']:
+                reinforce_2 += num
+        reinforce = reinforce_0 + reinforce_1 + reinforce_2 + reinforce_3
+        return [reinforce, reinforce_0, reinforce_1, reinforce_2, reinforce_3]

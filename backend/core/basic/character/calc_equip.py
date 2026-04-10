@@ -1,7 +1,7 @@
 import sys
 from uuid import uuid1
 
-from core.basic.equipment import get_equipment
+from core.basic.equipment import OathSuit, Suit, get_equipment
 from ..formula import 增幅计算, 强化技攻, 武器强化计算, 精通计算, 耳环计算, 左右计算, 锻造计算
 from ..roleinfo import CharacterEquipInfo, CharacterOathInfo, get_key_by_value
 from .base import CharacterBase
@@ -22,6 +22,7 @@ class CalcEquipMixin(CharacterBase):
         for key in info['oaths']:
             # 导入誓约打造信息、誓约信息
             self.charOathInfo.append(CharacterOathInfo(info['oaths'][key], self.equVersion, key))
+        self.charOathSkillId = info.get('oathSkill', 1)
 
     def calc_init(self, setInfo: dict[str, dict]):
         self.equ_options = setInfo.get('options', {})
@@ -89,8 +90,8 @@ class CalcEquipMixin(CharacterBase):
             oathSuitInfo[max_point_oath_suit]['point'] -= min(2550 - suitInfo[max_point_suit]['point'], oathSuitInfo[max_point_oath_suit]['point'])
             pass
         suits = zero_point_suits + ([max_point_suit] if max_point_suit is not None else [])
-        suitList = []
-        oathSuitList = []
+        suitList: list[Suit] = []
+        oathSuitList: list[OathSuit] = []
         res = []
         for suit in suits:
             if suitInfo[suit]['point'] == 0:
@@ -99,20 +100,20 @@ class CalcEquipMixin(CharacterBase):
                 suitList += equs.get_suit_info(suit, suitInfo[suit]['point'], 0)
             if len(suitList) == 0:
                 continue
-            temp = suitList[-1]
-            res.append(
-                {
-                    'id': temp.id,
-                    'name': temp.name,
-                    'rarity': temp.rarity,
-                    'point': suitInfo[suit]['point'],
-                    'count': suitInfo[suit]['count'],
-                    'level': temp.level,
-                    'imageUrl': temp.imageUrl,
-                    'value': temp.value,
-                }
-            )
-
+        self.suitInfo = suitList
+        temp = suitList[-1]
+        res.append(
+            {
+                'id': temp.id,
+                'name': temp.name,
+                'rarity': temp.rarity,
+                'point': suitInfo[suit]['point'],
+                'count': suitInfo[suit]['count'],
+                'level': temp.level,
+                'imageUrl': temp.imageUrl,
+                'value': temp.value,
+            }
+        )
         for suit in oathSuitInfo:
             if oathSuitInfo[suit]['point'] == 0:
                 oathSuitList += equs.get_oath_suit_info(suit, 0, oathSuitInfo[suit]['count'])
@@ -120,17 +121,47 @@ class CalcEquipMixin(CharacterBase):
                 oathSuitList += equs.get_oath_suit_info(suit, oathSuitInfo[suit]['point'], 0)
             if len(oathSuitList) == 0:
                 continue
-            print(oathSuitList[0].__dict__)
-        suits_effect = [i.id for i in suitList]
-        for i in suits_effect:
+        for suit in suitList:
+            i = suit.id
             func = equs.funs.execture(f'suit_{i}')
             suit = next((x for x in equs.suits if str(x.id) == str(i)), None)
-            if func is not None:
-                func(self)
+            # 誓约和套装进行匹配
+            # 如果存在誓约和套装是同一个套装
+            # 则直接不执行原套装效果，执行誓约套装增强的效果
+            oathEffect = next((x for x in oathSuitList if x.suitId == suit.suitId), None)
             if suit is not None:
                 filtered_dict = {k: v for k, v in suit.__dict__.items() if k[0].isupper()}
                 self.SetStatus(**filtered_dict)
+            if func is not None and oathEffect is None:
+                print(f'套装 {suit.name} 生效')
+                func(self)
+            else:
+                # 当存在套装和誓约不匹配的时候，誓约技能只能是1号位
+                self.charOathSkillId = 1
+        oathSkillEffect = []
         self.max_point = max([i['point'] for i in res], default=0)
+        self.oathSuitInfo = []
+        self.oathSkillInfo = []
+        # 当套装点数达到太初时，誓约技能生效
+        if self.max_point >= 2550:
+            for oathSuit in oathSuitList:
+                skill = next((x for x in oathSuit.skills if x.skillId == self.charOathSkillId), None)
+                # 誓约套装效果生效
+                filtered_dict = {k: v for k, v in oathSuit.__dict__.items() if k[0].isupper()}
+                self.SetStatus(**filtered_dict)
+                if skill is not None:
+                    oathSkillEffect.append(skill)
+                    # 誓约技能效果生效
+                    filtered_dict = {k: v for k, v in skill.__dict__.items() if k[0].isupper()}
+                    self.SetStatus(**filtered_dict)
+                    self.oathSkillInfo.append(skill)
+                    self.oathSuitInfo.append(oathSuit)
+
+        for skill in oathSkillEffect:
+            func = equs.funs.execture(f'oath_skill_{skill.id}')
+            if func is not None:
+                print(f'誓约技能 {skill.name} 生效')
+                func(self)
         if self.max_point >= 2550:
             skillAttack = (self.max_point - 2550) // 70 * 0.01
             buffer = (self.max_point - 2550) // 70 * 100

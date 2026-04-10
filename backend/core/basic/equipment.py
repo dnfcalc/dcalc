@@ -151,9 +151,22 @@ class Equipments:
         with Session(self.engine) as session:
             db_list = session.query(SuitData).all()
         for item in db_list:
-            suit = Suit(**{k: v for k, v in item.__dict__.items() if not k.startswith('_')})
-            self.suits.append(suit)
-            self.suit_dict.setdefault(str(suit.suitId), []).append(suit)
+            lvs = len(item.point.split(','))
+            suits = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
+            for i in range(1, lvs + 1):
+                suit = {k: v for k, v in suits.items()}
+                suit['point'] = int(suit['point'].split(',')[i - 1])
+                suit['level'] = i
+                skillAttaks = parse_to_number_list(suit['SkillAttack'], [0])
+                suit['SkillAttack'] = 0 if i - 1 >= len(skillAttaks) else skillAttaks[i - 1]
+                attacks = parse_to_number_list(suit['Attack'], [0])
+                suit['Attack'] = 0 if i - 1 >= len(attacks) else attacks[i - 1]
+                buffers = parse_to_number_list(suit['Buffer'], [0])
+                suit['Buffer'] = 0 if i - 1 >= len(buffers) else buffers[i - 1]
+                suit_obj = Suit(**suit)
+                self.suits.append(suit_obj)
+                self.suit_dict.setdefault(str(suit['suitId']), []).append(suit_obj)
+            pass
         pass
 
     def init_enchants(self):
@@ -357,6 +370,9 @@ class OathSuitSkill:
     bufferValue: str
 
     def __init__(self, **kwargs):
+        for key in ['SkillAttack', 'Attack', 'Buffer']:
+            if kwargs.get(key) is None:
+                kwargs[key] = 0
         self.__dict__.update(kwargs)
 
 

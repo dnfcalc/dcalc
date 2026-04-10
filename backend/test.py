@@ -4,7 +4,8 @@ char = createCharacter('GF.gunner_female.spitfire_female')
 
 char.calc_init(
     {
-        'oaths': {'0': {'id': '2010201', 'adaptation': 3}, '1': {'id': '2010201', 'adaptation': 3}, '2': {'id': '2010201', 'adaptation': 3}, '3': {'id': '2010201', 'adaptation': 3}, '4': {'id': '2010201', 'adaptation': 3}, '11': {'id': '2010200', 'adaptation': 0}},
+        'oaths': {'0': {'id': '2030201', 'adaptation': 3}, '1': {'id': '2030201', 'adaptation': 3}, '2': {'id': '2030201', 'adaptation': 3}, '3': {'id': '2030201', 'adaptation': 3}, '4': {'id': '2030201', 'adaptation': 3}, '11': {'id': '2030200', 'adaptation': 0}},
+        'oathSkill': 1,
         'equips': {
             '武器': {'id': '88', 'reinforce': 14, 'reinforceType': 1, 'enchant': 512, 'emblem_0': 0, 'emblem_1': 0, 'fusion': 0, 'refine': 8, 'adaptation': 3, 'precision': 100},
             '称号': {'id': '3017', 'reinforce': 0, 'reinforceType': 0, 'enchant': 1201, 'emblem_0': 0, 'emblem_1': 0, 'fusion': 0, 'refine': 0, 'adaptation': 3, 'precision': 100},
