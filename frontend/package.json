@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^12.8.2",
-    "axios": "^1.8.2",
+    "axios": "^1.15.0",
     "hoci": "^0.6.0",
     "pako": "^2.1.0",
     "pinia": "^3.0.1",
