@@ -160,7 +160,7 @@ class CalcEquipMixin(CharacterBase):
         for skill in oathSkillEffect:
             func = equs.funs.execture(f'oath_skill_{skill.id}')
             if func is not None:
-                print(f'誓约技能 {skill.name} 生效')
+                print(f'誓约技能 {skill.id} 生效')
                 func(self)
         if self.max_point >= 2550:
             skillAttack = (self.max_point - 2550) // 70 * 0.01

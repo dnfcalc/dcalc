@@ -368,4 +368,4 @@ class CharacterBase(CharacterProperty):
             if part in ['耳环', '辅助装备', '魔法石']:
                 reinforce_2 += num
         reinforce = reinforce_0 + reinforce_1 + reinforce_2 + reinforce_3
-        return [reinforce, reinforce_0, reinforce_1, reinforce_2, reinforce_3]
+        return [reinforce, reinforce_0, reinforce_1, reinforce_2]

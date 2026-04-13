@@ -1,9 +1,15 @@
+import inspect
+
 from core.abstract.character import CharacterProperty
 from core.basic.equipment import EquEffect
 from .register import register
 
 
-def check_suit(char: CharacterProperty, suitId: int) -> bool:
+def check_suit(char: CharacterProperty) -> bool:
+    caller_frame = inspect.stack()[1]
+    fun_name = caller_frame.function
+    suitId = int(fun_name.split('_')[-1]) % 10000 + 16000
+    print(f'检查套装 {suitId}')
     return next((x for x in char.suitInfo if x.suitId == suitId), None) is not None
 
 
@@ -170,6 +176,7 @@ def oath_skill_2020503(char: CharacterProperty):
 # region 理想之黄金乡
 @register
 def oath_skill_2030101(char: CharacterProperty):
+    oath_skill_2030501(char)
     pass
 
 
@@ -250,7 +257,7 @@ def oath_skill_2030501(char: CharacterProperty):
     char.SetStatus(SpeedA=0.01 * min(reinforce_2 // 3, 12))
     char.SetStatus(SpeedM=0.01 * min(reinforce_2 // 3, 12))
     char.SetStatus(SpeedR=0.01 * min(reinforce_2 // 3, 12))
-    if check_suit(char, 16203):
+    if check_suit(char):
         print('穿戴黄金乡')
         char.SetStatus(SkillRange=0.02 * min(reinforce // 11, 12))
         # char.SetStatus(DamageReduce=0.01 * min(reinforce_0 // 5, 7))
