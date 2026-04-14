@@ -532,16 +532,23 @@ def emblem_combine(char: CharacterProperty, position: str, lv: int, emblem_list:
     # 稀有
     if rarity == 0:
         skillAttack = [0.001, 0.001, 0.002, 0.002]
-        buffer = []
-        for i in emblem_raritys:
-            pass
-        pass
+        buffer = [10, 10, 20, 20]
     # 神器
     elif rarity == 1:
+        skillAttack = [0.001, 0.002, 0.003, 0.004]
+        buffer = [10, 20, 30, 40]
         pass
     # 传说
     elif rarity == 2:
+        skillAttack = [0.002, 0.003, 0.004, 0.005]
+        buffer = [20, 30, 40, 50]
         pass
     # 史诗
     elif rarity == 3:
+        skillAttack = [0.002, 0.003, 0.005, 0.006]
+        buffer = [20, 30, 50, 60]
         pass
+    for i in emblem_raritys:
+        char.SetStatus(SkillAttack=skillAttack[i - 1], Buffer=buffer[i - 1])
+        pass
+    pass

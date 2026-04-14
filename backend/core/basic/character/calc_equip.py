@@ -234,7 +234,9 @@ class CalcEquipMixin(CharacterBase):
 
     def calc_weapon(self, cur: 'CharacterEquipInfo'):
         """武器强化、锻造计算"""
-        value = 锻造计算(115, '史诗', cur.refine)
+        value_1 = 锻造计算(115, '史诗', cur.refine, cur.equInfo.itemDetailType, 1.12 if '传世武器' in cur.equInfo.categorize else 0)
+        value_2 = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '独立', 1.12 if '传世武器' in cur.equInfo.categorize else 0)
+        value = max(value_1, value_2)
         self.SetStatus(AtkI=value)
         if '传世武器' in cur.equInfo.categorize:
             value = 武器强化计算(115, '史诗', cur.reinforce, cur.equInfo.itemDetailType, '物理', 1.12)
