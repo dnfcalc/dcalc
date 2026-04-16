@@ -516,7 +516,7 @@ def emblem_4701(char: CharacterProperty):
 
 
 @register
-def emblem_combine(char: CharacterProperty, position: str, lv: int, emblem_list: list[int | str]):
+def emblem_combine(char: CharacterProperty, position: str, lv: int = 1, emblem_list: list[int | str] = []):
     bufferP = [0.001, 0.002, 0.004, 0.006, 0.008, 0.01, 0.013, 0.016, 0.019, 0.022, 0.025, 0.026, 0.027, 0.028, 0.029, 0.03]
     buffer = [10, 30, 60, 90, 120, 150, 180, 210, 240270, 300, 320, 340, 360, 380, 400]
     skillAttack = [0.002, 0.004, 0.008, 0.012, 0.016, 0.02, 0.023, 0.026, 0.029, 0.032, 0.035, 0.036, 0.037, 0.038, 0.039, 0.04]
@@ -548,7 +548,9 @@ def emblem_combine(char: CharacterProperty, position: str, lv: int, emblem_list:
         skillAttack = [0.002, 0.003, 0.005, 0.006]
         buffer = [20, 30, 50, 60]
         pass
+    SkillAttack = 0
+    Buffer = 0
     for i in emblem_raritys:
-        char.SetStatus(SkillAttack=skillAttack[i - 1], Buffer=buffer[i - 1])
-        pass
-    pass
+        SkillAttack += skillAttack[i - 1]
+        Buffer += buffer[i - 1]
+    char.SetStatus(SkillAttack=SkillAttack, Buffer=Buffer)

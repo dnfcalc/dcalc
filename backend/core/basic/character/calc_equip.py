@@ -3,7 +3,7 @@ from uuid import uuid1
 
 from core.basic.equipment import OathSuit, Suit, get_equipment
 from ..formula import 增幅计算, 强化技攻, 武器强化计算, 精通计算, 耳环计算, 左右计算, 锻造计算
-from ..roleinfo import CharacterEquipInfo, CharacterOathInfo, get_key_by_value
+from ..roleinfo import CharacterEmblemInfo, CharacterEquipInfo, CharacterOathInfo, get_key_by_value
 from .base import CharacterBase
 
 
@@ -16,12 +16,21 @@ class CalcEquipMixin(CharacterBase):
         """打造信息导入"""
         self.charEquipInfo = {}
         self.charOathInfo = []
+        self.charEmblemInfo = []
         self.bindAwake = info.get('bindAwake', 50)
         for key in info['equips']:
             self.charEquipInfo[key] = CharacterEquipInfo(info['equips'][key], self.equVersion, key)
         for key in info['oaths']:
             # 导入誓约打造信息、誓约信息
             self.charOathInfo.append(CharacterOathInfo(info['oaths'][key], self.equVersion, key))
+        # 异常处理 彩色等级自动取最小值
+        minEmblemLv = min([info['emblems'][key]['lv'] for key in ['红色', '蓝色', '绿色', '黄色']], default=1)
+        info['emblems']['彩色']['lv'] = minEmblemLv
+        for key in info['emblems']:
+            # 导入徽章打造信息、徽章信息
+            info['emblems'][key]['part'] = key
+            self.charEmblemInfo.append(CharacterEmblemInfo(info['emblems'][key]))
+            pass
         self.charOathSkillId = info.get('oathSkill', 1)
 
     def calc_init(self, setInfo: dict[str, dict]):
@@ -208,7 +217,22 @@ class CalcEquipMixin(CharacterBase):
             # if fun is not None:
             #     fun(self)
 
+    def calc_emblems(self):
+        """计算徽章效果"""
+        effects = get_equipment(self.equVersion).funs
+        emblemCombine = effects.execture('emblem_combine')
+        for emblem in self.charEmblemInfo:
+            for item in emblem.items:
+                fun = effects.execture(f'emblem_{item}')
+                if fun is not None:
+                    fun(self)
+            emblemCombine(self, emblem.part, emblem.lv, emblem.items)
+            pass
+        pass
+
     def calc_oaths(self):
+        """计算装备基础效果"""
+        effects = get_equipment(self.equVersion).funs
         pass
 
     def calc_avatar(self, avatar: dict):
@@ -320,6 +344,7 @@ class CalcEquipMixin(CharacterBase):
         self.calc_avatar(setInfo.get('avatar', {}))
         self.calc_basic()
         self.calc_sundry(setInfo.get('sundry', {}))
+        self.calc_emblems()
         suit = self.calc_suits()
         self.calc_equs()
         self.calc_oaths()

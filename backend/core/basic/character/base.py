@@ -5,7 +5,7 @@ from core.abstract.character import CharacterProperty
 from core.basic.skill import Skill
 from core.basic.equipment import EquEffect, OathSuit, OathSuitSkill, Suit
 from ..formula import 获取基础属性, 获取唤醒属性
-from ..roleinfo import CharacterEquipInfo, get_key_by_value, CharacterOathInfo
+from ..roleinfo import CharacterEmblemInfo, CharacterEquipInfo, get_key_by_value, CharacterOathInfo
 from .jade import Jade
 
 
@@ -20,6 +20,8 @@ class CharacterBase(CharacterProperty):
     """装备版本"""
     charEquipInfo: dict[str, 'CharacterEquipInfo']
     """装备打造信息"""
+    charEmblemInfo: list['CharacterEmblemInfo']
+    """徽章打造信息"""
     charOathInfo: list['CharacterOathInfo']
     """誓约打造信息"""
     charOathSkillId: int

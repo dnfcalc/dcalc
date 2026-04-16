@@ -71,6 +71,18 @@ class CharacterOathInfo:
             self.oathInfo = None
 
 
+class CharacterEmblemInfo:
+    part: str
+    """星徽部位"""
+    items: list[str]
+    """徽章id列表"""
+    lv: int
+    """星徽等级"""
+
+    def __init__(self, info={}) -> None:
+        self.__dict__.update(info)
+
+
 class CharacterWeaponInfo(CharacterEquipInfo):
     refine: int
     """锻造等级"""
