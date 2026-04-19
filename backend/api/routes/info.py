@@ -7,6 +7,7 @@ from typing import Annotated
 from api.core.Response import Return, response
 from api.core.Redis import get_redis_info
 from api.dp import RedisDep, AltersDep
+from core.basic.equipment import get_equipment
 from core.character.adventure import get_adv_list
 from core.basic.character import createCharacter
 from core.open.helper import get_user_info_by_id
@@ -53,6 +54,23 @@ async def get_character_info(request: Request, state: AltersDep, redis: RedisDep
 
     info = get_redis_info(redis, f'dcalc:character:{state.alter}:{state.equVersion}', get_character)
     # info = character.getInfo()
+    return response(data=info)
+
+
+@router.get('/info/oath/{suitId}/{skillId}')
+async def get_oath_info(state: AltersDep, suitId: str, skillId: str, rarity: str, redis: RedisDep):
+    def get_info():
+        skill = None
+        version = state.equVersion
+        equ = get_equipment(version)
+        oath = next((x for x in equ.oath_suits if x.suitId == suitId and x.rarity == rarity), None)
+        if oath is not None:
+            oathSkill = next((x for x in oath.skills if x.skillId == skillId), None)
+            if oathSkill is not None:
+                skill = oathSkill.__dict__
+        return skill
+
+    info = get_redis_info(redis, f'dcalc:oath:{rarity}:{skillId}', get_info)
     return response(data=info)
 
 

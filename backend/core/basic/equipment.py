@@ -243,11 +243,11 @@ class Equipments:
                 skills = [x for x in db_skills_list if x.suitId == suit['suitId'] and x.key == suit['key']]
                 suit['level'] = i
                 skillAttaks = parse_to_number_list(suit['SkillAttack'], [0])
-                suit['SkillAttack'] = 0 if i - 1 >= len(skillAttaks) else skillAttaks[i - 1]
+                suit['SkillAttack'] = (0 if len(skillAttaks) == 0 else skillAttaks[0]) if i - 1 >= len(skillAttaks) else skillAttaks[i - 1]
                 attacks = parse_to_number_list(suit['Attack'], [0])
-                suit['Attack'] = 0 if i - 1 >= len(attacks) else attacks[i - 1]
+                suit['Attack'] = (0 if len(attacks) == 0 else attacks[0]) if i - 1 >= len(attacks) else attacks[i - 1]
                 buffers = parse_to_number_list(suit['Buffer'], [0])
-                suit['Buffer'] = 0 if i - 1 >= len(buffers) else buffers[i - 1]
+                suit['Buffer'] = (0 if len(buffers) == 0 else buffers[0]) if i - 1 >= len(buffers) else buffers[i - 1]
                 suit['skills'] = [OathSuitSkill(**{k: v for k, v in skill.__dict__.items() if not k.startswith('_')}) for skill in skills]
                 oath_suit = OathSuit(**suit)
                 self.oath_suits.append(oath_suit)

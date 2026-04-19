@@ -45,6 +45,29 @@ export const useInfoStore = defineStore('infoStore', () => {
     return result
   })
 
+  const oathSkills = computed(() => {
+    const origin = infos.value?.oaths_skills
+    if (!origin) return origin
+
+    const skillOrder = ['2', '1', '3']
+
+    return Object.fromEntries(
+      Object.entries(origin).map(([key, value]) => [
+        key,
+        {
+          ...value,
+          skills: [...value.skills].sort((left, right) => {
+            const leftIndex = skillOrder.indexOf(left.skillId)
+            const rightIndex = skillOrder.indexOf(right.skillId)
+            const normalizedLeftIndex = leftIndex === -1 ? skillOrder.length : leftIndex
+            const normalizedRightIndex = rightIndex === -1 ? skillOrder.length : rightIndex
+
+            return normalizedLeftIndex - normalizedRightIndex
+          }),
+        },
+      ]),
+    )
+  })
   const standardUUID = ref<string>()
 
   const setStandard = (
@@ -139,5 +162,6 @@ export const useInfoStore = defineStore('infoStore', () => {
     standard,
     sundries,
     options,
+    oathSkills,
   }
 })

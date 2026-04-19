@@ -13,9 +13,8 @@
 </template>
 
 <script lang="ts" setup name="EquList">
-import { getImageURL } from '@/utils/images'
 import { useVModel } from '@vueuse/core'
-import { useInfoStore, useConfigStore } from '@/stores'
+import { useInfoStore } from '@/stores'
 
 const props = defineProps({
   part: {
@@ -29,7 +28,7 @@ const infoStore = useInfoStore()
 const infoStyle = (part: string) => {
   let x = 15
   let y = 5
-  let index = infoStore.avatarParts.findIndex((p) => p == part)
+  const index = infoStore.avatarParts.findIndex((p) => p == part)
   // if (index == 13) {
   //   index -= 7
   // } else if (index >= 5 && index <= 12) {

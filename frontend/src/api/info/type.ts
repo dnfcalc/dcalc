@@ -40,6 +40,19 @@ export interface ICharacterInfo {
   jades: IJade[]
   sundry: Record<string, ISundry>
   options: { id: number; name: string; options: string[] }[]
+  oaths_skills: Record<
+    string,
+    {
+      suitInfo: {
+        name: string
+        rarity: string
+        SkillAttack: number
+        Buffer: number
+        Attack: number
+      }[]
+      skills: { skillId: string; name: string; icon: string }[]
+    }
+  >
 }
 
 export interface ISundry {
@@ -77,7 +90,6 @@ export interface IEquipment {
   oathPos: string
   displayUrl?: string
 }
-
 
 export interface ISkill {
   icon: string

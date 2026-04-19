@@ -52,6 +52,7 @@ class CharacterInfoMixin(CharacterBase):
         equs = []
         suits = []
         oaths = []
+        oaths_skills = {}
         # stones = []
         for i in equInfos.equs:
             if i.itemType == '武器' and i.itemDetailType not in self.武器选项:
@@ -61,11 +62,33 @@ class CharacterInfoMixin(CharacterBase):
             suits.append(i.__dict__)
         for i in equInfos.oaths:
             oaths.append(i.__dict__)
+        for i in equInfos.oath_suits:
+            if i.suitId not in oaths_skills:
+                oaths_skills[i.suitId] = {'suitInfo': [], 'skills': []}
+            oaths_skills[i.suitId]['suitInfo'].append(
+                {
+                    'name': i.name,
+                    'rarity': i.rarity,
+                    'SkillAttack': i.SkillAttack,
+                    'Buffer': i.Buffer,
+                    'Attack': i.Attack,
+                }
+            )
+            if len(oaths_skills[i.suitId]['skills']) == 0:
+                for skill in i.skills:
+                    oaths_skills[i.suitId]['skills'].append(
+                        {
+                            'skillId': skill.skillId,
+                            'name': skill.name,
+                            'icon': skill.imageUrl,
+                        }
+                    )
         # for i in equInfos.stones:
         #     stones.append(i.__dict__)
         info['oaths'] = oaths
         info['equips'] = equs
         info['suits'] = suits
+        info['oaths_skills'] = oaths_skills
         # info['stones'] = stones
         key = '辅助' if self.buffer else '输出'
         info['enchants'] = list(filter(lambda x: key in x['categorize'], equInfos.enchants))
