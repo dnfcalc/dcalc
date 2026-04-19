@@ -101,7 +101,7 @@ class CalcEquipMixin(CharacterBase):
         max_point_oath_suit = max((suit for suit in oathSuitInfo if oathSuitInfo[suit]['point'] > 0), key=lambda suit: oathSuitInfo[suit]['point'], default=None)
         zero_point_suits = [suit for suit in suitInfo if suitInfo[suit]['point'] == 0]
         # 套装没有到太初的时候，优先把誓约套装的点数加到装备套装上，以达到更高的套装等级
-        if 0 < suitInfo[max_point_suit]['point'] < 2550 and oathSuitInfo.get('max_point_oath_suit', None) is not None:
+        if suitInfo is not None and 0 < suitInfo[max_point_suit]['point'] < 2550 and oathSuitInfo.get('max_point_oath_suit', None) is not None:
             suitInfo[max_point_suit]['point'] += min(2550 - suitInfo[max_point_suit]['point'], oathSuitInfo[max_point_oath_suit]['point'])
             oathSuitInfo[max_point_oath_suit]['point'] -= min(2550 - suitInfo[max_point_suit]['point'], oathSuitInfo[max_point_oath_suit]['point'])
             pass

@@ -1,5 +1,5 @@
 import api from '@/api'
-import type { ICharacterInfo } from '@/api/info/type'
+import type { ICharacterInfo, IEquipment } from '@/api/info/type'
 import { defineStore } from 'pinia'
 import { useConfigStore } from './config'
 import type { IResult, IResultSkill, IResultSkillCount } from '@/api/calc/type'
@@ -28,7 +28,22 @@ export const useInfoStore = defineStore('infoStore', () => {
 
   const options = computed(() => infos.value?.options ?? [])
 
-  const oaths = computed(() => infos.value?.oaths ?? [])
+  const oaths = computed(() => {
+    const origin = infos.value?.oaths ?? []
+    const result: IEquipment[] = []
+    origin.forEach((o) => {
+      o.position.forEach((p, i) => {
+        result.push({
+          ...o,
+          oathPos: p,
+          displayUrl: o.wearUrl?.[parseInt(p)]
+            ? `/equipment/icon/oathprimer/primer_equip/${o.wearUrl?.[parseInt(p)]}`
+            : o.imageUrl,
+        })
+      })
+    })
+    return result
+  })
 
   const standardUUID = ref<string>()
 
@@ -93,6 +108,10 @@ export const useInfoStore = defineStore('infoStore', () => {
     '宠物装备-蓝',
   ]
 
+  const oathParts = Array.from({ length: 12 }, (_, i) => i.toString())
+
+  const emblemParts = ['彩色', '红色', '蓝色', '绿色', '黄色']
+
   const createCharacter = async (alter: string, equVersion?: string) => {
     const time = new Date().getTime()
     alter_token.value = btoa(JSON.stringify({ alter, equVersion, time }))
@@ -112,6 +131,8 @@ export const useInfoStore = defineStore('infoStore', () => {
     parts,
     oaths,
     avatarParts,
+    oathParts,
+    emblemParts,
     avatars,
     jades,
     setStandard,

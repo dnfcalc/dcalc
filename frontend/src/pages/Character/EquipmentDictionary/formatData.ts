@@ -1,4 +1,4 @@
-import type { IEquipment, IOathInfo } from '@/api/info/type'
+import type { IEquipment } from '@/api/info/type'
 
 export const rowCount = 10
 
@@ -293,7 +293,7 @@ export const formatStone = (total: IEquipment[], curSuit?: string) => {
 }
 
 export const formatOath = (
-  total: IOathInfo[],
+  total: IEquipment[],
   curSuit?: { name: string; value: number; imageUrl: string },
 ) => {
   // oath
@@ -303,7 +303,7 @@ export const formatOath = (
   const primer = []
   const primerItem = total.filter((equip) => equip.itemDetailType == '星蕴石')
   for (let i = 0; i < 11; i++) {
-    const temp = primerItem.filter((a) => a.position.includes(i.toString()))
+    const temp = primerItem.filter((a) => a.oathPos == i.toString())
     primer.push(
       ...temp,
       ...Array(temp.length == 0 ? rowCount : rowCount - (temp.length % rowCount)).fill(undefined),

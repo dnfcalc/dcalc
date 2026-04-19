@@ -72,12 +72,12 @@ export interface IEquipment {
   Buffer: number[]
   detail: string
   bufferDetail: string
-}
-
-export interface IOathInfo extends IEquipment {
   position: string[]
   wearUrl: string[]
+  oathPos: string
+  displayUrl?: string
 }
+
 
 export interface ISkill {
   icon: string

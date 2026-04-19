@@ -3,7 +3,9 @@
     <div class="relative" :class="{ inactive: props.inactive }">
       <div
         class="w-28px h-28px"
-        :style="{ backgroundImage: `url(${getImageURL(props.equipment?.imageUrl)})` }"
+        :style="{
+          backgroundImage: `url(${getImageURL((useDisplayUrl ? props.equipment?.displayUrl : props.equipment?.imageUrl) || '')})`,
+        }"
       >
         <img :src="getLocalImageURL(rarity)" />
       </div>
@@ -21,6 +23,7 @@ import { getImageURL } from '@/utils/images'
 const props = defineProps<{
   equipment?: IEquipment
   inactive?: boolean
+  useDisplayUrl?: boolean
 }>()
 
 const rarity = computed(() => {

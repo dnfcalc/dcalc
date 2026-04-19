@@ -4,7 +4,7 @@
       <div class="flex gap-2 mt-5px">
         <calc-select class="flex-1 !h-20px" v-model="configStore.config.jades[key].id">
           <calc-option :value="0">无</calc-option>
-          <calc-option v-for="(item, index) in infoStore.jades" :key="item.id" :value="item.id">
+          <calc-option v-for="item in infoStore.jades" :key="item.id" :value="item.id">
             {{ item.name }}
           </calc-option>
         </calc-select>
@@ -17,7 +17,7 @@
         ></calc-slider> -->
         <calc-select class="flex-1 !h-20px" v-model="configStore.config.jades[key].value">
           <calc-option
-            v-for="(item, index) in valueList(configStore.config.jades[key].id)"
+            v-for="item in valueList(configStore.config.jades[key].id)"
             :key="item.id"
             :value="item.id"
           >
@@ -38,26 +38,25 @@ import { getFloat } from '@/utils'
 const configStore = useConfigStore()
 const infoStore = useInfoStore()
 
-const currentJade = computed(() => {
-  return function (id: number = -1) {
-    if (id == -1) {
-      return undefined
-    } else {
-      const res = []
-      const cur = infoStore.jades?.find((e) => e.id == id) as IJade
-      return cur
-    }
-  }
-})
+// const currentJade = computed(() => {
+//   return function (id: number = -1) {
+//     if (id == -1) {
+//       return undefined
+//     } else {
+//       const cur = infoStore.jades?.find((e) => e.id == id) as IJade
+//       return cur
+//     }
+//   }
+// })
 
-const formatValue = (id: number) => {
-  return (value: number) => {
-    if (currentJade.value(id)?.unit.includes('等级')) {
-      return `$等级 +${value}`
-    }
-    return `${getFloat(value, 1)}${currentJade.value(id)?.unit}`
-  }
-}
+// const formatValue = (id: number) => {
+//   return (value: number) => {
+//     if (currentJade.value(id)?.unit.includes('等级')) {
+//       return `$等级 +${value}`
+//     }
+//     return `${getFloat(value, 1)}${currentJade.value(id)?.unit}`
+//   }
+// }
 
 const valueList = computed(() => {
   return function (id: number = -1) {

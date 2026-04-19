@@ -6,7 +6,7 @@ import EquList from '@/components/dnf/Equipment/List/index.vue'
 import { getImageURL } from '@/utils/images'
 export default defineComponent({
   name: 'Equip',
-  setup(props) {
+  setup() {
     const configStore = useConfigStore()
     const part = ref('头肩')
     const can_upgrade = computed(() => {
@@ -15,14 +15,6 @@ export default defineComponent({
 
     // const globalStore = useGlobalStore()
 
-    /** 是否有徽章 */
-    const has_socket = computed(
-      () => !['称号', '宠物', '耳环', '武器'].includes(part.value as string),
-    )
-    /** 是否有右侧徽章 */
-    const has_emblem_1 = computed(
-      () => has_socket.value && !['辅助装备', '魔法石'].includes(part.value as string),
-    )
     /** 是否可以设置秘宝精度 */
     const can_set_secret = computed(() => {
       return ['武器', '辅助装备', '魔法石', '耳环'].includes(part.value as string)
@@ -40,9 +32,9 @@ export default defineComponent({
         .sort((a, b) => (b.fame ?? 0) - (a.fame ?? 0))
     })
 
-    const emblem_list = computed<IEnchantingInfo[] | undefined>(() => {
-      return basicInfoStore.emblems.filter((item) => item.position.includes(part.value))
-    })
+    // const emblem_list = computed<IEnchantingInfo[] | undefined>(() => {
+    //   return basicInfoStore.emblems.filter((item) => item.position.includes(part.value))
+    // })
 
     const global_change = ref(false)
 
@@ -50,6 +42,7 @@ export default defineComponent({
       return computed<string | number>({
         get() {
           return (
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (configStore.config.equips?.[part.value] as Record<string, any>)?.[name] ??
             defaultValue ??
             0
@@ -59,10 +52,10 @@ export default defineComponent({
           if (val == undefined && name !== 'weaponFusion') {
             return
           }
-          if (name == 'emblem_1' && !has_emblem_1.value) {
-            // configStore.setForge(part.value, name, 0)
-            return
-          }
+          // if (name == 'emblem_1' && !has_emblem_1.value) {
+          //   // configStore.setForge(part.value, name, 0)
+          //   return
+          // }
 
           let parts: string[] = []
 
@@ -75,16 +68,16 @@ export default defineComponent({
                 parts = enchant.position
               }
             }
-            if (['emblem_0', 'emblem_1'].includes(name)) {
-              const emblem = basicInfoStore?.emblems?.find(
-                (item) => item.id.toString() == val.toString(),
-              ) as IEnchantingInfo | undefined
-              if (emblem?.position) {
-                parts = emblem.position.filter(
-                  (item) => !['皮肤', '武器装扮', '光环'].includes(item),
-                )
-              }
-            }
+            // if (['emblem_0', 'emblem_1'].includes(name)) {
+            //   const emblem = basicInfoStore?.emblems?.find(
+            //     (item) => item.id.toString() == val.toString(),
+            //   ) as IEnchantingInfo | undefined
+            //   if (emblem?.position) {
+            //     parts = emblem.position.filter(
+            //       (item) => !['皮肤', '武器装扮', '光环'].includes(item),
+            //     )
+            //   }
+            // }
             if (['reinforceType', 'reinforce', 'adaptation'].includes(name)) {
               parts = basicInfoStore.parts.filter((e) => !['称号', '宠物'].includes(e))
             }
@@ -96,6 +89,7 @@ export default defineComponent({
               configStore.config.equips[part] = { ...configStore.defaultEqusConfig }
             }
             if (configStore.config.equips[part]) {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               ;(configStore.config.equips[part] as Record<string, any>)[name] = val
             }
           }
@@ -106,11 +100,11 @@ export default defineComponent({
     // 附魔
     const enchant = currentInfo<string | number>('enchant')
 
-    // 镶嵌栏1
-    const emblem_0 = currentInfo<string | number>('emblem_0', 0)
+    // // 镶嵌栏1
+    // const emblem_0 = currentInfo<string | number>('emblem_0', 0)
 
-    // 镶嵌栏2
-    const emblem_1 = currentInfo<string | number>('emblem_1')
+    // // 镶嵌栏2
+    // const emblem_1 = currentInfo<string | number>('emblem_1')
 
     // 增幅
     const reinforce_type = currentInfo<string | number>('reinforceType', 1)
@@ -133,11 +127,11 @@ export default defineComponent({
      * 同步徽章1到徽章2
      * @param val
      */
-    function changeSocket(val: number) {
-      if (has_emblem_1.value) {
-        emblem_1.value = val
-      }
-    }
+    // function changeSocket(val: number) {
+    //   if (has_emblem_1.value) {
+    //     emblem_1.value = val
+    //   }
+    // }
 
     const setWeaponFusion = (val: number) => {
       if (val == weaponFusion.value) {
@@ -240,37 +234,6 @@ export default defineComponent({
                     ))}
                   </calc-select>
                 </div>
-                {has_socket.value ? (
-                  <div class="equ-profile-item">
-                    <div class="row-name">徽章</div>
-                    <calc-select
-                      onChange={changeSocket}
-                      v-model={emblem_0.value}
-                      class="flex-1 !h-20px"
-                    >
-                      <calc-option value={''}>无</calc-option>
-                      {renderList(emblem_list.value ?? [], (item) => (
-                        <calc-option
-                          value={item.id}
-                          key={item.id}
-                        >{`${item.rarity}${item.categorize}徽章[${item.detail}]`}</calc-option>
-                      ))}
-                    </calc-select>
-                    {has_emblem_1.value && (
-                      <calc-select v-model={emblem_1.value} class="flex-1 !h-20px">
-                        <calc-option value={''}>无</calc-option>
-                        {renderList(emblem_list.value ?? [], (item) => (
-                          <calc-option
-                            value={item.id}
-                            key={item.id}
-                          >{`${item.rarity}${item.categorize}徽章[${item.detail}]`}</calc-option>
-                        ))}
-                      </calc-select>
-                    )}
-                  </div>
-                ) : (
-                  <div></div>
-                )}
 
                 {can_upgrade.value ? (
                   <div class="equ-profile-item">

@@ -126,7 +126,7 @@ import PartSelect from '@/components/dnf/Equipment/PartSelect/index.vue'
 import EquipmentRaritySelect from '@/components/dnf/Equipment/RaritySelect/index.vue'
 import { getImageURL } from '@/utils/images'
 import { rarityClass } from '@/utils'
-import type { IEquipment, IOathInfo } from '@/api/info/type'
+import type { IEquipment } from '@/api/info/type'
 import EquipmentIcon from '@/components/dnf/Equipment/Icon/index.vue'
 import Info from '@/components/dnf/Equipment/Info/index.vue'
 import SuitInfo from '@/components/dnf/Equipment/SuitInfo/index.vue'
@@ -259,7 +259,7 @@ const equs = computed(() => {
     )
   } else {
     return formatOath(
-      total as unknown as IOathInfo[],
+      total as unknown as IEquipment[],
       suitList.value.find((a) => a.value == curSuit.value),
     )
   }
@@ -275,7 +275,7 @@ const isActive = computed(() => {
         return configStore.config.equips[item.itemDetailType].id == item.id
       }
     } else {
-      // return configStore.config.equips[item.itemDetailType].fusion == item.id
+      return configStore.config.oaths[item.oathPos].id == item.id
     }
   }
 })
@@ -288,8 +288,8 @@ const chooseEqu = (item?: IEquipment) => {
       ? configStore.config.equips[
           item.itemType.includes('武器') ? item.itemType : item.itemDetailType
         ]
-      : configStore.config.equips[item.itemDetailType]
-  target[type.value === 'equ' ? 'id' : 'fusion'] = isActive.value(item) ? '' : item.id
+      : configStore.config.oaths[item.oathPos]
+  target['id'] = isActive.value(item) ? '' : item.id
 }
 </script>
 

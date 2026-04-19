@@ -4,6 +4,7 @@ import type { CSSProperties, PropType } from 'vue'
 import { Teleport, Transition, computed, defineComponent, onDeactivated, ref, watch } from 'vue'
 
 import { onClickOutside, useVModel } from '@vueuse/core'
+import { getElementZoom } from '@/utils/position'
 interface ICascaderItem {
   label: string
   id?: string | number
@@ -74,18 +75,19 @@ export default defineComponent({
     function onResize() {
       if (triggerRef.value) {
         const { width, height, left, top } = triggerRef.value.getBoundingClientRect()
+        const zoom = getElementZoom('body')
         if (window.innerHeight - top > 160) {
           dropdownPosition.value = {
-            w: width,
-            x: left,
-            y: top + height + 2,
+            w: width / zoom,
+            x: left / zoom,
+            y: (top + height + 2) / zoom,
             z: 0,
           }
         } else {
           dropdownPosition.value = {
-            w: width,
-            x: left,
-            z: window.innerHeight - top + 2,
+            w: width / zoom,
+            x: left / zoom,
+            z: (window.innerHeight - top + 2) / zoom,
             y: 0,
           }
         }

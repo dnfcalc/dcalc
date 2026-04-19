@@ -96,7 +96,7 @@ const equ = (id: string) => {
 
 const infoStyle = (part: string) => {
   let x = 10
-  let y = 5
+  let y = 10
   let index = infoStore.parts.findIndex((p) => p == part)
   if (index == 13) {
     index -= 7

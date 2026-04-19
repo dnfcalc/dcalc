@@ -13,6 +13,7 @@ import {
 } from 'vue'
 
 import { onClickOutside } from '@vueuse/core'
+import { getElementZoom } from '@/utils/position'
 
 export default defineComponent({
   name: 'IIconselect',
@@ -72,20 +73,24 @@ export default defineComponent({
     const dropdownPosition = ref({ x: 0, y: 0, w: 0 })
     // 下拉框位置
     const dropdownStyle = computed<CSSProperties>(() => {
+      const zoom = getElementZoom(appendToRef.value)
+
       return {
         left: `${dropdownPosition.value.x}px`,
         top: `${dropdownPosition.value.y}px`,
-        width: `${columnNum.value * 32 + 11}px`,
+        width: `${(columnNum.value * 32 + 11) / zoom}px`,
       }
     })
 
     function onResize() {
       if (triggerRef.value) {
         const { width, height, left, top } = triggerRef.value.getBoundingClientRect()
+        const zoom = getElementZoom(appendToRef.value)
+
         dropdownPosition.value = {
-          w: width,
-          x: left - 2,
-          y: (top + height + 2),
+          w: width / zoom,
+          x: (left - 2) / zoom,
+          y: (top + height + 2) / zoom,
         }
       }
     }

@@ -31,9 +31,15 @@ export interface IConfigEquip {
   weaponFusion: number
 }
 
+export interface IConfigOath {
+  id: string
+  adaptation: number
+}
+
 export interface IConfig {
-  skills: Record<string, { lv: number ,vp:number, up: number}>
+  skills: Record<string, { lv: number; vp: number; up: number }>
   equips: Record<string, IConfigEquip>
+  oaths: Record<string, IConfigOath>
   jades: Record<
     string,
     {
@@ -84,17 +90,23 @@ const defaultAvatarConfig = {
   option: '0',
 }
 
+const defaultOathConfig = {
+  id: '',
+  adaptation: 0,
+}
+
 export const useConfigStore = defineStore('configStore', () => {
   const config = ref<IConfig>({
     skills: {},
     equips: {},
+    oaths: {},
     jades: {},
     avatar: {},
     sundry: {},
     bindAwake: 50,
     DSB: false,
     BUFF: false,
-    options:{},
+    options: {},
     avatarLink: '',
   })
 
@@ -114,19 +126,21 @@ export const useConfigStore = defineStore('configStore', () => {
         skillCountConfig.value = JSON.parse(localSkillConfig)
       }
     }
-    if (!config.value)
+    if (!config.value) {
       config.value = {
         skills: {},
         equips: {},
+        oaths: {},
         jades: {},
         avatar: {},
         sundry: {},
         bindAwake: 50,
         DSB: false,
         BUFF: false,
-        options:{},
+        options: {},
         avatarLink: '',
       }
+    }
     if (!config.value?.equips) config.value.equips = {}
     if (!config.value?.skills) config.value.skills = {}
     if (!config.value?.jades) config.value.jades = {}
@@ -134,6 +148,8 @@ export const useConfigStore = defineStore('configStore', () => {
     if (!config.value?.sundry) config.value.sundry = {}
     if (!config.value?.bindAwake) config.value.bindAwake = 50
     if (!config.value?.options) config.value.options = {}
+    if (!config.value?.oaths) config.value.oaths = {}
+    console.log(config.value.oaths)
 
     const part = [...infoStore.parts, '宠物', '副武器'].filter(
       (a) => !config.value?.equips.hasOwnProperty(a),
@@ -156,8 +172,15 @@ export const useConfigStore = defineStore('configStore', () => {
       config.value && (config.value.avatar[p] = { ...defaultAvatarConfig })
     })
 
+    infoStore.oathParts.forEach((p) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      config.value &&
+        !config.value?.oaths.hasOwnProperty(p) &&
+        (config.value.oaths[p.toString()] = { ...defaultOathConfig })
+    })
+
     infoStore.options.forEach((option) => {
-      if(Object.keys(config.value.options).includes(option.id.toString())) return
+      if (Object.keys(config.value.options).includes(option.id.toString())) return
       config.value.options[option.id.toString()] = 0
     })
 
@@ -238,5 +261,6 @@ export const useConfigStore = defineStore('configStore', () => {
     skillCountConfig,
     defaultEqusConfig,
     defaultAvatarConfig,
+    defaultOathConfig,
   }
 })

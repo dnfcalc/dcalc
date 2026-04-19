@@ -12,7 +12,7 @@
         class="flex-1 !h-20px"
       />
     </div>
-    <div class="equ-profile-item">
+    <!-- <div class="equ-profile-item">
       <div class="row-name">勋章</div>
       <calc-select
         v-for="(key, index) in ['medal_rarity', 'medal_reinforce']"
@@ -37,7 +37,7 @@
           {{ item.name }}
         </calc-option>
       </calc-select>
-    </div>
+    </div> -->
     <div class="equ-profile-item">
       <div class="row-name">冒险团</div>
       <calc-slider

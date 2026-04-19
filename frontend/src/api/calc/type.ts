@@ -21,6 +21,7 @@ export interface IResultSkill {
 }
 
 export interface IResultUserInfo {
+  id: number
   name: string
   value: string | number
 }
