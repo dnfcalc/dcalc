@@ -104,11 +104,12 @@ class EmblemData(Base):
     __tablename__ = 'emblem'
 
     id = Column(Integer, primary_key=True)
-    detail = Column(Text)
-    categorize = Column(Integer)
-    itemType = Column(Text)
-    fame = Column(Integer)
+    rarityId = Column(Integer)
     rarity = Column(Text)
+    typeId = Column(Integer)
+    type = Column(Text)
+    value = Column(Text)
+    fame = Column(Integer)
 
 
 class JadeData(Base):
@@ -135,6 +136,8 @@ class OathData(Base):
     rarity = Column(Text)
     position = Column(Text)
     Point = Column(Integer)
+    itemType = Column(Text)
+    itemDetailType = Column(Text)
     categorize = Column(Text)
     imageUrl = Column(Text)
     detail = Column(Text)
@@ -165,6 +168,8 @@ class PrimerData(Base):
     name = Column(Text)
     rarity = Column(Text)
     position = Column(Text)
+    itemType = Column(Text)
+    itemDetailType = Column(Text)
     Point = Column(Integer)
     categorize = Column(Text)
     imageUrl = Column(Text)

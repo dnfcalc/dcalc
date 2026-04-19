@@ -51,18 +51,22 @@ class CharacterInfoMixin(CharacterBase):
         equInfos = get_equipment(self.equVersion)
         equs = []
         suits = []
-        stones = []
+        oaths = []
+        # stones = []
         for i in equInfos.equs:
             if i.itemType == '武器' and i.itemDetailType not in self.武器选项:
                 continue
             equs.append(i.__dict__)
         for i in equInfos.suits:
             suits.append(i.__dict__)
-        for i in equInfos.stones:
-            stones.append(i.__dict__)
+        for i in equInfos.oaths:
+            oaths.append(i.__dict__)
+        # for i in equInfos.stones:
+        #     stones.append(i.__dict__)
+        info['oaths'] = oaths
         info['equips'] = equs
         info['suits'] = suits
-        info['stones'] = stones
+        # info['stones'] = stones
         key = '辅助' if self.buffer else '输出'
         info['enchants'] = list(filter(lambda x: key in x['categorize'], equInfos.enchants))
         info['emblems'] = [i for i in equInfos.emblems]

@@ -16,9 +16,9 @@
           {{ partName(part) }}
         </template>
       </div>
-      <div v-if="detail?.[part]?.fusion" class="pos-absolute" :style="fusionStyle(part)">
-        <EquipmentIcon :equipment="stones(detail[part].fusion)" />
-      </div>
+      <!-- <div v-if="detail?.[part]?.fusion" class="pos-absolute" :style="fusionStyle(part)">
+        <EquipmentIcon :equipment="oaths(detail[part].fusion)" />
+      </div> -->
     </template>
     <div
       v-if="props.withSubWeapon"
@@ -69,7 +69,7 @@ const props = defineProps({
   avatar: {
     type: String,
     default: '',
-  }
+  },
 })
 const partModelValue = useVModel(props, 'part')
 const infoStore = useInfoStore()
@@ -90,9 +90,9 @@ const equ = (id: string) => {
   return infoStore.equips.find((e) => e.id == id)
 }
 
-const stones = (id: string) => {
-  return infoStore.stones.find((e) => e.id == id)
-}
+// const oaths = (id: string) => {
+//   return infoStore.oaths.find((e) => e.id == id)
+// }
 
 const infoStyle = (part: string) => {
   let x = 10
@@ -117,30 +117,30 @@ const infoStyle = (part: string) => {
   return style
 }
 
-const fusionStyle = (part: string) => {
-  let x = 0
-  let y = 15
-  let index = infoStore.parts.findIndex((p) => p == part)
+// const fusionStyle = (part: string) => {
+//   let x = 0
+//   let y = 15
+//   let index = infoStore.parts.findIndex((p) => p == part)
 
-  if (index >= 5 && index <= 12) {
-    x += 179
-    index -= 5
-  }
+//   if (index >= 5 && index <= 12) {
+//     x += 179
+//     index -= 5
+//   }
 
-  if (index == 13) {
-    index = 5
-  }
+//   if (index == 13) {
+//     index = 5
+//   }
 
-  x += (index % 2) * 39
-  y += Math.floor(index / 2) * 34
+//   x += (index % 2) * 39
+//   y += Math.floor(index / 2) * 34
 
-  return {
-    left: `${x}px`,
-    top: `${y}px`,
-    zIndex: 7,
-    transform: 'scale(0.6)',
-  }
-}
+//   return {
+//     left: `${x}px`,
+//     top: `${y}px`,
+//     zIndex: 7,
+//     transform: 'scale(0.6)',
+//   }
+// }
 const choosePart = (part: string) => {
   partModelValue.value = part
 }

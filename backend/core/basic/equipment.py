@@ -80,10 +80,10 @@ class Equipments:
         self.equs: list[Equ] = []
         self.oaths: list[Oath] = []
         self.oath_dict: dict[str, Oath] = {}
-        self.stones: list[Equ] = []
+        # self.stones: list[Equ] = []
         self.funs = self.init_func()
         self.equ_dict: dict[str, Equ] = {}
-        self.stone_dict: dict[str, Equ] = {}
+        # self.stone_dict: dict[str, Equ] = {}
         self.jades = []
         self.enchants = []
         self.emblems = []
@@ -94,7 +94,7 @@ class Equipments:
         self.init_equs()
         self.init_suits()
         self.init_enchants()
-        self.init_stones()
+        # self.init_stones()
         self.init_emblem()
         self.init_jades()
         self.init_oaths()
@@ -124,27 +124,27 @@ class Equipments:
             self.equs.append(equ)
             self.equ_dict[equ.id] = equ
 
-    def init_stones(self):
-        """从数据库中获取所有装备信息"""
-        with Session(self.engine) as session:
-            db_list = session.query(StoneData).all()
-        keys = [key for key in StoneData.__dict__.keys() if key[0].isupper()] + ['suit']
-        for item in db_list:
-            max_adaptation = 0
-            item.id = str(item.id)
-            for attr in keys:
-                if attr == 'suit':
-                    value = parse_to_number_list(getattr(item, attr), [])
-                    value = [str(int(i)) for i in value]
-                else:
-                    value = parse_to_number_list(getattr(item, attr))
-                max_adaptation = max(max_adaptation, len(value) - 1)
-                setattr(item, attr, value)
-            stone_dict = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
-            stone_dict['max_adaptation'] = max_adaptation
-            stone = Equ(**stone_dict)
-            self.stones.append(stone)
-            self.stone_dict[stone.id] = stone
+    # def init_stones(self):
+    #     """从数据库中获取所有装备信息"""
+    #     with Session(self.engine) as session:
+    #         db_list = session.query(StoneData).all()
+    #     keys = [key for key in StoneData.__dict__.keys() if key[0].isupper()] + ['suit']
+    #     for item in db_list:
+    #         max_adaptation = 0
+    #         item.id = str(item.id)
+    #         for attr in keys:
+    #             if attr == 'suit':
+    #                 value = parse_to_number_list(getattr(item, attr), [])
+    #                 value = [str(int(i)) for i in value]
+    #             else:
+    #                 value = parse_to_number_list(getattr(item, attr))
+    #             max_adaptation = max(max_adaptation, len(value) - 1)
+    #             setattr(item, attr, value)
+    #         stone_dict = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
+    #         stone_dict['max_adaptation'] = max_adaptation
+    #         stone = Equ(**stone_dict)
+    #         self.stones.append(stone)
+    #         self.stone_dict[stone.id] = stone
 
     def init_suits(self):
         """从数据库中获取所有套装信息"""
@@ -188,9 +188,9 @@ class Equipments:
             db_list = session.query(EmblemData).all()
         for item in db_list:
             emblem = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
-            emblem['position'] = [] if emblem['itemType'] is None else emblem['itemType'].split(',')
-            emblem['categorize'] = [] if emblem['categorize'] is None else emblem['categorize'].split(',')
-            del emblem['itemType']
+            # emblem['position'] = [] if emblem['itemType'] is None else emblem['itemType'].split(',')
+            # emblem['categorize'] = [] if emblem['categorize'] is None else emblem['categorize'].split(',')
+            # del emblem['itemType']
             self.emblems.append(emblem)
             pass
         pass
@@ -336,6 +336,8 @@ class Oath:
     Buffer: list[float] | float
     wearUrl: list[str]
     max_adaptation: int
+    itemType: str
+    itemDetailType: str
 
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)

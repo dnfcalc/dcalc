@@ -1,4 +1,5 @@
 from collections.abc import Mapping
+import sys
 from typing import Any, Literal
 
 from core.abstract.character import CharacterProperty
@@ -91,7 +92,7 @@ class CharacterBase(CharacterProperty):
         # 唤醒的情况下的基础数据
         self.AtkP = 0 + 65
         self.AtkM = 0 + 65
-        self.AtkI = 1116 + 65
+        self.AtkI = 0 + 65
         self.PAtkP = 1.0
         self.PAtkM = 1.0
         self.PAtkI = 1.0
@@ -239,6 +240,10 @@ class CharacterBase(CharacterProperty):
         ],
     ) -> None:
         """设置角色属性"""
+        # if kwargs.get('SkillAttack', 0) != 0:
+        #     frame = sys._getframe(1)  # 1 表示上一级调用帧
+        #     caller_name = frame.f_code.co_name
+        #     print(caller_name, kwargs.get('SkillAttack', 0))
         self.STR += 力量 + kwargs.get('STR', 0) + 四维 + 力智
         self.INT += 智力 + kwargs.get('INT', 0) + 四维 + 力智
         self.Spirit += 精神 + kwargs.get('Spirit', 0) + 四维 + 体精

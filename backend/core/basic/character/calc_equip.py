@@ -18,18 +18,25 @@ class CalcEquipMixin(CharacterBase):
         self.charOathInfo = []
         self.charEmblemInfo = []
         self.bindAwake = info.get('bindAwake', 50)
+        if info.get('emblems', None) is None:
+            info['emblems'] = {}
+        if info.get('oaths', None) is None:
+            info['oaths'] = {}
         for key in info['equips']:
             self.charEquipInfo[key] = CharacterEquipInfo(info['equips'][key], self.equVersion, key)
         for key in info['oaths']:
             # 导入誓约打造信息、誓约信息
             self.charOathInfo.append(CharacterOathInfo(info['oaths'][key], self.equVersion, key))
-        # 异常处理 彩色等级自动取最小值
-        minEmblemLv = min([info['emblems'][key]['lv'] for key in ['红色', '蓝色', '绿色', '黄色']], default=1)
-        info['emblems']['彩色']['lv'] = minEmblemLv
-        for key in info['emblems']:
-            # 导入徽章打造信息、徽章信息
-            info['emblems'][key]['part'] = key
-            self.charEmblemInfo.append(CharacterEmblemInfo(info['emblems'][key]))
+        try:
+            # 异常处理 彩色等级自动取最小值
+            minEmblemLv = min([info['emblems'][key]['lv'] for key in ['红色', '蓝色', '绿色', '黄色']], default=1)
+            info['emblems']['彩色']['lv'] = minEmblemLv
+            for key in info['emblems']:
+                # 导入徽章打造信息、徽章信息
+                info['emblems'][key]['part'] = key
+                self.charEmblemInfo.append(CharacterEmblemInfo(info['emblems'][key]))
+                pass
+        except Exception as e:
             pass
         self.charOathSkillId = info.get('oathSkill', 1)
 
@@ -94,7 +101,7 @@ class CalcEquipMixin(CharacterBase):
         max_point_oath_suit = max((suit for suit in oathSuitInfo if oathSuitInfo[suit]['point'] > 0), key=lambda suit: oathSuitInfo[suit]['point'], default=None)
         zero_point_suits = [suit for suit in suitInfo if suitInfo[suit]['point'] == 0]
         # 套装没有到太初的时候，优先把誓约套装的点数加到装备套装上，以达到更高的套装等级
-        if 0 < suitInfo[max_point_suit]['point'] < 2550:
+        if 0 < suitInfo[max_point_suit]['point'] < 2550 and oathSuitInfo.get('max_point_oath_suit', None) is not None:
             suitInfo[max_point_suit]['point'] += min(2550 - suitInfo[max_point_suit]['point'], oathSuitInfo[max_point_oath_suit]['point'])
             oathSuitInfo[max_point_oath_suit]['point'] -= min(2550 - suitInfo[max_point_suit]['point'], oathSuitInfo[max_point_oath_suit]['point'])
             pass

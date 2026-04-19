@@ -31,6 +31,7 @@ export interface ICharacterInfo {
   stones: IEquipment[]
   enchants: IEnchantingInfo[]
   emblems: IEnchantingInfo[]
+  oaths: IEquipment[]
   weapons: string[]
   subweapons: string[]
   skills: ISkill[]
@@ -73,6 +74,11 @@ export interface IEquipment {
   bufferDetail: string
 }
 
+export interface IOathInfo extends IEquipment {
+  position: string[]
+  wearUrl: string[]
+}
+
 export interface ISkill {
   icon: string
   name: string
@@ -91,7 +97,7 @@ export interface ISkill {
     desc: string
   }[]
   uuid: string
-  upType:'damage' |'heal'
+  upType: 'damage' | 'heal'
 }
 
 export interface ISuit {

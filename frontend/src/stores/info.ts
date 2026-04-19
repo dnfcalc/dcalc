@@ -18,7 +18,7 @@ export const useInfoStore = defineStore('infoStore', () => {
 
   const emblems = computed(() => infos.value?.emblems ?? [])
 
-  const stones = computed(() => infos.value?.stones ?? [])
+  // const stones = computed(() => infos.value?.stones ?? [])
 
   const avatars = computed(() => infos.value?.avatar ?? {})
 
@@ -27,6 +27,8 @@ export const useInfoStore = defineStore('infoStore', () => {
   const sundries = computed(() => infos.value?.sundry ?? {})
 
   const options = computed(() => infos.value?.options ?? [])
+
+  const oaths = computed(() => infos.value?.oaths ?? [])
 
   const standardUUID = ref<string>()
 
@@ -39,7 +41,9 @@ export const useInfoStore = defineStore('infoStore', () => {
     }[],
   ) => {
     if (!result) {
-      !!standardUUID.value && sessionStorage.removeItem(standardUUID.value)
+      if (!!standardUUID.value) {
+        sessionStorage.removeItem(standardUUID.value)
+      }
       standardUUID.value = undefined
     } else {
       standardUUID.value = result.uuid
@@ -106,13 +110,13 @@ export const useInfoStore = defineStore('infoStore', () => {
     enchants,
     emblems,
     parts,
-    stones,
+    oaths,
     avatarParts,
     avatars,
     jades,
     setStandard,
     standard,
     sundries,
-    options
+    options,
   }
 })

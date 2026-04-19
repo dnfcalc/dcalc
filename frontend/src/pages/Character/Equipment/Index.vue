@@ -18,7 +18,7 @@
       <Suit v-show="equTab === 0"></Suit>
       <Universal v-show="equTab === 1"></Universal>
     </calc-collapse>
-    <calc-collapse title="融合石">
+    <calc-collapse title="誓约">
       <calc-tabs v-model="stoneTab" class="!mb-2">
         <calc-tab :value="0">套装</calc-tab>
         <calc-tab :value="1">通宝</calc-tab>

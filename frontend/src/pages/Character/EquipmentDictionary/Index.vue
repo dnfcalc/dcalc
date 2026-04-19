@@ -15,10 +15,10 @@
       <div class="w-auto text-18px flex items-center justify-center !font-normal">|</div>
       <div
         class="flex-1 text-15px flex items-center justify-center"
-        @click="chooseCategory('stone')"
-        :class="{ active: type === 'stone' }"
+        @click="chooseCategory('oath')"
+        :class="{ active: type === 'oath' }"
       >
-        融合石
+        誓约
       </div>
     </div>
     <div
@@ -126,11 +126,11 @@ import PartSelect from '@/components/dnf/Equipment/PartSelect/index.vue'
 import EquipmentRaritySelect from '@/components/dnf/Equipment/RaritySelect/index.vue'
 import { getImageURL } from '@/utils/images'
 import { rarityClass } from '@/utils'
-import type { IEquipment } from '@/api/info/type'
+import type { IEquipment, IOathInfo } from '@/api/info/type'
 import EquipmentIcon from '@/components/dnf/Equipment/Icon/index.vue'
 import Info from '@/components/dnf/Equipment/Info/index.vue'
 import SuitInfo from '@/components/dnf/Equipment/SuitInfo/index.vue'
-import { formatEqu, formatStone } from './formatData'
+import { formatEqu, formatOath } from './formatData'
 import options from './components/options.vue'
 
 // const props = defineProps<{
@@ -197,7 +197,7 @@ const curEquInfo = computed(() => {
   if (type.value == 'equ') {
     return infoStore.equips.find((a) => a.id == curEquId.value)
   } else {
-    return infoStore.stones.find((a) => a.id == curEquId.value)
+    return infoStore.oaths.find((a) => a.id == curEquId.value)
   }
 })
 
@@ -215,7 +215,7 @@ const curSuitInfo = computed(() => {
 
 const chooseCategory = (cat: string) => {
   type.value = cat
-  if (type.value == 'stone' && curSuit.value == -1) {
+  if (type.value == 'oath' && curSuit.value == -1) {
     curSuit.value = 16203
   }
 }
@@ -240,14 +240,14 @@ const suitList = computed(() => {
 
 const equs = computed(() => {
   // 筛选出装备
-  const total = (type.value == 'equ' ? infoStore.equips : infoStore.stones).filter(
+  const total = (type.value == 'equ' ? infoStore.equips : infoStore.oaths).filter(
     (a) =>
       (!curRarity.value || a.rarity === curRarity.value) &&
       (choose_part.value.length === 0 ||
         choose_part.value.includes(a.itemDetailType || a.itemType)) &&
       (a.suit.length == 0 ||
         (curSuit.value == -1 && a.suit.length > 1 && type.value == 'equ') ||
-        (a.suit.length > 1 && type.value == 'stone') ||
+        (a.suit.length > 1 && type.value == 'oath') ||
         (a.suit.includes(curSuit.value.toString()) && a.suit.length === 1)),
   )
 
@@ -258,7 +258,10 @@ const equs = computed(() => {
       suitList.value.find((a) => a.value == curSuit.value)?.name,
     )
   } else {
-    return formatStone(total, suitList.value.find((a) => a.value == curSuit.value)?.name)
+    return formatOath(
+      total as unknown as IOathInfo[],
+      suitList.value.find((a) => a.value == curSuit.value),
+    )
   }
 })
 
@@ -272,7 +275,7 @@ const isActive = computed(() => {
         return configStore.config.equips[item.itemDetailType].id == item.id
       }
     } else {
-      return configStore.config.equips[item.itemDetailType].fusion == item.id
+      // return configStore.config.equips[item.itemDetailType].fusion == item.id
     }
   }
 })
