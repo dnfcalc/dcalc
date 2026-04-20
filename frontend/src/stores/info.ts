@@ -1,5 +1,5 @@
 import api from '@/api'
-import type { ICharacterInfo, IEquipment } from '@/api/info/type'
+import type { ICharacterInfo, IEquipment, ISuit } from '@/api/info/type'
 import { defineStore } from 'pinia'
 import { useConfigStore } from './config'
 import type { IResult, IResultSkill, IResultSkillCount } from '@/api/calc/type'
@@ -7,6 +7,15 @@ import type { IResult, IResultSkill, IResultSkillCount } from '@/api/calc/type'
 export const useInfoStore = defineStore('infoStore', () => {
   const alter_token = ref<string>('')
   const infos = ref<ICharacterInfo | null>(null)
+
+  const oathCache = ref<
+    {
+      suitId: string
+      skillId: string
+      rarity: string
+      data: ISuit
+    }[]
+  >([])
 
   const skills = computed(() => infos.value?.skills ?? [])
 
@@ -44,6 +53,22 @@ export const useInfoStore = defineStore('infoStore', () => {
     })
     return result
   })
+
+  const getOathInfo = async (suitId: string, skillId: string, rarity: string) => {
+    const res = oathCache.value.find(
+      (o) => o.suitId === suitId && o.skillId === skillId && o.rarity === rarity,
+    )
+    if (res) {
+      return {
+        ...res.data,
+      }
+    }
+    const data: ISuit = await api.getOathInfo(suitId, skillId, rarity)
+    oathCache.value.push({ suitId, skillId, rarity, data })
+    return {
+      ...data,
+    }
+  }
 
   const oathSkills = computed(() => {
     const origin = infos.value?.oaths_skills
@@ -133,7 +158,7 @@ export const useInfoStore = defineStore('infoStore', () => {
 
   const oathParts = Array.from({ length: 12 }, (_, i) => i.toString())
 
-  const emblemParts = ['彩色', '红色', '蓝色', '绿色', '黄色']
+  const emblemParts = ['彩色', '红色', '蓝色', '绿色', '黄色', '白金']
 
   const createCharacter = async (alter: string, equVersion?: string) => {
     const time = new Date().getTime()
@@ -163,5 +188,6 @@ export const useInfoStore = defineStore('infoStore', () => {
     sundries,
     options,
     oathSkills,
+    getOathInfo,
   }
 })

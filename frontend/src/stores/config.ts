@@ -36,6 +36,11 @@ export interface IConfigOath {
   adaptation: number
 }
 
+export interface IConfigEmblem {
+  lv: number
+  items: string[]
+}
+
 export interface IConfig {
   skills: Record<string, { lv: number; vp: number; up: number }>
   equips: Record<string, IConfigEquip>
@@ -65,6 +70,7 @@ export interface IConfig {
   BUFF: boolean
   options: Record<string, number>
   avatarLink: string
+  emblems: Record<string, IConfigEmblem>
 }
 
 const defaultEqusConfig = {
@@ -95,6 +101,11 @@ const defaultOathConfig = {
   adaptation: 0,
 }
 
+const defaultEmblemConfig = {
+  lv: 0,
+  items: ['', '', '', '', '', ''],
+}
+
 export const useConfigStore = defineStore('configStore', () => {
   const config = ref<IConfig>({
     skills: {},
@@ -108,6 +119,7 @@ export const useConfigStore = defineStore('configStore', () => {
     BUFF: false,
     options: {},
     avatarLink: '',
+    emblems: {},
   })
 
   const skillCountConfig = ref<IResultSkillCount[]>([])
@@ -139,6 +151,7 @@ export const useConfigStore = defineStore('configStore', () => {
         BUFF: false,
         options: {},
         avatarLink: '',
+        emblems: {},
       }
     }
     if (!config.value?.equips) config.value.equips = {}
@@ -149,7 +162,7 @@ export const useConfigStore = defineStore('configStore', () => {
     if (!config.value?.bindAwake) config.value.bindAwake = 50
     if (!config.value?.options) config.value.options = {}
     if (!config.value?.oaths) config.value.oaths = {}
-    console.log(config.value.oaths)
+    if (!config.value?.emblems) config.value.emblems = {}
 
     const part = [...infoStore.parts, '宠物', '副武器'].filter(
       (a) => !config.value?.equips.hasOwnProperty(a),
@@ -262,5 +275,6 @@ export const useConfigStore = defineStore('configStore', () => {
     defaultEqusConfig,
     defaultAvatarConfig,
     defaultOathConfig,
+    defaultEmblemConfig,
   }
 })

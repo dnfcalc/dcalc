@@ -26,6 +26,10 @@ export default defineRequest((request) => {
     async getSkillFromCode(code: string) {
       const res = await request.post(`/skillTree/`, { code })
       return res.data
-    }
+    },
+    async getOathInfo(suitId: string, skillId: string, rarity: string) {
+      const res = await request.get(`/info/oath/${suitId}/${skillId}`, { params: { rarity } })
+      return res.data
+    },
   }
 })

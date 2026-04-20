@@ -81,9 +81,9 @@
               alt=""
               class="w-20px h-20px object-contain"
             />
-            <div class="flex items-center justify-center" v-if="adaptation(part) > 0">
+            <div class="flex items-center justify-center" v-if="oathAdaptation(part) > 0">
               <img
-                :src="getImageURL(`/equipment/adaptation/${adaptation(part)}.png`)"
+                :src="getImageURL(`/equipment/adaptation/${oathAdaptation(part)}.png`)"
                 alt=""
                 class="w-11px h-10px object-contain"
               />
@@ -158,6 +158,13 @@ const adaptation = (part: string) => {
   return Math.min(
     equ(props.equs?.[part]?.id)?.max_adaptation ?? 0,
     props.equs[part]?.adaptation ?? 0,
+  )
+}
+
+const oathAdaptation = (part: string) => {
+  return Math.min(
+    equ(props.oaths?.[part]?.id)?.max_adaptation ?? 0,
+    props.oaths[part]?.adaptation ?? 0,
   )
 }
 
