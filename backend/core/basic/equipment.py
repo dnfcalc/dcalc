@@ -239,6 +239,7 @@ class Equipments:
             suits = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
             for i in range(1, lvs + 1):
                 suit = {k: v for k, v in suits.items()}
+                suit['points'] = suit['point']
                 suit['point'] = int(suit['point'].split(',')[i - 1])
                 skills = [x for x in db_skills_list if x.suitId == suit['suitId'] and x.key == suit['key']]
                 suit['level'] = i
@@ -386,6 +387,7 @@ class OathSuit:
     rarity: str
     name: str
     point: int
+    points: str
     level: int
     count: int
     imageUrl: str

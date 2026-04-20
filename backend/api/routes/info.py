@@ -67,7 +67,7 @@ async def get_oath_info(state: AltersDep, suitId: str, skillId: str, rarity: str
         if oath is not None:
             oathSkill = next((x for x in oath.skills if x.skillId == skillId), None)
             if oathSkill is not None:
-                skill = oathSkill.__dict__
+                skill = {**oathSkill.__dict__, 'point': oath.points, 'imageUrl': oath.imageUrl}
         return skill
 
     info = get_redis_info(redis, f'dcalc:oath:{rarity}:{skillId}', get_info)

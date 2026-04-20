@@ -521,14 +521,16 @@ def emblem_combine(char: CharacterProperty, position: str, lv: int = 1, emblem_l
     buffer = [10, 30, 60, 90, 120, 150, 180, 210, 240270, 300, 320, 340, 360, 380, 400]
     skillAttack = [0.002, 0.004, 0.008, 0.012, 0.016, 0.02, 0.023, 0.026, 0.029, 0.032, 0.035, 0.036, 0.037, 0.038, 0.039, 0.04]
     attackP = [0.005, 0.009, 0.013, 0.017, 0.021, 0.025, 0.028, 0.031, 0.034, 0.037, 0.04, 0.042, 0.044, 0.046, 0.048, 0.05]
+    if position == '白金':
+        return
     # 固有属性
     if position == '彩色':
         char.SetStatus(BufferP=bufferP[lv - 1], SkillAttack=skillAttack[lv - 1])
     else:
         char.SetStatus(Buffer=buffer[lv - 1], AttackP=attackP[lv - 1])
     rarity = (lv - 1) // 5
-    emblems = list(filter(lambda x: int(x) > 0, emblem_list)) or []
-    emblem_raritys = [int(i) // 1000 for i in emblems]
+    emblems = list(filter(lambda x: safeParseInt(x) > 0, emblem_list)) or []
+    emblem_raritys = [safeParseInt(i) // 1000 for i in emblems]
     # 稀有
     if rarity == 0:
         skillAttack = [0.001, 0.001, 0.002, 0.002]
@@ -554,3 +556,10 @@ def emblem_combine(char: CharacterProperty, position: str, lv: int = 1, emblem_l
         SkillAttack += skillAttack[i - 1]
         Buffer += buffer[i - 1]
     char.SetStatus(SkillAttack=SkillAttack, Buffer=Buffer)
+
+
+def safeParseInt(x: int | str | None) -> int:
+    try:
+        return int(x)
+    except Exception:
+        return 0
