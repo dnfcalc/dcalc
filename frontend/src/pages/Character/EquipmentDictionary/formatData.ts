@@ -7,23 +7,25 @@ export const formatEqu = (total: IEquipment[], subweapons?: string[], curSuit?: 
   const item_weapon = total.filter((a) => a.itemType == '武器') ?? []
   const weapons: (IEquipment | undefined)[] = []
   if (item_weapon.length > 0) {
-    Array.from(new Set(item_weapon.map((item) => item.rarity))).filter(a=>!['稀有','神器'].includes(a)).forEach((rarity) => {
-      const weapon = item_weapon
-        .filter((item) => item.rarity === rarity)
-        .sort((a, b) => {
-          if (a.categorize == b.categorize) {
-            return a.itemDetailType.localeCompare(b.itemDetailType)
-          }
-          return b.categorize.localeCompare(a.categorize)
-        })
-      weapons.push(
-        ...weapon.filter((a) => !['传世武器升级', '狄瑞吉传世武器'].includes(a.categorize)),
-      )
-      const remind = weapons.length % rowCount
-      if (remind > 0) {
-        weapons.push(...Array(rowCount - remind).fill(undefined))
-      }
-    })
+    Array.from(new Set(item_weapon.map((item) => item.rarity)))
+      .filter((a) => !['稀有', '神器'].includes(a))
+      .forEach((rarity) => {
+        const weapon = item_weapon
+          .filter((item) => item.rarity === rarity)
+          .sort((a, b) => {
+            if (a.categorize == b.categorize) {
+              return a.itemDetailType.localeCompare(b.itemDetailType)
+            }
+            return b.categorize.localeCompare(a.categorize)
+          })
+        weapons.push(
+          ...weapon.filter((a) => !['传世武器升级', '狄瑞吉传世武器'].includes(a.categorize)),
+        )
+        const remind = weapons.length % rowCount
+        if (remind > 0) {
+          weapons.push(...Array(rowCount - remind).fill(undefined))
+        }
+      })
     if (item_weapon.some((a) => a.categorize === '传世武器升级')) {
       const length = item_weapon.filter((a) => a.categorize === '传世武器升级').length
       weapons.push(...Array(length).fill(undefined))
@@ -88,9 +90,13 @@ export const formatEqu = (total: IEquipment[], subweapons?: string[], curSuit?: 
     (equip) => equip.categorize.includes('套装') || equip.categorize.includes('通宝'),
   )
   const suits: (IEquipment | undefined)[] = []
-  const raritiyList = Array.from(new Set(item_suits.map((item) => item.rarity))).filter(a=>!['稀有','神器'].includes(a))
+  const raritiyList = Array.from(new Set(item_suits.map((item) => item.rarity))).filter(
+    (a) => !['稀有', '神器'].includes(a),
+  )
   raritiyList.forEach((rarity) => {
-    const armor = item_suits.filter((item) => item.rarity === rarity && item.itemType === '防具' && !item.name.includes("侵蚀"))
+    const armor = item_suits.filter(
+      (item) => item.rarity === rarity && item.itemType === '防具' && !item.name.includes('侵蚀'),
+    )
     if (armor.length > 0) {
       suits.push(...armor, undefined)
     }
@@ -119,7 +125,9 @@ export const formatEqu = (total: IEquipment[], subweapons?: string[], curSuit?: 
       suits.push(...Array(rowCount - (suits.length % rowCount)).fill(undefined))
     }
 
-    const armorUpgrade = item_suits.filter((item) => item.rarity === rarity && item.itemType === '防具' && item.name.includes("侵蚀"))
+    const armorUpgrade = item_suits.filter(
+      (item) => item.rarity === rarity && item.itemType === '防具' && item.name.includes('侵蚀'),
+    )
     if (armorUpgrade.length > 0) {
       suits.push(...armorUpgrade)
     }
@@ -281,5 +289,34 @@ export const formatStone = (total: IEquipment[], curSuit?: string) => {
     //   name: '神界',
     //   equs: sj,
     // },
+  ]
+}
+
+export const formatOath = (
+  total: IEquipment[],
+  curSuit?: { name: string; value: number; imageUrl: string },
+) => {
+  // oath
+  const oath = total.filter((equip) => equip.itemDetailType == '誓约')
+  oath.push(...Array(rowCount - (oath.length % rowCount)).fill(undefined))
+  // primer
+  const primer = []
+  const primerItem = total.filter((equip) => equip.itemDetailType == '星蕴石')
+  for (let i = 0; i < 11; i++) {
+    const temp = primerItem.filter((a) => a.oathPos == i.toString())
+    primer.push(
+      ...temp,
+      ...Array(temp.length == 0 ? rowCount : rowCount - (temp.length % rowCount)).fill(undefined),
+    )
+  }
+  return [
+    {
+      name: `${curSuit?.name} 誓约`,
+      equs: oath,
+    },
+    {
+      name: `${curSuit?.name} 星蕴石`,
+      equs: primer,
+    },
   ]
 }

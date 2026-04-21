@@ -15,10 +15,10 @@
       <div class="w-auto text-18px flex items-center justify-center !font-normal">|</div>
       <div
         class="flex-1 text-15px flex items-center justify-center"
-        @click="chooseCategory('stone')"
-        :class="{ active: type === 'stone' }"
+        @click="chooseCategory('oath')"
+        :class="{ active: type === 'oath' }"
       >
-        融合石
+        誓约
       </div>
     </div>
     <div
@@ -71,51 +71,129 @@
     </div>
   </div>
   <div class="px-5px flex flex-col">
-    <div class="flex flex-col overflow-hidden bg-black" v-if="curEquInfo">
-      <div class="item-head">基础信息</div>
-      <div class="flex-1 overflow-y-auto overflow-x-hidden bg-black w-240px">
+    <!-- 基础信息 -->
+    <div
+      class="flex flex-col overflow-hidden bg-black"
+      :class="!hideBase ? '' : 'mb-4px'"
+      v-if="curEquInfo"
+    >
+      <div class="item-head" @click="hideBase = !hideBase">
+        基础信息{{ hideBase ? ' (点击显示)' : '（点击隐藏）' }}
+      </div>
+      <div v-show="!hideBase" class="overflow-y-auto overflow-x-hidden bg-black w-240px">
         <Info v-if="curEquInfo" :equipment="curEquInfo" />
       </div>
     </div>
-    <div class="flex flex-col flex-1 overflow-hidden bg-black" v-if="curSuitInfo">
-      <div class="item-head">套装信息</div>
+    <!-- 套装信息 -->
+    <div
+      class="flex flex-col overflow-hidden bg-black"
+      :class="!hideSuit ? 'flex-1' : 'mb-4px'"
+      v-if="curSuitInfo"
+    >
+      <div class="item-head" @click="hideSuit = !hideSuit">
+        套装信息{{ hideSuit ? ' (点击显示)' : '（点击隐藏）' }}
+      </div>
+      <template v-if="!hideSuit">
+        <div class="flex bg-#191918 items-center justify-center gap-2px p-5px">
+          <calc-button
+            :disabled="raritiyList.findIndex((rarity) => rarity === curSuitLv.rarity) <= 0"
+            icon="min-little"
+            @click="changeSuitLv('preRarity')"
+          ></calc-button>
+          <calc-button
+            icon="reduce-little"
+            :disabled="
+              raritiyList.findIndex((rarity) => rarity === curSuitLv.rarity) <= 0 &&
+              curSuitLv.lv <= 1
+            "
+            @click="changeSuitLv('preLv')"
+          ></calc-button>
+          <div class="flex px-20px gap-x-10px" :class="rarityClass(curSuitLv.rarity)">
+            <span>{{ curSuitLv.rarity }}</span>
+            <span>{{ formatLv(curSuitLv.lv, curSuitLv.rarity) }}</span>
+          </div>
+          <calc-button
+            :disabled="
+              raritiyList.findIndex((rarity) => rarity === curSuitLv.rarity) >=
+              raritiyList.length - 1
+            "
+            @click="changeSuitLv('nextLv')"
+            icon="increase-little"
+          ></calc-button>
+          <calc-button
+            :disabled="
+              raritiyList.findIndex((rarity) => rarity === curSuitLv.rarity) >=
+              raritiyList.length - 1
+            "
+            @click="changeSuitLv('nextRarity')"
+            icon="max-little"
+          ></calc-button>
+        </div>
+        <div
+          class="w-80% m-auto h-1px bg-gradient-to-r from-[rgba(52,43,27,0.05)] via-[rgba(52,43,27,1)] to-[rgba(52,43,27,0.05)]"
+        ></div>
+        <div class="flex-1 overflow-y-auto overflow-x-hidden bg-black w-240px">
+          <SuitInfo v-if="curSuitInfo" :suit="curSuitInfo" />
+        </div>
+      </template>
+    </div>
+    <div class="flex flex-col flex-1 overflow-hidden bg-black" v-if="curOathInfo">
+      <div class="item-head">誓约信息</div>
+
       <div class="flex bg-#191918 items-center justify-center gap-2px p-5px">
         <calc-button
-          :disabled="raritiyList.findIndex((rarity) => rarity === curSuitLv.rarity) <= 0"
+          :disabled="raritiyList.findIndex((rarity) => rarity === curOathSkillLv.rarity) <= 0"
           icon="min-little"
-          @click="changeSuitLv('preRarity')"
+          @click="changeOathSkillLv('preRarity')"
         ></calc-button>
         <calc-button
           icon="reduce-little"
           :disabled="
-            raritiyList.findIndex((rarity) => rarity === curSuitLv.rarity) <= 0 && curSuitLv.lv <= 1
+            raritiyList.findIndex((rarity) => rarity === curOathSkillLv.rarity) <= 0 &&
+            curOathSkillLv.lv <= 1
           "
-          @click="changeSuitLv('preLv')"
+          @click="changeOathSkillLv('preLv')"
         ></calc-button>
-        <div class="flex px-20px gap-x-10px" :class="rarityClass(curSuitLv.rarity)">
-          <span>{{ curSuitLv.rarity }}</span>
-          <span>{{ formatLv(curSuitLv.lv, curSuitLv.rarity) }}</span>
+        <div class="flex px-20px gap-x-10px" :class="rarityClass(curOathSkillLv.rarity)">
+          <span>{{ curOathSkillLv.rarity }}</span>
+          <span>{{ formatLv(curOathSkillLv.lv, curOathSkillLv.rarity) }}</span>
         </div>
         <calc-button
           :disabled="
-            raritiyList.findIndex((rarity) => rarity === curSuitLv.rarity) >= raritiyList.length - 1
+            raritiyList.findIndex((rarity) => rarity === curOathSkillLv.rarity) >=
+            raritiyList.length - 1
           "
-          @click="changeSuitLv('nextLv')"
+          @click="changeOathSkillLv('nextLv')"
           icon="increase-little"
         ></calc-button>
         <calc-button
           :disabled="
-            raritiyList.findIndex((rarity) => rarity === curSuitLv.rarity) >= raritiyList.length - 1
+            raritiyList.findIndex((rarity) => rarity === curOathSkillLv.rarity) >=
+            raritiyList.length - 1
           "
-          @click="changeSuitLv('nextRarity')"
+          @click="changeOathSkillLv('nextRarity')"
           icon="max-little"
         ></calc-button>
+      </div>
+
+      <!-- 技能信息 -->
+      <div class="flex items-center justify-center py-5px">
+        <template v-for="skill in curOathInfo.skills" :key="skill.name">
+          <div
+            class="flex-1 flex flex-col items-center justify-center"
+            :class="{ unActive: skill.skillId != oathSkillId }"
+            @click="oathSkillId = skill.skillId"
+          >
+            <img class="w-40px h-40px" :src="getImageURL(skill.icon)" :alt="skill.name" />
+            <div class="text-#DED29A">{{ skill.name }}</div>
+          </div>
+        </template>
       </div>
       <div
         class="w-80% m-auto h-1px bg-gradient-to-r from-[rgba(52,43,27,0.05)] via-[rgba(52,43,27,1)] to-[rgba(52,43,27,0.05)]"
       ></div>
       <div class="flex-1 overflow-y-auto overflow-x-hidden bg-black w-240px">
-        <SuitInfo v-if="curSuitInfo" :suit="curSuitInfo" />
+        <SuitInfo v-if="curOathSkillInfo" :suit="curOathSkillInfo" />
       </div>
     </div>
   </div>
@@ -130,7 +208,7 @@ import type { IEquipment } from '@/api/info/type'
 import EquipmentIcon from '@/components/dnf/Equipment/Icon/index.vue'
 import Info from '@/components/dnf/Equipment/Info/index.vue'
 import SuitInfo from '@/components/dnf/Equipment/SuitInfo/index.vue'
-import { formatEqu, formatStone } from './formatData'
+import { formatEqu, formatOath } from './formatData'
 import options from './components/options.vue'
 
 // const props = defineProps<{
@@ -143,10 +221,18 @@ const curRarity = ref('')
 const curSuit = ref(16203)
 const curEquId = ref()
 const curSuitLv = ref({
+  rarity: '太初',
+  lv: 1,
+})
+const curOathSkillLv = ref({
   rarity: '史诗',
   lv: 1,
 })
 const triggerVisible = ref(false)
+
+const hideBase = ref(false)
+const hideSuit = ref(false)
+const oathSkillId = ref('1')
 
 const raritiyList = ['稀有', '神器', '传说', '史诗', '太初']
 
@@ -191,13 +277,48 @@ const changeSuitLv = (
   }
 }
 
+const changeOathSkillLv = (
+  type: 'preRarity' | 'nextRarity' | 'preLv' | 'nextLv',
+  resetLv: boolean = true,
+) => {
+  if (type == 'preRarity') {
+    const index = raritiyList.findIndex((a) => a == curOathSkillLv.value.rarity)
+    if (index > 0) {
+      curOathSkillLv.value.rarity = raritiyList[index - 1]
+      curOathSkillLv.value.lv = resetLv ? 1 : 5
+      return
+    }
+  } else if (type == 'nextRarity') {
+    const index = raritiyList.findIndex((a) => a == curOathSkillLv.value.rarity)
+    if (index < raritiyList.length - 1) {
+      curOathSkillLv.value.rarity = raritiyList[index + 1]
+      curOathSkillLv.value.lv = 1
+      return
+    }
+  } else if (type == 'preLv') {
+    if (curOathSkillLv.value.lv > 1) {
+      curOathSkillLv.value.lv--
+      return
+    } else {
+      changeOathSkillLv('preRarity', false)
+    }
+  } else if (type == 'nextLv') {
+    if (curOathSkillLv.value.lv < 5) {
+      curOathSkillLv.value.lv++
+      return
+    } else {
+      changeOathSkillLv('nextRarity')
+    }
+  }
+}
+
 const choose_part = ref<string[]>([])
 
 const curEquInfo = computed(() => {
   if (type.value == 'equ') {
     return infoStore.equips.find((a) => a.id == curEquId.value)
   } else {
-    return infoStore.stones.find((a) => a.id == curEquId.value)
+    return infoStore.oaths.find((a) => a.id == curEquId.value)
   }
 })
 
@@ -213,9 +334,42 @@ const curSuitInfo = computed(() => {
   )
 })
 
+const curOathInfo = computed(() => {
+  if (curEquInfo.value?.suit.length != 1 || curEquInfo.value?.oathPos == undefined) {
+    return undefined
+  }
+  return infoStore.oathSkills?.[curEquInfo.value?.suit[0]]
+})
+
+const curOathSkillLvs = asyncComputed(async () => {
+  if (!curOathInfo.value || !curEquInfo.value?.suit[0]) {
+    return undefined
+  }
+  const res = await infoStore.getOathInfo(
+    curEquInfo.value?.suit[0],
+    oathSkillId.value,
+    curOathSkillLv.value.rarity,
+  )
+  return res
+})
+
+const curOathSkillInfo = computed(() => {
+  const res = curOathSkillLvs.value
+  if (!res) {
+    return undefined
+  }
+  console.log(curEquInfo.value?.suit[0])
+  return {
+    ...res,
+    SkillAttack: parseFloat(res.SkillAttack.toString().split(',')[curOathSkillLv.value.lv - 1]),
+    Buffer: parseFloat(res.Buffer.toString().split(',')[curOathSkillLv.value.lv - 1]),
+    point: parseFloat(res.point.toString().split(',')[curOathSkillLv.value.lv - 1]),
+  }
+})
+
 const chooseCategory = (cat: string) => {
   type.value = cat
-  if (type.value == 'stone' && curSuit.value == -1) {
+  if (type.value == 'oath' && curSuit.value == -1) {
     curSuit.value = 16203
   }
 }
@@ -240,14 +394,14 @@ const suitList = computed(() => {
 
 const equs = computed(() => {
   // 筛选出装备
-  const total = (type.value == 'equ' ? infoStore.equips : infoStore.stones).filter(
+  const total = (type.value == 'equ' ? infoStore.equips : infoStore.oaths).filter(
     (a) =>
       (!curRarity.value || a.rarity === curRarity.value) &&
       (choose_part.value.length === 0 ||
         choose_part.value.includes(a.itemDetailType || a.itemType)) &&
       (a.suit.length == 0 ||
         (curSuit.value == -1 && a.suit.length > 1 && type.value == 'equ') ||
-        (a.suit.length > 1 && type.value == 'stone') ||
+        (a.suit.length > 1 && type.value == 'oath') ||
         (a.suit.includes(curSuit.value.toString()) && a.suit.length === 1)),
   )
 
@@ -258,7 +412,10 @@ const equs = computed(() => {
       suitList.value.find((a) => a.value == curSuit.value)?.name,
     )
   } else {
-    return formatStone(total, suitList.value.find((a) => a.value == curSuit.value)?.name)
+    return formatOath(
+      total as unknown as IEquipment[],
+      suitList.value.find((a) => a.value == curSuit.value),
+    )
   }
 })
 
@@ -272,7 +429,7 @@ const isActive = computed(() => {
         return configStore.config.equips[item.itemDetailType].id == item.id
       }
     } else {
-      return configStore.config.equips[item.itemDetailType].fusion == item.id
+      return configStore.config.oaths[item.oathPos].id == item.id
     }
   }
 })
@@ -285,8 +442,8 @@ const chooseEqu = (item?: IEquipment) => {
       ? configStore.config.equips[
           item.itemType.includes('武器') ? item.itemType : item.itemDetailType
         ]
-      : configStore.config.equips[item.itemDetailType]
-  target[type.value === 'equ' ? 'id' : 'fusion'] = isActive.value(item) ? '' : item.id
+      : configStore.config.oaths[item.oathPos]
+  target['id'] = isActive.value(item) ? '' : item.id
 }
 </script>
 
@@ -322,5 +479,9 @@ const chooseEqu = (item?: IEquipment) => {
   border-top: 1px solid #423d2c;
   border-bottom: 1px solid #211d15;
   text-align: center;
+}
+
+.unActive {
+  filter: grayscale(100%);
 }
 </style>

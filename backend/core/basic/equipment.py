@@ -80,24 +80,25 @@ class Equipments:
         self.equs: list[Equ] = []
         self.oaths: list[Oath] = []
         self.oath_dict: dict[str, Oath] = {}
-        self.stones: list[Equ] = []
+        # self.stones: list[Equ] = []
         self.funs = self.init_func()
         self.equ_dict: dict[str, Equ] = {}
-        self.stone_dict: dict[str, Equ] = {}
+        # self.stone_dict: dict[str, Equ] = {}
         self.jades = []
         self.enchants = []
         self.emblems = []
         self.suits: list[Suit] = []
         self.suit_dict: dict[str, Suit] = {}
-        self.oath_suits: list[Suit] = []
+        self.oath_suits: list[OathSuit] = []
+        self.oath_suit_dict: dict[str, OathSuit] = {}
         self.init_equs()
         self.init_suits()
         self.init_enchants()
-        self.init_stones()
+        # self.init_stones()
         self.init_emblem()
         self.init_jades()
-        # self.init_oaths()
-        # self.init_oath_suits()
+        self.init_oaths()
+        self.init_oath_suits()
         self.engine.dispose()
 
     def init_equs(self):
@@ -123,36 +124,49 @@ class Equipments:
             self.equs.append(equ)
             self.equ_dict[equ.id] = equ
 
-    def init_stones(self):
-        """从数据库中获取所有装备信息"""
-        with Session(self.engine) as session:
-            db_list = session.query(StoneData).all()
-        keys = [key for key in StoneData.__dict__.keys() if key[0].isupper()] + ['suit']
-        for item in db_list:
-            max_adaptation = 0
-            item.id = str(item.id)
-            for attr in keys:
-                if attr == 'suit':
-                    value = parse_to_number_list(getattr(item, attr), [])
-                    value = [str(int(i)) for i in value]
-                else:
-                    value = parse_to_number_list(getattr(item, attr))
-                max_adaptation = max(max_adaptation, len(value) - 1)
-                setattr(item, attr, value)
-            stone_dict = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
-            stone_dict['max_adaptation'] = max_adaptation
-            stone = Equ(**stone_dict)
-            self.stones.append(stone)
-            self.stone_dict[stone.id] = stone
+    # def init_stones(self):
+    #     """从数据库中获取所有装备信息"""
+    #     with Session(self.engine) as session:
+    #         db_list = session.query(StoneData).all()
+    #     keys = [key for key in StoneData.__dict__.keys() if key[0].isupper()] + ['suit']
+    #     for item in db_list:
+    #         max_adaptation = 0
+    #         item.id = str(item.id)
+    #         for attr in keys:
+    #             if attr == 'suit':
+    #                 value = parse_to_number_list(getattr(item, attr), [])
+    #                 value = [str(int(i)) for i in value]
+    #             else:
+    #                 value = parse_to_number_list(getattr(item, attr))
+    #             max_adaptation = max(max_adaptation, len(value) - 1)
+    #             setattr(item, attr, value)
+    #         stone_dict = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
+    #         stone_dict['max_adaptation'] = max_adaptation
+    #         stone = Equ(**stone_dict)
+    #         self.stones.append(stone)
+    #         self.stone_dict[stone.id] = stone
 
     def init_suits(self):
         """从数据库中获取所有套装信息"""
         with Session(self.engine) as session:
             db_list = session.query(SuitData).all()
         for item in db_list:
-            suit = Suit(**{k: v for k, v in item.__dict__.items() if not k.startswith('_')})
-            self.suits.append(suit)
-            self.suit_dict.setdefault(str(suit.suitId), []).append(suit)
+            lvs = len(item.point.split(','))
+            suits = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
+            for i in range(1, lvs + 1):
+                suit = {k: v for k, v in suits.items()}
+                suit['point'] = int(suit['point'].split(',')[i - 1])
+                suit['level'] = i
+                skillAttaks = parse_to_number_list(suit['SkillAttack'], [0])
+                suit['SkillAttack'] = 0 if i - 1 >= len(skillAttaks) else skillAttaks[i - 1]
+                attacks = parse_to_number_list(suit['Attack'], [0])
+                suit['Attack'] = 0 if i - 1 >= len(attacks) else attacks[i - 1]
+                buffers = parse_to_number_list(suit['Buffer'], [0])
+                suit['Buffer'] = 0 if i - 1 >= len(buffers) else buffers[i - 1]
+                suit_obj = Suit(**suit)
+                self.suits.append(suit_obj)
+                self.suit_dict.setdefault(str(suit['suitId']), []).append(suit_obj)
+            pass
         pass
 
     def init_enchants(self):
@@ -174,9 +188,9 @@ class Equipments:
             db_list = session.query(EmblemData).all()
         for item in db_list:
             emblem = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
-            emblem['position'] = [] if emblem['itemType'] is None else emblem['itemType'].split(',')
-            emblem['categorize'] = [] if emblem['categorize'] is None else emblem['categorize'].split(',')
-            del emblem['itemType']
+            # emblem['position'] = [] if emblem['itemType'] is None else emblem['itemType'].split(',')
+            # emblem['categorize'] = [] if emblem['categorize'] is None else emblem['categorize'].split(',')
+            # del emblem['itemType']
             self.emblems.append(emblem)
             pass
         pass
@@ -225,17 +239,20 @@ class Equipments:
             suits = {k: v for k, v in item.__dict__.items() if not k.startswith('_')}
             for i in range(1, lvs + 1):
                 suit = {k: v for k, v in suits.items()}
+                suit['points'] = suit['point']
                 suit['point'] = int(suit['point'].split(',')[i - 1])
                 skills = [x for x in db_skills_list if x.suitId == suit['suitId'] and x.key == suit['key']]
                 suit['level'] = i
                 skillAttaks = parse_to_number_list(suit['SkillAttack'], [0])
-                suit['SkillAttack'] = 0 if i - 1 >= len(skillAttaks) else skillAttaks[i - 1]
+                suit['SkillAttack'] = (0 if len(skillAttaks) == 0 else skillAttaks[0]) if i - 1 >= len(skillAttaks) else skillAttaks[i - 1]
                 attacks = parse_to_number_list(suit['Attack'], [0])
-                suit['Attack'] = 0 if i - 1 >= len(attacks) else attacks[i - 1]
+                suit['Attack'] = (0 if len(attacks) == 0 else attacks[0]) if i - 1 >= len(attacks) else attacks[i - 1]
                 buffers = parse_to_number_list(suit['Buffer'], [0])
-                suit['Buffer'] = 0 if i - 1 >= len(buffers) else buffers[i - 1]
+                suit['Buffer'] = (0 if len(buffers) == 0 else buffers[0]) if i - 1 >= len(buffers) else buffers[i - 1]
                 suit['skills'] = [OathSuitSkill(**{k: v for k, v in skill.__dict__.items() if not k.startswith('_')}) for skill in skills]
-                self.oath_suits.append(suit)
+                oath_suit = OathSuit(**suit)
+                self.oath_suits.append(oath_suit)
+                self.oath_suit_dict.setdefault(str(suit['suitId']), []).append(oath_suit)
             pass
         pass
 
@@ -263,7 +280,7 @@ class Equipments:
                 result[suit.count] = suit
         return list(result.values())
 
-    def get_oath_suit_info(self, suitId: str | int, point: int = 0, count: int = 0) -> list[Suit]:
+    def get_oath_suit_info(self, suitId: str | int, point: int = 0, count: int = 0) -> list['OathSuit']:
         """根据套装点数返回对应适用的誓约套装属性\n
         新套装只需要传入suitID和point即可，count默认为0\n
         老套装需要传入suitID和count即可，point默认为0
@@ -271,8 +288,8 @@ class Equipments:
         if suitId not in self.oath_suit_dict:
             return []
         # 先筛选出点数小于等于point和数量小于等于count的套装
-        suits: list[Suit] = [suit for suit in self.oath_suit_dict[str(suitId)] if suit.point <= point and suit.count <= count]
-        result: dict[int, Suit] = {}
+        suits: list[OathSuit] = [suit for suit in self.oath_suit_dict[str(suitId)] if suit.point <= point and suit.count <= count]
+        result: dict[int, OathSuit] = {}
         # 取每种count套装中点数最高的
         for suit in suits:
             if suit.count not in result or suit.point > result[suit.count].point:
@@ -320,6 +337,8 @@ class Oath:
     Buffer: list[float] | float
     wearUrl: list[str]
     max_adaptation: int
+    itemType: str
+    itemDetailType: str
 
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
@@ -354,6 +373,9 @@ class OathSuitSkill:
     bufferValue: str
 
     def __init__(self, **kwargs):
+        for key in ['SkillAttack', 'Attack', 'Buffer']:
+            if kwargs.get(key) is None:
+                kwargs[key] = 0
         self.__dict__.update(kwargs)
 
 
@@ -365,6 +387,7 @@ class OathSuit:
     rarity: str
     name: str
     point: int
+    points: str
     level: int
     count: int
     imageUrl: str

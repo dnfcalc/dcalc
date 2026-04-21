@@ -79,12 +79,12 @@ job_mapping = {
 
 async def get_user_info_by_id(user_id: str, alter: AltersDep):
     if alter is None:
-        raise ResponseException("登录过期或无效Token，请刷新后重试")
+        raise ResponseException('登录过期或无效Token，请刷新后重试')
     name = next((k for k, v in job_mapping.items() if v == alter.origin), '')
     # 通过OCR助手获取用户信息
     helper_info = await get_main_user_info_by_id(user_id, name)
     if helper_info is None:
-        raise ResponseException("当前助手ID不存在或已隐藏，请确认后重试")
+        raise ResponseException('当前助手ID不存在或已隐藏，请确认后重试')
     else:
         return trans_to_dcalc_set(helper_info, alter)
         pass
@@ -93,7 +93,7 @@ async def get_user_info_by_id(user_id: str, alter: AltersDep):
 def trans_to_dcalc_set(detail, alter: AltersDep):
     job = job_mapping.get(detail.get('job', ''), '')
     if job != alter.origin:
-        raise ResponseException("未能匹配到当前职业对应的角色信息，请确认后重试")
+        raise ResponseException('未能匹配到当前职业对应的角色信息，请确认后重试')
     basic = get_equipment('0')
     basicAvatars = basic.funs.get_dress_list([])
     equs = detail.get('equs', [])
@@ -126,9 +126,9 @@ def trans_to_dcalc_set(detail, alter: AltersDep):
         # 贴膜
         if dcalcEqu:
             info['id'] = dcalcEqu.id
-        dcalcEquFusion = next((item for item in basic.stones if item.name == equ.get('upgrade', '')), None)
-        if dcalcEquFusion:
-            info['fusion'] = dcalcEquFusion.id
+        # dcalcEquFusion = next((item for item in basic.stones if item.name == equ.get('upgrade', '')), None)
+        # if dcalcEquFusion:
+        #     info['fusion'] = dcalcEquFusion.id
         info['enchant'] = getEnchatIdByName(equ.get('enchant', ''), equ.get('posName', ''), basic.enchants)
         emblems = [getEmblemIdByName(i.get('detail', ''), i.get('categorize', ''), i.get('rarity', ''), basic.emblems) for i in equ.get('emblems', [])]
         info['emblem_0'] = emblems[0] if len(emblems) > 0 else 0
@@ -167,7 +167,7 @@ def trans_to_dcalc_set(detail, alter: AltersDep):
                 if item.get('posName', '') == '皮肤':
                     match = re.search(r'\[(\d+)级\]', item.get('name', ''))
                     lv = int(match.group(1)) if match else None
-                    if lv :
+                    if lv:
                         item['enchant'] = f'Lv{lv}主动+1|全属强(12)|四维(55)'
                 if item.get('posName', '') == '光环':
                     # 先默认这个了 不管了
@@ -182,11 +182,14 @@ def trans_to_dcalc_set(detail, alter: AltersDep):
         'equips': equips,
         'avatars': avatar,
         'avatarLink': detail.get('avatarLink', ''),
-        'dressInfo': [{
-            'dress': i.get('name', ''),
-            'clone': i.get('clone', ''),
-            'part': i.get('posName', ''),
-        } for i in detail.get('avatars', [])]
+        'dressInfo': [
+            {
+                'dress': i.get('name', ''),
+                'clone': i.get('clone', ''),
+                'part': i.get('posName', ''),
+            }
+            for i in detail.get('avatars', [])
+        ],
     }
     # 处理装备
     # 处理时装

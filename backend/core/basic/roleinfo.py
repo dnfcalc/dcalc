@@ -13,32 +13,32 @@ class CharacterEquipInfo:
     """强化类型"""
     enchant: str
     """附魔"""
-    emblem_0: str
-    """徽章1"""
-    emblem_1: str
-    """徽章2"""
-    fusion: int | None
-    """贴膜ID"""
+    # emblem_0: str
+    # """徽章1"""
+    # emblem_1: str
+    # """徽章2"""
+    # fusion: int | None
+    # """贴膜ID"""
     refine: int | None
     """锻造等级"""
-    weaponFusion: int | None
-    """武器融合详情"""
+    # weaponFusion: int | None
+    # """武器融合详情"""
     adaptation: int
     """调适等级"""
     equInfo: Union['Equ', None]
     """装备信息"""
-    fusionInfo: Union['Equ', None]
-    """贴膜信息"""
+    # fusionInfo: Union['Equ', None]
+    # """贴膜信息"""
     precision: float
     """秘宝精度"""
 
     def __init__(self, info={}, equVerison=0, part='') -> None:
-        info['fusion'] = info.get('fusion', None)
+        # info['fusion'] = info.get('fusion', None)
         info['precision'] = info.get('precision', 0)
-        info['weaponFusion'] = info.get('weaponFusion', None)
+        # info['weaponFusion'] = info.get('weaponFusion', None)
         self.__dict__.update(info)
         equ = get_equipment(equVerison).equ_dict.get(self.id, None)
-        fusion = get_equipment(equVerison).stone_dict.get(self.fusion, None)
+        # fusion = get_equipment(equVerison).stone_dict.get(self.fusion, None)
         if equ is not None and (equ.itemType == part or equ.itemDetailType == part or (equ.itemType == '武器' and part == '副武器')):
             self.equInfo = equ.adapt(self.adaptation)
             self.adaptation = min(self.adaptation, self.equInfo.max_adaptation)
@@ -46,10 +46,10 @@ class CharacterEquipInfo:
                 self.equInfo.itemType = '副武器'
         else:
             self.equInfo = None
-        if fusion is not None and (fusion.itemType == part or fusion.itemDetailType == part):
-            self.fusionInfo = fusion.adapt(self.adaptation)
-        else:
-            self.fusionInfo = None
+        # if fusion is not None and (fusion.itemType == part or fusion.itemDetailType == part):
+        #     self.fusionInfo = fusion.adapt(self.adaptation)
+        # else:
+        #     self.fusionInfo = None
 
 
 class CharacterOathInfo:
@@ -69,6 +69,18 @@ class CharacterOathInfo:
             self.adaptation = min(self.adaptation, self.oathInfo.max_adaptation)
         else:
             self.oathInfo = None
+
+
+class CharacterEmblemInfo:
+    part: str
+    """星徽部位"""
+    items: list[str]
+    """徽章id列表"""
+    lv: int
+    """星徽等级"""
+
+    def __init__(self, info={}) -> None:
+        self.__dict__.update(info)
 
 
 class CharacterWeaponInfo(CharacterEquipInfo):

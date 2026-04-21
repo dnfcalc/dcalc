@@ -1,12 +1,16 @@
 <template>
   <div class="w-420px overflow-auto">
-    <calc-collapse class="w-100%" title="装备/时装打造(点击部位切换)">
+    <calc-collapse class="w-100%" title="装备/时装/徽章打造(点击部位切换)">
       <calc-tabs v-model="partTab" class="!mb-2">
-        <calc-tab :value="0">装备栏</calc-tab>
-        <calc-tab :value="1">时装栏</calc-tab>
+        <calc-tab :value="0">装备</calc-tab>
+        <calc-tab :value="2">誓约</calc-tab>
+        <calc-tab :value="1">时装</calc-tab>
+        <calc-tab :value="3">徽章</calc-tab>
       </calc-tabs>
       <equipment v-if="partTab === 0"></equipment>
       <clothes v-if="partTab === 1"></clothes>
+      <oaths v-if="partTab === 2"></oaths>
+      <emblems v-if="partTab === 3"></emblems>
     </calc-collapse>
     <calc-collapse class="w-100%" title="辟邪玉">
       <jade></jade>
@@ -19,6 +23,8 @@
 <script setup lang="ts">
 import equipment from './components/Equipments.vue'
 import clothes from './components/Avatars.vue'
+import emblems from './components/Emblems.vue'
+import oaths from './components/Oaths.vue'
 import jade from './components/Jades.vue'
 import sundry from './components/Sundry.vue'
 const partTab = ref(0)

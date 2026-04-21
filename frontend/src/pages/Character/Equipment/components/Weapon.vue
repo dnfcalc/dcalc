@@ -15,7 +15,6 @@
 <script lang="ts" setup>
 import type { IEquipment } from '@/api/info/type'
 import { useConfigStore, useInfoStore } from '@/stores'
-import { getImageURL } from '@/utils/images'
 import EquipmentIcon from '@/components/dnf/Equipment/Icon/index.vue'
 
 const props = defineProps<{

@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Any, Literal, Mapping
 
+
 class CharacterProperty(ABC):
     """
     抽象类，用于定义Character的接口和属性
@@ -152,7 +153,8 @@ class CharacterProperty(ABC):
         攻击强化P=0,
         增益量=0,
         增益量P=0,
-        **kwargs: Mapping[Literal[
+        **kwargs: Mapping[
+            Literal[
                 'STR',
                 'INT',
                 'AtkP',
@@ -187,7 +189,9 @@ class CharacterProperty(ABC):
                 'Spirit',
                 'Vitality',
                 'EquEffectRatio',
-            ], Any],
+            ],
+            Any,
+        ],
     ) -> None:
         """设置角色属性"""
         pass
@@ -198,7 +202,7 @@ class CharacterProperty(ABC):
         pass
 
     @abstractmethod
-    def AddSkillLv(self, min: int, max: int, lv: int, type=-1,exceptSkills:list[str]=[]) -> None:
+    def AddSkillLv(self, min: int, max: int, lv: int, type=-1, exceptSkills: list[str] = []) -> None:
         """增加技能等级"""
         pass
 
@@ -235,4 +239,9 @@ class CharacterProperty(ABC):
     @abstractmethod
     def calc(self, setInfo: dict[str, dict]) -> dict:
         """计算角色属性"""
+        pass
+
+    @abstractmethod
+    def GetReinforceSum(self) -> list[int]:
+        """获取强化总和"""
         pass

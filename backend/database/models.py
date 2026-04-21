@@ -2,7 +2,7 @@
 # import sys
 from sqlalchemy import Column, Integer, Text, Float
 from sqlalchemy import create_engine
-from sqlalchemy.orm import Session,declarative_base
+from sqlalchemy.orm import Session, declarative_base
 
 Base = declarative_base()
 metadata = Base.metadata
@@ -16,16 +16,16 @@ class SuitData(Base):
     suitName = Column(Text)
     rarity = Column(Text)
     name = Column(Text)
-    point = Column(Integer)
-    level = Column(Integer)
+    point = Column(Text)
     count = Column(Integer)
-    SkillAttack = Column(Float)
-    Attack = Column(Float)
-    Buffer = Column(Float)
+    SkillAttack = Column(Text)
+    Attack = Column(Text)
+    Buffer = Column(Text)
     imageUrl = Column(Text)
     value = Column(Text)
     bufferValue = Column(Text)
     fame = Column(Integer)
+
 
 class EquData(Base):
     """
@@ -57,6 +57,7 @@ class EquData(Base):
     Buffer = Column(Text)
     suit = Column(Text)
 
+
 class StoneData(Base):
     """
     装备属性映射
@@ -87,6 +88,7 @@ class StoneData(Base):
     Buffer = Column(Text)
     suit = Column(Text)
 
+
 class EnchantData(Base):
     __tablename__ = 'enchant'
 
@@ -97,15 +99,18 @@ class EnchantData(Base):
     fame = Column(Integer)
     rarity = Column(Text)
 
+
 class EmblemData(Base):
     __tablename__ = 'emblem'
 
     id = Column(Integer, primary_key=True)
-    detail = Column(Text)
-    categorize = Column(Integer)
-    itemType = Column(Text)
-    fame = Column(Integer)
+    rarityId = Column(Integer)
     rarity = Column(Text)
+    typeId = Column(Integer)
+    type = Column(Text)
+    value = Column(Text)
+    fame = Column(Integer)
+
 
 class JadeData(Base):
     __tablename__ = 'jade'
@@ -117,11 +122,13 @@ class JadeData(Base):
     unit = Column(Text)
     pre = Column(Float)
 
+
 class OathData(Base):
     """
     誓约属性映射
     首字母大写的属性为调适可能会影响到的属性
     """
+
     __tablename__ = 'oath'
 
     id = Column(Integer, primary_key=True)
@@ -129,6 +136,8 @@ class OathData(Base):
     rarity = Column(Text)
     position = Column(Text)
     Point = Column(Integer)
+    itemType = Column(Text)
+    itemDetailType = Column(Text)
     categorize = Column(Text)
     imageUrl = Column(Text)
     detail = Column(Text)
@@ -146,17 +155,21 @@ class OathData(Base):
     suit = Column(Text)
     wearUrl = Column(Text)
 
+
 class PrimerData(Base):
     """
     誓约属性映射
     首字母大写的属性为调适可能会影响到的属性
     """
+
     __tablename__ = 'primer'
 
     id = Column(Integer, primary_key=True)
     name = Column(Text)
     rarity = Column(Text)
     position = Column(Text)
+    itemType = Column(Text)
+    itemDetailType = Column(Text)
     Point = Column(Integer)
     categorize = Column(Text)
     imageUrl = Column(Text)
@@ -174,6 +187,7 @@ class PrimerData(Base):
     Buffer = Column(Text)
     suit = Column(Text)
     wearUrl = Column(Text)
+
 
 class OathSuitData(Base):
     __tablename__ = 'oathSuit'
@@ -190,6 +204,7 @@ class OathSuitData(Base):
     SkillAttack = Column(Text)
     Attack = Column(Text)
     Buffer = Column(Text)
+
 
 class OathSuitSkillData(Base):
     __tablename__ = 'oathSuitSkill'

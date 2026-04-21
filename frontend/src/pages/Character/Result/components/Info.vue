@@ -5,7 +5,9 @@
         :detail="props.equs"
         :with-sub-weapon="(infoStore.infos?.subweapons?.length ?? 0) > 0"
         :avatar="props.avatar"
+        v-show="display == 'equ'"
       ></EquList>
+      <Oath :detail="props.oaths" v-show="display == 'oath'"></Oath>
     </div>
     <div class="flex flex-wrap border-y-1px my-1px border-y-solid border-#FFFF/10 gap-1% px-1%">
       <template v-for="info in props.info" :key="info.id">
@@ -37,37 +39,71 @@
     <div class="border-y-1px border-y-solid my-1px border-#FFFF/10">
       <div class="flex">
         <div class="flex-1 flex items-center justify-center bg-#221A08 text-#9A7E4A">
-          穿戴装备信息
+          穿戴{{ display == 'equ' ? '装备' : '誓约' }}信息
         </div>
       </div>
-      <template v-for="part in partOrder" :key="part">
-        <div class="flex p-2px partItem gap-5px">
-          <img
-            :src="getImageURL(`/equipment/part/${part}.png`)"
-            alt=""
-            class="w-20px h-20px object-contain"
-          />
-          <div class="flex items-center justify-center" v-if="adaptation(part) > 0">
+      <template v-if="display == 'equ'">
+        <template v-for="part in partOrder" :key="part">
+          <div class="flex p-2px partItem gap-5px">
             <img
-              :src="getImageURL(`/equipment/adaptation/${adaptation(part)}.png`)"
+              :src="getImageURL(`/equipment/part/${part}.png`)"
               alt=""
-              class="w-11px h-10px object-contain"
+              class="w-20px h-20px object-contain"
             />
+            <div class="flex items-center justify-center" v-if="adaptation(part) > 0">
+              <img
+                :src="getImageURL(`/equipment/adaptation/${adaptation(part)}.png`)"
+                alt=""
+                class="w-11px h-10px object-contain"
+              />
+            </div>
+            <div
+              class="flex items-center"
+              v-if="props.equs[part]?.reinforce > 0"
+              :class="props.equs[part]?.reinforceType == 1 ? 'artifact' : 'advanced'"
+            >
+              +{{ props.equs[part]?.reinforce }}
+            </div>
+            <div class="rare" v-if="props.equs[part]?.refine > 0">
+              ({{ props.equs[part]?.refine }})
+            </div>
+            <div :class="rarityClass(equ(props.equs?.[part]?.id)?.rarity ?? '')">
+              {{ equ(props.equs?.[part]?.id)?.name }}
+            </div>
           </div>
-          <div
-            class="flex items-center"
-            v-if="props.equs[part]?.reinforce > 0"
-            :class="props.equs[part]?.reinforceType == 1 ? 'artifact' : 'advanced'"
-          >
-            +{{ props.equs[part]?.reinforce }}
+        </template>
+      </template>
+      <template v-else>
+        <template v-for="part in oathOrder" :key="part">
+          <div class="flex p-2px partItem gap-5px">
+            <img
+              :src="getImageURL(`/equipment/part/${part == '11' ? '誓约' : '星蕴石'}.png`)"
+              alt=""
+              class="w-20px h-20px object-contain"
+            />
+            <div class="flex items-center justify-center" v-if="oathAdaptation(part) > 0">
+              <img
+                :src="getImageURL(`/equipment/adaptation/${oathAdaptation(part)}.png`)"
+                alt=""
+                class="w-11px h-10px object-contain"
+              />
+            </div>
+            <!-- <div
+              class="flex items-center"
+              v-if="props.equs[part]?.reinforce > 0"
+              :class="props.equs[part]?.reinforceType == 1 ? 'artifact' : 'advanced'"
+            >
+              +{{ props.equs[part]?.reinforce }}
+            </div> -->
+            <!-- <div class="rare" v-if="props.equs[part]?.refine > 0">
+              ({{ props.equs[part]?.refine }})
+            </div> -->
+            {{ equ(props.equs?.[part]?.id) }}
+            <div :class="rarityClass(equ(props.oaths?.[part]?.id)?.rarity ?? '')">
+              {{ equ(props.oaths?.[part]?.id)?.name }}
+            </div>
           </div>
-          <div class="rare" v-if="props.equs[part]?.refine > 0">
-            ({{ props.equs[part]?.refine }})
-          </div>
-          <div :class="rarityClass(equ(props.equs?.[part]?.id)?.rarity ?? '')">
-            {{ equ(props.equs?.[part]?.id)?.name }}
-          </div>
-        </div>
+        </template>
       </template>
     </div>
     <div class="h-40px w-full"></div>
@@ -79,14 +115,17 @@ import { getImageURL } from '@/utils/images'
 import { rarityClass } from '@/utils'
 import type { IResultUserInfo, IResultSuit } from '@/api/calc/type'
 import EquList from '@/components/dnf/Equipment/List/index.vue'
-import type { IConfigEquip } from '@/stores/config'
+import Oath from '@/components/dnf/Equipment/Oath/index.vue'
+import type { IConfigEquip, IConfigOath } from '@/stores/config'
 import { useInfoStore } from '@/stores'
 
 const props = defineProps<{
   info: IResultUserInfo[]
   suits: IResultSuit[]
   equs: Record<string, IConfigEquip>
+  oaths: Record<string, IConfigOath>
   avatar: string
+  display: 'oath' | 'equ'
 }>()
 
 const partOrder = [
@@ -103,9 +142,15 @@ const partOrder = [
   '魔法石',
   '耳环',
 ]
+
+const oathOrder = Array.from({ length: 12 }, (_, i) => (11 - i).toString())
 const infoStore = useInfoStore()
 
 const equ = (id: string) => {
+  if (props.display == 'oath') {
+    console.log(props.oaths, id)
+    return infoStore.oaths.find((e) => e.id == id)
+  }
   return infoStore.equips.find((e) => e.id == id)
 }
 
@@ -113,6 +158,13 @@ const adaptation = (part: string) => {
   return Math.min(
     equ(props.equs?.[part]?.id)?.max_adaptation ?? 0,
     props.equs[part]?.adaptation ?? 0,
+  )
+}
+
+const oathAdaptation = (part: string) => {
+  return Math.min(
+    equ(props.oaths?.[part]?.id)?.max_adaptation ?? 0,
+    props.oaths[part]?.adaptation ?? 0,
   )
 }
 

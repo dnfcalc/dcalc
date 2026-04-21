@@ -1,5 +1,5 @@
 import api from '@/api'
-import type { ICharacterInfo } from '@/api/info/type'
+import type { ICharacterInfo, IEquipment, ISuit } from '@/api/info/type'
 import { defineStore } from 'pinia'
 import { useConfigStore } from './config'
 import type { IResult, IResultSkill, IResultSkillCount } from '@/api/calc/type'
@@ -7,6 +7,15 @@ import type { IResult, IResultSkill, IResultSkillCount } from '@/api/calc/type'
 export const useInfoStore = defineStore('infoStore', () => {
   const alter_token = ref<string>('')
   const infos = ref<ICharacterInfo | null>(null)
+
+  const oathCache = ref<
+    {
+      suitId: string
+      skillId: string
+      rarity: string
+      data: ISuit
+    }[]
+  >([])
 
   const skills = computed(() => infos.value?.skills ?? [])
 
@@ -18,7 +27,7 @@ export const useInfoStore = defineStore('infoStore', () => {
 
   const emblems = computed(() => infos.value?.emblems ?? [])
 
-  const stones = computed(() => infos.value?.stones ?? [])
+  // const stones = computed(() => infos.value?.stones ?? [])
 
   const avatars = computed(() => infos.value?.avatar ?? {})
 
@@ -28,6 +37,62 @@ export const useInfoStore = defineStore('infoStore', () => {
 
   const options = computed(() => infos.value?.options ?? [])
 
+  const oaths = computed(() => {
+    const origin = infos.value?.oaths ?? []
+    const result: IEquipment[] = []
+    origin.forEach((o) => {
+      o.position.forEach((p, i) => {
+        result.push({
+          ...o,
+          oathPos: p,
+          displayUrl: o.wearUrl?.[parseInt(p)]
+            ? `/equipment/icon/oathprimer/primer_equip/${o.wearUrl?.[parseInt(p)]}`
+            : o.imageUrl,
+        })
+      })
+    })
+    return result
+  })
+
+  const getOathInfo = async (suitId: string, skillId: string, rarity: string) => {
+    const res = oathCache.value.find(
+      (o) => o.suitId === suitId && o.skillId === skillId && o.rarity === rarity,
+    )
+    if (res) {
+      return {
+        ...res.data,
+      }
+    }
+    const data: ISuit = await api.getOathInfo(suitId, skillId, rarity)
+    oathCache.value.push({ suitId, skillId, rarity, data })
+    return {
+      ...data,
+    }
+  }
+
+  const oathSkills = computed(() => {
+    const origin = infos.value?.oaths_skills
+    if (!origin) return origin
+
+    const skillOrder = ['2', '1', '3']
+
+    return Object.fromEntries(
+      Object.entries(origin).map(([key, value]) => [
+        key,
+        {
+          ...value,
+          skills: [...value.skills].sort((left, right) => {
+            const leftIndex = skillOrder.indexOf(left.skillId)
+            const rightIndex = skillOrder.indexOf(right.skillId)
+            const normalizedLeftIndex = leftIndex === -1 ? skillOrder.length : leftIndex
+            const normalizedRightIndex = rightIndex === -1 ? skillOrder.length : rightIndex
+
+            return normalizedLeftIndex - normalizedRightIndex
+          }),
+        },
+      ]),
+    )
+  })
   const standardUUID = ref<string>()
 
   const setStandard = (
@@ -39,7 +104,9 @@ export const useInfoStore = defineStore('infoStore', () => {
     }[],
   ) => {
     if (!result) {
-      !!standardUUID.value && sessionStorage.removeItem(standardUUID.value)
+      if (!!standardUUID.value) {
+        sessionStorage.removeItem(standardUUID.value)
+      }
       standardUUID.value = undefined
     } else {
       standardUUID.value = result.uuid
@@ -89,6 +156,10 @@ export const useInfoStore = defineStore('infoStore', () => {
     '宠物装备-蓝',
   ]
 
+  const oathParts = Array.from({ length: 12 }, (_, i) => i.toString())
+
+  const emblemParts = ['彩色', '红色', '蓝色', '绿色', '黄色', '白金']
+
   const createCharacter = async (alter: string, equVersion?: string) => {
     const time = new Date().getTime()
     alter_token.value = btoa(JSON.stringify({ alter, equVersion, time }))
@@ -106,13 +177,17 @@ export const useInfoStore = defineStore('infoStore', () => {
     enchants,
     emblems,
     parts,
-    stones,
+    oaths,
     avatarParts,
+    oathParts,
+    emblemParts,
     avatars,
     jades,
     setStandard,
     standard,
     sundries,
-    options
+    options,
+    oathSkills,
+    getOathInfo,
   }
 })

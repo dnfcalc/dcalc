@@ -2,11 +2,12 @@ import re
 from api.core.Auth import createToken
 from api.core.Gzip import register_gzip_request
 import json
-from fastapi import APIRouter,Request, Depends, Body
+from fastapi import APIRouter, Request, Depends, Body
 from typing import Annotated
 from api.core.Response import Return, response
 from api.core.Redis import get_redis_info
-from api.dp import RedisDep,AltersDep
+from api.dp import RedisDep, AltersDep
+from core.basic.equipment import get_equipment
 from core.character.adventure import get_adv_list
 from core.basic.character import createCharacter
 from core.open.helper import get_user_info_by_id
@@ -16,6 +17,7 @@ from api.core.exception import ResponseException
 router = APIRouter()
 
 register_gzip_request(router)
+
 
 def replace_placeholders(template):
     # 匹配 <int>、<float>、<float1>、<float2> 等
@@ -30,44 +32,60 @@ def replace_placeholders(template):
     return pattern.sub(repl, template)
 
 
-
 @router.get('/adventure')
-async def get_adventure_info(request: Request,redis:RedisDep):
+async def get_adventure_info(request: Request, redis: RedisDep):
     adventure_info = get_redis_info(redis, 'dcalc:adventure', get_adv_list)
 
     return response(data=adventure_info)
 
-@router.get("/token/get/{alter}")
-async def getToken(redis:RedisDep,
-    alter: str, request: Request, version: str = None, equVersion: str = "0"
-):
+
+@router.get('/token/get/{alter}')
+async def getToken(redis: RedisDep, alter: str, request: Request, version: str = None, equVersion: str = '0'):
     token = createToken(alter, equVersion, redis)
     return response(data=token)
 
-@router.get("/character")
-async def get_character_info(
-    request: Request, state: AltersDep ,redis:RedisDep
-):
+
+@router.get('/character')
+async def get_character_info(request: Request, state: AltersDep, redis: RedisDep):
     character = createCharacter(state.alter, state.equVersion)
+
     def get_character():
         return character.getInfo()
-    info = get_redis_info(redis, f"dcalc:character:{state.alter}:{state.equVersion}", get_character)
+
+    info = get_redis_info(redis, f'dcalc:character:{state.alter}:{state.equVersion}', get_character)
     # info = character.getInfo()
     return response(data=info)
 
-@router.get("/skill/{skillId}/{level}")
-async def get_skill_info(
-    state: AltersDep, skillId: str, level: int, redis: RedisDep
-):
+
+@router.get('/info/oath/{suitId}/{skillId}')
+async def get_oath_info(state: AltersDep, suitId: str, skillId: str, rarity: str, redis: RedisDep):
+    def get_info():
+        skill = None
+        version = state.equVersion
+        equ = get_equipment(version)
+        oath = next((x for x in equ.oath_suits if x.suitId == suitId and x.rarity == rarity), None)
+        if oath is not None:
+            oathSkill = next((x for x in oath.skills if x.skillId == skillId), None)
+            if oathSkill is not None:
+                skill = {**oathSkill.__dict__, 'point': oath.points, 'imageUrl': oath.imageUrl}
+        return skill
+
+    info = get_redis_info(redis, f'dcalc:oath:{rarity}:{skillId}', get_info)
+    return response(data=info)
+
+
+@router.get('/skill/{skillId}/{level}')
+async def get_skill_info(state: AltersDep, skillId: str, level: int, redis: RedisDep):
     """
     获取技能信息
     """
     alter = state.alter
-    jobId = alter.split(".")[1]
-    jobGrowId = alter.split(".")[2]
+    jobId = alter.split('.')[1]
+    jobGrowId = alter.split('.')[2]
     skill_info = {}
     key = f'openapi:{jobId}:{jobGrowId}:{skillId}'
     try:
+
         def get_skill_info():
             # This function should retrieve the skill info based on job and jobGrow
             # For now, we return a placeholder dictionary
@@ -97,25 +115,27 @@ async def get_skill_info(
     return response(data=skill_info)
 
 
-@router.get("/dnfhelper/{uid}/")
+@router.get('/dnfhelper/{uid}/')
 async def get_info_by_dnfhelper(uid: str, state: AltersDep, redis: RedisDep):
     try:
-        result = await get_user_info_by_id(uid,state)
+        result = await get_user_info_by_id(uid, state)
         return response(data=result)
     except Exception as e:
         if isinstance(e, ResponseException):
             return response(code=500, message=str(e), data=None)
-        return response(code=500, message="Failed to fetch DNFHelper info", data=None)
+        print(e)
+        return response(code=500, message='Failed to fetch DNFHelper info', data=None)
 
-@router.post("/skillTree/")
-async def get_skill_by_code(state: AltersDep, code = Body(None)):
+
+@router.post('/skillTree/')
+async def get_skill_by_code(state: AltersDep, code=Body(None)):
     try:
-        skills = get_skill_tree_info(code.get("code", ""))
-        if skills.get("job",{}).get("class","") != state.alter:
-            return response(code=500, message="技能加点代码职业与登录职业不匹配", data=None)
+        skills = get_skill_tree_info(code.get('code', ''))
+        if skills.get('job', {}).get('class', '') != state.alter:
+            return response(code=500, message='技能加点代码职业与登录职业不匹配', data=None)
         return response(data=skills)
     except Exception as e:
-        print(f"Error fetching skill tree info: {e}")
+        print(f'Error fetching skill tree info: {e}')
         if isinstance(e, ResponseException):
             return response(code=500, message=str(e), data=None)
-        return response(code=500, message="解析技能加点失败", data=None)
+        return response(code=500, message='解析技能加点失败', data=None)

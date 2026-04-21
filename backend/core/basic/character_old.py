@@ -1,3 +1,15 @@
+# ⚠️  此文件已被 character/ 包目录取代。
+# Python 会优先加载 character/__init__.py，此文件不会被 import 执行。
+#
+# 模块拆分结构（位于 core/basic/character/）:
+#   jade.py        — Jade 辟邪玉类
+#   base.py        — CharacterBase（属性 / __init__ / 基础状态方法 / 技能操作）
+#   calc_equip.py  — CalcEquipMixin（套装/装备/时装/强化/辟邪玉/杂项 + calc 主入口）
+#   calc_carry.py  — CalcCarryMixin（输出伤害计算）
+#   calc_buffer.py — CalcBufferMixin（辅助 Buff 技能计算）
+#   info.py        — CharacterInfoMixin（前端信息查询）
+#   __init__.py    — 组装 Character 类 + createCharacter 工厂函数
+
 from functools import cache
 import importlib
 import sys
@@ -8,7 +20,7 @@ from core.abstract.character import CharacterProperty
 from core.basic.property import CharacterInfo
 from core.basic.skill import Skill
 
-from core.basic.equipment import get_equipment, EquEffect, Equ
+from core.basic.equipment import Suit, get_equipment, EquEffect, Equ, OathSuit
 
 # from core.basic.equipment import equipments
 # from core.basic.skill import Skill, ActiveSkill, PassiveSkill

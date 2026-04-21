@@ -11,6 +11,7 @@ import {
   renderList,
   watch,
 } from 'vue'
+import { getElementZoom } from '@/utils/position'
 
 type HandleChangeFunction = (value: string | number) => string[] | Promise<string[]>
 
@@ -55,10 +56,12 @@ export default defineComponent({
     function onResize() {
       if (triggerRef.value) {
         const { width, height, left, top } = triggerRef.value.getBoundingClientRect()
+        const zoom = getElementZoom('body')
+
         dropdownPosition.value = {
-          w: width,
-          x: left,
-          y: top + height + 2,
+          w: width / zoom,
+          x: left / zoom,
+          y: (top + height + 2) / zoom,
         }
       }
     }

@@ -15,6 +15,7 @@ import {
 
 import { onClickOutside, useVModel } from '@vueuse/core'
 import { classPropType, labelPropType } from '@/components/hooks/types'
+import { getElementZoom } from '@/utils/position'
 
 export default defineComponent({
   name: 'ISelect',
@@ -98,18 +99,19 @@ export default defineComponent({
     function onResize() {
       if (triggerRef.value) {
         const { width, height, left, top } = triggerRef.value.getBoundingClientRect()
+        const zoom = getElementZoom(appendToRef.value)
         if (window.innerHeight - top > 160) {
           dropdownPosition.value = {
-            w: width,
-            x: left,
-            y: (top + height + 2),
+            w: width / zoom,
+            x: left / zoom,
+            y: (top + height + 2) / zoom,
             z: 0,
           }
         } else {
           dropdownPosition.value = {
-            w: width,
-            x: left,
-            z: (window.innerHeight - top  + 2),
+            w: width / zoom,
+            x: left / zoom,
+            z: (window.innerHeight - top + 2) / zoom,
             y: 0,
           }
         }

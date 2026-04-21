@@ -31,6 +31,7 @@ export interface ICharacterInfo {
   stones: IEquipment[]
   enchants: IEnchantingInfo[]
   emblems: IEnchantingInfo[]
+  oaths: IEquipment[]
   weapons: string[]
   subweapons: string[]
   skills: ISkill[]
@@ -39,6 +40,19 @@ export interface ICharacterInfo {
   jades: IJade[]
   sundry: Record<string, ISundry>
   options: { id: number; name: string; options: string[] }[]
+  oaths_skills: Record<
+    string,
+    {
+      suitInfo: {
+        name: string
+        rarity: string
+        SkillAttack: number
+        Buffer: number
+        Attack: number
+      }[]
+      skills: { skillId: string; name: string; icon: string }[]
+    }
+  >
 }
 
 export interface ISundry {
@@ -71,6 +85,10 @@ export interface IEquipment {
   Buffer: number[]
   detail: string
   bufferDetail: string
+  position: string[]
+  wearUrl: string[]
+  oathPos: string
+  displayUrl?: string
 }
 
 export interface ISkill {
@@ -91,7 +109,7 @@ export interface ISkill {
     desc: string
   }[]
   uuid: string
-  upType:'damage' |'heal'
+  upType: 'damage' | 'heal'
 }
 
 export interface ISuit {

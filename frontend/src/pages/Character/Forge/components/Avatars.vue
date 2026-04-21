@@ -5,14 +5,12 @@ import { useInfoStore, useConfigStore } from '@/stores'
 import ClothList from '@/components/dnf/Avatar/List/index.vue'
 export default defineComponent({
   name: 'Clothes',
-  setup(props) {
+  setup() {
     const configStore = useConfigStore()
     const part = ref('武器装扮')
 
     // const globalStore = useGlobalStore()
 
-    /** 是否有徽章 */
-    const has_socket = computed(() => ['武器装扮', '光环', '皮肤'].includes(part.value as string))
     const basicInfoStore = useInfoStore()
     const has_enchant = computed(() => {
       return !['头部', '帽子', '脸部', '胸部', '上衣', '腰带', '下装', '鞋'].includes(
@@ -26,9 +24,9 @@ export default defineComponent({
         .sort((a, b) => (b.fame ?? 0) - (a.fame ?? 0))
     })
 
-    const emblem_list = computed<IEnchantingInfo[] | undefined>(() => {
-      return basicInfoStore.emblems.filter((item) => item.position.includes(part.value))
-    })
+    // const emblem_list = computed<IEnchantingInfo[] | undefined>(() => {
+    //   return basicInfoStore.emblems.filter((item) => item.position.includes(part.value))
+    // })
 
     const currentInfo = function <T>(name: string, defaultValue?: T) {
       return computed<string | number>({
@@ -36,7 +34,7 @@ export default defineComponent({
           let key: 'avatar' | 'equips' = 'avatar'
           if (part.value == '宠物') key = 'equips'
           return (
-            (configStore.config[key]?.[part.value] as Record<string, any>)?.[name] ??
+            (configStore.config[key]?.[part.value] as Record<string, string | number>)?.[name] ??
             defaultValue ??
             0
           )
@@ -48,10 +46,13 @@ export default defineComponent({
           let key: 'avatar' | 'equips' = 'avatar'
           if (part.value == '宠物') key = 'equips'
           if (!configStore.config[key][part.value]) {
-            configStore.config[key][part.value] = key === 'avatar' ? { ...configStore.defaultAvatarConfig } : { ...configStore.defaultEqusConfig }
+            configStore.config[key][part.value] =
+              key === 'avatar'
+                ? { ...configStore.defaultAvatarConfig }
+                : { ...configStore.defaultEqusConfig }
           }
           if (configStore.config[key][part.value]) {
-            ;(configStore.config[key][part.value] as Record<string, any>)[name] = val
+            ;(configStore.config[key][part.value] as Record<string, string | number>)[name] = val
           }
         },
       })
@@ -60,11 +61,11 @@ export default defineComponent({
     // 附魔
     const enchant = currentInfo<string | number>('enchant')
 
-    // 镶嵌栏1
-    const emblem_0 = currentInfo<string | number>('emblem_0', 0)
+    // // 镶嵌栏1
+    // const emblem_0 = currentInfo<string | number>('emblem_0', 0)
 
-    // 镶嵌栏2
-    const emblem_1 = currentInfo<string | number>('emblem_1')
+    // // 镶嵌栏2
+    // const emblem_1 = currentInfo<string | number>('emblem_1')
 
     // 品级
     const id = currentInfo<string | number>('id')
@@ -76,9 +77,9 @@ export default defineComponent({
      * 同步徽章1到徽章2
      * @param val
      */
-    function changeSocket(val: number) {
-      emblem_1.value = val
-    }
+    // function changeSocket(val: number) {
+    //   emblem_1.value = val
+    // }
 
     return () => {
       return (
@@ -126,33 +127,6 @@ export default defineComponent({
                   </calc-select>
                 </div>
               </>
-            )}
-            {has_socket.value ? (
-              <div class="equ-profile-item">
-                <div class="row-name">徽章</div>
-                <calc-select
-                  onChange={changeSocket}
-                  v-model={emblem_0.value}
-                  class="flex-1 !h-20px"
-                >
-                  <calc-option value={0}>无</calc-option>
-                  {renderList(emblem_list.value ?? [], (item) => (
-                    <calc-option
-                      value={item.id}
-                    >{`${item.rarity}${item.categorize}徽章[${item.detail}]`}</calc-option>
-                  ))}
-                </calc-select>
-                <calc-select v-model={emblem_1.value} class="flex-1 !h-20px">
-                  <calc-option value={0}>无</calc-option>
-                  {renderList(emblem_list.value ?? [], (item) => (
-                    <calc-option
-                      value={item.id}
-                    >{`${item.rarity}${item.categorize}徽章[${item.detail}]`}</calc-option>
-                  ))}
-                </calc-select>
-              </div>
-            ) : (
-              <div></div>
             )}
           </div>
         </>
